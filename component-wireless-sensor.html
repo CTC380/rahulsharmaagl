@@ -1,0 +1,2289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wireless Sensor | AGL Component Library</title>
+    <meta name="description" content="Wireless sensor explained: LoRa/Zigbee/NB-IoT condition monitoring for AGL fixtures and transformers, battery-life duty cycles and FCC/ETSI/IEC standards." />
+    <meta name="keywords" content="wireless sensor, LoRa Zigbee NB-IoT, AGL condition monitoring, battery duty cycle, FCC ETSI IEC standards, airfield ground lighting" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-wireless-sensor.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Wireless Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Wireless sensor explained: LoRa/Zigbee/NB-IoT condition monitoring for AGL fixtures and transformers, battery-life duty cycles and FCC/ETSI/IEC standards." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-wireless-sensor.html" />
+    <meta property="og:image" content="https://multitech.com/wp-content/uploads/Untitled-design-2025-07-23T081847.005.png" />
+    <meta property="og:image:alt" content="Wireless Sensor" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Wireless Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Wireless sensor explained: LoRa/Zigbee/NB-IoT condition monitoring for AGL fixtures and transformers, battery-life duty cycles and FCC/ETSI/IEC standards." />
+    <meta name="twitter:image" content="https://multitech.com/wp-content/uploads/Untitled-design-2025-07-23T081847.005.png" />
+    <meta name="theme-color" content="#060d1a" />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-wireless-sensor.html#faq", "url": "https://rahulsharmaagl.in/component-wireless-sensor.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-wireless-sensor.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a wireless sensor in AGL monitoring?", "acceptedAnswer": {"@type": "Answer", "text": "A self-contained device that measures parameters such as current, voltage, temperature, vibration or humidity and transmits the data over a wireless network such as LoRa, Zigbee, NB-IoT, Wi-Fi or Bluetooth."}}, {"@type": "Question", "name": "Why use wireless sensors on an airfield?", "acceptedAnswer": {"@type": "Answer", "text": "They extend current, temperature and vibration monitoring to equipment and locations where running new cabling would be impractical or expensive, making retrofit monitoring feasible."}}, {"@type": "Question", "name": "Where are wireless sensors deployed?", "acceptedAnswer": {"@type": "Answer", "text": "Wherever monitoring is needed but cabling is impractical, including runway and taxiway lighting (current and temperature anomalies) and isolating transformers."}}, {"@type": "Question", "name": "Which wireless protocols and ranges are typical?", "acceptedAnswer": {"@type": "Answer", "text": "LoRaWAN, Zigbee, NB-IoT, LTE-M, Wi-Fi or Bluetooth 5.0 on regional bands of 868 MHz, 915 MHz or 2.4 GHz, with LoRa reaching up to about 10 km line of sight."}}, {"@type": "Question", "name": "What can they measure and how accurately?", "acceptedAnswer": {"@type": "Answer", "text": "Current ranges of 0-10 A, 0-100 A or 0-1000 A depending on model, temperature from -40°C to +125°C, and typical accuracy of ±1% to ±3% of full scale."}}, {"@type": "Question", "name": "How long does the battery last?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 3-10 years depending on transmission interval (1 minute to 24 hours) and protocol, using a lithium primary cell or a rechargeable cell with energy harvesting."}}, {"@type": "Question", "name": "Is the sensor electrically isolated from the monitored circuit?", "acceptedAnswer": {"@type": "Answer", "text": "Battery operation and CT-based current sensing keep the unit galvanically isolated from the monitored circuit."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "FCC Part 15 (USA radio frequency devices), ETSI EN 300 220 (short range devices), the LoRaWAN specification and IEC 60529 (IP code), with IP67 or IP68 enclosures typical."}}, {"@type": "Question", "name": "How often should wireless sensors be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Semi-annually for battery and RF signal strength surveys, annually for calibration verification, gateway and repeater inspection and enclosure and seal checks, and quarterly for firmware update review."}}, {"@type": "Question", "name": "Why has a sensor stopped reporting?", "acceptedAnswer": {"@type": "Answer", "text": "Likely causes are a depleted battery, the sensor being out of gateway range, or RF interference from nearby structures. Check the reported battery level and last-seen timestamp on the gateway."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            nav.nav-open .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(6, 13, 26, 0.98);
+                padding: 20px 40px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+            }
+            nav.nav-open .nav-cta {
+                display: inline-flex;
+                margin: 0 40px 20px;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-node {
+            width: 100%;
+            max-width: 460px;
+            padding: 14px 22px;
+            text-align: center;
+            background: rgba(255, 180, 0, 0.05);
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .diagram-node small {
+            display: block;
+            margin-top: 4px;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: 0.2px;
+        }
+        .diagram-node.start {
+            background: rgba(0, 212, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.35);
+        }
+        .diagram-node.end {
+            background: rgba(255, 180, 0, 0.1);
+            border-color: var(--gold);
+        }
+        .diagram-node.fault {
+            background: rgba(230, 57, 70, 0.06);
+            border-color: rgba(230, 57, 70, 0.35);
+        }
+        .diagram-arrow {
+            color: var(--gold);
+            font-size: 18px;
+            line-height: 1;
+            margin: 6px 0;
+        }
+        .diagram-fork {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            width: 100%;
+            margin: 6px 0;
+        }
+        .diagram-branch {
+            flex: 1;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-branch .diagram-arrow.red { color: var(--red); }
+        .diagram-branch .diagram-arrow.cyan { color: var(--cyan); }
+        .diagram-branch-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .diagram-branch-label.gold { color: var(--gold); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-branch-label.red { color: var(--red); }
+        @media(max-width: 700px) {
+            .diagram-fork { flex-direction: column; align-items: center; }
+            .diagram-branch { max-width: 460px; width: 100%; }
+        }
+        .diagram-loop {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+        }
+        .diagram-loop .loop-icon {
+            font-size: 17px;
+            line-height: 1;
+        }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-wireless-sensor.html#article",
+        "headline": "Wireless Sensor",
+        "description": "Wireless sensor explained: LoRa/Zigbee/NB-IoT condition monitoring for AGL fixtures and transformers, battery-life duty cycles and FCC/ETSI/IEC standards.",
+        "url": "https://rahulsharmaagl.in/component-wireless-sensor.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-wireless-sensor.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Wireless Sensor"
+        },
+        "articleSection": "Smart Airport Components",
+        "keywords": "wireless sensor, LoRa Zigbee NB-IoT, AGL condition monitoring, battery duty cycle, FCC ETSI IEC standards, airfield ground lighting",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://multitech.com/wp-content/uploads/Untitled-design-2025-07-23T081847.005.png"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-wireless-sensor.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-wireless-sensor.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-wireless-sensor.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Wireless Sensor",
+            "item": "https://rahulsharmaagl.in/component-wireless-sensor.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Wireless Sensor</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-wifi"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Wireless <span>Sensor</span></h1>
+            <p class="comp-sub">A compact, battery-powered or energy-harvesting device that monitors critical parameters of AGL equipment and transmits data wirelessly to an IoT Gateway or cloud platform. Wireless sensors enable cost-effective, scalable condition monitoring of airfield lighting systems without the need for extensive cabling.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:450px;height:450px;">
+                <img src="https://multitech.com/wp-content/uploads/Untitled-design-2025-07-23T081847.005.png" alt="Wireless Sensor" width="450" height="450" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Wireless Sensor</strong> is a self-contained monitoring device that measures physical or electrical parameters (current, voltage, temperature, vibration, humidity, etc.) and transmits the data over a wireless network (LoRa, Zigbee, NB-IoT, Wi-Fi, or Bluetooth). In AGL applications, these sensors are deployed on:</p>
+                <ul>
+                    <li><strong>Lighting Fixtures:</strong> Monitoring current, temperature, and lamp status to detect failures early.</li>
+                    <li><strong>Isolating Transformers:</strong> Measuring primary and secondary current, and winding temperature.</li>
+                    <li><strong>CCRs and Power Equipment:</strong> Monitoring load current, ambient temperature, and vibration.</li>
+                    <li><strong>Cable Systems:</strong> Detecting current imbalance or earth leakage using clamp-on current sensors.</li>
+                    <li><strong>Environmental Conditions:</strong> Tracking ambient temperature, humidity, and precipitation near critical equipment.</li>
+                </ul>
+                <p>Wireless sensors reduce installation costs, enable retrofitting of existing infrastructure, and provide real-time visibility into the health of AGL systems, supporting predictive maintenance and operational efficiency.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The wireless sensor's purpose is to extend the same current, temperature, or vibration monitoring available on smart fixtures and transformers to equipment and locations where running new cabling would be impractical or prohibitively expensive — making retrofit monitoring of existing airfield infrastructure genuinely feasible rather than something that only applies to newly installed equipment. Its long battery life and low-power wireless transmission exist specifically so it can be installed and largely forgotten for years, providing the same early-warning visibility into equipment health as a wired sensor without requiring trenching, conduit, or a hard-wired power supply. This is what allows an airport to add condition monitoring incrementally across its existing lighting circuits rather than needing a wholesale infrastructure upgrade to gain that visibility.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Wireless sensors are deployed across the airfield where monitoring is needed but cabling is impractical:</p>
+                <ul>
+                    <li><strong>Runway and Taxiway Lighting:</strong> Monitoring individual edge, centreline, and threshold lights for current and temperature anomalies.</li>
+                    <li><strong>Isolating Transformers:</strong> Monitoring transformer health to predict failures before they cause circuit outages.</li>
+                    <li><strong>CCR Rooms:</strong> Environmental monitoring (temperature, humidity) of equipment shelters.</li>
+                    <li><strong>Approach Lighting:</strong> Monitoring barrette and flashing light status for approach systems.</li>
+                    <li><strong>Obstruction Lighting:</strong> Ensuring beacons and obstruction markers are operational.</li>
+                    <li><strong>PAPI and VASI Systems:</strong> Verifying correct lamp current and tilt angle.</li>
+                    <li><strong>Remote Equipment:</strong> Monitoring wind cones, VDGS, and other standalone systems.</li>
+                </ul>
+                <p>Sensors are typically mounted inside or adjacent to the equipment being monitored, with antennas positioned for optimal wireless coverage.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>The sensor is fixed to (or placed directly inside) the fixture, transformer, or shelter it monitors, using adhesive, a magnetic base, or a small bracket, positioned so its measurement point (current clamp, temperature probe, or humidity element) sits in direct contact with or close proximity to what it's sensing. Because there's no cabling to a control room, siting is driven mainly by radio performance: the unit is placed to keep line-of-sight or minimal obstruction to the nearest gateway, clear of dense metal enclosures that would attenuate the signal, and a coverage check is carried out at installation before the sensor is sealed into its final position. Battery-powered units are sited for reasonable access at replacement intervals, and the sensor's location and parent asset are registered on the monitoring platform so its readings map to the correct piece of equipment.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>A wireless sensor operates through a combination of sensing, processing, and communication. The device includes:</p>
+                <ul>
+                    <li><strong>Transducer/Sensor Element:</strong> Converts the physical parameter (current, temperature, vibration) into an electrical signal (e.g., Hall effect for current, thermistor for temperature).</li>
+                    <li><strong>Signal Conditioning:</strong> Amplifies, filters, and digitizes the signal using an analog-to-digital converter (ADC).</li>
+                    <li><strong>Microcontroller:</strong> Processes the data, performs local calculations, and determines if alerts need to be triggered.</li>
+                    <li><strong>Wireless Transceiver:</strong> Transmits the data using a low-power protocol (LoRa, Zigbee, NB-IoT, etc.) to a nearby IoT Gateway or directly to the cloud.</li>
+                    <li><strong>Power Source:</strong> Typically a long-life battery (3-10 years) or energy harvesting (solar, inductive) to ensure maintenance-free operation.</li>
+                    <li><strong>Enclosure:</strong> Rugged, weatherproof housing (IP67/IP68) to withstand airfield environments.</li>
+                </ul>
+                <p style="margin-top:12px;">The sensor typically operates in a low-duty cycle mode, waking up periodically (e.g., every 5 minutes) to take a measurement, transmit data, and then returning to deep sleep to conserve battery. Some sensors also support event-driven transmission when a threshold is exceeded.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>Battery life over years, not raw performance, is what shapes this device's control logic. For most of its life the MCU sits in a deep-sleep state drawing microamps, woken only by one of two triggers: a real-time-clock interrupt on a fixed schedule (e.g., every 5 minutes) or an interrupt from the sensing element itself when a configured threshold is crossed. On waking, the MCU powers up the sensor and analog front end just long enough to take and condition a reading, then powers up the radio transceiver, forms a small data packet, and transmits it to the nearest gateway using whatever low-power protocol the sensor is built around (LoRa, Zigbee, or NB-IoT) — the radio is the single largest power draw in the system, so the firmware minimises its on-time rather than the sensing itself. If the gateway does not acknowledge receipt, the MCU can buffer the reading and retry on the next cycle rather than holding the radio on to wait. Once transmission (or buffering) completes, every subsystem is powered back down and the MCU returns to sleep until the next scheduled or threshold-triggered wake, a pattern that is what allows a coin-cell or small battery pack to last several years in the field.</p>
+            </div>
+            <div class="diagram-panel">
+                <svg viewBox="0 0 700 460" xmlns="http://www.w3.org/2000/svg" font-family="Barlow, sans-serif">
+                    <defs>
+                        <marker id="wsSacArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/>
+                        </marker>
+                        <marker id="wsSacArrowC" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0,0 L10,5 L0,10 z" fill="var(--cyan)"/>
+                        </marker>
+                    </defs>
+
+                    <rect x="200" y="14" width="300" height="66" rx="10" fill="rgba(0,212,255,0.06)" stroke="var(--cyan)" stroke-width="1.5"/>
+                    <text x="350" y="38" text-anchor="middle" fill="var(--white)" font-size="13" font-weight="700">Deep Sleep (µA draw)</text>
+                    <text x="350" y="56" text-anchor="middle" fill="var(--text)" font-size="10">Default state — most of the device's life</text>
+                    <text x="350" y="71" text-anchor="middle" fill="var(--text)" font-size="10">Woken by RTC timer or threshold interrupt</text>
+
+                    <line x1="200" y1="47" x2="120" y2="47" stroke="var(--cyan)" stroke-width="1.4" marker-end="url(#wsSacArrowC)"/>
+                    <text x="60" y="42" text-anchor="middle" fill="var(--cyan)" font-size="9.5" font-weight="700">RETURN</text>
+                    <text x="60" y="55" text-anchor="middle" fill="var(--cyan)" font-size="9.5" font-weight="700">TO SLEEP</text>
+
+                    <line x1="350" y1="80" x2="350" y2="106" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#wsSacArrow)"/>
+
+                    <rect x="200" y="110" width="300" height="52" rx="10" fill="#0d1e38" stroke="var(--gold)" stroke-width="1.5"/>
+                    <text x="350" y="132" text-anchor="middle" fill="var(--white)" font-size="13" font-weight="700">Wake &amp; Power Sensor</text>
+                    <text x="350" y="150" text-anchor="middle" fill="var(--text)" font-size="10">Sensing element + analog front end on briefly</text>
+
+                    <line x1="350" y1="162" x2="350" y2="188" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#wsSacArrow)"/>
+
+                    <rect x="200" y="192" width="300" height="52" rx="10" fill="#0d1e38" stroke="var(--gold)" stroke-width="1.5"/>
+                    <text x="350" y="214" text-anchor="middle" fill="var(--white)" font-size="13" font-weight="700">Take Reading</text>
+                    <text x="350" y="232" text-anchor="middle" fill="var(--text)" font-size="10">MCU digitises and builds packet</text>
+
+                    <line x1="350" y1="244" x2="350" y2="270" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#wsSacArrow)"/>
+
+                    <rect x="180" y="274" width="340" height="66" rx="10" fill="rgba(0,212,255,0.06)" stroke="var(--cyan)" stroke-width="1.5"/>
+                    <text x="350" y="296" text-anchor="middle" fill="var(--white)" font-size="13" font-weight="700">Power Radio &amp; Transmit</text>
+                    <text x="350" y="314" text-anchor="middle" fill="var(--text)" font-size="10">LoRa / Zigbee / NB-IoT to gateway</text>
+                    <text x="350" y="330" text-anchor="middle" fill="var(--text)" font-size="10">Largest single power draw in the cycle</text>
+
+                    <line x1="350" y1="340" x2="350" y2="366" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#wsSacArrow)"/>
+
+                    <rect x="200" y="370" width="300" height="52" rx="10" fill="#0d1e38" stroke="var(--gold)" stroke-width="1.5"/>
+                    <text x="350" y="392" text-anchor="middle" fill="var(--white)" font-size="13" font-weight="700">ACK Received? / Buffer</text>
+                    <text x="350" y="410" text-anchor="middle" fill="var(--text)" font-size="10">No ack → buffer &amp; retry next cycle, don't hold radio on</text>
+
+                    <path d="M 500 396 C 640 396, 640 47, 500 47" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="5,4" marker-end="url(#wsSacArrow)"/>
+                </svg>
+                <div class="diagram-caption">Every stage but sleep is powered on only for the seconds it takes to complete its job — the wake-measure-transmit-sleep cycle, not the sensor itself, is what determines multi-year battery life.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Duty Cycle</div>
+            <h2 class="block-title">Wake, Measure, Transmit, Sleep</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node start">Deep Sleep<small>Battery- or harvesting-powered, maintenance-free</small></div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-node">Wakes on Timer Interval (e.g. every 5 min)</div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-node">Transducer Senses Parameter<small>Current, temperature, vibration, etc. → conditioned &amp; digitized (ADC)</small></div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-node">Microcontroller Evaluates Reading</div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-fork">
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label gold">Within Normal Range</div>
+                            <div class="diagram-node">Scheduled Transmission<small>Sent at configured interval</small></div>
+                        </div>
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label red">Threshold Exceeded</div>
+                            <div class="diagram-node fault">Immediate Event-Driven Transmission</div>
+                        </div>
+                    </div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-node end">Wireless Transceiver Sends Data<small>LoRa, Zigbee, NB-IoT → IoT Gateway or cloud</small></div>
+                    <div class="diagram-loop"><span class="loop-icon">↻</span> Returns to Deep Sleep to Conserve Battery</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The sensor node is built into a compact, sealed polymer or die-cast enclosure rated IP67/IP68, sized to house the sensing element (current transformer, thermocouple, accelerometer, or humidity/pressure element), signal-conditioning circuitry, wireless radio module, and battery pack within a single weatherproof shell. The enclosure incorporates a moulded antenna window or external whip antenna positioned to maximise radio range while remaining protected from physical damage, and cable glands or potted cable entries seal the connection to the sensed conductor or mounting point against moisture ingress. Mounting features, such as DIN-rail clips, magnetic bases, or bolt-on brackets, are integrated into the housing to suit installation on cables, conduits, or fixture bodies without additional hardware. The battery compartment is designed for field replacement without breaking the main enclosure seal, and the overall unit is built to withstand the wide operating temperature range and vibration typical of outdoor, unattended AGL monitoring points.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Measurement Parameters</td><td class="val">Current (AC/DC), Voltage, Temperature, Vibration, Humidity, Pressure</td></tr>
+                <tr><td>Current Sensing Range</td><td class="val">0 – 10A, 0 – 100A, or 0 – 1000A (depending on model)</td></tr>
+                <tr><td>Temperature Range</td><td class="val">-40°C to +125°C</td></tr>
+                <tr><td>Measurement Accuracy</td><td class="val">±1% to ±3% of full scale</td></tr>
+                <tr><td>Wireless Protocol</td><td class="val">LoRaWAN, Zigbee, NB-IoT, LTE-M, Wi-Fi, or Bluetooth 5.0</td></tr>
+                <tr><td>Frequency Band</td><td class="val">868 MHz, 915 MHz, 2.4 GHz (regional)</td></tr>
+                <tr><td>Transmission Range</td><td class="val">Up to 10 km (LoRa line-of-sight)</td></tr>
+                <tr><td>Data Transmission Interval</td><td class="val">1 minute to 24 hours (configurable)</td></tr>
+                <tr><td>Battery Life</td><td class="val">3 – 10 years (depending on interval and protocol)</td></tr>
+                <tr><td>Battery Type</td><td class="val">Lithium (primary) or rechargeable with energy harvesting</td></tr>
+                <tr><td>Ingress Protection</td><td class="val">IP67 or IP68</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-40°C to +85°C</td></tr>
+                <tr><td>Dimensions</td><td class="val">50mm x 50mm x 30mm (typical)</td></tr>
+                <tr><td>Standards Compliance</td><td class="val">FCC Part 15, ETSI EN 300 220, RoHS, REACH</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Position</td><td class="val">Standalone battery-powered sensor; may include current-sensing clamp inputs</td></tr>
+                <tr><td>Power Supply</td><td class="val">Internal battery (lithium primary or rechargeable with energy harvesting)</td></tr>
+                <tr><td>Battery Life</td><td class="val">3 – 10 years (depending on interval and protocol)</td></tr>
+                <tr><td>Current Sensing Input</td><td class="val">0 – 10A, 0 – 100A, or 0 – 1000A clamp/CT input (model dependent)</td></tr>
+                <tr><td>Isolation</td><td class="val">Battery operation and CT-based sensing keep the unit galvanically isolated from the monitored circuit</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Low-battery and communication-loss alarms reported to the host system</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FCC Part 15</h5><p>Radio frequency devices (USA)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ETSI EN 300 220</h5><p>Short Range Devices (SRD) – radio equipment</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">LoRaWAN Specification</h5><p>LPWAN protocol for IoT applications</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 60529</h5><p>Degrees of protection provided by enclosures (IP Code)</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-magnet"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sensing Point Contact</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Fix the sensor to the fixture, transformer, or shelter it monitors using adhesive, a magnetic base, or a small bracket, positioning the measurement point in direct contact with or close proximity to what it's sensing.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-wifi"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Radio Coverage Check</h5><span class="test-stage">Network</span></div>
+                        <p>Carry out a coverage check at the proposed location before sealing the sensor into its final position, confirming line-of-sight or minimal obstruction to the nearest gateway clear of dense metal enclosures.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-battery-full"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Battery Access &amp; Replacement Planning</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Site battery-powered units for reasonable access at replacement intervals rather than in locations that would require special access equipment.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Platform Registration</h5><span class="test-stage">Documentation</span></div>
+                        <p>Register the sensor's location and parent asset on the monitoring platform so its readings map to the correct piece of equipment.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record sensor position, coverage check result, and platform registration as-built before the sensor is relied on for monitoring.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power-Up &amp; Battery Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Confirm the sensor powers up correctly and that battery voltage or energy-harvesting charge is adequate for the planned deployment interval before installation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sensor Calibration / Accuracy Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Compare the sensor's current, voltage, temperature, vibration, humidity, or pressure reading against a calibrated reference, confirming accuracy is within the stated ±1–3% specification.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Wireless Link &amp; Range Test</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm the sensor establishes and maintains a reliable link over LoRaWAN, Zigbee, NB-IoT, LTE-M, Wi-Fi, or Bluetooth at the installed location and expected range.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Data Transmission Interval &amp; Payload Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Verify the configured transmission interval and confirm the received payload at the gateway or head-end matches the sensor's measured values.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Enclosure IP Rating Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm the sealed enclosure meets its rated IP67/IP68 ingress protection before the unit is left in its final, often inaccessible, field location.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record calibration, link-quality, and transmission-interval verification alongside as-built sensor position and gateway pairing in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Battery / Power Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Verify battery voltage or energy-harvesting output against expected levels, replacing units approaching end of life before they drop offline.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Sensor Calibration Verification</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check sensor readings against a known reference for critical parameters such as current or temperature to catch drift early.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">RF Signal Strength Survey</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Measure signal strength and packet loss across the network to detect degraded coverage from new structures or interference.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Gateway &amp; Repeater Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check antenna placement, connections, and health of gateways and repeaters that extend network coverage across the airfield.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Enclosure &amp; Seal Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Inspect sensor housings and seals for weather damage that could affect battery life or electronics.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Firmware Update Review</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Check for sensor and gateway firmware updates that improve reliability or add temperature-compensated power management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">RF Interference and Signal Attenuation</h5><p>Airfield structures, metal enclosures, and electromagnetic noise can degrade wireless signal strength. Proper antenna placement and using a gateway with multiple antennas or repeaters is essential for reliable coverage.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Battery Life Degradation</h5><p>Extreme temperatures (especially high heat) can reduce battery life. Use of industrial-grade batteries and temperature-compensated power management is recommended. Some sensors support energy harvesting (solar, thermal) to extend lifetime.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Sensor Drift and Calibration</h5><p>Over time, sensor elements can drift, affecting measurement accuracy. Periodic calibration or verification against known references is required, especially for critical parameters like current and temperature.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Sensor Not Reporting / Dropped from Network</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Depleted battery, sensor out of gateway range, or RF interference from nearby structures or equipment.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the sensor's reported battery level and last-seen timestamp on the gateway; review signal strength history; check for new obstructions or interference sources near the sensor path.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the battery, relocate the sensor or gateway antenna for better line of sight, or add a repeater to close the coverage gap.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Weak or Intermittent Signal Strength</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Marginal antenna placement, metal enclosures or airfield structures attenuating the signal, or electromagnetic noise from nearby equipment.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Log signal strength over time to identify patterns tied to weather or equipment operation; check antenna orientation and mounting; survey the path for new obstructions.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Reposition the antenna, add a gateway with multiple antennas or a repeater, and re-verify signal strength meets the reliability margin.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Battery Draining Faster Than Expected</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Extreme temperatures reducing battery capacity, or a reporting interval set more frequently than needed.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review battery discharge history against ambient temperature logs; check the configured reporting/transmission interval.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Switch to an industrial-grade or temperature-compensated battery, adjust the reporting interval, or add energy harvesting where supported.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reported Values Drift from Known-Good Reference</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Sensor element drift accumulating over time, particularly for current and temperature measurements.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare sensor output against a calibrated reference instrument under the same conditions; review calibration history for a drift trend.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate or replace the sensor, and re-verify accuracy against the reference before returning it to service.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Battery Depletion</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Normal battery discharge over the service interval, accelerated by extreme temperatures or an overly frequent reporting interval.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Sensor stops reporting or drops from the network once the battery is exhausted.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Reported battery level and last-seen timestamp check on the gateway, and review of discharge history against temperature and reporting-interval logs.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">RF Signal Degradation</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Marginal antenna placement, metal enclosures or airfield structures attenuating the signal path, or new obstructions introduced after commissioning.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Weak or intermittent signal strength, with data gaps that can worsen into the sensor dropping from the network entirely.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Signal strength logging over time to identify patterns tied to weather or equipment operation, and a path survey for new obstructions.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Element Drift</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Sensor element drift accumulating over time, particularly for current and temperature measurement types.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reported values diverge from a known-good reference despite the sensor still communicating normally.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Comparison of sensor output against a calibrated reference instrument under matched conditions, and review of calibration history.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Excessive Power Consumption</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Reporting interval configured more frequently than operationally necessary, or extreme ambient temperature reducing effective battery capacity.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Battery drains faster than expected, shortening the replacement interval and increasing maintenance burden.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Review of battery discharge history against ambient temperature logs, and verification of the configured reporting/transmission interval.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-battery-half"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Battery Handling &amp; Disposal</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Handle and dispose of the sensor's battery according to the manufacturer's safety data sheet, and never puncture, crush, or expose it to excessive heat when replacing it in the field.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-wifi"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">RF Interference Awareness</h5><span class="test-stage">Operational</span></div>
+                        <p>Site and orient the sensor to avoid known sources of RF interference where practical, and be aware that dense metal structures or other wireless equipment nearby can degrade its link reliability.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Work Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>Coordinate placement or servicing of sensors mounted within the movement area with ATC/airside operations, particularly where a ladder, vehicle, or extended presence near active pavement is required.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-cloud-rain"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Weatherproof Housing Care</h5><span class="test-stage">Operational</span></div>
+                        <p>Confirm the housing seal is correctly reinstated after opening a sensor for battery replacement or servicing, since moisture ingress is a common cause of sensor element drift and premature failure.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE for Field Servicing</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Wear appropriate PPE for the mounting location, including fall protection for elevated sensors and hi-vis clothing for sensors within the movement area.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-battery-quarter"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Battery Life Is a Reporting-Interval Decision</h5><span class="expert-tag">Design</span></div>
+                        <p>The single biggest lever on service life is the reporting interval, not the battery chemistry. Tightening the interval "just to be safe" during commissioning quietly halves the field life and turns into an unplanned battery-swap campaign a year or two later than expected.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-wifi"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Marginal Link Fails Intermittently, Not Cleanly</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>A sensor near the edge of usable signal strength tends to drop packets sporadically rather than going fully offline, which can look like a flaky sensor rather than an RF path problem. Log signal strength over time before swapping hardware; a declining trend usually points to a new obstruction, not a failing unit.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Stagger Battery Replacement, Don't Wait for Failure</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>Letting every sensor in a batch run to depletion means they tend to fail in a cluster, since they were commissioned around the same time. Track installation dates and proactively rotate batteries on a schedule rather than reacting to a wave of "sensor offline" alerts.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-temperature-low"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Cold Weather Compounds Two Problems at Once</h5><span class="expert-tag">Reliability</span></div>
+                        <p>Low temperature both reduces usable battery capacity and is often when winter operations most need reliable sensor data. Budget extra margin into replacement schedules for sensors in cold-climate deployments rather than using a single battery-life figure across all sites.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-house-signal"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Gateway Placement Matters as Much as Sensor Placement</h5><span class="expert-tag">Design</span></div>
+                        <p>Chasing sensor-side fixes for a poor link often overlooks that the gateway or repeater location is the real constraint. A mid-field repeater can resolve link issues across several sensors at once more effectively than relocating each one individually.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Weatherproof Seals Degrade Faster With Frequent Access</h5><span class="expert-tag">Durability</span></div>
+                        <p>Every battery swap is a chance to compromise the housing seal if the gasket isn't inspected and reseated properly. A sensor that needs frequent access due to a short battery life will see more seal-related failures over its life than one serviced rarely, which is worth factoring into the interval-vs-battery-life trade-off.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about wireless sensors for AGL monitoring: protocols, battery life, standards, maintenance and troubleshooting.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a wireless sensor in AGL monitoring?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A self-contained device that measures parameters such as current, voltage, temperature, vibration or humidity and transmits the data over a wireless network such as LoRa, Zigbee, NB-IoT, Wi-Fi or Bluetooth.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Why use wireless sensors on an airfield?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>They extend current, temperature and vibration monitoring to equipment and locations where running new cabling would be impractical or expensive, making retrofit monitoring feasible.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Where are wireless sensors deployed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Wherever monitoring is needed but cabling is impractical, including runway and taxiway lighting (current and temperature anomalies) and isolating transformers.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">Which wireless protocols and ranges are typical?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>LoRaWAN, Zigbee, NB-IoT, LTE-M, Wi-Fi or Bluetooth 5.0 on regional bands of 868 MHz, 915 MHz or 2.4 GHz, with LoRa reaching up to about 10 km line of sight.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">What can they measure and how accurately?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Current ranges of 0-10 A, 0-100 A or 0-1000 A depending on model, temperature from -40°C to +125°C, and typical accuracy of ±1% to ±3% of full scale.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How long does the battery last?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typically 3-10 years depending on transmission interval (1 minute to 24 hours) and protocol, using a lithium primary cell or a rechargeable cell with energy harvesting.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">Is the sensor electrically isolated from the monitored circuit?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Battery operation and CT-based current sensing keep the unit galvanically isolated from the monitored circuit.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">Which standards apply?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>FCC Part 15 (USA radio frequency devices), ETSI EN 300 220 (short range devices), the LoRaWAN specification and IEC 60529 (IP code), with IP67 or IP68 enclosures typical.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How often should wireless sensors be maintained?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Semi-annually for battery and RF signal strength surveys, annually for calibration verification, gateway and repeater inspection and enclosure and seal checks, and quarterly for firmware update review.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">Why has a sensor stopped reporting?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Likely causes are a depleted battery, the sensor being out of gateway range, or RF interference from nearby structures. Check the reported battery level and last-seen timestamp on the gateway.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-iot-gateway.html" class="related-card"><i class="fa-solid fa-cloud"></i><h5 role="heading" aria-level="3">IoT Gateway</h5></a>
+                <a href="component-smart-fixture.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><h5 role="heading" aria-level="3">Smart Fixture</h5></a>
+                <a href="component-cloud-gateway.html" class="related-card"><i class="fa-solid fa-cloud"></i><h5 role="heading" aria-level="3">Cloud Gateway</h5></a>
+                <a href="component-predictive-maintenance-sensor.html" class="related-card"><i class="fa-solid fa-gauge-high"></i><h5 role="heading" aria-level="3">Predictive Maintenance Sensor</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on wireless sensor selection or deployment for your AGL system?</h4><p>Precision AGL Academy provides advice on sensor types, wireless protocols, battery life optimization, and data integration for airfield monitoring.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Wireless Sensor is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Wireless%20Sensor">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Wireless%20Sensor" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+
+            const navEl = document.getElementById('navbar');
+            const hamburger = navEl.querySelector('.hamburger');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navEl.classList.toggle('nav-open');
+                });
+                navEl.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => navEl.classList.remove('nav-open'));
+                });
+            }
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

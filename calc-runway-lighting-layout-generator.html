@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Runway Lighting Layout Generator | Precision AGL Academy</title>
+<meta name="description" content="Runway lighting layout generator for ICAO and FAA: plan-view edge, threshold, centreline and touchdown zone lights, fixture coordinates, quantities and CSV."/>
+<meta name="author" content="Precision AGL Academy"/>
+<link rel="canonical" href="https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="theme-color" content="#060d1a"/>
+<link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html"/>
+<link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:title" content="Runway Lighting Layout Generator | Precision AGL Academy"/>
+<meta name="twitter:description" content="Runway lighting layout generator for ICAO and FAA: plan-view edge, threshold, centreline and touchdown zone lights, fixture coordinates, quantities and CSV."/>
+<meta name="keywords" content="Runway Lighting Layout Generator, Runway Lighting Layout Generator online, Runway Lighting Layout Generator calculation, runway lighting design, runway edge lights, ICAO Annex 14 runway lighting, AGL calculator, airfield ground lighting calculator, airfield lighting design calculations, free online AGL engineering calculator, ICAO Annex 14, Precision AGL Academy"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#2ecc71;--orange:#ff8c42;--yellow:#f4d03f;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.15);transition:all .4s ease;}
+  nav.scrolled{background:rgba(6,13,26,0.97);border-bottom-color:rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white);text-decoration:none;white-space:nowrap;}
+  .nav-logo span{color:var(--gold);}
+  @media(max-width:900px){.nav-logo{font-size:20px;letter-spacing:2px;}}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:9px 20px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;white-space:nowrap;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:8px;}
+  .hamburger span{width:22px;height:2px;background:var(--white);display:block;}
+  @media(max-width:1120px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-links.open{display:flex;flex-direction:column;gap:16px;position:absolute;top:70px;left:0;right:0;padding:18px 20px;background:rgba(6,13,26,.98);border-bottom:1px solid rgba(255,180,0,.25);}
+  }
+
+  .breadcrumb{padding:110px 40px 0;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 30px;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:18px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:17px;line-height:1.8;color:var(--text);max-width:760px;}
+  @media(max-width:768px){.page-title{font-size:42px;}}
+
+  section{padding:0 0 90px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1300px;margin:auto;padding:0 40px;}
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;line-height:1;margin-bottom:10px;}
+  .block-note{font-size:13.5px;color:var(--text);margin-bottom:26px;max-width:700px;line-height:1.7;}
+
+  /* CALCULATOR CARD */
+  .calc-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:34px;margin-bottom:24px;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:800px){.calc-grid{grid-template-columns:1fr;}}
+  .field-group{margin-bottom:18px;}
+  .field-group label{display:block;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .field-group input, .field-group select, .field-group textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .3s;}
+  .field-group textarea{resize:vertical;min-height:72px;font-family:'Barlow Condensed',sans-serif;font-size:13px;line-height:1.5;}
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus{border-color:rgba(255,180,0,0.4);}
+  .field-group input:disabled{opacity:.45;cursor:not-allowed;}
+  .field-hint{font-size:11.5px;color:var(--text);margin-top:6px;}
+  .calc-result{background:rgba(255,180,0,0.05);border:1px solid rgba(255,180,0,0.2);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
+  .calc-result .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:8px;}
+  .calc-result .r-value{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold);line-height:1;margin-bottom:10px;}
+  .calc-result .r-note{font-size:12.5px;color:var(--text);line-height:1.7;}
+  .calc-warn{margin-top:14px;font-size:11.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+  .calc-warn i{color:var(--cyan);margin-top:2px;}
+
+  /* DASHBOARD CHIPS */
+  .dash-group{margin-top:18px;}
+  .dash-group h5{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+  .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+  @media(max-width:800px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.dash-grid{grid-template-columns:1fr;}}
+  .dash-chip{padding:11px 14px;border-radius:8px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;}
+  .dash-chip.pass{background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.3);color:var(--green);}
+  .dash-chip.fail{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);color:var(--red);}
+  .dash-chip.review{background:rgba(255,140,66,0.08);border:1px solid rgba(255,140,66,0.3);color:var(--orange);}
+  .dash-chip.na{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text);}
+
+  /* SECTION DIVIDER WITHIN THE CARD */
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
+  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
+  .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  /* CALCULATOR BREAKDOWN GRID */
+  .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid var(--border);}
+  @media(max-width:800px){.calc-breakdown{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.calc-breakdown{grid-template-columns:1fr;}}
+  .bd-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+  .bd-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;}
+  .bd-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:.5px;}
+  .bd-sub{font-size:11px;color:var(--text);margin-top:4px;line-height:1.5;}
+  .bd-val.pass{color:var(--green);}
+  .bd-val.fail{color:var(--red);}
+  .bd-val.na{color:var(--text);font-size:16px;}
+
+  /* SPECIAL CONDITION FLAGS */
+  .flag-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);color:#ffb3ba;}
+  .flag-banner i{color:var(--red);margin-top:2px;}
+  .flag-banner + .flag-banner{margin-top:10px;}
+
+  .info-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);}
+  .info-banner i{color:var(--cyan);margin-top:2px;}
+  .info-banner + .info-banner{margin-top:10px;}
+
+  /* META ROW */
+  .meta-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  @media(max-width:600px){.meta-row{grid-template-columns:1fr;}}
+
+  .sub-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .sub-field-row.three{grid-template-columns:1fr 1fr 1fr;}
+  @media(max-width:480px){.sub-field-row.three{grid-template-columns:1fr;}}
+
+  .check-row{display:flex;gap:22px;flex-wrap:wrap;}
+  .check-row label{display:flex;align-items:center;gap:8px;text-transform:none;font-size:13px;color:var(--white);font-weight:500;cursor:pointer;}
+  .check-row input[type=checkbox]{width:auto;accent-color:var(--gold);}
+
+  /* QUANTITY TABLES */
+  .qty-table td.qty-total-label{color:var(--white);font-weight:700;}
+  .qty-table tr.qty-total td{border-top:1px solid rgba(255,180,0,0.25);border-bottom:none;padding-top:14px;}
+  .qty-table td.qty-total-val{color:var(--gold);font-weight:700;font-size:15px;}
+  .qty-table td.qty-basis{font-size:11px;color:var(--text);}
+
+  .scroll-table-wrap{max-height:340px;overflow-y:auto;border:1px solid var(--border);border-radius:10px;margin-top:14px;}
+  .scroll-table-wrap table{width:100%;border-collapse:collapse;font-size:12px;}
+  .scroll-table-wrap th{position:sticky;top:0;background:#0d1e38;text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .scroll-table-wrap td{padding:7px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .scroll-table-wrap td.val{color:var(--white);font-weight:600;}
+  .scroll-table-wrap td.pass{color:var(--green);font-weight:700;}
+  .scroll-table-wrap td.fail{color:var(--red);font-weight:700;}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+  .swatch.white{background:#f0f4ff;border:1px solid rgba(255,255,255,0.4);}
+  .swatch.yellow{background:var(--yellow);}
+
+  /* GEOMETRY DIAGRAM */
+  .geo-diagram{font-family:'Barlow Condensed',sans-serif;font-size:12.5px;color:var(--text);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:16px 20px;white-space:pre;overflow-x:auto;line-height:1.65;}
+
+  /* REPORT BUTTON */
+  .report-btn{margin-top:22px;padding:14px 28px;background:var(--gold);color:#0a1628;border:none;border-radius:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:12.5px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .3s;font-family:'Barlow',sans-serif;}
+  .report-btn:hover{background:#ffc637;transform:translateY(-2px);}
+  .report-btn:active{transform:translateY(0);}
+
+  /* REVISION BAR */
+  .revision-bar{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
+  .revision-bar .rev-tag{font-size:11.5px;font-weight:700;letter-spacing:1px;color:var(--text);text-transform:uppercase;}
+  .revision-bar .rev-tag strong{color:var(--gold);}
+  .revision-bar .rev-disclaimer{font-size:11.5px;color:var(--text);font-style:italic;line-height:1.6;max-width:560px;}
+
+  /* REFERENCE / METHODOLOGY SECTION */
+  .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
+  @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
+  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+  .method-card h4 i{color:var(--gold);}
+  .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
+  .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
+
+  .std-table{width:100%;font-size:12.5px;border-collapse:collapse;}
+  .std-table th{text-align:left;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .std-table td{padding:10px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .std-table td.val{color:var(--white);font-weight:600;}
+  .std-table tr:last-child td{border-bottom:none;}
+
+  /* TOOLKIT LINKS */
+  .link-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
+  .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
+  .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
+  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link p{font-size:11.5px;color:var(--text);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  .scroll-top{position:fixed;bottom:30px;right:30px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;color:#000;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:0 8px 24px rgba(255,180,0,0.25);}
+  .scroll-top.visible{opacity:1;transform:translateY(0);}
+  .scroll-top:hover{transform:translateY(-4px) scale(1.05);}
+
+  @media(max-width:600px){
+    nav{padding:0 20px;}
+    .breadcrumb{padding:100px 20px 0;}
+    .page-hero{padding:30px 20px 20px;}
+    .container{padding:0 20px;}
+    footer{padding:20px;flex-direction:column;text-align:center;}
+    .calc-card{padding:22px 18px;}
+  }
+
+  /* Dropdown fix: dark list background so option text is visible */
+  select{color-scheme:dark;}
+  select option,select optgroup{background:#0d1e38;color:#f0f4ff;}
+
+  /* LAYOUT GENERATOR */
+  .layer-bar{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px;}
+  .layer-bar label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--white);font-weight:500;cursor:pointer;}
+  .layer-bar input{accent-color:var(--gold);}
+  .svg-wrap{background:#060d1a;border:1px solid var(--border);border-radius:10px;overflow-x:auto;}
+  .svg-wrap svg{display:block;min-width:900px;}
+  .detail-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
+  .mini-btn{padding:8px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .3s;}
+  .mini-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .range-lab{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);}
+  .range-lab input[type=range]{width:160px;accent-color:var(--gold);}
+  .range-lab span{color:var(--white);font-weight:600;min-width:64px;text-transform:none;letter-spacing:0;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px;font-size:12px;color:var(--text);}
+  .legend .lg{display:inline-flex;align-items:center;gap:7px;}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:middle;}
+  .legend .dot{margin-right:0;}
+  .export-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+  .report-btn{margin-top:18px;padding:14px 24px;background:var(--gold);color:#0a1628;border:none;border-radius:8px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'Barlow',sans-serif;transition:all .3s;}
+  .report-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,180,0,0.25);}
+  .qty-table td.val{text-align:right;}
+  #colourTable th,#colourTable td{padding:8px 10px;}
+  @media print{
+    nav,.breadcrumb,.hamburger,.scroll-top,.export-row,.detail-controls,.layer-bar,footer,body::before{display:none !important;}
+    body{background:#fff;color:#000;}
+    .svg-wrap{overflow:visible;border:none;}
+    .svg-wrap svg{min-width:0;}
+    .calc-card{break-inside:avoid;}
+  }
+  /* ═══ MULTI-TAB LAYOUT (same as Calculators #05 and #49) ═══ */
+  .page-hero{padding-top:20px;padding-bottom:14px}.page-title{font-size:56px;margin-bottom:12px}
+  details summary{cursor:pointer;color:var(--cyan);font-size:12.5px;font-weight:600}
+  details.about .page-sub{margin-top:10px;font-size:15px}details.why{margin-top:6px}details.why .field-hint{margin-top:4px}
+  .u{text-transform:none;color:var(--text);font-weight:500}
+  .tabbar{position:sticky;top:70px;z-index:20;background:rgba(6,13,26,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin-bottom:28px}
+  .tabbar .container{display:flex;gap:4px;overflow-x:auto}
+  .tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--text);font:600 14px 'Barlow',sans-serif;padding:15px 18px;cursor:pointer;white-space:nowrap}
+  .tab:hover{color:var(--white)}.tab[aria-selected=true]{color:var(--gold);border-bottom-color:var(--gold)}
+  .tab-panel[hidden]{display:none}
+  .tool-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start}
+  .inputs{display:grid;gap:18px;min-width:0}
+  .presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.presets b{font-size:12.5px;color:var(--text);margin-right:4px}
+  .chip,.btn{border:1px solid rgba(255,180,0,.3);background:none;color:var(--text);border-radius:100px;padding:8px 14px;font:600 12.5px 'Barlow',sans-serif;cursor:pointer;transition:all .2s}
+  .chip:hover,.btn:hover{border-color:var(--gold);color:var(--gold)}.chip.ghost{border-color:var(--border)}
+  .btn{border-radius:8px;padding:14px 20px;letter-spacing:.5px}
+  .step{border:1px solid var(--border);border-radius:12px;padding:22px 24px;background:rgba(255,255,255,.02)}
+  .step .subsection-head{margin:0 0 16px;padding:0;border:0}
+  .step .field-group:last-child{margin-bottom:0}
+  .result-panel{position:sticky;top:136px;max-height:calc(100vh - 156px);overflow:auto;background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.22);border-radius:14px;padding:22px}
+  .result-panel .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text)}
+  .result-panel .r-value{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:var(--gold)}
+  .mix-line{font-size:13px;font-weight:600;color:var(--white);line-height:1.6;margin-top:6px;overflow-wrap:anywhere}
+  .r-eq{font-family:'Barlow Condensed',sans-serif;font-size:17px;color:var(--text);letter-spacing:.5px;margin:6px 0 4px}
+  .result-panel .r-note{font-size:12px;color:var(--text);line-height:1.6;margin-top:8px}
+  .mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:14px}
+  .mini{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 6px;text-align:center}
+  .mini b{display:block;font-family:'Bebas Neue',sans-serif;font-size:22px;font-weight:400;color:var(--white)}.mini span{font-size:10.5px;color:var(--text)}
+  .panel-h{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--border);font-size:13px;font-weight:700}
+  .cnt{font-size:11.5px;font-weight:600;color:var(--text)}.cnt.warn{color:#ffb3ba}
+  .result-panel .flag-banner,.result-panel .info-banner{margin-top:8px;padding:10px 12px;font-size:12px}
+  .linkbtn{background:none;border:0;color:var(--cyan);font:600 12.5px 'Barlow',sans-serif;cursor:pointer;margin-top:12px;padding:0}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}.actions .report-btn{margin-top:0}
+  .calc-card .subsection-head{margin-top:28px}
+  .tab-panel .calc-breakdown.flat{border-top:0;margin-top:0;padding-top:0}
+  .mobile-bar{display:none}
+  @media(max-width:1180px){
+    .tool-layout{grid-template-columns:1fr}.result-panel{position:static;max-height:none}
+    .mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;align-items:center;gap:12px;padding:8px 16px;background:rgba(6,13,26,.97);border-top:1px solid rgba(255,180,0,.3)}
+    .mobile-bar[hidden]{display:none!important}
+    .mobile-bar small{display:block;font-size:10.5px;color:var(--text);text-transform:uppercase;letter-spacing:1px}
+    .mobile-bar strong{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--gold);font-weight:400}
+    .mb-status{font-size:12px;font-weight:700;flex:1;text-align:right}
+    .mb-status.pass{color:var(--green)}.mb-status.fail{color:var(--red)}
+    body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}
+  }
+  @media(max-width:768px){.page-title{font-size:40px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  .mb-status.warn{color:var(--gold)}
+  .result-panel .dash-grid{grid-template-columns:1fr;gap:8px;margin-bottom:8px}
+  .result-panel .dash-group{margin-top:12px}
+  .result-panel .dash-chip{padding:9px 12px;font-size:11.5px}
+  .tag-mini{font-size:12px;color:var(--text);font-weight:500;letter-spacing:0;text-transform:none;margin-left:6px}
+  @media print{
+    .tabbar,.result-panel,.mobile-bar,details.about,details.why{display:none!important}
+    #tab-calc,#tab-method{display:none!important}
+    #tab-plan,#tab-qty{display:block!important}
+  }
+  /* FAQ */
+  .faq-list{display:grid;gap:10px;max-width:900px}
+  .faq-item{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.03);transition:border-color .3s}
+  .faq-item[open]{border-color:rgba(255,180,0,.3)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;font-size:15px;font-weight:700;color:var(--white)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';font-size:22px;line-height:1;color:var(--gold);flex-shrink:0}
+  .faq-item[open] summary::after{content:'\2212'}
+  .faq-item p{padding:0 20px 18px;font-size:13.5px;line-height:1.75;color:var(--text)}
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<link rel="stylesheet" href="assets/agl-common.css"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Precision AGL Academy"/>
+<meta property="og:title" content="Runway Lighting Layout Generator | Precision AGL Academy"/>
+<meta property="og:description" content="Runway lighting layout generator for ICAO and FAA: plan-view edge, threshold, centreline and touchdown zone lights, fixture coordinates, quantities and CSV."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/calc-runway-lighting-layout-generator-og.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Runway Lighting Layout Generator – Precision AGL Academy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/calc-runway-lighting-layout-generator-og.jpg"/>
+<meta name="twitter:image:alt" content="Runway Lighting Layout Generator – Precision AGL Academy"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Runway Lighting Layout Generator",
+      "url": "https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html",
+      "applicationCategory": "EngineeringApplication",
+      "operatingSystem": "Any",
+      "description": "Runway lighting layout generator for ICAO and FAA: plan-view edge, threshold, centreline and touchdown zone lights, fixture coordinates, quantities and CSV.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://rahulsharmaagl.in/#academy",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "@id": "https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html#app",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
+      "dateModified": "2026-10-27",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Airfield ground lighting engineers, airport electrical engineers and AGL maintenance technicians"
+      },
+      "browserRequirements": "Requires JavaScript. Works in any modern browser.",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/agl-toolkit.html#webpage"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html#breadcrumb"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/assets/calc-runway-lighting-layout-generator-og.jpg"
+      }
+    },
+    {
+      "@id": "https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html#breadcrumb",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Hub",
+          "item": "https://rahulsharmaagl.in/index.html#knowledge-hub"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AGL Engineering Calculators",
+          "item": "https://rahulsharmaagl.in/agl-toolkit.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculator #54"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the Runway Lighting Layout Generator do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It builds a calculated runway lighting layout for planning from the design standard, runway category, dimensions and thresholds you enter. It can generate edge, threshold, wing-bar, runway-end, centreline and touchdown-zone lights, draw a plan view with a true-scale detail window, and produce a quantity schedule with colour counts for each approach direction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which systems and standards does it cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It covers ICAO Annex 14 and FAA AC 150/5340-30J, for non-instrument, non-precision, CAT I, CAT II and CAT III runways. Centreline and touchdown-zone lights switch on automatically for CAT II and CAT III, and you can still override them. It does not draw approach lighting, taxiway connections, stop bars or signs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are edge lights generated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The number of intervals is N = ⌈L ÷ Smax⌉, the actual spacing is Sactual = L ÷ N, and each side has N + 1 positions. The two rows sit at y = ±(W ÷ 2 + DE). The maximum spacing is 60 m for ICAO instrument runways, 100 m for ICAO non-instrument runways and 200 ft (60.96 m) for FAA. The offset is 3.0 m for jet runways and 0.6 m for non-jet runways unless you enter your own."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are centreline colours and counts handled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Positions are generated once and then coloured from each fixture's distance to the runway end ahead of the pilot. ICAO is white, then alternating from 900 to 300 m, then red for the last 300 m. FAA is white, then alternating from 3,000 to 1,000 ft, then red for the last 1,000 ft. The same fixture can be white from one end and red from the other, so a direction selector flips the drawing and the colour counts. The first colour of the alternating zone is figure-specific and is exposed as a setting. ICAO centreline spacing defaults to 15 m, with 30 m allowed only where RVR is 350 m or greater and the serviceability objective is demonstrated. FAA uses 50 ft (15.24 m)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are thresholds, wing bars and runway-end lights counted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non-instrument and non-precision runways get a minimum of 6 threshold lights. CAT I, II and III thresholds use uniform spacing of no more than 3 m across the edge-light row span WE = W + 2·DE. Runway-end lights are a minimum of 6. A 6 m maximum spacing is applied on all precision runways as a conservative planning default, so confirm the requirement for your category in the applicable edition. At the runway extremity the threshold fixtures also serve as runway-end lights and are counted once. A displaced threshold gets its own row plus a separate red runway-end row at the physical end, and wing-bar lights start at the edge-light line and run outward at 2.5 m spacing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are touchdown-zone lights calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each station is two bars of three lights, one either side of the centreline, giving 6 fixtures per station. The ICAO extent is 900 m, or half the runway if L is under 1,800 m, with a 60 m first station and 60 m pitch. The FAA extent is 3,000 ft, or half the runway if L is under 6,000 ft, with a 100 ft first station and 100 ft pitch. Stations are measured from each landing threshold, and you can edit the values for a project-specific pattern."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can I export from the layout generator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can export the layout as an SVG or PNG image and the fixture schedule as a CSV file. You can also copy a summary or print the layout. The plan view shows the whole runway with the lateral scale exaggerated, plus a true-scale detail window you can slide along the runway, and hovering over a fixture shows its ID, chainage and colour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the generated layout an issued drawing or final BOQ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a calculated nominal layout for design planning, with installed fixtures only, no serviceability allowance and no spares. The generator does not reproduce figure-level endpoint conventions, so the end-of-row fixture, alternating-colour start and wing-bar inner-light handling are exposed as options. FAA threshold and runway-end counts are nominal. Always verify against the approved aerodrome lighting layout."
+          }
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html#app"
+      }
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;box-sizing:border-box}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);font-family:'Barlow',sans-serif;}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;font-family:'Barlow',sans-serif;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
+@media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
+</style>
+</head>
+<body>
+
+<nav id="navbar" aria-label="Main">
+  <a href="index.html" class="nav-logo" aria-label="Precision AGL Academy – home">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#knowledge-hub">Knowledge Hub</a></li>
+    <li><a href="agl-toolkit.html" class="active" aria-current="page">Toolkit</a></li>
+    <li><a href="component-library.html">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="index.html#knowledge-hub">Knowledge Hub</a><span>/</span>
+  <a href="agl-toolkit.html">AGL Engineering Calculators</a><span>/</span>
+  <span class="current">Calculator #54</span>
+</div>
+
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Planning estimate &mdash; not a quotation, tender or approved design.</strong> Quantities, layouts and material lists are first-pass estimates from your inputs and generic allowances. The approved aerodrome lighting design, contract specification and regulator prevail. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+  <div class="page-tag"><i class="fa-solid fa-drafting-compass"></i> Calculator #54</div>
+  <h1 class="page-title">Runway Lighting <span>Layout Generator</span></h1>
+  <p class="page-sub" style="color:var(--gold);font-weight:600;font-size:15px;margin-bottom:14px;">Enter the runway, pick ICAO or FAA, and get a plan-view lighting layout — edge, threshold, wing-bar, runway-end, centreline and touchdown-zone lights — with fixture-by-fixture coordinates and a quantity schedule.</p>
+  <details class="about"><summary>About this calculator</summary><p class="page-sub">Every fixture is generated as an actual position (chainage and lateral offset from the centreline), then drawn, counted and exported from that one list — so the drawing, the schedule and the CSV can never disagree. Colours are shown as the pilot sees them from either approach direction.</p></details>
+</div>
+
+<main>
+<div class="tabbar" id="tabbar"><div class="container" role="tablist" aria-label="Sections">
+<button class="tab" role="tab" id="t-calc" data-tab="calc" aria-controls="tab-calc">Calculate</button>
+<button class="tab" role="tab" id="t-plan" data-tab="plan" aria-controls="tab-plan">Plan view &amp; export</button>
+<button class="tab" role="tab" id="t-qty" data-tab="qty" aria-controls="tab-qty">Quantity schedule</button>
+<button class="tab" role="tab" id="t-method" data-tab="method" aria-controls="tab-method">Method &amp; reference</button>
+</div></div>
+<!-- ══════════ TAB 1 — CALCULATE ══════════ -->
+<section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout">
+<div class="inputs">
+  <div class="presets"><b>Quick start</b>
+    <button type="button" class="chip" data-preset="cat2">ICAO CAT II</button>
+    <button type="button" class="chip" data-preset="cat1">ICAO CAT I</button>
+    <button type="button" class="chip" data-preset="faa">FAA CAT I, feet</button>
+    <button type="button" class="chip" data-preset="disp">Displaced threshold</button>
+    <button type="button" class="chip" data-preset="noninst">Non-instrument</button>
+    <button type="button" class="chip ghost" id="resetBtn">Reset all</button>
+  </div>
+  <div class="step">
+    <div class="subsection-head"><h2>Runway &amp; Design Basis</h2><div class="sub-line"></div></div>
+<div class="calc-grid single"><div>
+          <div class="field-group">
+            <label for="designStandard">Design Standard</label>
+            <select id="designStandard" onchange="onStandardChange()">
+              <option value="icao" selected>ICAO Annex 14</option>
+              <option value="faa">FAA AC 150/5340-30J</option>
+            </select>
+            <details class="why"><summary>Rule note</summary><p class="field-hint" id="standardHint"></p></details>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group">
+              <label for="lengthUnit">Input Unit</label>
+              <select id="lengthUnit" onchange="calcAll()">
+                <option value="m" selected>metres</option>
+                <option value="ft">feet</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label for="rwCat">Runway Category</label>
+              <select id="rwCat" onchange="onCategoryChange()">
+                <option value="noninstrument">Non-instrument</option>
+                <option value="nonprecision">Non-precision approach</option>
+                <option value="cat1">Precision CAT I</option>
+                <option value="cat2" selected>Precision CAT II</option>
+                <option value="cat3">Precision CAT III</option>
+              </select>
+            </div>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group">
+              <label for="rwLength">Runway Length (physical)</label>
+              <input type="number" id="rwLength" value="2400" min="0" step="0.1" oninput="calcAll()"/>
+            </div>
+            <div class="field-group">
+              <label for="rwWidth">Runway Width</label>
+              <input type="number" id="rwWidth" value="45" min="0" step="0.1" oninput="calcAll()"/>
+            </div>
+          </div>
+          <div class="field-group">
+            <label for="jetOps">Jet Operations</label>
+            <select id="jetOps" onchange="calcAll()">
+              <option value="yes" selected>Yes — jet runway (edge offset 3.0 m)</option>
+              <option value="no">No — non-jet (edge offset 0.6 m)</option>
+            </select>
+          </div>
+        </div></div>
+  </div>
+  <div class="step">
+    <div class="subsection-head"><h2>Thresholds <span class="tag-mini">(measured from the physical runway end)</span></h2><div class="sub-line"></div></div>
+<div class="calc-grid single">
+        <div>
+          <div class="field-group">
+            <label for="dispA">End A — Displaced Threshold Distance</label>
+            <input type="number" id="dispA" value="0" min="0" step="0.1" oninput="calcAll()"/>
+            <details class="why"><summary>Rule note</summary><p class="field-hint">0 = threshold at the runway extremity (threshold lights double as runway-end lights).</p></details>
+          </div>
+          <div class="check-row" style="margin-bottom:14px;">
+            <label><input type="checkbox" id="instA" checked onchange="calcAll()"/> Instrument approach at End A</label>
+            <label><input type="checkbox" id="wingA" onchange="calcAll()"/> Wing bars at End A</label>
+          </div>
+        </div>
+        <div>
+          <div class="field-group">
+            <label for="dispB">End B — Displaced Threshold Distance</label>
+            <input type="number" id="dispB" value="0" min="0" step="0.1" oninput="calcAll()"/>
+            <p class="field-hint">Same rule at the far end. Distances use the input unit above.</p>
+          </div>
+          <div class="check-row" style="margin-bottom:14px;">
+            <label><input type="checkbox" id="instB" checked onchange="calcAll()"/> Instrument approach at End B</label>
+            <label><input type="checkbox" id="wingB" onchange="calcAll()"/> Wing bars at End B</label>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+  <div class="step">
+    <div class="subsection-head"><h2>Lighting Systems to Generate</h2><div class="sub-line"></div></div>
+
+      <div class="check-row" style="margin-bottom:8px;">
+        <label><input type="checkbox" id="sysEdge" checked onchange="calcAll()"/> Edge</label>
+        <label><input type="checkbox" id="sysThr" checked onchange="calcAll()"/> Threshold</label>
+        <label><input type="checkbox" id="sysEnd" checked onchange="calcAll()"/> Runway end</label>
+        <label><input type="checkbox" id="sysCL" checked onchange="calcAll()"/> Centreline</label>
+        <label><input type="checkbox" id="sysTDZ" checked onchange="calcAll()"/> Touchdown zone</label>
+      </div>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Centreline and touchdown-zone lights switch on automatically for CAT II / III when you change the category. You can still override them.</p></details>
+
+      
+  </div>
+  <div class="step">
+    <div class="subsection-head"><h2>Spacing &amp; Geometry</h2><div class="sub-line"></div></div>
+
+      <div class="calc-grid single">
+        <div>
+          <div class="field-group">
+            <label for="edgeMode">Edge-Light Spacing</label>
+            <select id="edgeMode" onchange="onModeChange('edge')">
+              <option value="auto" selected>Standard maximum (auto)</option>
+              <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="edgeCustom" value="60" min="0.1" step="0.1" style="display:none;margin-top:8px;" oninput="calcAll()"/>
+            <details class="why"><summary>Rule note</summary><p class="field-hint" id="edgeHint"></p></details>
+          </div>
+          <div class="field-group">
+            <label for="clMode">Centreline Spacing</label>
+            <select id="clMode" onchange="onModeChange('cl')">
+              <option value="auto" selected>Standard (auto)</option>
+              <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="clCustom" value="30" min="0.1" step="0.1" style="display:none;margin-top:8px;" oninput="calcAll()"/>
+            <details class="why"><summary>Rule note</summary><p class="field-hint" id="clHint"></p></details>
+          </div>
+          <div class="field-group">
+            <label for="offsetMode">Edge-Light Offset from Pavement Edge</label>
+            <select id="offsetMode" onchange="onModeChange('offset')">
+              <option value="auto" selected>Auto (3.0 m jet / 0.6 m non-jet)</option>
+              <option value="custom">Custom</option>
+            </select>
+            <input type="number" id="offsetCustom" value="3" min="0" step="0.01" style="display:none;margin-top:8px;" oninput="calcAll()"/>
+          </div>
+        </div>
+        <div>
+          <div class="field-group">
+            <label for="altStart">Alternating Zone — Colour of the 1st, 3rd, 5th… Light Counted from the Runway End</label>
+            <select id="altStart" onchange="calcAll()">
+              <option value="red" selected>Red</option>
+              <option value="white">White</option>
+            </select>
+            <details class="why"><summary>Rule note</summary><p class="field-hint">The exact first colour is figure-specific — confirm against the approved layout.</p></details>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group">
+              <label for="tdzFirst">TDZ First Station (m)</label>
+              <input type="number" id="tdzFirst" value="60" min="0" step="0.01" oninput="calcAll()"/>
+            </div>
+            <div class="field-group">
+              <label for="tdzSpacing">TDZ Station Spacing (m)</label>
+              <input type="number" id="tdzSpacing" value="60" min="0.1" step="0.01" oninput="calcAll()"/>
+            </div>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group">
+              <label for="tdzOffset">TDZ Inner-Light Offset (m)</label>
+              <input type="number" id="tdzOffset" value="9" min="0" step="0.01" oninput="calcAll()"/>
+            </div>
+            <div class="field-group">
+              <label for="wingQty">Wing-Bar Lights per Side</label>
+              <input type="number" id="wingQty" value="5" min="1" step="1" oninput="calcAll()"/>
+            </div>
+          </div>
+          <details class="why"><summary>Rule note</summary><p class="field-hint" id="tdzHint"></p></details>
+          <div class="check-row" style="margin-top:6px;">
+            <label><input type="checkbox" id="thrEndpoints" checked onchange="calcAll()"/> Threshold row includes both edge-row end positions (N + 1)</label>
+            <label><input type="checkbox" id="wingReplace" onchange="calcAll()"/> Wing bars replace threshold row at displaced thresholds</label>
+          </div>
+        </div>
+      </div>
+
+      
+  </div>
+  <div class="step">
+    <div class="subsection-head"><h2>Output</h2><div class="sub-line"></div></div>
+
+      <div class="sub-field-row three">
+        <div class="field-group">
+          <label for="viewDir">Colours Shown As Seen From</label>
+          <select id="viewDir" onchange="calcAll()">
+            <option value="A" selected>Approach from End A</option>
+            <option value="B">Approach from End B</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="outputUnit">Schedule Unit</label>
+          <select id="outputUnit" onchange="calcAll()">
+            <option value="m" selected>metres</option>
+            <option value="ft">feet</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label for="decimalPlaces">Decimal Places</label>
+          <select id="decimalPlaces" onchange="calcAll()">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+      </div>
+
+      
+  </div>
+
+</div>
+
+<aside class="result-panel" aria-label="Result">
+  <div class="r-label">Total physical fixtures</div>
+  <div class="r-value" id="totalResult" aria-live="polite">—</div>
+  <div class="r-note" id="totalNote">Enter values to generate the layout.</div>
+  <div class="mini-grid">
+    <div class="mini"><b id="rpEdge">—</b><span>Edge</span></div>
+    <div class="mini"><b id="rpThr">—</b><span>Threshold</span></div>
+    <div class="mini"><b id="rpWing">—</b><span>Wing bars</span></div>
+    <div class="mini"><b id="rpEnd">—</b><span>Runway end</span></div>
+    <div class="mini"><b id="rpCL">—</b><span>Centreline</span></div>
+    <div class="mini"><b id="rpTDZ">—</b><span>Touchdown zone</span></div>
+  </div>
+  <div class="panel-h">Checks &amp; notes <span class="cnt" id="noteCount">none</span></div>
+  <div id="geometryFlags"></div>
+  <div id="thresholdFlags"></div>
+  <div id="complianceDashboard"></div>
+  <div class="calc-warn"><i class="fa-solid fa-circle-info"></i><span>Calculated / nominal layout for design planning — not an issued drawing or Final BOQ.</span></div>
+  <button type="button" class="linkbtn" onclick="showTab('plan')">Open plan view &amp; export</button>
+  <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('qty')">Quantity schedule</button>
+</aside>
+</div></div></section>
+<section class="tab-panel" id="tab-plan" role="tabpanel" aria-labelledby="t-plan" hidden><div class="container"><div class="calc-card">
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h2>Drawing details</h2><div class="sub-line"></div></div>
+  <div class="meta-row">
+        <div class="field-group" style="margin-bottom:0;">
+          <label for="projectName">Project / Airport</label>
+          <input type="text" id="projectName" value="Runway 09/27 Lighting Layout" oninput="calcAll()"/>
+        </div>
+        <div class="field-group" style="margin-bottom:0;">
+          <label for="rwDesignation">Runway Designation <span class="u">(End A / End B)</span></label>
+          <input type="text" id="rwDesignation" value="09/27" oninput="calcAll()"/>
+        </div>
+      </div>
+  <div class="subsection-head"><h2>Generated layout</h2><div class="sub-line"></div></div>
+  <details class="why"><summary>About the plan view</summary><p class="field-hint">Top: the full runway with the lateral scale exaggerated so every fixture stays readable. Bottom: a true-scale detail window you can slide along the runway. Left of the centreline is up, looking from End A towards End B. Hover a fixture for its ID, chainage and colour.</p></details>
+  <div class="layer-bar" id="layerBar">
+        <label><input type="checkbox" data-layer="edge" checked/> Edge</label>
+        <label><input type="checkbox" data-layer="thr" checked/> Threshold</label>
+        <label><input type="checkbox" data-layer="wing" checked/> Wing bars</label>
+        <label><input type="checkbox" data-layer="end" checked/> Runway end</label>
+        <label><input type="checkbox" data-layer="cl" checked/> Centreline</label>
+        <label><input type="checkbox" data-layer="tdz" checked/> TDZ</label>
+      </div>
+      <div class="svg-wrap" id="overviewWrap"></div>
+      <p class="field-hint" style="margin-top:8px;">Overview — lateral scale exaggerated, not to scale across the runway.</p>
+
+      <div class="subsection-head"><h2>True-Scale Detail Window</h2><div class="sub-line"></div></div>
+      <div class="detail-controls">
+        <button class="mini-btn" onclick="jumpDetail('A')">End A</button>
+        <button class="mini-btn" onclick="jumpDetail('tdzA')">TDZ A</button>
+        <button class="mini-btn" onclick="jumpDetail('mid')">Mid</button>
+        <button class="mini-btn" onclick="jumpDetail('tdzB')">TDZ B</button>
+        <button class="mini-btn" onclick="jumpDetail('B')">End B</button>
+        <label class="range-lab">Start <input type="range" id="detStart" min="0" max="100" step="1" value="0" oninput="renderDetail()"/><span id="detStartLab">0 m</span></label>
+        <label class="range-lab">Window <input type="range" id="detWin" min="120" max="600" step="10" value="240" oninput="renderDetail()"/><span id="detWinLab">240 m</span></label>
+      </div>
+      <div class="svg-wrap" id="detailWrap"></div>
+
+      <div class="legend" id="legend"></div>
+
+      <div class="export-row">
+        <button class="report-btn" onclick="downloadSVG()"><i class="fa-solid fa-file-image"></i> Layout SVG</button>
+        <button class="report-btn" onclick="downloadPNG()"><i class="fa-solid fa-image"></i> Layout PNG</button>
+        <button class="report-btn" onclick="downloadCSV()"><i class="fa-solid fa-file-csv"></i> Fixture Schedule CSV</button>
+        <button class="report-btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button>
+        <button class="report-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+      </div>
+      <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
+</div></div></section>
+<section class="tab-panel" id="tab-qty" role="tabpanel" aria-labelledby="t-qty" hidden><div class="container"><div class="calc-card">
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h2>Quantity schedule</h2><div class="sub-line"></div></div>
+  <table class="std-table qty-table" id="qtyTable"></table>
+      <p class="field-hint" style="margin-top:12px;">Calculated / Nominal Quantity — installed fixtures, no serviceability allowance, no spares. Where a threshold sits at the runway extremity, the threshold fixtures also serve as runway-end lights and are counted once.</p>
+
+      <div class="subsection-head"><h2>Colour Count by Approach Direction</h2><div class="sub-line"></div></div>
+      <table class="std-table" id="colourTable"></table>
+
+      <div class="subsection-head"><h2>Fixture Schedule <span style="font-size:12px;color:var(--text);font-weight:500;letter-spacing:0;text-transform:none;" id="schedCount"></span></h2><div class="sub-line"></div></div>
+      <div class="scroll-table-wrap"><table id="schedTable"></table></div>
+
+      
+  <div class="revision-bar">
+        <div class="rev-tag">Layout Generator &nbsp;|&nbsp; Rev. <strong>1.3</strong> &nbsp;|&nbsp; 26 Oct 2026</div>
+        <div class="rev-disclaimer">Engineering reference tool. Final design shall be verified against the applicable approved airport lighting layout and governing standard.</div>
+      </div>
+</div></div></section>
+<section class="tab-panel" id="tab-method" role="tabpanel" aria-labelledby="t-method" hidden><div class="container">
+    <div class="block-label">Method &amp; Reference</div>
+    <h2 class="block-title">How the Layout Is Built</h2>
+    <p class="block-note">Chainage x runs from the physical End A (x = 0) to the physical End B (x = L). Lateral offset y is positive to the left and negative to the right of the centreline, looking from End A towards End B.</p>
+    <div class="ref-cols">
+      <div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-ruler-horizontal"></i> Edge lights</h4>
+          <div class="formula">N = ⌈ L / S<sub>max</sub> ⌉ → S<sub>actual</sub> = L / N → N + 1 positions per side</div>
+          <p>Two symmetrical rows at y = ±(W/2 + D<sub>E</sub>). Maximum spacing: ICAO 60 m (instrument) or 100 m (non-instrument); FAA 200 ft (60.96 m). Edge offset is 3.0 m for jet and 0.6 m for non-jet runways unless you enter your own.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-palette"></i> Caution zone &amp; displaced-threshold colour</h4>
+          <div class="formula">ICAO: min(600 m, L/3) &nbsp;|&nbsp; FAA: min(2,000 ft, L/2)</div>
+          <p>FAA: edge lights turn yellow in the last stretch of the runway as seen from an instrument approach end, and stay white in the opposite direction; each end is switched independently. ICAO: the yellow section is an edge-light provision that does not depend on an instrument approach, so the generator shows it from both approach directions. Edge lights in a displaced area show red towards the approaching aircraft.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-road"></i> Centreline colours</h4>
+          <p>Positions are generated once, then coloured from each fixture's distance to the runway end ahead of the pilot:</p>
+          <div class="formula">ICAO: white → alternating 900–300 m → red last 300 m<br/>FAA: white → alternating 3,000–1,000 ft → red last 1,000 ft</div>
+          <p>Because the colours depend on direction, the same fixture is white from one end and red from the other. Use the direction selector to flip the drawing and the colour counts.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-signs-post"></i> Threshold, wing bars &amp; runway end</h4>
+          <p>Non-instrument and non-precision runways get a minimum of 6 threshold lights. CAT I / II / III thresholds use uniform spacing no greater than 3 m across the edge-light row span W<sub>E</sub> = W + 2·D<sub>E</sub>. Runway-end lights are a minimum of 6. A 6 m maximum spacing is applied on all precision runways as a conservative planning default, so confirm the requirement for your category in the applicable edition.</p>
+          <p>At the extremity, threshold fixtures also serve as runway-end lights and are counted once. A displaced threshold gets its own row at the displaced position plus a separate red runway-end row at the physical end. Wing-bar lights start at the edge-light line and run outward at 2.5 m spacing.</p>
+        </div>
+      </div>
+      <div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-crosshairs"></i> Touchdown-zone lights</h4>
+          <table class="std-table">
+            <tr><th>Basis</th><th>Extent</th><th>Default stations</th></tr>
+            <tr><td>ICAO</td><td class="val">900 m (half runway if L &lt; 1,800 m)</td><td class="val">60 m first, 60 m pitch</td></tr>
+            <tr><td>FAA</td><td class="val">3,000 ft (half runway if L &lt; 6,000 ft)</td><td class="val">100 ft first, 100 ft pitch</td></tr>
+          </table>
+          <p class="field-hint" style="margin-top:12px;">Each station is two bars of three lights, one either side of the centreline: 6 fixtures per station. The default station values follow your chosen standard when you switch it; edit them for a project-specific pattern. Stations and extents are measured from each landing threshold, for each approach direction, and the lights are unidirectional.</p>
+          <p class="field-hint" style="margin-top:8px;">Lateral bar position and 1.5 m light spacing are drawing defaults. Confirm against ICAO Annex 14 Volume I, Chapter 5 (runway touchdown zone lights) or the touchdown zone layout in FAA AC 150/5340-30J.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-table"></i> Spacing defaults</h4>
+          <table class="std-table">
+            <tr><th>System</th><th>ICAO</th><th>FAA</th></tr>
+            <tr><td>Edge (max)</td><td class="val">60 m / 100 m non-instr.</td><td class="val">60.96 m</td></tr>
+            <tr><td>Centreline</td><td class="val">15 m (30 m for CAT I)</td><td class="val">15.24 m</td></tr>
+            <tr><td>Threshold (CAT I–III)</td><td class="val">≤ 3 m</td><td class="val">≤ 3 m (nominal)</td></tr>
+            <tr><td>Runway end (precision)</td><td class="val">≤ 6 m (planning default)</td><td class="val">≤ 6 m (planning default)</td></tr>
+          </table>
+          <p class="field-hint" style="margin-top:12px;">ICAO centre line lights are spaced at approximately 15 m. A 30 m spacing is permitted only where the runway is intended for RVR of 350 m or greater and the serviceability objective can be demonstrated, so CAT II and III use 15 m. FAA uses 50 ft (15.24 m).</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <p>It does not draw approach lighting, taxiway connections, stop bars or signs. It does not reproduce figure-level endpoint conventions, so the end-of-row fixture, alternating-colour start and wing-bar inner-light handling are exposed as options rather than assumed. FAA threshold and runway-end fittings follow the FAA figures; the counts here are nominal. Always verify against the approved aerodrome lighting layout.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</main>
+
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title" id="faq-title">Runway Lighting Layout Generator: Frequently Asked Questions</h2>
+    <p class="block-note">Quick answers on what the generator builds, how it counts fixtures and what you can export.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What does the Runway Lighting Layout Generator do?</summary><p>It builds a calculated runway lighting layout for planning from the design standard, runway category, dimensions and thresholds you enter. It can generate edge, threshold, wing-bar, runway-end, centreline and touchdown-zone lights, draw a plan view with a true-scale detail window, and produce a quantity schedule with colour counts for each approach direction.</p></details>
+      <details class="faq-item"><summary>Which systems and standards does it cover?</summary><p>It covers ICAO Annex 14 and FAA AC 150/5340-30J, for non-instrument, non-precision, CAT I, CAT II and CAT III runways. Centreline and touchdown-zone lights switch on automatically for CAT II and CAT III, and you can still override them. It does not draw approach lighting, taxiway connections, stop bars or signs.</p></details>
+      <details class="faq-item"><summary>How are edge lights generated?</summary><p>The number of intervals is N = ⌈L ÷ Smax⌉, the actual spacing is Sactual = L ÷ N, and each side has N + 1 positions. The two rows sit at y = ±(W ÷ 2 + DE). The maximum spacing is 60 m for ICAO instrument runways, 100 m for ICAO non-instrument runways and 200 ft (60.96 m) for FAA. The offset is 3.0 m for jet runways and 0.6 m for non-jet runways unless you enter your own.</p></details>
+      <details class="faq-item"><summary>How are centreline colours and counts handled?</summary><p>Positions are generated once and then coloured from each fixture's distance to the runway end ahead of the pilot. ICAO is white, then alternating from 900 to 300 m, then red for the last 300 m. FAA is white, then alternating from 3,000 to 1,000 ft, then red for the last 1,000 ft. The same fixture can be white from one end and red from the other, so a direction selector flips the drawing and the colour counts. The first colour of the alternating zone is figure-specific and is exposed as a setting. ICAO centreline spacing defaults to 15 m, with 30 m allowed only where RVR is 350 m or greater and the serviceability objective is demonstrated. FAA uses 50 ft (15.24 m).</p></details>
+      <details class="faq-item"><summary>How are thresholds, wing bars and runway-end lights counted?</summary><p>Non-instrument and non-precision runways get a minimum of 6 threshold lights. CAT I, II and III thresholds use uniform spacing of no more than 3 m across the edge-light row span WE = W + 2·DE. Runway-end lights are a minimum of 6. A 6 m maximum spacing is applied on all precision runways as a conservative planning default, so confirm the requirement for your category in the applicable edition. At the runway extremity the threshold fixtures also serve as runway-end lights and are counted once. A displaced threshold gets its own row plus a separate red runway-end row at the physical end, and wing-bar lights start at the edge-light line and run outward at 2.5 m spacing.</p></details>
+      <details class="faq-item"><summary>How are touchdown-zone lights calculated?</summary><p>Each station is two bars of three lights, one either side of the centreline, giving 6 fixtures per station. The ICAO extent is 900 m, or half the runway if L is under 1,800 m, with a 60 m first station and 60 m pitch. The FAA extent is 3,000 ft, or half the runway if L is under 6,000 ft, with a 100 ft first station and 100 ft pitch. Stations are measured from each landing threshold, and you can edit the values for a project-specific pattern.</p></details>
+      <details class="faq-item"><summary>What can I export from the layout generator?</summary><p>You can export the layout as an SVG or PNG image and the fixture schedule as a CSV file. You can also copy a summary or print the layout. The plan view shows the whole runway with the lateral scale exaggerated, plus a true-scale detail window you can slide along the runway, and hovering over a fixture shows its ID, chainage and colour.</p></details>
+      <details class="faq-item"><summary>Is the generated layout an issued drawing or final BOQ?</summary><p>No. It is a calculated nominal layout for design planning, with installed fixtures only, no serviceability allowance and no spares. The generator does not reproduce figure-level endpoint conventions, so the end-of-row fixture, alternating-colour start and wing-bar inner-light handling are exposed as options. FAA threshold and runway-end counts are nominal. Always verify against the approved aerodrome lighting layout.</p></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="block-label">More Tools</div>
+    <h2 class="block-title">Related Knowledge Hub Resources</h2>
+    <div class="link-grid">
+      <a href="calc-runway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-ruler-horizontal"></i><h5>Edge Spacing &amp; Quantity</h5><p>Station-by-station edge-light schedule.</p></a>
+      <a href="calc-runway-centreline-spacing.html" class="tool-link"><i class="fa-solid fa-road"></i><h5>Centreline Spacing</h5><p>Requirement, spacing &amp; colour zones.</p></a>
+      <a href="calc-tdzl-quantity.html" class="tool-link"><i class="fa-solid fa-crosshairs"></i><h5>TDZL Quantity</h5><p>Touchdown zone light stations and bars.</p></a>
+      <a href="calc-threshold-runway-end.html" class="tool-link"><i class="fa-solid fa-arrows-left-right-to-line"></i><h5>Threshold &amp; Runway End</h5><p>Threshold, wing-bar &amp; end quantity.</p></a>
+      <a href="calc-als-quantity.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><h5>Approach Lighting</h5><p>ALS spacing and station counts.</p></a>
+      <a href="calc-runway-taxiway-lighting-load-power-calculator.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Lighting Load</h5><p>kW and kVA by circuit.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators.</p></a>
+      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><h5>Standards Companion</h5><p>ICAO/FAA/IEC requirements explained.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v2.9 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any result or record produced by it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Applies to the Runway Lighting Layout Generator (calculator), including its CSV downloads, print views.</div><ol class="legal-list"><li><strong>Calculated results.</strong> Results, tables, charts, status indicators (such as &ldquo;OK&rdquo;, &ldquo;within limit&rdquo; or &ldquo;pass&rdquo;/&ldquo;fail&rdquo;), recommended or selected values and the example presets on this page are first-pass planning and training estimates calculated in your browser from the values you enter, using simplified formulas, generic tables and typical values. They do not take account of every factor of a real installation, may contain errors or rounding differences, and are not a design, specification, selection, sizing, procurement or acceptance decision. A competent person must check them against the approved design, the manufacturer&rsquo;s data and the applicable standard before any use. &ldquo;Recommended&rdquo; means an indicative estimate, not an endorsement of any rating, product or supplier.</li><li><strong>Spacing, quantity and layout.</strong> Spacings, light counts, patterns, dimensions and configurations are simplified readings of ICAO Annex 14, FAA advisory circulars and similar documents and may not reflect the edition, aerodrome reference code, runway category, local variations or approved design that apply to your aerodrome. Counts and layouts are planning estimates only; the approved aerodrome lighting layout, the contract specification and the competent regulator prevail. Nothing here is an approved design or drawing, or evidence that any lighting meets a standard.</li><li><strong>Bills of quantities and material lists.</strong> BOQ and material quantities are first-pass estimates based on your inputs and generic allowances. They omit items, wastage, spares, civil works, cable lengths and site conditions that a real project will need. A BOQ produced here is not a tender document, quotation, purchase order or an approved material take-off, and no price, product or supplier is implied. We do not sell the items listed.</li><li><strong>Reports, downloads and printouts.</strong> PDF reports, CSV files and printed pages produced by this tool are uncontrolled working records generated in your browser. They are not approved designs, drawings, controlled documents, certificates, permits or regulatory records. Calculator numbers, revision labels, dates, project names, signature or approval fields on them are layout only and carry no authority unless made under your own approved document-control system. You must not present an output as an approved, verified or certified document. If you enter personal or confidential information, you are responsible for handling any exported file lawfully, including under the Digital Personal Data Protection Act, 2023.</li><li><strong>Your data and third-party services.</strong> Calculations run in your browser. Values you type, select or tick, and any report you generate, are not sent to us. We use no advertising or analytics tools on this page. Your browser requests fonts from Google Fonts and icon files (and, on some pages, scripts) from the cdnjs/Cloudflare network, which receive your IP address and basic browser details under their own policies. Please do not include confidential, classified or security-sensitive information in anything you send to us.</li><li><strong>Educational reference only.</strong> This page is general information for competent, suitably trained and authorised aviation and electrical personnel and for learners. It is not professional engineering, legal, regulatory or safety advice, is not an approved procedure, and creates no professional or client relationship. Values, tolerances, intervals, sequences and examples are generic and indicative; real installations differ by design, make, model, age and condition, and your aerodrome&rsquo;s approved procedures and the manufacturer&rsquo;s documents prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS (IS), DGCA, AAI and other documents are paraphrased summaries for orientation. They are not official text, may be incomplete or superseded, and do not state what any airport, project or regulator requires. Always consult the current official editions and the controlling project specification. Using this tool, or following its output, does not guarantee compliance with any law, standard or approval, and nothing on this page states that any airport, product or project complies or does not comply.</li><li><strong>Safety.</strong> Series-circuit airfield ground lighting equipment can carry lethal voltages. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s permit-to-work and LOTO procedures and the manufacturer&rsquo;s instructions. Nothing on this page authorises work on live equipment, bypassing of any safety device or interlock, installation, adjustment, energisation, return to service, a change of operating category (CAT I/II/III), a NOTAM or any certification decision; those rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>No warranty; limitation of liability.</strong> Content and calculation results are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranty of any kind, including accuracy, completeness, currency, freedom from error or fitness for a particular purpose. To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty, cost or regulatory consequence arising from use of, reliance on, or inability to use this page or any result or file produced by it. Nothing here excludes or limits liability that cannot lawfully be excluded or limited.</li><li><strong>Copyright and third-party names.</strong> &copy; 2026 Precision AGL Academy and Precision AGL Solutions. All rights reserved; copying, republication, scraping or commercial reuse of this tool, its formulas, text, structure and layout needs our prior written permission. You may use results and downloaded reports for your own reference and internal project working. We are not affiliated with, endorsed by or sponsored by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or manufacturer. Third-party names, standard designations and trademarks belong to their owners and are used only for identification.</li><li><strong>Corrections, governing law and contact.</strong> If you find an error in a formula, table or result, or have a safety concern, copyright or other rights issue, or a privacy question, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>. The full Legal Notice governs your use of this website. It is governed by the laws of India; subject to any mandatory rights you may have, the courts at New Delhi have jurisdiction.</li></ol><p class="legal-meta">Notice v2.9 &middot; 27 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+  <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="component-library.html">Components</a>
+    <a href="standards-companion.html">Standards</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="legal-notice.html">Legal Notice</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+<div class="mobile-bar" id="mobileBar"><div><small>Total fixtures</small><strong id="mbTotal">—</strong></div><span class="mb-status" id="mbStatus"></span><button type="button" class="chip" onclick="document.querySelector('.result-panel').scrollIntoView({behavior:'smooth'})">Details</button></div>
+
+<script>
+  const M_PER_FT = 0.3048;
+  const $ = id => document.getElementById(id);
+  /* ── tabs ── */
+  const TABS = ['calc', 'plan', 'qty', 'method'];
+  function showTab(id, o){
+    if (!TABS.includes(id)) id = 'calc';
+    TABS.forEach(k => { const on = k === id; $('tab-'+k).hidden = !on; const b = $('t-'+k); b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    $('mobileBar').hidden = id !== 'calc';
+    document.body.classList.toggle('has-bar', id === 'calc');
+    if (!(o && o.keep)){
+      history.replaceState(null, '', id === 'calc' ? location.pathname + location.search : '#' + id);
+      const top = $('tabbar').getBoundingClientRect().top + scrollY - 70;
+      if (scrollY > top) scrollTo({ top, behavior:'smooth' });
+    }
+  }
+  document.querySelectorAll('.tab').forEach((b,i,all) => {
+    b.addEventListener('click', () => showTab(b.dataset.tab));
+    b.addEventListener('keydown', e => {
+      const k = { ArrowRight:i+1, ArrowLeft:i-1, Home:0, End:all.length-1 }[e.key];
+      if (k === undefined) return; e.preventDefault();
+      const t = all[(k + all.length) % all.length]; t.focus(); showTab(t.dataset.tab, { keep:true });
+    });
+  });
+  window.addEventListener('hashchange', () => showTab(location.hash.slice(1), { keep:true }));
+
+  showTab(location.hash.slice(1), { keep:true });
+
+  const EPS = 1e-6;
+  const COL = { white:'#f0f4ff', yellow:'#f4d03f', red:'#E63946', green:'#2ecc71', none:'#4a5b78' };
+  const COL_NAME = { white:'White', yellow:'Yellow', red:'Red', green:'Green', none:'Not visible' };
+  const PREFIX = { edge:'EL', thr:'TH', wing:'WB', end:'RE', cl:'CL', tdz:'TZ' };
+  const SYS_NAME = { edge:'Edge', thr:'Threshold', wing:'Wing bar', end:'Runway end', cl:'Centreline', tdz:'Touchdown zone' };
+  const SYS_ORDER = ['edge','thr','wing','end','cl','tdz'];
+
+  let FIX = [];       // generated fixtures
+  let G = null;       // geometry / derived values from the last run
+  let OUT = { unit:'m', dp:2 };
+
+  function val(id){ return document.getElementById(id).value; }
+  function chk(id){ return document.getElementById(id).checked; }
+  function num(id){ const v = parseFloat(document.getElementById(id).value); return isNaN(v) ? 0 : v; }
+  function setText(id, t){ document.getElementById(id).textContent = t; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function toM(v){ return val('lengthUnit') === 'ft' ? v * M_PER_FT : v; }
+  function u(m){ return OUT.unit === 'ft' ? m / M_PER_FT : m; }
+  function fmt(m){ return u(m).toFixed(OUT.dp) + ' ' + OUT.unit; }
+  function f2(m){ return u(m).toFixed(OUT.dp); }
+
+  /* ───────── standards ───────── */
+  function stdParams(std, cat, L){
+    if (std === 'icao'){
+      return { edgeMax: cat === 'noninstrument' ? 100 : 60,
+               clSp: (cat === 'cat2' || cat === 'cat3') ? 15 : 30,
+               caution: Math.min(600, L / 3), clRed: 300, clAlt: 900,
+               tdzExt: L >= 1800 - EPS ? 900 : L / 2,
+               tdzFirst: 60, tdzSp: 60 };
+    }
+    return { edgeMax: 200 * M_PER_FT, clSp: 50 * M_PER_FT,
+             caution: Math.min(2000 * M_PER_FT, L / 2), clRed: 1000 * M_PER_FT, clAlt: 3000 * M_PER_FT,
+             tdzExt: (L / M_PER_FT) >= 6000 - EPS ? 3000 * M_PER_FT : L / 2,
+             tdzFirst: 100 * M_PER_FT, tdzSp: 100 * M_PER_FT };
+  }
+
+  function rowPositions(We, n, endpoints){
+    const out = [];
+    if (n < 1) return out;
+    if (endpoints){
+      if (n === 1) return [0];
+      for (let k = 0; k < n; k++) out.push(-We/2 + k * We / (n - 1));
+    } else {
+      for (let k = 0; k < n; k++) out.push(-We/2 + (k + 0.5) * We / n);
+    }
+    return out;
+  }
+
+  /* ───────── UI handlers ───────── */
+  function onStandardChange(){
+    const std = val('designStandard');
+    document.getElementById('standardHint').textContent = std === 'icao'
+      ? 'ICAO Annex 14, Volume I — edge ≤ 60 m (100 m non-instrument), centreline 15 m (30 m only where RVR is 350 m or greater, e.g. CAT I), caution zone min(600 m, L/3).'
+      : 'FAA AC 150/5340-30J — edge ≤ 200 ft (60.96 m), centreline 50 ft (15.24 m), caution zone min(2,000 ft, L/2).';
+    const p = stdParams(std, val('rwCat'), toM(num('rwLength')));
+    document.getElementById('tdzFirst').value = +p.tdzFirst.toFixed(2);
+    document.getElementById('tdzSpacing').value = +p.tdzSp.toFixed(2);
+    calcAll();
+  }
+  function onCategoryChange(){
+    const cat = val('rwCat');
+    const prec2 = (cat === 'cat2' || cat === 'cat3');
+    document.getElementById('sysCL').checked = prec2;
+    document.getElementById('sysTDZ').checked = prec2;
+    calcAll();
+  }
+  function onModeChange(which){
+    const map = { edge:['edgeMode','edgeCustom'], cl:['clMode','clCustom'], offset:['offsetMode','offsetCustom'] };
+    const [m, c] = map[which];
+    document.getElementById(c).style.display = val(m) === 'custom' ? 'block' : 'none';
+    calcAll();
+  }
+
+  /* ───────── fixture generation ───────── */
+  function readInputs(){
+    const P = {};
+    P.std = val('designStandard');
+    P.cat = val('rwCat');
+    P.L = toM(num('rwLength'));
+    P.W = toM(num('rwWidth'));
+    P.dA = toM(num('dispA'));
+    P.dB = toM(num('dispB'));
+    P.instA = chk('instA'); P.instB = chk('instB');
+    P.wingA = chk('wingA'); P.wingB = chk('wingB');
+    P.sys = { edge:chk('sysEdge'), thr:chk('sysThr'), end:chk('sysEnd'), cl:chk('sysCL'), tdz:chk('sysTDZ') };
+    P.jet = val('jetOps') === 'yes';
+    P.DE = val('offsetMode') === 'auto' ? (P.jet ? 3.0 : 0.6) : toM(num('offsetCustom'));
+    P.altStart = val('altStart');
+    P.tdzFirst = num('tdzFirst'); P.tdzSp = num('tdzSpacing'); P.tdzOff = num('tdzOffset');
+    P.wingQty = Math.max(1, Math.round(num('wingQty')));
+    P.endpts = chk('thrEndpoints');
+    P.wingReplace = chk('wingReplace');
+    P.view = val('viewDir');
+    P.sp = stdParams(P.std, P.cat, P.L);
+    P.Sedge = val('edgeMode') === 'auto' ? P.sp.edgeMax : toM(num('edgeCustom'));
+    P.Scl = val('clMode') === 'auto' ? P.sp.clSp : toM(num('clCustom'));
+    P.precision = (P.cat === 'cat1' || P.cat === 'cat2' || P.cat === 'cat3');
+    return P;
+  }
+
+  function generate(P){
+    const fx = [];
+    const cnt = {};
+    const info = { edgeN:0, edgeSa:0, clN:0, clSa:0, thrN:0, thrSp:0, endN:0, endSp:0, notes:[], tdz:{} };
+    const add = (sys, grp, x, y, cA, cB, note) => {
+      cnt[sys] = (cnt[sys] || 0) + 1;
+      fx.push({ id: PREFIX[sys] + '-' + String(cnt[sys]).padStart(3,'0'), sys, grp, x, y, cA, cB, note: note || '' });
+    };
+    const L = P.L, W = P.W, DE = P.DE, We = W + 2 * DE;
+    const Lc = P.sp.caution;
+    info.We = We;
+
+    /* edge */
+    if (P.sys.edge && P.Sedge > 0){
+      const N = Math.max(1, Math.ceil(L / P.Sedge - 1e-9));
+      const Sa = L / N;
+      info.edgeN = N; info.edgeSa = Sa;
+      const cautA = P.std === 'icao' || P.instA, cautB = P.std === 'icao' || P.instB;   // ICAO yellow section does not depend on an instrument approach; FAA applies it to instrument runways only
+      for (let i = 0; i <= N; i++){
+        const x = i * Sa;
+        const cA = (x < P.dA - EPS) ? 'red' : ((cautA && x >= L - Lc - EPS) ? 'yellow' : 'white');
+        const cB = (x > L - P.dB + EPS) ? 'red' : ((cautB && x <= Lc + EPS) ? 'yellow' : 'white');
+        add('edge', 'edgeL', x,  (W/2 + DE), cA, cB);
+        add('edge', 'edgeR', x, -(W/2 + DE), cA, cB);
+      }
+    }
+
+    /* centreline */
+    if (P.sys.cl && P.Scl > 0){
+      const N = Math.max(1, Math.ceil(L / P.Scl - 1e-9));
+      const Sa = L / N;
+      info.clN = N; info.clSa = Sa;
+      const other = P.altStart === 'red' ? 'white' : 'red';
+      const clCol = (d, j) => {
+        if (d <= P.sp.clRed + EPS) return 'red';
+        if (d <= P.sp.clAlt + EPS) return (j % 2 === 0) ? P.altStart : other;
+        return 'white';
+      };
+      for (let i = 0; i <= N; i++){
+        const x = i * Sa;
+        add('cl', 'cl', x, 0, clCol(L - x, N - i), clCol(x, i));
+      }
+    }
+
+    /* threshold / runway end / wing bars */
+    const nPrecThr = Math.max(6, Math.ceil(We / 3 - 1e-9) + (P.endpts ? 1 : 0));
+    const thrQty = P.precision ? nPrecThr : 6;
+    const endQty = P.precision ? Math.max(6, Math.ceil(We / 6 - 1e-9) + 1) : 6;
+    info.thrQty = thrQty; info.endQty = endQty;
+    info.thrSp = P.precision ? (P.endpts ? We / (thrQty - 1) : We / thrQty) : We / (thrQty - 1);
+    info.endSp = We / (endQty - 1);
+    const thrEndpoints = P.precision ? P.endpts : true;
+    const wingReplaceOK = P.wingReplace && !P.precision;
+
+    const ends = [
+      { k:'A', d:P.dA, xT:P.dA,     xE:0, wing:P.wingA },
+      { k:'B', d:P.dB, xT:L - P.dB, xE:L, wing:P.wingB }
+    ];
+    ends.forEach(e => {
+      const own = e.k, opp = e.k === 'A' ? 'B' : 'A';
+      const colsThr = (isShared) => {
+        const o = {}; o['c' + own] = 'green'; o['c' + opp] = isShared ? 'red' : 'none'; return o;
+      };
+      const colsEnd = () => { const o = {}; o['c' + own] = 'none'; o['c' + opp] = 'red'; return o; };
+      const shared = e.d <= EPS;
+      const thrGrp = 'thr' + e.k, endGrp = 'end' + e.k, wingGrp = 'wing' + e.k;
+
+      /* threshold row */
+      let thrPos = rowPositions(We, thrQty, thrEndpoints);
+      const dropAll = wingReplaceOK && !shared && e.wing;
+      if (e.wing) thrPos = thrPos.filter(y => Math.abs(y) < We/2 - 1e-6);   // outermost fixtures are the wing-bar inner lights
+      if (dropAll) thrPos = [];
+      if (P.sys.thr){
+        const c = colsThr(shared);
+        thrPos.forEach(y => add('thr', thrGrp, e.xT, y, c.cA, c.cB, shared ? 'Threshold + runway end (shared)' : 'Displaced threshold'));
+      }
+      /* runway-end row */
+      if (P.sys.end){
+        if (!shared || !P.sys.thr){
+          const c = colsEnd();
+          rowPositions(We, endQty, true).forEach(y => add('end', endGrp, e.xE, y, c.cA, c.cB, 'Runway end'));
+        }
+      }
+      /* wing bars */
+      if (e.wing){
+        const c = colsThr(false);
+        for (let k = 0; k < P.wingQty; k++){
+          const off = We/2 + k * 2.5;
+          add('wing', wingGrp, e.xT,  off, c.cA, c.cB, k === 0 ? 'Inner light on edge line' : '');
+          add('wing', wingGrp, e.xT, -off, c.cA, c.cB, k === 0 ? 'Inner light on edge line' : '');
+        }
+      }
+    });
+
+    /* touchdown zone */
+    const tdzDirs = [
+      { k:'A', on:P.instA, xT:P.dA,     sgn:+1, Lland: L - P.dA },
+      { k:'B', on:P.instB, xT:L - P.dB, sgn:-1, Lland: L - P.dB }
+    ];
+    tdzDirs.forEach(t => {
+      info.tdz[t.k] = { stations:0, extent:0 };
+      if (!P.sys.tdz || !t.on || t.Lland <= 0 || P.tdzSp <= 0) return;
+      const ext = stdParams(P.std, P.cat, t.Lland).tdzExt;
+      info.tdz[t.k].extent = ext;
+      const own = t.k, opp = t.k === 'A' ? 'B' : 'A';
+      for (let i = 0; P.tdzFirst + i * P.tdzSp <= ext + EPS; i++){
+        const x = t.xT + t.sgn * (P.tdzFirst + i * P.tdzSp);
+        info.tdz[t.k].stations++;
+        [1, -1].forEach(side => {
+          for (let b = 0; b < 3; b++){
+            const o = {}; o['c' + own] = 'white'; o['c' + opp] = 'none';
+            add('tdz', 'tdz' + t.k, x, side * (P.tdzOff + b * 1.5), o.cA, o.cB, 'Station ' + (i + 1) + ' bar ' + (side > 0 ? 'L' : 'R'));
+          }
+        });
+      }
+    });
+    return { fx, info };
+  }
+
+  /* ───────── main ───────── */
+  function chip(status, label){
+    const iconMap = { pass:'fa-circle-check', fail:'fa-circle-xmark', review:'fa-triangle-exclamation', na:'fa-circle-minus' };
+    return `<div class="dash-chip ${status}"><i class="fa-solid ${iconMap[status]}"></i>${label}</div>`;
+  }
+
+  function calcAll(){ calcAllCore(); syncPanel(); }
+
+  function syncPanel(){
+    const has = FIX.length > 0, q = sel => document.querySelectorAll(sel).length;
+    const map = { edge:'rpEdge', thr:'rpThr', wing:'rpWing', end:'rpEnd', cl:'rpCL', tdz:'rpTDZ' };
+    Object.keys(map).forEach(s => { $(map[s]).textContent = has ? sysCount(s).toLocaleString('en-IN') : '—'; });
+    $('mbTotal').textContent = $('totalResult').textContent;
+    const chips = Array.from(document.querySelectorAll('#complianceDashboard .dash-chip'));
+    const fail = chips.filter(c => c.classList.contains('fail')).length;
+    const review = Math.max(0, chips.filter(c => c.classList.contains('review')).length - (chips.length ? 1 : 0)); // last chip is the standing "verify against layout" reminder
+    const w = q('#geometryFlags .flag-banner, #thresholdFlags .flag-banner'), n = q('#geometryFlags .info-banner, #thresholdFlags .info-banner');
+    const issues = fail + w, notes = review + n;
+    const nc = $('noteCount');
+    nc.textContent = (issues || notes) ? issues + ' issue' + (issues === 1 ? '' : 's') + ', ' + notes + ' note' + (notes === 1 ? '' : 's') : 'none';
+    nc.className = 'cnt' + (issues ? ' warn' : '');
+    const ms = $('mbStatus');
+    if (!has){ ms.textContent = w ? 'Fix inputs' : ''; ms.className = 'mb-status' + (w ? ' fail' : ''); }
+    else if (issues){ ms.textContent = issues + ' to fix'; ms.className = 'mb-status fail'; }
+    else if (notes){ ms.textContent = notes + ' to review'; ms.className = 'mb-status warn'; }
+    else { ms.textContent = 'Checks pass'; ms.className = 'mb-status pass'; }
+  }
+
+  function copySummary(){
+    if (!G || !FIX.length){ status('Nothing to copy yet — fix the inputs first.'); return; }
+    const P = G.P, t = id => $(id).textContent;
+    const txt = ['Runway Lighting Layout Generator',
+      'Project: ' + (val('projectName') || '—') + ' | Runway: ' + (val('rwDesignation') || '—'),
+      (P.std === 'icao' ? 'ICAO Annex 14' : 'FAA AC 150/5340-30J') + ' | Category: ' + $('rwCat').selectedOptions[0].textContent + ' | Length ' + fmt(P.L) + ' x width ' + fmt(P.W),
+      'Total physical fixtures: ' + t('totalResult'),
+      t('totalNote'),
+      'Calculated / nominal layout — not an issued drawing or Final BOQ. Verify against the approved aerodrome lighting layout.'].join('\n');
+    const done = () => status('Summary copied to clipboard.');
+    const fallback = () => { const a = document.createElement('textarea'); a.value = txt; document.body.appendChild(a); a.select();
+      try { document.execCommand('copy'); done(); } catch(e){ status('Copy failed — select and copy manually.'); } a.remove(); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
+  }
+
+  /* ── presets ── */
+  const PRESETS = {
+    cat2:    { rwCat:'cat2' },
+    cat1:    { rwCat:'cat1' },
+    faa:     { designStandard:'faa', rwCat:'cat1', lengthUnit:'ft', rwLength:'8000', rwWidth:'150', outputUnit:'ft' },
+    disp:    { rwCat:'cat1', dispA:'300' },
+    noninst: { rwCat:'noninstrument', rwLength:'1800', rwWidth:'30', jetOps:'no', instA:false, instB:false }
+  };
+  function resetForm(){
+    document.querySelectorAll('#tab-calc input, #tab-calc select').forEach(e => {
+      if (e.type === 'checkbox') e.checked = e.defaultChecked;
+      else if (e.tagName === 'SELECT') Array.from(e.options).forEach(o => o.selected = o.defaultSelected);
+      else e.value = e.defaultValue;
+    });
+  }
+  function applyPreset(p){
+    resetForm();
+    Object.entries(p).forEach(([id, v]) => { const el = $(id); if (typeof v === 'boolean') el.checked = v; else el.value = v; });
+    onCategoryChange(); ['edge','cl','offset'].forEach(onModeChange); onStandardChange();
+  }
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => applyPreset(PRESETS[b.dataset.preset])));
+  $('resetBtn').addEventListener('click', () => applyPreset({ rwCat:'cat2' }));
+
+  function calcAllCore(){
+    OUT.unit = val('outputUnit'); OUT.dp = parseInt(val('decimalPlaces'), 10);
+    const P = readInputs();
+    const geo = document.getElementById('geometryFlags');
+    const thf = document.getElementById('thresholdFlags');
+    geo.innerHTML = ''; thf.innerHTML = '';
+    onStandardHints(P);
+
+    const bad = [];
+    if (!(P.L > 0)) bad.push('Enter a runway length greater than zero.');
+    if (!(P.W > 0)) bad.push('Enter a runway width greater than zero.');
+    if (P.dA < 0 || P.dB < 0) bad.push('Displaced threshold distances cannot be negative.');
+    if (P.L > 0 && P.dA + P.dB >= P.L - EPS) bad.push('Displaced thresholds A + B must be shorter than the runway.');
+    if (bad.length){
+      geo.innerHTML = bad.map(b => `<div class="flag-banner"><i class="fa-solid fa-triangle-exclamation"></i> ${b}</div>`).join('');
+      FIX = []; G = null;
+      setText('totalResult', '—'); setText('totalNote', 'Fix the inputs above to generate the layout.');
+      ['overviewWrap','detailWrap','qtyTable','colourTable','schedTable','complianceDashboard'].forEach(id => document.getElementById(id).innerHTML = '');
+      setText('schedCount', '');
+      return;
+    }
+
+    if ((P.std === 'faa' && P.DE < 0.6 - EPS) || P.DE > 3.0 + EPS || P.DE <= 0)
+      geo.innerHTML += `<div class="flag-banner"><i class="fa-solid fa-triangle-exclamation"></i> Edge-light offset ${fmt(P.DE)} is outside the ${P.std === 'faa' ? 'FAA 0.6–3.0 m' : 'ICAO 0–3.0 m (lights outside the edge, not more than 3 m)'} range — review before use.</div>`;
+    if (P.dA > EPS && !P.sys.thr)
+      thf.innerHTML += `<div class="info-banner"><i class="fa-solid fa-circle-info"></i> End A has a displaced threshold but threshold lights are switched off.</div>`;
+    if (P.dB > EPS && !P.sys.thr)
+      thf.innerHTML += `<div class="info-banner"><i class="fa-solid fa-circle-info"></i> End B has a displaced threshold but threshold lights are switched off.</div>`;
+    if (P.cat !== 'noninstrument' && !P.instA && !P.instB)
+      thf.innerHTML += `<div class="info-banner"><i class="fa-solid fa-circle-info"></i> Runway category is instrument but neither end is marked as an instrument approach — ${P.std === 'faa' ? 'no yellow caution zone and no touchdown-zone lights' : 'no touchdown-zone lights'} will be generated.</div>`;
+    if (P.sys.tdz && !P.instA && !P.instB)
+      thf.innerHTML += `<div class="info-banner"><i class="fa-solid fa-circle-info"></i> Touchdown-zone lights are generated only at ends marked as instrument approach.</div>`;
+    if (P.wingReplace && P.precision)
+      thf.innerHTML += `<div class="info-banner"><i class="fa-solid fa-circle-info"></i> The wing-bars-replace-threshold exception applies to non-instrument and non-precision runways only — ignored for precision categories.</div>`;
+    if (P.wingReplace && !P.wingA && !P.wingB)
+      thf.innerHTML += `<div class="info-banner"><i class="fa-solid fa-circle-info"></i> “Wing bars replace threshold row” has no effect until wing bars are ticked at a displaced end.</div>`;
+
+    const { fx, info } = generate(P);
+    FIX = fx; G = { P, info };
+    renderTotals();
+    renderCompliance();
+    renderQuantities();
+    renderSchedule();
+    renderOverview();
+    setDetailRange();
+    renderDetail();
+    renderLegend();
+  }
+
+  function onStandardHints(P){
+    document.getElementById('standardHint').textContent = P.std === 'icao'
+      ? 'ICAO Annex 14, Volume I — edge ≤ 60 m (100 m non-instrument), centreline 15 m (30 m only where RVR is 350 m or greater, e.g. CAT I), caution zone min(600 m, L/3).'
+      : 'FAA AC 150/5340-30J — edge ≤ 200 ft (60.96 m), centreline 50 ft (15.24 m), caution zone min(2,000 ft, L/2).';
+    document.getElementById('edgeHint').textContent = 'Standard maximum for this basis and category: ' + fmt(P.sp.edgeMax) + '. The generator divides L into equal intervals no longer than this.';
+    document.getElementById('clHint').textContent = 'Standard spacing: ' + fmt(P.sp.clSp) + '. Centreline colour zones follow ' + (P.std === 'icao' ? '900 m / 300 m.' : '3,000 ft / 1,000 ft.') + (P.std === 'icao' && P.sp.clSp > 20 ? ' ICAO allows 30 m only where RVR is 350 m or greater and the serviceability objective is demonstrated; otherwise use 15 m (Custom).' : '');
+    document.getElementById('tdzHint').textContent = 'Station values are in metres. ' + (P.std === 'icao' ? 'ICAO defaults: 60 m first station and pitch.' : 'FAA defaults: 100 ft (30.48 m) first station and pitch.');
+  }
+
+  function groupCount(grp){ return FIX.filter(f => f.grp === grp).length; }
+  function sysCount(sys){ return FIX.filter(f => f.sys === sys).length; }
+
+  function renderTotals(){
+    setText('totalResult', FIX.length.toLocaleString('en-IN'));
+    const parts = SYS_ORDER.map(s => [SYS_NAME[s], sysCount(s)]).filter(p => p[1] > 0).map(p => p[0] + ' ' + p[1]);
+    setText('totalNote', parts.length ? parts.join(' · ') : 'No lighting systems selected.');
+  }
+
+  function renderCompliance(){
+    const { P, info } = G;
+    const c = [];
+    if (P.sys.edge){
+      c.push(info.edgeSa <= P.Sedge + EPS && info.edgeSa <= P.sp.edgeMax + EPS
+        ? chip('pass', `Edge spacing ${f2(info.edgeSa)} ${OUT.unit} ≤ ${f2(P.sp.edgeMax)} ${OUT.unit}`)
+        : chip('fail', `Edge spacing ${f2(info.edgeSa)} ${OUT.unit} exceeds the ${f2(P.sp.edgeMax)} ${OUT.unit} maximum`));
+      if (P.Sedge > P.sp.edgeMax + EPS) c.push(chip('fail', `Custom edge spacing ${f2(P.Sedge)} ${OUT.unit} is above the standard maximum`));
+    } else c.push(chip('na', 'Edge lights switched off'));
+    c.push((P.DE > 0 && P.DE <= 3.0 + EPS && (P.std !== 'faa' || P.DE >= 0.6 - EPS)) ? chip('pass', `Edge offset ${fmt(P.DE)} within ${P.std === 'faa' ? '0.6–3.0 m' : '3.0 m maximum'}`) : chip('review', `Edge offset ${fmt(P.DE)} outside ${P.std === 'faa' ? '0.6–3.0 m' : '3.0 m maximum'}`));
+
+    const req2 = (P.cat === 'cat2' || P.cat === 'cat3');
+    if (P.sys.cl){
+      c.push(info.clSa <= P.sp.clSp + EPS ? chip('pass', `Centreline spacing ${f2(info.clSa)} ${OUT.unit} ≤ ${f2(P.sp.clSp)} ${OUT.unit}`) : chip('fail', `Centreline spacing ${f2(info.clSa)} ${OUT.unit} exceeds ${f2(P.sp.clSp)} ${OUT.unit}`));
+    } else c.push(req2 ? chip('fail', 'Centreline lights are required for CAT II / III') : chip('na', 'Centreline lights not required for this category'));
+    if (P.sys.tdz){
+      const total = (info.tdz.A.stations + info.tdz.B.stations);
+      c.push(total > 0 ? chip('pass', `TDZ stations: ${info.tdz.A.stations} (A) + ${info.tdz.B.stations} (B)`) : chip('review', 'TDZ on but no end is marked as an instrument approach'));
+    } else c.push(req2 ? chip('fail', 'Touchdown-zone lights are required for CAT II / III') : chip('na', 'Touchdown-zone lights not required for this category'));
+
+    if (P.sys.thr){
+      if (P.precision) c.push(info.thrSp <= 3 + EPS ? chip('pass', `Threshold spacing ${info.thrSp.toFixed(2)} m ≤ 3 m`) : chip('fail', `Threshold spacing ${info.thrSp.toFixed(2)} m exceeds 3 m`));
+      else c.push(chip('pass', `Threshold: ${info.thrQty} lights (minimum 6)`));
+    }
+    if (P.sys.end){
+      if (P.precision) c.push(info.endSp <= 6 + EPS ? chip('pass', `Runway-end spacing ${info.endSp.toFixed(2)} m ≤ 6 m`) : chip('fail', `Runway-end spacing ${info.endSp.toFixed(2)} m exceeds 6 m`));
+      else c.push(chip('pass', `Runway end: ${info.endQty} lights (minimum 6)`));
+    }
+    if (P.sys.thr && !P.sys.end && (P.dA <= EPS || P.dB <= EPS)) c.push(chip('review', 'Runway-end lights off — shared threshold fixtures serve as end lights'));
+    if ((P.dA <= EPS || P.dB <= EPS) && P.sys.thr && P.sys.end) c.push(info.thrQty >= info.endQty ? chip('pass', 'Shared threshold fixtures satisfy runway-end count') : chip('review', 'Threshold count below runway-end count — add separate end lights'));
+    if (P.wingA || P.wingB) c.push(P.wingQty >= 5 ? chip('pass', `Wing bars: ${P.wingQty} lights per side`) : chip('review', `Wing bars: ${P.wingQty} per side — ICAO minimum is 5`));
+    if (P.cat !== 'noninstrument' && !P.instA && !P.instB) c.push(chip('review', 'Instrument runway without an instrument approach end'));
+    if (P.std === 'faa') c.push(chip('review', 'FAA threshold / end fittings follow FAA figures — verify'));
+    c.push(chip('review', 'Verify against approved aerodrome lighting layout'));
+    document.getElementById('complianceDashboard').innerHTML = `<div class="dash-group"><h5>Layout Checks</h5><div class="dash-grid">${c.join('')}</div></div>`;
+  }
+
+  function renderQuantities(){
+    const { P, info } = G;
+    const rows = [];
+    const row = (label, basis, n) => { if (n > 0) rows.push(`<tr><td>${label}</td><td class="qty-basis">${basis}</td><td class="val" style="text-align:right;">${n}</td></tr>`); };
+    row('Edge lights — left', `${info.edgeN + 1} stations at ${f2(info.edgeSa)} ${OUT.unit}, y = +${f2(P.W/2 + P.DE)}`, groupCount('edgeL'));
+    row('Edge lights — right', `${info.edgeN + 1} stations at ${f2(info.edgeSa)} ${OUT.unit}, y = −${f2(P.W/2 + P.DE)}`, groupCount('edgeR'));
+    row('Threshold lights — End A', P.dA > EPS ? 'Displaced threshold row' : 'At extremity (also runway-end)', groupCount('thrA'));
+    row('Threshold lights — End B', P.dB > EPS ? 'Displaced threshold row' : 'At extremity (also runway-end)', groupCount('thrB'));
+    row('Wing-bar lights — End A', `${P.wingQty} per side at 2.5 m`, groupCount('wingA'));
+    row('Wing-bar lights — End B', `${P.wingQty} per side at 2.5 m`, groupCount('wingB'));
+    row('Runway-end lights — End A', 'Separate row at physical end', groupCount('endA'));
+    row('Runway-end lights — End B', 'Separate row at physical end', groupCount('endB'));
+    row('Centreline lights', `${info.clN + 1} stations at ${f2(info.clSa)} ${OUT.unit}`, groupCount('cl'));
+    row('Touchdown-zone — approach A', `${info.tdz.A.stations} stations × 6 fixtures`, groupCount('tdzA'));
+    row('Touchdown-zone — approach B', `${info.tdz.B.stations} stations × 6 fixtures`, groupCount('tdzB'));
+    rows.push(`<tr class="qty-total"><td class="qty-total-label">Total physical fixtures</td><td></td><td class="qty-total-val" style="text-align:right;">${FIX.length}</td></tr>`);
+    document.getElementById('qtyTable').innerHTML = '<tr><th>Item</th><th>Basis</th><th style="text-align:right;">Qty</th></tr>' + rows.join('');
+
+    // colour counts
+    const tally = {};
+    FIX.forEach(f => {
+      ['A','B'].forEach(v => {
+        const col = v === 'A' ? f.cA : f.cB;
+        const key = f.sys + '|' + col;
+        tally[key] = tally[key] || { sys:f.sys, col, A:0, B:0 };
+        tally[key][v]++;
+      });
+    });
+    const trows = Object.values(tally)
+      .sort((a, b) => SYS_ORDER.indexOf(a.sys) - SYS_ORDER.indexOf(b.sys) || Object.keys(COL).indexOf(a.col) - Object.keys(COL).indexOf(b.col))
+      .map(t => `<tr><td>${SYS_NAME[t.sys]}</td><td><span class="dot" style="background:${COL[t.col]};"></span>${COL_NAME[t.col]}</td><td class="val" style="text-align:right;">${t.A}</td><td class="val" style="text-align:right;">${t.B}</td></tr>`);
+    document.getElementById('colourTable').innerHTML = '<tr><th>System</th><th>Colour</th><th style="text-align:right;">From End A</th><th style="text-align:right;">From End B</th></tr>' + trows.join('');
+  }
+
+  function renderSchedule(){
+    const rows = FIX.map(f => `<tr><td class="val">${f.id}</td><td>${SYS_NAME[f.sys]}</td><td>${f2(f.x)}</td><td>${f2(f.y)}</td><td><span class="dot" style="background:${COL[f.cA]};"></span>${COL_NAME[f.cA]}</td><td><span class="dot" style="background:${COL[f.cB]};"></span>${COL_NAME[f.cB]}</td><td>${esc(f.note)}</td></tr>`);
+    document.getElementById('schedTable').innerHTML = `<tr><th>ID</th><th>System</th><th>Chainage (${OUT.unit})</th><th>Lateral (${OUT.unit})</th><th>From A</th><th>From B</th><th>Note</th></tr>` + rows.join('');
+    setText('schedCount', '— ' + FIX.length + ' fixtures');
+  }
+
+  /* ───────── SVG plan ───────── */
+  function layers(){
+    const o = {};
+    document.querySelectorAll('#layerBar input').forEach(i => o[i.dataset.layer] = i.checked);
+    return o;
+  }
+  function niceStep(range){
+    const steps = [5,10,20,25,50,100,200,250,500,1000,2000,2500,5000];
+    for (const s of steps) if (range / s <= 12) return s;
+    return 5000;
+  }
+
+  function planSVG(o){
+    const { P, info } = G;
+    const L = P.L, W = P.W, We = info.We;
+    const view = P.view;
+    const lay = layers();
+    const ml = 48, mr = 48;
+    const widthPx = 1500;
+    const xs = (widthPx - ml - mr) / (o.x1 - o.x0);
+    const wingExt = (P.wingA || P.wingB) ? (We/2 + (P.wingQty - 1) * 2.5 + 3) : 0;
+    const tdzExt = P.sys.tdz ? (P.tdzOff + 3 + 2) : 0;
+    const halfM = Math.max(We/2 + 4, wingExt, tdzExt, W/2 + 4);
+    const ys = o.exag ? Math.max(xs, 130 / (2 * halfM)) : xs;
+    const halfPx = halfM * ys;
+    const titleH = o.title ? 78 : 0;
+    const labelH = 34;
+    const axisH = 44;
+    const legendH = o.legend ? 40 : 0;
+    const cy = titleH + labelH + halfPx;
+    const H = Math.ceil(cy + halfPx + axisH + legendH + 10);
+    const X = x => ml + (x - o.x0) * xs;
+    const Y = y => cy - y * ys;
+    const k = o.detail ? 1.7 : 1;
+    const R = { edge:3.2*k, cl:2.4*k, thr:2.9*k, wing:2.9*k, end:2.9*k, tdz:2.1*k };
+    const s = [];
+    s.push(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${widthPx} ${H}" width="100%" font-family="Barlow, Arial, sans-serif" role="img" aria-label="Runway lighting plan view">`);
+    s.push(`<rect width="${widthPx}" height="${H}" fill="#060d1a"/>`);
+    s.push(`<defs><clipPath id="clip${o.detail ? 'D' : 'O'}"><rect x="${ml - 14}" y="${titleH}" width="${widthPx - ml - mr + 28}" height="${H - titleH}"/></clipPath></defs>`);
+
+    if (o.title){
+      const des = esc(val('rwDesignation') || 'Runway');
+      s.push(`<text x="${ml}" y="26" fill="#FFB400" font-size="19" font-weight="700" letter-spacing="1.5">${esc((val('projectName') || 'Runway Lighting Layout').toUpperCase())}</text>`);
+      s.push(`<text x="${ml}" y="46" fill="#c8d8f0" font-size="13">RWY ${des} · ${P.std === 'icao' ? 'ICAO Annex 14' : 'FAA AC 150/5340-30J'} · ${esc(document.getElementById('rwCat').selectedOptions[0].text)} · ${fmt(L)} × ${fmt(W)}</text>`);
+      s.push(`<text x="${ml}" y="64" fill="#8fa3c4" font-size="12">Colours shown as seen from approach ${view} · Left (+) / Right (−) of centreline looking from End A to End B · ${o.exag ? 'lateral scale exaggerated' : 'true scale'}</text>`);
+      s.push(`<text x="${widthPx - mr}" y="26" text-anchor="end" fill="#8fa3c4" font-size="12">Precision AGL Academy · Layout Generator</text>`);
+    }
+
+    s.push(`<g clip-path="url(#clip${o.detail ? 'D' : 'O'})">`);
+    const px0 = Math.max(o.x0, 0), px1 = Math.min(o.x1, L);
+    if (px1 > px0){
+      s.push(`<rect x="${X(px0)}" y="${Y(W/2)}" width="${(px1 - px0) * xs}" height="${W * ys}" fill="#16243d"/>`);
+      s.push(`<line x1="${X(px0)}" x2="${X(px1)}" y1="${Y(W/2)}" y2="${Y(W/2)}" stroke="#8fa3c4" stroke-width="1.2"/>`);
+      s.push(`<line x1="${X(px0)}" x2="${X(px1)}" y1="${Y(-W/2)}" y2="${Y(-W/2)}" stroke="#8fa3c4" stroke-width="1.2"/>`);
+      s.push(`<line x1="${X(px0)}" x2="${X(px1)}" y1="${Y(0)}" y2="${Y(0)}" stroke="rgba(240,244,255,.28)" stroke-width="1.2" stroke-dasharray="${30 * xs} ${20 * xs}"/>`);
+    }
+    // displaced areas
+    [[0, P.dA, 'A'], [L - P.dB, L, 'B']].forEach(([a, b, nm]) => {
+      if (b - a <= EPS) return;
+      const aa = Math.max(a, o.x0), bb = Math.min(b, o.x1);
+      if (bb <= aa) return;
+      s.push(`<rect x="${X(aa)}" y="${Y(W/2)}" width="${(bb - aa) * xs}" height="${W * ys}" fill="rgba(255,180,0,0.13)"/>`);
+      if ((bb - aa) * xs > 90) s.push(`<text x="${X((aa + bb)/2)}" y="${Y(W/2) + 15}" text-anchor="middle" fill="#FFB400" font-size="11" font-weight="600">DISPLACED ${fmt(b - a)}</text>`);
+    });
+    // threshold bars at landing thresholds
+    [P.dA, L - P.dB].forEach((xT, i) => {
+      const dir = i === 0 ? 1 : -1;
+      const xa = xT, xb = xT + dir * 30;
+      if (Math.max(xa, xb) < o.x0 || Math.min(xa, xb) > o.x1) return;
+      const n = 10;
+      for (let j = 0; j < n; j++){
+        const yc = -W/2 + 2 + (j + 0.5) * (W - 4) / n;
+        s.push(`<rect x="${X(Math.min(xa, xb))}" y="${Y(yc) - 1.2 * ys}" width="${30 * xs}" height="${Math.max(1, 1.8 * ys)}" fill="rgba(240,244,255,.35)"/>`);
+      }
+    });
+    // fixtures
+    FIX.forEach(f => {
+      if (f.x < o.x0 - 6 || f.x > o.x1 + 6) return;
+      const layer = f.sys;
+      if (lay[layer] === false) return;
+      const col = view === 'A' ? f.cA : f.cB;
+      const cx = X(f.x), cyy = Y(f.y), r = R[f.sys];
+      const tip = `<title>${f.id} · ${SYS_NAME[f.sys]} · x ${f2(f.x)} ${OUT.unit} · y ${f2(f.y)} ${OUT.unit} · ${COL_NAME[col]} (from ${view})</title>`;
+      const fill = col === 'none' ? 'none' : COL[col];
+      const stroke = col === 'none' ? COL.none : 'rgba(0,0,0,.45)';
+      if (f.sys === 'thr' || f.sys === 'wing' || f.sys === 'end'){
+        s.push(`<rect x="${cx - r}" y="${cyy - r}" width="${2*r}" height="${2*r}" fill="${fill}" stroke="${stroke}" stroke-width="0.8">${tip}</rect>`);
+      } else {
+        s.push(`<circle cx="${cx}" cy="${cyy}" r="${r}" fill="${fill}" stroke="${stroke}" stroke-width="0.8">${tip}</circle>`);
+      }
+    });
+    s.push('</g>');
+
+    // end labels
+    const des = (val('rwDesignation') || '').split('/').map(t => t.trim());
+    const nameA = des[0] || 'A', nameB = des[1] || 'B';
+    if (o.x0 <= 0 + EPS) s.push(`<text x="${X(0)}" y="${Y(halfM) - 8}" fill="#00d4ff" font-size="13" font-weight="700">END A · ${esc(nameA)}</text>`);
+    if (o.x1 >= L - EPS) s.push(`<text x="${X(L)}" y="${Y(halfM) - 8}" text-anchor="end" fill="#00d4ff" font-size="13" font-weight="700">END B · ${esc(nameB)}</text>`);
+
+    // axis
+    const ya = cy + halfPx + 14;
+    s.push(`<line x1="${X(o.x0)}" x2="${X(o.x1)}" y1="${ya}" y2="${ya}" stroke="#8fa3c4" stroke-width="1"/>`);
+    const stepU = niceStep(u(o.x1 - o.x0));
+    for (let t = Math.ceil(u(o.x0) / stepU - 1e-9) * stepU; t <= u(o.x1) + 1e-9; t += stepU){
+      const xm = OUT.unit === 'ft' ? t * M_PER_FT : t;
+      s.push(`<line x1="${X(xm)}" x2="${X(xm)}" y1="${ya}" y2="${ya + 5}" stroke="#8fa3c4"/>`);
+      s.push(`<text x="${X(xm)}" y="${ya + 18}" text-anchor="middle" fill="#8fa3c4" font-size="11">${Math.round(t)}</text>`);
+    }
+    s.push(`<text x="${widthPx - mr}" y="${ya + 34}" text-anchor="end" fill="#8fa3c4" font-size="11">Chainage from End A (${OUT.unit})</text>`);
+
+    if (o.legend){
+      let lx = ml; const ly = H - 16;
+      [['white','White'],['yellow','Yellow caution'],['red','Red'],['green','Green'],['none','Not visible']].forEach(([c, t]) => {
+        s.push(`<circle cx="${lx + 5}" cy="${ly - 4}" r="5" fill="${c === 'none' ? 'none' : COL[c]}" stroke="${c === 'none' ? COL.none : 'rgba(0,0,0,.4)'}"/>`);
+        s.push(`<text x="${lx + 16}" y="${ly}" fill="#c8d8f0" font-size="11">${t}</text>`);
+        lx += 24 + t.length * 6.4 + 18;
+      });
+      s.push(`<text x="${lx + 6}" y="${ly}" fill="#8fa3c4" font-size="11">● edge / centreline / TDZ   ■ threshold / wing bar / runway end</text>`);
+    }
+    s.push('</svg>');
+    return s.join('');
+  }
+
+  let lastOverview = '';
+  function renderOverview(){
+    lastOverview = planSVG({ x0:0, x1:G.P.L, exag:true, title:true, legend:true, detail:false });
+    document.getElementById('overviewWrap').innerHTML = lastOverview;
+  }
+
+  function setDetailRange(){
+    const L = G.P.L;
+    const winEl = document.getElementById('detWin'), stEl = document.getElementById('detStart');
+    const maxWin = Math.max(30, Math.min(600, Math.round(L)));
+    winEl.max = Math.max(60, maxWin);
+    winEl.min = Math.min(120, Math.max(30, maxWin));
+    if (+winEl.value > +winEl.max) winEl.value = winEl.max;
+    if (+winEl.value < +winEl.min) winEl.value = winEl.min;
+    const win = +winEl.value;
+    stEl.max = Math.max(0, Math.floor(L - win));
+    if (+stEl.value > +stEl.max) stEl.value = stEl.max;
+  }
+
+  function renderDetail(){
+    if (!G) return;
+    const L = G.P.L;
+    const win = Math.min(+document.getElementById('detWin').value, L);
+    const stEl = document.getElementById('detStart');
+    stEl.max = Math.max(0, Math.floor(L - win));
+    const x0 = Math.min(+stEl.value, Math.max(0, L - win));
+    setText('detStartLab', f2(x0) + ' ' + OUT.unit);
+    setText('detWinLab', f2(win) + ' ' + OUT.unit);
+    document.getElementById('detailWrap').innerHTML = planSVG({ x0, x1: x0 + win, exag:false, title:false, legend:false, detail:true });
+  }
+
+  function jumpDetail(where){
+    if (!G) return;
+    const { P } = G, L = P.L;
+    const win = Math.min(+document.getElementById('detWin').value, L);
+    let st = 0;
+    if (where === 'A') st = 0;
+    else if (where === 'B') st = L - win;
+    else if (where === 'mid') st = (L - win) / 2;
+    else if (where === 'tdzA') st = P.dA - 20;
+    else if (where === 'tdzB') st = (L - P.dB) + 20 - win;
+    st = Math.max(0, Math.min(st, L - win));
+    document.getElementById('detStart').value = Math.round(st);
+    renderDetail();
+  }
+
+  function renderLegend(){
+    const items = [['white','White — edge, centreline, TDZ'],['yellow','Yellow — caution zone'],['red','Red — runway end / displaced area / centreline end zone'],['green','Green — threshold, wing bar'],['none','Ring — not visible from this approach']];
+    document.getElementById('legend').innerHTML = items.map(([c, t]) => `<span class="lg"><span class="dot" style="background:${c === 'none' ? 'transparent' : COL[c]};${c === 'none' ? 'border:1px solid ' + COL.none : ''}"></span>${t}</span>`).join('') +
+      '<span class="lg">● circles: edge / centreline / TDZ &nbsp; ■ squares: threshold / wing bar / runway end</span>';
+  }
+
+  /* ───────── exports ───────── */
+  function fileBase(){
+    const d = (val('rwDesignation') || 'runway').replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return 'RWY-' + d + '-lighting-layout';
+  }
+  function save(blob, name){
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  function status(t){ setText('reportStatus', t); }
+
+  function downloadSVG(){
+    if (!G) { status('Nothing to export — fix the inputs first.'); return; }
+    const svg = '<?xml version="1.0" encoding="UTF-8"?>\n' + lastOverview;
+    save(new Blob([svg], { type:'image/svg+xml' }), fileBase() + '.svg');
+    status('Layout SVG downloaded.');
+  }
+  function downloadPNG(){
+    if (!G) { status('Nothing to export — fix the inputs first.'); return; }
+    const img = new Image();
+    const url = URL.createObjectURL(new Blob([lastOverview], { type:'image/svg+xml' }));
+    img.onload = () => {
+      const w = 3000, h = Math.round(w * img.naturalHeight / img.naturalWidth);
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const ctx = cv.getContext('2d'); ctx.fillStyle = '#060d1a'; ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      cv.toBlob(b => { save(b, fileBase() + '.png'); status('Layout PNG downloaded.'); }, 'image/png');
+    };
+    img.onerror = () => { status('PNG export failed in this browser — use the SVG instead.'); URL.revokeObjectURL(url); };
+    img.src = url;
+  }
+  function csvCell(v){ const s = String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+  function downloadCSV(){
+    if (!G) { status('Nothing to export — fix the inputs first.'); return; }
+    const head = ['ID','System','Group','Chainage_m','Chainage_ft','Lateral_m','Lateral_ft','Colour_from_A','Colour_from_B','Note'];
+    const rows = FIX.map(f => [f.id, SYS_NAME[f.sys], f.grp, f.x.toFixed(3), (f.x / M_PER_FT).toFixed(3), f.y.toFixed(3), (f.y / M_PER_FT).toFixed(3), COL_NAME[f.cA], COL_NAME[f.cB], f.note].map(csvCell).join(','));
+    const csv = '﻿' + head.join(',') + '\n' + rows.join('\n') + '\n';
+    save(new Blob([csv], { type:'text/csv;charset=utf-8' }), fileBase() + '-schedule.csv');
+    status('Fixture schedule CSV downloaded (' + FIX.length + ' rows). Chainage from physical End A; lateral + = left looking A→B.');
+  }
+
+  /* ───────── init ───────── */
+  document.getElementById('layerBar').addEventListener('change', () => { if (G){ renderOverview(); renderDetail(); } });
+  (function(){
+    const navbar = document.getElementById('navbar'), scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => {
+      scrollBtn.classList.toggle('visible', window.scrollY > 400);
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+    const hb=document.getElementById('hamburger'), nl=document.getElementById('navLinks');
+    hb.addEventListener('click',()=>{const o=nl.classList.toggle('open');hb.setAttribute('aria-expanded',o);});
+  })();
+  onStandardChange();
+</script>
+</body>
+</html>

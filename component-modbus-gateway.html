@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modbus Gateway | AGL Component Library</title>
+    <meta name="description" content="Modbus gateway reference guide: protocol translation between serial Modbus devices and Ethernet-based AGL control systems, and integration architecture." />
+    <meta name="keywords" content="Modbus gateway, protocol converter, AGL control network, airfield ground lighting" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-modbus-gateway.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Modbus Gateway | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Modbus gateway reference guide: protocol translation between serial Modbus devices and Ethernet-based AGL control systems, and integration architecture." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-modbus-gateway.html" />
+    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcLsjjYo1Zy8AOwe_C0MJsJrkNPnTV0jvid-cEveGQg&amp;s=10" />
+    <meta property="og:image:alt" content="Modbus Gateway" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Modbus Gateway | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Modbus gateway reference guide: protocol translation between serial Modbus devices and Ethernet-based AGL control systems, and integration architecture." />
+    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcLsjjYo1Zy8AOwe_C0MJsJrkNPnTV0jvid-cEveGQg&amp;s=10" />
+    <meta name="theme-color" content="#060d1a" />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-modbus-gateway.html#faq", "url": "https://rahulsharmaagl.in/component-modbus-gateway.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-modbus-gateway.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a Modbus gateway?", "acceptedAnswer": {"@type": "Answer", "text": "A Modbus gateway, also called a Modbus TCP/IP to RTU gateway or Modbus bridge, is a protocol conversion device that lets Modbus serial devices (RTU or ASCII) communicate over Ethernet using Modbus TCP."}}, {"@type": "Question", "name": "Where are Modbus gateways used in AGL systems?", "acceptedAnswer": {"@type": "Answer", "text": "To connect legacy CCRs that only support Modbus RTU, remote I/O modules on RS-485, Modbus-enabled weather sensors and transformer monitoring modules to the Ethernet control network."}}, {"@type": "Question", "name": "How does a Modbus gateway convert RTU to TCP?", "acceptedAnswer": {"@type": "Answer", "text": "It receives the serial frame, checks its CRC (RTU) or LRC (ASCII), strips that check and adds a 7-byte Modbus TCP (MBAP) header with transaction ID, protocol ID, length and unit identifier. The result is sent over Ethernet, and replies are converted back the same way."}}, {"@type": "Question", "name": "What serial settings does a Modbus gateway support?", "acceptedAnswer": {"@type": "Answer", "text": "RS-232, RS-422 or RS-485 (2-wire or 4-wire), baud rates from 300 to 115200 bps, 7 or 8 data bits, none, even, odd, mark or space parity, and 1 or 2 stop bits."}}, {"@type": "Question", "name": "Why do Modbus devices on the same serial line need unique slave IDs?", "acceptedAnswer": {"@type": "Answer", "text": "If two slaves share an ID on the same line, both respond to the same request and the replies collide. Each device on a serial port needs its own address."}}, {"@type": "Question", "name": "Which standards apply to Modbus gateways?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are the Modbus Application Protocol Specification V1.1b, IEC 61000-6-2 (EMC immunity), and FAA AC 150/5345-56 for AGL control and monitoring interfaces."}}, {"@type": "Question", "name": "How often should a Modbus gateway be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Semi-annual serial and Ethernet link tests, and annual address and slave ID mapping reviews and firmware and security patch reviews."}}, {"@type": "Question", "name": "What are the common problems with Modbus gateways?", "acceptedAnswer": {"@type": "Answer", "text": "Serial parameter mismatch (baud rate, parity, data or stop bits), duplicate slave IDs, improper RS-485 termination and biasing, and response timeouts set too short for slow serial devices."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+            --green: #2ecc71;
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── COMPONENT HERO ── */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .comp-img-box i {
+            font-size: 100px;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        .diagram-step {
+            flex: 1;
+            min-width: 150px;
+            background: rgba(255, 180, 0, 0.05);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagram-step i {
+            color: var(--gold);
+            font-size: 20px;
+        }
+        .diagram-step h6 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: .3px;
+        }
+        .diagram-step p {
+            font-size: 11.5px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .diagram-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            padding: 0 10px;
+            flex-shrink: 0;
+        }
+        .diagram-chevron-mid {
+            display: flex;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            margin: 6px 0;
+        }
+        .diagram-hub {
+            display: flex;
+            justify-content: center;
+        }
+        .diagram-hub .diagram-step {
+            max-width: 340px;
+        }
+        .diagram-branches {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .diagram-branch {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 18px;
+            border-radius: 12px;
+        }
+        .diagram-branch.branch-gold {
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+        }
+        .diagram-branch.branch-cyan {
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        .diagram-branch.branch-red {
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .branch-gold .diagram-branch-label { color: var(--gold); }
+        .branch-cyan .diagram-branch-label { color: var(--cyan); }
+        .branch-red .diagram-branch-label { color: var(--red); }
+        .diagram-branch-step {
+            font-size: 13px;
+            color: var(--text);
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .diagram-branch-step i { flex-shrink: 0; font-size: 14px; }
+        .branch-gold .diagram-branch-step i { color: var(--gold); }
+        .branch-cyan .diagram-branch-step i { color: var(--cyan); }
+        .branch-red .diagram-branch-step i { color: var(--red); }
+        .diagram-branch-result {
+            margin-top: 4px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .branch-gold .diagram-branch-result { color: var(--gold); background: rgba(255, 180, 0, 0.08); }
+        .branch-cyan .diagram-branch-result { color: var(--cyan); background: rgba(0, 212, 255, 0.08); }
+        .branch-red .diagram-branch-result { color: var(--red); background: rgba(230, 57, 70, 0.08); }
+        .diagram-function-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin-top: 4px;
+        }
+        .diagram-function-card {
+            background: rgba(255, 180, 0, 0.05);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagram-function-card i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .diagram-function-card h6 {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .diagram-function-card p {
+            font-size: 11px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .diagram-result {
+            margin-top: 20px;
+            text-align: center;
+            padding: 16px 20px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 10px;
+        }
+        .diagram-result h6 {
+            color: var(--cyan);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+        .diagram-result p {
+            color: var(--text);
+            font-size: 12.5px;
+            margin-top: 4px;
+        }
+        @media(max-width:900px) {
+            .diagram-flow {
+                flex-direction: column;
+            }
+            .diagram-arrow {
+                transform: rotate(90deg);
+                padding: 10px 0;
+            }
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: #2ecc71;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #2ecc71;
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-modbus-gateway.html#article",
+        "headline": "Modbus Gateway",
+        "description": "Modbus gateway reference guide: protocol translation between serial Modbus devices and Ethernet-based AGL control systems, and integration architecture.",
+        "url": "https://rahulsharmaagl.in/component-modbus-gateway.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-modbus-gateway.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Modbus Gateway"
+        },
+        "articleSection": "Control & Monitoring",
+        "keywords": "Modbus gateway, protocol converter, AGL control network, airfield ground lighting",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcLsjjYo1Zy8AOwe_C0MJsJrkNPnTV0jvid-cEveGQg&s=10"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-modbus-gateway.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-modbus-gateway.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-modbus-gateway.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Modbus Gateway",
+            "item": "https://rahulsharmaagl.in/component-modbus-gateway.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Modbus Gateway</span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-network-wired"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Modbus <span>Gateway</span></h1>
+            <p class="comp-sub">A dedicated protocol converter that bridges Modbus serial devices (RTU/ASCII) to Modbus TCP/IP networks, enabling seamless integration of legacy CCRs, remote I/O, sensors, and other Modbus‑enabled field devices into modern AGL control and monitoring systems. The Modbus Gateway provides galvanic isolation, protocol translation, and data aggregation, ensuring reliable, deterministic communication across the airfield lighting infrastructure.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:550px;height:550px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpcLsjjYo1Zy8AOwe_C0MJsJrkNPnTV0jvid-cEveGQg&amp;s=10" alt="Modbus Gateway" width="550" height="550" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <!-- ─── OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Modbus Gateway</strong> — also referred to as a Modbus TCP/IP to RTU Gateway, Modbus Bridge, or Modbus Router — is a protocol conversion device that enables communication between Modbus serial devices (using the Modbus RTU or ASCII protocols over RS‑232, RS‑422, or RS‑485) and Modbus TCP/IP networks (Ethernet). In AGL applications, the Modbus Gateway is essential for integrating legacy equipment — such as older CCRs, remote I/O units, and sensors — that only support serial communication into a modern Ethernet‑based ALCMS, PLC, or SCADA system.</p>
+                <p style="margin-top:12px;">Key characteristics of the Modbus Gateway include:</p>
+                <ul>
+                    <li><strong>Protocol Conversion:</strong> Translates Modbus RTU/ASCII serial frames into Modbus TCP/IP packets and vice versa, enabling seamless communication between serial and Ethernet networks.</li>
+                    <li><strong>Multiple Serial Ports:</strong> Typically equipped with 1‑4 serial ports (RS‑232/422/485), allowing connection to multiple Modbus serial networks or devices.</li>
+                    <li><strong>Transparent Operation:</strong> Acts as a transparent bridge, preserving the Modbus function codes, data payloads, and error checking, ensuring that the host system (PLC, ALCMS) sees the serial devices as if they were directly connected to the Ethernet network.</li>
+                    <li><strong>Device Addressing:</strong> Supports multiple Modbus slave devices on each serial port, with configurable slave IDs and address mapping to avoid conflicts.</li>
+                    <li><strong>Galvanic Isolation:</strong> Provides opto‑isolation on serial ports to protect the Ethernet network from electrical noise, surges, and ground loops common in airfield environments.</li>
+                    <li><strong>Diagnostics and Monitoring:</strong> Includes status LEDs, serial traffic monitoring, and diagnostic logs to assist with troubleshooting communication issues.</li>
+                    <li><strong>Configuration Flexibility:</strong> Configurable via web interface, command line, or dedicated software, with support for baud rates from 300 bps to 115.2 kbps, parity, data bits, and stop bits.</li>
+                </ul>
+                <p style="margin-top:12px;">In airfield lighting systems, Modbus Gateways are widely used to connect CCRs, isolating transformer monitoring modules, weather stations, and other Modbus‑enabled equipment to the ALCMS network, enabling centralised monitoring, control, and data logging.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The Modbus gateway's purpose is to protect the useful working life of equipment that still functions perfectly well but speaks an older electrical language. An airfield's CCRs, transformer monitors, and sensors often remain reliable for decades, and replacing them purely because the rest of the control system has moved from serial to Ethernet would be a costly, disruptive decision made for compatibility reasons alone, not because the equipment has actually failed or degraded. By translating Modbus RTU serial frames into Modbus TCP/IP transparently, the gateway lets that legacy equipment keep operating exactly as it always has while still becoming visible and controllable from a modern, Ethernet-based ALCMS — turning a potential forced-replacement problem into a straightforward integration one.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPLICATION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Modbus Gateways are deployed throughout the AGL control infrastructure wherever Modbus serial devices need to be integrated into an Ethernet‑based control system. Key applications include:</p>
+                <ul>
+                    <li><strong>Legacy CCR Integration:</strong> Connecting older CCRs that only support Modbus RTU serial communication to the ALCMS network, enabling remote monitoring and control without replacing the regulators.</li>
+                    <li><strong>Remote I/O Networks:</strong> Integrating remote I/O modules that use Modbus RTU over RS‑485 into the Ethernet‑based PLC or SCADA system.</li>
+                    <li><strong>Weather Station Integration:</strong> Connecting Modbus‑enabled weather sensors (wind speed, visibility, temperature) to the ALCMS for real‑time weather data.</li>
+                    <li><strong>Isolating Transformer Monitoring:</strong> Collecting data from Modbus‑enabled transformer monitoring modules to detect faults and predict maintenance needs.</li>
+                    <li><strong>CCR Communication Interface:</strong> Serving as the physical layer interface for CCRs that communicate via Modbus RTU, with the gateway converting to Modbus TCP for the ALCMS.</li>
+                    <li><strong>Substation Data Aggregation:</strong> Aggregating data from multiple Modbus serial devices (CCRs, power meters, circuit monitors) at a remote substation and converting to a single Ethernet uplink.</li>
+                    <li><strong>SCADA Integration:</strong> Providing a Modbus TCP interface to the airport SCADA system, enabling centralised monitoring and control of AGL equipment.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PLACEMENT ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>The gateway is DIN-rail mounted in the same control cabinet or substation enclosure as the serial Modbus devices it serves, so the RS-232/422/485 wiring to each CCR, transformer monitor, or weather station stays short — serial runs are far more susceptible to signal degradation and noise pickup over distance than the Ethernet side of the gateway. Serial cabling is landed on the gateway's opto-isolated ports, which is what allows a noise event or fault on the field wiring to be absorbed there rather than reaching the Ethernet network, while the gateway's Ethernet port connects onward to the substation switch and the ALCMS network beyond it. Slave addressing for each connected device is configured at commissioning to avoid ID conflicts on a shared serial bus, and where several independent serial networks exist in the same cabinet, they are landed on separate ports of a multi-port gateway rather than combined onto one bus. The gateway's own power is drawn from the same control cabinet supply as the devices it serves.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNCTION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The Modbus Gateway operates as a protocol translation engine, performing several key functions to enable seamless integration of serial Modbus devices into an Ethernet network:</p>
+                <ul>
+                    <li><strong>Frame Reception (Serial Side):</strong> The gateway listens on its serial ports for Modbus RTU or ASCII frames. It continuously monitors the serial line, detecting the start and end of each frame based on the configured timing parameters (character timeout and inter‑frame gap).</li>
+                    <li><strong>Frame Validation:</strong> The gateway performs CRC (for RTU) or LRC (for ASCII) error checking to ensure the integrity of the received frame. Invalid frames are discarded and logged for diagnostic purposes.</li>
+                    <li><strong>Protocol Conversion (RTU to TCP):</strong> The gateway strips the RTU frame's CRC (or ASCII frame's LRC) and adds a 7‑byte Modbus TCP (MBAP) header comprising the transaction ID, protocol ID, length field, and unit identifier. The resulting packet is transmitted over Ethernet using the Modbus TCP protocol (port 502).</li>
+                    <li><strong>Protocol Conversion (TCP to RTU):</strong> When the gateway receives a Modbus TCP request from the host system, it removes the Modbus TCP header, adds the appropriate CRC (RTU) or LRC (ASCII) error checking, and transmits the frame over the serial port to the target Modbus slave device.</li>
+                    <li><strong>Address Mapping and Routing:</strong> The gateway supports multiple serial ports and multiple Modbus slave devices on each port. It routes incoming requests to the correct serial port and slave ID based on the unit ID field in the Modbus TCP header. Some gateways also support address translation to map between TCP unit IDs and serial slave IDs.</li>
+                    <li><strong>Buffering and Flow Control:</strong> The gateway manages communication flow, buffering requests and responses to handle differences in speed between the fast Ethernet network and the slower serial network. It also handles serial flow control (RTS/CTS, DTR/DSR) if required by the connected devices.</li>
+                    <li><strong>Diagnostics and Monitoring:</strong> The gateway provides real‑time status information, including serial port status (TX/RX, errors, timeout), Ethernet link status, and system health. Diagnostic logs capture communication events, errors, and configuration changes for troubleshooting.</li>
+                    <li><strong>Security and Access Control:</strong> Many gateways support IP filtering, password‑protected configuration, and optionally TLS/SSL encryption for secure Modbus TCP communication.</li>
+                </ul>
+                <p style="margin-top:12px;">The gateway is typically configured via a built‑in web server or a dedicated configuration tool. Configuration parameters include serial port settings (baud rate, parity, data bits, stop bits), Modbus protocol (RTU/ASCII), device addresses, and network settings (IP address, subnet mask, gateway).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── DIAGRAM ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Protocol Path</div>
+            <h2 class="block-title">RTU/ASCII ⇄ Modbus TCP Translation &amp; Control Logic</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-step"><i class="fa-solid fa-microchip"></i><h6 role="heading" aria-level="3">Serial Device</h6><p>Modbus RTU/ASCII frame with CRC or LRC checksum</p></div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="diagram-step"><i class="fa-solid fa-shield-halved"></i><h6 role="heading" aria-level="3">Frame Validation</h6><p>CRC/LRC checked; invalid frames discarded &amp; logged</p></div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="diagram-step"><i class="fa-solid fa-right-left"></i><h6 role="heading" aria-level="3">Header Swap</h6><p>Strips CRC/LRC, adds/removes the 7-byte Modbus TCP (MBAP) header</p></div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="diagram-step"><i class="fa-solid fa-network-wired"></i><h6 role="heading" aria-level="3">Modbus TCP</h6><p>Routed to the correct slave ID over Ethernet, port 502</p></div>
+                </div>
+                <div class="diagram-result">
+                    <h6 role="heading" aria-level="3">Serial Modbus Devices Reachable Over Ethernet — Both Directions</h6>
+                    <p>Address mapping routes each request to the correct port and slave ID</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TECHNICAL PARAMETERS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The gateway is built into a compact extruded-aluminium or plastic DIN-rail enclosure, small enough to sit alongside other control-cabinet devices, with serial ports (RS-232/422/485) brought out through terminal blocks or DE-9 connectors on one face and the Ethernet RJ-45 jack on the opposite face to keep the two interface types physically separated. Serial-side circuitry includes 2.5 kV opto-isolation between the RS-485/422 bus and the gateway's internal logic, protecting the unit and the attached serial devices from ground-potential differences and transients that are common on long field runs. Internal electronics are conformally coated against dust and humidity, and the dual power inputs terminate at screw-clamp terminals rated for the 24 VDC nominal supply, with a chassis earth stud for bonding to the cabinet ground bus. Where the gateway must be field-mounted outside a conditioned cabinet rather than a panel-mount installation, the housing is upgraded to a sealed IP65 enclosure with cable glands for each conductor entry.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Number of Serial Ports</td><td class="val">1, 2, 4 (RS‑232/422/485, software‑selectable)</td></tr>
+                <tr><td>Serial Interface</td><td class="val">RS‑232, RS‑422, RS‑485 (2‑wire or 4‑wire)</td></tr>
+                <tr><td>Serial Baud Rates</td><td class="val">300, 600, 1200, 2400, 4800, 9600, 19200, 38400, 57600, 115200 bps</td></tr>
+                <tr><td>Data Bits</td><td class="val">7 or 8</td></tr>
+                <tr><td>Parity</td><td class="val">None, Even, Odd, Mark, Space</td></tr>
+                <tr><td>Stop Bits</td><td class="val">1 or 2</td></tr>
+                <tr><td>Modbus Protocol Support</td><td class="val">Modbus RTU (binary), Modbus ASCII</td></tr>
+                <tr><td>Ethernet Interface</td><td class="val">10/100/1000BASE‑T (RJ‑45)</td></tr>
+                <tr><td>Protocols Supported (Ethernet)</td><td class="val">Modbus TCP, HTTP, HTTPS, SNMP, Telnet/SSH</td></tr>
+                <tr><td>Modbus TCP Port</td><td class="val">502 (configurable)</td></tr>
+                <tr><td>Number of Concurrent TCP Connections</td><td class="val">8, 16, 32 (depending on model)</td></tr>
+                <tr><td>Slave ID Support</td><td class="val">1‑247 (configurable per port or global)</td></tr>
+                <tr><td>Address Mapping</td><td class="val">Static mapping or dynamic translation (TCP unit ID to serial slave ID)</td></tr>
+                <tr><td>Galvanic Isolation</td><td class="val">2.5 kV opto‑isolation on serial ports</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (nominal, 18‑32 VDC) or 120/230 VAC</td></tr>
+                <tr><td>Power Consumption</td><td class="val">3‑15 W (depending on model and number of ports)</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-40°C to +70°C (industrial grade)</td></tr>
+                <tr><td>Storage Temperature</td><td class="val">-40°C to +85°C</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP20 (panel mount), IP65 (field mount with enclosure)</td></tr>
+                <tr><td>Mounting</td><td class="val">DIN rail (EN 60715, 35mm) or panel mount</td></tr>
+                <tr><td>Configuration</td><td class="val">Web GUI, command‑line interface (CLI), or dedicated software</td></tr>
+                <tr><td>Diagnostic Features</td><td class="val">Status LEDs, system log, serial traffic monitor, SNMP traps</td></tr>
+                <tr><td>Certifications</td><td class="val">CE, FCC, UL, IEC 61000‑6‑2 (EMC immunity), IEC 62443 (cybersecurity)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ─── STANDARDS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Type</td><td class="val">Low-voltage auxiliary supply — communications device, not part of the airfield series circuit</td></tr>
+                <tr><td>Power Supply</td><td class="val">24VDC (nominal, 18–32VDC) or 120/230VAC</td></tr>
+                <tr><td>Power Consumption</td><td class="val">3–15W depending on model and port count</td></tr>
+                <tr><td>Cable Type</td><td class="val">RS-232/422/485 wiring; Cat5e/6 Ethernet</td></tr>
+                <tr><td>Isolation</td><td class="val">2.5kV opto-isolation on serial ports</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">DIN-rail chassis bonded to the cabinet earth bus</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Input surge/reverse-polarity protection; isolated ports limit fault propagation</td></tr>
+                <tr><td>Standards</td><td class="val">IEC 61000-6-2 (EMC immunity), IEC 62443 (cybersecurity)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">Modbus Application Protocol Specification V1.1b</h5><p>Standard Modbus protocol specification for serial and TCP/IP communication</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑2</h5><p>EMC immunity for industrial environments</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑56</h5><p>Specification for AGL control and monitoring equipment (communication interfaces)</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FIELD ISSUES ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">DIN-Rail Mounting Position</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Mount in the same cabinet or enclosure as the serial Modbus devices it serves, keeping RS-232/422/485 runs short to limit signal degradation and noise pickup.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Serial Wiring to Opto-Isolated Ports</h5><span class="test-stage">Electrical</span></div>
+                        <p>Land serial cabling on the gateway's opto-isolated ports, so a noise event or fault on the field wiring is absorbed there rather than reaching the Ethernet network.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Ethernet Uplink Termination</h5><span class="test-stage">Network</span></div>
+                        <p>Connect the Ethernet port onward to the substation or control network before configuring device addressing.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Address &amp; Slave ID Configuration</h5><span class="test-stage">Software</span></div>
+                        <p>Configure device addresses and slave IDs for each connected serial device before commissioning polling tests.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record mounting location, serial wiring, and address configuration as-built before polling verification begins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Address &amp; Slave ID Mapping Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Confirm register addresses and slave IDs match the approved point list before the gateway is commissioned.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Serial &amp; Ethernet Link Test</h5><span class="test-stage">Energisation</span></div>
+                        <p>Power up the gateway and confirm communication is established on both the serial and Ethernet sides with correct data exchange.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Data Integrity &amp; Polling Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Compare live values at field devices against what is reported at the ALCMS to confirm the mapped data matches exactly.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Status Indicator Function Test</h5><span class="test-stage">Installation</span></div>
+                        <p>Confirm diagnostic LEDs correctly reflect link status, communication activity, and fault conditions.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Firmware &amp; Security Configuration Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Confirm firmware version and access credentials are set per site security policy before the gateway goes live.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record address mapping, link test, and data integrity results in the commissioning dossier.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Serial &amp; Ethernet Link Test</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Verify RS-232/422/485 and Modbus TCP links are error-free, since a degraded serial port can silently corrupt translated data before it reaches the ALCMS.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Address &amp; Slave ID Mapping Review</h5><span class="maint-freq">Annual</span></div>
+                        <p>Confirm static or dynamic address mapping between TCP unit ID and serial slave ID still matches the commissioned configuration.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Firmware &amp; Security Patch Review</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check for validated firmware updates and confirm IEC 62443 cybersecurity settings (firewall, access control) remain correctly configured.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Terminal &amp; Connector Tightness Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Re-torque DIN-rail terminal and RJ-45/serial connector fittings to spec, since loose terminations are a common source of intermittent gateway faults.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Enclosure &amp; Seal Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>For field-mount units, inspect enclosure gaskets and glands to confirm the rated IP65 protection is intact.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Measure incoming 24 VDC or AC supply to confirm it stays within tolerance, since out-of-range supply can cause resets or dropped connections.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">System Log Review</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Review the gateway's system log and serial traffic monitor for recurring errors that indicate a degrading link before it fails outright.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Status Indicator Function Test</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Confirm status LEDs and SNMP trap alerts respond correctly during a simulated fault so operations staff can trust the indication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Serial Communication Parameter Mismatch</h5><p>Misconfigured baud rate, parity, data bits, or stop bits between the gateway and the Modbus serial device will result in garbled data or no communication. Always verify the serial settings against the device's documentation. Use a serial monitor to capture and analyse the raw serial data to confirm correct settings.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Duplicate Slave IDs</h5><p>When multiple Modbus slave devices are connected to the same serial port, each must have a unique slave ID. Duplicate IDs will cause addressing conflicts and communication errors. Check and configure unique slave IDs for all connected devices.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">RS‑485 Termination and Biasing</h5><p>For RS‑485 networks, improper termination (missing or incorrect termination resistors) can cause signal reflections and communication errors. Ensure that termination resistors are installed at both ends of the RS‑485 bus and that biasing resistors (pull‑up/pull‑down) are correctly configured.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Network Timeout Configuration</h5><p>If the gateway's response timeout is set too short, slow serial devices may not have enough time to respond, causing frequent timeouts. Increase the timeout value to match the response time of the slowest device on the serial network.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">IP Address Conflicts</h5><p>Assigning duplicate IP addresses to the gateway or other devices on the Ethernet network can cause communication failures. Ensure that each device on the network has a unique IP address. Use DHCP for automatic addressing or static addressing with a managed address plan.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Firmware Version Compatibility</h5><p>Some Modbus devices may require specific firmware versions or have known issues with certain gateways. Always check the compatibility matrix of the gateway vendor and keep firmware updated to the latest stable version.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Cybersecurity Vulnerabilities</h5><p>Gateways with default credentials or exposed management interfaces are vulnerable to unauthorised access. Change default passwords, disable unused services (e.g., Telnet, FTP), and place the gateway in a secured network segment with firewall protection.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">No Communication or Garbled Data on the Serial Side</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Mismatched baud rate, parity, data bits, or stop bits between the gateway and the Modbus serial device.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare configured serial settings against the device's documentation; use a serial monitor to capture and inspect raw serial traffic.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Correct the mismatched serial parameter(s) on the gateway or device and re-verify with the serial monitor.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Addressing Conflicts on the Serial Bus</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Two or more Modbus slave devices configured with the same slave ID on the same serial port.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the slave ID configuration of every device on the serial bus for duplicates.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Reassign unique slave IDs to each device and re-test communication with all devices online simultaneously.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Frequent Communication Errors on an RS-485 Network</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Improper or missing termination resistors, or incorrect biasing on the RS-485 bus.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for termination resistors at both physical ends of the bus; verify pull-up/pull-down biasing resistor configuration.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Install correct termination at both bus ends and configure biasing resistors per the network design, then re-test for error-free communication.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Frequent Timeouts From a Specific Slow Device</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The gateway's response timeout is set shorter than the slowest device on the serial network can respond.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure actual response time of the slow device; compare against the gateway's configured timeout value.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Increase the timeout setting to accommodate the slowest device's response time without causing other issues.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Ethernet-Side Devices Unreachable or Intermittent</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">IP address conflict between the gateway and another device on the network.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for duplicate IP addresses across the network segment; review DHCP lease assignments or static address plan.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Resolve the IP conflict by correcting the static address or DHCP configuration and confirm the gateway is reliably reachable.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Communication Fails Only With Certain Device Models</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Firmware incompatibility between the gateway and specific Modbus device models.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the gateway vendor's compatibility matrix for the specific device model and firmware version in use.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Update the gateway firmware to the latest stable version compatible with the affected device model, or substitute a confirmed-compatible gateway.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Suspected Unauthorised Access to the Gateway</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Default credentials still in use or unused management services (Telnet, FTP) left enabled.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for default/unchanged credentials and review which services are active on the gateway.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Change default credentials, disable unused services, and place the gateway within a secured, firewalled network segment.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── RELATED COMPONENTS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Serial Communication Parameter Mismatch</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A baud rate, parity, or stop-bit setting on the gateway that doesn't match the connected serial device's configuration.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">No communication or garbled data appears on the serial side, even though the physical wiring itself is sound.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Serial and Ethernet link test, and a review of the configured communication parameters against the connected device's specification.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Duplicate Slave IDs</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Two or more devices on the same serial bus configured with the same Modbus slave address, whether from an installation error or a device swapped in without reconfiguration.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Addressing conflicts on the serial bus, producing unpredictable or overlapping responses that corrupt polling data.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Address and slave ID mapping review, checked against the documented address assignment for that bus.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">RS-485 Termination and Biasing Fault</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Missing or incorrectly placed end-of-line termination resistors, or inadequate bias resistors on a long or electrically noisy RS-485 run.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Frequent communication errors on the RS-485 network, particularly under electrical noise or as cable runs get longer.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Serial and Ethernet link test focused on the affected segment, checking termination and bias resistor placement against the network topology.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">IP Address Conflict</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Two devices on the Ethernet side configured with the same IP address, whether from a static-address error or a DHCP misconfiguration.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Ethernet-side devices become unreachable or intermittent, since network traffic intended for one device may be answered by the other.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Address and slave ID mapping review extended to the Ethernet side, cross-checked against the network's IP address register.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Firmware Version Incompatibility</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A gateway or connected device firmware update that changes protocol handling in a way the other side wasn't built to expect.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Communication fails only with certain device models, since the incompatibility is specific to how that model implements the protocol.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Firmware and security patch review, and a compatibility check against the connected device's documented firmware requirements.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Cybersecurity Vulnerability</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Unpatched gateway firmware, default credentials, or an access control gap on a device that bridges serial field devices onto the wider network.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Suspected unauthorised access to the gateway, risking both data integrity and command authority over the connected field devices.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Firmware and security configuration check, and a review of the gateway's system log for unexpected access attempts.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Before Wiring Work</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>De-energise the gateway's supply before disconnecting or re-terminating serial or Ethernet wiring, even though voltages are low, to avoid disturbing adjacent live control circuits sharing the same panel.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-list-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Slave ID and Address Mapping</h5><span class="test-stage">Verification</span></div>
+                        <p>Check the documented address assignment before adding or swapping a device on the serial bus; a duplicate slave ID produces overlapping responses that corrupt polling data for every device on that bus, not just the new one.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-sliders"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Match Serial Communication Parameters</h5><span class="test-stage">Verification</span></div>
+                        <p>Confirm baud rate, parity, and stop-bit settings match the connected serial device before commissioning, since a mismatch here produces no communication or garbled data even when the physical wiring is sound.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm RS-485 Termination and Biasing</h5><span class="test-stage">Verification</span></div>
+                        <p>Verify end-of-line termination and bias resistors are correctly placed on the RS-485 bus after any change, since missing or misplaced termination is a recurring cause of intermittent bus errors.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Fallback Before Removing the Gateway</h5><span class="test-stage">Operational</span></div>
+                        <p>Before servicing or replacing the gateway, confirm the legacy serial devices it bridges have no other path to the ALCMS, since removing it cuts off ALCMS visibility of every device on that serial segment.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">ESD Precautions</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Use anti-static handling precautions when servicing the gateway board, since electrostatic discharge can damage the communication and logic circuitry with no immediate outward sign of failure.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE &amp; Grounding</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Confirm the gateway enclosure and cable shielding are bonded/grounded per the electrical design, and use standard PPE appropriate to the panel it is mounted in.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Confirm every device on the serial bus is polling correctly and reporting clean data at the ALCMS before closing out the work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Intermittent Bus Errors Are Almost Always Physical, Not Logical</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>When Modbus polling fails intermittently rather than consistently, the root cause is far more often a termination, biasing, or cable-length issue on the RS-485 segment than a configuration problem at the gateway. Check the physical bus health first before spending time re-verifying slave IDs and register maps that were probably fine to begin with.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Keep the Address Map as a Living Document</h5><span class="expert-tag">Documentation</span></div>
+                        <p>Slave ID assignments made informally during a field fix often never make it back into the official address register, so the next technician adding a device works from an out-of-date map and risks a duplicate ID. Treat any on-site address change as incomplete until the master register is updated, not just the device itself.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Polling Load Grows Quietly as Devices Are Added</h5><span class="expert-tag">Design</span></div>
+                        <p>Each new device added to a serial bus over time incrementally increases total poll-cycle time, and a bus that responded promptly with five devices can develop a noticeably slower refresh rate at twenty. Periodically check actual poll-cycle time against the number of connected devices rather than assuming capacity is unlimited just because performance seemed fine when it was originally installed.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Cable Routing Near Power Circuits Introduces Noise Slowly</h5><span class="expert-tag">Reliability</span></div>
+                        <p>A serial cable routed too close to a power or CCR circuit at installation can perform acceptably for years until a nearby load changes or insulation ages, at which point induced noise starts corrupting data intermittently. Where noise-related errors appear on an established bus with no recent changes, check for altered conditions along the existing cable route before assuming a new fault.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Map Every Downstream Device Before Any Planned Replacement</h5><span class="expert-tag">Operational</span></div>
+                        <p>It's easy to underestimate how many legacy devices a single gateway bridges, especially on an older site where the bus has grown incrementally over years. Physically confirm the current device list against the documented one before scheduling gateway maintenance, since an out-of-date list risks an unplanned loss of visibility to devices nobody remembered were on that segment.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Replacement Gateway Should Match More Than Just the Protocol</h5><span class="expert-tag">Retrofit</span></div>
+                        <p>Two gateways that both speak Modbus can still differ in how they handle timeouts, retries, or exception responses, and those differences can surface as subtly different behaviour under marginal bus conditions. Verify a replacement unit's protocol handling in detail during commissioning rather than assuming "Modbus-compatible" on the datasheet is a complete match.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about Modbus gateways in AGL systems: protocol conversion, serial settings, standards and maintenance.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a Modbus gateway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A Modbus gateway, also called a Modbus TCP/IP to RTU gateway or Modbus bridge, is a protocol conversion device that lets Modbus serial devices (RTU or ASCII) communicate over Ethernet using Modbus TCP.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Where are Modbus gateways used in AGL systems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>To connect legacy CCRs that only support Modbus RTU, remote I/O modules on RS-485, Modbus-enabled weather sensors and transformer monitoring modules to the Ethernet control network.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">How does a Modbus gateway convert RTU to TCP?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It receives the serial frame, checks its CRC (RTU) or LRC (ASCII), strips that check and adds a 7-byte Modbus TCP (MBAP) header with transaction ID, protocol ID, length and unit identifier. The result is sent over Ethernet, and replies are converted back the same way.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">What serial settings does a Modbus gateway support?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>RS-232, RS-422 or RS-485 (2-wire or 4-wire), baud rates from 300 to 115200 bps, 7 or 8 data bits, none, even, odd, mark or space parity, and 1 or 2 stop bits.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">Why do Modbus devices on the same serial line need unique slave IDs?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>If two slaves share an ID on the same line, both respond to the same request and the replies collide. Each device on a serial port needs its own address.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">Which standards apply to Modbus gateways?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are the Modbus Application Protocol Specification V1.1b, IEC 61000-6-2 (EMC immunity), and FAA AC 150/5345-56 for AGL control and monitoring interfaces.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">How often should a Modbus gateway be checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Semi-annual serial and Ethernet link tests, and annual address and slave ID mapping reviews and firmware and security patch reviews.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">What are the common problems with Modbus gateways?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Serial parameter mismatch (baud rate, parity, data or stop bits), duplicate slave IDs, improper RS-485 termination and biasing, and response timeouts set too short for slow serial devices.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-ccr-communication-interface.html" class="related-card"><i class="fa-solid fa-radio"></i><h5 role="heading" aria-level="3">CCR Communication Interface</h5></a>
+                <a href="component-communication-gateway.html" class="related-card"><i class="fa-solid fa-gateway"></i><h5 role="heading" aria-level="3">Communication Gateway</h5></a>
+                <a href="component-plc.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">PLC</h5></a>
+                <a href="component-remote-i-o.html" class="related-card"><i class="fa-solid fa-plug"></i><h5 role="heading" aria-level="3">Remote I/O</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on Modbus Gateway selection, configuration, or integration for your AGL system?</h4><p>Precision AGL Academy provides advice on serial network design, protocol configuration, troubleshooting, and best practices for reliable Modbus communication.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Modbus Gateway is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Modbus%20Gateway">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Modbus%20Gateway" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

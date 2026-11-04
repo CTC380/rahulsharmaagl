@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AGL Commissioning Checklist Tool | Precision AGL Academy</title>
+<meta name="description" content="AGL commissioning tool: CCR step current and circuit voltage checks, a saved checklist from pre-checks to acceptance, and a printable sign-off summary."/>
+<meta name="author" content="Precision AGL Academy"/>
+<link rel="canonical" href="https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="theme-color" content="#060d1a"/>
+<link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html"/>
+<link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:title" content="AGL Commissioning Checklist Tool | Precision AGL Academy"/>
+<meta name="twitter:description" content="AGL commissioning tool: CCR step current and circuit voltage checks, a saved checklist from pre-checks to acceptance, and a printable sign-off summary."/>
+<meta name="keywords" content="AGL Commissioning Checklist Tool, AGL Commissioning Checklist Tool online, AGL Commissioning Checklist Tool calculation, AGL calculator, airfield ground lighting calculator, airfield lighting design calculations, free online AGL engineering calculator, ICAO Annex 14, Precision AGL Academy"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="assets/vendor/jspdf.umd.min.js"></script>
+<script src="assets/vendor/jspdf.plugin.autotable.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#2ecc71;--orange:#ff8c42;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.15);transition:all .4s ease;}
+  nav.scrolled{background:rgba(6,13,26,0.97);border-bottom-color:rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white);text-decoration:none;white-space:nowrap;}
+  .nav-logo span{color:var(--gold);}
+  @media(max-width:900px){.nav-logo{font-size:20px;letter-spacing:2px;}}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:9px 20px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;white-space:nowrap;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:8px;}
+  .hamburger span{width:22px;height:2px;background:var(--white);display:block;}
+  @media(max-width:1120px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .nav-links.open{display:flex;flex-direction:column;gap:16px;position:absolute;top:70px;left:0;right:0;padding:18px 20px;background:rgba(6,13,26,.98);border-bottom:1px solid rgba(255,180,0,.25);}
+  }
+
+
+  .breadcrumb{padding:110px 40px 0;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 30px;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:18px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:17px;line-height:1.8;color:var(--text);max-width:760px;}
+  @media(max-width:768px){.page-title{font-size:42px;}}
+
+  section{padding:0 0 90px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1300px;margin:auto;padding:0 40px;}
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;line-height:1;margin-bottom:10px;}
+  .block-note{font-size:13.5px;color:var(--text);margin-bottom:26px;max-width:700px;line-height:1.7;}
+
+  /* CALCULATOR CARD */
+  .calc-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:34px;margin-bottom:24px;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:800px){.calc-grid{grid-template-columns:1fr;}}
+  .field-group{margin-bottom:18px;}
+  .field-group label{display:block;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .field-group input, .field-group select, .field-group textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .3s;}
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus{border-color:rgba(255,180,0,0.4);}
+  .field-hint{font-size:11.5px;color:var(--text);margin-top:6px;}
+  .calc-result{background:rgba(255,180,0,0.05);border:1px solid rgba(255,180,0,0.2);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
+  .calc-result .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:8px;}
+  .calc-result .r-value{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold);line-height:1;margin-bottom:10px;}
+  .calc-result .r-note{font-size:12.5px;color:var(--text);line-height:1.7;}
+  .calc-warn{margin-top:14px;font-size:11.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+  .calc-warn i{color:var(--cyan);margin-top:2px;}
+
+  /* COMPLIANCE / STATUS BADGE */
+  .req-badge{margin-top:16px;padding:16px 20px;border-radius:10px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;letter-spacing:.3px;}
+  .req-badge i{font-size:18px;}
+  .req-badge.pass{background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.35);color:var(--green);}
+  .req-badge.fail{background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.35);color:var(--red);}
+  .req-badge.review{background:rgba(255,140,66,0.1);border:1px solid rgba(255,140,66,0.35);color:var(--orange);}
+  .req-badge.na{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
+  .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
+
+  /* SECTION DIVIDER WITHIN THE CARD */
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
+  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
+  .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  /* CALCULATOR BREAKDOWN GRID */
+  .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid var(--border);}
+  @media(max-width:800px){.calc-breakdown{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.calc-breakdown{grid-template-columns:1fr;}}
+  .bd-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+  .bd-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;}
+  .bd-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:.5px;}
+  .bd-sub{font-size:11px;color:var(--text);margin-top:4px;line-height:1.5;}
+  .bd-val.pass{color:var(--green);}
+  .bd-val.fail{color:var(--red);}
+  .bd-val.na{color:var(--text);font-size:16px;}
+
+  /* SPECIAL CONDITION FLAGS */
+  .flag-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);color:#ffb3ba;}
+  .flag-banner i{color:var(--red);margin-top:2px;}
+  .flag-banner + .flag-banner{margin-top:10px;}
+
+  .info-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);}
+  .info-banner i{color:var(--cyan);margin-top:2px;}
+  .info-banner + .info-banner{margin-top:10px;}
+
+  /* META ROW */
+  .meta-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  @media(max-width:600px){.meta-row{grid-template-columns:1fr;}}
+
+  .sub-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .check-row{display:flex;gap:22px;flex-wrap:wrap;}
+  .check-row label{display:flex;align-items:center;gap:8px;text-transform:none;font-size:13px;color:var(--white);font-weight:500;cursor:pointer;}
+  .check-row input[type=checkbox]{width:auto;accent-color:var(--gold);}
+
+  /* QUANTITY TABLES */
+  .qty-table td.qty-total-label{color:var(--white);font-weight:700;}
+  .qty-table tr.qty-total td{border-top:1px solid rgba(255,180,0,0.25);border-bottom:none;padding-top:14px;}
+  .qty-table td.qty-total-val{color:var(--gold);font-weight:700;font-size:15px;}
+  .qty-table td.qty-basis{font-size:11px;color:var(--text);}
+
+  /* GEOMETRY DIAGRAM */
+  .geo-diagram{font-family:'Barlow Condensed',sans-serif;font-size:12.5px;color:var(--text);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:16px 20px;white-space:pre;overflow-x:auto;line-height:1.65;}
+
+  /* REPORT BUTTON */
+  .report-btn{margin-top:22px;padding:14px 28px;background:var(--gold);color:#0a1628;border:none;border-radius:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:12.5px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .3s;font-family:'Barlow',sans-serif;}
+  .report-btn:hover{background:#ffc637;transform:translateY(-2px);}
+  .report-btn:active{transform:translateY(0);}
+
+  /* REVISION BAR */
+  .revision-bar{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
+  .revision-bar .rev-tag{font-size:11.5px;font-weight:700;letter-spacing:1px;color:var(--text);text-transform:uppercase;}
+  .revision-bar .rev-tag strong{color:var(--gold);}
+  .revision-bar .rev-disclaimer{font-size:11.5px;color:var(--text);font-style:italic;line-height:1.6;max-width:560px;}
+
+  /* REFERENCE / METHODOLOGY SECTION */
+  .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
+  @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
+  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+  .method-card h4 i{color:var(--gold);}
+  .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
+  .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
+
+  .std-table{width:100%;font-size:12.5px;border-collapse:collapse;}
+  .std-table th{text-align:left;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .std-table td{padding:10px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .std-table td.val{color:var(--white);font-weight:600;}
+  .std-table tr:last-child td{border-bottom:none;}
+
+  /* TOOLKIT LINKS */
+  .link-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
+  .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
+  .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
+  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link p{font-size:11.5px;color:var(--text);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  .scroll-top{position:fixed;bottom:30px;right:30px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;color:#000;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:0 8px 24px rgba(255,180,0,0.25);}
+  .scroll-top.visible{opacity:1;transform:translateY(0);}
+  .scroll-top:hover{transform:translateY(-4px) scale(1.05);}
+
+  @media(max-width:600px){
+    nav{padding:0 20px;}
+    .breadcrumb{padding:100px 20px 0;}
+    .page-hero{padding:30px 20px 20px;}
+    .container{padding:0 20px;}
+    footer{padding:20px;flex-direction:column;text-align:center;}
+    .calc-card{padding:22px 18px;}
+  }
+
+  /* Dropdown fix: dark list background so option text is visible */
+  select{color-scheme:dark;}
+  select option,select optgroup{background:#0d1e38;color:#f0f4ff;}
+  /* FAQ */
+  .faq-list{display:grid;gap:10px;max-width:900px}
+  .faq-item{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.03);transition:border-color .3s}
+  .faq-item[open]{border-color:rgba(255,180,0,.3)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;font-size:15px;font-weight:700;color:var(--white)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';font-size:22px;line-height:1;color:var(--gold);flex-shrink:0}
+  .faq-item[open] summary::after{content:'\2212'}
+  .faq-item p{padding:0 20px 18px;font-size:13.5px;line-height:1.75;color:var(--text)}
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<link rel="stylesheet" href="assets/agl-common.css"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Precision AGL Academy"/>
+<meta property="og:title" content="AGL Commissioning Checklist Tool | Precision AGL Academy"/>
+<meta property="og:description" content="AGL commissioning tool: CCR step current and circuit voltage checks, a saved checklist from pre-checks to acceptance, and a printable sign-off summary."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/calc-agl-commissioning-calculator-checklist-og.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="AGL Commissioning Calculator &amp; Checklist | Precision AGL Academy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/calc-agl-commissioning-calculator-checklist-og.jpg"/>
+<meta name="twitter:image:alt" content="AGL Commissioning Calculator &amp; Checklist | Precision AGL Academy"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "AGL Commissioning Calculator & Checklist",
+      "url": "https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html",
+      "applicationCategory": "EngineeringApplication",
+      "operatingSystem": "Any",
+      "description": "AGL commissioning tool: CCR step current and circuit voltage checks, a saved checklist from pre-checks to acceptance, and a printable sign-off summary.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://rahulsharmaagl.in/#academy",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "@id": "https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html#app",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
+      "dateModified": "2026-10-27",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Airfield ground lighting engineers, airport electrical engineers and AGL maintenance technicians"
+      },
+      "browserRequirements": "Requires JavaScript. Works in any modern browser.",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/agl-toolkit.html#webpage"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html#breadcrumb"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/assets/calc-agl-commissioning-calculator-checklist-og.jpg"
+      }
+    },
+    {
+      "@id": "https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html#breadcrumb",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Hub",
+          "item": "https://rahulsharmaagl.in/index.html#knowledge-hub"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AGL Engineering Calculators",
+          "item": "https://rahulsharmaagl.in/agl-toolkit.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculator #65"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the AGL Commissioning Calculator and Checklist do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It checks the CCR output current at each brightness step, compares the circuit voltage with what the load should need, and lets you work through a commissioning checklist from pre-checks to acceptance. It then produces a printable summary with a sign-off block for the contractor and the client or consultant."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is a CCR step current checked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Deviation % = (measured − nominal) ÷ nominal × 100. A step passes when the deviation is within the current tolerance in either direction, and a step is checked only when both the nominal and measured values are entered. The nominal values on the page are typical for a 5-step, 6.6 A CCR and are only a starting point, so replace them with the figures from your CCR datasheet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the expected circuit voltage calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "P = Load ÷ efficiency + I² × Rcable, Q = (Load ÷ efficiency) × tan(cos⁻¹ PF), and the expected V = √(P² + Q²) ÷ Ifull. Ifull is the nominal value of the last step in the table, or 6.6 A if that is empty. The measured voltage passes when it is within the voltage tolerance of the expected value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does a difference between measured and expected voltage suggest?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A higher measured voltage suggests extra resistance such as a poor connector or splice, or lamps or transformers heavier than scheduled. A lower measured voltage suggests missing lamps or transformers, or a lighter load than scheduled."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is CCR loading calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Loading % = (Load ÷ efficiency + I² × Rcable) ÷ (kW × 1000) × 100. This is real-power loading, so enter the CCR rating in kW as the manufacturer states it. The CCR rating is optional."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the checklist work and what do the statuses mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Set each item to Pass, Fail, Pending or N/A. Complete % = Pass ÷ (items − N/A) × 100, and Pending and Fail items both count as not complete. The summary shows Ready only when no item is failed or pending and the circuit test has passed. Open failures means a checklist item or circuit check has failed, and Pending means items are still pending or no circuit test has been run. Your progress is saved only in this browser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the tolerances and limits standard values?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The tolerances, transformer efficiency, power factor and nominal step currents are placeholders you set, and the tool does not know which specification applies. Set the tolerances from your specification."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool replace the acceptance requirements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It supports your commissioning records but does not replace the project specification, the manufacturer's test procedures or the aerodrome authority's acceptance requirements, which set the actual limits and required tests."
+          }
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html#app"
+      }
+    }
+  ]
+}
+</script>
+<style id="ux">
+.page-hero{padding-top:20px;padding-bottom:14px}.page-title{font-size:56px;margin-bottom:12px}
+details summary{cursor:pointer;color:var(--cyan);font-size:12.5px;font-weight:600}
+details.about .page-sub{margin-top:10px;font-size:15px}details.why{margin-top:6px}details.why .field-hint{margin-top:4px}
+.u{text-transform:none;color:var(--text);font-weight:500}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.tabbar{position:sticky;top:70px;z-index:20;background:rgba(6,13,26,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin-bottom:28px}
+.tabbar .container{display:flex;gap:4px;overflow-x:auto}
+.tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--text);font:600 14px 'Barlow',sans-serif;padding:15px 18px;cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--white)}.tab[aria-selected=true]{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-panel[hidden]{display:none}
+.tool-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start}
+.inputs{display:grid;gap:18px;min-width:0}
+.presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.presets b{font-size:12.5px;color:var(--text);margin-right:4px}
+.chip,.btn{border:1px solid rgba(255,180,0,.3);background:none;color:var(--text);border-radius:100px;padding:8px 14px;font:600 12.5px 'Barlow',sans-serif;cursor:pointer;transition:all .2s}
+.chip:hover,.btn:hover{border-color:var(--gold);color:var(--gold)}.chip.ghost{border-color:var(--border)}
+.btn{border-radius:8px;padding:14px 20px;letter-spacing:.5px}
+.step{border:1px solid var(--border);border-radius:12px;padding:22px 24px;background:rgba(255,255,255,.02)}
+.step .subsection-head{margin:0 0 16px;padding:0;border:0}
+.step .field-group:last-child{margin-bottom:0}
+.calc-grid.single>div{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;align-content:start}
+.field-group input.invalid{border-color:var(--red)}
+.result-panel{position:sticky;top:136px;max-height:calc(100vh - 156px);overflow:auto;background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.22);border-radius:14px;padding:22px}
+.result-panel .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text)}
+.result-panel .r-value{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:var(--gold)}
+.r-eq{font-family:'Barlow Condensed',sans-serif;font-size:17px;color:var(--text);letter-spacing:.5px;margin:4px 0 4px}
+.result-panel .r-note{font-size:12px;color:var(--text);line-height:1.6;margin-top:12px}
+.mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:14px}.mini:last-child:nth-child(odd){grid-column:1/-1}
+.mini{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 6px;text-align:center}
+.mini b{display:block;font-family:'Bebas Neue',sans-serif;font-size:24px;font-weight:400;color:var(--white)}.mini span{font-size:10.5px;color:var(--text)}
+.panel-h{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--border);font-size:13px;font-weight:700}
+.cnt{font-size:11.5px;font-weight:600;color:var(--text)}.cnt.warn{color:#ffb3ba}
+.result-panel .flag-banner,.result-panel .info-banner{margin-top:8px;padding:10px 12px;font-size:12px}
+.linkbtn{background:none;border:0;color:var(--cyan);font:600 12.5px 'Barlow',sans-serif;cursor:pointer;margin-top:12px;padding:0}
+.actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}.actions .report-btn{margin-top:0}
+#breakdownGrid{border-top:0;margin-top:0;padding-top:0}
+.calc-card .subsection-head{margin-top:28px}
+.method-card .calc-breakdown{border-top:0;margin-top:8px;padding-top:0}
+.mobile-bar{display:none}
+@media(max-width:1180px){
+.tool-layout{grid-template-columns:1fr}.result-panel{position:static;max-height:none}
+.calc-grid.single>div{grid-template-columns:1fr}
+.mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;align-items:center;gap:12px;padding:8px 16px;background:rgba(6,13,26,.97);border-top:1px solid rgba(255,180,0,.3)}
+.mobile-bar[hidden]{display:none!important}
+.mobile-bar small{display:block;font-size:10.5px;color:var(--text);text-transform:uppercase;letter-spacing:1px}
+.mobile-bar strong{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--gold);font-weight:400}
+.mb-status{font-size:12px;font-weight:700;flex:1;text-align:right}
+.mb-status.pass{color:var(--green)}.mb-status.fail{color:var(--red)}.mb-status.review{color:var(--orange)}.mb-status.na{color:var(--text)}.mb-status.warn{color:var(--gold)}
+body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
+@media(max-width:768px){.page-title{font-size:40px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+<style id="comm-extra">
+@media(max-width:1180px){.tool-layout{grid-template-columns:minmax(0,1fr)}}
+.inputs{grid-template-columns:minmax(0,1fr)}
+@media(max-width:600px){.nav-cta{display:none}.nav-logo{font-size:18px}}
+.calc-grid.single{grid-template-columns:1fr}
+.breadcrumb .current{opacity:1}
+.ru{font-size:30px;color:var(--text);letter-spacing:1px}
+.mini b{font-size:21px;overflow-wrap:anywhere}.mini b.pass{color:var(--green)}.mini b.fail{color:var(--red)}
+.scroll-table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:10px}
+.scroll-table-wrap table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:480px}
+.scroll-table-wrap th{text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border)}
+.scroll-table-wrap td{padding:8px 10px;color:var(--text);border-bottom:1px solid var(--border)}
+.scroll-table-wrap td.val{color:var(--white);font-weight:600}
+.step-table input{width:100%;min-width:84px;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none}
+.step-table input:focus{border-color:rgba(255,180,0,.4)}.step-table input.invalid{border-color:var(--red)}
+.st-ok,td.st-ok{color:var(--green);font-weight:700}.st-bad,td.st-bad{color:var(--red);font-weight:700}
+.bar{height:10px;border-radius:100px;background:rgba(255,255,255,.06);overflow:hidden;margin:6px 0 10px}
+.bar i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.cl-row{display:grid;grid-template-columns:minmax(0,1.6fr) 130px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
+.cl-item{font-size:13.5px;color:var(--white)}
+.cl-row select,.cl-row input{width:100%;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:13.5px;font-family:'Barlow',sans-serif;outline:none}
+.cl-row select:focus,.cl-row input:focus{border-color:rgba(255,180,0,.4)}
+.cl-row select[data-s=Pass]{border-color:rgba(46,204,113,.5);color:var(--green)}
+.cl-row select[data-s=Fail]{border-color:rgba(230,57,70,.6);color:var(--red)}
+.cl-row select[data-s=N\/A]{color:var(--text)}
+@media(max-width:768px){.cl-row{grid-template-columns:1fr 1fr}.cl-item{grid-column:1/-1}}
+.sign-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.sign-grid p{font-size:13px;color:var(--text)}
+@media(max-width:768px){.sign-grid{grid-template-columns:1fr}.meta-row{grid-template-columns:1fr!important}#breakdownGrid{grid-template-columns:repeat(2,1fr)!important}}
+.sum-table th{white-space:nowrap}.sum-table td,.sum-table th{padding:8px 10px}
+.sum-h{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:.5px;margin:20px 0 8px;color:var(--white);font-weight:400}
+.msg{font-size:13px;color:var(--text);line-height:1.7}
+#sm .req-badge{margin-top:18px}
+@media print{nav,.breadcrumb,.page-hero,.tabbar,.mobile-bar,.scroll-top,footer,.noprint,.tab-panel:not(#tab-summary),section:last-of-type{display:none!important}
+#tab-summary{display:block!important}body{background:#fff;color:#000}body::before{display:none}.calc-card{border:0}*{color:#000!important}.req-badge{border:1px solid #000}}
+</style>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;box-sizing:border-box}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);font-family:'Barlow',sans-serif;}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;font-family:'Barlow',sans-serif;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
+@media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
+</style>
+</head>
+<body>
+
+<nav id="navbar" aria-label="Main">
+  <a href="index.html" class="nav-logo" aria-label="Precision AGL Academy – home">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#knowledge-hub">Knowledge Hub</a></li>
+    <li><a href="agl-toolkit.html" class="active" aria-current="page">Toolkit</a></li>
+    <li><a href="component-library.html">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="index.html#knowledge-hub">Knowledge Hub</a><span>/</span>
+  <a href="agl-toolkit.html">AGL Engineering Calculators</a><span>/</span>
+  <span class="current">Calculator #65</span>
+</div>
+
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Planning aid, not a test record or certificate.</strong> Results, limits and pass/fail indications are generic estimates from the values you enter. They are not a test certificate, calibration or evidence of compliance, and test voltages are hazardous. Isolate, lock out and prove dead under your aerodrome&rsquo;s permit-to-work. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+  <div class="page-tag"><i class="fa-solid fa-clipboard-check"></i> Calculator #65</div>
+  <h1 class="page-title">AGL Commissioning <span>Calculator &amp; Checklist</span></h1>
+  <p class="page-sub" style="color:var(--gold);font-weight:600;font-size:15px;margin-bottom:14px;">Check CCR step currents and circuit voltage, work through the commissioning checklist, then print a signed summary.</p>
+  <details class="about"><summary>About this tool</summary><p class="page-sub">Check CCR output current at each brightness step, compare the circuit voltage with what the load should need, work through a commissioning checklist from pre-checks to acceptance, then print a signed summary.</p></details>
+</div>
+
+<div class="tabbar" id="tabbar"><div class="container" role="tablist" aria-label="Tool sections">
+<button class="tab" role="tab" id="t-calc" data-tab="calc" aria-controls="tab-calc">Circuit test</button>
+<button class="tab" role="tab" id="t-checklist" data-tab="checklist" aria-controls="tab-checklist">Checklist</button>
+<button class="tab" role="tab" id="t-summary" data-tab="summary" aria-controls="tab-summary">Summary &amp; sign-off</button>
+<button class="tab" role="tab" id="t-method" data-tab="method" aria-controls="tab-method">Method &amp; reference</button>
+</div></div>
+
+<section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout"><div class="inputs">
+<div class="presets"><b>Quick start</b>
+<button type="button" class="chip" data-preset="good">Healthy circuit</button>
+<button type="button" class="chip" data-preset="bad">Step and voltage out</button>
+<button type="button" class="chip" data-preset="volt">Voltage check only</button>
+<button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
+
+<div class="step">
+  <div class="subsection-head"><h3>Circuit &amp; Tolerances</h3><div class="sub-line"></div></div>
+  <div class="calc-grid single"><div>
+    <div class="field-group" style="grid-column:1/-1">
+      <label for="cid">Circuit ID <span class="u">(for the summary)</span></label>
+      <input id="cid" placeholder="e.g. RWY 09/27 Edge"/>
+    </div>
+    <div class="field-group">
+      <label for="ct">Current tolerance <span class="u">(± %)</span></label>
+      <input id="ct" type="number" value="2" min="0" step="0.1"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Set from your specification.</p></details>
+    </div>
+    <div class="field-group">
+      <label for="vt">Voltage tolerance <span class="u">(± %)</span></label>
+      <input id="vt" type="number" value="10" min="0" step="0.5"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Allowance between expected and measured voltage. Set from your specification.</p></details>
+    </div>
+  </div></div>
+</div>
+
+<div class="step">
+  <div class="subsection-head"><h3>CCR Step Currents</h3><div class="sub-line"></div></div>
+  <details class="why" style="margin:-6px 0 12px"><summary>Rule note</summary><p class="field-hint">Enter the nominal current for each brightness step of your CCR and the value you measured. The nominal values are typical for a 5-step, 6.6 A CCR and are only a starting point. Replace them with the figures from your CCR datasheet.</p></details>
+  <div class="scroll-table-wrap"><table class="step-table" id="st"><thead><tr><th>Step</th><th>Nominal (A)</th><th>Measured (A)</th><th>Deviation</th><th>Result</th></tr></thead><tbody id="stBody"></tbody></table></div>
+</div>
+
+<div class="step">
+  <div class="subsection-head"><h3>Full-Brightness Voltage Check</h3><div class="sub-line"></div></div>
+  <div class="calc-grid single"><div>
+    <div class="field-group">
+      <label for="ld">Total lamp load <span class="u">(W)</span></label>
+      <input id="ld" type="number" value="" min="0" step="any"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Sum of all lamp watts on the circuit.</p></details>
+    </div>
+    <div class="field-group">
+      <label for="ef">Transformer efficiency <span class="u">(%)</span></label>
+      <input id="ef" type="number" value="90" min="50" max="100"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Placeholder. Use the datasheet value.</p></details>
+    </div>
+    <div class="field-group">
+      <label for="lpf">Load power factor</label>
+      <input id="lpf" type="number" value="0.95" min="0.5" max="1" step="0.01"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Placeholder. Use 1.00 to ignore the reactive part of the voltage.</p></details>
+    </div>
+    <div class="field-group">
+      <label for="rc">Primary cable resistance <span class="u">(Ω)</span></label>
+      <input id="rc" type="number" value="" min="0" step="any"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Total loop resistance of the series cable. If left empty, the cable loss is taken as 0.</p></details>
+    </div>
+    <div class="field-group">
+      <label for="vm">Measured CCR output voltage <span class="u">(V)</span></label>
+      <input id="vm" type="number" value="" min="0" step="any"/>
+    </div>
+    <div class="field-group">
+      <label for="kw">CCR rating <span class="u">(kW, optional)</span></label>
+      <input id="kw" type="number" value="" min="0" step="any"/>
+      <details class="why"><summary>Rule note</summary><p class="field-hint">Gives real-power loading %, so use the rating in kW as the manufacturer states it.</p></details>
+    </div>
+  </div></div>
+</div>
+</div>
+
+<aside class="result-panel" aria-label="Result">
+<div class="r-label">Step currents in tolerance</div>
+<div class="r-value" id="resMain" aria-live="polite">—</div>
+<div class="r-eq" id="eqLine"></div>
+<div id="tBadge"></div>
+<div class="mini-grid">
+  <div class="mini"><b id="rpN">—</b><span>Steps checked</span></div>
+  <div class="mini"><b id="rpF">—</b><span>Out of tolerance</span></div>
+  <div class="mini"><b id="rpVe">—</b><span>Expected voltage</span></div>
+  <div class="mini"><b id="rpLoss">—</b><span>Cable I²R loss</span></div>
+  <div class="mini"><b id="rpLoad">—</b><span>CCR loading</span></div>
+  <div class="mini"><b id="rpDv">—</b><span>Measured vs expected</span></div>
+</div>
+<div class="r-note" id="resSub">Enter a measured step current, or the load data, to check the circuit.</div>
+<div class="panel-h">Checks &amp; notes <span class="cnt" id="noteCount">none</span></div>
+<div id="flags"></div>
+<div class="calc-warn"><i class="fa-solid fa-circle-info"></i> This tool supports your commissioning records. It does not replace the project specification, the manufacturer's test procedures or the aerodrome authority's acceptance requirements, which set the actual limits and required tests.</div>
+<button type="button" class="linkbtn" onclick="showTab('checklist')">Open checklist</button>
+<button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('summary')">Summary &amp; sign-off</button>
+</aside></div></div></section>
+
+<section class="tab-panel" id="tab-checklist" role="tabpanel" aria-labelledby="t-checklist" hidden><div class="container"><div class="calc-card">
+  <div class="subsection-head"><h3>Commissioning checklist</h3><div class="sub-line"></div></div>
+  <p class="block-note" style="margin-bottom:16px">Set each item to Pass, Fail, Pending or N/A. Your progress is saved in this browser. Add the test records and reference numbers in the notes column.</p>
+  <div class="calc-breakdown" id="breakdownGrid" style="grid-template-columns:repeat(4,1fr)">
+    <div class="bd-card"><div class="bd-label">Complete</div><div class="bd-val" id="pc">0%</div></div>
+    <div class="bd-card"><div class="bd-label">Pass</div><div class="bd-val pass" id="pp">0</div></div>
+    <div class="bd-card"><div class="bd-label">Fail</div><div class="bd-val fail" id="pf">0</div></div>
+    <div class="bd-card"><div class="bd-label">Pending</div><div class="bd-val" id="pn" style="color:var(--gold)">0</div></div>
+  </div>
+  <div class="bar" role="progressbar" aria-label="Checklist completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pbarWrap"><i id="pbar"></i></div>
+  <div id="cl"></div>
+  <div class="actions"><button type="button" class="btn" id="resetCL">Reset checklist</button></div>
+</div></div></section>
+
+<section class="tab-panel" id="tab-summary" role="tabpanel" aria-labelledby="t-summary" hidden><div class="container"><div class="calc-card">
+  <div class="subsection-head noprint"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="meta-row noprint" style="grid-template-columns:repeat(3,1fr)">
+    <div class="field-group" style="margin-bottom:0"><label for="pj">Project / airport</label><input id="pj"/></div>
+    <div class="field-group" style="margin-bottom:0"><label for="dt">Date</label><input id="dt" type="date"/></div>
+    <div class="field-group" style="margin-bottom:0"><label for="cb">Commissioned by</label><input id="cb"/></div>
+  </div>
+  <div class="actions noprint"><button type="button" class="report-btn" onclick="generateReport()"><i class="fa-solid fa-file-pdf"></i> Generate Summary (PDF)</button>
+  <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button>
+  <button type="button" class="btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button></div>
+  <p class="field-hint noprint" id="reportStatus" style="margin-top:8px"></p>
+
+  <div class="subsection-head"><h3>Commissioning summary</h3><div class="sub-line"></div></div>
+  <div id="sm"></div>
+
+  <div class="subsection-head"><h3>Sign-off</h3><div class="sub-line"></div></div>
+  <div class="sign-grid">
+    <p>Contractor signature: ______________________</p>
+    <p>Client / consultant: ______________________</p>
+    <p>Date: ______________</p>
+  </div>
+
+  <div class="revision-bar">
+    <div class="rev-tag">Commissioning Calculator &amp; Checklist &nbsp;|&nbsp; Rev. <strong>1.1</strong> &nbsp;|&nbsp; 24 Oct 2026</div>
+    <div class="rev-disclaimer">Engineering reference tool. It does not replace the project specification, the manufacturer's test procedures or the aerodrome authority's acceptance requirements.</div>
+  </div>
+</div></div></section>
+
+<section class="tab-panel" id="tab-method" role="tabpanel" aria-labelledby="t-method" hidden>
+  <div class="container">
+    <div class="block-label">Method &amp; Reference</div>
+    <h2 class="block-title">How the checks work</h2>
+    <p class="block-note">Every figure comes from the formulas below, so the result can be checked by hand.</p>
+    <div class="ref-cols">
+      <div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-bolt"></i> Step current</h4>
+          <div class="formula">Deviation % = (measured − nominal) ÷ nominal × 100</div>
+          <p>A step passes when the deviation is within the current tolerance in either direction. A step is only checked when both nominal and measured values are entered.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-plug"></i> Expected circuit voltage</h4>
+          <div class="formula">P = Load ÷ efficiency + I² × R<sub>cable</sub></div><br>
+          <div class="formula">Q = (Load ÷ efficiency) × tan(cos⁻¹ PF)</div><br>
+          <div class="formula">Expected V = √(P² + Q²) ÷ I<sub>full</sub></div>
+          <p>I<sub>full</sub> is the nominal value of the last step in the table, or 6.6 A if that is empty. The measured voltage passes when it is within the voltage tolerance of the expected value.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-gauge-high"></i> CCR loading</h4>
+          <div class="formula">Loading % = (Load ÷ efficiency + I² × R<sub>cable</sub>) ÷ (kW × 1000) × 100</div>
+          <p>This is real-power loading, so enter the CCR rating in kW as the manufacturer states it.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-list-check"></i> Checklist progress</h4>
+          <div class="formula">Complete % = Pass ÷ (items − N/A) × 100</div>
+          <p>Pending and Fail items both count as not complete. The summary shows "Ready for acceptance review" only when no item is failed or pending and the circuit test has no failures.</p>
+        </div>
+      </div>
+      <div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-vial"></i> Reading a voltage difference</h4>
+          <table class="std-table">
+            <tr><th>Measured vs expected</th><th>Look for</th></tr>
+            <tr><td>Higher</td><td class="val">Extra resistance such as a poor connector or splice, or lamps or transformers heavier than scheduled</td></tr>
+            <tr><td>Lower</td><td class="val">Missing lamps or transformers, or a lighter load than scheduled</td></tr>
+          </table>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-badge-check"></i> Summary status</h4>
+          <table class="std-table">
+            <tr><td>🟢 Ready</td><td class="val">No failed or pending items, and the circuit test passed</td></tr>
+            <tr><td>🔴 Open failures</td><td class="val">A checklist item or a circuit check has failed</td></tr>
+            <tr><td>🟠 Pending</td><td class="val">Items are still pending, or no circuit test has been run</td></tr>
+          </table>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <p>It does not know which specification applies. The tolerances, efficiency, power factor and nominal step currents are placeholders you set. It does not replace the manufacturer's test procedures or the aerodrome authority's acceptance requirements. The checklist is saved only in this browser.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title" id="faq-title">AGL Commissioning Calculator and Checklist: Frequently Asked Questions</h2>
+    <p class="block-note">Quick answers on the CCR step current check, the voltage check and the commissioning checklist.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What does the AGL Commissioning Calculator and Checklist do?</summary><p>It checks the CCR output current at each brightness step, compares the circuit voltage with what the load should need, and lets you work through a commissioning checklist from pre-checks to acceptance. It then produces a printable summary with a sign-off block for the contractor and the client or consultant.</p></details>
+      <details class="faq-item"><summary>How is a CCR step current checked?</summary><p>Deviation % = (measured − nominal) ÷ nominal × 100. A step passes when the deviation is within the current tolerance in either direction, and a step is checked only when both the nominal and measured values are entered. The nominal values on the page are typical for a 5-step, 6.6 A CCR and are only a starting point, so replace them with the figures from your CCR datasheet.</p></details>
+      <details class="faq-item"><summary>How is the expected circuit voltage calculated?</summary><p>P = Load ÷ efficiency + I² × Rcable, Q = (Load ÷ efficiency) × tan(cos⁻¹ PF), and the expected V = √(P² + Q²) ÷ Ifull. Ifull is the nominal value of the last step in the table, or 6.6 A if that is empty. The measured voltage passes when it is within the voltage tolerance of the expected value.</p></details>
+      <details class="faq-item"><summary>What does a difference between measured and expected voltage suggest?</summary><p>A higher measured voltage suggests extra resistance such as a poor connector or splice, or lamps or transformers heavier than scheduled. A lower measured voltage suggests missing lamps or transformers, or a lighter load than scheduled.</p></details>
+      <details class="faq-item"><summary>How is CCR loading calculated?</summary><p>Loading % = (Load ÷ efficiency + I² × Rcable) ÷ (kW × 1000) × 100. This is real-power loading, so enter the CCR rating in kW as the manufacturer states it. The CCR rating is optional.</p></details>
+      <details class="faq-item"><summary>How does the checklist work and what do the statuses mean?</summary><p>Set each item to Pass, Fail, Pending or N/A. Complete % = Pass ÷ (items − N/A) × 100, and Pending and Fail items both count as not complete. The summary shows Ready only when no item is failed or pending and the circuit test has passed. Open failures means a checklist item or circuit check has failed, and Pending means items are still pending or no circuit test has been run. Your progress is saved only in this browser.</p></details>
+      <details class="faq-item"><summary>Are the tolerances and limits standard values?</summary><p>No. The tolerances, transformer efficiency, power factor and nominal step currents are placeholders you set, and the tool does not know which specification applies. Set the tolerances from your specification.</p></details>
+      <details class="faq-item"><summary>Does this tool replace the acceptance requirements?</summary><p>No. It supports your commissioning records but does not replace the project specification, the manufacturer's test procedures or the aerodrome authority's acceptance requirements, which set the actual limits and required tests.</p></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="block-label">More Tools</div>
+    <h2 class="block-title">Related Knowledge Hub Resources</h2>
+    <div class="link-grid">
+      <a href="calc-agl-photometric-uniformity-calculator.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><h5>Photometric Uniformity</h5><p>Check a row of intensity readings.</p></a>
+      <a href="calc-photometric-test-data-analyzer.html" class="tool-link"><i class="fa-solid fa-chart-line"></i><h5>Calculator #31</h5><p>Photometric test data analyzer.</p></a>
+      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #52</h5><p>Ohm's law and CCR steps.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v2.9 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any result or record produced by it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Applies to the AGL Commissioning Calculator &amp; Checklist (test and record tool), including its PDF reports, print views.</div><ol class="legal-list"><li><strong>Calculated results.</strong> Results, tables, charts, status indicators (such as &ldquo;OK&rdquo;, &ldquo;within limit&rdquo; or &ldquo;pass&rdquo;/&ldquo;fail&rdquo;), recommended or selected values and the example presets on this page are first-pass planning and training estimates calculated in your browser from the values you enter, using simplified formulas, generic tables and typical values. They do not take account of every factor of a real installation, may contain errors or rounding differences, and are not a design, specification, selection, sizing, procurement or acceptance decision. A competent person must check them against the approved design, the manufacturer&rsquo;s data and the applicable standard before any use. &ldquo;Recommended&rdquo; means an indicative estimate, not an endorsement of any rating, product or supplier.</li><li><strong>Test and record tools.</strong> Test voltages, limits, trend bands and &ldquo;pass&rdquo; or &ldquo;fail&rdquo; statuses shown are generic and indicative and are not acceptance criteria. A result or record produced with this tool is not a test certificate, calibration record, commissioning or completion certificate, inspection report or declaration of serviceability, and is not evidence of compliance. Readings must come from calibrated instruments used by competent, authorised persons. Insulation-resistance and other test voltages are hazardous: treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s procedures.</li><li><strong>Checklist and commissioning records.</strong> The checklist, its ticks, progress indicators and any report are working aids. Ticking an item is not evidence that a task has been done, and the checklist is not a commissioning, test, handover or acceptance record, certificate or permit. Commissioning, energisation, return to service and acceptance decisions rest with the aerodrome operator, the contractor&rsquo;s authorised persons and the competent regulator.</li><li><strong>Reports, downloads and printouts.</strong> PDF reports, CSV files and printed pages produced by this tool are uncontrolled working records generated in your browser. They are not approved designs, drawings, controlled documents, certificates, permits or regulatory records. Calculator numbers, revision labels, dates, project names, signature or approval fields on them are layout only and carry no authority unless made under your own approved document-control system. You must not present an output as an approved, verified or certified document. If you enter personal or confidential information, you are responsible for handling any exported file lawfully, including under the Digital Personal Data Protection Act, 2023.</li><li><strong>Your data and third-party services.</strong> Calculations run in your browser. Values you type, select or tick, and any report you generate, are not sent to us. This tool saves your entries on your own device, in your browser&rsquo;s local storage, so that you can resume later; clear your site data to remove them, and do not enter confidential or security-sensitive information on a shared device. We use no advertising or analytics tools on this page. Your browser requests fonts from Google Fonts and icon files (and, on some pages, scripts) from the cdnjs/Cloudflare network, which receive your IP address and basic browser details under their own policies. Please do not include confidential, classified or security-sensitive information in anything you send to us.</li><li><strong>Educational reference only.</strong> This page is general information for competent, suitably trained and authorised aviation and electrical personnel and for learners. It is not professional engineering, legal, regulatory or safety advice, is not an approved procedure, and creates no professional or client relationship. Values, tolerances, intervals, sequences and examples are generic and indicative; real installations differ by design, make, model, age and condition, and your aerodrome&rsquo;s approved procedures and the manufacturer&rsquo;s documents prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS (IS), DGCA, AAI and other documents are paraphrased summaries for orientation. They are not official text, may be incomplete or superseded, and do not state what any airport, project or regulator requires. Always consult the current official editions and the controlling project specification. Using this tool, or following its output, does not guarantee compliance with any law, standard or approval, and nothing on this page states that any airport, product or project complies or does not comply.</li><li><strong>Safety.</strong> Series-circuit airfield ground lighting equipment can carry lethal voltages. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s permit-to-work and LOTO procedures and the manufacturer&rsquo;s instructions. Nothing on this page authorises work on live equipment, bypassing of any safety device or interlock, installation, adjustment, energisation, return to service, a change of operating category (CAT I/II/III), a NOTAM or any certification decision; those rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>No warranty; limitation of liability.</strong> Content and calculation results are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranty of any kind, including accuracy, completeness, currency, freedom from error or fitness for a particular purpose. To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty, cost or regulatory consequence arising from use of, reliance on, or inability to use this page or any result or file produced by it. Nothing here excludes or limits liability that cannot lawfully be excluded or limited.</li><li><strong>Copyright and third-party names.</strong> &copy; 2026 Precision AGL Academy and Precision AGL Solutions. All rights reserved; copying, republication, scraping or commercial reuse of this tool, its formulas, text, structure and layout needs our prior written permission. You may use results and downloaded reports for your own reference and internal project working. We are not affiliated with, endorsed by or sponsored by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or manufacturer. Third-party names, standard designations and trademarks belong to their owners and are used only for identification.</li><li><strong>Corrections, governing law and contact.</strong> If you find an error in a formula, table or result, or have a safety concern, copyright or other rights issue, or a privacy question, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>. The full Legal Notice governs your use of this website. It is governed by the laws of India; subject to any mandatory rights you may have, the courts at New Delhi have jurisdiction.</li></ol><p class="legal-meta">Notice v2.9 &middot; 27 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+  <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+  <div class="footer-links">
+    <a href="agl-toolkit.html">AGL Toolkit</a>
+    <a href="component-library.html">Components</a>
+    <a href="standards-companion.html">Standards</a>
+    <a href="legal-notice.html">Legal Notice</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<div class="mobile-bar" id="mobileBar"><div><small>Steps in tolerance</small><strong id="mbTotal">—</strong></div><span class="mb-status" id="mbStatus"></span><button type="button" class="chip" onclick="document.querySelector('.result-panel').scrollIntoView({behavior:'smooth'})">Details</button></div>
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const f=(x,n=1)=>isFinite(x)?x.toLocaleString('en-GB',{minimumFractionDigits:n,maximumFractionDigits:n}):'—';
+const num=v=>parseFloat(v);
+const TABS=['calc','checklist','summary','method'];
+function showTab(id,o){
+  if(!TABS.includes(id)) id='calc';
+  TABS.forEach(k=>{const on=k===id;$('tab-'+k).hidden=!on;const b=$('t-'+k);b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;});
+  $('mobileBar').hidden=id!=='calc';
+  document.body.classList.toggle('has-bar',id==='calc');
+  if(id==='summary') renderSummary();
+  if(!(o&&o.keep)){
+    history.replaceState(null,'',id==='calc'?location.pathname+location.search:'#'+id);
+    const top=$('tabbar').getBoundingClientRect().top+scrollY-70;
+    if(scrollY>top) scrollTo({top,behavior:'smooth'});
+  }
+}
+document.querySelectorAll('.tab').forEach((b,i,all)=>{
+  b.addEventListener('click',()=>showTab(b.dataset.tab));
+  b.addEventListener('keydown',e=>{
+    const k={ArrowRight:i+1,ArrowLeft:i-1,Home:0,End:all.length-1}[e.key];
+    if(k===undefined) return; e.preventDefault();
+    const t=all[(k+all.length)%all.length];t.focus();showTab(t.dataset.tab,{keep:true});
+  });
+});
+window.addEventListener('hashchange',()=>showTab(location.hash.slice(1),{keep:true}));
+
+/* ---------- Circuit test ---------- */
+const STEPS=[['B1',2.8],['B2',3.4],['B3',4.1],['B4',5.2],['B5',6.6]];
+$('stBody').innerHTML=STEPS.map((s,i)=>`<tr><td class="val">${s[0]}</td><td><input class="nom" id="n${i+1}" aria-label="${s[0]} nominal current (A)" type="number" step="any" min="0" value="${s[1]}"></td><td><input class="mea" id="m${i+1}" aria-label="${s[0]} measured current (A)" type="number" step="any" min="0"></td><td class="dv">—</td><td class="rs">—</td></tr>`).join('');
+let circ=null;
+const PRESETS={
+  good:{m1:'2.81',m2:'3.40',m3:'4.10',m4:'5.19',m5:'6.60',ld:'1500',rc:'1.2',vm:'275',kw:'5'},
+  bad:{m1:'2.80',m2:'3.41',m3:'4.12',m4:'5.50',m5:'6.58',ld:'1500',rc:'1.2',vm:'310',kw:'5'},
+  volt:{ld:'1500',rc:'1.2',vm:'275',kw:'5'}
+};
+function resetForm(){document.querySelectorAll('#tab-calc input').forEach(e=>{e.value=e.defaultValue;});}
+document.querySelectorAll('[data-preset]').forEach(b=>b.addEventListener('click',()=>{
+  resetForm();Object.entries(PRESETS[b.dataset.preset]).forEach(([id,v])=>$(id).value=v);calcCircuit();
+}));
+$('resetBtn').addEventListener('click',()=>{resetForm();calcCircuit();});
+
+function calcCircuit(){
+  const bad=[],warns=[],notes=[];
+  const chk=(id,okv,name)=>{const el=$(id);el.classList.toggle('invalid',!okv);el.setAttribute('aria-invalid',!okv);if(!okv)bad.push(name);};
+  const ctRaw=$('ct').value,vtRaw=$('vt').value;
+  chk('ct',ctRaw===''||num(ctRaw)>=0,'Current tolerance');
+  chk('vt',vtRaw===''||num(vtRaw)>=0,'Voltage tolerance');
+  const ct=num(ctRaw)||0,vt=num(vtRaw)||0;
+  const rows=[...$('stBody').rows],res=[];let n=0,fail=0;
+  rows.forEach(r=>{
+    const ne=r.querySelector('.nom'),me=r.querySelector('.mea');
+    const nom=num(ne.value),m=num(me.value);
+    [ne,me].forEach(e=>{const isBad=e.value!==''&&num(e.value)<0;e.classList.toggle('invalid',isBad);e.setAttribute('aria-invalid',isBad);if(isBad&&!bad.includes('Step currents'))bad.push('Step currents');});
+    if(nom>0&&m>0){
+      const d=(m-nom)/nom*100,ok=Math.abs(d)<=ct;n++;if(!ok)fail++;
+      r.querySelector('.dv').textContent=(d>0?'+':'')+f(d,2)+' %';
+      r.querySelector('.rs').innerHTML=`<span class="${ok?'st-ok':'st-bad'}">${ok?'Pass':'Out of tolerance'}</span>`;
+      res.push({s:r.cells[0].textContent,nom,m,d,ok});
+    }else{r.querySelector('.dv').textContent='—';r.querySelector('.rs').textContent='—';}
+  });
+  const L=num($('ld').value),ef=num($('ef').value)/100,RcRaw=$('rc').value,Rc=RcRaw===''?0:num(RcRaw),Vm=num($('vm').value),kw=num($('kw').value);
+  chk('ld',$('ld').value===''||L>=0,'Lamp load');
+  chk('ef',$('ef').value===''||(num($('ef').value)>=50&&num($('ef').value)<=100),'Transformer efficiency (50 to 100 %)');
+  chk('rc',RcRaw===''||Rc>=0,'Cable resistance');
+  chk('vm',$('vm').value===''||Vm>=0,'Measured voltage');
+  chk('kw',$('kw').value===''||kw>=0,'CCR rating');
+  const nomFull=num(rows[rows.length-1].querySelector('.nom').value)||6.6;
+  let Ve=NaN,loss=NaN,loading=NaN,dv=NaN,vok=null;
+  if(L>0&&ef>0&&Rc>=0){
+    const lp=num($('lpf').value),pfOk=lp>=0.5&&lp<=1,pfv=pfOk?lp:1;
+    if(!pfOk)notes.push('Power factor is outside 0.5 to 1, so 1.00 was used.');
+    if(RcRaw==='')notes.push('Cable resistance not entered, so the cable I²R loss is taken as 0.');
+    const pin=L/ef;loss=nomFull*nomFull*Rc;const tot=pin+loss;
+    Ve=Math.hypot(tot,pin*Math.tan(Math.acos(pfv)))/nomFull;
+    if(kw>0)loading=tot/(kw*1000)*100;
+    if(Vm>0){dv=(Vm-Ve)/Ve*100;vok=Math.abs(dv)<=vt;}
+  }else if(Vm>0||$('ld').value!==''){notes.push('Enter a total lamp load above 0 to get the expected voltage.');}
+  const set=(id,t,cls)=>{const e=$(id);e.textContent=t;e.className=cls||'';};
+  set('rpN',n?String(n):'—');
+  set('rpF',n?String(fail):'—',n?(fail?'fail':'pass'):'');
+  set('rpVe',isFinite(Ve)?f(Ve,0)+' V':'—');
+  set('rpLoss',isFinite(loss)?f(loss,0)+' W':'—');
+  set('rpLoad',isFinite(loading)?f(loading,0)+' %':'—');
+  set('rpDv',isFinite(dv)?(dv>0?'+':'')+f(dv,1)+' %':'—',vok===null?'':(vok?'pass':'fail'));
+  let msg='';
+  if(n)msg=(fail?`${fail} step(s) are outside ±${ct} %. Check CCR calibration and the feedback setting, then retest. `:`All measured steps are within ±${ct} %. `);
+  if(vok!==null)msg+=vok?'Measured circuit voltage agrees with the expected value.':(dv>0?'Measured voltage is higher than expected. Suspect extra resistance such as a poor connector or splice, or lamps/transformers heavier than scheduled.':'Measured voltage is lower than expected. Suspect missing lamps or transformers, or a lighter load than scheduled.');
+  const anyData=n>0||isFinite(Ve);
+  circ=anyData?{res,n,fail,ct,vt,Ve:isFinite(Ve)?Ve:null,Vm:Vm>0?Vm:null,dv:isFinite(dv)?dv:null,vok,loading:isFinite(loading)?loading:null}:null;
+  const failAny=fail>0||vok===false;
+  if(!anyData){
+    $('resMain').innerHTML='—';$('eqLine').textContent='';
+    $('tBadge').innerHTML='<div class="req-badge na"><i class="fa-solid fa-circle-minus"></i><span>NOT CHECKED<span class="req-sub">Enter a measured step current, or the load data.</span></span></div>';
+    $('resSub').textContent='Enter a measured step current, or the load data, to check the circuit.';
+    $('mbTotal').textContent='—';$('mbStatus').textContent='Not checked';$('mbStatus').className='mb-status na';
+  }else{
+    $('resMain').innerHTML=n?`${n-fail} / ${n} <span class="ru">steps</span>`:'—';
+    $('eqLine').textContent='Current ±'+ct+' % · voltage ±'+vt+' %';
+    const cls=failAny?'fail':(vok===null&&!n?'review':'pass');
+    const lab=failAny?'OUT OF TOLERANCE':(n||vok!==null?'WITHIN TOLERANCE':'PARTLY CHECKED');
+    $('tBadge').innerHTML=`<div class="req-badge ${cls}"><i class="fa-solid ${failAny?'fa-circle-xmark':'fa-circle-check'}"></i><span>${lab}<span class="req-sub">${n?n+' step current(s) checked':'No step current entered'}${vok!==null?', voltage '+(vok?'agrees':'does not agree')+' with the load.':'.'}</span></span></span></div>`;
+    $('resSub').textContent=msg||'Voltage values calculated. Enter a measured voltage to compare.';
+    $('mbTotal').textContent=n?(n-fail)+' / '+n:'—';
+    $('mbStatus').textContent=failAny?'Out of tolerance':'Within tolerance';$('mbStatus').className='mb-status '+(failAny?'fail':'pass');
+  }
+  if(bad.length)warns.push('Check: '+bad.join(', ')+'. Values cannot be negative, and efficiency must be 50 to 100 %.');
+  $('flags').innerHTML=warns.map(x=>`<div class="flag-banner"><i class="fa-solid fa-triangle-exclamation"></i><span>${x}</span></div>`).join('')+notes.map(x=>`<div class="info-banner"><i class="fa-solid fa-circle-info"></i><span>${x}</span></div>`).join('');
+  $('noteCount').textContent=(warns.length||notes.length)?warns.length+' warning'+(warns.length==1?'':'s')+', '+notes.length+' note'+(notes.length==1?'':'s'):'none';
+  $('noteCount').className='cnt'+(warns.length?' warn':'');
+  renderSummary();
+}
+document.querySelectorAll('#tab-calc input').forEach(e=>e.addEventListener('input',calcCircuit));
+
+/* ---------- Checklist ---------- */
+const CL=[
+['A · Documents & Pre-checks',['As-built drawings and circuit schedule available','Equipment delivered and matches the BOQ and datasheets','Visual inspection of fixtures, bases and levelling','Safety isolation and work permits in place','Test instrument calibration certificates checked']],
+['B · Cable & Earthing',['Primary cable insulation resistance recorded','Cable continuity and loop resistance recorded','Earth resistance measured and within target','Connectors and splices inspected','Ducts, markers and cable routes verified']],
+['C · Isolating Transformers',['Transformer ratings match the schedule','Transformer-to-fixture matching verified','Connections and sealing inspected','Open-circuit protection checked']],
+['D · CCR & Control',['CCR installed, earthed and labelled','Output current recorded at every brightness step','Over-current and open-circuit protection tested','Control panel / ALCMS commands and feedback tested','Lamp-failure monitoring tested','Earth-fault and insulation monitoring tested']],
+['E · Lighting & Photometry',['All lamps lit at every brightness step','Aiming and alignment of directional fixtures verified','Colour and orientation checked','Photometric sample measurements taken','PAPI / sign illumination checked where applicable']],
+['F · Acceptance & Handover',['Snag list closed out','As-built drawings updated','O&M manuals and spares handed over','Operator training completed','Test records signed by contractor and client']]];
+let state={},saveOk=true;
+try{state=JSON.parse(localStorage.getItem('agl-comm-v1')||'{}')}catch(e){state={}}
+function save(){try{localStorage.setItem('agl-comm-v1',JSON.stringify(state))}catch(e){saveOk=false}}
+function buildChecklist(){
+  let h='';
+  CL.forEach((g,gi)=>{h+=`<div class="subsection-head"><h3>${esc(g[0])}</h3><div class="sub-line"></div></div>`;
+    g[1].forEach((it,ii)=>{const k=gi+'-'+ii,s=(state[k]||{}).s||'Pending',n=(state[k]||{}).n||'';
+      h+=`<div class="cl-row"><span class="cl-item">${esc(it)}</span><select data-k="${k}" data-s="${s}" aria-label="Status: ${esc(it)}">${['Pending','Pass','Fail','N/A'].map(o=>`<option${o===s?' selected':''}>${o}</option>`).join('')}</select><input data-k="${k}" placeholder="Notes / record no." aria-label="Notes: ${esc(it)}" value="${esc(n)}"></div>`});
+  });
+  $('cl').innerHTML=h;progress();
+}
+$('cl').addEventListener('change',e=>{const t=e.target;if(t.tagName==='SELECT'){t.dataset.s=t.value;updState(t.dataset.k,'s',t.value);progress();}});
+$('cl').addEventListener('input',e=>{const t=e.target;if(t.tagName==='INPUT')updState(t.dataset.k,'n',t.value);});
+function updState(k,fld,v){state[k]=state[k]||{};state[k][fld]=v;save();}
+function stats(){let p=0,fl=0,pe=0,na=0,tot=0;
+  CL.forEach((g,gi)=>g[1].forEach((_,ii)=>{tot++;const s=(state[gi+'-'+ii]||{}).s||'Pending';s==='Pass'?p++:s==='Fail'?fl++:s==='N/A'?na++:pe++}));
+  return{p,fl,pe,na,tot,pct:tot-na?Math.round(p/(tot-na)*100):100}}
+function progress(){const s=stats();$('pc').textContent=s.pct+'%';$('pp').textContent=s.p;$('pf').textContent=s.fl;$('pn').textContent=s.pe;$('pbar').style.width=s.pct+'%';$('pbarWrap').setAttribute('aria-valuenow',s.pct);renderSummary();}
+$('resetCL').addEventListener('click',()=>{if(confirm('Clear all checklist statuses and notes?')){state={};save();buildChecklist();}});
+
+/* ---------- Summary ---------- */
+function model(){
+  const s=stats(),fails=[];
+  CL.forEach((g,gi)=>g[1].forEach((it,ii)=>{if(((state[gi+'-'+ii]||{}).s)==='Fail')fails.push(it)}));
+  const circFail=!!circ&&(circ.fail>0||circ.vok===false);
+  const circOk=!!circ&&(circ.n>0||circ.vok===true)&&!circFail;
+  const all=s.fl===0&&s.pe===0&&circOk;
+  const cls=all?'pass':(s.fl||circFail)?'fail':'review';
+  const label=all?'Ready for acceptance review':(s.fl||circFail)?'Open failures':'Items pending';
+  return{s,fails,circFail,circOk,all,cls,label};
+}
+function renderSummary(){
+  const M=model(),s=M.s;
+  let h=`<div class="scroll-table-wrap"><table class="sum-table"><tbody><tr><th>Project</th><td>${esc($('pj').value||'—')}</td><th>Date</th><td>${esc($('dt').value||'—')}</td></tr><tr><th>Commissioned by</th><td>${esc($('cb').value||'—')}</td><th>Circuit</th><td>${esc($('cid').value||'—')}</td></tr></tbody></table></div>`;
+  h+=`<h4 class="sum-h">Checklist</h4><p class="msg">${s.p} passed · ${s.fl} failed · ${s.pe} pending · ${s.na} not applicable. Complete: ${s.pct}%.</p>`;
+  if(M.fails.length)h+='<p class="msg" style="margin-top:8px"><strong>Failed items:</strong></p><ul class="msg" style="margin-left:20px">'+M.fails.map(x=>`<li>${esc(x)}</li>`).join('')+'</ul>';
+  h+='<h4 class="sum-h">Circuit tests</h4>';
+  if(circ){
+    if(circ.res.length)h+='<div class="scroll-table-wrap"><table class="sum-table"><thead><tr><th>Step</th><th>Nominal (A)</th><th>Measured (A)</th><th>Deviation</th><th>Result</th></tr></thead><tbody>'+circ.res.map(r=>`<tr><td class="val">${r.s}</td><td>${f(r.nom,2)}</td><td>${f(r.m,2)}</td><td>${r.d>0?'+':''}${f(r.d,2)} %</td><td class="${r.ok?'st-ok':'st-bad'}">${r.ok?'Pass':'Out of tolerance'}</td></tr>`).join('')+'</tbody></table></div>';
+    if(circ.Ve)h+=`<p class="msg" style="margin-top:8px">Expected voltage ${f(circ.Ve,0)} V; measured ${circ.Vm?f(circ.Vm,0)+' V ('+(circ.vok?'within':'outside')+' ±'+circ.vt+' %)':'not entered'}.</p>`;
+  }else h+='<p class="msg">No circuit test has been run in this session.</p>';
+  h+=`<div class="req-badge ${M.cls}" style="display:inline-flex"><i class="fa-solid ${M.cls==='pass'?'fa-circle-check':M.cls==='fail'?'fa-circle-xmark':'fa-triangle-exclamation'}"></i><span>${M.label}</span></div>`;
+  $('sm').innerHTML=h;
+}
+['pj','dt','cb','cid'].forEach(id=>$(id).addEventListener('input',renderSummary));
+
+function summaryText(){
+  const M=model(),s=M.s;
+  const lines=['AGL Commissioning Calculator & Checklist',
+    'Project: '+($('pj').value||'—')+' | Date: '+($('dt').value||'—'),
+    'Commissioned by: '+($('cb').value||'—')+' | Circuit: '+($('cid').value||'—'),
+    'Checklist: '+s.p+' passed, '+s.fl+' failed, '+s.pe+' pending, '+s.na+' N/A ('+s.pct+' % complete)'];
+  if(M.fails.length)lines.push('Failed items: '+M.fails.join('; '));
+  if(circ){
+    lines.push('Circuit steps checked: '+circ.n+', out of tolerance: '+circ.fail+' (±'+circ.ct+' %)');
+    if(circ.Ve)lines.push('Expected voltage '+f(circ.Ve,0)+' V; measured '+(circ.Vm?f(circ.Vm,0)+' V':'not entered'));
+  }else lines.push('Circuit test: not run');
+  lines.push('Status: '+M.label,'Limits are user-entered — confirm against the specification and acceptance requirements.');
+  return lines.join('\n');
+}
+function copySummary(){
+  const st=$('reportStatus'),txt=summaryText();
+  const done=()=>{st.style.color='';st.textContent='Summary copied to clipboard.';};
+  const fallback=()=>{const a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();
+    try{document.execCommand('copy');done();}catch(e){st.textContent='Copy failed — select and copy manually.';}a.remove();};
+  if(navigator.clipboard&&window.isSecureContext) navigator.clipboard.writeText(txt).then(done,fallback); else fallback();
+}
+function generateReport(){
+  const st=$('reportStatus');
+  if(!window.jspdf||!window.jspdf.jsPDF){st.textContent='PDF library did not load — check your internet connection and try again.';st.style.color='var(--red)';return;}
+  st.textContent='';st.style.color='';
+  const M=model(),s=M.s,dateStr=new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+  const rowsOut=[
+    ['Project / airport',$('pj').value||'—'],['Date',$('dt').value||'—'],['Commissioned by',$('cb').value||'—'],['Circuit',$('cid').value||'—'],
+    ['Checklist',`${s.p} passed, ${s.fl} failed, ${s.pe} pending, ${s.na} N/A`],['Checklist complete',s.pct+' %'],
+    ['Failed items',M.fails.length?M.fails.join('; '):'None'],
+    ['Circuit steps checked',circ?circ.n+' (out of tolerance: '+circ.fail+', tolerance ±'+circ.ct+' %)':'Not run'],
+    ['Expected / measured voltage',circ&&circ.Ve?f(circ.Ve,0)+' V / '+(circ.Vm?f(circ.Vm,0)+' V':'not entered'):'—'],
+    ['Voltage check',circ&&circ.vok!==null?(circ.vok?'Within ':'Outside ')+'±'+circ.vt+' %':'—'],
+    ['Status',M.label],['Report date',dateStr],['Calculator revision','Commissioning Calculator & Checklist | Rev. 1.1 | 24 Oct 2026']];
+  const tbl=circ?circ.res.map(r=>[r.s,f(r.nom,2),f(r.m,2),(r.d>0?'+':'')+f(r.d,2)+' %',r.ok?'Pass':'Out of tolerance']):[];
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF({unit:'pt',format:'a4'});
+  const pw=doc.internal.pageSize.getWidth(),ph=doc.internal.pageSize.getHeight();
+  const pageBg=[6,13,26],sheetBg=[13,30,56],border=[28,44,71],gold=[255,180,0],white=[240,244,255],muted=[143,163,196];
+  const sx=24,sy=24,sw=pw-sx*2,sh=ph-sy*2,padX=36,mx=sx+padX,cw=sw-padX*2;
+  const paint=()=>{doc.setFillColor(...pageBg);doc.rect(0,0,pw,ph,'F');doc.setFillColor(...sheetBg);doc.setDrawColor(...border);doc.setLineWidth(1);doc.roundedRect(sx,sy,sw,sh,12,12,'FD');};
+  paint();
+  let y=sy+padX+6;
+  doc.setFont('helvetica','bold');doc.setFontSize(17);doc.setTextColor(...white);
+  doc.text('Commissioning Summary',mx,y,{maxWidth:cw});
+  y+=26;doc.setFontSize(9);doc.setTextColor(...gold);
+  doc.text('PRECISION AGL ACADEMY  ·  COMMISSIONING CALCULATOR & CHECKLIST',mx,y);
+  y+=22;
+  const margin={left:mx,right:pw-(mx+cw),top:sy+padX,bottom:sy+30};
+  const line=data=>{doc.setDrawColor(...border);doc.setLineWidth(0.6);doc.line(data.cell.x,data.cell.y+data.cell.height,data.cell.x+data.cell.width,data.cell.y+data.cell.height);};
+  doc.autoTable({startY:y,margin,tableWidth:cw,showHead:false,body:rowsOut,theme:'plain',
+    styles:{font:'helvetica',fontSize:9.5,cellPadding:{top:5,bottom:5,left:4,right:4},fillColor:sheetBg,textColor:white},
+    columnStyles:{0:{cellWidth:170,textColor:muted},1:{fontStyle:'bold',textColor:white}},
+    willDrawPage:d=>{if(d.pageNumber>1)paint();},
+    didParseCell:d=>{if(d.row.raw[0]==='Status')d.cell.styles.textColor=M.cls==='pass'?[46,204,113]:M.cls==='fail'?[230,57,70]:[255,140,66];},
+    didDrawCell:line});
+  y=doc.lastAutoTable.finalY+16;
+  if(tbl.length){
+    doc.autoTable({startY:y,margin,tableWidth:cw,theme:'plain',head:[['Step','Nominal (A)','Measured (A)','Deviation','Result']],body:tbl,
+      styles:{font:'helvetica',fontSize:8.5,cellPadding:4,fillColor:sheetBg,textColor:white},headStyles:{textColor:gold,fontStyle:'bold'},
+      willDrawPage:d=>{if(d.pageNumber>1)paint();},
+      didParseCell:d=>{if(d.section==='body'&&d.column.index===4&&d.cell.raw!=='Pass')d.cell.styles.textColor=[230,57,70];},
+      didDrawCell:line});
+    y=doc.lastAutoTable.finalY+20;
+  }
+  if(y>ph-190){doc.addPage();paint();y=sy+padX;}
+  doc.setDrawColor(...border);doc.setLineWidth(1);doc.line(mx,y,mx+cw,y);
+  y+=40;doc.setFont('helvetica','normal');doc.setFontSize(9.5);doc.setTextColor(...white);
+  doc.text('Contractor signature: ______________________',mx,y);
+  doc.text('Client / consultant: ______________________',mx+cw/2,y);
+  y+=30;doc.text('Date: ______________',mx,y);
+  y+=34;doc.setFont('helvetica','bold');doc.setFontSize(10);doc.setTextColor(...gold);
+  doc.text('Precision AGL Academy',mx,y);
+  const bw=doc.getTextWidth('Precision AGL Academy');
+  doc.setFont('helvetica','normal');doc.setTextColor(...muted);
+  doc.text(' — Airfield Ground Lighting Knowledge Hub',mx+bw,y);
+  y+=16;doc.setFont('helvetica','italic');doc.setFontSize(8.5);
+  doc.text(doc.splitTextToSize("Engineering reference tool. This summary supports commissioning records. It does not replace the project specification, the manufacturer's test procedures or the aerodrome authority's acceptance requirements, which set the actual limits and required tests.",cw),mx,y);
+  const safe=($('cid').value||$('pj').value||'commissioning').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+  doc.save('commissioning-summary-'+safe+'.pdf');
+}
+
+buildChecklist();calcCircuit();
+showTab(location.hash.slice(1),{keep:true});
+if(!saveOk)document.getElementById('cl').insertAdjacentHTML('beforebegin','<p class="field-hint">This browser is blocking storage, so checklist progress will not be saved.</p>');
+
+(function(){
+  const navbar=$('navbar'),scrollBtn=$('scrollTop');
+  window.addEventListener('scroll',()=>{
+    scrollBtn.classList.toggle('visible',window.scrollY>400);
+    navbar.classList.toggle('scrolled',window.scrollY>40);
+  });
+  scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+  const hb=$('hamburger'),nl=$('navLinks');
+  hb.addEventListener('click',()=>{const o=nl.classList.toggle('open');hb.setAttribute('aria-expanded',o);});
+})();
+</script>
+</body>
+</html>

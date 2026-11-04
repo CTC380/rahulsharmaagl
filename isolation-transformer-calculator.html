@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Isolation Transformer Selection Calculator | AGL Sizing Tool</title>
+<meta name="description" content="Free AGL isolating transformer calculator: enter series circuit current and fixture rating for a recommended standard size and secondary current check."/>
+<meta name="keywords" content="isolation transformer calculator, isolating transformer sizing, AGL isolating transformer, series circuit current, secondary current calculator, airfield ground lighting transformer, constant current regulator transformer, runway lighting transformer selection"/>
+<meta name="author" content="Precision AGL Academy"/>
+<meta name="robots" content="index, follow"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/isolation-transformer-calculator.html"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Isolation Transformer Selection Calculator | AGL Sizing Tool"/>
+<meta property="og:description" content="Enter series circuit current and fixture rating to get a recommended standard AGL isolating transformer size and check secondary current."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/isolation-transformer-calculator.html"/>
+<meta property="og:site_name" content="Precision AGL Academy | AGL Knowledge Hub"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/og-isolation-transformer-calculator.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_US"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Isolation Transformer Selection Calculator | AGL Sizing Tool"/>
+<meta name="twitter:description" content="Enter series circuit current and fixture rating to get a recommended standard AGL isolating transformer size and check secondary current."/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-isolation-transformer-calculator.jpg"/>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@type": "WebApplication",
+  "@id": "https://rahulsharmaagl.in/isolation-transformer-calculator.html#webapplication",
+  "@context": "https://schema.org",
+  "name": "Isolation Transformer Selection Calculator",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any (web browser)",
+  "description": "Free AGL isolating transformer calculator: enter series circuit current and fixture rating for a recommended standard size and secondary current check.",
+  "author": {
+    "@type": "Person",
+    "name": "Precision AGL Academy",
+    "jobTitle": "AGL Specialist"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Precision AGL Academy | AGL Knowledge Hub",
+    "url": "https://rahulsharmaagl.in/"
+  },
+  "url": "https://rahulsharmaagl.in/isolation-transformer-calculator.html",
+  "publisher": {
+    "@id": "https://rahulsharmaagl.in/academy.html#org"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/isolation-transformer-calculator.html#breadcrumb"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-isolation-transformer-calculator.jpg"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://rahulsharmaagl.in/isolation-transformer-calculator.html#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Isolating Transformer",
+      "item": "https://rahulsharmaagl.in/component-isolating-transformer.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Selection Calculator",
+      "item": "https://rahulsharmaagl.in/isolation-transformer-calculator.html"
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/isolation-transformer-calculator.html#faq",
+  "url": "https://rahulsharmaagl.in/isolation-transformer-calculator.html",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the Isolation Transformer Selection Calculator do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You enter the series circuit current, the fixture's rated power and secondary voltage, and a safety margin. It returns a recommended standard transformer rating, the required power including margin, the approximate secondary current, the approximate turns ratio and the headroom against the fixture rating."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the recommended transformer size calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Required power is the fixture's rated power multiplied by one plus the safety margin. The calculator then picks the smallest standard rating that is at least that value. For example, a 45 W fixture with a 15% margin needs 51.75 W, so the recommendation is 65 W."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which standard transformer ratings does the calculator use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "45 W, 65 W, 100 W, 150 W, 200 W and 300 W. Typical applications range from low-intensity fixtures and small signs at 45 W up to high-intensity approach lighting and sequenced flashing systems at 300 W."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the secondary current worked out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the fixture's rated power divided by its secondary voltage. Typical secondary voltages are 6.6 V, 12 V or 24 V depending on the lamp or LED type."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What series circuit currents can I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "6.6 A for a standard AGL loop, 20 A for a high-current loop and 2.8 A for low-step or obstruction circuits."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What safety margin should I choose?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator offers 10% for a tight fit, 15% as typical and 20% as conservative. The margin is the headroom above the fixture's rated power before choosing a transformer size."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the required power is above 300 W?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The calculator flags that the requirement exceeds the largest standard rating listed. Such a fixture needs a custom or higher-capacity transformer, so confirm with the manufacturer before specifying."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use the result as the final transformer selection?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is a first-pass sizing estimate for planning. Final selection must confirm compliance with the applicable specification (ICAO Annex 14, FAA AC 150/5345-53, IEC 61822 or IS 7785), the manufacturer's rated power and insulation class, and site factors such as cable length and voltage drop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the headroom figure show?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It compares the selected standard rating with the fixture's rated power, as a percentage. A positive value means spare capacity, and a negative value would mean the transformer is smaller than the fixture load."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/isolation-transformer-calculator.html#webapplication"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://rahulsharmaagl.in/academy.html#org",
+      "name": "Precision AGL Academy",
+      "url": "https://rahulsharmaagl.in/academy.html",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/favicon.svg"
+      },
+      "description": "Specialized Airfield Ground Lighting (AGL) training platform in India offering design, photometry, maintenance and diploma-level engineering programs.",
+      "email": "precisionaglsolutions@gmail.com",
+      "telephone": "+91-9821496412",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "founder": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#3ddc97;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:10px 24px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:24px;height:2px;background:var(--white);}
+  @media(max-width:900px){.nav-links,.nav-cta{display:none;} .hamburger{display:flex;}}
+
+  .breadcrumb{padding:110px 40px 0;max-width:1100px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 40px;max-width:1100px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:2px;line-height:1;margin-bottom:16px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:16px;line-height:1.8;color:var(--text);max-width:720px;}
+  @media(max-width:768px){.page-title{font-size:38px;}}
+
+  section{padding:0 0 70px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1100px;margin:auto;padding:0 40px;}
+
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+  @media(max-width:900px){.calc-grid{grid-template-columns:1fr;}}
+
+  .calc-panel{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:32px;}
+  .calc-panel h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:20px;color:var(--gold);}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text);margin-bottom:8px;}
+  .field select, .field input{width:100%;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;}
+  .field select:focus, .field input:focus{outline:none;border-color:rgba(255,180,0,0.4);}
+  .field .hint{font-size:11.5px;color:var(--text);opacity:.65;margin-top:6px;}
+  .calc-btn{width:100%;padding:14px;border-radius:8px;background:var(--gold);color:#000;border:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .25s;}
+  .calc-btn:hover{background:#ffc933;}
+
+  .result-panel{background:linear-gradient(135deg,#0d1e38,#1a2f50);border:1px solid rgba(255,180,0,0.2);border-radius:16px;padding:32px;}
+  .result-panel h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:6px;}
+  .result-panel .rp-sub{font-size:12.5px;color:var(--text);margin-bottom:22px;}
+  .result-row{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0;border-top:1px solid rgba(255,255,255,0.08);}
+  .result-row:first-of-type{border-top:none;}
+  .result-row .rl{font-size:13px;color:var(--text);}
+  .result-row .rv{font-size:19px;font-weight:700;font-family:'Bebas Neue',sans-serif;letter-spacing:.5px;color:var(--white);}
+  .result-row .rv.gold{color:var(--gold);}
+  .result-row .rv.green{color:var(--green);}
+  .result-row .rv.red{color:var(--red);}
+  .headroom-bar{margin-top:16px;height:8px;border-radius:6px;background:rgba(255,255,255,0.08);overflow:hidden;}
+  .headroom-fill{height:100%;background:var(--gold);border-radius:6px;transition:width .4s ease;}
+  .empty-state{color:var(--text);font-size:13.5px;line-height:1.8;opacity:.7;}
+
+  .note-box{display:flex;gap:12px;align-items:flex-start;margin-top:24px;padding:16px 20px;background:rgba(0,212,255,0.05);border:1px solid rgba(0,212,255,0.18);border-radius:10px;font-size:12.5px;color:var(--text);line-height:1.7;}
+  .note-box i{color:var(--cyan);margin-top:2px;flex-shrink:0;}
+  .note-box.warn{background:rgba(230,57,70,0.05);border-color:rgba(230,57,70,0.2);}
+  .note-box.warn i{color:var(--red);}
+
+  .step-table{width:100%;border-collapse:collapse;margin-top:14px;}
+  .step-table th{text-align:left;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);padding:10px 12px;border-bottom:1px solid var(--border);}
+  .step-table td{padding:10px 12px;font-size:13px;color:var(--text);border-bottom:1px solid var(--border);}
+
+  /* academy cta (matches component-page academy-cta design) */
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;line-height:1;margin-bottom:20px;}
+  .academy-cta{position:relative;background:linear-gradient(160deg,#0d1e38,#0a1628 60%,#0d1e38);border:1px solid rgba(255,180,0,0.25);border-radius:20px;padding:50px;overflow:hidden;margin:50px 0;}
+  .academy-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--cyan));}
+  .academy-cta-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;}
+  @media(max-width:900px){.academy-cta-grid{grid-template-columns:1fr;}}
+  .academy-cta p{color:var(--text);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:560px;}
+  .academy-cta-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;}
+  .academy-pathway{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:22px 20px;}
+  .academy-pathway-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .academy-pathway-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;}
+  .academy-pathway-flow span{font-family:'Barlow Condensed',sans-serif;font-size:13.5px;font-weight:600;color:var(--white);background:rgba(255,180,0,0.08);border:1px solid rgba(255,180,0,0.2);padding:5px 10px;border-radius:20px;white-space:nowrap;}
+  .academy-pathway-flow i{color:var(--gold);font-size:10px;opacity:.6;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;}
+  .btn-gold{background:var(--gold);color:#000;}
+  .btn-gold:hover{background:#ffc933;transform:translateY(-3px);}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  /* FAQ */
+  .faq-wrap .faq-intro{font-size:14px;color:var(--text);margin-bottom:22px;line-height:1.7;}
+  .faq-list{display:flex;flex-direction:column;gap:10px;max-width:980px;}
+  .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+  .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+  .faq-item .faq-q{flex-grow:1;}
+  .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+  .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+  .faq-item[open] .chev{transform:rotate(180deg);}
+  .faq-item[open] summary{border-bottom:1px solid var(--border);}
+  .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+/* LEGAL-NOTICE v1.0 */
+.legal-banner{max-width:1100px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+select{color-scheme:dark;}
+select option,select optgroup{background:#0d1e38;color:#f0f4ff;}
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="fundamentals.html">Fundamentals</a></li>
+    <li><a href="component-library.html" class="active">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+    <main id="main-content">
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="component-isolating-transformer.html">Isolating Transformer</a><span>/</span>
+  <span class="current">Selection Calculator</span>
+</div>
+
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Planning estimate only &mdash; not a design or selection decision.</strong> Results are indicative and must be checked by a competent person against the manufacturer&rsquo;s data, the applicable specification and the approved design. Series-circuit AGL equipment can carry lethal voltages; nothing here authorises work on live equipment. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+  <div class="page-tag"><i class="fa-solid fa-calculator"></i> AGL Engineering Tools</div>
+  <h1 class="page-title">Isolation Transformer <span>Selection Calculator</span></h1>
+  <p class="page-sub">A working starting point for selecting an AGL isolating transformer's rated power and checking secondary current — enter the series circuit current and fixture rating to get a recommended standard transformer size.</p>
+</div>
+
+<section>
+  <div class="container">
+    <div class="calc-grid">
+      <div class="calc-panel">
+        <h3 role="heading" aria-level="2">Inputs</h3>
+        <div class="field">
+          <label for="primaryCurrent">Series Circuit Rated Current</label>
+          <select id="primaryCurrent">
+            <option value="6.6">6.6 A (standard AGL loop)</option>
+            <option value="20">20 A (high-current loop)</option>
+            <option value="2.8">2.8 A (low step / obstruction circuits)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fixturePower">Fixture Rated Power (W)</label>
+          <input type="number" id="fixturePower" placeholder="e.g. 100" min="1" step="1" inputmode="decimal"/>
+          <div class="hint">The rated wattage of the lamp or LED module at its design voltage.</div>
+        </div>
+        <div class="field">
+          <label for="secondaryVoltage">Fixture Rated Secondary Voltage (V)</label>
+          <input type="number" id="secondaryVoltage" placeholder="e.g. 6.6" min="0.1" step="0.1" inputmode="decimal" list="voltagePresets"/>
+          <datalist id="voltagePresets">
+            <option value="6.6"></option>
+            <option value="12"></option>
+            <option value="24"></option>
+          </datalist>
+          <div class="hint">Typical values: 6.6V, 12V, 24V depending on lamp/LED type.</div>
+        </div>
+        <div class="field">
+          <label for="margin">Safety Margin</label>
+          <select id="margin">
+            <option value="10">10% — tight fit</option>
+            <option value="15" selected>15% — typical</option>
+            <option value="20">20% — conservative</option>
+          </select>
+          <div class="hint">Headroom above the fixture's rated power before selecting a transformer size.</div>
+        </div>
+        <div style="display:flex;gap:12px;">
+          <button class="calc-btn" id="calcBtn"><i class="fa-solid fa-bolt"></i> Calculate</button>
+          <button class="calc-btn" id="resetBtn" style="background:transparent;border:1px solid var(--border);color:var(--text);width:auto;padding:14px 20px;"><i class="fa-solid fa-rotate-left"></i></button>
+        </div>
+      </div>
+
+      <div class="result-panel" id="resultPanel" aria-live="polite">
+        <h3 role="heading" aria-level="2">Recommended Selection</h3>
+        <div class="rp-sub" id="rpSub">Fill in the fixture details and calculate</div>
+        <div class="empty-state" id="emptyState">Results will appear here once you enter a fixture rated power and secondary voltage.</div>
+        <div id="resultBody" style="display:none;">
+          <div class="result-row"><span class="rl">Required Power (incl. margin)</span><span class="rv" id="rReq">—</span></div>
+          <div class="result-row"><span class="rl">Recommended Standard Rating</span><span class="rv gold" id="rRating">—</span></div>
+          <div class="result-row"><span class="rl">Approx. Secondary Current</span><span class="rv" id="rSecCurrent">—</span></div>
+          <div class="result-row"><span class="rl">Approx. Turns Ratio Np:Ns (= Is : Ip)</span><span class="rv" id="rRatio">—</span></div>
+          <div class="result-row"><span class="rl">Headroom vs. Fixture Rating</span><span class="rv green" id="rHeadroom">—</span></div>
+          <div class="headroom-bar"><div class="headroom-fill" id="headroomFill" style="width:0%;"></div></div>
+        </div>
+        <div class="note-box warn" id="overCapNote" style="display:none;margin-top:20px;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>Required power exceeds the largest standard rating listed (300 W). This fixture needs a custom or higher-capacity transformer — confirm with the manufacturer before specifying.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box warn">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <div>This calculator gives a first-pass sizing estimate for planning purposes only. Final transformer selection must confirm compliance with the applicable specification (ICAO Annex 14 / FAA AC 150/5345-53 / IEC 61822 / IS 7785), the manufacturer's rated power and insulation class, and site-specific factors such as cable length and voltage drop.</div>
+    </div>
+
+    <div class="calc-panel" style="margin-top:24px;">
+      <h3 role="heading" aria-level="2">Standard Transformer Rating Steps</h3>
+      <table class="step-table">
+        <tr><th>Standard Rating</th><th>Typical Application</th></tr>
+        <tr><td>45 W</td><td>Low-intensity fixtures, small signs</td></tr>
+        <tr><td>65 W</td><td>Taxiway edge/centreline, standard signage</td></tr>
+        <tr><td>100 W</td><td>Runway edge, taxiway centreline (higher intensity)</td></tr>
+        <tr><td>150 W</td><td>Runway centreline, touchdown zone</td></tr>
+        <tr><td>200 W</td><td>High-intensity runway edge, approach lighting</td></tr>
+        <tr><td>300 W</td><td>High-intensity approach lighting, sequenced flashing systems</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="faq-wrap" id="faq">
+  <div class="container">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title">Frequently Asked Questions</h2>
+    <p class="faq-intro">Quick answers about sizing an AGL isolating transformer with this calculator.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-num">Q1</span><span class="faq-q">What does the Isolation Transformer Selection Calculator do?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>You enter the series circuit current, the fixture's rated power and secondary voltage, and a safety margin. It returns a recommended standard transformer rating, the required power including margin, the approximate secondary current, the approximate turns ratio and the headroom against the fixture rating.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q2</span><span class="faq-q">How is the recommended transformer size calculated?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>Required power is the fixture's rated power multiplied by one plus the safety margin. The calculator then picks the smallest standard rating that is at least that value. For example, a 45 W fixture with a 15% margin needs 51.75 W, so the recommendation is 65 W.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q3</span><span class="faq-q">Which standard transformer ratings does the calculator use?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>45 W, 65 W, 100 W, 150 W, 200 W and 300 W. Typical applications range from low-intensity fixtures and small signs at 45 W up to high-intensity approach lighting and sequenced flashing systems at 300 W.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q4</span><span class="faq-q">How is the secondary current worked out?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>It is the fixture's rated power divided by its secondary voltage. Typical secondary voltages are 6.6 V, 12 V or 24 V depending on the lamp or LED type.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q5</span><span class="faq-q">What series circuit currents can I choose?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>6.6 A for a standard AGL loop, 20 A for a high-current loop and 2.8 A for low-step or obstruction circuits.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q6</span><span class="faq-q">What safety margin should I choose?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>The calculator offers 10% for a tight fit, 15% as typical and 20% as conservative. The margin is the headroom above the fixture's rated power before choosing a transformer size.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q7</span><span class="faq-q">What happens if the required power is above 300 W?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>The calculator flags that the requirement exceeds the largest standard rating listed. Such a fixture needs a custom or higher-capacity transformer, so confirm with the manufacturer before specifying.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q8</span><span class="faq-q">Can I use the result as the final transformer selection?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>No. It is a first-pass sizing estimate for planning. Final selection must confirm compliance with the applicable specification (ICAO Annex 14, FAA AC 150/5345-53, IEC 61822 or IS 7785), the manufacturer's rated power and insulation class, and site factors such as cable length and voltage drop.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q9</span><span class="faq-q">What does the headroom figure show?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>It compares the selected standard rating with the fixture's rated power, as a percentage. A positive value means spare capacity, and a negative value would mean the transformer is smaller than the fixture load.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="academy-cta">
+      <div class="block-label">Go Further</div>
+      <div class="academy-cta-grid">
+        <div>
+          <h2 class="block-title">Don't Just Size the Transformer. Understand the Series Circuit.</h2>
+          <p>This calculator sizes an isolation transformer for your circuit load.</p>
+          <p>Build the technical knowledge behind it — series circuit behaviour, VA loading margins, temperature rise, insulation class, and how transformer selection affects the reliability of the whole loop.</p>
+          <p><strong>Size it correctly. Understand the circuit. Install with confidence.</strong></p>
+          <div class="academy-cta-actions">
+            <a href="fundamentals.html" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Continue to AGL Fundamentals</a>
+            <a href="component-library.html" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Explore the Component Library</a>
+          </div>
+        </div>
+        <div class="academy-pathway">
+          <div class="academy-pathway-label">Build Practical AGL Electrical Systems Capability</div>
+          <div class="academy-pathway-flow">
+      <span>AGL Fundamentals</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Electrical Systems</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Series Circuits</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Isolation Transformers</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Testing</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Photometry</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Troubleshooting</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Maintenance</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Commissioning</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or any result produced by it.</p><div class="legal-addendum"><strong>Specific to this calculator:</strong> The result is a first-pass estimate from the values you enter, using simple formulas (rated power &times; (1 + margin); power &divide; secondary voltage) and a generic list of standard ratings. It does not account for cable length, voltage drop, power factor, temperature rise, insulation class, environmental rating or the characteristics of any particular make or model, and the rating steps may not match a manufacturer&rsquo;s range. A wrong or unrealistic input gives a wrong result. &ldquo;Recommended&rdquo; means an indicative estimate, not an endorsement of any rating, product or supplier, and the result is not a specification, design, selection, purchase or acceptance decision.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel, and for people learning the subject. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables and connectors can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises installation, energisation, return to service, a change of operating category, a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards and regulations.</strong> References to ICAO Annex 14, FAA AC 150/5345-53, IEC 61822 and IS 7785 are for orientation only. They are summarised, may be incomplete or superseded, and are not official text. Final selection must follow the current official editions, the contract specification and the manufacturer&rsquo;s data. Using this calculator does not demonstrate compliance with any law, standard or regulatory approval, and official documents and the competent regulator always prevail.</li><li><strong>No warranty.</strong> The calculator and its content, including the table of typical applications for each rating, are generic and indicative and are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency, freedom from errors or fitness for a particular purpose. You are responsible for checking every input and every result before relying on it.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, the IEC, the Bureau of Indian Standards, DGCA, any airport, regulator or transformer manufacturer. Third-party names, standard designations and trademarks belong to their respective owners and are used for identification only.</li><li><strong>Calculator inputs.</strong> The values you enter are processed in your browser. They are not sent to us or stored, and reset when you press Reset or reload the page. Please do not enter confidential project, customer or security-sensitive information.</li><li><strong>Copyright.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. You may view this page and use it for personal reference and internal training, keeping this notice attached. Any other copying, republication, scraping or commercial use requires prior written permission.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+
+</main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+<script>
+  const STEPS = [45, 65, 100, 150, 200, 300];
+
+  const primaryCurrentEl = document.getElementById('primaryCurrent');
+  const fixturePowerEl = document.getElementById('fixturePower');
+  const secondaryVoltageEl = document.getElementById('secondaryVoltage');
+  const marginEl = document.getElementById('margin');
+  const emptyState = document.getElementById('emptyState');
+  const resultBody = document.getElementById('resultBody');
+  const rpSub = document.getElementById('rpSub');
+  const overCapNote = document.getElementById('overCapNote');
+  const rRatingEl = document.getElementById('rRating');
+  const rHeadroomEl = document.getElementById('rHeadroom');
+  const headroomFill = document.getElementById('headroomFill');
+
+  function resetToEmpty(message){
+    emptyState.textContent = message;
+    emptyState.style.display = 'block';
+    resultBody.style.display = 'none';
+    overCapNote.style.display = 'none';
+    rpSub.textContent = 'Fill in the fixture details and calculate';
+  }
+
+  function calculate(){
+    const primaryCurrent = parseFloat(primaryCurrentEl.value);
+    const fixturePower = parseFloat(fixturePowerEl.value);
+    const secondaryVoltage = parseFloat(secondaryVoltageEl.value);
+    let marginPct = parseFloat(marginEl.value);
+    if (isNaN(marginPct) || marginPct < 0) marginPct = 0;
+
+    // Always clear stale state from a previous run before re-evaluating
+    rRatingEl.classList.remove('red');
+    overCapNote.style.display = 'none';
+
+    if(!fixturePower || !secondaryVoltage || fixturePower <= 0 || secondaryVoltage <= 0){
+      resetToEmpty('Please enter a valid fixture rated power and secondary voltage (both greater than zero).');
+      return;
+    }
+
+    const requiredPower = fixturePower * (1 + marginPct / 100);
+    const maxStep = STEPS[STEPS.length - 1];
+    let rating = STEPS.find(s => s >= requiredPower);
+    const exceedsRange = !rating;
+    if(!rating) rating = maxStep;
+
+    const secondaryCurrent = fixturePower / secondaryVoltage;
+    // Series isolating transformer: Np/Ns = Is/Ip (primary carries the loop current).
+    const secondaryCurrentA = secondaryCurrent;
+    const ratio = primaryCurrent > 0 ? (secondaryCurrentA / primaryCurrent) : 0;
+    const headroomPct = ((rating - fixturePower) / fixturePower) * 100;
+
+    document.getElementById('rReq').textContent = requiredPower.toFixed(1) + ' W';
+    rRatingEl.textContent = rating + ' W';
+    document.getElementById('rSecCurrent').textContent = secondaryCurrent.toFixed(2) + ' A';
+    document.getElementById('rRatio').textContent = 'Ip ' + primaryCurrent.toFixed(1) + ' A : Is ' + secondaryCurrent.toFixed(2) + ' A  (≈ ' + ratio.toFixed(2) + ':1)';
+    rHeadroomEl.textContent = (headroomPct >= 0 ? '+' : '') + headroomPct.toFixed(0) + '%';
+    rHeadroomEl.className = 'rv ' + (headroomPct < 0 ? 'red' : 'green');
+
+    const fillPct = Math.min(100, (fixturePower / rating) * 100);
+    headroomFill.style.width = fillPct + '%';
+    headroomFill.style.background = headroomPct < 0 ? 'var(--red)' : 'var(--gold)';
+
+    emptyState.style.display = 'none';
+    resultBody.style.display = 'block';
+
+    const loopLabel = primaryCurrentEl.options[primaryCurrentEl.selectedIndex].text.split(' (')[0];
+    rpSub.textContent = fixturePower + 'W fixture @ ' + secondaryVoltage + 'V, ' + marginPct + '% margin, ' + loopLabel + ' loop';
+
+    if(exceedsRange){
+      rRatingEl.classList.add('red');
+      overCapNote.style.display = 'flex';
+    }
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', calculate);
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    fixturePowerEl.value = '';
+    secondaryVoltageEl.value = '';
+    marginEl.value = '15';
+    primaryCurrentEl.selectedIndex = 0;
+    resetToEmpty('Results will appear here once you enter a fixture rated power and secondary voltage.');
+  });
+
+  [fixturePowerEl, secondaryVoltageEl].forEach(function(el){
+    el.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        calculate();
+      }
+    });
+  });
+</script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

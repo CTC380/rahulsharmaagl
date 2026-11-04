@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complete Electrical Architecture of Airfield Ground Lighting</title>
+    <meta name="description" content="AGL electrical architecture from substation to fixture: CCRs, series circuit design, isolating transformers, control, monitoring, earthing and redundancy." />
+    <meta name="keywords" content="AGL electrical architecture, airfield ground lighting electrical system, constant current regulator, CCR, series circuit airport lighting, isolating transformer, primary series cable, AGL control monitoring, ICAO Annex 14, FAA airfield lighting" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html" />
+    <meta property="og:title" content="Complete Electrical Architecture of Airfield Ground Lighting" />
+    <meta property="og:description" content="AGL electrical architecture from substation to fixture: CCRs, series circuit design, isolating transformers, control, monitoring, earthing and redundancy." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-05-27" />
+    <meta property="article:modified_time" content="2026-10-27" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="Engineering Explained" />
+    <meta property="article:tag" content="Airfield Ground Lighting" />
+    <meta property="article:tag" content="Constant Current Regulator" />
+    <meta property="article:tag" content="Series Circuit" />
+    <meta property="article:tag" content="Isolating Transformer" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-complete-electrical-architecture-agl.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Complete Electrical Architecture of AGL Systems | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Complete Electrical Architecture of Airfield Ground Lighting" />
+    <meta name="twitter:description" content="AGL electrical architecture from substation to fixture: CCRs, series circuit design, isolating transformers, control, monitoring, earthing and redundancy." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-complete-electrical-architecture-agl.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 40px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color .3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-cta { padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: all .3s; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--white); }
+        @media(max-width:900px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        .breadcrumb { padding: 110px 40px 0; max-width: 900px; margin: auto; position: relative; z-index: 1; font-size: 13px; }
+        .breadcrumb a { color: var(--text); text-decoration: none; font-weight: 600; letter-spacing: .3px; }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb span.sep { color: var(--text); opacity: .4; margin: 0 8px; }
+        .breadcrumb .current { color: var(--gold); }
+
+        .article-hero { max-width: 900px; margin: auto; padding: 34px 40px 46px; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+        .page-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid rgba(0, 212, 255, 0.25); background: rgba(0, 212, 255, 0.06); border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; }
+        .article-title { font-family: 'Bebas Neue', sans-serif; font-size: 50px; letter-spacing: 1px; line-height: 1.05; margin-bottom: 22px; color: var(--gold); }
+        @media(max-width:768px) { .article-title { font-size: 34px; } }
+        .article-lede { font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 26px; max-width: 720px; }
+        .author-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .author-avatar { width: 48px; height: 48px; border-radius: 10px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-size: 14.5px; font-weight: 700; color: var(--white); }
+        .author-info p { font-size: 12px; color: var(--text); margin-top: 2px; }
+        .article-meta-strip { display: flex; gap: 22px; flex-wrap: wrap; margin-left: auto; font-size: 12.5px; color: var(--text); }
+        .article-meta-strip span { display: flex; align-items: center; gap: 7px; }
+        .article-meta-strip i { color: var(--gold); font-size: 12px; }
+        @media(max-width:600px) { .article-meta-strip { margin-left: 0; } }
+
+        .article-body { max-width: 760px; margin: auto; padding: 50px 40px 20px; position: relative; z-index: 1; }
+        .article-body > p { font-size: 16.5px; line-height: 1.95; color: var(--text); margin-bottom: 24px; }
+        .article-body > p:first-of-type { font-size: 18px; color: var(--white); }
+
+        .art-section { margin: 46px 0 42px; scroll-margin-top: 92px; }
+
+        .toc-block { margin: 8px 0 40px; padding: 26px 28px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 14px; }
+        .toc-block .toc-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .toc-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+        @media(max-width:600px) { .toc-list { grid-template-columns: 1fr; } }
+        .toc-list a { display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text); text-decoration: none; padding: 7px 0; transition: color .2s; }
+        .toc-list a:hover { color: var(--gold); }
+        .toc-list .toc-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 14px; flex-shrink: 0; width: 22px; }
+        .art-section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+        .art-section-num { width: 42px; height: 42px; border-radius: 12px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .art-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: .3px; color: var(--white); line-height: 1.3; }
+        .art-section > p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 16px; }
+        .insight-list { list-style: none; margin: 4px 0 18px; display: flex; flex-direction: column; gap: 11px; }
+        .insight-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.7; color: var(--text); padding: 12px 16px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .insight-list li i { color: var(--gold); font-size: 12px; margin-top: 5px; flex-shrink: 0; }
+        .closing-line { font-size: 15.5px; line-height: 1.85; color: var(--white); padding: 16px 20px; border-left: 3px solid var(--gold); background: rgba(255, 180, 0, 0.04); border-radius: 0 10px 10px 0; font-style: italic; }
+
+        .diagram-block { margin: 50px 0 40px; padding: 32px 28px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 16px; }
+        .diagram-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; text-align: center; }
+        .diagram-block .diagram-sub { font-size: 13.5px; color: var(--text); text-align: center; margin-bottom: 22px; }
+        .diagram-block svg { width: 100%; height: auto; display: block; }
+
+        .conclusion-block { margin: 50px 0 40px; padding: 32px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; }
+        .conclusion-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--gold); margin-bottom: 16px; }
+        .conclusion-block p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 14px; }
+        .conclusion-block p:last-child { margin-bottom: 0; }
+
+        .pull-quote { text-align: center; margin: 50px auto; padding: 40px 30px; max-width: 640px; }
+        .pull-quote p { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 600; line-height: 1.35; color: var(--white); position: relative; }
+        .pull-quote p span { color: var(--gold); }
+        .pull-quote .quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: rgba(255, 180, 0, 0.25); line-height: .5; display: block; margin-bottom: 10px; }
+
+        .signoff { text-align: right; font-size: 14.5px; color: var(--text); font-style: italic; margin: -20px auto 50px; max-width: 760px; padding: 0 40px; }
+        .signoff strong { color: var(--gold); font-style: normal; }
+
+        .topic-tags { max-width: 760px; margin: 0 auto 50px; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .topic-tags span { padding: 7px 16px; background: rgba(0, 212, 255, 0.06); border: 1px solid rgba(0, 212, 255, 0.18); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--cyan); }
+
+        .author-bio { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; }
+        .author-bio-card { display: flex; gap: 20px; padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; align-items: flex-start; }
+        .author-bio-avatar { width: 60px; height: 60px; border-radius: 12px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); flex-shrink: 0; }
+        .author-bio-card h4 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+        .author-bio-card p { font-size: 14px; color: var(--text); line-height: 1.75; }
+        .author-bio-card .abio-links { margin-top: 14px; display: flex; gap: 14px; }
+        .author-bio-card .abio-links a { color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .author-bio-card .abio-links a:hover { gap: 9px; }
+
+        .article-nav-links { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .anav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 8px; border: 1px solid var(--border); color: var(--white); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: all .3s; }
+        .anav-btn:hover { border-color: rgba(255, 180, 0, 0.35); color: var(--gold); transform: translateY(-2px); }
+        .anav-btn.gold { background: var(--gold); border-color: var(--gold); color: #000; }
+        .anav-btn.gold:hover { background: #ffc933; color: #000; }
+
+        footer { padding: 30px 40px; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; position: relative; z-index: 1; }
+        footer p { font-size: 13px; color: var(--text); }
+        footer p strong { color: var(--gold); }
+        .footer-links { display: flex; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 50%; background: var(--gold); border: none; color: #000; font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all .3s; box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25); }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+
+        @media(max-width:600px) {
+            nav { padding: 0 20px; }
+            .breadcrumb { padding: 100px 20px 0; }
+            .article-hero, .article-body, .topic-tags, .author-bio, .article-nav-links, .signoff { padding-left: 20px; padding-right: 20px; }
+            .pull-quote p { font-size: 24px; }
+            .author-bio-card { flex-direction: column; }
+            footer { padding: 20px; flex-direction: column; text-align: center; }
+        }
+
+        .key-takeaway { margin: 8px 0 46px; padding: 26px 28px; display: flex; gap: 18px; align-items: flex-start; background: linear-gradient(135deg, rgba(255, 180, 0, 0.09), rgba(0, 212, 255, 0.04)); border: 1px solid rgba(255, 180, 0, 0.28); border-radius: 14px; }
+        .key-takeaway .kt-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255, 180, 0, 0.12); border: 1px solid rgba(255, 180, 0, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 16px; flex-shrink: 0; }
+        .key-takeaway .kt-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .key-takeaway p { font-size: 16px; line-height: 1.8; color: var(--white); }
+
+        .measure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 18px; }
+        @media(max-width:700px) { .measure-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width:460px) { .measure-grid { grid-template-columns: 1fr; } }
+        .measure-card { padding: 16px 15px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .measure-card i { color: var(--cyan); font-size: 15px; }
+        .measure-card strong { display: block; color: var(--white); font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+        .measure-card span { font-size: 12.5px; color: var(--text); line-height: 1.5; }
+
+        .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 6px 0 20px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .compare-table th, .compare-table td { padding: 14px 18px; font-size: 14.5px; text-align: left; border-bottom: 1px solid var(--border); }
+        .compare-table th { background: rgba(255, 255, 255, 0.035); font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+        .compare-table td { color: var(--text); }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table td:first-child, .compare-table th:first-child { color: var(--white); border-right: 1px solid var(--border); }
+        @media(max-width:640px) {
+            .compare-table, .compare-table thead, .compare-table tbody, .compare-table th, .compare-table td, .compare-table tr { display: block; }
+            .compare-table thead { display: none; }
+            .compare-table tr { margin-bottom: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+            .compare-table tr:last-child { margin-bottom: 0; }
+            .compare-table td { border-right: none !important; }
+            .compare-table td:first-child { background: rgba(255, 180, 0, 0.05); font-weight: 700; }
+            .compare-table td::before { content: attr(data-label); display: block; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+        }
+
+        .workflow-strip { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; margin: 10px 0 20px; }
+        .workflow-step { flex: 1 1 140px; padding: 16px 12px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+        .workflow-step .wf-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 20px; letter-spacing: 1px; }
+        .workflow-step strong { font-size: 13px; color: var(--white); font-weight: 700; }
+        .workflow-step span { font-size: 11.5px; color: var(--text); line-height: 1.4; }
+        .workflow-arrow { display: flex; align-items: center; justify-content: center; color: var(--gold); opacity: .5; font-size: 13px; padding: 0 6px; flex: 0 0 auto; }
+        @media(max-width:760px) {
+            .workflow-strip { flex-direction: column; }
+            .workflow-step { flex: none; }
+            .workflow-arrow { transform: rotate(90deg); padding: 2px 0; }
+        }
+
+        .decision-list { display: flex; flex-direction: column; gap: 12px; margin: 4px 0 18px; }
+        .decision-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .decision-item .d-finding { flex: 0 0 200px; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.4; }
+        .decision-item .d-finding i { color: var(--red); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+        .decision-item .d-arrow { color: var(--gold); flex-shrink: 0; padding-top: 2px; font-size: 13px; }
+        .decision-item .d-action { font-size: 14.5px; color: var(--text); line-height: 1.7; }
+        @media(max-width:640px) {
+            .decision-item { flex-direction: column; gap: 8px; }
+            .decision-item .d-finding { flex: none; }
+            .decision-item .d-arrow { display: none; }
+        }
+
+        .when-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px; margin: 4px 0 18px; }
+        @media(max-width:600px) { .when-grid { grid-template-columns: 1fr; } }
+        .when-grid .wg-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; line-height: 1.6; color: var(--text); padding: 12px 16px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .when-grid .wg-item i { color: var(--gold); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+
+        .related-block { max-width: 760px; margin: 54px auto 10px; padding: 0 40px; }
+        .related-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 18px; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        @media(max-width:600px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; transition: all .3s; }
+        .related-card:hover { border-color: rgba(255, 180, 0, 0.35); transform: translateY(-2px); }
+        .related-card .rc-title { font-size: 14.5px; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 10px; }
+        .related-card .rc-title i { color: var(--gold); font-size: 13px; }
+        .related-card .rc-sub { font-size: 12.5px; color: var(--text); padding-left: 23px; }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#article",
+      "headline": "Complete Electrical Architecture of Airfield Ground Lighting",
+      "description": "AGL electrical architecture from substation to fixture: CCRs, series circuit design, isolating transformers, control, monitoring, earthing and redundancy.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "datePublished": "2026-05-27",
+      "dateModified": "2026-10-27",
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html",
+      "articleSection": "Engineering Explained",
+      "keywords": "AGL Electrical Architecture, Constant Current Regulator, Series Circuit, Isolating Transformer, ICAO Annex 14, FAA Compliance",
+      "wordCount": 3003,
+      "timeRequired": "PT14M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "inLanguage": "en-IN",
+      "url": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html",
+      "name": "Complete Electrical Architecture of Airfield Ground Lighting",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Complete Electrical Architecture of Airfield Ground Lighting Systems",
+          "item": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#faq",
+      "url": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-complete-electrical-architecture-agl.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the electrical architecture of an AGL system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It runs from the primary power source and backup power, through the CCR room and Constant Current Regulators, to the primary series cable network, isolating transformers, secondary cables and the airfield lighting fixtures. It also includes control and monitoring systems, earthing and lightning protection and redundant power and communication systems."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are AGL circuits series circuits and not parallel circuits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In a series circuit the same current flows through every fitting, each connected through an isolating transformer. This gives uniform brightness, simplified monitoring, better fault detection and reduced voltage-drop issues, which is why AGL circuits are series-current systems and not conventional parallel street-lighting networks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What current steps does a CCR use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 5-step CCR typically uses 2.8 A, 3.4 A, 4.1 A, 5.2 A and 6.6 A, and a 3-step CCR uses 4.8 A, 5.5 A and 6.6 A. In both cases 6.6 A is the maximum, full-brightness current of the standard series circuit, and the CCR adjusts its output voltage to hold the selected current."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What cable is used for the primary series circuit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The primary circuit typically uses 5 kV-class AGL series-circuit cable, single-core with XLPE or equivalent insulation and shielded where the specification requires. It is routed through ducts, trenches, HDPE pipes or cable pits, with the loop returning to the CCR."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does an isolating transformer do in the AGL architecture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It provides electrical isolation, a separate secondary circuit for the lamp, fault containment and protection of the primary circuit. If a lamp fails, the transformer keeps the primary series loop intact so the rest of the circuit stays lit. Standard types are most commonly rated 6.6 A / 6.6 A (1:1), with common ratings from 30 W to 300 W."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is power continuity ensured at an airport?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Airports back up the incoming supply with diesel generator sets, UPS systems, Automatic Transfer Switches and redundant feeders. Annex 14 Chapter 8 sets permitted switch-over times to secondary power, as short as 1 second for certain CAT II/III elements, which is why UPS or no-break arrangements are used alongside DG sets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does AGL architecture protect against lightning and surges?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because airfield lighting is highly exposed to lightning and electrical surges, the architecture includes dedicated earthing grids, Surge Protection Devices, lightning arrestors, shielded cables and equipotential bonding. Improper grounding can result in CCR failures, lamp damage, communication errors and transformer breakdown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does LED technology change the AGL electrical architecture?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The fundamental series-circuit philosophy remains unchanged, with LEDs sitting inside the same CCR-driven, isolating-transformer-protected architecture. However, LED loads change the electrical behaviour seen by the CCR, including power factor, harmonics and low load, so CCR and transformer compatibility must be confirmed for every conversion."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">Complete Electrical Architecture of AGL</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-bolt"></i> Engineering Explained · Electrical Systems</div>
+        <h1 class="article-title">Complete Electrical Architecture of Airfield Ground Lighting Systems</h1>
+        <p class="article-lede">Behind every runway light lies a complete electrical infrastructure working continuously with high reliability and precision. From the substation to the individual airfield lamp, the AGL electrical network is built on redundancy, isolation, monitoring, and strict compliance with aviation requirements.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial · AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> May 27, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>Modern airports operate 24×7 under all weather conditions. During night operations, fog, rain, or low visibility, pilots depend heavily on Airfield Ground Lighting (AGL) systems for safe navigation, approach, landing, taxiing, and takeoff.</p>
+        <p>This article explains the complete electrical architecture of Airfield Ground Lighting systems in a practical and simplified manner — from the primary power source through to the individual airfield fixture.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#purpose-components"><span class="toc-num">01</span> Purpose &amp; Main Components</a></li>
+                <li><a href="#power-sources"><span class="toc-num">02</span> Power Sources &amp; the CCR Room</a></li>
+                <li><a href="#ccr"><span class="toc-num">03</span> Constant Current Regulator (CCR)</a></li>
+                <li><a href="#series-circuit"><span class="toc-num">04</span> Series Circuit &amp; Primary Cable Network</a></li>
+                <li><a href="#isolating-transformers"><span class="toc-num">05</span> Isolating Transformers &amp; Secondary Circuit</a></li>
+                <li><a href="#fixtures"><span class="toc-num">06</span> Airfield Lighting Fixtures</a></li>
+                <li><a href="#control-earthing-redundancy"><span class="toc-num">07</span> Control, Earthing &amp; Redundancy</a></li>
+                <li><a href="#led-architecture"><span class="toc-num">08</span> LED-Based Modern Architecture</a></li>
+                <li><a href="#key-takeaways"><span class="toc-num">09</span> Key Takeaways</a></li>
+                <li><a href="#faq"><span class="toc-num">10</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-star"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>AGL circuits are series-current systems, not conventional parallel street-lighting networks. Every component — from the CCR to the isolating transformer — exists to keep current, and therefore brightness, constant across the entire runway or taxiway loop, even if a single fitting fails.</p>
+            </div>
+        </div>
+
+        <div class="art-section" id="purpose-components">
+            <div class="art-section-head">
+                <div class="art-section-num">01</div>
+                <h2>Purpose &amp; Main Components</h2>
+            </div>
+            <p>The electrical architecture of an airport lighting system is designed to:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-check"></i> Supply uninterrupted power to visual aids</li>
+                <li><i class="fa-solid fa-check"></i> Maintain constant lamp brightness</li>
+                <li><i class="fa-solid fa-check"></i> Isolate failures without affecting the entire circuit</li>
+                <li><i class="fa-solid fa-check"></i> Allow centralized control and monitoring</li>
+                <li><i class="fa-solid fa-check"></i> Ensure safe aircraft movement during low-visibility operations</li>
+                <li><i class="fa-solid fa-check"></i> Meet applicable ICAO Annex 14 requirements and the equipment standards specified for the project (FAA, IEC, IS)</li>
+            </ul>
+            <p>A complete AGL electrical architecture generally includes: the primary power source, backup power systems, the CCR room, Constant Current Regulators, circuit protection panels, control and monitoring systems, primary series cables, isolating transformers, secondary cables, airfield lighting fixtures, earthing and lightning protection, and redundant power and communication systems.</p>
+            <p class="closing-line">Unlike normal commercial lighting systems, AGL circuits are series-current systems designed specifically for aviation safety.</p>
+        </div>
+
+        <div class="art-section" id="power-sources">
+            <div class="art-section-head">
+                <div class="art-section-num">02</div>
+                <h2>Power Sources &amp; the CCR Room</h2>
+            </div>
+            <p>The incoming electrical supply may come from the airport substation, the utility grid, or dedicated HT/LT feeders. To maintain uninterrupted operations, airports back this up with Diesel Generator (DG) sets, UPS systems, Automatic Transfer Switches (ATS), and redundant feeders — critical airfield lighting circuits cannot tolerate power interruption during aircraft movement. Annex 14 Chapter 8 sets the permitted switch-over times to secondary power &mdash; as short as 1 second for certain CAT II/III elements &mdash; which is why UPS or no-break arrangements are used alongside DG sets.</p>
+            <p>The <strong>CCR Room</strong> is the heart of the electrical architecture. It houses the Constant Current Regulators, circuit protection panels, control and monitoring systems, PLC/SCADA interfaces, relay logic systems, and field monitoring equipment. The Air Traffic Control (ATC) tower or control center communicates with the CCR room for brightness selection and operational control.</p>
+            <div class="measure-grid">
+                <div class="measure-card"><i class="fa-solid fa-plug"></i><strong>Primary Source</strong><span>Substation, utility grid, or dedicated HT/LT feeders</span></div>
+                <div class="measure-card"><i class="fa-solid fa-battery-full"></i><strong>Backup Power</strong><span>DG sets, UPS, ATS, redundant feeders</span></div>
+                <div class="measure-card"><i class="fa-solid fa-server"></i><strong>CCR Room</strong><span>CCRs, protection panels, PLC/SCADA, relay logic</span></div>
+            </div>
+        </div>
+
+        <div class="art-section" id="ccr">
+            <div class="art-section-head">
+                <div class="art-section-num">03</div>
+                <h2>Constant Current Regulator (CCR)</h2>
+            </div>
+            <p>A Constant Current Regulator is one of the most important electrical components in an AGL system. Its function is to maintain constant current throughout the entire series circuit despite changes in cable length, number of lamps, voltage variations, and load changes. Brightness is selected by changing the regulated current step; the CCR then adjusts its output voltage as needed to hold that current.</p>
+            <p>A 5-step CCR typically uses 2.8 A, 3.4 A, 4.1 A, 5.2 A, and 6.6 A; a 3-step CCR uses 4.8 A, 5.5 A and 6.6 A. In both cases <strong>6.6 A</strong> is the maximum (full-brightness) current of the standard series circuit.</p>
+            <p class="closing-line">The CCR is what allows a runway of dozens or hundreds of lamps to behave, electrically, as a single predictable circuit.</p>
+        </div>
+
+        <div class="art-section" id="series-circuit">
+            <div class="art-section-head">
+                <div class="art-section-num">04</div>
+                <h2>Series Circuit &amp; Primary Cable Network</h2>
+            </div>
+            <p>Unlike conventional parallel street-lighting systems, airport lighting uses a <strong>series circuit architecture</strong>: all lamps are connected in series, the same current flows through every fitting, and each fitting is connected through an isolating transformer. This gives uniform brightness, simplified monitoring, better fault detection, and reduced voltage-drop issues.</p>
+            <p>The primary circuit is the high-voltage series loop running from the CCR to the field fittings and back. It typically uses 5 kV-class AGL series-circuit cable — single-core, with XLPE or equivalent insulation, shielded where the specification requires — routed through ducts, trenches, HDPE pipes, or cable pits, with the loop eventually returning to the CCR.</p>
+            <div class="compare-table">
+                <table style="width:100%; border-collapse:collapse;">
+                    <thead><tr><th>Attribute</th><th>Primary Circuit Characteristic</th></tr></thead>
+                    <tbody>
+                        <tr><td data-label="Attribute">Cable rating</td><td data-label="Detail">5 kV-class AGL series-circuit cable</td></tr>
+                        <tr><td data-label="Attribute">Construction</td><td data-label="Detail">Single-core; shielded where specified</td></tr>
+                        <tr><td data-label="Attribute">Insulation</td><td data-label="Detail">XLPE or equivalent, per the project specification</td></tr>
+                        <tr><td data-label="Attribute">Configuration</td><td data-label="Detail">Series-loop, returning to the CCR</td></tr>
+                        <tr><td data-label="Attribute">Routing</td><td data-label="Detail">Ducts, trenches, HDPE pipes, cable pits</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="art-section" id="isolating-transformers">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>Isolating Transformers &amp; Secondary Circuit</h2>
+            </div>
+            <p>Each airfield light fitting is connected using an isolating transformer, which provides electrical isolation, a separate secondary circuit for the lamp, fault containment, and protection of the primary circuit. If a lamp fails, the transformer keeps the primary series loop intact, so the rest of the circuit stays lit. Because the primary is a constant-current loop, the transformer behaves as a current transformer: <strong>Ip / Is = Ns / Np</strong>. Standard series-circuit types are most commonly rated 6.6 A / 6.6 A (1:1), with the secondary voltage set by the connected lamp load.</p>
+            <p>Common transformer ratings include 30 W, 45 W, 65 W, 100 W, 150 W, 200 W, and 300 W. The secondary side connects directly to the lamp or LED fitting through a low-voltage, short-length circuit using water-tight connectors — commonly FAA L-823 connectors, plug-and-receptacle systems, or heat-resistant cables.</p>
+            <p class="closing-line">The isolating transformer is the component that keeps a series loop from failing every time a single lamp does. Fittings should still be disconnected only with the circuit isolated and locked out.</p>
+        </div>
+
+        <div class="art-section" id="fixtures">
+            <div class="art-section-head">
+                <div class="art-section-num">06</div>
+                <h2>Airfield Lighting Fixtures</h2>
+            </div>
+            <p>The electrical architecture ultimately powers different types of visual aids, typically fed from dedicated series circuits:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-road"></i> <strong>Runway lighting</strong> — edge lights, threshold lights, end lights, centreline lights, touchdown zone lights</li>
+                <li><i class="fa-solid fa-arrows-left-right"></i> <strong>Taxiway lighting</strong> — edge lights, centreline lights, stop-bar lights</li>
+                <li><i class="fa-solid fa-plane-arrival"></i> <strong>Approach lighting</strong> — approach lighting systems, flashing lights, sequenced flashers</li>
+                <li><i class="fa-solid fa-signs-post"></i> <strong>Guidance systems</strong> — PAPI and sign boards (powering varies by make and design); obstruction lights are normally fed from a separate mains supply, outside the CCR circuits</li>
+            </ul>
+        </div>
+
+        <div class="art-section" id="control-earthing-redundancy">
+            <div class="art-section-head">
+                <div class="art-section-num">07</div>
+                <h2>Control, Earthing &amp; Redundancy</h2>
+            </div>
+            <p>Modern airports use intelligent control systems integrated with SCADA, PLC, HMI panels, and remote monitoring. Operators can turn circuits ON/OFF, select brightness levels, detect field failures, monitor insulation resistance, and track CCR performance — with advanced systems also providing alarm history, fault location, energy monitoring, and redundancy switching.</p>
+            <p>Because airfield lighting is highly exposed to lightning and electrical surges, the architecture includes dedicated earthing grids, Surge Protection Devices (SPDs), lightning arrestors, shielded cables, and equipotential bonding. Improper grounding can result in CCR failures, lamp damage, communication errors, and transformer breakdown.</p>
+            <div class="decision-list">
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-shield-halved"></i> Dual CCR systems</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Keeps a circuit alive if one regulator fails; interleaved circuits ensure one CCR failure does not blank a whole runway.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-shield-halved"></i> Standby generators &amp; parallel feeders</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Maintains supply through utility outages.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-shield-halved"></i> Redundant communication loops &amp; spare circuits</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Preserves monitoring and control continuity for CAT-II/CAT-III runways.</div>
+                </div>
+            </div>
+            <p class="closing-line">Airport lighting systems are designed with high redundancy because lighting failure can directly affect aircraft safety.</p>
+        </div>
+
+        <div class="art-section" id="led-architecture">
+            <div class="art-section-head">
+                <div class="art-section-num">08</div>
+                <h2>LED-Based Modern Architecture</h2>
+            </div>
+            <p>Modern airports are increasingly moving from halogen to LED technology, gaining lower power consumption, longer operating life, reduced maintenance, better photometric stability, and smart monitoring capability. LED systems also introduce intelligent drivers, monitoring electronics, remote diagnostics, and integrated failure reporting. LED loads change the electrical behaviour seen by the CCR (power factor, harmonics, low load), so CCR and transformer compatibility must be confirmed for every conversion.</p>
+            <p class="closing-line">However the fundamental series-circuit philosophy remains unchanged — LEDs sit inside the same CCR-driven, isolating-transformer-protected architecture as their halogen predecessors.</p>
+        </div>
+
+        <div class="art-section" id="key-takeaways">
+            <div class="art-section-head">
+                <div class="art-section-num">09</div>
+                <h2>Key Takeaways</h2>
+            </div>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-circle-check"></i> AGL circuits are series-current systems, not conventional parallel lighting networks</li>
+                <li><i class="fa-solid fa-circle-check"></i> The Constant Current Regulator holds current steady at the selected brightness step (6.6 A at full brightness), adjusting its output voltage as needed</li>
+                <li><i class="fa-solid fa-circle-check"></i> Isolating transformers give each fitting its own isolated secondary, so a lamp failure does not interrupt the series loop</li>
+                <li><i class="fa-solid fa-circle-check"></i> The primary circuit runs on 5 kV-class, single-core series-circuit cable in a loop back to the CCR</li>
+                <li><i class="fa-solid fa-circle-check"></i> Earthing, surge protection, and lightning arrestors protect the network from a highly exposed operating environment</li>
+                <li><i class="fa-solid fa-circle-check"></i> Redundancy — dual CCRs, standby generators, parallel feeders, spare circuits — is built in because failure directly affects aircraft safety</li>
+                <li><i class="fa-solid fa-circle-check"></i> LED technology changes the fixture, driver, and monitoring layer — but not the underlying series-circuit philosophy</li>
+            </ul>
+        </div>
+
+        <div class="diagram-block">
+            <h3>The AGL Electrical Flow</h3>
+            <p class="diagram-sub">Utility Power → Substation → (DG / UPS via ATS) → CCR Panel → Primary Series Cable → Isolating Transformer → Secondary Cable → Airfield Light Fixture</p>
+            <svg viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="eaArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                    </marker>
+                </defs>
+
+                <rect x="10" y="20" width="140" height="60" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="80" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#f0f4ff">UTILITY POWER</text>
+                <text x="80" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Grid / HT / LT feeder</text>
+                <line x1="150" y1="50" x2="177" y2="50" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#eaArrow)"/>
+
+                <rect x="182" y="20" width="140" height="60" rx="10" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1.5"/>
+                <text x="252" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#00d4ff">SUBSTATION</text>
+                <text x="252" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Incoming supply point</text>
+                <line x1="322" y1="50" x2="349" y2="50" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#eaArrow)"/>
+
+                <rect x="354" y="20" width="140" height="60" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="424" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#f0f4ff">DG / UPS / ATS</text>
+                <text x="424" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Backup power</text>
+                <line x1="494" y1="50" x2="521" y2="50" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#eaArrow)"/>
+
+                <rect x="526" y="20" width="140" height="60" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="596" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#FFB400">CCR PANEL</text>
+                <text x="596" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Constant current control</text>
+
+                <line x1="596" y1="80" x2="596" y2="105" stroke="#FFB400" stroke-width="1.5" opacity="0.55"/>
+                <line x1="80" y1="105" x2="596" y2="105" stroke="#FFB400" stroke-width="1.5" opacity="0.55"/>
+                <line x1="80" y1="105" x2="80" y2="128" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#eaArrow)"/>
+
+                <rect x="10" y="133" width="140" height="60" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="80" y="159" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#FFB400">PRIMARY CABLE</text>
+                <text x="80" y="176" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">5 kV series loop</text>
+                <line x1="150" y1="163" x2="177" y2="163" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#eaArrow)"/>
+
+                <rect x="182" y="133" width="140" height="60" rx="10" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1.5"/>
+                <text x="252" y="159" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#00d4ff">ISOLATING XFMR</text>
+                <text x="252" y="176" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Isolated lamp circuit</text>
+                <line x1="322" y1="163" x2="349" y2="163" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#eaArrow)"/>
+
+                <rect x="354" y="133" width="140" height="60" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="424" y="159" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#f0f4ff">SECONDARY CABLE</text>
+                <text x="424" y="176" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Low-voltage, watertight</text>
+                <line x1="494" y1="163" x2="521" y2="163" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#eaArrow)"/>
+
+                <rect x="526" y="133" width="140" height="60" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="596" y="159" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#FFB400">LIGHT FIXTURE</text>
+                <text x="596" y="176" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Runway / taxiway / approach</text>
+
+                <line x1="596" y1="193" x2="596" y2="216" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#eaArrow)"/>
+                <line x1="80" y1="216" x2="596" y2="216" stroke="#FFB400" stroke-width="1.5" opacity="0.5"/>
+                <line x1="338" y1="216" x2="338" y2="238" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#eaArrow)"/>
+
+                <rect x="213" y="243" width="250" height="42" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="338" y="269" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#FFB400">RELIABLE PILOT GUIDANCE</text>
+            </svg>
+        </div>
+
+        <div class="conclusion-block">
+            <h3>Conclusion</h3>
+            <p>Airfield Ground Lighting systems are far more advanced than ordinary lighting networks. Their electrical architecture combines power engineering, control systems, aviation safety, redundancy, and precision photometry into one integrated infrastructure.</p>
+            <p>From the CCR room and high-voltage series circuit to isolating transformers, secondary connections, airfield fixtures, and intelligent monitoring systems, every component has a role in ensuring safe aircraft operations.</p>
+            <p>As airports continue moving toward smart and energy-efficient airfield systems, the electrical backbone of AGL will become increasingly intelligent, monitored, and reliability-driven.</p>
+        </div>
+
+        <div class="pull-quote">
+            <span class="quote-mark">"</span>
+            <p>From substation to lamp, <span>every component exists to make one thing true: the light stays on.</span></p>
+        </div>
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">10</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What is the electrical architecture of an AGL system?</summary>
+                    <div class="faq-answer"><p>It runs from the primary power source and backup power, through the CCR room and Constant Current Regulators, to the primary series cable network, isolating transformers, secondary cables and the airfield lighting fixtures. It also includes control and monitoring systems, earthing and lightning protection and redundant power and communication systems.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why are AGL circuits series circuits and not parallel circuits?</summary>
+                    <div class="faq-answer"><p>In a series circuit the same current flows through every fitting, each connected through an isolating transformer. This gives uniform brightness, simplified monitoring, better fault detection and reduced voltage-drop issues, which is why AGL circuits are series-current systems and not conventional parallel street-lighting networks.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What current steps does a CCR use?</summary>
+                    <div class="faq-answer"><p>A 5-step CCR typically uses 2.8 A, 3.4 A, 4.1 A, 5.2 A and 6.6 A, and a 3-step CCR uses 4.8 A, 5.5 A and 6.6 A. In both cases 6.6 A is the maximum, full-brightness current of the standard series circuit, and the CCR adjusts its output voltage to hold the selected current.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What cable is used for the primary series circuit?</summary>
+                    <div class="faq-answer"><p>The primary circuit typically uses 5 kV-class AGL series-circuit cable, single-core with XLPE or equivalent insulation and shielded where the specification requires. It is routed through ducts, trenches, HDPE pipes or cable pits, with the loop returning to the CCR.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does an isolating transformer do in the AGL architecture?</summary>
+                    <div class="faq-answer"><p>It provides electrical isolation, a separate secondary circuit for the lamp, fault containment and protection of the primary circuit. If a lamp fails, the transformer keeps the primary series loop intact so the rest of the circuit stays lit. Standard types are most commonly rated 6.6 A / 6.6 A (1:1), with common ratings from 30 W to 300 W.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How is power continuity ensured at an airport?</summary>
+                    <div class="faq-answer"><p>Airports back up the incoming supply with diesel generator sets, UPS systems, Automatic Transfer Switches and redundant feeders. Annex 14 Chapter 8 sets permitted switch-over times to secondary power, as short as 1 second for certain CAT II/III elements, which is why UPS or no-break arrangements are used alongside DG sets.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How does AGL architecture protect against lightning and surges?</summary>
+                    <div class="faq-answer"><p>Because airfield lighting is highly exposed to lightning and electrical surges, the architecture includes dedicated earthing grids, Surge Protection Devices, lightning arrestors, shielded cables and equipotential bonding. Improper grounding can result in CCR failures, lamp damage, communication errors and transformer breakdown.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Does LED technology change the AGL electrical architecture?</summary>
+                    <div class="faq-answer"><p>The fundamental series-circuit philosophy remains unchanged, with LEDs sitting inside the same CCR-driven, isolating-transformer-protected architecture. However, LED loads change the electrical behaviour seen by the CCR, including power factor, harmonics and low load, so CCR and transformer compatibility must be confirmed for every conversion.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong></p>
+
+    <div class="topic-tags">
+        <span>Airfield Ground Lighting</span>
+        <span>Electrical Architecture</span>
+        <span>Constant Current Regulator</span>
+        <span>Series Circuit</span>
+        <span>Isolating Transformer</span>
+        <span>ICAO Annex 14</span>
+        <span>FAA Compliance</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial | AGL Photometry Specialist | Airfield Ground Lighting (AGL) | ICAO &amp; FAA Compliance | Project Execution. Writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More AGL Fundamentals</h3>
+        <div class="related-grid">
+            <a href="standards-companion.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-scale-balanced"></i> AGL Standards Companion</div>
+                <div class="rc-sub">ICAO, FAA, IS &amp; IEC requirements explained</div>
+            </a>
+            <a href="component-library.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-layer-group"></i> AGL Component Library</div>
+                <div class="rc-sub">Understand the components behind the guidance</div>
+            </a>
+            <a href="article-how-ccr-works.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-gauge-high"></i> How CCRs Work</div>
+                <div class="rc-sub">A closer look at Constant Current Regulators</div>
+            </a>
+            <a href="article-isolating-transformers-backbone.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-shield-halved"></i> Isolating Transformers</div>
+                <div class="rc-sub">Why they're the backbone of AGL systems</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="article-single-light-bulb-300-ton-aircraft-safety.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> Previous Article</a>
+        <a href="article-why-series-circuits-are-used.html" class="anav-btn gold">Next Article <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> These pages cover testing, inspection, maintenance, installation or fault-finding on series circuits and associated equipment. Insulation-resistance and other test voltages are themselves hazardous, and a circuit that appears de-energised may hold a charge or be re-energised. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under the aerodrome&rsquo;s permit-to-work. Test sequences, instrument settings, readings, limits, intervals, checklists and pass/fail wording here are generic and indicative. They are not acceptance criteria, and a result obtained by following them is not a test certificate, inspection report or declaration of serviceability or compliance.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Images, diagrams and credits.</strong> Photographs on this page carry a credit line in their caption naming the source and, where stated, the licence (for example U.S. Government public-domain works or openly licensed images). They illustrate a type of equipment or situation, may not show the exact item described, imply no endorsement by or affiliation with any person, organisation or manufacturer shown, and remain subject to their owners&rsquo; rights. Diagrams are original schematic illustrations, are not to scale and are not engineering drawings. To request a correction, credit or removal, write to the contact address below.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

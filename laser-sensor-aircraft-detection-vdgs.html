@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laser and Sensor-Based Aircraft Detection in VDGS | Precision AGL Academy</title>
+    <meta name="description" content="How a VDGS detects the aircraft with a laser or sensor: it scans the stand, tracks the aircraft, and turns range and angle into the offset and distance shown." />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html" />
+    <meta property="og:title" content="Laser and Sensor-Based Aircraft Detection in VDGS | Precision AGL Academy" />
+    <meta property="og:description" content="How a VDGS detects the aircraft with a laser or sensor: it scans the stand, tracks the aircraft, and turns range and angle into the offset and distance shown." />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://rahulsharmaagl.in/assets/og-laser-sensor-aircraft-detection-vdgs.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html" />
+    <meta name="twitter:title" content="Laser and Sensor-Based Aircraft Detection in VDGS | Precision AGL Academy" />
+    <meta name="twitter:description" content="How a VDGS detects the aircraft with a laser or sensor: it scans the stand, tracks the aircraft, and turns range and angle into the offset and distance shown." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-laser-sensor-aircraft-detection-vdgs.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#article",
+  "headline": "Laser and Sensor-Based Aircraft Detection in VDGS",
+  "description": "How does a VDGS detect an aircraft with a laser or sensor? A visual breakdown of how a scanner finds the aircraft entering the stand, tracks it, and turns range and angle into the offset and distance the docking display shows.",
+  "url": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html",
+  "mainEntityOfPage": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html",
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "@id": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html#webpage",
+    "name": "AGL Visual Encyclopedia",
+    "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Precision AGL Academy"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://rahulsharmaagl.in/academy.html#org",
+    "name": "Precision AGL Academy",
+    "url": "https://rahulsharmaagl.in/academy.html"
+  },
+  "inLanguage": "en-IN",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-laser-sensor-aircraft-detection-vdgs.jpg"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#breadcrumb"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Knowledge Hub",
+      "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AGL Visual Encyclopedia",
+      "item": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Laser and Sensor-Based Aircraft Detection in VDGS",
+      "item": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html"
+    }
+  ]
+}
+</script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#faq",
+  "url": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does laser detection of an aircraft work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A laser scanner sends out pulses across an angle and measures how far away each one is. Range against angle gives a profile of whatever is in front of it. When a surface that matches an aircraft enters the capture zone, the system acquires it and keeps scanning to follow it. The nose position in the profile gives the offset and the distance to go."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do all docking guidance systems use lasers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Laser scanners are common, and some systems use cameras or radar instead of or alongside them. ICAO Annex 14 sets what the docking guidance must achieve, such as accuracy and use in the weather and light conditions it is intended for, but it does not say which sensor does the job."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is the laser safe for people on the apron?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Systems are designed so the laser is eye-safe for people on the apron, but the laser class and any limits on use are set by the manufacturer and the local rules. Take them from the manufacturer's data and the airport operator's safety procedures."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can reduce the sensor's performance?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A dirty or fogged window, heavy rain, snow or fog, and direct sun on the sensor can all shorten its range or add noise. Manufacturers state the conditions the system is designed for, so check the limits against your climate and stand layout."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why must the system tell an aircraft from a vehicle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ground vehicles, equipment and people may be inside the scan field before and during docking. If one is mistaken for the aircraft, or hides it, the display will show wrong guidance. The system uses the size and shape of the profile to accept only aircraft-like objects."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the sensor loses the aircraft?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The display should go to a clear fault or no-guidance indication rather than keep showing the last position, and the stand's procedures take over, for example a marshaller. The exact behaviour depends on the system, so check it against the manufacturer's data and the operator's procedures."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#article"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#related",
+  "name": "Related entries: Laser and Sensor-Based Aircraft Detection in VDGS",
+  "about": {
+    "@id": "https://rahulsharmaagl.in/laser-sensor-aircraft-detection-vdgs.html#article"
+  },
+  "numberOfItems": 13,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "VDGS Azimuth Guidance Principle",
+      "url": "https://rahulsharmaagl.in/vdgs-azimuth-guidance-principle.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "VDGS Stopping Position and Distance Display",
+      "url": "https://rahulsharmaagl.in/vdgs-stopping-position-and-distance-display.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Docking Guidance",
+      "url": "https://rahulsharmaagl.in/docking-guidance.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Aircraft Type Recognition and Profile Verification",
+      "url": "https://rahulsharmaagl.in/aircraft-type-recognition-and-profile-verification.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "VDGS Interface with Stand and Apron Systems",
+      "url": "https://rahulsharmaagl.in/vdgs-interface-with-stand-and-apron-systems.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Vehicle Detection Sensor",
+      "url": "https://rahulsharmaagl.in/vehicle-detection-sensor.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Aircraft Stand Lighting Interface",
+      "url": "https://rahulsharmaagl.in/aircraft-stand-lighting-interface.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Visual Guidance Decision Flow",
+      "url": "https://rahulsharmaagl.in/visual-guidance-decision-flow.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "APAPI Beam Arrangement",
+      "url": "https://rahulsharmaagl.in/apapi-beam-arrangement.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "APAPI Configuration",
+      "url": "https://rahulsharmaagl.in/apapi-configuration.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "AT-VASIS",
+      "url": "https://rahulsharmaagl.in/at-vasis.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "AVASI",
+      "url": "https://rahulsharmaagl.in/avasi.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "AGL Visual Encyclopedia",
+      "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* ─── reset & base ─── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --gold-dim: rgba(255, 180, 0, 0.7);
+            --gold-glow: rgba(255, 180, 0, 0.25);
+            --taxi-blue: #2f8fff;
+            --blue-glow: rgba(47, 143, 255, 0.45);
+            --cl-yellow: #FFD400;
+            --cl-yellow-glow: rgba(255, 212, 0, 0.5);
+            --red: #E63946;
+            --red-glow: rgba(230, 57, 70, 0.3);
+            --cyan: #00d4ff;
+            --cyan-glow: rgba(0, 212, 255, 0.4);
+            --green: #35d07f;
+            --green-glow: rgba(53, 208, 127, 0.4);
+            --text: #c8d8f0;
+            --grey-dim: rgba(200, 216, 240, 0.45);
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-height: 100vh;
+            background: var(--dark);
+            font-family: 'Barlow', Arial, Helvetica, sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── runway lines background, matching site ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── nav ── */
+
+        main { position: relative; z-index: 1; padding-top: 70px; }
+
+        .container { width: 100%; max-width: 1120px; margin: auto; padding: 70px 40px 90px; }
+
+        /* ── section label / eyebrow ── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+        }
+        .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+        .section-label .entry-tag {
+            margin-left: 14px;
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--grey-dim);
+            font-size: 11px; letter-spacing: 1.5px; font-weight: 600;
+        }
+
+        /* ── heading ── */
+        .heading-group h1 {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 66px;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            max-width: 900px;
+        }
+        .heading-group h1 .accent {
+            color: var(--green);
+            text-shadow: 0 0 40px rgba(53, 208, 127, 0.35);
+        }
+        .heading-group .sub {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 720px;
+            line-height: 1.8;
+            margin-top: 18px;
+        }
+
+        /* ── diagram card ── */
+        .diagram-card {
+            margin-top: 50px;
+            display: flex; flex-direction: column; align-items: center;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px 30px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .diagram-card:hover {
+            border-color: rgba(53, 208, 127, 0.25);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .diagram-card svg {
+            width: 100%;
+            height: auto;
+            max-width: 960px;
+        }
+
+        .caption-row {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 36px;
+        }
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            letter-spacing: 1.5px;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: default;
+            transition: color var(--transition);
+        }
+        .legend:hover { color: var(--white); }
+        .legend .dot {
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: transform var(--transition);
+        }
+        .legend:hover .dot { transform: scale(1.2); }
+        .dot.green { background: var(--green); box-shadow: 0 0 14px var(--green-glow); }
+        .dot.blue { background: var(--taxi-blue); box-shadow: 0 0 14px var(--blue-glow); }
+        .dot.cyan { background: var(--cyan); box-shadow: 0 0 10px var(--cyan-glow); }
+
+        /* ── fact card ── */
+        .fact-card {
+            margin-top: 34px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .fact-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--green), var(--cyan));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .fact-card:hover { border-color: rgba(53, 208, 127, 0.2); }
+        .fact-card:hover::before { transform: scaleX(1); }
+        .fact-card .label {
+            display: flex; align-items: center;
+            font-size: 12px; letter-spacing: 2.5px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 16px; font-weight: 700;
+        }
+        .fact-card .label .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.16);
+            color: var(--cyan);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 11px; letter-spacing: 1px; font-weight: 700;
+            margin-left: 12px;
+        }
+        .fact-card p {
+            font-size: 16.5px;
+            line-height: 1.9;
+            color: var(--text);
+            font-weight: 400;
+        }
+        .fact-card p + p { margin-top: 16px; }
+        .fact-card b { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-green { color: var(--green); font-weight: 600; }
+        .fact-card .highlight-blue { color: var(--taxi-blue); font-weight: 600; }
+        .fact-card .highlight-cyan { color: var(--cyan); font-weight: 600; }
+        .fact-card .highlight-red { color: var(--red); font-weight: 600; }
+        .fact-card .highlight-white { color: var(--white); font-weight: 700; }
+        .fact-card .note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+            font-size: 12.5px;
+            letter-spacing: 0.3px;
+            color: var(--grey-dim);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .fact-card .note .icon { font-size: 15px; color: var(--gold-dim); }
+
+        /* ── sub-heading inside fact card ── */
+        .fact-card h3 {
+            margin-top: 26px;
+            margin-bottom: 10px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .fact-card h3 .num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 22px; height: 22px; border-radius: 50%;
+            font-size: 12px; font-weight: 800;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+        .fact-card h3.green-h { color: var(--green); }
+        .fact-card h3.green-h .num { color: var(--green); border-color: rgba(53, 208, 127, 0.35); }
+        .fact-card h3.blue-h { color: var(--taxi-blue); }
+        .fact-card h3.blue-h .num { color: var(--taxi-blue); border-color: rgba(47, 143, 255, 0.35); }
+        .fact-card h3.cyan-h { color: var(--cyan); }
+        .fact-card h3.cyan-h .num { color: var(--cyan); border-color: rgba(0, 212, 255, 0.35); }
+
+        /* ── configuration table ── */
+        .config-table-wrap {
+            margin-top: 20px;
+            overflow-x: auto;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        table.config-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 560px;
+        }
+        table.config-table th, table.config-table td {
+            padding: 12px 16px;
+            text-align: left;
+            font-size: 13.5px;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        table.config-table thead th {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11.5px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 700;
+        }
+        table.config-table tbody td:first-child {
+            color: var(--white);
+            font-weight: 600;
+        }
+        table.config-table tbody td { color: var(--text); }
+        table.config-table tbody tr:last-child td { border-bottom: none; }
+        table.config-table .clause {
+            display: block;
+            margin-top: 2px;
+            font-size: 10.5px;
+            letter-spacing: 0.5px;
+            color: var(--grey-dim);
+            font-weight: 500;
+        }
+
+        /* ── prev/next nav ── */
+        .entry-nav {
+            margin-top: 18px;
+            display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        }
+        .entry-nav a {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--grey-dim); text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .entry-nav a:hover { color: var(--green); }
+
+        /* ── footer ── */
+
+        /* ── responsive ── */
+        @media (max-width: 860px) {
+            .container { padding: 50px 24px 60px; }
+            .heading-group h1 { font-size: 42px; }
+            .heading-group .sub { font-size: 16px; }
+            .fact-card { padding: 26px 22px; }
+            .fact-card p { font-size: 15.5px; }
+            .diagram-card { padding: 24px 18px 22px; }
+            .caption-row { gap: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .heading-group h1 { font-size: 32px; }
+            .legend { font-size: 11px; gap: 6px; }
+        }
+
+        /* ── utilities ── */
+        .glow-pulse { animation: pulseGlow 2.8s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── RELATED ── */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .related-card .rc-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 6px;
+        }
+        .related-card h5 {
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong { color: var(--gold); }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+        .academy-cta {
+            position: relative;
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(160deg, rgba(255, 180, 0, 0.08), var(--card) 55%);
+            padding: 48px 44px;
+            overflow: hidden;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+            pointer-events: none;
+        }
+        .academy-cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .academy-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .academy-cta h4 {
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+        .academy-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .academy-path span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .academy-path i {
+            color: var(--gold);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .academy-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .academy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .academy-btn-primary {
+            background: var(--gold);
+            color: #060d1a;
+            border: 1px solid var(--gold);
+        }
+        .academy-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .academy-btn-outline {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+        .academy-btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .academy-cta-tagline {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        @media(max-width:600px) {
+            .academy-cta { padding: 32px 22px; }
+            .academy-cta h2 { font-size: 26px; }
+        }
+
+        /* ── shell sections (Academy template) ── */
+        .shell-section { padding: 46px 0 10px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .shell-section .section-tag { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
+        .shell-section > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 18px; font-weight: 400; }
+        .shell-section.cta-wrap { border-top: none; padding-top: 10px; }
+        .breadcrumb { max-width: 1120px; }
+        .breadcrumb .current { opacity: 1; }
+        main { padding-top: 0; }
+        .container { padding-top: 30px; }
+        .nav-links.open { display: flex; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(6,13,26,.98); border-bottom: 1px solid rgba(255,180,0,.3); padding: 10px 20px 16px; }
+        .nav-links.open li a { display: block; padding: 12px 0; }
+        .hamburger { background: none; border: none; padding: 6px; }
+        @media(max-width:600px) { .breadcrumb { padding: 100px 20px 0; } .container { padding-left: 20px; padding-right: 20px; } footer { padding: 20px; flex-direction: column; text-align: center; } }
+
+
+        .faq-list{display:flex;flex-direction:column;gap:10px;max-width:900px;margin-top:6px;}
+        .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+        .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+        .faq-item summary::-webkit-details-marker{display:none;}
+        .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+        .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+        .faq-item .faq-q{flex-grow:1;}
+        .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+        .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+        .faq-item[open] .chev{transform:rotate(180deg);}
+        .faq-item[open] summary{border-bottom:1px solid var(--border);}
+        .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+            .entry-nav .is-soon { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--grey-dim); opacity:.45; cursor:default; }
+            .fact-card h3.red-h { color: var(--red); }
+        .fact-card h3.red-h .num { color: var(--red); border-color: rgba(230, 57, 70, 0.4); }
+            /* dz-feature:start — full diagram viewer with zoom and pan */
+        .dz-btn{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,180,0,0.1);border:1px solid rgba(255,180,0,0.35);color:var(--gold);font:700 12.5px 'Barlow',sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:10px 18px;border-radius:100px;cursor:pointer;transition:background .3s;}
+        .dz-btn:hover{background:rgba(255,180,0,0.2);}
+        .diagram-card > svg{cursor:zoom-in;}
+        .dz-overlay{position:fixed;inset:0;z-index:1000;background:#060d1a;display:none;flex-direction:column;}
+        .dz-overlay.open{display:flex;}
+        .dz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;flex-wrap:wrap;}
+        .dz-title{flex:1 1 220px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .dz-tools{display:flex;align-items:center;gap:6px;}
+        .dz-tools button{background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);border-radius:100px;min-width:38px;height:38px;padding:0 12px;font:800 15px 'Barlow',sans-serif;cursor:pointer;line-height:1;}
+        .dz-tools button:hover{background:rgba(255,180,0,0.18);}
+        .dz-tools button.dz-fit{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;}
+        .dz-tools button.dz-close{background:var(--gold);color:#060d1a;border:0;font-size:12.5px;letter-spacing:.5px;padding:0 18px;margin-left:6px;}
+        .dz-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+        .dz-zoom{min-width:52px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.5px;}
+        .dz-stage{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+        .dz-stage.drag{cursor:grabbing;}
+        .dz-stage svg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;}
+        .dz-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(6,13,26,0.85);border:1px solid var(--border);color:var(--grey,#9fb0c8);font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border-radius:100px;pointer-events:none;white-space:nowrap;transition:opacity .6s;}
+        .dz-hint.hide{opacity:0;}
+        @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
+        /* dz-feature:end */
+    </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+</head>
+<body>
+
+        <nav id="navbar">
+        <a href="../index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../knowledge-hub.html" class="active">Knowledge Hub</a></li>
+            <li><a href="../component-library.html">Components</a></li>
+            <li><a href="../agl-comparisons.html">Comparisons</a></li>
+            <li><a href="../standards-companion.html">Standards</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <a href="../index.html#contact" class="nav-cta">Get in Touch</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="../index.html">Home</a><span>/</span>
+        <a href="../knowledge-hub.html">Knowledge Hub</a><span>/</span>
+        <a href="../agl-visual-encyclopedia.html">AGL Visual Encyclopedia</a><span>/</span>
+        <span class="current">Laser and Sensor-Based Aircraft Detection in VDGS</span>
+    </div>
+
+        <main>
+        <div class="container">
+
+            <div class="section-label">
+                AGL Visual Encyclopedia
+                <span class="entry-tag">ENTRY 34 &middot; VISUAL GUIDANCE SYSTEMS</span>
+            </div>
+
+            <div class="heading-group">
+                <h1>How does a VDGS <span class="accent">detect the aircraft</span> with a laser or sensor?</h1>
+                <p class="sub">There is no marshaller and no mirror. A sensor finds the aircraft, follows it, and turns what it measures into the offset and the distance the display shows.</p>
+            </div>
+
+            <div class="diagram-card">
+                <svg data-motion="custom" viewBox="0 0 980 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Laser detection principle. Left: plan view of a laser scanner in the display housing at the stand head sending a fan of scan lines down the stand. Echo points mark the nose and wings of an approaching aircraft, and a separate set of points marks a ground vehicle inside the field. Right: four stages, capture, track, compute and display.">
+<defs><filter id="gl" x="-250%" y="-250%" width="600%" height="600%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><clipPath id="lvClip"><rect x="60" y="50" width="520" height="420"/></clipPath><marker id="arS" markerWidth="8" markerHeight="8" refX="1" refY="4" orient="auto"><path d="M8,0 L0,4 L8,8 Z" fill="var(--gold)"/></marker><marker id="arE" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--gold)"/></marker></defs>
+<text x="40" y="36" fill="var(--green)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13.5" letter-spacing="1.1" text-anchor="start">1 &#183; PLAN VIEW &#8212; THE SCAN FIELD</text>
+<text x="640" y="36" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13.5" letter-spacing="1.1" text-anchor="start">2 &#183; FROM ECHO TO GUIDANCE</text>
+<rect x="60" y="50" width="520" height="420" rx="3" fill="#0e1c3c"/>
+<path d="M320,470 V88" stroke="var(--cl-yellow)" stroke-width="2.4" stroke-dasharray="10 7" opacity=".7"/>
+<path d="M285,390 V290 Q285,260 296,252 Q307,260 307,290 V390 Z" fill="#1b2d57" stroke="#3b4f86" stroke-width="1.5"/>
+<path d="M285,310 L218,362 V374 L285,344 Z M307,310 L374,362 V374 L307,344 Z" fill="#1b2d57" stroke="#3b4f86" stroke-width="1.5"/>
+<path d="M285,374 L264,394 V400 L285,390 Z M307,374 L328,394 V400 L307,390 Z" fill="#1b2d57" stroke="#3b4f86" stroke-width="1.5"/>
+<rect x="465" y="320" width="32" height="46" rx="4" fill="#2a2f3f" stroke="#555d78" stroke-width="1.3"/>
+<path d="M320,88 L61.6,375" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L61.6,396" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L61.4,419" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L61.4,444" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L221.0,360" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L235.2,349" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L248.0,339" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L259.7,330" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L270.3,322" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L280.2,314" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L296.8,253" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L301.6,263" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L306.2,285" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L312.1,314" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L320.0,321" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L328.3,327" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L337.2,334" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L346.6,341" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L356.7,349" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L367.4,357" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L465.2,361" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L465.5,340" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L465.6,321" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L476.5,320" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L488.6,320" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L578.6,419" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L578.4,396" stroke="var(--cyan)" stroke-width="1" opacity=".22"/><path d="M320,88 L578.4,375" stroke="var(--cyan)" stroke-width="1" opacity=".22"/>
+<g filter="url(#gl)"><circle class="lv-echo" style="animation-delay:0.94s" cx="221.0" cy="360" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.03s" cx="235.2" cy="349" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.11s" cx="248.0" cy="339" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.20s" cx="259.7" cy="330" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.29s" cx="270.3" cy="322" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.37s" cx="280.2" cy="314" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.46s" cx="296.8" cy="253" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.54s" cx="301.6" cy="263" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.63s" cx="306.2" cy="285" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.71s" cx="312.1" cy="314" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.80s" cx="320.0" cy="321" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.89s" cx="328.3" cy="327" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:1.97s" cx="337.2" cy="334" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:2.06s" cx="346.6" cy="341" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:2.14s" cx="356.7" cy="349" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:2.23s" cx="367.4" cy="357" r="3.2" fill="var(--cyan)"/><circle class="lv-echo" style="animation-delay:3.00s" cx="465.2" cy="361" r="3.2" fill="var(--red)"/><circle class="lv-echo" style="animation-delay:3.09s" cx="465.5" cy="340" r="3.2" fill="var(--red)"/><circle class="lv-echo" style="animation-delay:3.17s" cx="465.6" cy="321" r="3.2" fill="var(--red)"/><circle class="lv-echo" style="animation-delay:3.26s" cx="476.5" cy="320" r="3.2" fill="var(--red)"/><circle class="lv-echo" style="animation-delay:3.34s" cx="488.6" cy="320" r="3.2" fill="var(--red)"/></g>
+<g clip-path="url(#lvClip)"><g class="lv-sweep"><path d="M320 88 L320 470 L286 470 Z" fill="rgba(0,212,255,0.10)"/><line x1="320" y1="88" x2="320" y2="470" stroke="#8ff0ff" stroke-width="2" filter="url(#gl)"/></g></g>
+<rect x="286" y="52" width="68" height="34" rx="5" fill="#0a1628" stroke="var(--cyan)" stroke-width="1.6"/>
+<circle cx="320" cy="86" r="4" fill="var(--cyan)"/>
+<text x="366" y="66" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="11" letter-spacing="1.1" text-anchor="start">LASER SCANNER</text>
+<text x="366" y="80" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10" letter-spacing="1.1" text-anchor="start">IN THE DISPLAY HOUSING</text>
+<text x="70" y="100" fill="rgba(200,216,240,0.35)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="14" letter-spacing="1.1" text-anchor="start">SCAN FIELD</text>
+<text x="70" y="420" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">ECHOES OF THE NOSE AND WINGS</text>
+<text x="70" y="436" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">GIVE THE AIRCRAFT PROFILE</text>
+<text x="481" y="388" fill="var(--red)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="middle">VEHICLE IN THE FIELD</text>
+<text x="481" y="402" fill="var(--red)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="middle">NOT AN AIRCRAFT</text>
+<path d="M296,236 H320" stroke="var(--gold)" stroke-width="1.4" marker-start="url(#arS)" marker-end="url(#arE)"/>
+<path d="M262 92 V250" stroke="var(--gold)" stroke-width="1.4" marker-start="url(#arS)" marker-end="url(#arE)"/>
+<text x="254" y="164" fill="var(--gold)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="end">RANGE TO NOSE</text>
+<line x1="62" y1="452" x2="578" y2="452" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="8 6" opacity=".7"/>
+<text x="574" y="443" fill="var(--gold)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10" letter-spacing="1.1" text-anchor="end">CAPTURE LINE &#183; AIRCRAFT ACQUIRED HERE</text>
+<text x="328" y="232" fill="var(--gold)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">OFFSET FROM ECHOES</text>
+<rect x="640" y="52" width="300" height="76" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/><text x="658" y="86" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13" letter-spacing="1.1" text-anchor="start">1 &#183; CAPTURE</text><text x="658" y="105" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">AIRCRAFT IN ZONE</text><rect x="790" y="66" width="132" height="48" rx="6" fill="#0a1220" stroke="rgba(255,255,255,0.15)"/><g filter="url(#gl)"><path d="M800,90 L860,76" stroke="var(--cyan)" stroke-width="1.4" opacity=".8"/><path d="M800,90 L860,83" stroke="var(--cyan)" stroke-width="1.4" opacity=".8"/><path d="M800,90 L860,90" stroke="var(--cyan)" stroke-width="1.4" opacity=".8"/><path d="M800,90 L860,97" stroke="var(--cyan)" stroke-width="1.4" opacity=".8"/><path d="M800,90 L860,104" stroke="var(--cyan)" stroke-width="1.4" opacity=".8"/><circle cx="800" cy="90" r="3.5" fill="var(--cyan)"/><circle class="lv-acq" cx="905" cy="90" r="5" fill="var(--green)"/></g>
+<rect x="640" y="138" width="300" height="76" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/><text x="658" y="172" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13" letter-spacing="1.1" text-anchor="start">2 &#183; TRACK</text><text x="658" y="191" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">SCANS FOLLOW IT</text><rect x="790" y="152" width="132" height="48" rx="6" fill="#0a1220" stroke="rgba(255,255,255,0.15)"/><g filter="url(#gl)"><circle class="lv-trk" style="animation-delay:0.00s" cx="808" cy="176" r="2.5" fill="var(--cyan)" opacity="0.35"/><circle class="lv-trk" style="animation-delay:0.35s" cx="834" cy="176" r="3" fill="var(--cyan)" opacity="0.55"/><circle class="lv-trk" style="animation-delay:0.70s" cx="860" cy="176" r="3.5" fill="var(--cyan)" opacity="0.8"/><circle class="lv-trk" style="animation-delay:1.05s" cx="886" cy="176" r="4.2" fill="var(--cyan)" opacity="1"/><path d="M898,176 H915" stroke="var(--cyan)" stroke-width="2" /></g>
+<rect x="640" y="224" width="300" height="76" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/><text x="658" y="258" fill="var(--gold)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13" letter-spacing="1.1" text-anchor="start">3 &#183; COMPUTE</text><text x="658" y="277" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">OFFSET + DISTANCE</text><rect x="790" y="238" width="132" height="48" rx="6" fill="#0a1220" stroke="rgba(255,255,255,0.15)"/><path d="M812,276 V248" stroke="var(--gold)" stroke-width="1.6" marker-start="url(#arS)" marker-end="url(#arE)"/><path d="M826,276 H906" stroke="var(--gold)" stroke-width="1.6" marker-start="url(#arS)" marker-end="url(#arE)"/>
+<rect x="640" y="310" width="300" height="76" rx="10" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.12)"/><text x="658" y="344" fill="var(--green)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13" letter-spacing="1.1" text-anchor="start">4 &#183; DISPLAY</text><text x="658" y="363" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.1" text-anchor="start">STEER AND STOP</text><rect x="790" y="324" width="132" height="48" rx="6" fill="#0a1220" stroke="rgba(255,255,255,0.15)"/><g filter="url(#gl)"><rect x="796" y="339" width="10" height="18" rx="2" fill="var(--green)"/><rect x="808" y="339" width="10" height="18" rx="2" fill="var(--green)"/><rect x="820" y="339" width="10" height="18" rx="2" fill="var(--green)"/><rect x="832" y="339" width="10" height="18" rx="2" fill="var(--green)"/><rect x="844" y="339" width="10" height="18" rx="2" fill="var(--green)"/><rect x="856" y="339" width="10" height="18" rx="2" fill="var(--green)"/><rect x="868" y="339" width="10" height="18" rx="2" fill="rgba(255,255,255,0.07)"/><rect x="880" y="339" width="10" height="18" rx="2" fill="rgba(255,255,255,0.07)"/><rect x="892" y="339" width="10" height="18" rx="2" fill="rgba(255,255,255,0.07)"/><rect x="904" y="339" width="10" height="18" rx="2" fill="rgba(255,255,255,0.07)"/></g>
+<rect class="lv-card" style="animation-delay:0.0s" x="640" y="52" width="300" height="76" rx="10" fill="#00d4ff" fill-opacity=".07" stroke="#00d4ff" stroke-width="2.2"/><rect class="lv-card" style="animation-delay:1.8s" x="640" y="138" width="300" height="76" rx="10" fill="#00d4ff" fill-opacity=".07" stroke="#00d4ff" stroke-width="2.2"/><rect class="lv-card" style="animation-delay:3.6s" x="640" y="224" width="300" height="76" rx="10" fill="#FFB400" fill-opacity=".07" stroke="#FFB400" stroke-width="2.2"/><rect class="lv-card" style="animation-delay:5.4s" x="640" y="310" width="300" height="76" rx="10" fill="#35d07f" fill-opacity=".07" stroke="#35d07f" stroke-width="2.2"/>
+<text x="640" y="410" fill="var(--white)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="11" letter-spacing="1.1" text-anchor="start">SENSOR LOSS &#8594; CLEAR FAULT INDICATION</text>
+<text x="640" y="426" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10" letter-spacing="1.1" text-anchor="start">NOT A FROZEN LAST POSITION</text>
+<rect x="40" y="484" width="900" height="30" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)"/>
+<text x="490" y="504" fill="var(--white)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12" letter-spacing="1.1" text-anchor="middle">SCAN THE STAND &#183; FIND THE AIRCRAFT &#183; FOLLOW IT &#183; TURN RANGE AND ANGLE INTO GUIDANCE</text>
+</svg>
+                <button type="button" class="dz-btn dz-open"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> View full diagram</button>
+                <div class="caption-row">
+                    <div class="legend"><span class="dot cyan"></span>scan line and aircraft echo</div>
+                    <div class="legend"><span class="dot" style="background:var(--red);box-shadow:0 0 14px var(--red-glow);"></span>vehicle echo</div>
+                    <div class="legend"><span class="dot" style="background:var(--gold);box-shadow:0 0 12px var(--gold-glow);"></span>offset computed</div>
+                    <div class="legend"><span class="dot green"></span>guidance shown</div>
+                </div>
+            </div>
+
+            <div class="fact-card">
+                <div class="label">The Fact <span class="badge"><i class="fa-solid fa-check"></i> ICAO Annex 14 &middot; Visual docking guidance</span></div>
+                <p>A modern docking system <b class="highlight-white">measures the aircraft instead of relying on the pilot's eye</b>. A sensor mounted with the display finds the aircraft as it enters the stand, follows it, and works out the two numbers the display needs: the <b class="highlight-white">offset</b> from the stand centreline and the <b class="highlight-white">distance</b> to the stop point.</p>
+
+                <h3 class="blue-h"><span class="num">1</span>Scan, detect, track</h3>
+                <p>A <b class="highlight-cyan">laser scanner</b> sends pulses across an angle and measures the range of each one. Range against angle gives a <b class="highlight-white">profile</b> of whatever is in front of it. When a surface of aircraft size and shape enters the capture zone, the system acquires it and keeps scanning to follow it. Some systems use cameras or radar instead of, or alongside, lasers.</p>
+
+                <h3 class="cyan-h"><span class="num">2</span>From echoes to guidance</h3>
+                <p>The system finds the <b class="highlight-white">nose in the profile</b> and converts its position into the offset for the azimuth display and the distance for the stopping display. The same profile can be compared with the selected aircraft type, which is covered separately. Annex 14 sets what the guidance must achieve, such as accuracy and use in the weather and light it is intended for, but <b class="highlight-white">not which sensor</b> does the job.</p>
+
+                <h3 class="green-h"><span class="num">3</span>Eye-safe and weather-aware</h3>
+                <p>The laser is designed to be <b class="highlight-green">eye-safe</b> for people on the apron, and its class and any limits come from the manufacturer. <b class="highlight-white">Rain, fog, snow, a dirty window or direct sun</b> can shorten the range or add noise, so each system states the conditions it is designed for.</p>
+
+                <h3 class="red-h"><span class="num">4</span>What goes wrong</h3>
+                <p>A <b class="highlight-red">dirty or fogged window</b> blinds the scanner. A sensor knocked out of calibration guides the pilot to the <b class="highlight-red">wrong line</b>. A vehicle or person in the scan field can be mistaken for the aircraft, or hide it. If the sensor loses the aircraft, the display should show a <b class="highlight-white">clear fault indication</b>, not a frozen last position, and the stand's procedures take over.</p>
+
+                <div class="config-table-wrap"><table class="config-table"><thead><tr><th>Stage</th><th>What the sensor does</th><th>Result</th></tr></thead><tbody>
+<tr><td>Capture</td><td>Detects an aircraft-sized object entering the capture zone</td><td>Aircraft acquired</td></tr>
+<tr><td>Track</td><td>Repeats scans of range and angle</td><td>Position and closing speed</td></tr>
+<tr><td>Compute</td><td>Finds the nose in the profile</td><td>Offset and distance to go</td></tr>
+<tr><td>Verify</td><td>Compares the profile with the selected aircraft type</td><td>Type confirmed, or an alert</td></tr>
+<tr><td>Display</td><td>Drives the azimuth and stopping displays</td><td>Steer, slow, stop</td></tr>
+<tr><td>Fault</td><td>Window blocked, aircraft lost, profile mismatch</td><td>Clear fault state; procedures take over</td></tr>
+</tbody></table></div>
+
+                <div class="note"><span class="icon"><i class="fa-solid fa-circle-info"></i></span>Principles summarised from ICAO Annex 14 Vol. I (visual docking guidance system) and Doc 9157 Part 4. Clause numbers shift between editions, so confirm against the edition in force. The diagram is a schematic; scan angles, ranges and capture zones are illustrative. Sensor type, laser class, weather limits and fault behaviour come from the system manufacturer&rsquo;s data and the airport operator&rsquo;s procedures.</div>
+            </div>
+
+            <div class="entry-nav">
+                <a href="vdgs-stopping-position-and-distance-display.html"><i class="fa-solid fa-arrow-left"></i> Entry 33 &middot; VDGS stopping position and distance display</a>
+                <a href="aircraft-type-recognition-and-profile-verification.html">Entry 35 &middot; Aircraft type recognition and profile verification <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="shell-section" id="faq">
+                <div class="section-tag">FAQ</div>
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                <details class="faq-item"><summary><span class="faq-num">Q1</span><span class="faq-q">How does laser detection of an aircraft work?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>A laser scanner sends out pulses across an angle and measures how far away each one is. Range against angle gives a profile of whatever is in front of it. When a surface that matches an aircraft enters the capture zone, the system acquires it and keeps scanning to follow it. The nose position in the profile gives the offset and the distance to go.</p></div></details>
+                <details class="faq-item"><summary><span class="faq-num">Q2</span><span class="faq-q">Do all docking guidance systems use lasers?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>No. Laser scanners are common, and some systems use cameras or radar instead of or alongside them. ICAO Annex 14 sets what the docking guidance must achieve, such as accuracy and use in the weather and light conditions it is intended for, but it does not say which sensor does the job.</p></div></details>
+                <details class="faq-item"><summary><span class="faq-num">Q3</span><span class="faq-q">Is the laser safe for people on the apron?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>Systems are designed so the laser is eye-safe for people on the apron, but the laser class and any limits on use are set by the manufacturer and the local rules. Take them from the manufacturer's data and the airport operator's safety procedures.</p></div></details>
+                <details class="faq-item"><summary><span class="faq-num">Q4</span><span class="faq-q">What can reduce the sensor's performance?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>A dirty or fogged window, heavy rain, snow or fog, and direct sun on the sensor can all shorten its range or add noise. Manufacturers state the conditions the system is designed for, so check the limits against your climate and stand layout.</p></div></details>
+                <details class="faq-item"><summary><span class="faq-num">Q5</span><span class="faq-q">Why must the system tell an aircraft from a vehicle?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>Ground vehicles, equipment and people may be inside the scan field before and during docking. If one is mistaken for the aircraft, or hides it, the display will show wrong guidance. The system uses the size and shape of the profile to accept only aircraft-like objects.</p></div></details>
+                <details class="faq-item"><summary><span class="faq-num">Q6</span><span class="faq-q">What happens if the sensor loses the aircraft?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>The display should go to a clear fault or no-guidance indication rather than keep showing the last position, and the stand's procedures take over, for example a marshaller. The exact behaviour depends on the system, so check it against the manufacturer's data and the operator's procedures.</p></div></details>
+                </div>
+            </div>
+
+<div class="shell-section cta-wrap">
+            <div class="academy-cta">
+                <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
+                <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
+                <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
+                <h4>Build Practical AGL Engineering Skills</h4>
+                <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
+                <div class="academy-path">
+                    <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Design &amp; Electrical Engineering</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Approach Lighting</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Photometry</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Installation &amp; Commissioning</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Maintenance &amp; Troubleshooting</span>
+                </div>
+                <p>Learn how each light, sign and circuit works as part of a complete airport lighting system, not just as an isolated diagram.</p>
+                <div class="academy-cta-actions">
+                    <a href="../academy.html" class="academy-btn academy-btn-primary"><i class="fa-solid fa-book-open"></i> Explore AGL Courses</a>
+                    <a href="../index.html#contact" class="academy-btn academy-btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Your AGL Learning Journey</a>
+                </div>
+                <div class="academy-cta-tagline">See. Understand. Apply. Engineer.</div>
+            </div>
+            </div>
+
+                                                <div class="shell-section">
+                <div class="section-tag">Related Entries</div>
+                <h2>Continue Exploring</h2>
+                <div class="related-grid">
+                <a class="related-card" href="vdgs-azimuth-guidance-principle.html"><div class="rc-tag">Visual Guidance Systems</div><h5>VDGS Azimuth Guidance Principle</h5></a>
+<a class="related-card" href="vdgs-stopping-position-and-distance-display.html"><div class="rc-tag">Visual Guidance Systems</div><h5>VDGS Stopping Position and Distance Display</h5></a>
+<a class="related-card" href="docking-guidance.html"><div class="rc-tag">Visual Guidance Systems</div><h5>Docking Guidance</h5></a>
+<a class="related-card" href="aircraft-type-recognition-and-profile-verification.html"><div class="rc-tag">Visual Guidance Systems</div><h5>Aircraft Type Recognition and Profile Verification</h5></a>
+<a class="related-card" href="vdgs-interface-with-stand-and-apron-systems.html"><div class="rc-tag">Visual Guidance Systems</div><h5>VDGS Interface with Stand and Apron Systems</h5></a>
+<a class="related-card" href="../navaids-sensors/vehicle-detection-sensor.html"><div class="rc-tag">Navaids &amp; Airfield Sensors Interface</div><h5>Vehicle Detection Sensor</h5></a>
+<a class="related-card" href="../layout/aircraft-stand-lighting-interface.html"><div class="rc-tag">Airfield Layout</div><h5>Aircraft Stand Lighting Interface</h5></a>
+<a class="related-card" href="visual-guidance-decision-flow.html"><div class="rc-tag">Visual Guidance Systems</div><h5>Visual Guidance Decision Flow</h5></a>
+<a class="related-card" href="../papi/apapi-beam-arrangement.html"><div class="rc-tag">Visual Guidance Systems</div><h5>APAPI Beam Arrangement</h5></a>
+<a class="related-card" href="../papi/apapi-configuration.html"><div class="rc-tag">Visual Guidance Systems</div><h5>APAPI Configuration</h5></a>
+<a class="related-card" href="../papi/at-vasis.html"><div class="rc-tag">Visual Guidance Systems</div><h5>AT-VASIS</h5></a>
+<a class="related-card" href="../papi/avasi.html"><div class="rc-tag">Visual Guidance Systems</div><h5>AVASI</h5></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+</div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+        <div class="footer-links">
+            <a href="../index.html#about">About</a>
+            <a href="../component-library.html">Components</a>
+            <a href="../agl-comparisons.html">Comparisons</a>
+            <a href="../standards-companion.html">Standards</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 400); });
+        scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const hb = document.getElementById('hamburger'), nl = document.getElementById('navLinks');
+        hb.addEventListener('click', () => { const o = nl.classList.toggle('open'); hb.setAttribute('aria-expanded', o); });
+    </script>
+
+    <!-- dz-feature:start -->
+    <div class="dz-overlay" id="dzOverlay" role="dialog" aria-modal="true" aria-label="Full diagram viewer">
+        <div class="dz-bar">
+            <span class="dz-title" id="dzTitle">Diagram</span>
+            <div class="dz-tools">
+                <button type="button" id="dzOut" aria-label="Zoom out" title="Zoom out (-)">&minus;</button>
+                <span class="dz-zoom" id="dzPct" aria-live="polite">100%</span>
+                <button type="button" id="dzIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
+                <button type="button" id="dzFit" class="dz-fit" aria-label="Fit diagram to screen" title="Fit to screen (0)">Fit</button>
+                <button type="button" id="dzClose" class="dz-close" title="Close (Esc)">Close</button>
+            </div>
+        </div>
+        <div class="dz-stage" id="dzStage">
+            <div class="dz-hint" id="dzHint">Drag to pan &middot; scroll or pinch to zoom &middot; double-click to zoom in</div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var ov=document.getElementById('dzOverlay'), stage=document.getElementById('dzStage');
+        var pct=document.getElementById('dzPct'), hint=document.getElementById('dzHint'), ttl=document.getElementById('dzTitle');
+        var svg=null, vw=0, vh=0, fit=1, s=1, tx=0, ty=0, opener=null, hintTimer=null;
+        var MIN=0.5, MAX=10; /* relative to fit */
+        var ptrs={}, last=null;
+
+        function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+        function apply(){
+            var W=stage.clientWidth, H=stage.clientHeight, m=80;
+            var w=vw*s, h=vh*s;
+            tx=clamp(tx, m-w, W-m); ty=clamp(ty, m-h, H-m);
+            svg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';
+            pct.textContent=Math.round(s/fit*100)+'%';
+        }
+        function fitView(){
+            var W=stage.clientWidth, H=stage.clientHeight, pad=24;
+            fit=Math.min((W-pad*2)/vw,(H-pad*2)/vh); if(!(fit>0)) fit=1;
+            s=fit; tx=(W-vw*s)/2; ty=(H-vh*s)/2; apply();
+        }
+        function zoomAt(f,cx,cy){
+            var ns=clamp(s*f, fit*MIN, fit*MAX); f=ns/s;
+            tx=cx-(cx-tx)*f; ty=cy-(cy-ty)*f; s=ns; apply();
+        }
+        function center(){ return [stage.clientWidth/2, stage.clientHeight/2]; }
+        function stagePt(e){ var r=stage.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; }
+
+        function open(src, trigger){
+            opener=trigger||null;
+            if(svg) stage.removeChild(svg);
+            svg=src.cloneNode(true); svg.removeAttribute('style'); svg.removeAttribute('class');
+            var vb=src.viewBox&&src.viewBox.baseVal;
+            if(vb&&vb.width){ vw=vb.width; vh=vb.height; }
+            else { var bb=src.getBoundingClientRect(); vw=bb.width||940; vh=bb.height||520; }
+            svg.setAttribute('width',vw); svg.setAttribute('height',vh);
+            svg.style.width=vw+'px'; svg.style.height=vh+'px';
+            stage.insertBefore(svg, hint);
+            var label=src.getAttribute('aria-label')||'';
+            var h1=document.querySelector('h1');
+            ttl.textContent=(h1?h1.textContent.trim():'Diagram');
+            svg.setAttribute('aria-label', label);
+            ov.classList.add('open'); document.body.style.overflow='hidden';
+            fitView();
+            hint.classList.remove('hide'); clearTimeout(hintTimer);
+            hintTimer=setTimeout(function(){ hint.classList.add('hide'); },4500);
+            document.getElementById('dzClose').focus();
+        }
+        function close(){
+            ov.classList.remove('open'); document.body.style.overflow='';
+            if(opener&&opener.focus) opener.focus();
+        }
+
+        document.querySelectorAll('.diagram-card').forEach(function(card){
+            var src=card.querySelector('svg'), btn=card.querySelector('.dz-open');
+            if(!src) return;
+            if(btn) btn.addEventListener('click',function(){ open(src,btn); });
+            src.addEventListener('click',function(){ open(src,btn); });
+        });
+
+        document.getElementById('dzClose').addEventListener('click',close);
+        document.getElementById('dzIn').addEventListener('click',function(){ var c=center(); zoomAt(1.4,c[0],c[1]); });
+        document.getElementById('dzOut').addEventListener('click',function(){ var c=center(); zoomAt(1/1.4,c[0],c[1]); });
+        document.getElementById('dzFit').addEventListener('click',fitView);
+
+        stage.addEventListener('wheel',function(e){
+            e.preventDefault(); var p=stagePt(e);
+            var dy=e.deltaMode===1?e.deltaY*16:e.deltaY;
+            zoomAt(Math.exp(-dy*(e.ctrlKey?0.01:0.0018)),p[0],p[1]);
+        },{passive:false});
+
+        stage.addEventListener('pointerdown',function(e){
+            stage.setPointerCapture(e.pointerId); ptrs[e.pointerId]=stagePt(e); last=null;
+            stage.classList.add('drag'); hint.classList.add('hide');
+        });
+        stage.addEventListener('pointermove',function(e){
+            if(!ptrs[e.pointerId]) return;
+            var p=stagePt(e), ids=Object.keys(ptrs);
+            if(ids.length===1){
+                tx+=p[0]-ptrs[e.pointerId][0]; ty+=p[1]-ptrs[e.pointerId][1]; ptrs[e.pointerId]=p; apply();
+            } else if(ids.length>=2){
+                ptrs[e.pointerId]=p;
+                var a=ptrs[ids[0]], b=ptrs[ids[1]];
+                var d=Math.hypot(a[0]-b[0],a[1]-b[1]), cx=(a[0]+b[0])/2, cy=(a[1]+b[1])/2;
+                if(last){
+                    tx+=cx-last.cx; ty+=cy-last.cy;
+                    if(last.d>0) zoomAt(d/last.d,cx,cy); else apply();
+                }
+                last={d:d,cx:cx,cy:cy};
+            }
+        });
+        function up(e){
+            delete ptrs[e.pointerId]; last=null;
+            if(!Object.keys(ptrs).length) stage.classList.remove('drag');
+        }
+        stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+
+        stage.addEventListener('dblclick',function(e){
+            var p=stagePt(e);
+            if(s>fit*1.05) fitView(); else zoomAt(2.5,p[0],p[1]);
+        });
+
+        window.addEventListener('resize',function(){ if(ov.classList.contains('open')) fitView(); });
+
+        document.addEventListener('keydown',function(e){
+            if(!ov.classList.contains('open')) return;
+            var c=center(), k=e.key, step=60;
+            if(k==='Escape') close();
+            else if(k==='+'||k==='=') zoomAt(1.25,c[0],c[1]);
+            else if(k==='-'||k==='_') zoomAt(1/1.25,c[0],c[1]);
+            else if(k==='0') fitView();
+            else if(k==='ArrowLeft'){ tx+=step; apply(); }
+            else if(k==='ArrowRight'){ tx-=step; apply(); }
+            else if(k==='ArrowUp'){ ty+=step; apply(); }
+            else if(k==='ArrowDown'){ ty-=step; apply(); }
+            else if(k==='Tab'){
+                var f=ov.querySelectorAll('button'), first=f[0], lastB=f[f.length-1];
+                if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); lastB.focus(); }
+                else if(!e.shiftKey&&document.activeElement===lastB){ e.preventDefault(); first.focus(); }
+            }
+            else return;
+            if(k!=='Tab') e.preventDefault();
+        });
+    })();
+    </script>
+    <!-- dz-feature:end -->
+
+<script>window.m3SkipYellow=true;</script>
+<!-- motion-feature:start -->
+<style>
+/* AGL Visual Encyclopedia: live diagram motion v3 (light, glow, current) */
+@keyframes m3Power{0%{opacity:.25}10%{opacity:1}13%{opacity:.8}16%{opacity:1}85%{opacity:1}95%{opacity:.25}100%{opacity:.25}}
+@keyframes m3Breath{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes m3Face{0%{filter:brightness(.55) saturate(.8)}10%{filter:brightness(1.25) saturate(1.15)}13%{filter:brightness(.9)}16%,85%{filter:brightness(1.12) saturate(1.1)}95%,100%{filter:brightness(.55) saturate(.8)}}
+@keyframes m3Bloom{0%{opacity:0}10%{opacity:.55}13%{opacity:.3}16%{opacity:.6}50%{opacity:.45}85%{opacity:.6}95%,100%{opacity:0}}
+@keyframes m3Ring{0%{transform:scale(1);opacity:.5}100%{transform:scale(3);opacity:0}}
+@keyframes m3Travel{from{stroke-dashoffset:var(--m3-a,6)}to{stroke-dashoffset:var(--m3-b,-94)}}
+@keyframes m3March{to{stroke-dashoffset:var(--m3-d,-12)}}
+@keyframes m3Grow{from{transform:scaleX(0)}}
+@keyframes m3Draw{to{stroke-dashoffset:0}}
+@keyframes m3Sweep{0%{opacity:0;transform:translateX(0)}6%,94%{opacity:.9}100%{opacity:0;transform:translateX(var(--m3-w,200px))}}
+@keyframes m3Float{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
+@keyframes m3Shimmer{0%,100%{opacity:.25}50%{opacity:.85}}
+.m3-on{animation:m3Power 9s ease-in-out infinite}
+.m3-face{animation:m3Face 9s ease-in-out infinite}
+.m3-bloomg{animation:m3Bloom 9s ease-in-out infinite;pointer-events:none}
+.m3-halo{transform-box:fill-box;transform-origin:center;animation:m3Breath 2.4s ease-in-out infinite}
+.m3-ring{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:m3Ring 3s ease-out infinite}
+.m3-spark{fill:#fff;transform-box:fill-box;transform-origin:center;animation:m3Shimmer 1.8s ease-in-out infinite}
+.m3-src{animation:m3Power 9s ease-in-out infinite}
+.m3-filon{animation:m3Power 9s ease-in-out infinite,m3Fil 1.5s ease-in-out infinite}
+@keyframes m3Fil{0%,100%{filter:drop-shadow(0 0 3px #FFD400)}50%{filter:drop-shadow(0 0 9px #FFD400) drop-shadow(0 0 16px #ff9d00)}}
+.m3-pk{fill:none;stroke-linecap:round;pointer-events:none;stroke-dasharray:var(--m3-len,9) 400;animation:m3Travel var(--m3-t,2.4s) linear infinite;animation-delay:var(--m3-pd,0s);filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor)}
+.m3-march{animation:m3March var(--m3-dur,.8s) linear infinite}
+.m3-ready:not(.m3-play) .m3-bar{transform:scaleX(0)}
+.m3-bar{transform-box:fill-box;transform-origin:left center}
+.m3-play .m3-bar{animation:m3Grow 1.2s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--m3-bd,.3s)}
+.m3-ready .m3-draw{stroke-dasharray:1;stroke-dashoffset:1}
+.m3-play .m3-draw{animation:m3Draw 2.4s cubic-bezier(.4,0,.2,1) forwards;animation-delay:var(--m3-dd,.4s)}
+.m3-cursor{stroke:var(--gold,#FFB400);stroke-width:1.6;opacity:0;pointer-events:none;animation:m3Sweep 4.2s linear infinite;animation-delay:2.6s}
+.xv-part{animation:m3Float 4s ease-in-out infinite;animation-delay:calc(var(--m3-i,0) * -.5s)}
+.m3-toggle{margin-left:10px}
+.m3-off *,.m3-off *::before,.m3-off *::after{animation:none!important}
+.m3-off .m3-ready .m3-bar{transform:none!important}
+.m3-off .m3-ready .m3-draw{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+.m3-off .m3-fx{display:none}
+@media (prefers-reduced-motion:reduce){.m3-on,.m3-face,.m3-bloomg,.m3-halo,.m3-ring,.m3-spark,.m3-src,.m3-filon,.m3-pk,.m3-march,.xv-part{animation-duration:0s}}
+</style>
+<script>
+(function(){
+  var root=document.documentElement, NS='http://www.w3.org/2000/svg';
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pref=null; try{pref=localStorage.getItem('aglMotion');}catch(e){}
+  var off=rm?(pref!=='on'):(pref==='off');
+  function setOff(v){off=v;root.classList.toggle('m3-off',v);try{localStorage.setItem('aglMotion',v?'off':'on');}catch(e){}
+    document.querySelectorAll('.m3-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(!v));b.querySelector('span').textContent=v?'Motion off':'Motion on';});}
+  root.classList.toggle('m3-off',off);
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function rgb(s){var m=(s||'').match(/rgba?\(([^)]+)\)/);if(!m)return null;var p=m[1].split(/[ ,\/]+/).map(parseFloat);return {r:p[0],g:p[1],b:p[2],a:p.length>3?p[3]:1};}
+  function sat(c){return c&&c.a>=.6&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>60&&Math.max(c.r,c.g,c.b)>150;}
+  function lum(c){return c.r*.3+c.g*.59+c.b*.11;}
+  function css(c){return 'rgb('+Math.round(c.r)+','+Math.round(c.g)+','+Math.round(c.b)+')';}
+
+  function prep(svg){
+    if(svg.hasAttribute('data-motion'))return;
+    var defs=svg.querySelector('defs')||svg.insertBefore(el('defs',{}),svg.firstChild), uid=Math.random().toString(36).slice(2,6), n=0;
+    var blur=el('filter',{id:'m3b'+uid,x:'-80%',y:'-80%',width:'260%',height:'260%'});blur.appendChild(el('feGaussianBlur',{stdDeviation:'7'}));defs.appendChild(blur);
+    function grad(c){var id='m3g'+uid+(n++),g=el('radialGradient',{id:id});
+      [[0,.9],[.4,.4],[1,0]].forEach(function(s){g.appendChild(el('stop',{offset:s[0],'stop-color':css(c),'stop-opacity':s[1]}));});defs.appendChild(g);return id;}
+    function fillOf(e){var c=rgb(getComputedStyle(e).fill);return c&&c.a>.4?c:null;}
+    function strokeOf(e){var c=rgb(getComputedStyle(e).stroke);return c&&c.a>.4?c:null;}
+    function inFx(e){return e.closest('.m3-fx,.m3-src,.m3-face,.m3-pk,.diagram-legend');}
+
+    /* 1 -- LEDs and lamps: glow cluster behind, warm-up, breathing halo, rings, sparkle */
+    var src=[],panels=[];
+    svg.querySelectorAll('[filter^="url(#gw"] > *,[filter^="url(#glow"] > *,[filter="url(#gl)"] > *,circle[filter^="url(#gw"],circle[filter^="url(#glow"],circle[filter="url(#gl)"]').forEach(function(e){if(/^(rect|circle|ellipse|path)$/.test(e.tagName))src.push(e);});
+    svg.querySelectorAll('circle').forEach(function(c){var r=+c.getAttribute('r');if(r<3.5||r>14||c.closest('[filter]'))return;
+      var f=fillOf(c);if(!(f&&f.a>=.8&&f.r>220&&f.g>150&&f.b<90))return;
+      var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');
+      var badge=[].some.call(c.parentNode.querySelectorAll('text'),function(t){return Math.abs(+t.getAttribute('x')-cx)<r+1&&Math.abs(+t.getAttribute('y')-cy)<r+3;});
+      if(!badge)src.push(c);});
+    svg.querySelectorAll('path').forEach(function(q){var d=q.getAttribute('d')||'';if(d.length>120||!/ t/.test(d))return;
+      var c=strokeOf(q);if(c&&c.r>220&&c.g>150&&c.b<90){q.classList.add('m3-fil');src.push(q);}});
+    if(!src.length){svg.querySelectorAll('rect').forEach(function(r){var w=+r.getAttribute('width'),h=+r.getAttribute('height');
+      if(w<5||w>64||h<5||h>26||r.closest('defs'))return;var f=fillOf(r);if(f&&f.a>=.9&&f.r>238&&f.g>238&&f.b>238)src.push(r);});}
+    src.forEach(function(e){
+      var b;try{b=e.getBBox();}catch(x){return;} if(!b.width)return;
+      if(b.width>40||b.height>40){panels.push(e);return;}
+      var c=fillOf(e)||strokeOf(e)||{r:255,g:230,b:150}; if(lum(c)<90)return; if(Math.min(c.r,c.g,c.b)>235)c={r:255,g:238,b:180};
+      var cx=b.x+b.width/2,cy=b.y+b.height/2,m=Math.max(b.width,b.height),R=Math.min(80,Math.max(26,m*2.6));
+      var g=el('g',{'class':'m3-fx m3-bloomg'});
+      g.appendChild(el('circle',{cx:cx,cy:cy,r:R,fill:'url(#'+grad(c)+')','class':'m3-halo'}));
+      var rg=el('circle',{cx:cx,cy:cy,r:Math.max(5,m/2),stroke:css(c),'class':'m3-ring'});g.appendChild(rg);
+      var rg2=rg.cloneNode(false);rg2.style.animationDelay='1.5s';g.appendChild(rg2);
+      var ref=(e.parentNode.getAttribute&&e.parentNode.getAttribute('filter'))?e.parentNode:e;ref.parentNode.insertBefore(g,ref);
+      e.classList.add(e.classList.contains('m3-fil')?'m3-filon':'m3-src');
+    });
+
+    /* 2 -- self-luminous panels (drawn with the glow filter): light up and bloom */
+    panels.forEach(function(r){
+      if(r.tagName!=='rect')return;
+      var f=fillOf(r);if(!f)return;
+      var w=+r.getAttribute('width'),h=+r.getAttribute('height'),x=+r.getAttribute('x'),y=+r.getAttribute('y');
+      var bl=el('rect',{x:x,y:y,width:w,height:h,rx:+r.getAttribute('rx')||0,fill:css(f),filter:'url(#m3b'+uid+')','class':'m3-fx m3-bloomg'});
+      if(r.getAttribute('transform'))bl.setAttribute('transform',r.getAttribute('transform'));
+      var ref=(r.parentNode.getAttribute&&r.parentNode.getAttribute('filter'))?r.parentNode:r;
+      ref.parentNode.insertBefore(bl,ref);
+      r.classList.add('m3-face');
+    });
+
+    /* 3 -- light rays and current: bright pulses travelling along strokes */
+    var seen=0;
+    function packet(s,len,col,speed){
+      var t=Math.min(3.6,Math.max(1.2,len/(speed||95))),k=len>170?2:1;
+      for(var i=0;i<k;i++){var p=s.cloneNode(false);
+        ['id','class','stroke-dasharray','marker-end','marker-start','filter','opacity','style','stroke-opacity','transform'].forEach(function(a){p.removeAttribute(a);});
+        if(s.getAttribute('transform'))p.setAttribute('transform',s.getAttribute('transform'));
+        p.setAttribute('class','m3-fx m3-pk');p.setAttribute('pathLength','100');p.setAttribute('stroke',col);p.setAttribute('stroke-width','3.4');p.style.color=col;
+        p.style.setProperty('--m3-t',t.toFixed(2)+'s');p.style.setProperty('--m3-len','7');p.style.setProperty('--m3-a','7');p.style.setProperty('--m3-b','-100');
+        p.style.setProperty('--m3-pd',((seen%4)*.3+i*t/2).toFixed(2)+'s');
+        s.parentNode.insertBefore(p,s.nextSibling);}
+      seen++;}
+    svg.querySelectorAll('line,path,polyline').forEach(function(s){
+      if(window.m3NoLines||inFx(s)||s.closest('defs'))return;if(window.m3SkipYellow&&/cl-yellow|rgb\(255, ?212, ?0\)/i.test((s.getAttribute('stroke')||'')+' '+getComputedStyle(s).stroke))return;if(s.getAttribute('marker-start')&&s.getAttribute('marker-end'))return;
+      if(s.tagName==='path'&&/z\s*$/i.test((s.getAttribute('d')||'').trim()))return;
+      var cs=getComputedStyle(s);if(cs.fill!=='none'&&s.tagName!=='line'&&!/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(s.getAttribute('d')||''))return;
+      var c=rgb(cs.stroke),sw=parseFloat(cs.strokeWidth);
+      var dd=(s.getAttribute('d')||''),shaft=s.tagName==='path'&&/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(dd)&&s.nextElementSibling&&s.nextElementSibling.tagName==='path'&&s.nextElementSibling.getAttribute('fill')&&s.nextElementSibling.getAttribute('fill')!=='none';
+      if(shaft){var L;try{L=s.getTotalLength();}catch(x){return;} if(L>=18){packet(s,L,'rgb(255,180,0)',34);}return;}
+      if(!sat(c)||sw<1.3)return;
+      var len;try{len=s.getTotalLength();}catch(x){return;} if(len<34)return;
+      var d=(s.getAttribute('d')||'');if(d.length>500)return;
+      var dashed=cs.strokeDasharray&&cs.strokeDasharray!=='none';
+      var isRay=s.tagName==='path'&&/^[ML\d\s.,-]+$/i.test(d)&&(d.match(/L/gi)||[]).length>=2; /* zig-zag light path */
+      if(dashed&&!isRay){var nums=cs.strokeDasharray.split(/[ ,]+/).map(parseFloat).filter(function(q){return q>0;});
+        var sum=nums.reduce(function(a,b){return a+b;},0);if(nums.length%2)sum*=2;
+        s.classList.add('m3-march');s.style.setProperty('--m3-d',String(-sum));s.style.setProperty('--m3-dur',(sum/14).toFixed(2)+'s');return;}
+      packet(s,len,css(c),isRay?120:95);
+    });
+
+    /* 4 -- waveforms trace; cursor sweeps */
+    var waves=[].slice.call(svg.querySelectorAll('path[d]')).filter(function(p){return (p.getAttribute('d')||'').length>600;});
+    waves.forEach(function(p,i){p.setAttribute('pathLength','1');p.classList.add('m3-draw');p.style.setProperty('--m3-dd',(.4+(i%2)*.25)+'s');});
+    if(waves.length){[].slice.call(svg.querySelectorAll('rect[stroke-opacity]')).filter(function(r){return +r.getAttribute('width')>200&&+r.getAttribute('height')>200;}).forEach(function(r){
+      var x0=+r.getAttribute('x'),x1=x0+ +r.getAttribute('width'),mine=waves.filter(function(w){var b=w.getBBox();return b.x>=x0-2&&b.x+b.width<=x1+2;});if(!mine.length)return;
+      var a=1e9,z=-1e9,u=1e9,v=-1e9;mine.forEach(function(w){var b=w.getBBox();a=Math.min(a,b.x);z=Math.max(z,b.x+b.width);u=Math.min(u,b.y);v=Math.max(v,b.y+b.height);});
+      var c=el('line',{x1:a,x2:a,y1:u-8,y2:v+8,'class':'m3-fx m3-cursor'});c.style.setProperty('--m3-w',(z-a)+'px');svg.appendChild(c);});}
+
+    /* 5 -- bars fill; exploded parts hover */
+    var tracks={};svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(f.indexOf('rgba(255,255,255')===0)tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')]=+r.getAttribute('width');});
+    var bi=0;svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(!/^var\(--(gold|cyan|green|red|taxi-blue)\)$/.test(f))return;
+      var w=tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')];if(w&&w>=+r.getAttribute('width')){r.classList.add('m3-bar');r.style.setProperty('--m3-bd',(.3+(bi++%6)*.12)+'s');}});
+    svg.querySelectorAll('.xv-part').forEach(function(p,i){p.style.setProperty('--m3-i',i);});
+
+    svg.classList.add('m3-ready');
+    function play(){svg.classList.add('m3-play');}
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();play();}});},{threshold:.2});io.observe(svg);}else play();
+  }
+  function toggle(){
+    var card=document.querySelector('.diagram-card'),open=card&&card.querySelector('.dz-open'); if(!card)return;
+    var b=document.createElement('button');b.type='button';b.className='dz-btn m3-toggle';b.setAttribute('aria-pressed',String(!off));
+    b.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> <span>'+(off?'Motion off':'Motion on')+'</span>';
+    b.addEventListener('click',function(){setOff(!off);});
+    if(open)open.insertAdjacentElement('afterend',b);else card.appendChild(b);
+  }
+  function init(){document.querySelectorAll('.diagram-card > svg,.diagram-card > .diagram-scroll > svg').forEach(prep);toggle();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- motion-feature:end -->
+
+
+<style>
+/* Entry 34 motion: laser sweep with echoes flashing as the beam reaches them, tracked dots, pipeline highlight */
+@keyframes lvSweep{0%{transform:rotate(42deg);opacity:0}5%{opacity:1}95%{opacity:1}100%{transform:rotate(-42deg);opacity:0}}
+.lv-sweep{transform-origin:320px 88px;animation:lvSweep 3.6s linear infinite}
+@keyframes lvEcho{0%{opacity:1;transform:scale(2.1)}14%{opacity:.9;transform:scale(1.15)}60%{opacity:.3;transform:scale(1)}100%{opacity:.3;transform:scale(1)}}
+.lv-echo{transform-box:fill-box;transform-origin:center;animation:lvEcho 3.6s linear infinite}
+@keyframes lvTrk{0%,100%{opacity:.3}25%{opacity:1}50%{opacity:.3}}
+.lv-trk{animation:lvTrk 1.8s ease-in-out infinite}
+@keyframes lvAcq{0%,100%{opacity:.35}40%,75%{opacity:1}}
+.lv-acq{animation:lvAcq 3.6s ease-in-out infinite}
+@keyframes lvStage{0%{opacity:0}6%{opacity:1}22%{opacity:1}30%{opacity:0}100%{opacity:0}}
+.lv-card{opacity:0;pointer-events:none;animation:lvStage 7.2s ease-in-out infinite}
+.m3-off .lv-sweep{display:none}
+.m3-off .lv-card{display:none}
+</style>
+</body>
+</html>

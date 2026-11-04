@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Surface Movement Radar | AGL Component Library</title>
+    <meta name="description" content="Surface Movement Radar: real-time surveillance for aircraft and vehicle tracking on the airfield surface — architecture, standards, testing and maintenance." />
+    <meta name="keywords" content="surface movement radar, SMR, A-SMGCS, airfield surveillance, ground movement radar, ATC ground surveillance" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-surface-movement-radar.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Surface Movement Radar | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Surface Movement Radar: real-time surveillance for aircraft and vehicle tracking on the airfield surface — architecture, standards, testing and maintenance." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-surface-movement-radar.html" />
+    <meta property="og:image" content="https://lemz.ru/wp-content/uploads/2019/12/X-band-solid-state-surface-movement-radar-%E2%80%9CALCOR%E2%80%9D.png" />
+    <meta property="og:image:alt" content="Surface Movement Radar" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Surface Movement Radar | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Surface Movement Radar: real-time surveillance for aircraft and vehicle tracking on the airfield surface — architecture, standards, testing and maintenance." />
+    <meta name="twitter:image" content="https://lemz.ru/wp-content/uploads/2019/12/X-band-solid-state-surface-movement-radar-%E2%80%9CALCOR%E2%80%9D.png" />
+    <meta name="theme-color" content="#060d1a" />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html#faq", "url": "https://rahulsharmaagl.in/component-surface-movement-radar.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a surface movement radar?", "acceptedAnswer": {"@type": "Answer", "text": "A Surface Movement Radar (SMR) is a specialised radar that detects and tracks the position, speed and heading of aircraft and vehicles on runways, taxiways and aprons, operating in the X-band (8-12 GHz) or Ku-band."}}, {"@type": "Question", "name": "Why is surface movement radar needed?", "acceptedAnswer": {"@type": "Answer", "text": "It covers situations where a controller's own eyes are least reliable, such as fog, rain or darkness, by giving a real-time picture of surface traffic."}}, {"@type": "Question", "name": "Where is surface movement radar deployed?", "acceptedAnswer": {"@type": "Answer", "text": "At airports of all sizes needing enhanced ground surveillance, with the display used by controllers in air traffic control towers."}}, {"@type": "Question", "name": "How does it work?", "acceptedAnswer": {"@type": "Answer", "text": "It transmits short high-frequency pulses from a rotating antenna and receives echoes from targets, using MTI or Doppler processing with clutter suppression to separate moving targets from fixed objects."}}, {"@type": "Question", "name": "What are the typical specifications?", "acceptedAnswer": {"@type": "Answer", "text": "Range coverage of 5-20 km, range resolution 5-15 m, azimuth resolution 0.5-2 degrees, antenna rotation 20-60 RPM, tracking of 500 or more targets, and outputs such as ASTERIX, Ethernet, RS-422 and CCTV overlay."}}, {"@type": "Question", "name": "What electrical supply does it need?", "acceptedAnswer": {"@type": "Answer", "text": "120/230 VAC single-phase or 400 VAC three-phase, typically 2-15 kW, backed by UPS and a standby generator, with a slip ring or rotary joint across the rotating antenna and SPDs at power and data entries."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "ICAO Doc 9830 (A-SMGCS Manual), EUROCAE ED-116 (MOPS for SMR sensor systems), EUROCAE ED-87 (MASPS for A-SMGCS Levels 1 and 2) and FAA Order JO 6330.36 (maintenance of ASDE-X facilities)."}}, {"@type": "Question", "name": "How often should surface movement radar be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Semi-annually for antenna and radome inspection and data latency checks, and annually for clutter map review, transmitter and receiver performance checks and an RF interference survey."}}, {"@type": "Question", "name": "Why are moving targets masked near buildings or parked aircraft?", "acceptedAnswer": {"@type": "Answer", "text": "Strong clutter returns from stationary structures may not be suppressed enough. Review the clutter map against the current airfield layout and check the MTI processing settings."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── COMPONENT HERO ── */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        /* SIGNAL / DATA FLOW DIAGRAM */
+        .diagram-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 36px 32px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        .diagram-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .diagram-row .diagram-node {
+            flex: 1 1 220px;
+        }
+        .diagram-node {
+            flex: 1 1 160px;
+            background: var(--navy);
+            border: 1px solid var(--border);
+            border-top: 3px solid var(--cyan);
+            border-radius: 10px;
+            padding: 20px 16px;
+            text-align: center;
+        }
+        .diagram-node.accent-gold {
+            border-top-color: var(--gold);
+        }
+        .diagram-node .node-label {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 8px;
+        }
+        .diagram-node.accent-gold .node-label {
+            color: var(--gold);
+        }
+        .diagram-node .node-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 19px;
+            letter-spacing: 0.5px;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .diagram-node .node-desc {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: var(--text);
+        }
+        .diagram-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 36px;
+            color: var(--cyan);
+            font-size: 20px;
+            flex: 0 0 auto;
+        }
+        .diagram-arrow-down {
+            display: flex;
+            justify-content: center;
+            color: var(--cyan);
+            font-size: 20px;
+            padding: 8px 0;
+        }
+        @media (max-width: 780px) {
+            .diagram-flow { flex-direction: column; }
+            .diagram-arrow { transform: rotate(90deg); padding: 4px 0; }
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html#article",
+        "headline": "Surface Movement Radar",
+        "description": "Surface Movement Radar: real-time surveillance for aircraft and vehicle tracking on the airfield surface — architecture, standards, testing and maintenance.",
+        "url": "https://rahulsharmaagl.in/component-surface-movement-radar.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Surface Movement Radar"
+        },
+        "articleSection": "Airfield Sensors",
+        "keywords": "surface movement radar, SMR, A-SMGCS, airfield surveillance, ground movement radar, ATC ground surveillance",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://lemz.ru/wp-content/uploads/2019/12/X-band-solid-state-surface-movement-radar-%E2%80%9CALCOR%E2%80%9D.png"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-surface-movement-radar.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Surface Movement Radar",
+            "item": "https://rahulsharmaagl.in/component-surface-movement-radar.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Surface Movement Radar</span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-radar"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Surface Movement <span>Radar</span></h1>
+            <p class="comp-sub">A high‑performance surveillance system that provides real‑time detection and tracking of aircraft and vehicles on the airfield surface. Surface Movement Radar (SMR) enhances situational awareness for Air Traffic Control, enabling safe and efficient ground movement management even in low visibility conditions.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:450px;height:360px;">
+                <img src="https://lemz.ru/wp-content/uploads/2019/12/X-band-solid-state-surface-movement-radar-%E2%80%9CALCOR%E2%80%9D.png" alt="Surface Movement Radar" width="450" height="360" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <!-- ─── OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Surface Movement Radar (SMR)</strong> is a specialized radar system designed to detect and track the position, speed, and heading of aircraft and vehicles operating on the airport surface—including runways, taxiways, and aprons. Operating in the X‑band (8‑12 GHz) or Ku‑band (12‑18 GHz), SMR provides high‑resolution detection with range resolution as fine as 5‑15 metres, enabling controllers to distinguish between multiple targets in close proximity. The radar antenna is typically mounted on a tower adjacent to the control tower or on a dedicated mast, providing a 360° scan of the airfield surface. The system processes radar returns to generate a real‑time display overlay on airport maps, often integrated with ADS‑B, multilateration, and other surveillance sources to provide a comprehensive surface picture. SMR is a critical component of Advanced Surface Movement Guidance and Control Systems (A‑SMGCS), enhancing safety and throughput, particularly during low visibility operations (RVR < 400m) where visual observation is limited.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>Surface movement radar exists specifically for the situation where a controller's own eyes are the least reliable source of surface traffic information: low visibility conditions where fog, rain, or darkness make it impossible to visually confirm an aircraft or vehicle's position from the tower. Because SMR's X-band or Ku-band returns are essentially unaffected by the same weather that degrades human vision, the radar's purpose is to maintain the same level of surface awareness in RVR below 400 metres that a controller would otherwise only have in clear daylight. Fusing that radar picture with ADS-B and multilateration data extends this further, giving controllers identity information alongside position so a return on the radar display can be matched to a specific aircraft or vehicle rather than remaining an anonymous target.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPLICATION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Surface Movement Radar is deployed at airports of all sizes where enhanced ground surveillance is required:</p>
+                <ul>
+                    <li><strong>Air Traffic Control Towers:</strong> Providing controllers with a high‑fidelity, real‑time display of all surface traffic for safe and efficient ground movement management.</li>
+                    <li><strong>ATC Approach Control Rooms:</strong> Integrating SMR data into the broader surveillance picture alongside approach radar and ADS‑B.</li>
+                    <li><strong>Airport Operations Centers:</strong> Monitoring surface activity for overall airport situational awareness and resource management.</li>
+                    <li><strong>A‑SMGCS Systems:</strong> Serving as the primary surveillance sensor for Advanced Surface Movement Guidance and Control Systems, enabling automated conflict detection and alerting.</li>
+                    <li><strong>Runway Incursion Prevention Systems:</strong> Providing target detection to Runway Status Light (RWSL) systems and other safety alerting systems.</li>
+                    <li><strong>Low Visibility Operations:</strong> Enabling safe ground movements when RVR is below 400m (CAT II/III conditions) where visual observation is insufficient.</li>
+                    <li><strong>Apron Management:</strong> Monitoring aircraft and vehicle movements on the apron for improved ground handling coordination.</li>
+                    <li><strong>Large Hub Airports:</strong> Managing complex surface traffic with multiple simultaneous movements, reducing delays and enhancing safety.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNCTION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>The SMR antenna is mounted at height on the control tower roof or a dedicated tower structure, sited for line-of-sight coverage across the full manoeuvring area with minimal shadowing from buildings, terrain, or other masts. Foundation and mast design account for the antenna's rotating mass and wind loading, with the mast earthed and lightning-protected given its elevated, exposed position. Signal and data cabling runs from the antenna head down the mast to the processing unit in the tower equipment room, typically over fibre to keep the run immune to the electromagnetic environment around the radar itself; siting is also checked against other radars and radio installations on the airfield to avoid mutual interference.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The Surface Movement Radar operates on pulse‑based radar principles, transmitting short, high‑frequency pulses and receiving the echoes from reflecting targets. Key functional aspects include:</p>
+                <ul>
+                    <li><strong>Antenna Scan:</strong> The rotating parabolic or slotted‑array antenna provides a continuous 360° azimuth scan, typically at 20‑60 revolutions per minute, covering the entire airfield surface.</li>
+                    <li><strong>Pulse Transmission:</strong> The radar transmits short pulses (typically 0.5‑2 µs) at high peak power (5‑100 kW) in the X‑band or Ku‑band, with a pulse repetition frequency (PRF) of 1‑10 kHz.</li>
+                    <li><strong>Echo Reception:</strong> The radar receives the reflected echoes (from aircraft, vehicles, buildings, and other surfaces) and processes the signals to extract range, azimuth, and radial velocity information.</li>
+                    <li><strong>Moving Target Indication (MTI):</strong> SMR uses Doppler processing (MTI or Pulse‑Doppler) to discriminate moving targets from stationary clutter (buildings, terrain, static aircraft), isolating only the moving targets of interest.</li>
+                    <li><strong>Target Extraction &amp; Tracking:</strong> The radar signal processor extracts target centroids (position and velocity) and passes them to the tracker, which uses Kalman filtering or similar algorithms to maintain continuous target tracks, smoothing position updates and predicting future positions.</li>
+                    <li><strong>Clutter Suppression:</strong> Advanced filtering techniques (CFAR, map‑based clutter mapping) suppress false returns from terrain, buildings, and parked aircraft, ensuring only relevant targets are displayed.</li>
+                    <li><strong>Display Integration:</strong> The processed track data is transmitted to the ATC display system, where targets are overlaid on an airport map with labels, track history, and velocity vectors for clear operator interpretation.</li>
+                </ul>
+                <p style="margin-top:12px;">Modern SMR systems are often integrated with multilateration and ADS‑B to provide a fused surveillance picture, improving accuracy and coverage in areas where radar returns may be shadowed.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>The Surface Movement Radar feeds raw target detections into the A-SMGCS or ALCMS processing chain rather than making any lighting decision at the sensor head itself. The antenna and receiver produce return echoes, which a radar processor converts into tracked targets (position, heading, identity where fused with other sensors); that track data is what actually reaches the A-SMGCS or ALCMS server, typically over the airfield's fibre/Ethernet backbone rather than a dedicated link. Where the airfield uses Runway Status Lights, the A-SMGCS logic combines SMR tracks with other surveillance sources to decide when an aircraft or vehicle occupies or is approaching a runway, and that decision — not the raw radar return — is what triggers the corresponding CCR and stop bar or runway status light circuit. A radar fault therefore shows up as a gap in surveillance coverage at the A-SMGCS level, not as a lighting fault.</p>
+            </div>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">SMR Antenna &amp; Receiver</h5>
+                        <p>Transmits pulses, captures raw echo returns</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Radar Processor</h5>
+                        <p>Converts returns into tracked targets (position, heading)</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node outcome">
+                        <h5 role="heading" aria-level="3">A-SMGCS / ALCMS Server</h5>
+                        <p>Fuses tracks with other surveillance, decides runway occupancy</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">CCR → Runway Status / Stop Bar Lights</h5>
+                        <p>Actuated only on the fused decision, not the raw radar return</p>
+                    </div>
+                </div>
+                <div class="diagram-caption">A radar fault appears as a surveillance coverage gap at the A-SMGCS level, not as a lighting-circuit fault.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">Scan‑to‑Track Pipeline</h2>
+            <div class="diagram-panel">
+                <div class="diagram-flow">
+                    <div class="diagram-node">
+                        <div class="node-label">Antenna</div>
+                        <div class="node-title">360° Rotating Scan</div>
+                        <div class="node-desc">Parabolic/slotted‑array antenna sweeps the airfield at 20‑60 RPM</div>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-node">
+                        <div class="node-label">Transmit</div>
+                        <div class="node-title">Pulse Transmission</div>
+                        <div class="node-desc">Short X/Ku‑band pulses at high peak power, PRF 1‑10 kHz</div>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-node accent-gold">
+                        <div class="node-label">Processing</div>
+                        <div class="node-title">Echo Reception &amp; MTI</div>
+                        <div class="node-desc">Doppler processing separates moving targets from clutter</div>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-node accent-gold">
+                        <div class="node-label">Tracking</div>
+                        <div class="node-title">Target Extraction &amp; Tracking</div>
+                        <div class="node-desc">Kalman filtering smooths position and predicts future tracks</div>
+                    </div>
+                    <div class="diagram-arrow">→</div>
+                    <div class="diagram-node accent-gold">
+                        <div class="node-label">Output</div>
+                        <div class="node-title">ATC Display</div>
+                        <div class="node-desc">Tracks overlaid on the airport map with labels &amp; velocity vectors</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TECHNICAL PARAMETERS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The radar antenna — a parabolic dish or planar slotted-array panel — is mounted on a motor-driven rotating pedestal atop a dedicated tower or mast adjacent to the control tower, engineered to maintain the specified rotation speed and pointing accuracy through wind loading up to the site's design limits. A radome typically encloses the antenna to protect it from precipitation, ice, and debris while remaining transparent to the X-band or Ku-band signal, and the pedestal drive motor and slip rings are housed in a weatherproof base unit rated to at least IP65/NEMA 4X. Transmitter, receiver, and signal-processing electronics are housed either in the tower base or in a nearby equipment room, connected to the antenna via low-loss waveguide or coaxial feed running up the tower structure. Outdoor units, cabling entries, and the antenna drive assembly are all built for continuous unattended exposure to airfield weather, with lightning protection and surge suppression fitted at the base of the tower to protect the sensitive receiver electronics from strikes to the elevated structure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Frequency Band</td><td class="val">X‑band (8‑12 GHz) or Ku‑band (12‑18 GHz)</td></tr>
+                <tr><td>Peak Transmit Power</td><td class="val">5‑100 kW (depending on range requirement)</td></tr>
+                <tr><td>Pulse Width</td><td class="val">0.5‑2 µs (narrow pulse for high range resolution)</td></tr>
+                <tr><td>Pulse Repetition Frequency (PRF)</td><td class="val">1‑10 kHz (typically 3‑6 kHz)</td></tr>
+                <tr><td>Range Coverage</td><td class="val">5‑20 km (typical airfield coverage)</td></tr>
+                <tr><td>Range Resolution</td><td class="val">5‑15 metres (depending on pulse width)</td></tr>
+                <tr><td>Azimuth Coverage</td><td class="val">360° (continuous rotation)</td></tr>
+                <tr><td>Azimuth Resolution</td><td class="val">0.5°‑2° (depending on antenna beamwidth)</td></tr>
+                <tr><td>Antenna Type</td><td class="val">Parabolic dish or slotted‑array (planar)</td></tr>
+                <tr><td>Antenna Rotation Speed</td><td class="val">20‑60 RPM (configurable)</td></tr>
+                <tr><td>Antenna Beamwidth</td><td class="val">0.5°‑2° (horizontal), 15°‑30° (vertical)</td></tr>
+                <tr><td>MTI/Doppler Processing</td><td class="val">Yes (Pulse‑Doppler or MTI with clutter suppression)</td></tr>
+                <tr><td>Target Tracking Capacity</td><td class="val">500+ simultaneous targets</td></tr>
+                <tr><td>Data Output</td><td class="val">ASTERIX, Ethernet (TCP/IP), serial (RS‑422), CCTV overlay</td></tr>
+                <tr><td>Power Supply</td><td class="val">120/230 VAC (single‑phase) or 400 VAC (three‑phase)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">2‑15 kW (depending on range and technology)</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-25°C to +55°C (outdoor electronics)</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP65 / NEMA 4X (antenna and outdoor units)</td></tr>
+                <tr><td>Certifications</td><td class="val">ICAO Doc 9830, EUROCAE ED-116, FAA JO 6330.36, CE</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ─── STANDARDS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Supply Type</td><td class="val">120/230 VAC single-phase or 400 VAC three-phase, backed by UPS and standby generator</td></tr>
+                <tr><td>Power Consumption</td><td class="val">2–15 kW (depending on range and technology)</td></tr>
+                <tr><td>Circuit Protection</td><td class="val">Dedicated circuit breaker/isolator at the tower or equipment room distribution board</td></tr>
+                <tr><td>Cabling</td><td class="val">Dedicated feeder from the distribution point to the antenna pedestal/processing cabinet, sized to rated load</td></tr>
+                <tr><td>Rotary Joint / Slip Ring</td><td class="val">Power and signal transfer across the rotating antenna via slip ring or rotary joint</td></tr>
+                <tr><td>Surge Protection</td><td class="val">SPDs fitted at the power and data cable entries to the processing cabinet</td></tr>
+                <tr><td>Insulation Resistance</td><td class="val">≥ 50 MΩ (megger test, cable-to-ground, at commissioning)</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">Antenna pedestal, tower structure, and processing cabinet bonded to the airfield earth grid</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Continuous system monitoring with alarm reporting to ATC/maintenance on power or subsystem fault</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Doc 9830</h5><p>Advanced Surface Movement Guidance and Control Systems (A‑SMGCS) Manual — operational requirements including SMR as a surveillance sensor</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED‑116</h5><p>MOPS for Surface Movement Radar sensor systems used in A‑SMGCS</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA Order JO 6330.36</h5><p>Maintenance of Airport Surface Detection Equipment, Model X (ASDE‑X) facilities</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED‑87</h5><p>Minimum Aviation System Performance Specification (MASPS) for A‑SMGCS Levels 1 and 2</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FIELD ISSUES ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Tower/Mast Foundation &amp; Line-of-Sight Check</h5><span class="test-stage">Civil</span></div>
+                        <p>Confirm the tower or mast foundation is engineered for the antenna's rotating mass and wind loading, and verify line-of-sight coverage across the full manoeuvring area with minimal shadowing before erection.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Antenna &amp; Radome Installation</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Mount the antenna and radome on the rotating pedestal, confirming the pedestal drive motor and slip rings are sealed to their rated protection class before commissioning.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mast Earthing &amp; Lightning Protection</h5><span class="test-stage">Electrical</span></div>
+                        <p>Bond the mast to a dedicated earthing and lightning-protection system, fitting surge suppression at the base of the tower given the elevated, exposed position of the receiver electronics.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fibre Signal Run</h5><span class="test-stage">Electrical</span></div>
+                        <p>Run signal and data cabling from the antenna head down the mast to the processing unit over fibre, keeping the run immune to the electromagnetic environment around the radar itself.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Interference Coordination Check</h5><span class="test-stage">Documentation</span></div>
+                        <p>Check the proposed siting against other radars and radio installations on the airfield to avoid mutual interference before the radar is brought into service.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record antenna position, earthing, and cable routing as-built before commissioning testing begins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Antenna Rotation &amp; Pointing Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Verify the pedestal drive maintains the specified rotation speed and pointing accuracy through the site's design wind loading before radiating.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Transmitter Power &amp; Pulse Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm peak transmit power, pulse width, and PRF are within spec for the licensed X/Ku-band operation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">MTI / Clutter Suppression Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm Doppler/MTI processing correctly discriminates moving targets from stationary clutter such as buildings and parked aircraft.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Target Tracking Accuracy Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Run known test targets across the coverage area and verify range, azimuth, and track continuity meet resolution specifications.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">A-SMGCS / ALCMS Interface Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm processed track data reaches the A-SMGCS or ALCMS server correctly over the airfield fibre/Ethernet backbone.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sensor Fusion Cross-Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Where integrated with multilateration or ADS-B, confirm fused tracks agree across sources, particularly in radar-shadowed areas.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record transmitter test results, tracking accuracy figures, and interface verification in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Clutter Map Review</h5><span class="maint-freq">Annual</span></div>
+                        <p>Review and update the clutter map to account for new structures or stationary objects on the airfield.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Transmitter / Receiver Performance Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Test transmitter output and receiver sensitivity against baseline to catch gradual performance degradation.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Antenna &amp; Radome Inspection</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Check the antenna and radome for physical damage or contamination that could cause shadowing or attenuation.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Data Latency Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Measure processing and display latency to confirm it remains within operational requirements.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">RF Interference Survey</h5><span class="maint-freq">Annual</span></div>
+                        <p>Survey the local RF environment for new sources of interference from other radio systems.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Clutter from Stationary Objects</h5><p>Buildings, hangars, parked aircraft, and terrain can produce strong clutter returns that mask moving targets. Advanced clutter mapping and MTI processing are required, but regular calibration and tuning are necessary to optimise performance as the airfield environment changes (new buildings, parked aircraft positions).</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Rain Clutter &amp; Attenuation</h5><p>Heavy rain can attenuate radar signals and produce clutter returns, particularly in X‑band systems. Real‑time rain clutter suppression algorithms and, in some systems, dual‑polarisation or frequency agility are used to mitigate this.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Shadowing &amp; Multipath</h5><p>Tall structures (control towers, hangars) can create radar shadows, while multipath reflections from large buildings can cause ghost targets. Careful antenna siting and site‑specific calibration are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Transmitter/Receiver Performance Degradation</h5><p>Magnetron or solid‑state amplifiers degrade over time, reducing transmit power and receiver sensitivity. Regular maintenance and performance testing (using a test target or radar cross‑section calibration) are required to ensure coverage remains within specifications.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Data Latency</h5><p>Processing delays in the radar signal processor or track extraction can introduce latency in the displayed target position, which is critical for real‑time control. Ensure processors meet performance specifications and monitor system timing.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Interference from Other Radio Systems</h5><p>Other radar systems, communication transmitters, or satellite uplinks can interfere with SMR operation. Frequency coordination and the use of interference‑resistant techniques (e.g., frequency diversity) are recommended.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Moving Targets Masked Near Buildings or Parked Aircraft</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Strong clutter returns from stationary structures not adequately suppressed.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review the clutter map against the current airfield layout, check MTI processing settings, and correlate missed detections with known clutter zones.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Update the clutter map for the current environment and retune the MTI/clutter suppression parameters.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reduced Coverage or False Returns in Heavy Rain</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Rain clutter and signal attenuation, particularly in X-band systems.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Correlate performance degradation with weather reports and check the rain clutter suppression algorithm status.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Verify or enable rain clutter suppression, and apply dual-polarisation or frequency agility features if equipped.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Ghost Targets or Blind Spots Near Tall Structures</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Radar shadowing from tall structures or multipath reflections from large buildings.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Map reported anomalies against known structures and review antenna siting and site-specific calibration.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate for site-specific conditions, and adjust siting or add a gap-filler sensor where shadowing is unavoidable.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reduced Detection Range Over Time</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Transmitter/receiver performance degradation (magnetron or solid-state amplifier ageing).</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Perform a test-target or radar cross-section calibration check and compare transmit power and receiver sensitivity against baseline.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Service or replace the degraded transmitter/receiver component and re-verify coverage meets specification.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Delayed or Jumping Target Position on Display</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Processing delay in the radar signal processor or track extraction system.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Monitor system timing and processing load, and check processor performance against specification.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Address the processing bottleneck (hardware upgrade, software optimisation) and verify timing meets the real-time requirement.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ─── RELATED COMPONENTS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Antenna / Radome Degradation</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Weathering, UV exposure, or accumulated contamination on the radome reducing signal transmission through it.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reduced detection range over time as more of the transmitted and received energy is absorbed or scattered by the degraded radome.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Antenna and radome inspection, and a transmitter/receiver performance check against the commissioning baseline.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Transmitter / Receiver Performance Degradation</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Component ageing in the transmitter power stage or receiver front end, or a developing fault in the RF chain.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reduced coverage, weaker returns from smaller targets, and an overall drop in detection reliability across the covered area.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Transmitter power and pulse verification, and a receiver performance check against rated specification.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Clutter Map Drift from Stationary Objects</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">New parked aircraft, ground equipment, or construction near the covered area that the stored clutter map hasn't been updated to reflect.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Persistent detections on a clear runway or taxiway, or conversely, real moving targets masked near the new stationary object.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Clutter map review against current site conditions, triggered by any nearby physical change.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Rain Clutter and Signal Attenuation</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Heavy precipitation scattering and attenuating the radar signal across the covered area.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reduced coverage or false returns in heavy rain, temporarily degrading the picture presented to A-SMGCS.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Correlating detection-quality drops with weather radar data, and reviewing MTI/clutter suppression performance under rain.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">RF Interference from Other Radio Systems</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Nearby radar, radio, or wireless equipment operating in or near the SMR's frequency band.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Data latency or spurious detections that don't correspond to real traffic, reducing confidence in the surface picture.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">RF interference survey across the operating band, and correlation of anomalies with known nearby transmitters.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Data Latency / Processing Fault</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Processing load, a software fault in the radar processor, or a network bottleneck between the processor and the A-SMGCS/ALCMS server.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Delayed or jumping target position on the display, undermining controllers' confidence in the real-time picture.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Data latency check against the required update interval, and a sensor fusion cross-check against other surface sensors.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Shadowing and Multipath Near Tall Structures</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">New buildings, parked wide-body aircraft, or other tall structures creating radar shadow zones or multipath reflections.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Ghost targets or blind spots appear near the structure, which can mask a genuine target or create a false one.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Target tracking accuracy test focused on the affected zone, and a clutter map review after any new structure is erected.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">RF / Microwave Exposure</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>The transmitter can produce high peak power (5-100 kW) in the X-band or Ku-band; do not work in front of the antenna aperture while the radar is transmitting, and follow the manufacturer's RF safety exclusion distance and lockout procedure for maintenance access.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-arrows-spin"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Rotating Antenna Hazard</h5><span class="test-stage">Mechanical</span></div>
+                        <p>The parabolic or slotted-array antenna rotates continuously at 20-60 RPM during operation; lock out antenna rotation before working on or near the mast head, and never assume a momentarily stopped antenna will stay stopped.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-person-falling-burst"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Working at Height</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Antenna and mast-head access is typically on the control tower roof or a dedicated tower structure; use fall-arrest equipment and a stable access platform, and avoid work during high wind given the mast's elevated, exposed position.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Lightning Exposure</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>As one of the tallest structures in its immediate area, the mast is a lightning attraction point; avoid working at or near the antenna during an electrical storm, and confirm mast earthing and lightning protection are intact after any strike.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">High-Power Electrical Isolation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>De-energise and lock out the radar's mains supply (and, where fitted, generator/UPS backup) before internal work on the transmitter or power supply, and verify zero energy given the multi-kW power levels involved.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside/ATC Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>SMR is a primary surface-surveillance tool for controllers; coordinate any outage with ATC and raise a NOTAM, since taking it down removes a safety-critical situational-awareness capability for ground movement.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Confirm the radar returns full 360° coverage with correct range resolution before closing out the work and returning it to operational service.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-building"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">New Construction Can Create a Coverage Shadow</h5><span class="expert-tag">Siting</span></div>
+                        <p>A new hangar, terminal extension, or even a temporary crane erected within line of sight of the antenna can create a permanent blind spot in ground coverage without any fault on the radar itself; treat any new tall structure near the airfield as a trigger to re-verify coverage, not just changes made to the radar installation.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-cloud-rain"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Weather Clutter Degrades Gradually With Radome Condition</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>A degraded or contaminated radome (dirt film, ice buildup, coating wear) increases signal attenuation and can be mistaken for a transmitter power issue during heavy rain or snow; check radome condition and cleanliness before troubleshooting a weather-correlated performance complaint as an electronics fault.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Track Magnetron or Transmitter Output Over Time</h5><span class="expert-tag">Reliability</span></div>
+                        <p>Transmitter output power on older magnetron-based systems declines gradually over years of service rather than failing suddenly; logging output power at each scheduled maintenance visit reveals a slow decline trend long before it becomes an operationally noticeable range-reduction complaint.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-signal"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Rotary Joint Wear Shows Up as Intermittent Signal Dropout</h5><span class="expert-tag">Mechanical</span></div>
+                        <p>The rotary joint connecting the stationary waveguide to the continuously rotating antenna is a common source of intermittent signal degradation that correlates with antenna position rather than weather or transmitter condition; a fault that seems to come and go with the sweep is worth checking here before assuming it's a transmitter issue.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Lightning Protection Needs Post-Strike Verification, Not Just Visual Check</h5><span class="expert-tag">Electrical</span></div>
+                        <p>A lightning strike near the mast can degrade the earthing system's actual resistance without leaving any visible sign at the structure; after a known nearby strike, verify earth resistance with a proper test rather than relying on a visual inspection of the bonding connections alone.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Antenna Rotation Speed Drift Is Easy to Miss</h5><span class="expert-tag">Verification</span></div>
+                        <p>A motor or drive system that's slowly slowing down from its rated RPM can still produce a usable-looking picture at reduced update rate, which delays operator complaints; verify actual rotation speed against spec at scheduled maintenance rather than relying on the display appearing normal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about surface movement radar: surface surveillance, specifications, power, standards and maintenance.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a surface movement radar?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A Surface Movement Radar (SMR) is a specialised radar that detects and tracks the position, speed and heading of aircraft and vehicles on runways, taxiways and aprons, operating in the X-band (8-12 GHz) or Ku-band.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Why is surface movement radar needed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It covers situations where a controller's own eyes are least reliable, such as fog, rain or darkness, by giving a real-time picture of surface traffic.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Where is surface movement radar deployed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>At airports of all sizes needing enhanced ground surveillance, with the display used by controllers in air traffic control towers.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">How does it work?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It transmits short high-frequency pulses from a rotating antenna and receives echoes from targets, using MTI or Doppler processing with clutter suppression to separate moving targets from fixed objects.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">What are the typical specifications?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Range coverage of 5-20 km, range resolution 5-15 m, azimuth resolution 0.5-2 degrees, antenna rotation 20-60 RPM, tracking of 500 or more targets, and outputs such as ASTERIX, Ethernet, RS-422 and CCTV overlay.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">What electrical supply does it need?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>120/230 VAC single-phase or 400 VAC three-phase, typically 2-15 kW, backed by UPS and a standby generator, with a slip ring or rotary joint across the rotating antenna and SPDs at power and data entries.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">Which standards apply?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>ICAO Doc 9830 (A-SMGCS Manual), EUROCAE ED-116 (MOPS for SMR sensor systems), EUROCAE ED-87 (MASPS for A-SMGCS Levels 1 and 2) and FAA Order JO 6330.36 (maintenance of ASDE-X facilities).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">How often should surface movement radar be maintained?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Semi-annually for antenna and radome inspection and data latency checks, and annually for clutter map review, transmitter and receiver performance checks and an RF interference survey.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">Why are moving targets masked near buildings or parked aircraft?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Strong clutter returns from stationary structures may not be suppressed enough. Review the clutter map against the current airfield layout and check the MTI processing settings.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-stop-bar-sensor.html" class="related-card"><i class="fa-solid fa-sensor"></i><h5 role="heading" aria-level="3">Stop Bar Sensor</h5></a>
+                <a href="component-runway-status-light-rwsl.html" class="related-card"><i class="fa-solid fa-traffic-light"></i><h5 role="heading" aria-level="3">Runway Status Light (RWSL)</h5></a>
+                <a href="component-sbas-ground-station.html" class="related-card"><i class="fa-solid fa-satellite-dish"></i><h5 role="heading" aria-level="3">ADS‑B Ground Station</h5></a>
+                <a href="component-alcms-server.html" class="related-card"><i class="fa-solid fa-server"></i><h5 role="heading" aria-level="3">ALCMS Server</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on Surface Movement Radar selection, siting, or integration for your airport?</h4><p>Precision AGL Academy provides advice on radar types, site surveys, clutter mitigation, and integration with A‑SMGCS and RWSL systems.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Surface Movement Radar is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Surface%20Movement%20Radar">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Surface%20Movement%20Radar" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAPI Elevation Adjustment | AGL Component Library</title>
+    <meta name="description" content="PAPI Elevation Adjustment explained: the precision vertical-angle mechanism setting glide slope beam elevation on each PAPI unit — construction and tolerances." />
+    <meta name="keywords" content="PAPI elevation adjustment, glide slope angle, red white transition, FAA AC 150/5345-28, PAPI aiming tolerance, precision approach path indicator" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-papi-elevation-adjustment.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PAPI Elevation Adjustment | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="PAPI Elevation Adjustment explained: the precision vertical-angle mechanism setting glide slope beam elevation on each PAPI unit — construction and tolerances." />
+    <meta property="og:image" content="https://tc.canada.ca/sites/default/files/2021-06/ac-302-009-5.jpg" />
+    <meta property="og:image:alt" content="PAPI Elevation Adjustment | AGL Component Library" />
+    <meta property="og:image:width" content="450" />
+    <meta property="og:image:height" content="450" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-papi-elevation-adjustment.html" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PAPI Elevation Adjustment | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="PAPI Elevation Adjustment explained: the precision vertical-angle mechanism setting glide slope beam elevation on each PAPI unit — construction and tolerances." />
+    <meta name="twitter:image" content="https://tc.canada.ca/sites/default/files/2021-06/ac-302-009-5.jpg" />
+    <meta name="twitter:image:alt" content="PAPI Elevation Adjustment | AGL Component Library" />
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── base styles (identical to other component pages) ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        /* ── diagram block ── */
+        .diagram-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-caption {
+            font-size: 13.5px;
+            color: var(--text);
+            opacity: .85;
+            line-height: 1.7;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+        }
+        .diagram-caption strong {
+            color: var(--white);
+        }
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0;
+            justify-content: center;
+        }
+        .diagram-node {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px 18px;
+            min-width: 150px;
+            max-width: 190px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagram-node i {
+            font-size: 20px;
+            color: var(--gold);
+        }
+        .diagram-node h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: var(--white);
+        }
+        .diagram-node p {
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .diagram-node.node-gold { border-color: rgba(255, 180, 0, .4); }
+        .diagram-node.node-gold i { color: var(--gold); }
+        .diagram-node.node-cyan { border-color: rgba(0, 212, 255, .4); }
+        .diagram-node.node-cyan i { color: var(--cyan); }
+        .diagram-node.node-red { border-color: rgba(230, 57, 70, .5); }
+        .diagram-node.node-red i { color: var(--red); }
+        .diagram-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 20px;
+            padding: 0 10px;
+            min-width: 30px;
+            opacity: .8;
+        }
+        .diagram-arrow.dim { color: var(--text); opacity: .4; }
+        .diagram-arrow.red { color: var(--red); opacity: .9; }
+        .diagram-loop {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .diagram-loop-pair {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .diagram-loop-icon {
+            color: var(--gold);
+            font-size: 16px;
+            opacity: .8;
+        }
+        .diagram-loop-label {
+            font-size: 10.5px;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .7;
+            margin-top: 4px;
+        }
+        .diagram-branch-row {
+            display: flex;
+            gap: 26px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .diagram-branch-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagram-branch-label.gold { color: var(--gold); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-branch-label.red { color: var(--red); }
+        .diagram-vertical {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-arrow-down {
+            color: var(--gold);
+            font-size: 18px;
+            opacity: .8;
+            padding: 6px 0;
+        }
+        @media(max-width:900px) {
+            .diagram-flow { flex-direction: column; }
+            .diagram-flow .diagram-arrow { transform: rotate(90deg); padding: 8px 0; }
+            .diagram-branch-row { flex-direction: column; align-items: center; }
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* ── Mechanism grid ── */
+        .mech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 12px;
+        }
+        .mech-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px 18px;
+            text-align: center;
+            transition: all .3s;
+        }
+        .mech-item:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .mech-item i {
+            font-size: 26px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            display: block;
+        }
+        .mech-item h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .mech-item p {
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.5;
+            opacity: .8;
+        }
+        @media(max-width:768px) {
+            .mech-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        @media(max-width:480px) {
+            .mech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ── Angle reference table ── */
+        .angle-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .angle-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 14px;
+            text-align: center;
+            transition: all .3s;
+        }
+        .angle-item:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .angle-item .angle-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .angle-item .angle-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            margin: 4px 0;
+        }
+        .angle-item .angle-desc {
+            font-size: 11px;
+            color: var(--text);
+            opacity: .8;
+        }
+        @media(max-width:768px) {
+            .angle-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html#article",
+        "headline": "PAPI Elevation Adjustment — AGL Component Reference Guide",
+        "description": "PAPI Elevation Adjustment explained: the precision vertical-angle mechanism setting glide slope beam elevation on each PAPI unit — construction and tolerances.",
+        "url": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "PAPI Elevation Adjustment"
+        },
+        "articleSection": "Visual Glide Slope Systems",
+        "keywords": "PAPI elevation adjustment, glide slope angle, red white transition, FAA AC 150/5345-28, PAPI aiming tolerance, precision approach path indicator",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://tc.canada.ca/sites/default/files/2021-06/ac-302-009-5.jpg"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "PAPI Elevation Adjustment",
+            "item": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html"
+          }
+        ]
+      }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html#faq", "url": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-papi-elevation-adjustment.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is PAPI elevation adjustment?", "acceptedAnswer": {"@type": "Answer", "text": "It is the mechanical system that sets the vertical (up/down) angle of a PAPI light unit with high precision. That angle determines where the red/white transition occurs relative to the horizontal, which defines the glide slope pilots follow."}}, {"@type": "Question", "name": "How does elevation adjustment create the PAPI pattern?", "acceptedAnswer": {"@type": "Answer", "text": "In a standard four-unit PAPI each unit is set to a slightly different angle, for example 2°30′, 2°50′, 3°10′ and 3°30′ from the far unit to the one nearest the threshold, so on the correct 3° path the pilot sees two red and two white lights. It is the fractions of a degree between units that create the too-high, on-path and too-low boundaries."}}, {"@type": "Question", "name": "What angle is a PAPI normally set to?", "acceptedAnswer": {"@type": "Answer", "text": "For fixed-wing runways the nominal glide slope is 3°, typically within a 2.5° to 4° range and a tolerance of about ±0.05° (3′). Helicopter PAPI uses steeper angles, typically 4° to 6°, and runways with obstacle constraints or noise abatement needs may use 3.5° to 4° or other non-standard settings."}}, {"@type": "Question", "name": "How is PAPI elevation adjusted?", "acceptedAnswer": {"@type": "Answer", "text": "With the unit loosely secured, a theodolite or electronic inclinometer measures the optical axis angle. An adjustment screw raises or lowers the front of the unit in small steps (for example about 0.03° per turn), re-measuring after each turn. The lock is then tightened, the angle re-verified, and the whole array tested photometrically for the correct red/white transition."}}, {"@type": "Question", "name": "How accurate does the measuring instrument need to be?", "acceptedAnswer": {"@type": "Answer", "text": "Typically a precision inclinometer or theodolite accurate to ±0.01° or better, because even a 0.05° error can shift the glide path by several feet at the runway threshold."}}, {"@type": "Question", "name": "What are typical elevation adjustment specifications?", "acceptedAnswer": {"@type": "Answer", "text": "Range is 2.5° to 4.5° standard or 4° to 6° for helicopter, with resolution of 0.02° to 0.05° per screw turn and a minimum increment under 0.01° with vernier scale. Unit stagger is 20 arcmin (about 0.33°). Locking is by clamping bolts or locknuts at 20 to 40 Nm, in stainless steel, 6061-T6 aluminium or galvanised steel, from -40°C to +70°C."}}, {"@type": "Question", "name": "What happens if all units are set to the same angle?", "acceptedAnswer": {"@type": "Answer", "text": "The whole array turns from red to white at the same point, so the graduated four-light indication is lost. The correct angular stagger between units must be maintained."}}, {"@type": "Question", "name": "Which standards apply to PAPI elevation adjustment?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 14 (elevation angle tolerances), FAA AC 150/5345-28 (installation and elevation setting procedures), FAA AC 150/5345-46 (photometric performance and verification), ISO 17123 (theodolite accuracy) and ASTM B117 (corrosion testing). Always verify the current edition."}}, {"@type": "Question", "name": "How often should PAPI elevation be verified?", "acceptedAnswer": {"@type": "Answer", "text": "Typical practice is a semi-annual check of the elevation angle and the unit stagger, an annual check that the adjustment screw is free and lubricated, and a logged record at each adjustment. Your airport's approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "What are the common elevation adjustment problems?", "acceptedAnswer": {"@type": "Answer", "text": "Screw seizing from corrosion or dirt, angle drift from vibration if locking bolts are under-tightened, incorrect stagger, a poorly referenced instrument, thermal expansion shifting the angle slightly, and lost adjustment records. After adjusting any unit, confirm all units in the array still transition from red to white at the same point."}}]}</script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">PAPI Elevation Adjustment</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-arrows-up-down"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">PAPI <span>Elevation Adjustment</span></h1>
+            <p class="comp-sub">The precision vertical angle mechanism that sets the beam elevation of each PAPI light unit to achieve the required glide slope. This adjustment determines the exact angle at which the red/white transition occurs, directly affecting the approach path that pilots follow during landing.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:600px;height:324px;">
+                <img src="https://tc.canada.ca/sites/default/files/2021-06/ac-302-009-5.jpg" alt="PAPI Elevation Adjustment" width="600" height="324" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>The <strong>PAPI Elevation Adjustment</strong> is the mechanical system that allows the vertical (up/down) angle of a PAPI light unit to be set with extreme precision. This adjustment determines the angle of the red/white transition beam relative to the horizontal plane. For a standard fixed‑wing PAPI, the transition is set to 3° above the horizontal—the nominal glide slope. However, this angle can be adjusted to suit specific runway requirements, obstacle clearance needs, or aircraft types.</p>
+                <p style="margin-top:12px;">The elevation adjustment is typically a fine‑threaded mechanism integrated into the mounting base or a dedicated elevation sub‑assembly. It allows the entire PAPI unit to be tilted up or down in controlled increments, with a typical range of 2.5° to 4.5° and a resolution of 0.02° or better.</p>
+                <p>In a standard four‑unit PAPI system, each unit is set to a slightly different elevation angle to produce the characteristic red/white pattern:</p>
+                <ul>
+                    <li><strong>Unit 1 (far from threshold):</strong> lowest angle (e.g., 2°30′)</li>
+                    <li><strong>Unit 2:</strong> 2°50′</li>
+                    <li><strong>Unit 3:</strong> 3°10′</li>
+                    <li><strong>Unit 4 (nearest threshold):</strong> 3°30′</li>
+                </ul>
+                <p>This staggered arrangement creates the 2‑white/2‑red indication when the aircraft is on the correct 3° glide path.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The elevation adjustment is what actually encodes the glide slope into the PAPI array — without it, four identical light units would just be four identical light units, not an instrument. It is the fractions of a degree separating each unit's angle that create the boundaries a pilot reads as "too high," "on path," or "too low," so the mechanism's precision directly determines how precisely the visual indication matches the intended approach angle. A coarse or imprecise adjustment would blur those boundaries, widening the transition zone between red and white until the indication became ambiguous exactly where it needs to be most decisive — right around the correct glide path. Because the whole system's credibility rests on this handful of arc-minutes being set correctly on every one of the four units, the elevation adjustment is arguably the single mechanism responsible for whether a PAPI tells the truth about an aircraft's position on approach.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">Key Components of the Elevation Mechanism</h2>
+            <div class="info-panel">
+                <p>The elevation adjustment mechanism is a precision assembly designed for repeatable, accurate angle setting:</p>
+                <div class="mech-grid">
+                    <div class="mech-item">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        <h5 role="heading" aria-level="3">Pivot Hinge</h5>
+                        <p>A precision hinge or bearing at the rear of the mounting base that allows the PAPI unit to tilt up and down around a fixed axis.</p>
+                    </div>
+                    <div class="mech-item">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <h5 role="heading" aria-level="3">Adjustment Screw</h5>
+                        <p>A fine‑pitch threaded rod that raises or lowers the front of the unit. Typically M6×0.75 or M8×1.0, providing 0.02°–0.05° per full turn.</p>
+                    </div>
+                    <div class="mech-item">
+                        <i class="fa-solid fa-shim"></i>
+                        <h5 role="heading" aria-level="3">Shim System</h5>
+                        <p>An alternative to screws, using precision ground shims that are inserted or removed to set the angle. Provides excellent stability but requires a stock of shims.</p>
+                    </div>
+                    <div class="mech-item">
+                        <i class="fa-solid fa-lock"></i>
+                        <h5 role="heading" aria-level="3">Locking Mechanism</h5>
+                        <p>Clamping bolts or locknuts that secure the elevation setting after adjustment, preventing drift from vibration or thermal changes.</p>
+                    </div>
+                    <div class="mech-item">
+                        <i class="fa-solid fa-ruler"></i>
+                        <h5 role="heading" aria-level="3">Angle Index</h5>
+                        <p>Scale markings or a vernier scale that indicates the current elevation angle, aiding in setting and verification.</p>
+                    </div>
+                    <div class="mech-item">
+                        <i class="fa-solid fa-shield"></i>
+                        <h5 role="heading" aria-level="3">Corrosion Protection</h5>
+                        <p>Stainless steel or coated components with anti‑seize lubricant, ensuring the mechanism remains adjustable over decades of service.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>The elevation adjustment is a standard feature on all PAPI systems, with variations for different operational requirements:</p>
+                <ul>
+                    <li><strong>Fixed‑wing runways</strong> – typically set to 3° (2.5°–4° range), with each unit staggered for the 4‑light pattern.</li>
+                    <li><strong>Helicopter PAPI</strong> – set to steeper angles, typically 4°–6°, to accommodate helicopter approach profiles.</li>
+                    <li><strong>Runways with obstacle constraints</strong> – adjusted to steeper angles (e.g., 3.5°–4°) to provide obstacle clearance.</li>
+                    <li><strong>Runways with noise abatement</strong> – steeper approaches can reduce noise footprint, requiring non‑standard elevation settings.</li>
+                    <li><strong>Portable PAPI</strong> – with quick‑adjust mechanisms for rapid reconfiguration at temporary airfields.</li>
+                    <li><strong>Calibration and maintenance</strong> – used whenever the glide slope angle needs to be verified or changed.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>The elevation mechanism is built into the fixture head where it pivots on the mounting base, positioned so a technician can access the adjustment screw or graduated scale without dismounting the unit from its foundation. It's set during initial commissioning, after the mounting base and wing bar are already fixed in their final surveyed position, since the elevation angle only makes sense relative to a base that's already correctly sited and levelled. Each unit on the bar is adjusted individually to its own staggered angle (each unit typically offset by a fraction of a degree from its neighbours to produce the four-light pattern), and the mechanism is locked off once set so vibration or weather doesn't drift the angle between calibration checks. On portable PAPI, the same mechanism is designed for quicker access, since the whole system may be re-levelled and re-aimed each time it's redeployed.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The elevation adjustment process is a precise operation that requires care and the right tools:</p>
+                <ul>
+                    <li><strong>Initial Setup:</strong> The PAPI unit is mounted on its base with the elevation adjustment screws or shims in their neutral positions. The unit is loosely secured to allow tilting.</li>
+                    <li><strong>Reference Measurement:</strong> A theodolite or electronic inclinometer is set up to measure the current elevation angle of the unit’s optical axis. The reference is typically the horizontal plane or a known survey point.</li>
+                    <li><strong>Calculating the Required Angle:</strong> The required elevation angle is determined from the airfield’s AGL documentation. For a standard 3° glide path, the unit’s transition angle must be set to 3° (or a staggered value for each unit in the array).</li>
+                    <li><strong>Adjustment:</strong> The adjustment screw is turned to raise or lower the front of the unit. Each full turn changes the angle by a known amount (e.g., 0.03° per turn). The adjustment is made incrementally, with the angle re‑measured after each turn.</li>
+                    <li><strong>Locking:</strong> Once the correct angle is achieved, the locking bolts or nuts are tightened securely. The angle is verified one final time to ensure it did not shift during locking.</li>
+                    <li><strong>Verification:</strong> For a complete PAPI system, the elevation of all four units is set to the staggered values. The system is then tested photometrically to ensure the red/white transition pattern is correct when viewed from the approach.</li>
+                </ul>
+                <p style="margin-top:12px;">The adjustment is typically performed using a precision inclinometer or theodolite with an accuracy of ±0.01° or better, as even a 0.05° error can shift the glide path by several feet at the runway threshold.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>Elevation adjustment, like azimuth, has no electrical control logic — it's a mechanical, technician-closed loop rather than an ALCMS-driven one. With the pivot hinge loosened, a theodolite or inclinometer measures the current elevation angle against the required glide-path value, and the adjustment screw is turned incrementally, with the angle re-measured after every turn, until the correct staggered value for that unit's position in the four-unit array is achieved and locked.</p>
+                <p style="margin-top:14px;">Because the four PAPI units in an array are each set to a slightly different elevation angle to produce the red/white transition pattern, this loop is repeated separately for every unit, and the final photometric check across all four is what actually confirms the array's electrical intensity control and the mechanical elevation settings are working together correctly.</p>
+            </div>
+            <div class="diagram-block" style="margin-top:24px;">
+                <p class="diagram-sub">Pivot Loosened → Reference Measured → Screw Adjusted → Locked &amp; Re-Verified (manual loop)</p>
+                <svg viewBox="0 0 680 435" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="sacElevArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                        </marker>
+                        <marker id="sacElevFbArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#00d4ff" opacity="0.8" />
+                        </marker>
+                    </defs>
+
+                    <rect x="170" y="20" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="42" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">PIVOT HINGE LOOSENED</text>
+
+                    <text x="340" y="59" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Fixed rear axis; unit free to tilt</text>
+
+                    <text x="340" y="74" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">once bolts are loosened</text>
+
+                    <line x1="340" y1="76" x2="340" y2="100" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#sacElevArrow)"/>
+
+                    <rect x="170" y="100" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="122" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">REFERENCE MEASUREMENT</text>
+
+                    <text x="340" y="139" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Theodolite or inclinometer reads</text>
+
+                    <text x="340" y="154" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">the current elevation angle</text>
+
+                    <line x1="340" y1="156" x2="340" y2="180" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#sacElevArrow)"/>
+
+                    <rect x="170" y="180" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="202" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">ADJUSTMENT SCREW TURNED</text>
+
+                    <text x="340" y="219" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">~0.03° per full turn, checked</text>
+
+                    <text x="340" y="234" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">after every increment</text>
+
+                    <line x1="340" y1="236" x2="340" y2="260" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#sacElevArrow)"/>
+
+                    <rect x="170" y="260" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="282" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">LOCKED &amp; RE-VERIFIED</text>
+
+                    <text x="340" y="299" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Locking bolts tightened, angle</text>
+
+                    <text x="340" y="314" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">confirmed unchanged after locking</text>
+
+                    <line x1="340" y1="316" x2="340" y2="340" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#sacElevArrow)"/>
+
+                    <rect x="170" y="340" width="340" height="75" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+
+                    <text x="340" y="362" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13.5" fill="#f0f4ff">MANUAL LOOP, HELD BY MECHANICAL LOCK</text>
+
+                    <text x="340" y="379" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">A 0.05° error can shift the glide path by several</text>
+
+                    <text x="340" y="396" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">feet at the threshold — the loop is closed as many</text>
+
+                    <text x="340" y="413" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">times as it takes to hit tolerance before locking</text>
+
+                    <path d="M 510 208 C 600 208, 600 128, 510 128" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.75" marker-end="url(#sacElevFbArrow)"/>
+                    <text x="517" y="125" text-anchor="start" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.5" fill="#00d4ff">MEASURE / ADJUST LOOP</text>
+                    <text x="517" y="140" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Re-measured after each</text>
+                    <text x="517" y="155" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">screw turn until within</text>
+                    <text x="517" y="170" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">tolerance (±0.01° typical)</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <div class="block-label">Mechanism</div>
+            <h2 class="block-title">How the Elevation Angle Is Set</h2>
+            <div class="diagram-card">
+                <div class="diagram-flow">
+                    <div class="diagram-node node-gold">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                        <h6 role="heading" aria-level="3">Pivot Hinge</h6>
+                        <p>Fixed rear axis — unit tilts freely once loosened</p>
+                    </div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="diagram-loop">
+                        <div class="diagram-loop-pair">
+                            <div class="diagram-node node-cyan">
+                                <i class="fa-solid fa-screwdriver-wrench"></i>
+                                <h6 role="heading" aria-level="3">Turn Screw</h6>
+                                <p>~0.03° per full turn</p>
+                            </div>
+                            <div class="diagram-loop-icon"><i class="fa-solid fa-rotate"></i></div>
+                            <div class="diagram-node node-cyan">
+                                <i class="fa-solid fa-ruler"></i>
+                                <h6 role="heading" aria-level="3">Re‑Measure</h6>
+                                <p>Theodolite / inclinometer</p>
+                            </div>
+                        </div>
+                        <div class="diagram-loop-label">Repeat until angle matches target</div>
+                    </div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="diagram-node node-gold">
+                        <i class="fa-solid fa-lock"></i>
+                        <h6 role="heading" aria-level="3">Lock Nuts Tightened</h6>
+                        <p>Secures against vibration &amp; thermal drift</p>
+                    </div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="diagram-node">
+                        <i class="fa-solid fa-check-double"></i>
+                        <h6 role="heading" aria-level="3">Final Angle Verified</h6>
+                        <p>e.g. 3° ± 0.05° per unit</p>
+                    </div>
+                </div>
+                <div class="diagram-caption">The screw‑and‑measure step is <strong>iterative, not one‑shot</strong> — because a 0.05° error can shift the glide path by several feet at the threshold, the angle is re‑checked after every partial turn rather than set once from a single reading, and the lock itself is re‑verified in case tightening nudges the angle.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>Like its azimuth counterpart, the elevation mechanism is a fine-threaded assembly integrated into the mounting base or a dedicated sub-assembly beneath the PAPI unit, rather than a separate visible fitting. A precision-ground threaded rod or worm-gear arrangement tilts the unit up or down about a horizontal pivot axis as it is turned, with the fine thread pitch giving the sub-arc-minute resolution the glide slope setting requires. A calibrated scale or vernier alongside the adjustment point lets the technician read the current angle directly, or in combination with an alignment tool such as an inclinometer for the final precise setting. Once set, a locking collar, clamping plate, or lock nut is tightened against the adjustment thread to fix the angle permanently against wind loading and vibration, and all load-bearing parts are machined from corrosion-resistant metal so the mechanism continues to move smoothly and hold its setting through years of outdoor service.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Adjustment Range</td><td class="val">2.5° – 4.5° (standard), 4° – 6° (helicopter)</td></tr>
+                <tr><td>Resolution (per turn of screw)</td><td class="val">0.02° – 0.05° (depending on thread pitch)</td></tr>
+                <tr><td>Minimum Increment</td><td class="val">&lt; 0.01° (with fine‑pitch screws and vernier scale)</td></tr>
+                <tr><td>Typical Glide Slope (Fixed‑Wing)</td><td class="val">3° (with ±0.05° / 3′ tolerance)</td></tr>
+                <tr><td>Typical Glide Slope (Helicopter)</td><td class="val">4° – 6° (adjustable)</td></tr>
+                <tr><td>Unit Stagger Increment</td><td class="val">20 arcmin (~0.33°) between adjacent units</td></tr>
+                <tr><td>Locking Method</td><td class="val">Clamping bolts (M8–M12) or locknuts</td></tr>
+                <tr><td>Locking Torque</td><td class="val">20–40 Nm</td></tr>
+                <tr><td>Material</td><td class="val">Stainless steel (316L), aluminium alloy (6061‑T6), or galvanised steel</td></tr>
+                <tr><td>Corrosion Protection</td><td class="val">Passivation, anodising, or hot‑dip galvanising</td></tr>
+                <tr><td>Adjustment Screw Thread</td><td class="val">M6×0.75 or M8×1.0 (fine pitch)</td></tr>
+                <tr><td>Angle Index Scale</td><td class="val">Engraved marks at 0.1° or 0.2° intervals</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-40°C to +70°C</td></tr>
+                <tr><td>Weight (mechanism only)</td><td class="val">1 – 4 kg</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Angle Reference</div>
+            <h2 class="block-title">Typical Elevation Settings</h2>
+            <div class="info-panel">
+                <p>For a standard 4‑unit PAPI system with a 3° nominal glide slope, the individual units are set to staggered elevation angles. The table below shows typical values:</p>
+                <div class="angle-grid">
+                    <div class="angle-item">
+                        <div class="angle-label">Unit 1</div>
+                        <div class="angle-value">2°30′</div>
+                        <div class="angle-desc">Farthest from threshold</div>
+                    </div>
+                    <div class="angle-item">
+                        <div class="angle-label">Unit 2</div>
+                        <div class="angle-value">2°50′</div>
+                        <div class="angle-desc">Second farthest</div>
+                    </div>
+                    <div class="angle-item">
+                        <div class="angle-label">Unit 3</div>
+                        <div class="angle-value">3°10′</div>
+                        <div class="angle-desc">Second nearest</div>
+                    </div>
+                    <div class="angle-item">
+                        <div class="angle-label">Unit 4</div>
+                        <div class="angle-value">3°30′</div>
+                        <div class="angle-desc">Nearest to threshold</div>
+                    </div>
+                </div>
+                <p style="margin-top:16px;">The stagger creates a 1° spread across the four units, with 20 arcminutes (0.33°) between adjacent units. When the aircraft is on the 3° glide path, Units 2 and 3 appear white (above their transition angles), while Units 1 and 4 appear red (below their transition angles), giving the pilot the 2‑white/2‑red indication. The exact stagger values may vary depending on the manufacturer and specific installation requirements.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>PAPI elevation angle tolerances (±0.05° / 3′ for individual units)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-28</h5><p>PAPI installation – elevation setting procedures</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-46</h5><p>Photometric performance – elevation verification requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ISO 17123</h5><p>Optical theodolite testing – angle measurement accuracy</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ASTM B117</h5><p>Corrosion resistance testing for exposed mechanical components</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mechanism Inspection</h5><span class="test-stage">Pre-Installation</span></div>
+                        <p>Inspect the threaded rod or worm-gear assembly, locking collar, and index scale for shipping or handling damage before the unit is mounted.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-arrows-up-down"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Full-Range Travel Check</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Run the mechanism through its full range before final siting to confirm smooth travel with no binding, and that it can reach the design angle without running out of adjustment.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Glide Path Angle Setting</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Set the elevation angle against the design glide path (typically 3° fixed-wing, 4°–6° helicopter) using a calibrated inclinometer or theodolite before locking down.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Unit-to-Unit Stagger Setting</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Set the ~20 arcmin (0.33°) stagger increment between adjacent units in the wing bar in sequence, since this produces the red/white transition band across the array.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-lock"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Locking Collar Torquing</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Torque the locking collar, clamping plate, or lock nut to the specified 20–40 Nm to fix the angle permanently against wind loading and vibration.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Verification Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record the as-set elevation angle, stagger increment, and locking torque applied for each unit before proceeding to angle verification testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Locking Torque Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Torque clamping bolts or locknuts to the specified 20–40 Nm and confirm the mechanism holds the set glide path angle under manual load before sign-off.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Glide Path Angle Verification</h5><span class="test-stage">Field Verification</span></div>
+                        <p>Set and verify the elevation angle against the design glide path (typically 3° fixed-wing, 4°–6° helicopter) using a calibrated inclinometer or theodolite.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Unit-to-Unit Stagger Verification</h5><span class="test-stage">Field Verification</span></div>
+                        <p>Confirm the ~20 arcmin (0.33°) stagger increment between adjacent units in the wing bar is correctly set, since this is what produces the red/white transition band.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Adjustment Range Confirmation</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Run the mechanism through its full range to confirm smooth travel with no binding, and that it reaches the design angle without running out of adjustment.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Angle Index Scale Cross-Check</h5><span class="test-stage">Field Verification</span></div>
+                        <p>Confirm the engraved index scale reading matches the independently measured angle from the calibration tool before relying on the scale alone in future re-checks.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Re-Verification After Final Lock-Down</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Re-check the elevation angle immediately after final torque is applied, since clamping can shift the setting slightly on some mechanisms.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Corrosion Protection Inspection</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Inspect passivation, anodising, or galvanising on all fasteners and the adjustment body for coating damage before the unit is exposed to the elements.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record the as-set elevation angle for each unit in the wing bar, stagger increments, and locking torque applied in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Adjustment Screw Freedom Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check the adjustment screw for seizing and lubricate as needed to keep it operable.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Elevation Angle Verification</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Re-check the set elevation angle against the reference to confirm it hasn't drifted from vibration.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Stagger Verification</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Confirm the correct angular stagger is maintained between light units in the array.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Maintenance Record Update</h5><span class="maint-freq">At each adjustment</span></div>
+                        <p>Log the elevation setting and date of any adjustment for future reference.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Adjustment Screw Seizing</h5><p>Corrosion or dirt can cause the fine‑pitch adjustment screw to seize, making it impossible to adjust the elevation. Use stainless steel screws and apply anti‑seize compound during installation. Regularly exercise the screw through its full range to keep it free.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Angle Drift from Vibration</h5><p>If the locking bolts are not sufficiently tightened, the elevation can drift over time due to wind or aircraft vibration. Use locking washers or thread‑locker and re‑torque bolts during routine maintenance. For critical installations, consider using a secondary locking system.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Stagger</h5><p>Setting all four units to the same angle (instead of staggered) will result in the entire array turning from red to white at the same point, losing the 4‑light indication. Always follow the manufacturer's stagger settings (typically 20 arcmin, ~0.33°, between units).</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Reference Error</h5><p>If the theodolite or inclinometer is not correctly referenced to a known horizontal plane, the elevation angle will be incorrect. Use a properly calibrated instrument and verify the reference using a known survey point or a precision spirit level.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Thermal Expansion Effects</h5><p>Temperature changes can cause the mounting base and unit to expand or contract, slightly shifting the elevation angle. For critical calibrations, perform the adjustment when the unit is at its typical operating temperature (avoid extreme heat or cold).</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Lost Adjustment Records</h5><p>Without proper documentation of the elevation settings for each unit, it's difficult to know if the system has drifted. Keep a log of all adjustments, including the date, measured angle, and the name of the technician who performed the adjustment.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Elevation Adjustment Screw Won't Move</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Adjustment screw seizing from corrosion or dirt ingress.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect the screw threads for corrosion or debris, and check for prior application of anti-seize compound.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean and lubricate or replace the screw with a stainless steel type and anti-seize compound; exercise it periodically to keep it free.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Unit Elevation Angle Found Drifted at Inspection</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Insufficient locking bolt torque allowing drift from wind or aircraft vibration.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check locking bolt torque against specification and inspect for locking washers or thread-locker.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-torque locking bolts, fit locking washers or thread-locker, and consider a secondary locking system for critical installations.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">All Four Units Transition from Red to White at the Same Point</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Incorrect stagger — all units set to the same angle instead of the specified stagger increments.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check each unit's individually measured elevation angle against the manufacturer's stagger specification (typically 20 arcmin, ~0.33°, between units).</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-adjust each unit to its correct staggered angle per the manufacturer's specification, and re-verify with flight or ground inspection.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Measured Elevation Angle Inconsistent With Survey Data</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Reference error — the theodolite/inclinometer not correctly referenced to a known horizontal plane.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Verify the instrument's reference against a known survey point or precision spirit level.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-reference the instrument correctly and repeat the elevation measurement.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Angle Reading Changes Between Morning and Afternoon Checks</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Thermal expansion of the mounting base and unit shifting the elevation slightly.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare readings taken at different temperatures and check whether the adjustment was performed at typical operating temperature.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Perform the final calibration at the unit's typical operating temperature, avoiding extreme heat or cold.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Adjustment Mechanism Seizure</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Corrosion binding the screw or gear threads, or dried-out lubricant allowing dirt ingress into the adjustment mechanism.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Elevation adjustment screw won't move, preventing angle correction during a scheduled or corrective alignment visit.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Functional check of adjustment travel during scheduled maintenance, and re-lubrication of the mechanism per the maintenance schedule.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Locking Mechanism Creep</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A locking mechanism that does not fully re-engage after adjustment, or gradual loosening under wind and thermal cycling loads.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Unit elevation angle found drifted at inspection, which can shift the presented glide path if uncorrected across multiple units.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Periodic elevation angle verification against the approved glide path setting, and inspection of the locking mechanism for full engagement.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Multi-Unit Transition Point Misalignment</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">One or more units drifted in elevation independently, so their red-to-white transition points no longer line up with the rest of the array.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">All four units transition from red to white at the same point is no longer true, presenting pilots with an inconsistent or ambiguous glide path indication.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Field verification of the transition point for each unit relative to the others, using calibrated alignment equipment.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Survey Reference Mismatch</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The threshold crossing height or approach surface reference used for the original setting has changed since the last formal survey.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Measured elevation angle inconsistent with survey data, even though the adjustment mechanism itself is functioning correctly.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Cross-check of the current elevation setting against an up-to-date approach surface survey.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Thermal Expansion Reading Variation</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Differential thermal expansion of the mounting structure between a cool morning and a warm afternoon, shifting the apparent angle slightly.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Angle reading changes between morning and afternoon checks, without an actual underlying drift in the unit's setting.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Repeat readings at consistent times of day, and comparison against the tool's rated thermal stability specification.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Glide Path Safety Impact</h5><span class="test-stage">Operational</span></div>
+                        <p>Elevation angle sets the red/white transition that defines the glide slope itself; an uncorrected drift changes the vertical guidance a pilot flies on approach, so treat a confirmed mismatch as a priority correction.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Transition Point Across the Array</h5><span class="test-stage">Verification</span></div>
+                        <p>After adjusting any single unit, confirm all units in the PAPI array still transition from red to white at the same point; a unit corrected in isolation can leave the array inconsistent even though each unit reads within its own tolerance.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Fixture State Before Adjustment</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Follow the aerodrome's electrical safety procedure for the associated PAPI unit and base can before working at the mounting interface, since the adjustment mechanism is integrated into or near the fixture's mounting base.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Frangibility Not to Be Defeated</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Do not over-torque or rigidly fix the adjustment mechanism in a way that compromises the frangible mounting interface; the coupling must still shear cleanly on aircraft impact per the frangibility requirement.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-lock"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Full Lock Engagement</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Confirm the locking mechanism has fully re-engaged after every adjustment; partial engagement is a recurring cause of the unit's elevation drifting between scheduled checks under wind and thermal cycling loads.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Work Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>Adjustment work on an in-service PAPI unit requires ATC/airside coordination and a NOTAM where the unit will be off-aim or out of service during the correction.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-tarp"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mechanism Care</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Re-lubricate the adjustment mechanism per the maintenance schedule and keep it protected from dirt ingress, since corrosion and dried-out lubricant are the leading causes of the mechanism seizing when correction is needed.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Verify the corrected elevation against the approved glide path setting and confirm the lock is fully engaged before closing out the work and cancelling any associated NOTAM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-temperature-half"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Thermal Cycling Drifts Elevation Slowly, Not Suddenly</h5><span class="expert-tag">Reliability</span></div>
+                        <p>Repeated expansion and contraction of the mounting interface across seasonal temperature swings can shift elevation angle by fractions of a degree per cycle, well below what a routine visual check would catch. Trend precision-instrument readings across seasons rather than relying on the same annual calibration date to catch this kind of slow drift.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-arrows-left-right"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Adjust Units in a Defined Order, Not Whichever Is Convenient</h5><span class="expert-tag">Procedure</span></div>
+                        <p>Correcting units in the array out of sequence can leave the transition point briefly inconsistent between visits if a fault is found partway through. Work outboard-to-inboard or per the site's documented sequence so a partially completed correction never leaves an ambiguous glide indication if work is interrupted.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Fully Locked Mechanism Can Still Be Mis-Set</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>Lock engagement confirms the mechanism won't move further, not that it was set to the correct angle in the first place. Always verify the actual elevation reading independently of lock status, since a confidently "locked" unit that was set wrong will hold that wrong angle just as firmly as a correct one.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Re-Survey the Reference Points Periodically</h5><span class="expert-tag">Design</span></div>
+                        <p>The elevation setting is only as accurate as the ground survey reference it was calibrated against; settlement, resurfacing, or drainage work near the array can shift that reference over the years. Where correction requirements keep recurring at the same unit, check whether the underlying ground reference has moved before assuming the mechanism itself is at fault.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-droplet"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Lubricant Choice Matters More in Extreme Climates</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>A general-purpose lubricant that performs fine in temperate conditions can stiffen in cold climates or wash out faster in monsoon-exposed sites, both of which show up as a mechanism that resists fine adjustment. Match the lubrication spec to the actual climate the array operates in rather than using whatever's standard stock.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-wind"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Wind-Loading Fatigue Accumulates on the Mechanism</h5><span class="expert-tag">Mechanical</span></div>
+                        <p>Constant low-amplitude vibration from wind loading over years can loosen a mechanism that tested fine at commissioning, distinct from the more obvious impact or corrosion failure modes. Factor mechanical fatigue into the overhaul interval for exposed sites, not just visible wear or corrosion signs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-papi-mounting-base.html" class="related-card"><i class="fa-solid fa-anchor"></i><h5 role="heading" aria-level="3">PAPI Mounting Base</h5></a>
+                <a href="component-papi-azimuth-adjustment.html" class="related-card"><i class="fa-solid fa-arrows-left-right"></i><h5 role="heading" aria-level="3">Azimuth Adjustment</h5></a>
+                <a href="component-papi-alignment-calibration-tool.html" class="related-card"><i class="fa-solid fa-compass"></i><h5 role="heading" aria-level="3">Alignment Tool</h5></a>
+                <a href="component-papi-light-unit.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><h5 role="heading" aria-level="3">PAPI Light Unit</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about PAPI elevation adjustment: glide slope angles, unit stagger, procedure, standards and maintenance.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is PAPI elevation adjustment?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It is the mechanical system that sets the vertical (up/down) angle of a PAPI light unit with high precision. That angle determines where the red/white transition occurs relative to the horizontal, which defines the glide slope pilots follow.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">How does elevation adjustment create the PAPI pattern?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>In a standard four-unit PAPI each unit is set to a slightly different angle, for example 2°30′, 2°50′, 3°10′ and 3°30′ from the far unit to the one nearest the threshold, so on the correct 3° path the pilot sees two red and two white lights. It is the fractions of a degree between units that create the too-high, on-path and too-low boundaries.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">What angle is a PAPI normally set to?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>For fixed-wing runways the nominal glide slope is 3°, typically within a 2.5° to 4° range and a tolerance of about ±0.05° (3′). Helicopter PAPI uses steeper angles, typically 4° to 6°, and runways with obstacle constraints or noise abatement needs may use 3.5° to 4° or other non-standard settings.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">How is PAPI elevation adjusted?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>With the unit loosely secured, a theodolite or electronic inclinometer measures the optical axis angle. An adjustment screw raises or lowers the front of the unit in small steps (for example about 0.03° per turn), re-measuring after each turn. The lock is then tightened, the angle re-verified, and the whole array tested photometrically for the correct red/white transition.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">How accurate does the measuring instrument need to be?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typically a precision inclinometer or theodolite accurate to ±0.01° or better, because even a 0.05° error can shift the glide path by several feet at the runway threshold.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">What are typical elevation adjustment specifications?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Range is 2.5° to 4.5° standard or 4° to 6° for helicopter, with resolution of 0.02° to 0.05° per screw turn and a minimum increment under 0.01° with vernier scale. Unit stagger is 20 arcmin (about 0.33°). Locking is by clamping bolts or locknuts at 20 to 40 Nm, in stainless steel, 6061-T6 aluminium or galvanised steel, from -40°C to +70°C.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">What happens if all units are set to the same angle?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The whole array turns from red to white at the same point, so the graduated four-light indication is lost. The correct angular stagger between units must be maintained.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">Which standards apply to PAPI elevation adjustment?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are ICAO Annex 14 (elevation angle tolerances), FAA AC 150/5345-28 (installation and elevation setting procedures), FAA AC 150/5345-46 (photometric performance and verification), ISO 17123 (theodolite accuracy) and ASTM B117 (corrosion testing). Always verify the current edition.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How often should PAPI elevation be verified?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical practice is a semi-annual check of the elevation angle and the unit stagger, an annual check that the adjustment screw is free and lubricated, and a logged record at each adjustment. Your airport's approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">What are the common elevation adjustment problems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Screw seizing from corrosion or dirt, angle drift from vibration if locking bolts are under-tightened, incorrect stagger, a poorly referenced instrument, thermal expansion shifting the angle slightly, and lost adjustment records. After adjusting any unit, confirm all units in the array still transition from red to white at the same point.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on PAPI elevation adjustment, glide slope settings, or calibration procedures?</h4><p>Precision AGL Academy provides advice on precision angle setting, system verification, and maintaining ICAO-compliant PAPI performance.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Visual glide slope, approach-path and navigation-aid equipment directly affects how pilots judge height, slope and position. Aiming, alignment, setting angles, obstacle-clearance and flight-inspection requirements are set by the approved design, the air navigation service provider and the competent regulator. This page is not an alignment, calibration or setting procedure and must not be used to adjust, commission or return such equipment to service. Navigation-aid content is general and educational only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on PAPI Elevation Adjustment is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20PAPI%20Elevation%20Adjustment">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20PAPI%20Elevation%20Adjustment" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

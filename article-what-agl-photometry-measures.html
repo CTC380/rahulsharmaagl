@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What AGL Photometry Actually Measures (Beyond Lux Values)</title>
+    <meta name="description" content="AGL photometry is not a brightness check. What it measures: intensity distribution, beam spread, uniformity, ICAO viewing zones and directional intensity." />
+    <meta name="keywords" content="AGL photometry, airfield ground lighting, ICAO Annex 14, FAA compliance, light intensity distribution, beam spread, luminous intensity, candela, lux vs candela, viewing zones, photometric uniformity" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/article-what-agl-photometry-measures.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-what-agl-photometry-measures.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-what-agl-photometry-measures.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-what-agl-photometry-measures.html" />
+    <meta property="og:title" content="What AGL Photometry Actually Measures (Beyond Lux Values)" />
+    <meta property="og:description" content="AGL photometry is not a brightness check. What it measures: intensity distribution, beam spread, uniformity, ICAO viewing zones and directional intensity." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-03-03" />
+    <meta property="article:modified_time" content="2026-10-27" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="AGL Photometry" />
+    <meta property="article:tag" content="AGL Photometry" />
+    <meta property="article:tag" content="ICAO Annex 14" />
+    <meta property="article:tag" content="FAA Compliance" />
+    <meta property="article:tag" content="Light Intensity Distribution" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-what-agl-photometry-measures.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="What AGL Photometry Actually Measures | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What AGL Photometry Actually Measures (Beyond Lux Values)" />
+    <meta name="twitter:description" content="AGL photometry is not a brightness check. What it measures: intensity distribution, beam spread, uniformity, ICAO viewing zones and directional intensity." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-what-agl-photometry-measures.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            font-size: 13px;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span.sep {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        .article-hero {
+            max-width: 900px;
+            margin: auto;
+            padding: 34px 40px 46px;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 24px;
+        }
+        .article-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 54px;
+            letter-spacing: 1px;
+            line-height: 1.05;
+            margin-bottom: 22px;
+            color: var(--gold);
+        }
+        @media(max-width:768px) {
+            .article-title {
+                font-size: 38px;
+            }
+        }
+        .article-lede {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 26px;
+            max-width: 720px;
+        }
+        .author-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .author-info h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .author-info p {
+            font-size: 12px;
+            color: var(--text);
+            margin-top: 2px;
+        }
+        .article-meta-strip {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            margin-left: auto;
+            font-size: 12.5px;
+            color: var(--text);
+        }
+        .article-meta-strip span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .article-meta-strip i {
+            color: var(--gold);
+            font-size: 12px;
+        }
+        @media(max-width:600px) {
+            .article-meta-strip {
+                margin-left: 0;
+            }
+        }
+
+        .article-body {
+            max-width: 760px;
+            margin: auto;
+            padding: 50px 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .article-body > p {
+            font-size: 16.5px;
+            line-height: 1.95;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .article-body > p:first-of-type {
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .art-section {
+            margin: 46px 0 42px;
+            scroll-margin-top: 92px;
+        }
+
+        /* ── Table of Contents ── */
+        .toc-block {
+            margin: 8px 0 40px;
+            padding: 26px 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .toc-block .toc-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 24px;
+        }
+        @media(max-width:600px) {
+            .toc-list { grid-template-columns: 1fr; }
+        }
+        .toc-list a {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 7px 0;
+            transition: color .2s;
+        }
+        .toc-list a:hover {
+            color: var(--gold);
+        }
+        .toc-list .toc-num {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--gold);
+            font-size: 14px;
+            flex-shrink: 0;
+            width: 22px;
+        }
+        .art-section-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .art-section-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .art-section h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        .art-section > p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        .insight-list {
+            list-style: none;
+            margin: 4px 0 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        .insight-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text);
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .insight-list li i {
+            color: var(--gold);
+            font-size: 12px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .closing-line {
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: var(--white);
+            padding: 16px 20px;
+            border-left: 3px solid var(--gold);
+            background: rgba(255, 180, 0, 0.04);
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+        }
+
+        .diagram-block {
+            margin: 50px 0 40px;
+            padding: 32px 28px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .diagram-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        .diagram-block .diagram-sub {
+            font-size: 13.5px;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .diagram-block svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .conclusion-block {
+            margin: 50px 0 40px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .conclusion-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .conclusion-block p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .conclusion-block p:last-child {
+            margin-bottom: 0;
+        }
+        .conclusion-block ul {
+            list-style: none;
+            margin: 4px 0 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .conclusion-block ul li {
+            font-size: 15.5px;
+            color: var(--text);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .conclusion-block ul li i {
+            color: var(--gold);
+            font-size: 11px;
+            margin-top: 6px;
+            flex-shrink: 0;
+        }
+
+        .pull-quote {
+            text-align: center;
+            margin: 50px auto;
+            padding: 40px 30px;
+            max-width: 640px;
+        }
+        .pull-quote p {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--white);
+            position: relative;
+        }
+        .pull-quote p span {
+            color: var(--gold);
+        }
+        .pull-quote .quote-mark {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            color: rgba(255, 180, 0, 0.25);
+            line-height: .5;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .signoff {
+            text-align: right;
+            font-size: 14.5px;
+            color: var(--text);
+            font-style: italic;
+            margin: -20px auto 50px;
+            max-width: 760px;
+            padding: 0 40px;
+        }
+        .signoff strong {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .topic-tags {
+            max-width: 760px;
+            margin: 0 auto 50px;
+            padding: 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .topic-tags span {
+            padding: 7px 16px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .author-bio {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+        .author-bio-card {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            align-items: flex-start;
+        }
+        .author-bio-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .author-bio-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .author-bio-card p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .author-bio-card .abio-links {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+        .author-bio-card .abio-links a {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .author-bio-card .abio-links a:hover {
+            gap: 9px;
+        }
+
+        .article-nav-links {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .anav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: all .3s;
+        }
+        .anav-btn:hover {
+            border-color: rgba(255, 180, 0, 0.35);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .anav-btn.gold {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #000;
+        }
+        .anav-btn.gold:hover {
+            background: #ffc933;
+            color: #000;
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        @media(max-width:600px) {
+            nav {
+                padding: 0 20px;
+            }
+            .breadcrumb {
+                padding: 100px 20px 0;
+            }
+            .article-hero,
+            .article-body,
+            .topic-tags,
+            .author-bio,
+            .article-nav-links,
+            .signoff {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .pull-quote p {
+                font-size: 24px;
+            }
+            .author-bio-card {
+                flex-direction: column;
+            }
+            footer {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ── Key Takeaway ── */
+        .key-takeaway {
+            margin: 8px 0 46px;
+            padding: 26px 28px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.09), rgba(0, 212, 255, 0.04));
+            border: 1px solid rgba(255, 180, 0, 0.28);
+            border-radius: 14px;
+        }
+        .key-takeaway .kt-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.12);
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .key-takeaway .kt-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .key-takeaway p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--white);
+        }
+
+        /* ── Measure grid ── */
+        .measure-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 4px 0 18px;
+        }
+        @media(max-width:700px) {
+            .measure-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width:460px) {
+            .measure-grid { grid-template-columns: 1fr; }
+        }
+        .measure-card {
+            padding: 16px 15px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .measure-card i {
+            color: var(--cyan);
+            font-size: 15px;
+        }
+        .measure-card strong {
+            display: block;
+            color: var(--white);
+            font-size: 13.5px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .measure-card span {
+            font-size: 12.5px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* ── Comparison table ── */
+        .compare-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 6px 0 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .compare-table th,
+        .compare-table td {
+            padding: 14px 18px;
+            font-size: 14.5px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .compare-table th {
+            background: rgba(255, 255, 255, 0.035);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .compare-table td {
+            color: var(--text);
+        }
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table td:first-child,
+        .compare-table th:first-child {
+            color: var(--white);
+            border-right: 1px solid var(--border);
+        }
+        @media(max-width:640px) {
+            .compare-table, .compare-table thead, .compare-table tbody,
+            .compare-table th, .compare-table td, .compare-table tr {
+                display: block;
+            }
+            .compare-table thead { display: none; }
+            .compare-table tr {
+                margin-bottom: 12px;
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .compare-table tr:last-child { margin-bottom: 0; }
+            .compare-table td { border-right: none !important; }
+            .compare-table td:first-child {
+                background: rgba(255, 180, 0, 0.05);
+                font-weight: 700;
+            }
+            .compare-table td::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 10.5px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 4px;
+            }
+        }
+
+        /* ── Related articles ── */
+        .related-block {
+            max-width: 760px;
+            margin: 54px auto 10px;
+            padding: 0 40px;
+        }
+        .related-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        @media(max-width:600px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.35);
+            transform: translateY(-2px);
+        }
+        .related-card .rc-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .related-card .rc-title i {
+            color: var(--gold);
+            font-size: 13px;
+        }
+        .related-card .rc-sub {
+            font-size: 12.5px;
+            color: var(--text);
+            padding-left: 23px;
+        }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#article",
+      "headline": "What AGL Photometry Actually Measures (Beyond Lux Values)",
+      "description": "AGL photometry is not a brightness check. What it measures: intensity distribution, beam spread, uniformity, ICAO viewing zones and directional intensity.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/og-image-what-agl-photometry-measures.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "inLanguage": "en-IN",
+      "datePublished": "2026-03-03",
+      "dateModified": "2026-10-27",
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html",
+      "articleSection": "AGL Photometry",
+      "keywords": "AGL Photometry, ICAO Annex 14, FAA Compliance, Light Intensity Distribution, Beam Spread, Lux vs Candela",
+      "wordCount": 2337,
+      "timeRequired": "PT11M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "url": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html",
+      "name": "What AGL Photometry Actually Measures (Beyond Lux Values)",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What AGL Photometry Actually Measures",
+          "item": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#faq",
+      "url": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-what-agl-photometry-measures.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does AGL photometry measure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AGL photometry measures luminous intensity in candelas across defined vertical and horizontal angles, along with beam geometry, uniformity and colour (chromaticity). It evaluates how a light performs in three-dimensional space from the pilot's viewing position in the cockpit, not how bright it looks at close range."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is a lux value not enough to prove an AGL fitting is compliant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lux measures illumination on a surface, whereas AGL photometry measures luminous intensity in a specific direction. A light may show high lux directly beneath it yet fail to provide adequate intensity at the vertical approach angle where the pilot actually observes it, so a fitting can pass a lux test and still fail photometric compliance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the ICAO viewing zones in AGL photometry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standards such as ICAO Annex 14 define exact angular windows, through the isocandela diagrams in Appendix 2 with equivalent FAA specifications, where intensity must meet specified values. Photometric testing checks minimum intensity within the required vertical and horizontal angles, performance at critical cut-off points, and intensity behaviour outside the main beam."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a light look bright and still fail photometry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Compliance is judged by measured performance, not appearance. If the beam is misaligned or improperly shaped, a fitting that looks bright from directly above during inspection may fall outside the required viewing window from the cockpit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does uniformity across viewing angles matter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Photometry checks for smooth intensity transition across beam sectors, no sudden dark patches within the primary beam and no unexpected hot spots that cause glare. Inconsistent intensity can distort visual perception, especially in low visibility, and a runway should appear continuous and predictable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does AGL photometry also check colour?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Chromaticity is checked against the colour boundaries in Annex 14 Appendix 1, and the FAA equivalents, because a fitting can deliver correct intensity and still show a wrong or drifted colour."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is AGL photometry carried out?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It is carried out at two levels: laboratory (type) testing of the fitting on a goniophotometer, and in-service field measurement of installed fittings with a mobile photometric system. The field measurement verifies aiming and in-service degradation."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">What AGL Photometry Actually Measures</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-magnifying-glass-chart"></i> AGL Photometry · Engineering Explained</div>
+        <h1 class="article-title">What AGL Photometry Actually Measures (Beyond Lux Values)</h1>
+        <p class="article-lede">AGL photometry is often mistaken for a simple brightness check. It isn't. It evaluates how a light performs in three-dimensional space from the pilot's viewing position in the cockpit — not how bright it looks at close range on the ground.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial · AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> March 3, 2026</span>
+                <span><i class="fa-solid fa-rotate"></i> Updated October 27, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>Airfield Ground Lighting (AGL) photometry is often misunderstood as a simple brightness check. Many assume that if a light appears bright or meets a lux value on the ground, it is compliant. It is much more than that.</p>
+        <p>AGL photometry is not about how bright a light looks at close range. It is about how that light performs in three-dimensional space from the pilot's viewing position in the cockpit. Photometry evaluates the complete optical behaviour of a fitting, not just its surface illumination.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#intensity-distribution"><span class="toc-num">01</span> Light Intensity Distribution</a></li>
+                <li><a href="#beam-spread"><span class="toc-num">02</span> Beam Spread and Orientation</a></li>
+                <li><a href="#uniformity"><span class="toc-num">03</span> Uniformity Across Viewing Angles</a></li>
+                <li><a href="#viewing-zones"><span class="toc-num">04</span> Compliance With ICAO Viewing Zones</a></li>
+                <li><a href="#directional-vs-lux"><span class="toc-num">05</span> Directional Intensity vs. Lux Values</a></li>
+                <li><a href="#what-pilot-sees"><span class="toc-num">06</span> Testing What the Pilot Actually Sees</a></li>
+                <li><a href="#faq"><span class="toc-num">07</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-star"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>Photometry does not test how the light looks on the ground. It tests what the pilot actually sees — a light can look bright and still be unsafe, and a fitting can pass a lux test and still fail photometric compliance.</p>
+            </div>
+        </div>
+
+        <div class="art-section" id="intensity-distribution">
+            <div class="art-section-head">
+                <div class="art-section-num">01</div>
+                <h2>Light Intensity Distribution</h2>
+            </div>
+            <p>Photometry measures luminous intensity in candelas across defined vertical and horizontal angles. Airfield lights are not designed to emit light uniformly in all directions. They are engineered to deliver precise intensity within specific angular sectors defined by standards such as ICAO Annex 14 and FAA specifications.</p>
+            <p>The intensity must:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-check"></i> Meet minimum values within the primary beam</li>
+                <li><i class="fa-solid fa-check"></i> Stay within maximum limits, where the standard specifies them, to prevent glare</li>
+                <li><i class="fa-solid fa-check"></i> Drop off correctly outside defined zones</li>
+            </ul>
+            <p>This directional intensity ensures pilots receive accurate visual guidance during approach, landing, and taxi operations.</p>
+            <p class="closing-line">Lux values alone cannot capture this behaviour.</p>
+        </div>
+
+        <div class="art-section" id="beam-spread">
+            <div class="art-section-head">
+                <div class="art-section-num">02</div>
+                <h2>Beam Spread and Orientation</h2>
+            </div>
+            <p>Every AGL fitting has a designed beam shape. Photometry verifies:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-arrows-up-down"></i> Vertical beam spread, which is critical for approach visibility</li>
+                <li><i class="fa-solid fa-arrows-left-right"></i> Horizontal beam spread, which is critical for alignment cues</li>
+                <li><i class="fa-solid fa-location-arrow"></i> Correct mechanical and optical aiming</li>
+            </ul>
+            <p>A fitting may appear bright when viewed from directly above during inspection. However, if the beam is misaligned or improperly shaped, it may fall outside the required viewing window from the cockpit. Pilots do not see the light from the ground — they see it from a moving aircraft at defined approach angles.</p>
+            <p class="closing-line">Photometric testing confirms that the beam reaches them exactly where it should.</p>
+        </div>
+
+        <div class="art-section" id="uniformity">
+            <div class="art-section-head">
+                <div class="art-section-num">03</div>
+                <h2>Uniformity Across Viewing Angles</h2>
+            </div>
+            <p>Uniformity is a critical safety parameter. Photometry ensures:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-layer-group"></i> Smooth intensity transition across beam sectors</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> No sudden dark patches within the primary beam</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> No unexpected hot spots causing glare</li>
+            </ul>
+            <p>Inconsistent intensity can distort visual perception, especially in low-visibility conditions. A runway should appear continuous and predictable, not uneven or patchy.</p>
+            <p class="closing-line">This consistency is defined in international standards and verified through controlled photometric measurement.</p>
+        </div>
+
+        <div class="art-section" id="viewing-zones">
+            <div class="art-section-head">
+                <div class="art-section-num">04</div>
+                <h2>Compliance With ICAO-Defined Viewing Zones</h2>
+            </div>
+            <p>Standards such as ICAO Annex 14 define exact angular windows (isocandela diagrams in Annex 14 Appendix 2, with equivalent FAA specifications) where intensity must meet specified values. Photometric testing checks:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-ruler-combined"></i> Minimum intensity within required vertical and horizontal angles</li>
+                <li><i class="fa-solid fa-gauge-high"></i> Performance at critical cut-off points</li>
+                <li><i class="fa-solid fa-compass"></i> Intensity behaviour outside the main beam</li>
+            </ul>
+            <p>A light can look bright during a ground check and still fail photometry if it does not meet intensity requirements within these defined cockpit viewing zones.</p>
+            <p class="closing-line">Compliance is not judged by appearance. It is judged by measured performance.</p>
+        </div>
+
+        <div class="art-section" id="directional-vs-lux">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>Directional Intensity vs. Lux Values</h2>
+            </div>
+            <p>This distinction is fundamental. Lux measures illumination on a surface. AGL photometry measures luminous intensity in a direction. A light may show high lux directly beneath it yet fail to provide adequate intensity at a specific vertical approach angle where the pilot actually observes it.</p>
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Aspect</th><th>Lux</th><th>Directional Intensity (Candela)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Aspect">What it measures</td><td data-label="Lux">Illumination on a surface</td><td data-label="Directional Intensity (Candela)">Luminous intensity in a specific direction</td></tr>
+                    <tr><td data-label="Aspect">Reference point</td><td data-label="Lux">Ground or fitting surface</td><td data-label="Directional Intensity (Candela)">Pilot's viewing angle in the cockpit</td></tr>
+                    <tr><td data-label="Aspect">What it can miss</td><td data-label="Lux">Performance at the actual approach angle</td><td data-label="Directional Intensity (Candela)">Single-point readings are not enough — measured at many angles across the beam</td></tr>
+                    <tr><td data-label="Aspect">What defines safety</td><td data-label="Lux">Does not define safety on its own</td><td data-label="Directional Intensity (Candela)">Directional intensity does</td></tr>
+                </tbody>
+            </table>
+            <p class="closing-line">Lux values do not define safety. Directional intensity does.</p>
+        </div>
+
+        <div class="art-section" id="what-pilot-sees">
+            <div class="art-section-head">
+                <div class="art-section-num">06</div>
+                <h2>Testing What the Pilot Actually Sees</h2>
+            </div>
+            <p>Photometry is not simply about testing lamps. It is about testing the visual signal delivered to the cockpit. It validates:</p>
+            <div class="measure-grid">
+                <div class="measure-card"><i class="fa-solid fa-crosshairs"></i><strong>Optical Design Integrity</strong><span>Whether the fitting's optics behave as designed</span></div>
+                <div class="measure-card"><i class="fa-solid fa-gem"></i><strong>Prism &amp; Lens Performance</strong><span>How accurately optical elements shape the beam</span></div>
+                <div class="measure-card"><i class="fa-solid fa-microchip"></i><strong>LED Alignment Accuracy</strong><span>Precision of source placement within the fitting</span></div>
+                <div class="measure-card"><i class="fa-solid fa-eye"></i><strong>Real-World Viewing Behaviour</strong><span>Performance at the angles pilots actually use</span></div>
+            </div>
+            <p>Photometry also covers colour. Chromaticity is checked against the colour boundaries in Annex 14 Appendix 1 (and the FAA equivalents), because a fitting can deliver correct intensity and still show a wrong or drifted colour.</p>
+        <p>It is carried out at two levels: laboratory (type) testing of the fitting on a goniophotometer, and in-service field measurement of installed fittings with a mobile photometric system. The field measurement is what verifies aiming and in-service degradation.</p>
+        <p class="closing-line">Two fittings may look physically identical. Only photometric analysis can reveal whether their optical output matches the required airfield category.</p>
+        </div>
+
+        <div class="diagram-block">
+            <h3>What AGL Photometry Actually Measures</h3>
+            <p class="diagram-sub">Beam Geometry → Angular Intensity → Viewing-Zone Check → What the Pilot Sees</p>
+            <svg viewBox="0 0 680 740" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="wpmArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                    </marker>
+                </defs>
+
+                <rect x="190" y="20" width="300" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15" fill="#f0f4ff">AGL LIGHT FITTING</text>
+                <text x="340" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">Beam emitted from the optical assembly</text>
+
+                <line x1="340" y1="76" x2="340" y2="100" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#wpmArrow)"/>
+
+                <rect x="170" y="104" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="130" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15" fill="#f0f4ff">VERTICAL &amp; HORIZONTAL BEAM SPREAD</text>
+                <text x="340" y="147" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">Defined angular sectors — not omnidirectional</text>
+
+                <line x1="340" y1="160" x2="340" y2="188" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#wpmArrow)"/>
+
+                <rect x="90" y="192" width="500" height="112" rx="12" fill="rgba(255,255,255,0.02)" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="212" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12" letter-spacing="1" fill="#FFB400">WHAT PHOTOMETRY ACTUALLY MEASURES</text>
+
+                <rect x="110" y="222" width="220" height="34" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="220" y="243" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12.5" fill="#00d4ff">Intensity Distribution (cd)</text>
+
+                <rect x="350" y="222" width="220" height="34" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="460" y="243" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12.5" fill="#00d4ff">Beam Spread &amp; Aim</text>
+
+                <rect x="110" y="264" width="220" height="34" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="220" y="285" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12.5" fill="#00d4ff">Uniformity</text>
+
+                <rect x="350" y="264" width="220" height="34" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="460" y="285" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12.5" fill="#00d4ff">Viewing-Zone Compliance</text>
+
+                <line x1="340" y1="304" x2="340" y2="330" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#wpmArrow)"/>
+
+                <rect x="190" y="334" width="300" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="357" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">DIRECTIONAL INTENSITY AT VIEWING ANGLE</text>
+                <text x="340" y="376" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">Measured in candela, at the pilot's approach angle</text>
+
+                <line x1="340" y1="390" x2="340" y2="418" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#wpmArrow)"/>
+
+                <rect x="110" y="422" width="460" height="64" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="448" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14.5" fill="#f0f4ff">LUX vs. DIRECTIONAL INTENSITY</text>
+                <text x="340" y="466" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14.5" fill="#f0f4ff">Two different measurements, two different meanings</text>
+
+                <line x1="340" y1="486" x2="340" y2="510" stroke="#FFB400" stroke-width="1.5" opacity="0.6"/>
+                <line x1="340" y1="510" x2="190" y2="542" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#wpmArrow)"/>
+                <line x1="340" y1="510" x2="490" y2="542" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#wpmArrow)"/>
+
+                <rect x="100" y="548" width="180" height="72" rx="10" fill="rgba(0,212,255,0.07)" stroke="#00d4ff" stroke-width="1.5"/>
+                <text x="190" y="580" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1.5" font-size="19" fill="#00d4ff">LUX</text>
+                <text x="190" y="600" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">Ground illumination —</text>
+                <text x="190" y="613" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">does not define safety</text>
+
+                <rect x="400" y="548" width="180" height="72" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="490" y="577" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="17" fill="#FFB400">CANDELA</text>
+                <text x="490" y="597" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">At viewing angle —</text>
+                <text x="490" y="610" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">defines safety</text>
+
+                <line x1="190" y1="620" x2="330" y2="650" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#wpmArrow)"/>
+                <line x1="490" y1="620" x2="350" y2="650" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#wpmArrow)"/>
+
+                <rect x="190" y="654" width="300" height="64" rx="10" fill="rgba(255,255,255,0.03)" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="680" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="17" fill="#f0f4ff">WHAT THE PILOT ACTUALLY SEES</text>
+                <text x="340" y="700" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">The real measure of AGL safety performance</text>
+            </svg>
+        </div>
+
+        <div class="conclusion-block">
+            <h3>Conclusion</h3>
+            <p>AGL photometry goes far beyond checking brightness. It measures:</p>
+            <ul>
+                <li><i class="fa-solid fa-circle-check"></i> Intensity distribution</li>
+                <li><i class="fa-solid fa-circle-check"></i> Beam geometry</li>
+                <li><i class="fa-solid fa-circle-check"></i> Angular compliance</li>
+                <li><i class="fa-solid fa-circle-check"></i> Visual uniformity</li>
+                <li><i class="fa-solid fa-circle-check"></i> Colour (chromaticity)</li>
+            </ul>
+            <p>A light can look bright and still be unsafe. A fitting can pass a lux test and still fail photometric compliance. Photometric compliance ensures correct visual cues from the cockpit, predictable appearance during approach, and no misleading brightness or dark zones.</p>
+        </div>
+
+        <div class="pull-quote">
+            <span class="quote-mark">"</span>
+            <p>Photometry does not test how the light looks on the ground. <span>It tests what the pilot actually sees.</span></p>
+        </div>
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">07</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What does AGL photometry measure?</summary>
+                    <div class="faq-answer"><p>AGL photometry measures luminous intensity in candelas across defined vertical and horizontal angles, along with beam geometry, uniformity and colour (chromaticity). It evaluates how a light performs in three-dimensional space from the pilot's viewing position in the cockpit, not how bright it looks at close range.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why is a lux value not enough to prove an AGL fitting is compliant?</summary>
+                    <div class="faq-answer"><p>Lux measures illumination on a surface, whereas AGL photometry measures luminous intensity in a specific direction. A light may show high lux directly beneath it yet fail to provide adequate intensity at the vertical approach angle where the pilot actually observes it, so a fitting can pass a lux test and still fail photometric compliance.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What are the ICAO viewing zones in AGL photometry?</summary>
+                    <div class="faq-answer"><p>Standards such as ICAO Annex 14 define exact angular windows, through the isocandela diagrams in Appendix 2 with equivalent FAA specifications, where intensity must meet specified values. Photometric testing checks minimum intensity within the required vertical and horizontal angles, performance at critical cut-off points, and intensity behaviour outside the main beam.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Can a light look bright and still fail photometry?</summary>
+                    <div class="faq-answer"><p>Yes. Compliance is judged by measured performance, not appearance. If the beam is misaligned or improperly shaped, a fitting that looks bright from directly above during inspection may fall outside the required viewing window from the cockpit.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why does uniformity across viewing angles matter?</summary>
+                    <div class="faq-answer"><p>Photometry checks for smooth intensity transition across beam sectors, no sudden dark patches within the primary beam and no unexpected hot spots that cause glare. Inconsistent intensity can distort visual perception, especially in low visibility, and a runway should appear continuous and predictable.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Does AGL photometry also check colour?</summary>
+                    <div class="faq-answer"><p>Yes. Chromaticity is checked against the colour boundaries in Annex 14 Appendix 1, and the FAA equivalents, because a fitting can deliver correct intensity and still show a wrong or drifted colour.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How is AGL photometry carried out?</summary>
+                    <div class="faq-answer"><p>It is carried out at two levels: laboratory (type) testing of the fitting on a goniophotometer, and in-service field measurement of installed fittings with a mobile photometric system. The field measurement verifies aiming and in-service degradation.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong></p>
+
+    <div class="topic-tags">
+        <span>AGL Photometry</span>
+        <span>ICAO Annex 14</span>
+        <span>FAA Compliance</span>
+        <span>Light Intensity Distribution</span>
+        <span>Beam Spread</span>
+        <span>Lux vs Candela</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial | AGL Photometry Specialist | Airfield Ground Lighting (AGL) | ICAO &amp; FAA Compliance | Project Execution. Writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More AGL Photometry</h3>
+        <div class="related-grid">
+            <a href="article-why-agl-photometry-is-important.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-lightbulb"></i> Why AGL Photometry Is Important</div>
+                <div class="rc-sub">A definitive field reference on AGL photometry</div>
+            </a>
+            <a href="standards-companion.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-scale-balanced"></i> AGL Standards Companion</div>
+                <div class="rc-sub">ICAO, FAA, IS &amp; IEC requirements explained</div>
+            </a>
+            <a href="component-library.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-layer-group"></i> AGL Component Library</div>
+                <div class="rc-sub">Understand lighting components</div>
+            </a>
+            <a href="troubleshooting-atlas.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-stethoscope"></i> AGL Troubleshooting Atlas</div>
+                <div class="rc-sub">Diagnose lighting failures by symptom</div>
+            </a>
+            <a href="article-4cs-of-agl-photometry.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-eye"></i> The 4 Cs of AGL Photometry</div>
+                <div class="rc-sub">The four checks behind a compliant light</div>
+            </a>
+            <a href="article-visual-inspection-vs-photometric-testing.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-magnifying-glass"></i> Visual Inspection vs Photometric Testing</div>
+                <div class="rc-sub">Why a light that is on is not necessarily compliant</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="technical-articles.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> All Technical Articles</a>
+        <a href="knowledge-hub.html" class="anav-btn gold">Explore Knowledge Hub <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Photometric content on these pages is educational. Measurement methods, grids, spacings, equipment, uniformity and tolerance figures, lux and candela values and worked examples are generic and indicative. They are not a test procedure, calibration method or acceptance criteria for any fixture or aerodrome. A measurement made by following these pages is not a photometric certificate, calibration, type approval, flight inspection or finding of compliance with any standard. Results depend on calibrated, traceable instruments, the test set-up and the applicable specification, and interpretation and acceptance remain with the competent, authorised person, the aerodrome operator and the regulator. Verify required values in the current official standard or the approved design.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Diagrams.</strong> Diagrams on this page are original schematic illustrations, are not to scale and are not engineering drawings. Do not use them to work on, connect, set or modify equipment.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behaviour: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Industrial Protocols (Modbus) | Precision AGL Academy</title>
+    <meta name="description" content="How do ALCMS devices speak Modbus? A visual guide to master and device requests, Modbus TCP and RTU, the message frame and the four data tables." />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/industrial-protocols-modbus.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/industrial-protocols-modbus.html" />
+    <meta property="og:title" content="Industrial Protocols (Modbus) | Precision AGL Academy" />
+    <meta property="og:description" content="How do ALCMS devices speak Modbus? A visual guide to master and device requests, Modbus TCP and RTU, the message frame and the four data tables." />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content="https://rahulsharmaagl.in/assets/og-industrial-protocols-modbus.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rahulsharmaagl.in/industrial-protocols-modbus.html" />
+    <meta name="twitter:title" content="Industrial Protocols (Modbus) | Precision AGL Academy" />
+    <meta name="twitter:description" content="How do ALCMS devices speak Modbus? A visual guide to master and device requests, Modbus TCP and RTU, the message frame and the four data tables." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-industrial-protocols-modbus.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#article",
+  "headline": "Industrial Protocols (Modbus)",
+  "description": "How do ALCMS devices speak Modbus? A visual guide to master and device requests, Modbus TCP over Ethernet, Modbus RTU over RS-485, the message frame and the four data tables.",
+  "url": "https://rahulsharmaagl.in/industrial-protocols-modbus.html",
+  "mainEntityOfPage": "https://rahulsharmaagl.in/industrial-protocols-modbus.html",
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "@id": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html#webpage",
+    "name": "AGL Visual Encyclopedia",
+    "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Precision AGL Academy"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://rahulsharmaagl.in/academy.html#org",
+    "name": "Precision AGL Academy",
+    "url": "https://rahulsharmaagl.in/academy.html"
+  },
+  "inLanguage": "en-IN",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-industrial-protocols-modbus.jpg"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#breadcrumb"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Knowledge Hub",
+      "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AGL Visual Encyclopedia",
+      "item": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Industrial Protocols (Modbus)",
+      "item": "https://rahulsharmaagl.in/industrial-protocols-modbus.html"
+    }
+  ]
+}
+</script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#faq",
+  "url": "https://rahulsharmaagl.in/industrial-protocols-modbus.html",
+  "inLanguage": "en-IN",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Modbus?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modbus is a simple, open industrial communication protocol in which a master sends a request to a device and the device sends back a reply. It is used to read values such as status and alarm states and to send commands, and it is supported by many PLCs, power supplies and monitoring units."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between Modbus TCP and Modbus RTU?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modbus TCP sends the messages over an Ethernet network, normally using port 502, and relies on the network for error checking. Modbus RTU sends them over a serial line such as RS-485 in a compact binary frame that ends with a CRC error check. The functions and data are of the same kind, so a gateway can convert between the two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are coils and registers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are the four data tables inside a Modbus device. Coils are single-bit outputs that can be read or written, discrete inputs are single-bit read-only inputs, input registers are 16-bit read-only values such as measurements, and holding registers are 16-bit values that can be read or written, such as settings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is a register map needed?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Modbus defines only how a value is requested, not what it means. The same register number can be a current, a status word or a setting, depending on the device. The manufacturer's register map and the project documents give the address, scaling and meaning of each value, and the ALCMS is configured to match them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Modbus secure?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not by itself. Standard Modbus has no authentication or encryption, so any device that can reach the network can read or write values. It is therefore kept on a separate control network, protected from office and internet networks, with changes limited to authorised engineers under change control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Modbus the only protocol used in airfield lighting control?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Many systems use Modbus because it is simple, but manufacturers also use other industrial protocols and their own proprietary ones. The project design documents state which protocol is used on each link, and a gateway can translate between them where needed."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#article"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#related",
+  "name": "Related entries: Industrial Protocols (Modbus)",
+  "about": {
+    "@id": "https://rahulsharmaagl.in/industrial-protocols-modbus.html#article"
+  },
+  "numberOfItems": 13,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Communication Network",
+      "url": "https://rahulsharmaagl.in/communication-network.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Fibre-optic Network",
+      "url": "https://rahulsharmaagl.in/fibre-optic-network.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Network Redundancy",
+      "url": "https://rahulsharmaagl.in/network-redundancy.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "ALCMS Communication Architecture",
+      "url": "https://rahulsharmaagl.in/alcms-communication-architecture.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "PLC",
+      "url": "https://rahulsharmaagl.in/plc.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "SCADA",
+      "url": "https://rahulsharmaagl.in/scada.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "HMI",
+      "url": "https://rahulsharmaagl.in/hmi.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "ALCMS-to-CCR",
+      "url": "https://rahulsharmaagl.in/alcms-to-ccr.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Remote Diagnostics",
+      "url": "https://rahulsharmaagl.in/remote-diagnostics.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Alarm Monitoring",
+      "url": "https://rahulsharmaagl.in/alarm-monitoring.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "CCR Communication",
+      "url": "https://rahulsharmaagl.in/ccr-communication.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "ALCMS Failure Flow",
+      "url": "https://rahulsharmaagl.in/alcms-failure-flow.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "AGL Visual Encyclopedia",
+      "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    }
+  ]
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* ─── reset & base ─── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --gold-dim: rgba(255, 180, 0, 0.7);
+            --gold-glow: rgba(255, 180, 0, 0.25);
+            --red: #E63946;
+            --red-glow: rgba(230, 57, 70, 0.3);
+            --cyan: #00d4ff;
+            --green: #35d07f;
+            --green-glow: rgba(53, 208, 127, 0.35);
+            --text: #c8d8f0;
+            --grey-dim: rgba(200, 216, 240, 0.45);
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-height: 100vh;
+            background: var(--dark);
+            font-family: 'Barlow', Arial, Helvetica, sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── runway lines background, matching site ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── nav ── */
+
+        main { position: relative; z-index: 1; padding-top: 70px; }
+
+        .container { width: 100%; max-width: 1120px; margin: auto; padding: 70px 40px 90px; }
+
+        /* ── section label / eyebrow ── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+        }
+        .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+        .section-label .entry-tag {
+            margin-left: 14px;
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--grey-dim);
+            font-size: 11px; letter-spacing: 1.5px; font-weight: 600;
+        }
+
+        /* ── heading ── */
+        .heading-group h1 {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            max-width: 860px;
+        }
+        .heading-group h1 .accent {
+            color: var(--green);
+            text-shadow: 0 0 40px var(--green-glow);
+        }
+        .heading-group .sub {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 680px;
+            line-height: 1.8;
+            margin-top: 18px;
+        }
+
+        /* ── diagram card ── */
+        .diagram-card {
+            margin-top: 50px;
+            display: flex; flex-direction: column; align-items: center;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px 30px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .diagram-card:hover {
+            border-color: rgba(255, 180, 0, 0.2);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .diagram-card svg {
+            width: 100%;
+            height: auto;
+            max-width: 940px;
+        }
+
+        .caption-row {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 36px;
+        }
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            letter-spacing: 1.5px;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: default;
+            transition: color var(--transition);
+        }
+        .legend:hover { color: var(--white); }
+        .legend .dot {
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: transform var(--transition);
+        }
+        .legend:hover .dot { transform: scale(1.2); }
+        .dot.green { background: var(--green); box-shadow: 0 0 14px var(--green-glow); }
+        .dot.white { background: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+        .dot.red { background: var(--red); box-shadow: 0 0 14px var(--red-glow); }
+        .dot.mark {
+            width: 15px; height: 8px; border-radius: 2px;
+            background: #f5f7fb; box-shadow: 0 0 8px rgba(245, 247, 251, 0.4);
+        }
+
+        /* ── fact card ── */
+        .fact-card {
+            margin-top: 34px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .fact-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .fact-card:hover { border-color: rgba(255, 180, 0, 0.2); }
+        .fact-card:hover::before { transform: scaleX(1); }
+        .fact-card .label {
+            display: flex; align-items: center;
+            font-size: 12px; letter-spacing: 2.5px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 16px; font-weight: 700;
+        }
+        .fact-card .label .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.16);
+            color: var(--cyan);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 11px; letter-spacing: 1px; font-weight: 700;
+            margin-left: 12px;
+        }
+        .fact-card p {
+            font-size: 16.5px;
+            line-height: 1.9;
+            color: var(--text);
+            font-weight: 400;
+        }
+        .fact-card p + p { margin-top: 16px; }
+        .fact-card b { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-green { color: var(--green); font-weight: 600; }
+        .fact-card .highlight-red { color: var(--red); font-weight: 600; }
+        .fact-card .note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+            font-size: 12.5px;
+            letter-spacing: 0.3px;
+            color: var(--grey-dim);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .fact-card .note .icon { font-size: 15px; color: var(--gold-dim); }
+
+        /* ── prev/next nav ── */
+        .entry-nav {
+            margin-top: 18px;
+            display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        }
+        .entry-nav a {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--grey-dim); text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .entry-nav a:hover { color: var(--gold); }
+
+        /* ── specs mini-grid ── */
+        .specs-grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+        .spec-item {
+            display: flex; flex-direction: column; gap: 6px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .spec-item .spec-label {
+            font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey-dim); text-transform: uppercase; font-weight: 600;
+        }
+        .spec-item .spec-value {
+            font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: 0.2px;
+        }
+        .spec-item .spec-value .unit {
+            font-size: 12px; font-weight: 400; color: var(--grey-dim); margin-left: 4px;
+        }
+
+        /* ── footer ── */
+
+        /* ── responsive ── */
+        @media (max-width: 860px) {
+            .container { padding: 50px 24px 60px; }
+            .heading-group h1 { font-size: 46px; }
+            .heading-group .sub { font-size: 16px; }
+            .fact-card { padding: 26px 22px; }
+            .fact-card p { font-size: 15.5px; }
+            .diagram-card { padding: 24px 18px 22px; }
+            .caption-row { gap: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .heading-group h1 { font-size: 34px; }
+            .specs-grid { grid-template-columns: 1fr 1fr; }
+            .legend { font-size: 11px; gap: 6px; }
+        }
+
+        /* ── utilities ── */
+        .glow-pulse { animation: pulseGlow 2.8s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── RELATED ── */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .related-card .rc-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 6px;
+        }
+        .related-card h5 {
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong { color: var(--gold); }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+        .academy-cta {
+            position: relative;
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(160deg, rgba(255, 180, 0, 0.08), var(--card) 55%);
+            padding: 48px 44px;
+            overflow: hidden;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+            pointer-events: none;
+        }
+        .academy-cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .academy-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .academy-cta h4 {
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+        .academy-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .academy-path span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .academy-path i {
+            color: var(--gold);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .academy-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .academy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .academy-btn-primary {
+            background: var(--gold);
+            color: #060d1a;
+            border: 1px solid var(--gold);
+        }
+        .academy-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .academy-btn-outline {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+        .academy-btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .academy-cta-tagline {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        @media(max-width:600px) {
+            .academy-cta { padding: 32px 22px; }
+            .academy-cta h2 { font-size: 26px; }
+        }
+
+        /* ── shell sections (Academy template) ── */
+        .shell-section { padding: 46px 0 10px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .shell-section .section-tag { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
+        .shell-section > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 18px; font-weight: 400; }
+        .shell-section.cta-wrap { border-top: none; padding-top: 10px; }
+        .breadcrumb { max-width: 1120px; }
+        .breadcrumb .current { opacity: 1; }
+        main { padding-top: 0; }
+        .container { padding-top: 30px; }
+        .nav-links.open { display: flex; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(6,13,26,.98); border-bottom: 1px solid rgba(255,180,0,.3); padding: 10px 20px 16px; }
+        .nav-links.open li a { display: block; padding: 12px 0; }
+        .hamburger { background: none; border: none; padding: 6px; }
+        @media(max-width:600px) { .breadcrumb { padding: 100px 20px 0; } .container { padding-left: 20px; padding-right: 20px; } footer { padding: 20px; flex-direction: column; text-align: center; } }
+
+
+        .faq-list{display:flex;flex-direction:column;gap:10px;max-width:900px;margin-top:6px;}
+        .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+        .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+        .faq-item summary::-webkit-details-marker{display:none;}
+        .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+        .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+        .faq-item .faq-q{flex-grow:1;}
+        .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+        .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+        .faq-item[open] .chev{transform:rotate(180deg);}
+        .faq-item[open] summary{border-bottom:1px solid var(--border);}
+        .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+        .entry-nav .is-soon { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--grey-dim); opacity:.45; cursor:default; }
+            /* dz-feature:start — full diagram viewer with zoom and pan */
+        .dz-btn{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,180,0,0.1);border:1px solid rgba(255,180,0,0.35);color:var(--gold);font:700 12.5px 'Barlow',sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:10px 18px;border-radius:100px;cursor:pointer;transition:background .3s;}
+        .dz-btn:hover{background:rgba(255,180,0,0.2);}
+        .diagram-card > svg{cursor:zoom-in;}
+        .dz-overlay{position:fixed;inset:0;z-index:1000;background:#060d1a;display:none;flex-direction:column;}
+        .dz-overlay.open{display:flex;}
+        .dz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;flex-wrap:wrap;}
+        .dz-title{flex:1 1 220px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .dz-tools{display:flex;align-items:center;gap:6px;}
+        .dz-tools button{background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);border-radius:100px;min-width:38px;height:38px;padding:0 12px;font:800 15px 'Barlow',sans-serif;cursor:pointer;line-height:1;}
+        .dz-tools button:hover{background:rgba(255,180,0,0.18);}
+        .dz-tools button.dz-fit{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;}
+        .dz-tools button.dz-close{background:var(--gold);color:#060d1a;border:0;font-size:12.5px;letter-spacing:.5px;padding:0 18px;margin-left:6px;}
+        .dz-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+        .dz-zoom{min-width:52px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.5px;}
+        .dz-stage{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+        .dz-stage.drag{cursor:grabbing;}
+        .dz-stage svg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;}
+        .dz-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(6,13,26,0.85);border:1px solid var(--border);color:var(--grey,#9fb0c8);font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border-radius:100px;pointer-events:none;white-space:nowrap;transition:opacity .6s;}
+        .dz-hint.hide{opacity:0;}
+        @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
+        /* dz-feature:end */
+    </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+</head>
+<body>
+<nav id="navbar">
+<a href="../index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="../index.html#about">About</a></li>
+<li><a href="../knowledge-hub.html" class="active">Knowledge Hub</a></li>
+<li><a href="../component-library.html">Components</a></li>
+<li><a href="../agl-comparisons.html">Comparisons</a></li>
+<li><a href="../standards-companion.html">Standards</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+<a href="../index.html#contact" class="nav-cta">Get in Touch</a>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../knowledge-hub.html">Knowledge Hub</a><span>/</span><a href="../agl-visual-encyclopedia.html">AGL Visual Encyclopedia</a><span>/</span><span class="current">Industrial Protocols (Modbus)</span></div>
+<main>
+<div class="container">
+<div class="section-label">AGL Visual Encyclopedia <span class="entry-tag">ENTRY 37 &middot; AIRFIELD LIGHTING CONTROL &amp; ALCMS</span></div>
+<div class="heading-group">
+<h1>How do ALCMS devices <span class="accent">speak Modbus</span>?</h1>
+<p class="sub">Modbus is a simple question-and-answer protocol: a master asks a device for a value or sends it a command, and the device replies, over Ethernet or a serial RS-485 line.</p>
+</div>
+<div class="diagram-card">
+<svg viewBox="0 0 940 506" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of Modbus in an ALCMS: the ALCMS server acts as master and sends requests over Modbus TCP on Ethernet to a PLC or gateway, which talks Modbus RTU over an RS-485 bus to devices with addresses 1, 2 and 3, and the devices reply. Below, the RTU message frame is address, function, data and CRC, and a device holds four data tables: coils, discrete inputs, input registers and holding registers."><defs><marker id="arD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#FFB400" /></marker><marker id="arU" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="#00d4ff" /></marker></defs><text x="30" y="36" fill="var(--gold-dim)" font-family="'Barlow Condensed', sans-serif" font-size="16" letter-spacing="2.5" text-anchor="start" font-weight="700" >MODBUS &middot; MASTER ASKS, DEVICE ANSWERS</text><rect x="30" y="102" width="190" height="50" rx="8" fill="#101c3a" stroke="#7f93c4" stroke-width="2" /><text x="125" y="125" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="14" letter-spacing="1.6" text-anchor="middle" font-weight="700" >ALCMS SERVER</text><text x="125" y="140" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >MASTER / CLIENT</text><line x1="224" y1="121" x2="326" y2="121" stroke="#FFB400" stroke-width="2" marker-end="url(#arD)" /><line x1="326" y1="133" x2="224" y2="133" stroke="#00d4ff" stroke-width="2" marker-end="url(#arU)" /><text x="275" y="100" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-size="12" letter-spacing="1.5" text-anchor="middle" font-weight="700" >MODBUS TCP</text><text x="275" y="158" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >ETHERNET</text><rect x="330" y="102" width="190" height="50" rx="8" fill="#101c3a" stroke="#7f93c4" stroke-width="2" /><text x="425" y="125" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="14" letter-spacing="1.6" text-anchor="middle" font-weight="700" >PLC / GATEWAY</text><text x="425" y="140" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >SUBSTATION</text><line x1="524" y1="127" x2="680" y2="127" stroke="#FFB400" stroke-width="3" /><line x1="680" y1="86" x2="680" y2="208" stroke="#FFB400" stroke-width="3" /><text x="602" y="115" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-size="12" letter-spacing="1.5" text-anchor="middle" font-weight="700" >MODBUS RTU</text><text x="602" y="148" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >RS-485 BUS</text><line x1="680" y1="88" x2="716" y2="88" stroke="#FFB400" stroke-width="2" marker-end="url(#arD)" /><rect x="720" y="66" width="190" height="44" rx="8" fill="#101c3a" stroke="#35d07f" stroke-width="2" /><text x="815" y="86" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >CCR &middot; ID 1</text><text x="815" y="101" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >RUNWAY CIRCUITS</text><line x1="680" y1="148" x2="716" y2="148" stroke="#FFB400" stroke-width="2" marker-end="url(#arD)" /><rect x="720" y="126" width="190" height="44" rx="8" fill="#101c3a" stroke="#35d07f" stroke-width="2" /><text x="815" y="146" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >CCR &middot; ID 2</text><text x="815" y="161" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >TAXIWAY CIRCUITS</text><line x1="680" y1="208" x2="716" y2="208" stroke="#FFB400" stroke-width="2" marker-end="url(#arD)" /><rect x="720" y="186" width="190" height="44" rx="8" fill="#101c3a" stroke="#35d07f" stroke-width="2" /><text x="815" y="206" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >MONITOR &middot; ID 3</text><text x="815" y="221" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >STATUS AND ALARMS</text><line x1="30" y1="238" x2="910" y2="238" stroke="rgba(255,255,255,0.08)" stroke-width="1" /><text x="30" y="270" fill="var(--gold)" font-family="'Barlow Condensed', sans-serif" font-size="12" letter-spacing="2" text-anchor="start" font-weight="800" >MODBUS RTU MESSAGE FRAME</text><rect x="30" y="284" width="110" height="50" rx="8" fill="#101c3a" stroke="#7f93c4" stroke-width="2" /><text x="85" y="307" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >ADDRESS</text><text x="85" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >1 BYTE</text><rect x="144" y="284" width="110" height="50" rx="8" fill="#101c3a" stroke="#FFB400" stroke-width="2" /><text x="199" y="307" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >FUNCTION</text><text x="199" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >1 BYTE</text><rect x="258" y="284" width="190" height="50" rx="8" fill="#101c3a" stroke="#f0f4ff" stroke-width="2" /><text x="353" y="307" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >DATA</text><text x="353" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >N BYTES</text><rect x="452" y="284" width="110" height="50" rx="8" fill="#101c3a" stroke="#35d07f" stroke-width="2" /><text x="507" y="307" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >CRC</text><text x="507" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >2 BYTES</text><text x="30" y="364" fill="var(--text)" font-family="'Barlow Condensed', sans-serif" font-size="12" letter-spacing="1" text-anchor="start" font-weight="600" >REQUEST: DEVICE 2, FUNCTION 03 (READ HOLDING REGISTERS), START AND COUNT</text><text x="30" y="384" fill="var(--text)" font-family="'Barlow Condensed', sans-serif" font-size="12" letter-spacing="1" text-anchor="start" font-weight="600" >RESPONSE: SAME ADDRESS AND FUNCTION, THEN THE VALUES REQUESTED</text><text x="30" y="404" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="11" letter-spacing="1" text-anchor="start" font-weight="600" >MODBUS TCP: SAME FUNCTION AND DATA, SHORT HEADER, NO CRC</text><text x="30" y="462" fill="var(--gold-dim)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="2" text-anchor="start" font-weight="700" >NO BUILT-IN SECURITY: KEEP IT ON THE ISOLATED CONTROL NETWORK</text><text x="640" y="270" fill="var(--gold)" font-family="'Barlow Condensed', sans-serif" font-size="12" letter-spacing="2" text-anchor="start" font-weight="800" >FOUR DATA TABLES</text><rect x="640" y="284" width="270" height="42" rx="8" fill="#101c3a" stroke="#7f93c4" stroke-width="2" /><text x="775" y="303" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >COILS</text><text x="775" y="318" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >1 BIT &middot; READ / WRITE</text><rect x="640" y="332" width="270" height="42" rx="8" fill="#101c3a" stroke="#7f93c4" stroke-width="2" /><text x="775" y="351" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >DISCRETE INPUTS</text><text x="775" y="366" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >1 BIT &middot; READ ONLY</text><rect x="640" y="380" width="270" height="42" rx="8" fill="#101c3a" stroke="#00d4ff" stroke-width="2" /><text x="775" y="399" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >INPUT REGISTERS</text><text x="775" y="414" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >16 BIT &middot; READ ONLY</text><rect x="640" y="428" width="270" height="42" rx="8" fill="#101c3a" stroke="#00d4ff" stroke-width="2" /><text x="775" y="447" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-size="13" letter-spacing="1.6" text-anchor="middle" font-weight="700" >HOLDING REGISTERS</text><text x="775" y="462" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-size="10.5" letter-spacing="1" text-anchor="middle" font-weight="600" >16 BIT &middot; READ / WRITE</text></svg>
+<button type="button" class="dz-btn dz-open"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> View full diagram</button>
+<div class="caption-row">
+<div class="legend"><span class="dot" style="background:var(--gold);box-shadow:0 0 12px rgba(255,180,0,0.4);"></span>request from master</div>
+<div class="legend"><span class="dot" style="background:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.4);"></span>response from device</div>
+<div class="legend"><span class="dot green"></span>device on the bus</div>
+</div>
+</div>
+<div class="fact-card">
+<div class="label">The Fact <span class="badge"><i class="fa-solid fa-microchip"></i> Control protocol</span></div>
+<p><b>Modbus</b> is a widely used <b>industrial protocol</b>: a simple question-and-answer language that lets a <b>master (client)</b>, such as an ALCMS server or PLC, read values from and write commands to <b>devices (servers)</b> such as CCRs and monitoring units. Each request names a <b>device address</b>, a <b>function</b> (read or write) and the <b>data</b> wanted, and the device sends back a <b>response</b>.</p>
+<p>It runs over two common media. <b>Modbus TCP</b> carries the messages over <b>Ethernet</b>, so it can travel on the same fibre-optic network as the rest of the ALCMS. <b>Modbus RTU</b> carries them over a serial <b>RS-485</b> line to several devices on one bus, each with its own <b>address</b>. A <b>gateway</b> or PLC often converts between the two. The values in a device are held in four <b>data tables</b>: coils, discrete inputs, input registers and holding registers.</p>
+<p>Modbus is simple and well supported, but it has <b>no built-in security or authentication</b>, so anyone who can reach the network can send commands. It is therefore kept on the <b>isolated control network</b> and changed only by authorised engineers. Which protocol a CCR or PLC uses, and what each register means, is set by the <b>manufacturer's register map</b> and the <b>project design documents</b>, and some systems use other protocols instead.</p>
+<div class="specs-grid">
+<div class="spec-item"><span class="spec-label">Type</span><span class="spec-value">Master and device, request and reply</span></div>
+<div class="spec-item"><span class="spec-label">Media</span><span class="spec-value">Ethernet (TCP), RS-485 (RTU)</span></div>
+<div class="spec-item"><span class="spec-label">TCP port</span><span class="spec-value">502</span></div>
+<div class="spec-item"><span class="spec-label">RTU device address</span><span class="spec-value">1 to 247</span></div>
+<div class="spec-item"><span class="spec-label">RTU frame</span><span class="spec-value">Address, function, data, CRC</span></div>
+<div class="spec-item"><span class="spec-label">Common functions</span><span class="spec-value">03 read, 06 / 16 write</span></div>
+<div class="spec-item"><span class="spec-label">Data tables</span><span class="spec-value">Coils, inputs, registers</span></div>
+<div class="spec-item"><span class="spec-label">Security</span><span class="spec-value">None built in</span></div>
+<div class="spec-item"><span class="spec-label">Reference</span><span class="spec-value" style="font-size:14px;font-weight:500;color:var(--text);">Modbus Application Protocol Specification V1.1b3 (Modbus Organization); TIA-485 (RS-485); FAA AC 150/5345-56 (L-890 ALCMS); project design documents</span></div>
+</div>
+<div class="note"><span class="icon"><i class="fa-solid fa-circle-info"></i></span>Awareness schematic only. The protocol, addresses, register map, scaling and cybersecurity arrangements are set by the manufacturer and the project design, and changes to a live system are made only by authorised engineers.</div>
+</div>
+<div class="entry-nav">
+                <a href="network-redundancy.html"><i class="fa-solid fa-arrow-left"></i> Entry 36 &middot; Network redundancy</a>
+                <a href="low-visibility-procedures-lvp-lighting-configuration.html">Entry 38 &middot; Low-visibility procedures (LVP) lighting configuration <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+<div class="shell-section" id="faq">
+<div class="section-tag">FAQ</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-list">
+<details class="faq-item"><summary><span class="faq-num">Q1</span><span class="faq-q">What is Modbus?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>Modbus is a simple, open industrial communication protocol in which a master sends a request to a device and the device sends back a reply. It is used to read values such as status and alarm states and to send commands, and it is supported by many PLCs, power supplies and monitoring units.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q2</span><span class="faq-q">What is the difference between Modbus TCP and Modbus RTU?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>Modbus TCP sends the messages over an Ethernet network, normally using port 502, and relies on the network for error checking. Modbus RTU sends them over a serial line such as RS-485 in a compact binary frame that ends with a CRC error check. The functions and data are of the same kind, so a gateway can convert between the two.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q3</span><span class="faq-q">What are coils and registers?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>They are the four data tables inside a Modbus device. Coils are single-bit outputs that can be read or written, discrete inputs are single-bit read-only inputs, input registers are 16-bit read-only values such as measurements, and holding registers are 16-bit values that can be read or written, such as settings.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q4</span><span class="faq-q">Why is a register map needed?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>Modbus defines only how a value is requested, not what it means. The same register number can be a current, a status word or a setting, depending on the device. The manufacturer's register map and the project documents give the address, scaling and meaning of each value, and the ALCMS is configured to match them.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q5</span><span class="faq-q">Is Modbus secure?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>Not by itself. Standard Modbus has no authentication or encryption, so any device that can reach the network can read or write values. It is therefore kept on a separate control network, protected from office and internet networks, with changes limited to authorised engineers under change control.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q6</span><span class="faq-q">Is Modbus the only protocol used in airfield lighting control?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>No. Many systems use Modbus because it is simple, but manufacturers also use other industrial protocols and their own proprietary ones. The project design documents state which protocol is used on each link, and a gateway can translate between them where needed.</p></div></details>
+</div>
+</div>
+
+<div class="shell-section cta-wrap">
+            <div class="academy-cta">
+                <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
+                <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
+                <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
+                <h4>Build Practical AGL Engineering Skills</h4>
+                <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
+                <div class="academy-path">
+                    <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Design &amp; Electrical Engineering</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Approach Lighting</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Photometry</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Installation &amp; Commissioning</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Maintenance &amp; Troubleshooting</span>
+                </div>
+                <p>Learn how each light, sign and circuit works as part of a complete airport lighting system, not just as an isolated diagram.</p>
+                <div class="academy-cta-actions">
+                    <a href="../academy.html" class="academy-btn academy-btn-primary"><i class="fa-solid fa-book-open"></i> Explore AGL Courses</a>
+                    <a href="../index.html#contact" class="academy-btn academy-btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Your AGL Learning Journey</a>
+                </div>
+                <div class="academy-cta-tagline">See. Understand. Apply. Engineer.</div>
+            </div>
+            </div>
+
+<div class="shell-section">
+<div class="section-tag">Related Entries</div>
+<h2>Continue Exploring</h2>
+<div class="related-grid">
+<a class="related-card" href="communication-network.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Communication Network</h5></a>
+<a class="related-card" href="fibre-optic-network.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Fibre-optic Network</h5></a>
+<a class="related-card" href="network-redundancy.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Network Redundancy</h5></a>
+<a class="related-card" href="alcms-communication-architecture.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Communication Architecture</h5></a>
+<a class="related-card" href="plc.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>PLC</h5></a>
+<a class="related-card" href="scada.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>SCADA</h5></a>
+<a class="related-card" href="hmi.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>HMI</h5></a>
+<a class="related-card" href="alcms-to-ccr.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS-to-CCR</h5></a>
+<a class="related-card" href="remote-diagnostics.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Remote Diagnostics</h5></a>
+<a class="related-card" href="alarm-monitoring.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Alarm Monitoring</h5></a>
+<a class="related-card" href="../ccr/ccr-communication.html"><div class="rc-tag">CCR &amp; Power</div><h5>CCR Communication</h5></a>
+<a class="related-card" href="alcms-failure-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Failure Flow</h5></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+        <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+        <div class="footer-links">
+            <a href="../index.html#about">About</a>
+            <a href="../component-library.html">Components</a>
+            <a href="../agl-comparisons.html">Comparisons</a>
+            <a href="../standards-companion.html">Standards</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 400); });
+        scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const hb = document.getElementById('hamburger'), nl = document.getElementById('navLinks');
+        hb.addEventListener('click', () => { const o = nl.classList.toggle('open'); hb.setAttribute('aria-expanded', o); });
+    </script>
+
+    <!-- dz-feature:start -->
+    <div class="dz-overlay" id="dzOverlay" role="dialog" aria-modal="true" aria-label="Full diagram viewer">
+        <div class="dz-bar">
+            <span class="dz-title" id="dzTitle">Diagram</span>
+            <div class="dz-tools">
+                <button type="button" id="dzOut" aria-label="Zoom out" title="Zoom out (-)">&minus;</button>
+                <span class="dz-zoom" id="dzPct" aria-live="polite">100%</span>
+                <button type="button" id="dzIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
+                <button type="button" id="dzFit" class="dz-fit" aria-label="Fit diagram to screen" title="Fit to screen (0)">Fit</button>
+                <button type="button" id="dzClose" class="dz-close" title="Close (Esc)">Close</button>
+            </div>
+        </div>
+        <div class="dz-stage" id="dzStage">
+            <div class="dz-hint" id="dzHint">Drag to pan &middot; scroll or pinch to zoom &middot; double-click to zoom in</div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var ov=document.getElementById('dzOverlay'), stage=document.getElementById('dzStage');
+        var pct=document.getElementById('dzPct'), hint=document.getElementById('dzHint'), ttl=document.getElementById('dzTitle');
+        var svg=null, vw=0, vh=0, fit=1, s=1, tx=0, ty=0, opener=null, hintTimer=null;
+        var MIN=0.5, MAX=10; /* relative to fit */
+        var ptrs={}, last=null;
+
+        function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+        function apply(){
+            var W=stage.clientWidth, H=stage.clientHeight, m=80;
+            var w=vw*s, h=vh*s;
+            tx=clamp(tx, m-w, W-m); ty=clamp(ty, m-h, H-m);
+            svg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';
+            pct.textContent=Math.round(s/fit*100)+'%';
+        }
+        function fitView(){
+            var W=stage.clientWidth, H=stage.clientHeight, pad=24;
+            fit=Math.min((W-pad*2)/vw,(H-pad*2)/vh); if(!(fit>0)) fit=1;
+            s=fit; tx=(W-vw*s)/2; ty=(H-vh*s)/2; apply();
+        }
+        function zoomAt(f,cx,cy){
+            var ns=clamp(s*f, fit*MIN, fit*MAX); f=ns/s;
+            tx=cx-(cx-tx)*f; ty=cy-(cy-ty)*f; s=ns; apply();
+        }
+        function center(){ return [stage.clientWidth/2, stage.clientHeight/2]; }
+        function stagePt(e){ var r=stage.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; }
+
+        function open(src, trigger){
+            opener=trigger||null;
+            if(svg) stage.removeChild(svg);
+            svg=src.cloneNode(true); svg.removeAttribute('style'); svg.removeAttribute('class');
+            var vb=src.viewBox&&src.viewBox.baseVal;
+            if(vb&&vb.width){ vw=vb.width; vh=vb.height; }
+            else { var bb=src.getBoundingClientRect(); vw=bb.width||940; vh=bb.height||520; }
+            svg.setAttribute('width',vw); svg.setAttribute('height',vh);
+            svg.style.width=vw+'px'; svg.style.height=vh+'px';
+            stage.insertBefore(svg, hint);
+            var label=src.getAttribute('aria-label')||'';
+            var h1=document.querySelector('h1');
+            ttl.textContent=(h1?h1.textContent.trim():'Diagram');
+            svg.setAttribute('aria-label', label);
+            ov.classList.add('open'); document.body.style.overflow='hidden';
+            fitView();
+            hint.classList.remove('hide'); clearTimeout(hintTimer);
+            hintTimer=setTimeout(function(){ hint.classList.add('hide'); },4500);
+            document.getElementById('dzClose').focus();
+        }
+        function close(){
+            ov.classList.remove('open'); document.body.style.overflow='';
+            if(opener&&opener.focus) opener.focus();
+        }
+
+        document.querySelectorAll('.diagram-card').forEach(function(card){
+            var src=card.querySelector('svg'), btn=card.querySelector('.dz-open');
+            if(!src) return;
+            if(btn) btn.addEventListener('click',function(){ open(src,btn); });
+            src.addEventListener('click',function(){ open(src,btn); });
+        });
+
+        document.getElementById('dzClose').addEventListener('click',close);
+        document.getElementById('dzIn').addEventListener('click',function(){ var c=center(); zoomAt(1.4,c[0],c[1]); });
+        document.getElementById('dzOut').addEventListener('click',function(){ var c=center(); zoomAt(1/1.4,c[0],c[1]); });
+        document.getElementById('dzFit').addEventListener('click',fitView);
+
+        stage.addEventListener('wheel',function(e){
+            e.preventDefault(); var p=stagePt(e);
+            var dy=e.deltaMode===1?e.deltaY*16:e.deltaY;
+            zoomAt(Math.exp(-dy*(e.ctrlKey?0.01:0.0018)),p[0],p[1]);
+        },{passive:false});
+
+        stage.addEventListener('pointerdown',function(e){
+            stage.setPointerCapture(e.pointerId); ptrs[e.pointerId]=stagePt(e); last=null;
+            stage.classList.add('drag'); hint.classList.add('hide');
+        });
+        stage.addEventListener('pointermove',function(e){
+            if(!ptrs[e.pointerId]) return;
+            var p=stagePt(e), ids=Object.keys(ptrs);
+            if(ids.length===1){
+                tx+=p[0]-ptrs[e.pointerId][0]; ty+=p[1]-ptrs[e.pointerId][1]; ptrs[e.pointerId]=p; apply();
+            } else if(ids.length>=2){
+                ptrs[e.pointerId]=p;
+                var a=ptrs[ids[0]], b=ptrs[ids[1]];
+                var d=Math.hypot(a[0]-b[0],a[1]-b[1]), cx=(a[0]+b[0])/2, cy=(a[1]+b[1])/2;
+                if(last){
+                    tx+=cx-last.cx; ty+=cy-last.cy;
+                    if(last.d>0) zoomAt(d/last.d,cx,cy); else apply();
+                }
+                last={d:d,cx:cx,cy:cy};
+            }
+        });
+        function up(e){
+            delete ptrs[e.pointerId]; last=null;
+            if(!Object.keys(ptrs).length) stage.classList.remove('drag');
+        }
+        stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+
+        stage.addEventListener('dblclick',function(e){
+            var p=stagePt(e);
+            if(s>fit*1.05) fitView(); else zoomAt(2.5,p[0],p[1]);
+        });
+
+        window.addEventListener('resize',function(){ if(ov.classList.contains('open')) fitView(); });
+
+        document.addEventListener('keydown',function(e){
+            if(!ov.classList.contains('open')) return;
+            var c=center(), k=e.key, step=60;
+            if(k==='Escape') close();
+            else if(k==='+'||k==='=') zoomAt(1.25,c[0],c[1]);
+            else if(k==='-'||k==='_') zoomAt(1/1.25,c[0],c[1]);
+            else if(k==='0') fitView();
+            else if(k==='ArrowLeft'){ tx+=step; apply(); }
+            else if(k==='ArrowRight'){ tx-=step; apply(); }
+            else if(k==='ArrowUp'){ ty+=step; apply(); }
+            else if(k==='ArrowDown'){ ty-=step; apply(); }
+            else if(k==='Tab'){
+                var f=ov.querySelectorAll('button'), first=f[0], lastB=f[f.length-1];
+                if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); lastB.focus(); }
+                else if(!e.shiftKey&&document.activeElement===lastB){ e.preventDefault(); first.focus(); }
+            }
+            else return;
+            if(k!=='Tab') e.preventDefault();
+        });
+    })();
+    </script>
+    <!-- dz-feature:end -->
+
+<!-- motion-feature:start -->
+<style>
+/* AGL Visual Encyclopedia: live diagram motion v4 (control and data: status lights, command/data packets, alarms, sequenced lights) */
+@keyframes m4Travel{from{stroke-dashoffset:var(--m4-a,10)}to{stroke-dashoffset:var(--m4-b,-200)}}
+@keyframes m4March{to{stroke-dashoffset:var(--m4-d,-12)}}
+@keyframes m4Breath{0%,100%{opacity:.62;filter:drop-shadow(0 0 1px var(--m4-c,#fff))}50%{opacity:1;filter:drop-shadow(0 0 5px var(--m4-c,#fff)) drop-shadow(0 0 10px var(--m4-c,#fff))}}
+@keyframes m4Alarm{0%,45%{opacity:1;filter:drop-shadow(0 0 4px var(--m4-c,#f00)) drop-shadow(0 0 10px var(--m4-c,#f00))}55%,100%{opacity:.35;filter:none}}
+@keyframes m4Ping{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.4);opacity:0}}
+@keyframes m4Blink{0%,38%{opacity:1}42%,58%{opacity:.18}62%,100%{opacity:1}}
+@keyframes m4Wave{0%,100%{transform:scale(1)}5%{transform:scale(var(--m4-s,2.1))}13%{transform:scale(1)}}
+@keyframes m4Grow{from{transform:scaleX(0)}}
+@keyframes m4Rise{from{transform:scaleY(0)}}
+.m4-pk{fill:none;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;stroke-dasharray:var(--m4-len,10) 10000;animation:m4Travel var(--m4-t,2.4s) linear infinite;animation-delay:var(--m4-pd,0s);filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor)}
+.m4-march{animation:m4March var(--m4-dur,.8s) linear infinite}
+.m4-breath{animation:m4Breath var(--m4-p,3s) ease-in-out infinite;animation-delay:var(--m4-pd,0s)}
+.m4-alarm{animation:m4Alarm var(--m4-p,1.3s) steps(1,end) infinite;animation-delay:var(--m4-pd,0s)}
+.m4-ping{transform-box:fill-box;transform-origin:center;animation:m4Ping var(--m4-p,2.4s) ease-out infinite;animation-delay:var(--m4-pd,0s)}
+.m4-blink{animation:m4Blink var(--m4-p,2.4s) steps(1,end) infinite;animation-delay:var(--m4-pd,0s)}
+.m4-wave{transform-box:fill-box;transform-origin:center;animation:m4Wave var(--m4-p,3.6s) ease-in-out infinite;animation-delay:var(--m4-pd,0s)}
+.m4-ready:not(.m4-play) .m4-bar{transform:scaleX(0)}
+.m4-bar{transform-box:fill-box;transform-origin:left center}
+.m4-play .m4-bar{animation:m4Grow 1.2s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--m4-bd,.3s)}
+.m4-ready:not(.m4-play) .m4-rise{transform:scaleY(0)}
+.m4-rise{transform-box:fill-box;transform-origin:center bottom}
+.m4-play .m4-rise{animation:m4Rise 1s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--m4-bd,.3s)}
+.m4-idle *{animation-play-state:paused!important}
+.m4-toggle{margin-left:10px}
+.m4-off *,.m4-off *::before,.m4-off *::after{animation:none!important}
+.m4-off .m4-ready .m4-bar,.m4-off .m4-ready .m4-rise{transform:none!important}
+.m4-off .m4-fx{display:none}
+@media (prefers-reduced-motion:reduce){.m4-pk,.m4-march,.m4-breath,.m4-alarm,.m4-ping,.m4-blink,.m4-wave{animation-duration:0s}}
+</style>
+<script>
+(function(){
+  var root=document.documentElement, NS='http://www.w3.org/2000/svg';
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pref=null; try{pref=localStorage.getItem('aglMotion');}catch(e){}
+  var off=rm?(pref!=='on'):(pref==='off');
+  var stepJobs=[];
+  function setOff(v){off=v;root.classList.toggle('m4-off',v);try{localStorage.setItem('aglMotion',v?'off':'on');}catch(e){}
+    document.querySelectorAll('.m4-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(!v));b.querySelector('span').textContent=v?'Motion off':'Motion on';});
+    stepJobs.forEach(function(j){j(v);});}
+  root.classList.toggle('m4-off',off);
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function rgb(s){var m=(s||'').match(/rgba?\(([^)]+)\)/);if(!m)return null;var p=m[1].split(/[ ,\/]+/).map(parseFloat);return {r:p[0],g:p[1],b:p[2],a:p.length>3?p[3]:1};}
+  function sat(c){return c&&c.a>=.6&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>60&&Math.max(c.r,c.g,c.b)>140;}
+  function css(c){return 'rgb('+Math.round(c.r)+','+Math.round(c.g)+','+Math.round(c.b)+')';}
+  function tint(c){return 'rgb('+Math.round(c.r+(255-c.r)*.35)+','+Math.round(c.g+(255-c.g)*.35)+','+Math.round(c.b+(255-c.b)*.35)+')';}
+  function hue(c){var r=c.r,g=c.g,b=c.b;if(r>200&&g<120&&b<120)return 'red';if(r>200&&g>140&&b<110)return 'amber';if(g>150&&r<120&&b<170)return 'green';if(b>180&&r<100)return 'cyan';return 'other';}
+  function rnd(i){var x=Math.sin(i*12.9898+7.233)*43758.5453;return x-Math.floor(x);}
+  function fillOf(e){var c=rgb(getComputedStyle(e).fill);return c&&c.a>.4?c:null;}
+  function strokeOf(e){var c=rgb(getComputedStyle(e).stroke);return c&&c.a>.4?c:null;}
+
+  function prep(svg){
+    var plan=svg.classList.contains('lvp-svg'), seen=0, led=0;
+    function inFx(e){return e.closest('.m4-fx,.m4-pk,.diagram-legend,defs,marker');}
+
+    /* 1 -- status lights, lamp strings, pings (circles) */
+    var circles=[].slice.call(svg.querySelectorAll('circle')).filter(function(c){return !inFx(c)&&!c.classList.contains('guard');});
+    function isBadge(c){var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy'),r=+c.getAttribute('r');
+      return [].some.call(c.parentNode.querySelectorAll('text'),function(t){return Math.abs(+t.getAttribute('x')-cx)<r+1&&Math.abs(+t.getAttribute('y')-cy)<r+4;});}
+    if(plan){
+      circles.forEach(function(c,i){var r=+c.getAttribute('r');if(r>4.5||!fillOf(c))return;
+        var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');
+        c.classList.add('m4-wave');c.style.setProperty('--m4-pd',((cx+cy*.5)*.0034).toFixed(2)+'s');c.style.setProperty('--m4-p','3.8s');});
+    }else{
+      var rings=circles.filter(function(c){var s=getComputedStyle(c);return s.fill==='none'||!fillOf(c);});
+      var rowMap={};
+      circles.forEach(function(c){var r=+c.getAttribute('r');if(r>6.5||!fillOf(c)||isBadge(c))return;
+        var k=(c.parentNode.id||'')+'|'+Math.round(c.getAttribute('cy'));(rowMap[k]=rowMap[k]||[]).push(c);});
+      var strings=[];Object.keys(rowMap).forEach(function(k){if(rowMap[k].length>=4)strings=strings.concat(rowMap[k]);});
+      circles.forEach(function(c,i){
+        var r=+c.getAttribute('r'),f=fillOf(c);if(!f||r<3||r>14||isBadge(c))return;
+        var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');
+        if(strings.indexOf(c)>-1&&!c.closest('[filter]')){c.style.setProperty('--m4-s','1.65');c.classList.add('m4-wave');c.style.setProperty('--m4-pd',(cx*.006).toFixed(2)+'s');c.style.setProperty('--m4-p','3.6s');return;}
+        if(!sat(f))return;
+        var h=hue(f),ring=null;
+        rings.forEach(function(q){if(ring)return;if(Math.abs(+q.getAttribute('cx')-cx)<.6&&Math.abs(+q.getAttribute('cy')-cy)<.6&&+q.getAttribute('r')>r){ring=q;}});
+        var inPanel=!!c.closest('[filter]');
+        c.style.setProperty('--m4-c',css(f));
+        c.style.setProperty('--m4-pd',(-(rnd(led)*3)).toFixed(2)+'s');
+        if(ring){
+          ring.classList.add('m4-ping');ring.style.setProperty('--m4-p',(h==='red'?1.3:2.4)+'s');ring.style.setProperty('--m4-pd',c.style.getPropertyValue('--m4-pd'));
+          c.classList.add(h==='red'?'m4-alarm':'m4-breath');c.style.setProperty('--m4-p',(h==='red'?1.3:3)+'s');
+        }else if(inPanel){
+          c.classList.add('m4-blink');c.style.setProperty('--m4-p',(1.4+rnd(led+3)*2.8).toFixed(2)+'s');
+        }else{
+          c.classList.add(h==='red'?'m4-alarm':'m4-breath');c.style.setProperty('--m4-p',(h==='red'?1.6:(2.4+rnd(led+1)*1.4)).toFixed(2)+'s');
+        }
+        led++;
+      });
+    }
+
+    /* 2 -- command / data packets along arrows, links and buses */
+    function near(s,p){var sib=[].slice.call(s.parentNode.children),hit=false;
+      sib.forEach(function(q){if(q===s||hit||!/^(path|polygon|polyline)$/.test(q.tagName))return;
+        var b;try{b=q.getBBox();}catch(x){return;} if(b.width>18||b.height>18)return;
+        var d=Math.hypot(b.x+b.width/2-p.x,b.y+b.height/2-p.y);if(d<13)hit=true;});
+      return hit;}
+    function pts(s,L,rev){var n=Math.max(2,Math.ceil(L/5)),a=[];for(var i=0;i<=n;i++){var p=s.getPointAtLength(L*i/n);a.push([p.x,p.y]);}
+      if(rev)a.reverse();return 'M'+a.map(function(p){return p[0].toFixed(1)+' '+p[1].toFixed(1);}).join(' L');}
+    function packet(s,L,col,rev,delay,speed){
+      var total=L*1.45,t=Math.min(6,Math.max(1.5,total/(speed||105)));
+      var p=el('path',{d:pts(s,L,rev),'class':'m4-fx m4-pk',stroke:col,'stroke-width':'3.4'});
+      if(s.getAttribute('transform'))p.setAttribute('transform',s.getAttribute('transform'));
+      p.style.color=col;p.style.setProperty('--m4-t',t.toFixed(2)+'s');var dl=Math.min(10,Math.max(5,L*.4));p.style.setProperty("--m4-len",String(dl));p.style.setProperty("--m4-a",String(dl));p.style.setProperty('--m4-b',String(-total));
+      p.style.setProperty('--m4-pd',delay.toFixed(2)+'s');
+      s.parentNode.insertBefore(p,s.nextSibling);return t;}
+    svg.querySelectorAll('line,path,polyline').forEach(function(s){
+      if(inFx(s))return;
+      var tag=s.tagName,d=(s.getAttribute('d')||'').trim();
+      if(tag==='path'&&(/z\s*$/i.test(d)||d.length>500))return;
+      var cs=getComputedStyle(s);
+      if(tag!=='line'&&cs.fill!=='none'&&!(tag==='path'&&(s.hasAttribute('marker-end')||s.hasAttribute('marker-start')||/^M\s*[\d.]+[ ,]+[\d.]+\s*[HVL]\s*[\d.]+(\s+[HVL]\s*[\d.]+)*\s*$/.test(d))))return;
+      var c=rgb(cs.stroke),sw=parseFloat(cs.strokeWidth);
+      var so=parseFloat(s.getAttribute('stroke-opacity')||'1'),op=parseFloat(s.getAttribute('opacity')||'1');
+      if(!sat(c)||sw<1.3||so<.4||op<.4)return;
+      var L;try{L=s.getTotalLength();}catch(x){return;} if(L<16)return;
+      var p0=s.getPointAtLength(0),p1=s.getPointAtLength(L);
+      var a0=near(s,p0)||/marker-start/.test(s.outerHTML.slice(0,300)),a1=near(s,p1)||/marker-end/.test(s.outerHTML.slice(0,300));
+      if(L<30&&!a0&&!a1)return;
+      var both=(a0&&a1)||(!a0&&!a1&&tag==='line'&&L>60);
+      var rev=a0&&!a1;
+      var dashed=cs.strokeDasharray&&cs.strokeDasharray!=='none';
+      if(dashed){
+        var nums=cs.strokeDasharray.split(/[ ,]+/).map(parseFloat).filter(function(q){return q>0;});
+        var sum=nums.reduce(function(x,y){return x+y;},0);if(nums.length%2)sum*=2;
+        s.classList.add('m4-march');s.style.setProperty('--m4-d',String(rev?sum:-sum));s.style.setProperty('--m4-dur',(sum/16).toFixed(2)+'s');
+        return;}
+      var col=tint(c),k=L>220?2:1;
+      for(var i=0;i<k;i++){var t=packet(s,L,col,rev,(seen%4)*.35+i*.8*L/105);
+        if(both)packet(s,L,col,!rev,(seen%4)*.35+1.1+i*.8*L/105);}
+      seen++;
+    });
+
+    /* 3 -- numbered process steps light up in order */
+    var steps=[];
+    svg.querySelectorAll('text').forEach(function(t){
+      var n=(t.textContent||'').trim();if(!/^\d{1,2}$/.test(n)||inFx(t))return;
+      var x=+t.getAttribute('x'),y=+t.getAttribute('y'),badge=null;
+      [].forEach.call(t.parentNode.querySelectorAll('circle'),function(c){if(!badge&&Math.abs(+c.getAttribute('cx')-x)<1.5&&Math.abs(+c.getAttribute('cy')-(y-4))<5)badge=c;});
+      if(!badge)return;
+      var best=null,ba=1e9;
+      [].forEach.call(t.parentNode.querySelectorAll('rect[rx]'),function(r){var rx=+r.getAttribute('x'),ry=+r.getAttribute('y'),w=+r.getAttribute('width'),h=+r.getAttribute('height');
+        if(w<100||h<40||x<rx||x>rx+w||y<ry||y>ry+h)return;if(w*h<ba){ba=w*h;best=r;}});
+      if(best)steps.push({n:+n,box:best,badge:badge,x:+best.getAttribute('x'),y:+best.getAttribute('y')});});
+    steps.sort(function(a,b){return a.n-b.n||a.y-b.y||a.x-b.x;});
+    var uniq=[];steps.forEach(function(s){if(!uniq.some(function(u){return u.box===s.box;}))uniq.push(s);});
+    var seq=[];uniq.forEach(function(s,i){if(!i||s.n>seq[seq.length-1].n)seq.push(s);});
+    function runSeq(groups,per,pause){
+      /* groups: [{els:[...],col:'rgb(...)',pop:badgeElOrNull}] lit one after another */
+      var anims=[];
+      function build(){
+        var T=groups.length*per+pause;
+        groups.forEach(function(g,i){
+          var a=i*per/T,z=(i+1)*per/T;
+          var base='drop-shadow(0 0 0 '+g.col+') brightness(1)',lit='drop-shadow(0 0 9px '+g.col+') brightness(1.18)';
+          var kf=[{offset:0,filter:base},{offset:a,filter:base},{offset:a+.03,filter:lit},{offset:Math.max(a+.035,z-.01),filter:lit},{offset:Math.min(.999,z+.03),filter:base},{offset:1,filter:base}];
+          g.els.forEach(function(e){anims.push(e.animate(kf,{duration:T*1000,iterations:Infinity}));});
+          if(g.pop){var pop=[{offset:0,transform:'scale(1)'},{offset:a,transform:'scale(1)'},{offset:a+.03,transform:'scale(1.35)'},{offset:Math.min(.999,z),transform:'scale(1.35)'},{offset:Math.min(.999,z+.03),transform:'scale(1)'},{offset:1,transform:'scale(1)'}];
+            g.pop.style.transformBox='fill-box';g.pop.style.transformOrigin='center';anims.push(g.pop.animate(pop,{duration:T*1000,iterations:Infinity}));}});}
+      function job(v){anims.forEach(function(a){a.cancel();});anims=[];if(!v)build();}
+      stepJobs.push(job);if(!off)build();
+    }
+    if(seq.length>=3)runSeq(seq.map(function(s){return {els:[s.box],col:css(strokeOf(s.box)||{r:255,g:180,b:0}),pop:s.badge};}),1.15,1.8);
+
+    /* 3b -- stepped bar chart (CCR current per step): bars rise, then step up one by one with their matching step cells */
+    var rects=[].slice.call(svg.querySelectorAll('rect')).filter(function(r){return !inFx(r);});
+    var byBase={};rects.forEach(function(r){var w=+r.getAttribute('width'),h=+r.getAttribute('height'),f=r.getAttribute('fill')||'';
+      if(w<24||w>70||h<20||!/^rgba\(255,\s*180,\s*0/.test(f))return;var k=Math.round(+r.getAttribute('y')+h);(byBase[k]=byBase[k]||[]).push(r);});
+    Object.keys(byBase).forEach(function(k){var bars=byBase[k].sort(function(a,b){return +a.getAttribute('x')-+b.getAttribute('x');});
+      if(bars.length<4)return;
+      var cells=[].slice.call(svg.querySelectorAll('text')).map(function(t){var m=(t.textContent||'').trim().match(/^STEP (\d)$/);if(!m)return null;
+        var x=+t.getAttribute('x'),y=+t.getAttribute('y'),box=null;
+        [].forEach.call(svg.querySelectorAll('rect[rx]'),function(r){var rx=+r.getAttribute('x'),ry=+r.getAttribute('y'),w=+r.getAttribute('width'),h=+r.getAttribute('height');
+          if(w>=80&&w<=130&&h>=50&&h<=80&&x>=rx&&x<=rx+w&&y>=ry&&y<=ry+h)box=r;});return box?{n:+m[1],box:box}:null;}).filter(Boolean);
+      var groups=bars.map(function(b,i){b.classList.add('m4-rise');b.style.setProperty('--m4-bd',(.3+i*.14)+'s');
+        return {els:[b].concat(cells.filter(function(c){return c.n===i+1;}).map(function(c){return c.box;})),col:'rgb(255,190,40)',pop:null};});
+      runSeq(groups,.85,1.9);});
+
+    /* 4 -- bars fill */
+    var tracks={};svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(f.indexOf('rgba(255,255,255')===0)tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')]=+r.getAttribute('width');});
+    var bi=0;svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(!/^var\(--(gold|cyan|green|red|taxi-blue)\)$/.test(f))return;
+      var w=tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')];if(w&&w>=+r.getAttribute('width')){r.classList.add('m4-bar');r.style.setProperty('--m4-bd',(.3+(bi++%6)*.12)+'s');}});
+
+    svg.classList.add('m4-ready');
+    function play(){svg.classList.add('m4-play');}
+    if('IntersectionObserver' in window){
+      var started=false,io=new IntersectionObserver(function(es){es.forEach(function(e){
+        svg.classList.toggle('m4-idle',!e.isIntersecting);
+        if(e.isIntersecting&&!started){started=true;play();}});},{threshold:.1});io.observe(svg);
+    }else play();
+  }
+  function toggle(){
+    var card=document.querySelector('.diagram-card'),open=card&&card.querySelector('.dz-open'); if(!card)return;
+    var b=document.createElement('button');b.type='button';b.className='dz-btn m4-toggle';b.setAttribute('aria-pressed',String(!off));
+    b.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> <span>'+(off?'Motion off':'Motion on')+'</span>';
+    b.addEventListener('click',function(){setOff(!off);});
+    if(open){var w=document.createElement('div');w.className='m4-ctl';w.style.cssText='display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0 10px';open.parentNode.insertBefore(w,open);w.appendChild(open);w.appendChild(b);}else card.appendChild(b);
+  }
+  function init(){var s=document.querySelector('.diagram-card > svg');if(s)prep(s);toggle();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- motion-feature:end -->
+
+</body>
+</html>

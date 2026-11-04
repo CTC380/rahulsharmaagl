@@ -1,0 +1,2339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Detection Sensor | AGL Component Library</title>
+    <meta name="description" content="Vehicle Detection Sensor: ground vehicle detection for runway incursion prevention, A-SMGCS and ATC surveillance — technology, placement, standards and testing." />
+    <meta name="keywords" content="vehicle detection sensor, AGL, runway incursion prevention, A-SMGCS, ATC surveillance, airfield vehicle monitoring" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-vehicle-detection-sensor.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Vehicle Detection Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Vehicle Detection Sensor: ground vehicle detection for runway incursion prevention, A-SMGCS and ATC surveillance — technology, placement, standards and testing." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-vehicle-detection-sensor.html" />
+    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-t2dMSnxAv8FKlcnAer9t5VYCu0DDWp72svXnlLMBt2xatIb1yzOVptn&amp;s=10" />
+    <meta property="og:image:alt" content="Vehicle Detection Sensor" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Vehicle Detection Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Vehicle Detection Sensor: ground vehicle detection for runway incursion prevention, A-SMGCS and ATC surveillance — technology, placement, standards and testing." />
+    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-t2dMSnxAv8FKlcnAer9t5VYCu0DDWp72svXnlLMBt2xatIb1yzOVptn&amp;s=10" />
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── COMPONENT HERO ── */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* ── DIAGRAM BLOCK ── */
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 34px 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        .diagram-node {
+            background: rgba(255, 180, 0, 0.06);
+            border: 1.5px solid var(--gold);
+            border-radius: 10px;
+            padding: 16px 26px;
+            text-align: center;
+            min-width: 260px;
+            max-width: 460px;
+        }
+        .diagram-node h5 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: var(--white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .diagram-node p {
+            font-size: 12.5px;
+            color: var(--text);
+            line-height: 1.55;
+        }
+        .diagram-node.cyan { border-color: var(--cyan); background: rgba(0, 212, 255, 0.06); }
+        .diagram-node.red { border-color: var(--red); background: rgba(230, 57, 70, 0.06); }
+        .diagram-node.outcome { border-width: 2px; }
+        .diagram-arrow {
+            width: 2px;
+            height: 30px;
+            background: var(--gold);
+            position: relative;
+        }
+        .diagram-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--gold);
+        }
+        .diagram-arrow.dashed {
+            background: repeating-linear-gradient(to bottom, var(--red) 0 6px, transparent 6px 12px);
+        }
+        .diagram-arrow.dashed::after { border-top-color: var(--red); }
+        .diagram-arrow.cyan-arrow { background: var(--cyan); }
+        .diagram-arrow.cyan-arrow::after { border-top-color: var(--cyan); }
+        .diagram-split {
+            display: flex;
+            gap: 36px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 6px 0;
+        }
+        .diagram-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 220px;
+            max-width: 320px;
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .diagram-branch-label.gold { color: var(--gold); }
+        .diagram-branch-label.red { color: var(--red); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-caption {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text);
+            opacity: .75;
+            margin-top: 18px;
+            font-style: italic;
+        }
+        @media(max-width:768px) {
+            .diagram-split { flex-direction: column; align-items: center; }
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html#article",
+        "headline": "Vehicle Detection Sensor",
+        "description": "Vehicle Detection Sensor: ground vehicle detection for runway incursion prevention, A-SMGCS and ATC surveillance — technology, placement, standards and testing.",
+        "url": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Vehicle Detection Sensor"
+        },
+        "articleSection": "Airfield Sensors",
+        "keywords": "vehicle detection sensor, AGL, runway incursion prevention, A-SMGCS, ATC surveillance, airfield vehicle monitoring",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-t2dMSnxAv8FKlcnAer9t5VYCu0DDWp72svXnlLMBt2xatIb1yzOVptn&s=10"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Vehicle Detection Sensor",
+            "item": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html"
+          }
+        ]
+      }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html#faq", "url": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-vehicle-detection-sensor.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a vehicle detection sensor in AGL?", "acceptedAnswer": {"@type": "Answer", "text": "A vehicle detection sensor is a surveillance device that detects and tracks ground vehicles on the airfield surface, such as sweeper trucks, maintenance vehicles, fuel trucks and baggage tugs. It gives real-time presence and movement data to ATC, airport operations centres and runway incursion prevention systems."}}, {"@type": "Question", "name": "Why are dedicated vehicle sensors needed?", "acceptedAnswer": {"@type": "Answer", "text": "Aircraft detection systems are tuned for large, predictable targets. Service vehicles are smaller (typically 1 to 5 tonnes), move less predictably and are easy to lose track of during busy ground movements or low visibility. Vehicle sensors give ATC and A-SMGCS the same data for vehicles as for aircraft."}}, {"@type": "Question", "name": "What detection technologies are used?", "acceptedAnswer": {"@type": "Answer", "text": "FMCW radar (24 GHz or 77 GHz), infrared (active or passive), inductive loops, video analytics (AI/CCTV), and fusion sensors that combine several technologies for better reliability and false-alarm rejection. Radar is immune to weather and lighting, infrared works in darkness, fog and smoke, and loops are simple but limited to fixed points."}}, {"@type": "Question", "name": "What is the detection range?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 50 to 300 m for radar, 50 to 150 m for infrared, 50 to 100 m for video, and 5 to 20 m for inductive loops. Radar sensors can also measure vehicle speed (typically ±2 km/h) and direction of travel."}}, {"@type": "Question", "name": "Where are vehicle detection sensors installed?", "acceptedAnswer": {"@type": "Answer", "text": "At runway crossings, taxiway intersections, vehicle access points from landside gates, runway thresholds during maintenance operations and apron areas. They also feed Runway Status Light (RWSL) systems, A-SMGCS, ATC towers and airport operations centres."}}, {"@type": "Question", "name": "How does the sensor connect to other systems?", "acceptedAnswer": {"@type": "Answer", "text": "It has a clean, isolated output: typically a dry contact relay, opto-isolated transistor output, Ethernet (Modbus TCP), RS-485 serial or an IP video stream. Output indicates presence, speed and direction and connects to the RWSL processor or A-SMGCS. Response time is typically 150 ms or less for radar."}}, {"@type": "Question", "name": "What are the typical electrical and environmental ratings?", "acceptedAnswer": {"@type": "Answer", "text": "Power is 24 VDC nominal (18 to 32 VDC) or 120/230 VAC for video units, with 5 to 50 W consumption depending on type. Protection class is IP65/IP67, operating temperature is -30°C to +70°C, and built-in TVS surge protection is rated up to 6 kV."}}, {"@type": "Question", "name": "Which standards apply to vehicle detection sensors?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 14 Vol I, FAA AC 150/5345-46 (covering the REL and THL in-pavement fixtures that RWSL drives), EUROCAE ED-87E (A-SMGCS MASPS) and EUROCAE ED-116 (MOPS for surface movement radar sensor systems). Always verify the current edition."}}, {"@type": "Question", "name": "How can false alarms be reduced?", "acceptedAnswer": {"@type": "Answer", "text": "Radar and IR sensors may detect pedestrians, animals or debris, so advanced filtering and target classification algorithms are needed. Position and sensitivity are calibrated to detect vehicles while ignoring small objects such as birds and debris, and the typical false alarm rate target is no more than 1 per 24 hours with proper calibration."}}, {"@type": "Question", "name": "What are the common vehicle detection sensor problems?", "acceptedAnswer": {"@type": "Answer", "text": "The common issues are false alarms from non-vehicle targets, obscuration of the sensor window or lens by snow, ice, rain, dirt or bird droppings, inductive loop damage from resurfacing or ground movement, poor video analytics performance in low light, alignment drift, and power supply instability."}}]}</script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Vehicle Detection Sensor</span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-car"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Vehicle <span>Detection Sensor</span></h1>
+            <p class="comp-sub">A specialised detection system that monitors the presence and movement of ground vehicles on the airfield surface. Providing critical input to runway incursion prevention systems, A‑SMGCS, and ATC surveillance, these sensors enhance safety by alerting controllers to unauthorised vehicle movements on runways and taxiways.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:450px;height:320px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6-t2dMSnxAv8FKlcnAer9t5VYCu0DDWp72svXnlLMBt2xatIb1yzOVptn&amp;s=10" alt="Vehicle Detection Sensor" width="450" height="320" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <!-- ─── OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Vehicle Detection Sensor</strong> is a specialised surveillance device designed to detect and track ground vehicles operating on the airfield surface—including runway sweeper trucks, maintenance vehicles, fuel trucks, baggage tugs, and other support vehicles. These sensors provide real‑time vehicle presence and movement data to Air Traffic Control, Airport Operations Centres, and runway incursion prevention systems. Unlike aircraft detection sensors that are optimised for larger targets, vehicle detection sensors are engineered to reliably detect smaller, slower-moving targets (typically 1‑5 tonnes) with high sensitivity and low false‑alarm rates. They are deployed at critical locations such as runway crossings, taxiway intersections, vehicle access points, and runway ends. The sensor data is integrated with A‑SMGCS (Advanced Surface Movement Guidance and Control Systems), RWSL (Runway Status Light) systems, and ATC displays to provide comprehensive surface surveillance, enabling controllers to manage both aircraft and vehicle movements safely and efficiently, particularly during low‑visibility operations and complex ground movements.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The vehicle detection sensor exists to close a specific blind spot in surface surveillance: aircraft detection systems are tuned for large, predictable targets, while service vehicles are smaller, move less predictably, and are exactly the kind of traffic a controller can lose track of during a busy ground movement sequence, particularly in low visibility. By giving ATC and A-SMGCS the same real-time presence and movement data for vehicles that they already have for aircraft, the sensor lets vehicle and aircraft movements be managed within a single coherent picture rather than the vehicle side being managed by memory, radio position reports, or visual observation from the tower alone. This matters most at the exact locations, runway crossings and taxiway intersections, where an undetected vehicle would otherwise pose the greatest incursion risk.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPLICATION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Vehicle Detection Sensors are deployed at critical locations across the airfield where ground vehicle movements pose a potential conflict with aircraft operations:</p>
+                <ul>
+                    <li><strong>Runway Crossings:</strong> Detecting vehicles approaching or crossing active runways to prevent incursions and trigger warning systems.</li>
+                    <li><strong>Taxiway Intersections:</strong> Monitoring vehicle movements at busy taxiway intersections to enhance situational awareness.</li>
+                    <li><strong>Vehicle Access Points:</strong> Detecting vehicles entering the airside from landside access gates.</li>
+                    <li><strong>Runway Ends (Threshold Areas):</strong> Monitoring vehicle activity near runway thresholds during maintenance or inspection operations.</li>
+                    <li><strong>Apron Areas:</strong> Tracking ground support vehicles (fuel trucks, baggage tugs, catering vehicles) for improved apron management.</li>
+                    <li><strong>Runway Status Light (RWSL) Systems:</strong> Providing vehicle detection input for Runway Entrance Lights (REL) and Takeoff Hold Lights (THL).</li>
+                    <li><strong>A‑SMGCS (Advanced Surface Movement Guidance and Control Systems):</strong> Integrating with A‑SMGCS for comprehensive surface surveillance and conflict detection.</li>
+                    <li><strong>ATC Towers:</strong> Providing controllers with real‑time vehicle location and tracking data, enhancing situational awareness.</li>
+                    <li><strong>Airport Operations Centers:</strong> Monitoring fleet vehicle movements for operational planning and resource allocation.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNCTION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>Sensors are positioned at the runway crossing, taxiway intersection, or access gate they monitor, mounted either as an in-pavement inductive loop (cut and sealed into the surface) or as a pole-mounted microwave/infrared unit set back clear of vehicle and aircraft clearance envelopes. Mounting height and detection-zone aim are set out so the zone covers the full width of the crossing or gate without extending into an adjacent lane where it would generate false triggers. Detector cabling runs on its own screened pair back to the local controller or Remote I/O rather than sharing conduit with unrelated lighting circuits, since the output typically drives a warning light or gate interlock directly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The Vehicle Detection Sensor uses advanced detection technologies optimised for smaller, slower targets. Key functional aspects include:</p>
+                <ul>
+                    <li><strong>Detection Technologies:</strong> Sensors typically use one or a combination of:
+                        <ul style="margin-top:6px; margin-bottom:6px;">
+                            <li><strong>FMCW Radar (24 GHz or 77 GHz):</strong> Detects moving vehicles with high sensitivity, providing range, speed, and position information, immune to weather and lighting.</li>
+                            <li><strong>Infrared (active or passive):</strong> Uses thermal signatures or reflected IR to detect vehicles, effective in darkness, fog, and smoke.</li>
+                            <li><strong>Inductive Loops:</strong> Buried loops detect metallic vehicles passing over; simple and reliable, but limited to fixed points.</li>
+                            <li><strong>Video Analytics (AI/CCTV):</strong> Uses camera footage with machine learning algorithms to detect and classify vehicles, providing visual confirmation.</li>
+                            <li><strong>Fusion Sensors:</strong> Combine multiple technologies (e.g., radar + IR + video) for improved detection reliability and false‑alarm rejection.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Target Classification:</strong> Advanced sensors can differentiate between vehicles and aircraft, or between different vehicle types (e.g., fuel truck vs. baggage tug), to provide more meaningful data to controllers.</li>
+                    <li><strong>Coverage Zone:</strong> The sensor is positioned to cover a specific area—typically 50‑300 metres for radar/IR, or a precise detection point for inductive loops.</li>
+                    <li><strong>Speed and Direction Detection:</strong> Radar sensors can determine vehicle speed and direction of travel, providing valuable information for conflict prediction.</li>
+                    <li><strong>Output Signal:</strong> The sensor provides a clean, isolated output—typically a dry contact, transistor output, or digital message (Ethernet/Modbus)—that indicates vehicle presence, speed, and direction. The output is connected to the RWSL processor or A‑SMGCS.</li>
+                    <li><strong>Self‑Diagnostics:</strong> The sensor continuously monitors its own health (power, communication, signal quality) and provides diagnostic outputs for proactive maintenance.</li>
+                </ul>
+                <p style="margin-top:12px;">Vehicle detection sensors are typically mounted on poles adjacent to the monitored area, on overhead gantries, or integrated into existing airfield infrastructure. Their position and sensitivity are carefully calibrated to detect vehicles while ignoring small objects (birds, debris) and reducing false alarms.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>Like the Stop Bar Sensor it is closely related to, the Vehicle Detection Sensor is a detection input rather than a decision-maker — it reports the presence of a smaller, slower-moving target (a service vehicle or piece of ground equipment) to a Remote I/O unit or local PLC, and the access-control or ALCMS logic upstream decides what to do with that information: hold a gate or barrier, trigger a warning light, or log the crossing. It does not itself energise any actuator or lighting circuit. Because it is tuned to detect targets smaller and slower than the aircraft the Stop Bar Sensor is designed around, it is typically deployed at vehicle crossing points and service road junctions rather than on the runway itself, and a fault is reported and handled the same conservative way — as a loss of detection at that location, not as an assumption that the crossing is clear.</p>
+            </div>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Vehicle Detection Sensor</h5>
+                        <p>Tuned for smaller, slower targets — reports presence only</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Remote I/O / PLC</h5>
+                        <p>Passes detection state upstream</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node outcome">
+                        <h5 role="heading" aria-level="3">Access Control / ALCMS Logic</h5>
+                        <p>Decides gate, barrier or warning-light action</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Gate / Barrier / Warning Light</h5>
+                        <p>Actuated only on the upstream decision</p>
+                    </div>
+                </div>
+                <div class="diagram-caption">A detection input tuned for vehicles rather than aircraft — a fault is still treated conservatively, as a loss of detection rather than a clear crossing.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── DETECTION FLOW OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Mechanism</div>
+            <h2 class="block-title">How the Sensor Detects &amp; Reports a Vehicle</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Target Enters Coverage Zone</h5>
+                        <p>50‑300 m detection area, depending on technology</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Detection Technology Senses Target</h5>
+                        <p>Radar, IR, video analytics, or inductive loop — often fused</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Target Classification</h5>
+                        <p>Distinguishes vehicle from aircraft, bird, or debris</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-split">
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label gold">Vehicle Confirmed</div>
+                            <div class="diagram-node outcome">
+                                <h5 role="heading" aria-level="3">Speed &amp; Direction Determined</h5>
+                                <p>Clean output signal sent to RWSL processor / A‑SMGCS</p>
+                            </div>
+                        </div>
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label red">False Target</div>
+                            <div class="diagram-node red outcome">
+                                <h5 role="heading" aria-level="3">Filtered Out</h5>
+                                <p>Bird, debris, or noise rejected — no output triggered</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="diagram-caption">Fusion sensors combine multiple technologies to reduce false alarms while still catching genuine vehicle incursions.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TECHNICAL PARAMETERS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The sensor head is housed in a sealed, weatherproof enclosure — die-cast aluminium or glass-reinforced polymer — rated IP65/IP67, with a radome or optical window covering the radar, IR, or camera aperture to protect it from rain, dust, and de-icing overspray while remaining transparent to the sensing wavelength. Pole-mounted units bolt to an adjustable bracket that allows azimuth and elevation to be set and locked during commissioning, and where video analytics are used, the camera module is a separate sealed unit connected to the processing electronics by a short weatherproof cable run. Internal electronics are conformally coated and connected through sealed M12 or similar circular connectors rather than open terminal strips, keeping moisture out of the detection and output circuitry. Built-in transient voltage suppression is mounted near the cable entry point to protect against lightning-induced surges, and the enclosure includes a grounding lug for bonding to the site's lightning protection system.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Detection Technology</td><td class="val">FMCW Radar (24/77 GHz) or IR (thermal) or Video Analytics or Inductive Loop</td></tr>
+                <tr><td>Coverage Range</td><td class="val">50‑300 m (radar), 50‑150 m (IR), 5‑20 m (inductive loop), 50‑100 m (video)</td></tr>
+                <tr><td>Azimuth Coverage</td><td class="val">5°‑20° (radar), 10°‑30° (IR), up to 180° (video with wide‑angle lens)</td></tr>
+                <tr><td>Minimum Target Size</td><td class="val">0.5 m² (radar), 1 m² (IR) — typical vehicle detection</td></tr>
+                <tr><td>Target Detection Speed</td><td class="val">0‑50 km/h (parked to vehicle speed)</td></tr>
+                <tr><td>Speed Accuracy</td><td class="val">± 2 km/h (radar)</td></tr>
+                <tr><td>False Alarm Rate</td><td class="val">≤ 1 per 24 hours (with proper calibration)</td></tr>
+                <tr><td>Output Type</td><td class="val">Dry contact (relay, NO/NC), opto‑isolated transistor (PNP/NPN), Ethernet (Modbus TCP), serial (RS‑485), video stream (IP)</td></tr>
+                <tr><td>Response Time</td><td class="val">≤ 150 ms (radar), ≤ 200 ms (IR), ≤ 500 ms (video analytics)</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (nominal, 18‑32 VDC) or 120/230 VAC (video cameras)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">5‑25 W (radar/IR), 10‑50 W (video analytics with processing)</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-30°C to +70°C (outdoor electronics)</td></tr>
+                <tr><td>Storage Temperature</td><td class="val">-40°C to +85°C</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP65 / IP67 (weatherproof)</td></tr>
+                <tr><td>Surge Protection</td><td class="val">Built‑in transient voltage suppression (TVS), up to 6 kV</td></tr>
+                <tr><td>Mounting</td><td class="val">Pole‑mount (radar/IR/camera) or flush‑mount (inductive loop)</td></tr>
+                <tr><td>Diagnostics</td><td class="val">Status LEDs, fault output, communication (RS‑485/Modbus), web interface (optional)</td></tr>
+                <tr><td>Certifications</td><td class="val">CE, FCC (electronic emissions/immunity); designed to ICAO Annex 14 and EUROCAE ED‑87E/ED‑116 A‑SMGCS provisions</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ─── STANDARDS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Position</td><td class="val">Standalone powered sensor; output interfaces to control system (relay/serial/Ethernet)</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (18–32 VDC nominal) or 120/230 VAC (video units)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">5 – 50 W, depending on sensor type</td></tr>
+                <tr><td>Isolation</td><td class="val">Output relay/opto-isolated interface keeps the sensor circuit separate from controlled loads</td></tr>
+                <tr><td>Surge Protection</td><td class="val">Built-in transient voltage suppression (TVS), up to 6 kV</td></tr>
+                <tr><td>Earthing</td><td class="val">Enclosure/mount bonded to local earth</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Internal overcurrent/surge protection; faults reported via diagnostic output</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14, Vol I</h5><p>Aerodrome design and operations, including vehicle control on the movement area</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑46</h5><p>Specification for Runway and Taxiway Light Fixtures, covering the REL and THL in‑pavement fixtures that RWSL drives</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED‑87E</h5><p>MASPS for A‑SMGCS (current edition, Apr 2022) — defines the surveillance performance the sensor's output feeds into</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED‑116</h5><p>MOPS for Surface Movement Radar sensor systems used in A‑SMGCS</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FIELD ISSUES ─── -->
+        <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pole/Bracket Mounting</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Bolt the sensor head to its adjustable mounting bracket at the design height, leaving azimuth and elevation free to adjust before final locking during commissioning.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cable Route &amp; Connector Termination</h5><span class="test-stage">Electrical</span></div>
+                        <p>Run cable to the sensor via sealed M12 or similar circular connectors rather than open terminal strips, keeping moisture out of the detection and output circuitry.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Grounding &amp; Surge Protection</h5><span class="test-stage">Electrical</span></div>
+                        <p>Bond the enclosure's grounding lug to the site's lightning protection system and confirm the built-in transient voltage suppression is correctly connected near the cable entry.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-video"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Camera Module Cabling (Video Analytics Variant)</h5><span class="test-stage">Electrical</span></div>
+                        <p>Where video analytics are used, run the short weatherproof cable between the separate camera module and the processing electronics, keeping the run fully sealed.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Inductive Loop Installation (Loop Variant)</h5><span class="test-stage">Civil</span></div>
+                        <p>For inductive loop installations, saw-cut and install the loop conductor at the correct depth before the pavement is finally sealed.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Coverage Zone Setout</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Mark out the intended detection area on the ground before final aim, confirming the sensor's mounting position and height can achieve the required coverage zone.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record sensor position, mounting bracket settings, and cable terminations as-built before the sensor is energised for alignment and commissioning testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Alignment &amp; Aim Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Set and lock azimuth/elevation on the mounting bracket so the coverage zone matches the design detection area before power-up.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power &amp; Output Signal Check</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm supply voltage at the sensor and verify the dry contact, transistor, or Ethernet output changes state correctly on a test target.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Detection Range &amp; Speed Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Drive a test vehicle through the coverage zone at varying speeds to confirm detection range, response time, and speed accuracy meet spec.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Target Classification Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm the sensor correctly distinguishes a vehicle from birds, debris, or other false targets without triggering a nuisance output.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">False Alarm Rate Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Monitor the sensor over a settling period to confirm the false alarm rate is within the specified limit before operational handover.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Loop Continuity Test (Inductive Loop Variant)</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>For inductive loop installations, test loop continuity and resistance before the pavement is finally sealed.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record sensor position, aim settings, and detection/false-alarm test results in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Detection Accuracy Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Test detection performance against known vehicle movements to catch false alarms or missed detections early.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Lens / Sensor Cleaning</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Clean the sensor lens or housing window to prevent obscuration from dust, dirt, or de-icing fluid residue.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Loop Continuity Test</h5><span class="maint-freq">Annual</span></div>
+                        <p>For inductive loop installations, test loop continuity and resistance to catch pavement-related damage.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Alignment Verification</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Confirm sensor aim hasn't drifted, since misalignment leads to missed or false detections.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Verify power input stability at the sensor, a common source of intermittent detection faults.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">False Alarms from Non‑Vehicle Targets</h5><p>Radar and IR sensors may detect pedestrians, animals, or debris, causing false alarms. Advanced filtering and target classification algorithms are required to differentiate vehicles from other objects. Regular calibration and software updates are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Sensor Obscuration (Radar/IR/Camera)</h5><p>Snow, ice, heavy rain, dirt, or bird droppings on the sensor window or camera lens can significantly reduce detection performance. Regular cleaning and the use of heated housings, wipers, or air purges can prevent obscuration.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Inductive Loop Damage</h5><p>Buried inductive loops can be damaged by pavement resurfacing, ground movement, or heavy vehicle loads. Periodic loop testing (using a loop tester) is required to detect open or short circuits.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Video Analytics Performance in Low Light</h5><p>Camera‑based detection systems may struggle in low‑light conditions (night, fog, heavy rain) without specialised low‑light cameras or IR illumination. Use thermal cameras or integrated IR illuminators for reliable performance.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Alignment Drift</h5><p>Over time, sensor mounts can shift due to vibration, thermal expansion, or ground movement, altering the detection zone. Regular site surveys and alignment checks using calibration targets are recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Voltage fluctuations or spikes can cause sensor resets or damage. Use a regulated power supply with surge protection and UPS backup to ensure reliable operation.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False Alarms from Non-Vehicle Targets</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Pedestrians, animals, or debris triggering detection without adequate classification.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review alarm logs and target classification settings, and check for recent software/firmware updates affecting filtering.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Update the classification algorithm/software and recalibrate detection thresholds.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Missed Detection in Adverse Weather (Sensor Obscuration)</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Snow, ice, rain, dirt, or bird droppings on the sensor window or camera lens.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect the sensor window/lens and check heater/wiper/air-purge function.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the sensor optics and repair or activate the heated housing/wiper/air purge.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Loop-Based Detection Not Registering</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Buried inductive loop damaged by resurfacing, ground movement, or heavy vehicle loads.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Test the loop with a loop tester for an open or short circuit and inspect accessible wiring and sealant.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the damaged loop and reseal, retesting before returning to service.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Unreliable Detection at Night or in Fog (Camera-Based)</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Inadequate low-light performance without specialised cameras or illumination.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review detection performance logs against time-of-day/visibility conditions and check IR illuminator or thermal camera status.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Fit or repair a thermal camera or IR illuminator, or supplement with radar detection for low-visibility periods.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Detection Zone Drifted from Design Boundary</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Sensor mount alignment drift from vibration, thermal expansion, or ground movement.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Perform a site survey using calibration targets and compare against commissioning alignment records.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-align the sensor to the design boundary, secure mounting hardware, and schedule periodic re-verification.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ─── RELATED COMPONENTS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Lens / Sensor Contamination</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, insects, or weather residue accumulating on the sensor's optical, radar, or camera aperture between cleaning cycles.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reduced detection sensitivity that can delay or miss classification of an approaching vehicle.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Scheduled lens/sensor cleaning combined with a periodic detection accuracy check.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Obscuration in Adverse Weather</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Heavy rain, snow, or fog attenuating the radar, infrared, or camera detection path across the coverage zone.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Missed detection in adverse weather, a safety-relevant gap where the sensor feeds a gate, barrier, or warning light.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Correlating missed-detection events with weather conditions, and reviewing the false-alarm/miss log for weather-linked patterns.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Inductive Loop Damage (Loop Variant)</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Pavement cracking, resurfacing work, or cable damage severing or shorting the buried inductive loop conductor.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Loop-based detection stops registering, failing to trigger the connected gate, barrier, or warning light when a vehicle is present.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Loop continuity test comparing measured inductance and resistance against the as-installed baseline.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Video Analytics Performance in Low Light</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Camera-based detection relying on visible contrast that degrades sharply at night or in fog without supplementary illumination.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Unreliable detection at night or in fog, producing missed or false detections that a radar or inductive-loop sensor wouldn't share.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Detection range and speed test repeated specifically under low-light and low-visibility conditions.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Alignment Drift</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mounting bracket loosening from vibration or thermal cycling, gradually shifting the sensor's coverage zone.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Detection zone drifts from its design boundary, producing false alarms from non-vehicle targets or missed detections at the true zone edge.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Alignment verification against the documented coverage zone, and mount inspection for looseness.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Supply Instability</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ageing power supply components or a marginal feed voltage at the sensor's installed location.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Intermittent operation or an unexpected state change on the connected gate, barrier, or warning light that isn't tied to a real detection event.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Power supply check at the sensor, and review of the output signal log for unexplained transitions.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Movement Area Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>Coordinate with ATC/airside operations and raise a NOTAM before any work that takes the sensor offline, since the data feeds A-SMGCS, RWSL, and ATC surface-surveillance displays used for runway incursion prevention.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Lock out the sensor's power and communications supply and verify zero energy before opening the housing or servicing internal electronics.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-crosshairs"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Calibration/Alignment Verification</h5><span class="test-stage">Compliance</span></div>
+                        <p>Verify detection accuracy and coverage zone against a known reference after any sensor mounting or aim adjustment; a mis-aimed or drifted sensor can create a blind spot or false-alarm zone that degrades incursion-prevention reliability.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-car-side"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Active Ground Traffic Awareness</h5><span class="test-stage">Operational</span></div>
+                        <p>Sensors are deployed at runway crossings and taxiway intersections with live vehicle movement; barricade and mark the work area and stay alert to vehicles that the sensor itself would normally be detecting.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-tarp"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">FOD Control</h5><span class="test-stage">Operational</span></div>
+                        <p>Account for tools and fasteners at all times when the housing is open on or near the movement area, and secure loose material before leaving the site.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Wear high-visibility clothing and standard airside PPE, and use insulated tools for electrical work.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Confirm the sensor's data is correctly received by ATC and A-SMGCS/RWSL systems before closing out the work and cancelling the associated NOTAM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">False-Alarm Tuning Trades Directly Against Missed-Detection Risk</h5><span class="expert-tag">Design</span></div>
+                        <p>Tightening sensitivity to cut nuisance false alarms on a busy movement area inevitably raises the risk of missing a genuine slow-moving vehicle at the detection threshold; tune sensor sensitivity against the specific traffic mix and false-alarm tolerance at that location rather than applying one blanket setting airfield-wide.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-cloud"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Low-Visibility Performance Needs Separate Verification From Clear-Day Testing</h5><span class="expert-tag">Verification</span></div>
+                        <p>A sensor that reliably detects vehicles in clear daylight can behave differently in fog, heavy rain, or snow depending on its underlying technology. Verify detection performance under degraded-visibility conditions specifically, since that's when the system matters most operationally.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Integration Latency With A-SMGCS/RWSL Matters as Much as Detection Accuracy</h5><span class="expert-tag">Design</span></div>
+                        <p>A sensor can detect a vehicle correctly and still contribute to a near-miss if the data takes too long to propagate through to the A-SMGCS display or RWSL logic; verify end-to-end latency from detection to displayed or actuated response, not just standalone sensor accuracy.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Coverage Overlap at Intersections Should Be Deliberate, Not Assumed</h5><span class="expert-tag">Design</span></div>
+                        <p>Runway crossings and taxiway intersections often sit at the edge of two adjacent sensors' coverage zones; confirm there's deliberate overlap covering the full intersection rather than assuming adjacent sensor footprints meet cleanly, since a coverage gap at exactly the highest-risk point defeats the system's purpose.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Alignment Drift Is Gradual and Easy to Miss Between Scheduled Calibrations</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>Small mounting or aiming drift from wind, thermal cycling, or incidental contact can shift a sensor's detection zone gradually without triggering an obvious fault. Include a target-based alignment check in routine maintenance rather than relying solely on the sensor's own self-reported status.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Treat Detection Data as Safety-Critical for Change Control</h5><span class="expert-tag">Operational</span></div>
+                        <p>Because vehicle detection feeds directly into runway incursion prevention logic, any change to sensor configuration, firmware, or mounting should go through the same change-control rigor as a change to the lighting or signage it protects, not be treated as a routine IT update.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-runway-status-light-rwsl.html" class="related-card"><i class="fa-solid fa-traffic-light"></i><h5 role="heading" aria-level="3">Runway Status Light (RWSL)</h5></a>
+                <a href="component-stop-bar-sensor.html" class="related-card"><i class="fa-solid fa-sensor"></i><h5 role="heading" aria-level="3">Stop Bar Sensor</h5></a>
+                <a href="component-runway-occupancy-sensor.html" class="related-card"><i class="fa-solid fa-sensor"></i><h5 role="heading" aria-level="3">Runway Occupancy Sensor</h5></a>
+                <a href="component-surface-movement-radar.html" class="related-card"><i class="fa-solid fa-radar"></i><h5 role="heading" aria-level="3">Surface Movement Radar</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about vehicle detection sensors: technologies, coverage, outputs, standards and common problems.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a vehicle detection sensor in AGL?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A vehicle detection sensor is a surveillance device that detects and tracks ground vehicles on the airfield surface, such as sweeper trucks, maintenance vehicles, fuel trucks and baggage tugs. It gives real-time presence and movement data to ATC, airport operations centres and runway incursion prevention systems.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Why are dedicated vehicle sensors needed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Aircraft detection systems are tuned for large, predictable targets. Service vehicles are smaller (typically 1 to 5 tonnes), move less predictably and are easy to lose track of during busy ground movements or low visibility. Vehicle sensors give ATC and A-SMGCS the same data for vehicles as for aircraft.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">What detection technologies are used?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>FMCW radar (24 GHz or 77 GHz), infrared (active or passive), inductive loops, video analytics (AI/CCTV), and fusion sensors that combine several technologies for better reliability and false-alarm rejection. Radar is immune to weather and lighting, infrared works in darkness, fog and smoke, and loops are simple but limited to fixed points.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">What is the detection range?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typically 50 to 300 m for radar, 50 to 150 m for infrared, 50 to 100 m for video, and 5 to 20 m for inductive loops. Radar sensors can also measure vehicle speed (typically ±2 km/h) and direction of travel.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">Where are vehicle detection sensors installed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>At runway crossings, taxiway intersections, vehicle access points from landside gates, runway thresholds during maintenance operations and apron areas. They also feed Runway Status Light (RWSL) systems, A-SMGCS, ATC towers and airport operations centres.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How does the sensor connect to other systems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It has a clean, isolated output: typically a dry contact relay, opto-isolated transistor output, Ethernet (Modbus TCP), RS-485 serial or an IP video stream. Output indicates presence, speed and direction and connects to the RWSL processor or A-SMGCS. Response time is typically 150 ms or less for radar.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">What are the typical electrical and environmental ratings?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Power is 24 VDC nominal (18 to 32 VDC) or 120/230 VAC for video units, with 5 to 50 W consumption depending on type. Protection class is IP65/IP67, operating temperature is -30°C to +70°C, and built-in TVS surge protection is rated up to 6 kV.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">Which standards apply to vehicle detection sensors?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are ICAO Annex 14 Vol I, FAA AC 150/5345-46 (covering the REL and THL in-pavement fixtures that RWSL drives), EUROCAE ED-87E (A-SMGCS MASPS) and EUROCAE ED-116 (MOPS for surface movement radar sensor systems). Always verify the current edition.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How can false alarms be reduced?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Radar and IR sensors may detect pedestrians, animals or debris, so advanced filtering and target classification algorithms are needed. Position and sensitivity are calibrated to detect vehicles while ignoring small objects such as birds and debris, and the typical false alarm rate target is no more than 1 per 24 hours with proper calibration.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">What are the common vehicle detection sensor problems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The common issues are false alarms from non-vehicle targets, obscuration of the sensor window or lens by snow, ice, rain, dirt or bird droppings, inductive loop damage from resurfacing or ground movement, poor video analytics performance in low light, alignment drift, and power supply instability.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on Vehicle Detection Sensor selection, installation, or integration for your airfield?</h4><p>Precision AGL Academy provides advice on sensor technology selection, placement, calibration, and integration with RWSL and A‑SMGCS systems.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Vehicle Detection Sensor is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Vehicle%20Detection%20Sensor">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Vehicle%20Detection%20Sensor" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

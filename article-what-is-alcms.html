@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Is ALCMS? Airfield Lighting Control &amp; Monitoring</title>
+    <meta name="description" content="ALCMS is the brain of the airfield lighting system: how it controls, monitors and protects AGL circuits via PLC and SCADA, CCRs and fault detection." />
+    <meta name="keywords" content="ALCMS, Airfield Lighting Control and Monitoring System, AGL SCADA, CCR intensity control, airfield lighting fault detection, PLC control panel AGL, runway lighting redundancy, ICAO RVR intensity control, AGL PLC SCADA" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/article-what-is-alcms.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-what-is-alcms.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-what-is-alcms.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-what-is-alcms.html" />
+    <meta property="og:title" content="What Is ALCMS? Airfield Lighting Control &amp; Monitoring" />
+    <meta property="og:description" content="ALCMS is the brain of the airfield lighting system: how it controls, monitors and protects AGL circuits via PLC and SCADA, CCRs and fault detection." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-04-26" />
+    <meta property="article:modified_time" content="2026-10-27" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="Technology & Innovation" />
+    <meta property="article:tag" content="ALCMS" />
+    <meta property="article:tag" content="AGL SCADA" />
+    <meta property="article:tag" content="CCR Integration" />
+    <meta property="article:tag" content="Airfield Ground Lighting" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-what-is-alcms.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="What Is ALCMS — Airfield Lighting Control and Monitoring System | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="What Is ALCMS? Airfield Lighting Control &amp; Monitoring" />
+    <meta name="twitter:description" content="ALCMS is the brain of the airfield lighting system: how it controls, monitors and protects AGL circuits via PLC and SCADA, CCRs and fault detection." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-what-is-alcms.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 40px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color .3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-cta { padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: all .3s; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--white); }
+        @media(max-width:900px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        .breadcrumb { padding: 110px 40px 0; max-width: 900px; margin: auto; position: relative; z-index: 1; font-size: 13px; }
+        .breadcrumb a { color: var(--text); text-decoration: none; font-weight: 600; letter-spacing: .3px; }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb span.sep { color: var(--text); opacity: .4; margin: 0 8px; }
+        .breadcrumb .current { color: var(--gold); }
+
+        .article-hero { max-width: 900px; margin: auto; padding: 34px 40px 46px; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+        .page-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid rgba(0, 212, 255, 0.25); background: rgba(0, 212, 255, 0.06); border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; }
+        .article-title { font-family: 'Bebas Neue', sans-serif; font-size: 54px; letter-spacing: 1px; line-height: 1.05; margin-bottom: 22px; color: var(--gold); }
+        @media(max-width:768px) { .article-title { font-size: 38px; } }
+        .article-lede { font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 26px; max-width: 720px; }
+        .author-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .author-avatar { width: 48px; height: 48px; border-radius: 10px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-size: 14.5px; font-weight: 700; color: var(--white); }
+        .author-info p { font-size: 12px; color: var(--text); margin-top: 2px; }
+        .article-meta-strip { display: flex; gap: 22px; flex-wrap: wrap; margin-left: auto; font-size: 12.5px; color: var(--text); }
+        .article-meta-strip span { display: flex; align-items: center; gap: 7px; }
+        .article-meta-strip i { color: var(--gold); font-size: 12px; }
+        @media(max-width:600px) { .article-meta-strip { margin-left: 0; } }
+
+        .article-body { max-width: 760px; margin: auto; padding: 50px 40px 20px; position: relative; z-index: 1; }
+        .article-body > p { font-size: 16.5px; line-height: 1.95; color: var(--text); margin-bottom: 24px; }
+        .article-body > p:first-of-type { font-size: 18px; color: var(--white); }
+
+        .art-section { margin: 46px 0 42px; scroll-margin-top: 92px; }
+
+        .toc-block { margin: 8px 0 40px; padding: 26px 28px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 14px; }
+        .toc-block .toc-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .toc-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+        @media(max-width:600px) { .toc-list { grid-template-columns: 1fr; } }
+        .toc-list a { display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text); text-decoration: none; padding: 7px 0; transition: color .2s; }
+        .toc-list a:hover { color: var(--gold); }
+        .toc-list .toc-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 14px; flex-shrink: 0; width: 22px; }
+        .art-section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+        .art-section-num { width: 42px; height: 42px; border-radius: 12px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .art-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: .3px; color: var(--white); line-height: 1.3; }
+        .art-section > p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 16px; }
+        .insight-list { list-style: none; margin: 4px 0 18px; display: flex; flex-direction: column; gap: 11px; }
+        .insight-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.7; color: var(--text); padding: 12px 16px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .insight-list li i { color: var(--gold); font-size: 12px; margin-top: 5px; flex-shrink: 0; }
+        .closing-line { font-size: 15.5px; line-height: 1.85; color: var(--white); padding: 16px 20px; border-left: 3px solid var(--gold); background: rgba(255, 180, 0, 0.04); border-radius: 0 10px 10px 0; font-style: italic; }
+
+        .diagram-block { margin: 50px 0 40px; padding: 32px 28px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 16px; }
+        .diagram-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; text-align: center; }
+        .diagram-block .diagram-sub { font-size: 13.5px; color: var(--text); text-align: center; margin-bottom: 22px; }
+        .diagram-block svg { width: 100%; height: auto; display: block; }
+
+        .conclusion-block { margin: 50px 0 40px; padding: 32px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; }
+        .conclusion-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--gold); margin-bottom: 16px; }
+        .conclusion-block p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 14px; }
+        .conclusion-block p:last-child { margin-bottom: 0; }
+
+        .pull-quote { text-align: center; margin: 50px auto; padding: 40px 30px; max-width: 640px; }
+        .pull-quote p { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 600; line-height: 1.35; color: var(--white); position: relative; }
+        .pull-quote p span { color: var(--gold); }
+        .pull-quote .quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: rgba(255, 180, 0, 0.25); line-height: .5; display: block; margin-bottom: 10px; }
+
+        .signoff { text-align: right; font-size: 14.5px; color: var(--text); font-style: italic; margin: -20px auto 50px; max-width: 760px; padding: 0 40px; }
+        .signoff strong { color: var(--gold); font-style: normal; }
+
+        .topic-tags { max-width: 760px; margin: 0 auto 50px; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .topic-tags span { padding: 7px 16px; background: rgba(0, 212, 255, 0.06); border: 1px solid rgba(0, 212, 255, 0.18); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--cyan); }
+
+        .author-bio { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; }
+        .author-bio-card { display: flex; gap: 20px; padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; align-items: flex-start; }
+        .author-bio-avatar { width: 60px; height: 60px; border-radius: 12px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); flex-shrink: 0; }
+        .author-bio-card h4 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+        .author-bio-card p { font-size: 14px; color: var(--text); line-height: 1.75; }
+        .author-bio-card .abio-links { margin-top: 14px; display: flex; gap: 14px; }
+        .author-bio-card .abio-links a { color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .author-bio-card .abio-links a:hover { gap: 9px; }
+
+        .article-nav-links { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .anav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 8px; border: 1px solid var(--border); color: var(--white); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: all .3s; }
+        .anav-btn:hover { border-color: rgba(255, 180, 0, 0.35); color: var(--gold); transform: translateY(-2px); }
+        .anav-btn.gold { background: var(--gold); border-color: var(--gold); color: #000; }
+        .anav-btn.gold:hover { background: #ffc933; color: #000; }
+
+        footer { padding: 30px 40px; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; position: relative; z-index: 1; }
+        footer p { font-size: 13px; color: var(--text); }
+        footer p strong { color: var(--gold); }
+        .footer-links { display: flex; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 50%; background: var(--gold); border: none; color: #000; font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all .3s; box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25); }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+
+        @media(max-width:600px) {
+            nav { padding: 0 20px; }
+            .breadcrumb { padding: 100px 20px 0; }
+            .article-hero, .article-body, .topic-tags, .author-bio, .article-nav-links, .signoff { padding-left: 20px; padding-right: 20px; }
+            .pull-quote p { font-size: 24px; }
+            .author-bio-card { flex-direction: column; }
+            footer { padding: 20px; flex-direction: column; text-align: center; }
+        }
+
+        .key-takeaway { margin: 8px 0 46px; padding: 26px 28px; display: flex; gap: 18px; align-items: flex-start; background: linear-gradient(135deg, rgba(255, 180, 0, 0.09), rgba(0, 212, 255, 0.04)); border: 1px solid rgba(255, 180, 0, 0.28); border-radius: 14px; }
+        .key-takeaway .kt-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255, 180, 0, 0.12); border: 1px solid rgba(255, 180, 0, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 16px; flex-shrink: 0; }
+        .key-takeaway .kt-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .key-takeaway p { font-size: 16px; line-height: 1.8; color: var(--white); }
+
+        .measure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 18px; }
+        @media(max-width:700px) { .measure-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width:460px) { .measure-grid { grid-template-columns: 1fr; } }
+        .measure-card { padding: 16px 15px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .measure-card i { color: var(--cyan); font-size: 15px; }
+        .measure-card strong { display: block; color: var(--white); font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+        .measure-card span { font-size: 12.5px; color: var(--text); line-height: 1.5; }
+
+        .decision-list { display: flex; flex-direction: column; gap: 12px; margin: 4px 0 18px; }
+        .decision-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .decision-item .d-finding { flex: 0 0 200px; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.4; }
+        .decision-item .d-finding i { color: var(--red); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+        .decision-item.d-neutral .d-finding i { color: var(--gold); }
+        .decision-item .d-arrow { color: var(--gold); flex-shrink: 0; padding-top: 2px; font-size: 13px; }
+        .decision-item .d-action { font-size: 14.5px; color: var(--text); line-height: 1.7; }
+        @media(max-width:640px) {
+            .decision-item { flex-direction: column; gap: 8px; }
+            .decision-item .d-finding { flex: none; }
+            .decision-item .d-arrow { display: none; }
+        }
+
+        .related-block { max-width: 760px; margin: 54px auto 10px; padding: 0 40px; }
+        .related-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 18px; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        @media(max-width:600px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; transition: all .3s; }
+        .related-card:hover { border-color: rgba(255, 180, 0, 0.35); transform: translateY(-2px); }
+        .related-card .rc-title { font-size: 14.5px; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 10px; }
+        .related-card .rc-title i { color: var(--gold); font-size: 13px; }
+        .related-card .rc-sub { font-size: 12.5px; color: var(--text); padding-left: 23px; }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#article",
+      "headline": "What Is Airfield Lighting Control and Monitoring System (ALCMS)?",
+      "description": "ALCMS is the brain of the airfield lighting system: how it controls, monitors and protects AGL circuits via PLC and SCADA, CCRs and fault detection.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/og-image-what-is-alcms.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "inLanguage": "en-IN",
+      "datePublished": "2026-04-26",
+      "dateModified": "2026-10-27",
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-what-is-alcms.html",
+      "articleSection": "Technology & Innovation",
+      "keywords": "ALCMS, Airfield Lighting Control and Monitoring System, AGL SCADA, CCR Intensity Control, Airfield Lighting Fault Detection, PLC Control Panel",
+      "wordCount": 2916,
+      "timeRequired": "PT13M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "url": "https://rahulsharmaagl.in/article-what-is-alcms.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-what-is-alcms.html",
+      "name": "What Is Airfield Lighting Control and Monitoring System (ALCMS)?",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "What Is Airfield Lighting Control and Monitoring System (ALCMS)?",
+          "item": "https://rahulsharmaagl.in/article-what-is-alcms.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#faq",
+      "url": "https://rahulsharmaagl.in/article-what-is-alcms.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-what-is-alcms.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an Airfield Lighting Control and Monitoring System (ALCMS)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ALCMS is the central system used to control airfield lighting circuits, monitor the real-time performance of AGL components, detect faults promptly and support safe aircraft operations at night and in low visibility. It connects the control room with the field lighting infrastructure, so operators can set lighting requirements while receiving continuous status and fault information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is ALCMS critical to airfield operations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Airfield lighting is directly linked to flight safety, and any delay, failure or incorrect intensity can create serious risk during approach, take-off roll and taxiing. ALCMS helps ensure correct intensity matched to visibility, prompt fault detection, reduced dependency on manual switching and faster emergency response. For low-visibility runways, ICAO Annex 14 also expects a monitoring system showing the operational status of the lighting, so confirm the clause and limits in your current edition and national regulation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does ALCMS control light intensity?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ALCMS works with Constant Current Regulators (CCRs), typically providing 3-step or 5-step brightness control, with 5 steps common on precision-approach and low-visibility runways. ALCMS sends the command and the CCR adjusts the current in the series circuit. Steps are selected for visibility and ambient light under the aerodrome's approved procedures."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What faults can an ALCMS detect?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical functions include open-circuit detection, earth-fault and insulation-resistance deterioration alarms, CCR trip, overcurrent and load-deviation alarms, and audio-visual alarms for operators. Individual lamp failure indication needs a system with single-lamp monitoring, because most circuit-level systems report load changes only."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What redundancy and backup logic should an ALCMS have?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A good ALCMS should include a main and standby control system, automatic changeover and fail-safe operation, with local control at each CCR as a fallback if ALCMS fails. It should also include a secondary power supply with switch-over within the times set in ICAO Annex 14, and the standby, changeover, local-control fallback and power switch-over functions should be tested regularly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the key components of an ALCMS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical ALCMS includes operator workstations with an HMI/SCADA interface, PLC-based control panels, a communication network such as fibre or Ethernet, CCR interface panels and field monitoring units that report actual field conditions back to control."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does ALCMS work in simple steps?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The operator selects the lighting requirement based on ATC instruction or visibility, the command is sent through the PLC/SCADA control system, and the CCR changes the series-circuit current. The lights respond, field and equipment status signals return to the control system, and any fault is displayed to the operator with an alarm."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What common issues affect ALCMS reliability and how are they avoided?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common field issues include communication failure between the CCR and the control system, incorrect configuration of intensity steps, false alarms caused by poor earthing, delayed fault indication and lack of redundancy testing. Good practice includes regular health checks, periodic redundancy testing, event-log analysis, operator training, and putting circuits in local/off and locked out at the CCR during maintenance so remote commands cannot energise them."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">What Is ALCMS?</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-satellite-dish"></i> Technology &amp; Innovation · System Control</div>
+        <h1 class="article-title">What is Airfield Lighting Control and Monitoring System (ALCMS)?</h1>
+        <p class="article-lede">Airfield Ground Lighting is not just about installing lights. It is about controlling, monitoring, and ensuring every light performs exactly when required — and that is the job of the Airfield Lighting Control and Monitoring System.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial · AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> April 26, 2026</span>
+                <span><i class="fa-solid fa-rotate"></i> Updated October 27, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>Airfield Ground Lighting is not just about installing lights. It is about controlling, monitoring, and ensuring every light performs exactly when required. This is where the Airfield Lighting Control and Monitoring System (ALCMS) comes in.</p>
+        <p>ALCMS connects the control-room operation with the field lighting infrastructure, allowing operators to set lighting requirements while continuously receiving information about system status and faults. In simple terms, ALCMS is the brain of the entire airfield lighting system.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#what-is-alcms"><span class="toc-num">01</span> What Is ALCMS?</a></li>
+                <li><a href="#why-critical"><span class="toc-num">02</span> Why ALCMS Is Critical</a></li>
+                <li><a href="#main-functions"><span class="toc-num">03</span> Main Functions of ALCMS</a></li>
+                <li><a href="#fault-detection"><span class="toc-num">04</span> Fault Detection &amp; Alarm System</a></li>
+                <li><a href="#redundancy"><span class="toc-num">05</span> Redundancy &amp; Backup Logic</a></li>
+                <li><a href="#key-components"><span class="toc-num">06</span> Key Components of ALCMS</a></li>
+                <li><a href="#simplified-flow"><span class="toc-num">07</span> How ALCMS Works – Simplified Flow</a></li>
+                <li><a href="#field-issues"><span class="toc-num">08</span> Common Field Issues</a></li>
+                <li><a href="#best-practices"><span class="toc-num">09</span> Best Practices for Reliability</a></li>
+                <li><a href="#modern-operations"><span class="toc-num">10</span> ALCMS in Modern Airfield Operations</a></li>
+                <li><a href="#key-takeaways"><span class="toc-num">11</span> Key Takeaways</a></li>
+                <li><a href="#faq"><span class="toc-num">12</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-star"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>ALCMS is the brain of the entire airfield lighting system. It brings operation, monitoring, fault indication, communication, and redundancy together into a single safety-critical system.</p>
+            </div>
+        </div>
+
+        <div class="art-section" id="what-is-alcms">
+            <div class="art-section-head">
+                <div class="art-section-num">01</div>
+                <h2>What Is ALCMS?</h2>
+            </div>
+            <p>ALCMS is the central system used to:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-check"></i> Control airfield lighting circuits</li>
+                <li><i class="fa-solid fa-check"></i> Monitor real-time performance of AGL components</li>
+                <li><i class="fa-solid fa-check"></i> Detect faults promptly</li>
+                <li><i class="fa-solid fa-check"></i> Support safe aircraft operations at night and in low visibility</li>
+            </ul>
+            <p class="closing-line">It connects the control-room operation with the field lighting infrastructure, allowing operators to set lighting requirements while continuously receiving information about system status and faults.</p>
+        </div>
+
+        <div class="art-section" id="why-critical">
+            <div class="art-section-head">
+                <div class="art-section-num">02</div>
+                <h2>Why ALCMS Is Critical</h2>
+            </div>
+            <p>Airfield lighting is directly linked to flight safety. Any delay, failure, or incorrect intensity can create serious risk during landing approach, take-off roll, and taxiing operations. ALCMS helps ensure:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-gauge-high"></i> Correct light intensity matched to visibility (for example RVR), as selected by the operator or ATC procedure</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Prompt fault detection</li>
+                <li><i class="fa-solid fa-hand"></i> Reduced dependency on manual switching</li>
+                <li><i class="fa-solid fa-bolt"></i> Faster response during emergencies</li>
+            </ul>
+            <p class="closing-line">In modern airport operations, the ability to control and monitor AGL systems centrally is extremely important. For runways used in low-visibility operations, ICAO Annex 14 also expects a monitoring system that shows the operational status of the lighting, so that loss of serviceability beyond the permitted limits is known to the operator (confirm the clause and limits in your current edition and national regulation).</p>
+        </div>
+
+        <div class="art-section" id="main-functions">
+            <div class="art-section-head">
+                <div class="art-section-num">03</div>
+                <h2>Main Functions of ALCMS</h2>
+            </div>
+            <div class="decision-list">
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-satellite-dish"></i> Remote Control of Lighting Circuits</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Operators control major airfield lighting systems directly from the control room without field intervention, changing lighting requirements efficiently according to operational conditions.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-sliders"></i> Intensity Control – Step-Wise</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">ALCMS works with Constant Current Regulators (CCR), typically providing 3-step or 5-step brightness control (5 steps is common on precision-approach and low-visibility runways), selected for visibility and ambient light under the aerodrome's approved procedures. The number of steps follows the project specification and the CCR standard used, guided by ICAO and FAA requirements. ALCMS sends the command; the CCR adjusts current in the series circuit.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-chart-line"></i> Real-Time Monitoring</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Continuous monitoring of circuit current, voltage, CCR status, insulation-resistance (earth-fault) alarms and, where individual lamp monitoring is installed, lamp failures helps identify developing issues before they become complete system failures.</div>
+                </div>
+            </div>
+            <p>Remote control typically covers circuits such as the following, along with others like runway centreline and touchdown zone lights, stop bars, PAPI and signs where connected:</p>
+            <div class="measure-grid">
+                <div class="measure-card"><i class="fa-solid fa-road"></i><strong>Runway Edge Lights</strong><span>Primary lateral guidance</span></div>
+                <div class="measure-card"><i class="fa-solid fa-flag-checkered"></i><strong>Threshold Lights</strong><span>Runway threshold identification</span></div>
+                <div class="measure-card"><i class="fa-solid fa-route"></i><strong>Taxiway Lights</strong><span>Ground movement guidance</span></div>
+                <div class="measure-card"><i class="fa-solid fa-plane-arrival"></i><strong>Approach Lighting</strong><span>Guidance before touchdown</span></div>
+            </div>
+        </div>
+
+        <div class="art-section" id="fault-detection">
+            <div class="art-section-head">
+                <div class="art-section-num">04</div>
+                <h2>Fault Detection and Alarm System</h2>
+            </div>
+            <p>A critical function of ALCMS is detecting faults and promptly notifying operators. Typical functions include:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-circle-exclamation"></i> Open-circuit detection</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> Earth-fault and insulation-resistance deterioration alarms</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> CCR trip, overcurrent and load-deviation alarms</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> Individual lamp failure indication, in advanced systems</li>
+                <li><i class="fa-solid fa-volume-high"></i> Audio-visual alarms for operators</li>
+            </ul>
+            <p class="closing-line">Individual lamp indication needs a system with single-lamp monitoring; most circuit-level systems report load changes only. When an abnormal condition occurs, the system provides an indication so the responsible team can investigate and act — reducing the time between fault occurrence and operator awareness.</p>
+        </div>
+
+        <div class="art-section" id="redundancy">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>Redundancy and Backup Logic</h2>
+            </div>
+            <p>A good ALCMS system should include appropriate redundancy and backup arrangements, including:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-copy"></i> Main + standby control system</li>
+                <li><i class="fa-solid fa-right-left"></i> Automatic changeover</li>
+                <li><i class="fa-solid fa-shield-halved"></i> Fail-safe operation, with local control at each CCR as a fallback if ALCMS fails</li>
+                <li><i class="fa-solid fa-shield-halved"></i> Secondary power supply with switch-over within the times set in ICAO Annex 14</li>
+            </ul>
+            <p>The reason is simple: system failure is not an option in aviation. Redundancy ensures that the loss of one control element does not unnecessarily compromise the operation of the airfield lighting system.</p>
+            <p class="closing-line">Regular testing of the standby, changeover, local-control fallback and secondary-power switch-over functions is an important maintenance activity.</p>
+        </div>
+
+        <div class="art-section" id="key-components">
+            <div class="art-section-head">
+                <div class="art-section-num">06</div>
+                <h2>Key Components of ALCMS</h2>
+            </div>
+            <p>An ALCMS typically includes several interconnected elements that together form its communication and control architecture:</p>
+            <div class="measure-grid">
+                <div class="measure-card"><i class="fa-solid fa-desktop"></i><strong>Operator Workstations</strong><span>HMI/SCADA interface for monitoring and control</span></div>
+                <div class="measure-card"><i class="fa-solid fa-microchip"></i><strong>PLC-Based Control Panels</strong><span>Process commands and manage field interaction</span></div>
+                <div class="measure-card"><i class="fa-solid fa-network-wired"></i><strong>Communication Network</strong><span>Fiber/Ethernet connectivity to field systems</span></div>
+                <div class="measure-card"><i class="fa-solid fa-plug-circle-bolt"></i><strong>CCR Interface Panels</strong><span>Link ALCMS to Constant Current Regulators</span></div>
+                <div class="measure-card"><i class="fa-solid fa-tower-broadcast"></i><strong>Field Monitoring Units</strong><span>Report actual field conditions back to control</span></div>
+            </div>
+        </div>
+
+        <div class="art-section" id="simplified-flow">
+            <div class="art-section-head">
+                <div class="art-section-num">07</div>
+                <h2>How ALCMS Works – Simplified Flow</h2>
+            </div>
+            <p>The basic operating sequence can be understood in six steps, forming a continuous control-and-feedback loop between the operator, ALCMS, CCR, and field lighting system:</p>
+            <div class="decision-list">
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-user"></i> 1. Select requirement</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">The operator selects the lighting requirement based on ATC instruction and/or visibility conditions.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-terminal"></i> 2. Command sent</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">The command is processed and transmitted through the PLC/SCADA control system.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-sliders"></i> 3. CCR adjusts current</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">The Constant Current Regulator changes the series-circuit current according to the selected intensity.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-lightbulb"></i> 4. Lights respond</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">The AGL fittings change intensity accordingly, responding to the selected operating level.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-satellite-dish"></i> 5. Feedback returns</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Field and equipment status signals return to the control system.</div>
+                </div>
+                <div class="decision-item d-neutral">
+                    <div class="d-finding"><i class="fa-solid fa-bell"></i> 6. Faults alarmed</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">If a fault occurs, it is promptly displayed to the operator and an alarm is generated.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="diagram-block">
+            <h3>The ALCMS Control-and-Feedback Loop</h3>
+            <p class="diagram-sub">Operator Command → PLC/SCADA → CCR → Field Lights → Feedback &amp; Alarms</p>
+            <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="alcmsArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                    </marker>
+                </defs>
+
+                <rect x="10" y="90" width="120" height="70" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="70" y="117" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#f0f4ff">OPERATOR</text>
+                <text x="70" y="137" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Selects requirement</text>
+
+                <line x1="130" y1="125" x2="160" y2="125" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#alcmsArrow)"/>
+
+                <rect x="165" y="90" width="120" height="70" rx="10" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1.5"/>
+                <text x="225" y="117" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#00d4ff">PLC / SCADA</text>
+                <text x="225" y="137" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Processes command</text>
+
+                <line x1="285" y1="125" x2="315" y2="125" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#alcmsArrow)"/>
+
+                <rect x="320" y="90" width="120" height="70" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="380" y="120" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" fill="#f0f4ff">CCR</text>
+                <text x="380" y="137" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Adjusts current</text>
+
+                <line x1="440" y1="125" x2="470" y2="125" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#alcmsArrow)"/>
+
+                <rect x="475" y="90" width="120" height="70" rx="10" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1.5"/>
+                <text x="535" y="117" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#00d4ff">FIELD LIGHTS</text>
+                <text x="535" y="137" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Respond in field</text>
+
+                <line x1="70" y1="160" x2="70" y2="190" stroke="#FFB400" stroke-width="1.5" opacity="0.5"/>
+                <line x1="535" y1="160" x2="535" y2="190" stroke="#FFB400" stroke-width="1.5" opacity="0.5"/>
+                <line x1="70" y1="190" x2="535" y2="190" stroke="#FFB400" stroke-width="1.5" opacity="0.5"/>
+                <line x1="302" y1="190" x2="302" y2="205" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#alcmsArrow)"/>
+
+                <rect x="185" y="210" width="310" height="42" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="340" y="236" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#FFB400">FEEDBACK, FAULTS &amp; ALARMS</text>
+            </svg>
+        </div>
+
+        <div class="art-section" id="field-issues">
+            <div class="art-section-head">
+                <div class="art-section-num">08</div>
+                <h2>Common Issues Seen in the Field</h2>
+            </div>
+            <p>From practical field experience, several issues can affect ALCMS performance:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Communication failure between CCR and the control system</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Incorrect configuration of intensity steps</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> False alarms caused by poor earthing</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Delay in fault indication due to system lag</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Lack of proper redundancy testing</li>
+            </ul>
+            <p class="closing-line">ALCMS is only as good as its configuration and maintenance. Even a technically advanced control system can become unreliable if communication, configuration, earthing, redundancy, or maintenance practices are not properly managed.</p>
+        </div>
+
+        <div class="art-section" id="best-practices">
+            <div class="art-section-head">
+                <div class="art-section-num">09</div>
+                <h2>Best Practices for ALCMS Reliability</h2>
+            </div>
+            <p>To maintain reliable operation, several practices are important:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-circle-check"></i> Conduct regular system health checks</li>
+                <li><i class="fa-solid fa-circle-check"></i> Perform periodic redundancy testing</li>
+                <li><i class="fa-solid fa-circle-check"></i> Ensure proper integration with CCRs and field circuits</li>
+                <li><i class="fa-solid fa-circle-check"></i> Monitor and analyse event logs</li>
+                <li><i class="fa-solid fa-circle-check"></i> Provide proper training to operators</li>
+                <li><i class="fa-solid fa-circle-check"></i> Put circuits in local/off and locked out at the CCR during maintenance, so remote commands cannot energise them</li>
+            </ul>
+            <p>Event logs are particularly valuable because they provide information about system behaviour and historical faults. Operator training is equally important, because the effectiveness of a control and monitoring system ultimately depends on the people responsible for operating and responding to it.</p>
+        </div>
+
+        <div class="art-section" id="modern-operations">
+            <div class="art-section-head">
+                <div class="art-section-num">10</div>
+                <h2>ALCMS and Modern Airfield Operations</h2>
+            </div>
+            <p>Modern airfield operations require more than simply switching lights ON and OFF. The system must know:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-check"></i> What lighting has been commanded</li>
+                <li><i class="fa-solid fa-check"></i> What intensity has been selected</li>
+                <li><i class="fa-solid fa-check"></i> Whether the equipment is responding correctly</li>
+                <li><i class="fa-solid fa-check"></i> Whether a circuit or fitting has developed a fault</li>
+                <li><i class="fa-solid fa-check"></i> Whether the operator needs to take action</li>
+            </ul>
+            <p class="closing-line">ALCMS provides this centralised control and monitoring capability, particularly under low-visibility conditions where managing the airfield lighting system becomes significantly more difficult without it.</p>
+        </div>
+
+        <div class="art-section" id="key-takeaways">
+            <div class="art-section-head">
+                <div class="art-section-num">11</div>
+                <h2>Key Takeaways</h2>
+            </div>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-circle-check"></i> ALCMS is the central control and monitoring brain of the airfield lighting system, not just a control panel</li>
+                <li><i class="fa-solid fa-circle-check"></i> It works with CCRs to deliver step-wise intensity control, typically 3 or 5 steps, set by the project specification and applicable ICAO/FAA guidance</li>
+                <li><i class="fa-solid fa-circle-check"></i> Real-time monitoring and fault detection identify developing issues before they become complete failures</li>
+                <li><i class="fa-solid fa-circle-check"></i> Redundancy and fail-safe backup logic are essential — system failure is not an option in aviation</li>
+                <li><i class="fa-solid fa-circle-check"></i> Field issues usually trace back to communication, configuration, earthing, or maintenance gaps rather than the technology itself</li>
+                <li><i class="fa-solid fa-circle-check"></i> Reliable ALCMS operation depends as much on event-log analysis and operator training as it does on hardware</li>
+            </ul>
+        </div>
+
+        <div class="conclusion-block">
+            <h3>Conclusion</h3>
+            <p>ALCMS is not just a control panel. It is a safety-critical system that helps ensure the right light, at the right intensity, at the right time.</p>
+            <p>Without effective control and monitoring, managing modern airfield lighting systems becomes significantly more difficult, particularly under low-visibility conditions.</p>
+            <p>ALCMS therefore plays a central role in connecting the operator, CCR, communication network, and field lighting infrastructure. In this article, I share practical insights on how ALCMS works, based on real field and project execution experience.</p>
+        </div>
+
+        <div class="pull-quote">
+            <span class="quote-mark">"</span>
+            <p>AGL provides the visual guidance, CCR controls the current, and <span>ALCMS controls and monitors the complete operation.</span></p>
+        </div>
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">12</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What is an Airfield Lighting Control and Monitoring System (ALCMS)?</summary>
+                    <div class="faq-answer"><p>ALCMS is the central system used to control airfield lighting circuits, monitor the real-time performance of AGL components, detect faults promptly and support safe aircraft operations at night and in low visibility. It connects the control room with the field lighting infrastructure, so operators can set lighting requirements while receiving continuous status and fault information.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why is ALCMS critical to airfield operations?</summary>
+                    <div class="faq-answer"><p>Airfield lighting is directly linked to flight safety, and any delay, failure or incorrect intensity can create serious risk during approach, take-off roll and taxiing. ALCMS helps ensure correct intensity matched to visibility, prompt fault detection, reduced dependency on manual switching and faster emergency response. For low-visibility runways, ICAO Annex 14 also expects a monitoring system showing the operational status of the lighting, so confirm the clause and limits in your current edition and national regulation.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How does ALCMS control light intensity?</summary>
+                    <div class="faq-answer"><p>ALCMS works with Constant Current Regulators (CCRs), typically providing 3-step or 5-step brightness control, with 5 steps common on precision-approach and low-visibility runways. ALCMS sends the command and the CCR adjusts the current in the series circuit. Steps are selected for visibility and ambient light under the aerodrome's approved procedures.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What faults can an ALCMS detect?</summary>
+                    <div class="faq-answer"><p>Typical functions include open-circuit detection, earth-fault and insulation-resistance deterioration alarms, CCR trip, overcurrent and load-deviation alarms, and audio-visual alarms for operators. Individual lamp failure indication needs a system with single-lamp monitoring, because most circuit-level systems report load changes only.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What redundancy and backup logic should an ALCMS have?</summary>
+                    <div class="faq-answer"><p>A good ALCMS should include a main and standby control system, automatic changeover and fail-safe operation, with local control at each CCR as a fallback if ALCMS fails. It should also include a secondary power supply with switch-over within the times set in ICAO Annex 14, and the standby, changeover, local-control fallback and power switch-over functions should be tested regularly.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What are the key components of an ALCMS?</summary>
+                    <div class="faq-answer"><p>A typical ALCMS includes operator workstations with an HMI/SCADA interface, PLC-based control panels, a communication network such as fibre or Ethernet, CCR interface panels and field monitoring units that report actual field conditions back to control.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How does ALCMS work in simple steps?</summary>
+                    <div class="faq-answer"><p>The operator selects the lighting requirement based on ATC instruction or visibility, the command is sent through the PLC/SCADA control system, and the CCR changes the series-circuit current. The lights respond, field and equipment status signals return to the control system, and any fault is displayed to the operator with an alarm.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What common issues affect ALCMS reliability and how are they avoided?</summary>
+                    <div class="faq-answer"><p>Common field issues include communication failure between the CCR and the control system, incorrect configuration of intensity steps, false alarms caused by poor earthing, delayed fault indication and lack of redundancy testing. Good practice includes regular health checks, periodic redundancy testing, event-log analysis, operator training, and putting circuits in local/off and locked out at the CCR during maintenance so remote commands cannot energise them.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong></p>
+
+    <div class="topic-tags">
+        <span>ALCMS</span>
+        <span>AGL SCADA</span>
+        <span>PLC Control</span>
+        <span>CCR Integration</span>
+        <span>Fault Monitoring</span>
+        <span>Redundancy</span>
+        <span>Airfield Ground Lighting</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial | AGL Photometry Specialist | Airfield Ground Lighting (AGL) | ICAO &amp; FAA Compliance | Project Execution. Writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More AGL Technology</h3>
+        <div class="related-grid">
+            <a href="article-how-ccr-works.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-sliders"></i> How CCR Works</div>
+                <div class="rc-sub">The regulator ALCMS commands for intensity control</div>
+            </a>
+            <a href="article-isolating-transformers-backbone.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-plug-circle-bolt"></i> Isolating Transformers</div>
+                <div class="rc-sub">The backbone of the AGL series circuit</div>
+            </a>
+            <a href="troubleshooting-atlas.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-stethoscope"></i> AGL Troubleshooting Atlas</div>
+                <div class="rc-sub">Diagnose lighting failures by symptom</div>
+            </a>
+            <a href="component-library.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-layer-group"></i> AGL Component Library</div>
+                <div class="rc-sub">Understand the components behind ALCMS</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="article-how-ccr-works.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> Previous: How CCR Works</a>
+        <a href="article-led-revolution-in-agl.html" class="anav-btn gold">Next: LED Revolution in AGL <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> These pages give general, simplified descriptions of AGL systems, components, layouts, colours and control for learning. Layouts, spacings, dimensions, circuit arrangements, schematic diagrams and examples are illustrative and not to scale. They are not designs, drawings, specifications, selection or sizing guidance or approved procedures. The aerodrome&rsquo;s approved design, the contract specification, the manufacturer&rsquo;s documents and the competent regulator prevail. Nothing here authorises the installation, modification, energisation, adjustment or return to service of any lighting, marking, sign or control system. Describing something as typical, preferred or compliant refers to the teaching context and is not a determination about any aerodrome.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Images, diagrams and credits.</strong> Photographs on this page carry a credit line in their caption naming the source and, where stated, the licence (for example U.S. Government public-domain works or openly licensed images). They illustrate a type of equipment or situation, may not show the exact item described, imply no endorsement by or affiliation with any person, organisation or manufacturer shown, and remain subject to their owners&rsquo; rights. Diagrams are original schematic illustrations, are not to scale and are not engineering drawings. To request a correction, credit or removal, write to the contact address below.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behaviour: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

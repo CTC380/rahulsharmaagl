@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yellow Guard Light Photometry at Thoothukudi Airport</title>
+    <meta name="description" content="Field report from Thoothukudi Airport on AGL Guard Light photometry, from equipment setup to measurement, and why &#x27;ON&#x27; does not mean &#x27;performing correctly&#x27;." />
+    <meta name="keywords" content="AGL Guard Light, Thoothukudi Airport, AGL photometry field experience, airfield ground lighting testing, guard light photometry, AGL commissioning, ICAO Annex 14, AGL India" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/article-behind-the-yellow-light.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-behind-the-yellow-light.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-behind-the-yellow-light.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-behind-the-yellow-light.html" />
+    <meta property="og:title" content="Yellow Guard Light Photometry at Thoothukudi Airport" />
+    <meta property="og:description" content="Field report from Thoothukudi Airport on AGL Guard Light photometry, from equipment setup to measurement, and why &#x27;ON&#x27; does not mean &#x27;performing correctly&#x27;." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-08-01" />
+    <meta property="article:modified_time" content="2026-10-27" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="Field Experience" />
+    <meta property="article:tag" content="AGL Photometry" />
+    <meta property="article:tag" content="Guard Light" />
+    <meta property="article:tag" content="Field Experience" />
+    <meta property="article:tag" content="Airfield Safety" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-behind-the-yellow-light.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Behind the Yellow Light — AGL Guard Light Photometry at Thoothukudi Airport | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yellow Guard Light Photometry at Thoothukudi Airport" />
+    <meta name="twitter:description" content="Field report from Thoothukudi Airport on AGL Guard Light photometry, from equipment setup to measurement, and why &#x27;ON&#x27; does not mean &#x27;performing correctly&#x27;." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-behind-the-yellow-light.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            font-size: 13px;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span.sep {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        .article-hero {
+            max-width: 900px;
+            margin: auto;
+            padding: 34px 40px 46px;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 24px;
+        }
+        .article-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 50px;
+            letter-spacing: 1px;
+            line-height: 1.08;
+            margin-bottom: 22px;
+            color: var(--gold);
+        }
+        @media(max-width:768px) {
+            .article-title {
+                font-size: 34px;
+            }
+        }
+        .article-lede {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 26px;
+            max-width: 720px;
+        }
+        .author-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .author-info h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .author-info p {
+            font-size: 12px;
+            color: var(--text);
+            margin-top: 2px;
+        }
+        .article-meta-strip {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            margin-left: auto;
+            font-size: 12.5px;
+            color: var(--text);
+        }
+        .article-meta-strip span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .article-meta-strip i {
+            color: var(--gold);
+            font-size: 12px;
+        }
+        @media(max-width:600px) {
+            .article-meta-strip {
+                margin-left: 0;
+            }
+        }
+
+        .article-body {
+            max-width: 760px;
+            margin: auto;
+            padding: 50px 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .article-body > p {
+            font-size: 16.5px;
+            line-height: 1.95;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .article-body > p:first-of-type {
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .art-section {
+            margin: 46px 0 42px;
+            scroll-margin-top: 92px;
+        }
+
+        /* Table of Contents */
+        .toc-block {
+            margin: 8px 0 40px;
+            padding: 26px 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .toc-block .toc-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 24px;
+        }
+        @media(max-width:600px) {
+            .toc-list { grid-template-columns: 1fr; }
+        }
+        .toc-list a {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 7px 0;
+            transition: color .2s;
+        }
+        .toc-list a:hover {
+            color: var(--gold);
+        }
+        .toc-list .toc-num {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--gold);
+            font-size: 14px;
+            flex-shrink: 0;
+            width: 22px;
+        }
+        .art-section-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .art-section-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .art-section h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        .art-section > p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        .insight-list {
+            list-style: none;
+            margin: 4px 0 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        .insight-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text);
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .insight-list li i {
+            color: var(--gold);
+            font-size: 12px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .closing-line {
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: var(--white);
+            padding: 16px 20px;
+            border-left: 3px solid var(--gold);
+            background: rgba(255, 180, 0, 0.04);
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+        }
+
+        /* Step list (sequential process) */
+        .step-list {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+            margin: 4px 0 18px;
+        }
+        .step-item {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .step-item .step-num {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .step-item .step-text {
+            font-size: 14.5px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* Chip grid (field conditions / disciplines) */
+        .chip-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 4px 0 18px;
+        }
+        .chip-grid span {
+            padding: 9px 16px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .conclusion-block {
+            margin: 50px 0 40px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .conclusion-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .conclusion-block p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .conclusion-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pull-quote {
+            text-align: center;
+            margin: 50px auto;
+            padding: 40px 30px;
+            max-width: 640px;
+        }
+        .pull-quote p {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: var(--white);
+            position: relative;
+        }
+        .pull-quote p span {
+            color: var(--gold);
+        }
+        .pull-quote .quote-mark {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            color: rgba(255, 180, 0, 0.25);
+            line-height: .5;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .signoff-block {
+            text-align: center;
+            margin: 0 auto 50px;
+            max-width: 760px;
+            padding: 0 40px;
+        }
+        .signoff-block .sb-line {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.9;
+        }
+        .signoff-block .sb-emoji {
+            font-size: 22px;
+            margin-top: 10px;
+        }
+
+        .signoff {
+            text-align: right;
+            font-size: 14.5px;
+            color: var(--text);
+            font-style: italic;
+            margin: -20px auto 50px;
+            max-width: 760px;
+            padding: 0 40px;
+        }
+        .signoff strong {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .topic-tags {
+            max-width: 760px;
+            margin: 0 auto 50px;
+            padding: 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .topic-tags span {
+            padding: 7px 16px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .author-bio {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+        .author-bio-card {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            align-items: flex-start;
+        }
+        .author-bio-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .author-bio-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .author-bio-card p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .author-bio-card .abio-links {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+        .author-bio-card .abio-links a {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .author-bio-card .abio-links a:hover {
+            gap: 9px;
+        }
+
+        .article-nav-links {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .anav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: all .3s;
+        }
+        .anav-btn:hover {
+            border-color: rgba(255, 180, 0, 0.35);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .anav-btn.gold {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #000;
+        }
+        .anav-btn.gold:hover {
+            background: #ffc933;
+            color: #000;
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        @media(max-width:600px) {
+            nav {
+                padding: 0 20px;
+            }
+            .breadcrumb {
+                padding: 100px 20px 0;
+            }
+            .article-hero,
+            .article-body,
+            .topic-tags,
+            .author-bio,
+            .article-nav-links,
+            .signoff,
+            .signoff-block {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .pull-quote p {
+                font-size: 22px;
+            }
+            .author-bio-card {
+                flex-direction: column;
+            }
+            footer {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Key Takeaway */
+        .key-takeaway {
+            margin: 8px 0 46px;
+            padding: 26px 28px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.09), rgba(0, 212, 255, 0.04));
+            border: 1px solid rgba(255, 180, 0, 0.28);
+            border-radius: 14px;
+        }
+        .key-takeaway .kt-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.12);
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .key-takeaway .kt-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .key-takeaway p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--white);
+        }
+
+        /* Related articles */
+        .related-block {
+            max-width: 760px;
+            margin: 54px auto 10px;
+            padding: 0 40px;
+        }
+        .related-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        @media(max-width:600px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.35);
+            transform: translateY(-2px);
+        }
+        .related-card .rc-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .related-card .rc-title i {
+            color: var(--gold);
+            font-size: 13px;
+        }
+        .related-card .rc-sub {
+            font-size: 12.5px;
+            color: var(--text);
+            padding-left: 23px;
+        }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | Testing & Commissioning | ICAO & FAA Compliance",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#article",
+      "headline": "Behind the Yellow Light: Guard Light Photometry at Thoothukudi",
+      "description": "Field report from Thoothukudi Airport on AGL Guard Light photometry, from equipment setup to measurement, and why 'ON' does not mean 'performing correctly'.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "datePublished": "2026-08-01",
+      "dateModified": "2026-10-27",
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html",
+      "articleSection": "Field Experience",
+      "keywords": "AGL Guard Light, Thoothukudi Airport, AGL Photometry, Field Experience, ICAO Annex 14",
+      "wordCount": 2716,
+      "timeRequired": "PT12M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "inLanguage": "en-IN",
+      "url": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html",
+      "name": "Behind the Yellow Light: Guard Light Photometry at Thoothukudi",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Behind the Yellow Light",
+          "item": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#faq",
+      "url": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-behind-the-yellow-light.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a runway guard light?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The article describes it as a component of the airfield visual guidance system that warns pilots and vehicle drivers on a taxiway that they are approaching a runway-holding position and an active runway. Annex 14 calls for runway guard lights at taxiway/runway intersections under defined RVR and traffic-density conditions. The unit in this field assignment is a yellow assembly with two light units on a common structure that flash alternately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a light that switches ON meet the requirements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A fitting being electrically ON does not confirm it is performing within the required technical limits. Its actual performance can depend on optical condition, light source performance, electrical characteristics, mechanical alignment, lens or optical system condition, environmental exposure, and age and maintenance condition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does AGL photometry measure on a guard light?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Photometry is the measurement and evaluation of the light output and distribution of a fixture. For a guard light this can involve light intensity, light distribution, beam characteristics, colour performance (yellow chromaticity limits), flash characteristics (rate and alternation) and alignment. The exact parameters and acceptance criteria depend on the type of fitting, the applicable technical specification and the regulatory requirements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is test setup so important in photometry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Even a small error in setup can influence the reliability of the measurement. The equipment, light source and measuring instrument must be correctly positioned with the right relationship and geometry. Typical considerations include a measuring distance large enough for inverse-square-law behaviour, calibrated and traceable instruments, correct supply conditions (current and flash timing) and control of stray light."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do field conditions differ from laboratory conditions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Field work takes place in a real airport environment, which may involve changing ambient conditions, operational requirements, limited working windows, vehicle movement, communication requirements and strict access and safety procedures. An AGL professional must work within these conditions while keeping the technical work accurate and reliable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What steps make up a photometry assignment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The article lists ten: identifying the equipment under test, inspecting the fitting and its condition, preparing the test area, setting up the measurement equipment, establishing alignment and geometry, carrying out the measurements, recording the data, analysing the results, comparing them with the applicable requirements and preparing the technical documentation. The final report is only as reliable as the process that produced the data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is photometry more useful than a visual inspection?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A proper technical evaluation gives much more information than a simple visual inspection. Photometry converts the real-world performance of a lighting fixture into measurable technical data, which is how it shows whether a light is performing correctly rather than just illuminating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is this article an independent test report?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a personal account of the author's field experience with guard lights at Thoothukudi Airport, written to show how standards, equipment setup, measurement and analysis connect in practice. It does not state test results or acceptance criteria for any specific light."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">Behind the Yellow Light</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-road-barrier"></i> Field Experience · Thoothukudi Airport</div>
+        <h1 class="article-title">Behind the Yellow Light: A Field Experience with AGL Guard Light Photometry at Thoothukudi Airport</h1>
+        <p class="article-lede">For passengers, airport lighting is just a series of lights around the airfield. For an AGL professional, every light represents a specific engineering function, technical requirement, and responsibility.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial · AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> August 1, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>An airport is a complex environment where every system has a specific purpose. From the runway surface to the Airfield Ground Lighting system, each component contributes to safe and efficient airport operations.</p>
+        <p>Recently, I had the opportunity to visit <strong>Thoothukudi Airport, Tamil Nadu</strong>, for field work related to AGL Guard Lights and photometry-related testing activities — another valuable opportunity to work directly with airport lighting equipment and observe how technical requirements are applied in a real airport environment.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#understanding-guard-light"><span class="toc-num">01</span> Understanding the Guard Light</a></li>
+                <li><a href="#why-photometry-matters"><span class="toc-num">02</span> Why AGL Photometry Matters</a></li>
+                <li><a href="#setup-to-measurement"><span class="toc-num">03</span> From Equipment Setup to Measurement</a></li>
+                <li><a href="#real-airport-environment"><span class="toc-num">04</span> Working in the Real Airport Environment</a></li>
+                <li><a href="#importance-of-precision"><span class="toc-num">05</span> The Importance of Precision</a></li>
+                <li><a href="#on-vs-performing"><span class="toc-num">06</span> "ON" vs "Performing Correctly"</a></li>
+                <li><a href="#standards-meet-reality"><span class="toc-num">07</span> Where Standards Meet Reality</a></li>
+                <li><a href="#thoothukudi-experience"><span class="toc-num">08</span> My Experience at Thoothukudi Airport</a></li>
+                <li><a href="#engineering-behind"><span class="toc-num">09</span> The Engineering Behind Every Airport Light</a></li>
+                <li><a href="#final-thoughts"><span class="toc-num">10</span> Final Thoughts</a></li>
+                <li><a href="#faq"><span class="toc-num">11</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-star"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>A Guard Light being electrically ON does not confirm it is performing within required limits. Photometry converts its real-world performance into measurable technical data — and getting there in the field takes discipline, not just an instrument.</p>
+            </div>
+        </div>
+
+        <div class="art-section" id="understanding-guard-light">
+            <div class="art-section-head">
+                <div class="art-section-num">01</div>
+                <h2>Understanding the Guard Light</h2>
+            </div>
+            <p>The Guard Light is an important component of the airfield visual guidance system. Its purpose is to warn pilots and vehicle drivers on a taxiway that they are approaching a runway-holding position and an active runway. Annex 14 calls for runway guard lights at taxiway/runway intersections under defined RVR and traffic-density conditions.</p>
+            <p>The Guard Light in this field assignment consists of a distinctive yellow assembly with two light units mounted on a common structure, which flash alternately, designed to provide a highly visible indication to pilots and airport operational personnel.</p>
+            <p class="closing-line">Like every other AGL component, the performance of a Guard Light is not determined simply by whether the light turns ON. A light can be electrically operational and still require technical evaluation of its actual performance — this is where photometry becomes important.</p>
+        </div>
+
+        <div class="art-section" id="why-photometry-matters">
+            <div class="art-section-head">
+                <div class="art-section-num">02</div>
+                <h2>Why AGL Photometry Matters</h2>
+            </div>
+            <p>Photometry is an essential part of evaluating the performance of airfield lighting equipment — the measurement and evaluation of the light output and distribution produced by a lighting fixture. For AGL systems, this can involve the evaluation of several parameters:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-bolt"></i> Light intensity</li>
+                <li><i class="fa-solid fa-arrows-left-right"></i> Light distribution</li>
+                <li><i class="fa-solid fa-compass"></i> Beam characteristics</li>
+                <li><i class="fa-solid fa-palette"></i> Colour performance (yellow chromaticity limits)</li>
+                <li><i class="fa-solid fa-bolt"></i> Flash characteristics (rate and alternation)</li>
+                <li><i class="fa-solid fa-location-arrow"></i> Alignment</li>
+                <li><i class="fa-solid fa-chart-line"></i> Overall photometric performance</li>
+            </ul>
+            <p class="closing-line">The exact test parameters and acceptance criteria depend on the type of fitting, the applicable technical specification, and the relevant regulatory requirements. Photometry is never simply a matter of placing a measuring instrument in front of a light and recording a value — the complete testing process requires a controlled and technically correct approach.</p>
+        </div>
+
+        <div class="art-section" id="setup-to-measurement">
+            <div class="art-section-head">
+                <div class="art-section-num">03</div>
+                <h2>From Equipment Setup to Measurement</h2>
+            </div>
+            <p>One of the most important aspects of any photometry assignment is the test setup. Before measurements begin, the equipment must be correctly positioned, the light source and measurement equipment must have the correct relationship with each other, and alignment and test geometry must be properly maintained. Even a small error in the setup can influence the reliability of the measurement. Typical considerations include a measuring distance large enough for inverse-square-law behaviour, calibrated and traceable instruments, correct supply conditions (current and flash timing), and control of stray light.</p>
+            <p>This is why practical experience is extremely important in AGL photometry. The process requires an understanding of:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-check"></i> The lighting fixture being tested</li>
+                <li><i class="fa-solid fa-check"></i> The purpose of the measurement</li>
+                <li><i class="fa-solid fa-check"></i> The required test arrangement</li>
+                <li><i class="fa-solid fa-check"></i> The measurement conditions</li>
+                <li><i class="fa-solid fa-check"></i> The expected performance</li>
+                <li><i class="fa-solid fa-check"></i> The correct interpretation of results</li>
+            </ul>
+            <p class="closing-line">This is where theoretical knowledge and field experience come together.</p>
+        </div>
+
+        <div class="art-section" id="real-airport-environment">
+            <div class="art-section-head">
+                <div class="art-section-num">04</div>
+                <h2>Working in the Real Airport Environment</h2>
+            </div>
+            <p>One of the most valuable aspects of field testing is that the work takes place in a real airport environment, with airport infrastructure in the background. Field conditions are different from laboratory conditions — the working environment may include:</p>
+            <div class="chip-grid">
+                <span>Changing ambient conditions</span>
+                <span>Operational requirements</span>
+                <span>Limited working windows</span>
+                <span>Vehicle movement</span>
+                <span>Communication requirements</span>
+                <span>Strict access and safety procedures</span>
+            </div>
+            <p class="closing-line">An AGL professional must be able to work within these conditions while maintaining the accuracy and reliability of the technical work. A person may understand the theory of photometry, but real understanding develops when that knowledge is applied to actual airport equipment.</p>
+        </div>
+
+        <div class="art-section" id="importance-of-precision">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>The Importance of Precision</h2>
+            </div>
+            <p>A photometry assignment involves a sequence of activities, and each stage can influence the final result. The final report is only as reliable as the process used to generate the data:</p>
+            <div class="step-list">
+                <div class="step-item"><div class="step-num">01</div><div class="step-text">Identifying the equipment under test</div></div>
+                <div class="step-item"><div class="step-num">02</div><div class="step-text">Inspecting the fitting and its condition</div></div>
+                <div class="step-item"><div class="step-num">03</div><div class="step-text">Preparing the test area</div></div>
+                <div class="step-item"><div class="step-num">04</div><div class="step-text">Setting up the measurement equipment</div></div>
+                <div class="step-item"><div class="step-num">05</div><div class="step-text">Establishing the correct alignment and geometry</div></div>
+                <div class="step-item"><div class="step-num">06</div><div class="step-text">Carrying out the required measurements</div></div>
+                <div class="step-item"><div class="step-num">07</div><div class="step-text">Recording the measured data</div></div>
+                <div class="step-item"><div class="step-num">08</div><div class="step-text">Analysing the results</div></div>
+                <div class="step-item"><div class="step-num">09</div><div class="step-text">Comparing the results with the applicable requirements</div></div>
+                <div class="step-item"><div class="step-num">10</div><div class="step-text">Preparing the technical documentation</div></div>
+            </div>
+            <p class="closing-line">Every step has a purpose. This is why accurate testing requires discipline and attention to detail.</p>
+        </div>
+
+        <div class="art-section" id="on-vs-performing">
+            <div class="art-section-head">
+                <div class="art-section-num">06</div>
+                <h2>The Difference Between "ON" and "Performing Correctly"</h2>
+            </div>
+            <p>One of the common misunderstandings about airport lighting is that a light is considered satisfactory simply because it illuminates. The fact that a fitting turns ON does not automatically confirm it is performing within the required technical limits. The actual performance of an AGL fitting can depend on several factors:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-gears"></i> Optical condition</li>
+                <li><i class="fa-solid fa-gears"></i> Light source performance</li>
+                <li><i class="fa-solid fa-gears"></i> Electrical characteristics</li>
+                <li><i class="fa-solid fa-gears"></i> Mechanical alignment</li>
+                <li><i class="fa-solid fa-gears"></i> Lens or optical system condition</li>
+                <li><i class="fa-solid fa-gears"></i> Environmental exposure</li>
+                <li><i class="fa-solid fa-gears"></i> Age and maintenance condition</li>
+            </ul>
+            <p class="closing-line">A proper technical evaluation provides much more information than a simple visual inspection. This is the value of photometry — it helps convert the performance of a lighting system into measurable technical data.</p>
+        </div>
+
+        <div class="art-section" id="standards-meet-reality">
+            <div class="art-section-head">
+                <div class="art-section-num">07</div>
+                <h2>Field Experience: Where Standards Meet Reality</h2>
+            </div>
+            <p>AGL professionals regularly work with standards, specifications, drawings, and technical documents that define the requirements airport lighting systems must meet. The real challenge is applying those requirements correctly in the field. A field assignment creates a direct connection:</p>
+            <p class="closing-line">Standard → Equipment → Test Setup → Measurement → Analysis → Compliance. Theoretical knowledge helps us understand what should be achieved. Field testing helps us determine what is actually being achieved. Both are essential.</p>
+        </div>
+
+        <div class="art-section" id="thoothukudi-experience">
+            <div class="art-section-head">
+                <div class="art-section-num">08</div>
+                <h2>My Experience at Thoothukudi Airport</h2>
+            </div>
+            <p>For me, every airport assignment is an opportunity to learn. No two field assignments are exactly the same — the airport environment, equipment condition, working conditions, and practical challenges can vary from one location to another. Working with Guard Lights at Thoothukudi Airport provided another opportunity to connect technical knowledge with practical field experience.</p>
+            <p class="closing-line">It is one thing to study photometry from a document. It is another thing to stand beside an actual airport lighting system, prepare the equipment, carry out the work, and analyse the performance. That practical experience builds a deeper understanding.</p>
+        </div>
+
+        <div class="art-section" id="engineering-behind">
+            <div class="art-section-head">
+                <div class="art-section-num">09</div>
+                <h2>The Engineering Behind Every Airport Light</h2>
+            </div>
+            <p>Most people travelling through an airport never think about the technical work behind the airfield lighting system. They see the runway, the taxiway, the lights. But behind every functioning AGL system, there is a combination of:</p>
+            <div class="chip-grid">
+                <span>Engineering</span>
+                <span>Design</span>
+                <span>Manufacturing</span>
+                <span>Installation</span>
+                <span>Testing</span>
+                <span>Maintenance</span>
+                <span>Inspection</span>
+                <span>Documentation</span>
+            </div>
+            <p class="closing-line">Photometry is one part of this larger system, but it is an important part. Reliable airport lighting requires confidence that the equipment is performing as intended — and that confidence comes from proper engineering and proper verification.</p>
+        </div>
+
+        <div class="art-section" id="final-thoughts">
+            <div class="art-section-head">
+                <div class="art-section-num">10</div>
+                <h2>Final Thoughts</h2>
+            </div>
+            <p>My visit to Thoothukudi Airport was another valuable field experience in the continuing journey of Airfield Ground Lighting engineering. The Guard Light may appear to be a relatively small component within the airport environment, but its function is part of a much larger safety-critical visual guidance system.</p>
+            <p class="closing-line">From standards to field measurements, from equipment setup to technical analysis, every step matters. Continuous learning comes from combining technical knowledge with real field experience.</p>
+        </div>
+
+        <div class="conclusion-block">
+            <h3>The Lesson</h3>
+            <p>In AGL, precision is not just a technical requirement. It is a responsibility.</p>
+        </div>
+
+        <div class="signoff-block">
+            <p class="sb-line">One airport. One assignment.<br>One more opportunity to learn and contribute to the world of Airfield Ground Lighting.</p>
+            <div class="sb-emoji">🔦✈️</div>
+        </div>
+    
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">11</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What is a runway guard light?</summary>
+                    <div class="faq-answer"><p>The article describes it as a component of the airfield visual guidance system that warns pilots and vehicle drivers on a taxiway that they are approaching a runway-holding position and an active runway. Annex 14 calls for runway guard lights at taxiway/runway intersections under defined RVR and traffic-density conditions. The unit in this field assignment is a yellow assembly with two light units on a common structure that flash alternately.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Does a light that switches ON meet the requirements?</summary>
+                    <div class="faq-answer"><p>No. A fitting being electrically ON does not confirm it is performing within the required technical limits. Its actual performance can depend on optical condition, light source performance, electrical characteristics, mechanical alignment, lens or optical system condition, environmental exposure, and age and maintenance condition.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does AGL photometry measure on a guard light?</summary>
+                    <div class="faq-answer"><p>Photometry is the measurement and evaluation of the light output and distribution of a fixture. For a guard light this can involve light intensity, light distribution, beam characteristics, colour performance (yellow chromaticity limits), flash characteristics (rate and alternation) and alignment. The exact parameters and acceptance criteria depend on the type of fitting, the applicable technical specification and the regulatory requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why is test setup so important in photometry?</summary>
+                    <div class="faq-answer"><p>Even a small error in setup can influence the reliability of the measurement. The equipment, light source and measuring instrument must be correctly positioned with the right relationship and geometry. Typical considerations include a measuring distance large enough for inverse-square-law behaviour, calibrated and traceable instruments, correct supply conditions (current and flash timing) and control of stray light.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How do field conditions differ from laboratory conditions?</summary>
+                    <div class="faq-answer"><p>Field work takes place in a real airport environment, which may involve changing ambient conditions, operational requirements, limited working windows, vehicle movement, communication requirements and strict access and safety procedures. An AGL professional must work within these conditions while keeping the technical work accurate and reliable.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What steps make up a photometry assignment?</summary>
+                    <div class="faq-answer"><p>The article lists ten: identifying the equipment under test, inspecting the fitting and its condition, preparing the test area, setting up the measurement equipment, establishing alignment and geometry, carrying out the measurements, recording the data, analysing the results, comparing them with the applicable requirements and preparing the technical documentation. The final report is only as reliable as the process that produced the data.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why is photometry more useful than a visual inspection?</summary>
+                    <div class="faq-answer"><p>A proper technical evaluation gives much more information than a simple visual inspection. Photometry converts the real-world performance of a lighting fixture into measurable technical data, which is how it shows whether a light is performing correctly rather than just illuminating.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is this article an independent test report?</summary>
+                    <div class="faq-answer"><p>No. It is a personal account of the author's field experience with guard lights at Thoothukudi Airport, written to show how standards, equipment setup, measurement and analysis connect in practice. It does not state test results or acceptance criteria for any specific light.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong>, AGL Specialist</p>
+
+    <div class="topic-tags">
+        <span>AGL Photometry</span>
+        <span>Guard Light</span>
+        <span>Field Experience</span>
+        <span>Thoothukudi Airport</span>
+        <span>Airfield Safety</span>
+        <span>Testing &amp; Commissioning</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>AGL Photometry Specialist | Airfield Ground Lighting | Testing &amp; Commissioning | ICAO &amp; FAA Compliance. Manager – Technical &amp; Commercial, writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More Field Experience &amp; Photometry</h3>
+        <div class="related-grid">
+            <a href="article-visual-inspection-vs-photometric-testing.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-magnifying-glass"></i> Visual Inspection vs Photometric Testing</div>
+                <div class="rc-sub">Why appearance is not proof of performance</div>
+            </a>
+            <a href="article-why-agl-photometry-is-important.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-lightbulb"></i> Why AGL Photometry Is Important</div>
+                <div class="rc-sub">A definitive photometry reference</div>
+            </a>
+            <a href="article-4cs-of-agl-photometry.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-palette"></i> The 4Cs of AGL Photometry</div>
+                <div class="rc-sub">Colour, Candela, Coverage, Configuration</div>
+            </a>
+            <a href="article-common-agl-installation-mistakes.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-triangle-exclamation"></i> Common AGL Installation Mistakes</div>
+                <div class="rc-sub">Real field insights</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="technical-articles.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> All Technical Articles</a>
+        <a href="knowledge-hub.html" class="anav-btn gold">Explore Knowledge Hub <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Photometric content on these pages is educational. Measurement methods, grids, spacings, equipment, uniformity and tolerance figures, lux and candela values and worked examples are generic and indicative. They are not a test procedure, calibration method or acceptance criteria for any fixture or aerodrome. A measurement made by following these pages is not a photometric certificate, calibration, type approval, flight inspection or finding of compliance with any standard. Results depend on calibrated, traceable instruments, the test set-up and the applicable specification, and interpretation and acceptance remain with the competent, authorised person, the aerodrome operator and the regulator. Verify required values in the current official standard or the approved design.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Diagrams.</strong> Diagrams on this page are original schematic illustrations, are not to scale and are not engineering drawings. Do not use them to work on, connect, set or modify equipment.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

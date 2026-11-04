@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Taxiway Lighting Layout Generator | Precision AGL Academy</title>
+<meta name="description" content="Taxiway lighting layout for ICAO and FAA: plan-view blue edge and green centreline lights, fixture coordinates, quantity schedule and SVG/PNG/CSV export."/>
+<meta name="author" content="Precision AGL Academy"/>
+<link rel="canonical" href="https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="theme-color" content="#060d1a"/>
+<link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html"/>
+<link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:title" content="Taxiway Lighting Layout Generator | Precision AGL Academy"/>
+<meta name="twitter:description" content="Taxiway lighting layout for ICAO and FAA: plan-view blue edge and green centreline lights, fixture coordinates, quantity schedule and SVG/PNG/CSV export."/>
+<meta name="keywords" content="Taxiway Lighting Layout Generator, Taxiway Lighting Layout Generator online, Taxiway Lighting Layout Generator calculation, taxiway lighting design, taxiway edge lights, taxiway centreline lights, AGL calculator, airfield ground lighting calculator, airfield lighting design calculations, free online AGL engineering calculator, ICAO Annex 14, Precision AGL Academy"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#2ecc71;--orange:#ff8c42;--yellow:#f4d03f;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.15);transition:all .4s ease;}
+  nav.scrolled{background:rgba(6,13,26,0.97);border-bottom-color:rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white);text-decoration:none;white-space:nowrap;}
+  .nav-logo span{color:var(--gold);}
+  @media(max-width:900px){.nav-logo{font-size:20px;letter-spacing:2px;}}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:9px 20px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;white-space:nowrap;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:2px;background:var(--white);}
+  @media(max-width:1050px){.nav-links{display:none;} .hamburger{display:flex;}}
+
+  .breadcrumb{padding:110px 40px 0;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 30px;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:18px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:17px;line-height:1.8;color:var(--text);max-width:760px;}
+  @media(max-width:768px){.page-title{font-size:42px;}}
+
+  section{padding:0 0 90px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1300px;margin:auto;padding:0 40px;}
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;line-height:1;margin-bottom:10px;}
+  .block-note{font-size:13.5px;color:var(--text);margin-bottom:26px;max-width:700px;line-height:1.7;}
+
+  /* CALCULATOR CARD */
+  .calc-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:34px;margin-bottom:24px;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:800px){.calc-grid{grid-template-columns:1fr;}}
+  .field-group{margin-bottom:18px;}
+  .field-group label{display:block;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .field-group input, .field-group select, .field-group textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .3s;}
+  .field-group textarea{resize:vertical;min-height:72px;font-family:'Barlow Condensed',sans-serif;font-size:13px;line-height:1.5;}
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus{border-color:rgba(255,180,0,0.4);}
+  .field-group input:disabled{opacity:.45;cursor:not-allowed;}
+  .field-hint{font-size:11.5px;color:var(--text);margin-top:6px;}
+  .calc-result{background:rgba(255,180,0,0.05);border:1px solid rgba(255,180,0,0.2);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
+  .calc-result .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:8px;}
+  .calc-result .r-value{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold);line-height:1;margin-bottom:10px;}
+  .calc-result .r-note{font-size:12.5px;color:var(--text);line-height:1.7;}
+  .calc-warn{margin-top:14px;font-size:11.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+  .calc-warn i{color:var(--cyan);margin-top:2px;}
+
+  /* DASHBOARD CHIPS */
+  .dash-group{margin-top:18px;}
+  .dash-group h5{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+  .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
+  @media(max-width:800px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.dash-grid{grid-template-columns:1fr;}}
+  .dash-chip{padding:11px 14px;border-radius:8px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px;}
+  .dash-chip.pass{background:rgba(46,204,113,0.08);border:1px solid rgba(46,204,113,0.3);color:var(--green);}
+  .dash-chip.fail{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);color:var(--red);}
+  .dash-chip.review{background:rgba(255,140,66,0.08);border:1px solid rgba(255,140,66,0.3);color:var(--orange);}
+  .dash-chip.na{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text);}
+
+  /* SECTION DIVIDER WITHIN THE CARD */
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
+  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
+  .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  /* CALCULATOR BREAKDOWN GRID */
+  .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid var(--border);}
+  @media(max-width:800px){.calc-breakdown{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.calc-breakdown{grid-template-columns:1fr;}}
+  .bd-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+  .bd-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;}
+  .bd-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:.5px;}
+  .bd-sub{font-size:11px;color:var(--text);margin-top:4px;line-height:1.5;}
+  .bd-val.pass{color:var(--green);}
+  .bd-val.fail{color:var(--red);}
+  .bd-val.na{color:var(--text);font-size:16px;}
+
+  /* SPECIAL CONDITION FLAGS */
+  .flag-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);color:#ffb3ba;}
+  .flag-banner i{color:var(--red);margin-top:2px;}
+  .flag-banner + .flag-banner{margin-top:10px;}
+
+  .info-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);}
+  .info-banner i{color:var(--cyan);margin-top:2px;}
+  .info-banner + .info-banner{margin-top:10px;}
+
+  /* META ROW */
+  .meta-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  @media(max-width:600px){.meta-row{grid-template-columns:1fr;}}
+
+  .sub-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .sub-field-row.three{grid-template-columns:1fr 1fr 1fr;}
+  @media(max-width:480px){.sub-field-row.three{grid-template-columns:1fr;}}
+
+  .check-row{display:flex;gap:22px;flex-wrap:wrap;}
+  .check-row label{display:flex;align-items:center;gap:8px;text-transform:none;font-size:13px;color:var(--white);font-weight:500;cursor:pointer;}
+  .check-row input[type=checkbox]{width:auto;accent-color:var(--gold);}
+
+  /* QUANTITY TABLES */
+  .qty-table td.qty-total-label{color:var(--white);font-weight:700;}
+  .qty-table tr.qty-total td{border-top:1px solid rgba(255,180,0,0.25);border-bottom:none;padding-top:14px;}
+  .qty-table td.qty-total-val{color:var(--gold);font-weight:700;font-size:15px;}
+  .qty-table td.qty-basis{font-size:11px;color:var(--text);}
+
+  .scroll-table-wrap{max-height:340px;overflow-y:auto;border:1px solid var(--border);border-radius:10px;margin-top:14px;}
+  .scroll-table-wrap table{width:100%;border-collapse:collapse;font-size:12px;}
+  .scroll-table-wrap th{position:sticky;top:0;background:#0d1e38;text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .scroll-table-wrap td{padding:7px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .scroll-table-wrap td.val{color:var(--white);font-weight:600;}
+  .scroll-table-wrap td.pass{color:var(--green);font-weight:700;}
+  .scroll-table-wrap td.fail{color:var(--red);font-weight:700;}
+  .swatch{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:middle;}
+  .swatch.white{background:#f0f4ff;border:1px solid rgba(255,255,255,0.4);}
+  .swatch.yellow{background:var(--yellow);}
+
+  /* GEOMETRY DIAGRAM */
+  .geo-diagram{font-family:'Barlow Condensed',sans-serif;font-size:12.5px;color:var(--text);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:16px 20px;white-space:pre;overflow-x:auto;line-height:1.65;}
+
+  /* REPORT BUTTON */
+  .report-btn{margin-top:22px;padding:14px 28px;background:var(--gold);color:#0a1628;border:none;border-radius:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:12.5px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .3s;font-family:'Barlow',sans-serif;}
+  .report-btn:hover{background:#ffc637;transform:translateY(-2px);}
+  .report-btn:active{transform:translateY(0);}
+
+  /* REVISION BAR */
+  .revision-bar{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
+  .revision-bar .rev-tag{font-size:11.5px;font-weight:700;letter-spacing:1px;color:var(--text);text-transform:uppercase;}
+  .revision-bar .rev-tag strong{color:var(--gold);}
+  .revision-bar .rev-disclaimer{font-size:11.5px;color:var(--text);font-style:italic;line-height:1.6;max-width:560px;}
+
+  /* REFERENCE / METHODOLOGY SECTION */
+  .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
+  @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
+  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+  .method-card h4 i{color:var(--gold);}
+  .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
+  .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
+
+  .std-table{width:100%;font-size:12.5px;border-collapse:collapse;}
+  .std-table th{text-align:left;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .std-table td{padding:10px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .std-table td.val{color:var(--white);font-weight:600;}
+  .std-table tr:last-child td{border-bottom:none;}
+
+  /* TOOLKIT LINKS */
+  .link-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
+  .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
+  .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
+  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link p{font-size:11.5px;color:var(--text);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  .scroll-top{position:fixed;bottom:30px;right:30px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;color:#000;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:0 8px 24px rgba(255,180,0,0.25);}
+  .scroll-top.visible{opacity:1;transform:translateY(0);}
+  .scroll-top:hover{transform:translateY(-4px) scale(1.05);}
+
+  @media(max-width:600px){
+    nav{padding:0 20px;}
+    .breadcrumb{padding:100px 20px 0;}
+    .page-hero{padding:30px 20px 20px;}
+    .container{padding:0 20px;}
+    footer{padding:20px;flex-direction:column;text-align:center;}
+    .calc-card{padding:22px 18px;}
+  }
+
+  /* FAQ */
+  .faq-list{display:grid;gap:10px;max-width:900px}
+  .faq-item{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.03);transition:border-color .3s}
+  .faq-item[open]{border-color:rgba(255,180,0,.3)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;font-size:15px;font-weight:700;color:var(--white)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';font-size:22px;line-height:1;color:var(--gold);flex-shrink:0}
+  .faq-item[open] summary::after{content:'\2212'}
+  .faq-item p{padding:0 20px 18px;font-size:13.5px;line-height:1.75;color:var(--text)}
+
+  /* Dropdown fix: dark list background so option text is visible */
+  select{color-scheme:dark;}
+  select option,select optgroup{background:#0d1e38;color:#f0f4ff;}
+
+  /* LAYOUT GENERATOR */
+  .layer-bar{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:12px;}
+  .layer-bar label{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--white);font-weight:500;cursor:pointer;}
+  .layer-bar input{accent-color:var(--gold);}
+  .svg-wrap{background:#060d1a;border:1px solid var(--border);border-radius:10px;overflow-x:auto;}
+  .svg-wrap svg{display:block;min-width:900px;}
+  .detail-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px;}
+  .mini-btn{padding:8px 14px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'Barlow',sans-serif;font-size:12px;font-weight:600;letter-spacing:.5px;cursor:pointer;transition:all .3s;}
+  .mini-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .range-lab{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);}
+  .range-lab input[type=range]{width:160px;accent-color:var(--gold);}
+  .range-lab span{color:var(--white);font-weight:600;min-width:64px;text-transform:none;letter-spacing:0;}
+  .legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:16px;font-size:12px;color:var(--text);}
+  .legend .lg{display:inline-flex;align-items:center;gap:7px;}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:middle;}
+  .legend .dot{margin-right:0;}
+  .export-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px;}
+  .report-btn{margin-top:18px;padding:14px 24px;background:var(--gold);color:#0a1628;border:none;border-radius:8px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;font-size:12px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'Barlow',sans-serif;transition:all .3s;}
+  .report-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,180,0,0.25);}
+  .qty-table td.val{text-align:right;}
+  #colourTable th,#colourTable td{padding:8px 10px;}
+  @media print{
+    nav,.breadcrumb,.hamburger,.scroll-top,.export-row,.detail-controls,.layer-bar,footer,body::before{display:none !important;}
+    body{background:#fff;color:#000;}
+    .svg-wrap{overflow:visible;border:none;}
+    .svg-wrap svg{min-width:0;}
+    .calc-card{break-inside:avoid;}
+  }
+
+  .std-table th.val{text-align:right;}
+  .std-table td.qty-total-val{text-align:right;}
+
+  /* ═══ MULTI-TAB LAYOUT (same as Calculators #05 / #49) ═══ */
+  .page-hero{padding-top:20px;padding-bottom:14px}.page-title{font-size:56px;margin-bottom:12px}
+  details summary{cursor:pointer;color:var(--cyan);font-size:12.5px;font-weight:600}
+  details.about .page-sub{margin-top:10px;font-size:15px}details.why{margin-top:6px}details.why .field-hint{margin-top:4px}
+  .u{text-transform:none;color:var(--text);font-weight:500}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+  .subsection-head h2{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;margin:0}
+  .tabbar{position:sticky;top:70px;z-index:20;background:rgba(6,13,26,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin-bottom:28px}
+  .tabbar .container{display:flex;gap:4px;overflow-x:auto}
+  .tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--text);font:600 14px 'Barlow',sans-serif;padding:15px 18px;cursor:pointer;white-space:nowrap}
+  .tab:hover{color:var(--white)}.tab[aria-selected=true]{color:var(--gold);border-bottom-color:var(--gold)}
+  .tab-panel[hidden]{display:none}
+  .tool-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start}
+  .inputs{display:grid;gap:18px;min-width:0}
+  .presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.presets b{font-size:12.5px;color:var(--text);margin-right:4px}
+  .chip,.btn{border:1px solid rgba(255,180,0,.3);background:none;color:var(--text);border-radius:100px;padding:8px 14px;font:600 12.5px 'Barlow',sans-serif;cursor:pointer;transition:all .2s}
+  .chip:hover,.btn:hover{border-color:var(--gold);color:var(--gold)}.chip.ghost{border-color:var(--border)}
+  .btn{border-radius:8px;padding:14px 20px;letter-spacing:.5px}
+  .step{border:1px solid var(--border);border-radius:12px;padding:22px 24px;background:rgba(255,255,255,.02);min-width:0}
+  .step .subsection-head{margin:0 0 16px;padding:0;border:0}
+  .step .field-group:last-child{margin-bottom:0}
+  .step .calc-grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .step .calc-grid>div:empty{display:none}
+  .step textarea{max-width:100%}
+  .result-panel{position:sticky;top:136px;max-height:calc(100vh - 156px);overflow:auto;background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.22);border-radius:14px;padding:22px}
+  .result-panel .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text)}
+  .result-panel .r-value{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:var(--gold)}
+  .result-panel .r-note{font-size:12px;color:var(--text);line-height:1.6;margin-top:8px}
+  .mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:14px}
+  .mini{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 6px;text-align:center}
+  .mini b{display:block;font-family:'Bebas Neue',sans-serif;font-size:22px;font-weight:400;color:var(--white);overflow-wrap:anywhere}.mini span{font-size:10.5px;color:var(--text)}
+  .panel-h{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--border);font-size:13px;font-weight:700}
+  .cnt{font-size:11.5px;font-weight:600;color:var(--text)}.cnt.warn{color:#ffb3ba}
+  .result-panel .flag-banner,.result-panel .info-banner{margin-top:8px;padding:10px 12px;font-size:12px}
+  .result-panel .req-badge{margin-top:12px;padding:12px 14px;font-size:13px}
+  .result-panel .dash-group{margin-top:10px}
+  .result-panel .calc-warn{margin-top:12px}
+  .linkbtn{background:none;border:0;color:var(--cyan);font:600 12.5px 'Barlow',sans-serif;cursor:pointer;margin-top:12px;padding:0}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}.actions .report-btn{margin-top:0}
+  .calc-card .subsection-head{margin-top:28px}
+  .tab-panel .calc-breakdown.flat{border-top:0;margin-top:0;padding-top:0}
+  .tab-panel .method-card:first-child{margin-top:0}
+  .inspect-note{font-size:12.5px;color:var(--text);margin:0 0 16px}
+  .req-badge{margin-top:16px;padding:16px 20px;border-radius:10px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;letter-spacing:.3px}
+  .req-badge i{font-size:18px}
+  .req-badge.pass{background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.35);color:var(--green)}
+  .req-badge.fail{background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.35);color:var(--red)}
+  .req-badge.review{background:rgba(255,140,66,.1);border:1px solid rgba(255,140,66,.35);color:var(--orange)}
+  .req-badge .req-sub{display:block;font-size:12px;font-weight:500;color:var(--text);margin-top:3px;letter-spacing:0}
+  .mobile-bar{display:none}
+  @media(max-width:1180px){
+    .tool-layout{grid-template-columns:1fr}.result-panel{position:static;max-height:none}
+    .mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;align-items:center;gap:12px;padding:8px 16px;background:rgba(6,13,26,.97);border-top:1px solid rgba(255,180,0,.3)}
+    .mobile-bar[hidden]{display:none!important}
+    .mobile-bar small{display:block;font-size:10.5px;color:var(--text);text-transform:uppercase;letter-spacing:1px}
+    .mobile-bar strong{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--gold);font-weight:400}
+    .mb-status{font-size:12px;font-weight:700;flex:1;text-align:right}
+    .mb-status.pass{color:var(--green)}.mb-status.fail{color:var(--red)}.mb-status.review{color:var(--orange)}
+    body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}
+  }
+  @media(max-width:768px){.page-title{font-size:40px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+  @media print{
+    .tabbar,.mobile-bar,.result-panel{display:none!important}
+    #tab-calc,#tab-method{display:none!important}
+    #tab-plan[hidden],#tab-schedule[hidden]{display:block!important}
+  }
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<link rel="stylesheet" href="assets/agl-common.css"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Precision AGL Academy"/>
+<meta property="og:title" content="Taxiway Lighting Layout Generator | Precision AGL Academy"/>
+<meta property="og:description" content="Taxiway lighting layout for ICAO and FAA: plan-view blue edge and green centreline lights, fixture coordinates, quantity schedule and SVG/PNG/CSV export."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/calc-taxiway-lighting-layout-generator-og.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Taxiway Lighting Layout Generator – Precision AGL Academy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/calc-taxiway-lighting-layout-generator-og.jpg"/>
+<meta name="twitter:image:alt" content="Taxiway Lighting Layout Generator – Precision AGL Academy"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Taxiway Lighting Layout Generator",
+      "url": "https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html",
+      "applicationCategory": "EngineeringApplication",
+      "operatingSystem": "Any",
+      "description": "Taxiway lighting layout for ICAO and FAA: plan-view blue edge and green centreline lights, fixture coordinates, quantity schedule and SVG/PNG/CSV export.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://rahulsharmaagl.in/#academy",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "@id": "https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html#app",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
+      "dateModified": "2026-10-27",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Airfield ground lighting engineers, airport electrical engineers and AGL maintenance technicians"
+      },
+      "browserRequirements": "Requires JavaScript. Works in any modern browser.",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/agl-toolkit.html#webpage"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html#breadcrumb"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/assets/calc-taxiway-lighting-layout-generator-og.jpg"
+      }
+    },
+    {
+      "@id": "https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html#breadcrumb",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Hub",
+          "item": "https://rahulsharmaagl.in/index.html#knowledge-hub"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AGL Engineering Calculators",
+          "item": "https://rahulsharmaagl.in/agl-toolkit.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculator #55"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the Taxiway Lighting Layout Generator do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You describe the taxiway as straights and curves, pick ICAO or FAA, and it produces a plan-view layout of blue edge lights and green centreline lights, with fixture-by-fixture coordinates, a quantity schedule and SVG, PNG and CSV exports. Every fixture is a real X,Y position and chainage, so the drawing, schedule and CSV always agree."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I describe the taxiway geometry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Enter one segment per line in order of travel: a straight with its length, a curve with its centreline radius, angle and left or right direction, or an intersection with its length. The start point and heading are local project coordinates, with heading 0° along the +X axis and counter-clockwise positive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are straight sections spaced?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "N = ⌈L ÷ S⌉ equal intervals, so S_actual = L ÷ N and the pitch never exceeds the design spacing. Edge rows sit at ±(W/2 + D_E) from the centreline, and all rows share the same stations so edge lights stay opposite each other."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are curves counted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The inner edge row has a smaller radius and the outer row a larger one, so each row is spaced on its own arc length and the left and right quantities differ. If a row radius reaches zero or goes negative, the tool flags it so you can increase the curve radius or reduce the width or offset."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which spacing limits are pre-filled?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Edge lights: ICAO 60 m, FAA 200 ft on straights. Centreline: ICAO 30 m (15 m below 350 m RVR), FAA 100 ft (50 ft below 1,200 ft RVR). These are editable defaults. The centreline curve limit is taken automatically from each standard’s radius table (ICAO 7.5 m up to 400 m radius; FAA 25 ft under 400 ft radius, 12.5 ft below 1,200 ft RVR); edge-light curve limits are left for you to enter. An edge-light offset beyond 3 m (10 ft) from the pavement edge is flagged."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens at an intersection segment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An intersection segment omits the edge lights and keeps the centreline running, and it is flagged for layout review because the real configuration there is project-specific. The tool does not draw stop bars, holding-position lights, lead-on and lead-off lights, runway-entry geometry or signs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What can I export?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can download the plan view as SVG or PNG, the full fixture schedule as CSV with ID, system, segment, chainage and X,Y in metres and feet, or print the layout. The plan has a whole-taxiway view and a zoomed detail window you can slide along the taxiway by chainage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the result a final bill of quantities figure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a calculated, nominal layout for design planning, with no serviceability allowance and no spares. A fixture at the joint between two segments is counted once. Verify the layout against the approved airport lighting layout and the governing standard."
+          }
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html#app"
+      }
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;box-sizing:border-box}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);font-family:'Barlow',sans-serif;}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;font-family:'Barlow',sans-serif;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
+@media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
+</style>
+</head>
+<body>
+
+<nav id="navbar" aria-label="Main">
+  <a href="index.html" class="nav-logo" aria-label="Precision AGL Academy – home">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#knowledge-hub">Knowledge Hub</a></li>
+    <li><a href="agl-toolkit.html" class="active" aria-current="page">Toolkit</a></li>
+    <li><a href="component-library.html">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="index.html#knowledge-hub">Knowledge Hub</a><span>/</span>
+  <a href="agl-toolkit.html">AGL Engineering Calculators</a><span>/</span>
+  <span class="current">Calculator #55</span>
+</div>
+
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Planning estimate &mdash; not a quotation, tender or approved design.</strong> Quantities, layouts and material lists are first-pass estimates from your inputs and generic allowances. The approved aerodrome lighting design, contract specification and regulator prevail. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+<div class="page-tag"><i class="fa-solid fa-drafting-compass"></i> Calculator #55</div>
+  <h1 class="page-title">Taxiway Lighting <span>Layout Generator</span></h1>
+  <p class="page-sub" style="color:var(--gold);font-weight:600;font-size:15px;margin-bottom:14px;">Describe the taxiway as straights and curves, pick ICAO or FAA, and get a plan-view layout of blue edge lights and green centreline lights, with fixture-by-fixture coordinates and a quantity schedule.</p>
+  <details class="about"><summary>About this calculator</summary><p class="page-sub">Every fixture is generated as an actual X,Y position and chainage, then drawn, counted and exported from that one list, so the drawing, the schedule and the CSV can never disagree. Curves are laid out on true offset arcs: the inner edge row is shorter than the outer row and is counted separately.</p></details>
+</div>
+
+<main>
+<div class="tabbar" id="tabbar"><div class="container" role="tablist" aria-label="Calculator sections">
+<button class="tab" role="tab" id="t-calc" data-tab="calc" aria-controls="tab-calc">Calculate</button>
+<button class="tab" role="tab" id="t-plan" data-tab="plan" aria-controls="tab-plan">Plan view &amp; export</button>
+<button class="tab" role="tab" id="t-schedule" data-tab="schedule" aria-controls="tab-schedule">Quantity schedule</button>
+<button class="tab" role="tab" id="t-method" data-tab="method" aria-controls="tab-method">Method &amp; reference</button>
+</div></div>
+
+<section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout">
+<div class="inputs">
+  <div class="presets"><b>Quick start</b>
+<button type="button" class="chip" data-preset="icao">ICAO example</button>
+<button type="button" class="chip" data-preset="sbend">S-bend</button>
+<button type="button" class="chip" data-preset="edge">Edge lights only</button>
+<button type="button" class="chip" data-preset="faa">FAA (feet)</button>
+<button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
+<div class="step"><div class="subsection-head"><h2>Project</h2><div class="sub-line"></div></div><div class="meta-row">
+        <div class="field-group" style="margin-bottom:0;"><label>Project / Airport</label><input type="text" id="projectName" value="Taxiway A Lighting Layout" oninput="calcAll()"/></div>
+        <div class="field-group" style="margin-bottom:0;"><label>Taxiway Designation <span style="text-transform:none;color:var(--text);font-weight:500;">(fixture-ID prefix)</span></label><input type="text" id="twyDesignation" value="A" oninput="calcAll()"/></div>
+      </div>
+</div>
+<div class="step">
+<div class="subsection-head"><h2>Taxiway &amp; Design Basis</h2><div class="sub-line"></div></div>
+      <div class="calc-grid">
+        <div>
+          <div class="field-group">
+            <label>Design Standard</label>
+            <select id="designStandard" onchange="onStandardChange()"><option value="icao" selected>ICAO Annex 14</option><option value="faa">FAA AC 150/5340-30J</option></select>
+            <p class="field-hint" id="standardHint"></p>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group"><label>Input Unit</label><select id="lengthUnit" onchange="onUnitChange()"><option value="m" selected>metres</option><option value="ft">feet</option></select></div>
+            <div class="field-group"><label>Taxiway Width</label><input type="number" id="twyWidth" value="23" min="0.1" step="0.1" oninput="calcAll()"/></div>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group"><label>Edge-Light Offset from Pavement Edge</label><input type="number" id="edgeOffset" value="0.6" min="0" step="0.1" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Edge Rows</label><select id="edgeSides" onchange="calcAll()"><option value="both" selected>Both sides</option><option value="left">Left only</option><option value="right">Right only</option></select></div>
+          </div>
+          <div class="check-row" style="margin-bottom:14px;">
+            <label><input type="checkbox" id="sysEdge" checked onchange="calcAll()"/> Edge lights (blue)</label>
+            <label><input type="checkbox" id="sysCL" checked onchange="calcAll()"/> Centreline lights (green)</label>
+          </div>
+          <p class="field-hint">Offset is measured outward from the pavement edge. Left and right are taken looking along the direction of travel (chainage increasing).</p>
+        </div>
+
+      </div>
+</div>
+<div class="step">
+<div class="subsection-head"><h2>Geometry — Segment List</h2><div class="sub-line"></div></div>
+      <div class="calc-grid">
+        <div>
+          <div class="field-group">
+            <label>Segments (one per line, in order of travel)</label>
+            <textarea id="segList" rows="9" oninput="calcAll()">straight,300
+curve,100,90,left
+straight,250
+intersection,40
+straight,150
+curve,120,60,right
+straight,200</textarea>
+            <details class="why"><summary>Rule note</summary><p class="field-hint">straight,&lt;length&gt; · curve,&lt;centreline radius&gt;,&lt;angle°&gt;,&lt;left|right&gt; · intersection,&lt;length&gt;. Lengths in the input unit (switching the unit converts them). Lines starting with # are ignored.</p></details>
+          </div>
+        </div>
+        <div>
+          <div class="sub-field-row three">
+            <div class="field-group"><label>Start X</label><input type="number" id="startX" value="0" step="0.1" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Start Y</label><input type="number" id="startY" value="0" step="0.1" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Heading (°)</label><input type="number" id="startHeading" value="0" step="0.1" oninput="calcAll()"/></div>
+          </div>
+          <p class="field-hint">Local project coordinates. Heading 0° = +X axis, counter-clockwise positive. Not survey grid unless you enter grid values.</p>
+          <div class="geo-diagram" style="margin-top:14px;">TAXIWAY
+ ├─ straight      → rows at ±offset, uniform pitch
+ ├─ curve         → inner row R − h · outer row R + h
+ └─ intersection  → no edge lights · centreline continues
+                    (flagged for layout review)</div>
+        </div>
+      </div>
+</div>
+<div class="step">
+<div class="subsection-head"><h2>Spacing</h2><div class="sub-line"></div></div>
+      <div class="calc-grid">
+        <div>
+          <h5 style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;">Design spacing (used to generate)</h5>
+          <div class="sub-field-row">
+            <div class="field-group"><label>Edge — Straight</label><input type="number" id="eDesS" min="0.1" step="0.01" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Edge — Curve</label><input type="number" id="eDesC" min="0.1" step="0.01" oninput="calcAll()"/></div>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group"><label>Centreline — Straight</label><input type="number" id="cDesS" min="0.1" step="0.01" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Centreline — Curve</label><input type="number" id="cDesC" min="0.1" step="0.01" oninput="calcAll()"/></div>
+          </div>
+          <p class="field-hint">Each row is divided into N = ⌈row length / S⌉ equal intervals, so the actual pitch never exceeds the design spacing.</p>
+        </div>
+        <div>
+          <h5 style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;">Maximum spacing (used to check)</h5>
+          <div class="sub-field-row">
+            <div class="field-group"><label>Edge — Straight Max</label><input type="number" id="eMaxS" min="0" step="0.01" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Edge — Curve Max</label><input type="number" id="eMaxC" min="0" step="0.01" placeholder="project-entered" oninput="calcAll()"/></div>
+          </div>
+          <div class="sub-field-row">
+            <div class="field-group"><label>Centreline — Straight Max</label><input type="number" id="cMaxS" min="0" step="0.01" oninput="calcAll()"/></div>
+            <div class="field-group"><label>Centreline — Curve Max</label><input type="number" id="cMaxC" min="0" step="0.01" placeholder="blank = radius table" oninput="calcAll()"/></div>
+          </div>
+          <details class="why"><summary>Rule note</summary><p class="field-hint">Straight limits are pre-filled for the chosen standard and can be overwritten. Edge-light curve limits depend on radius and are left for you to enter; the centreline curve limit is taken automatically from the standard’s radius table for each curve.</p></details>
+        </div>
+      </div>
+</div>
+<div class="step">
+<div class="subsection-head"><h2>Output</h2><div class="sub-line"></div></div>
+      <div class="sub-field-row">
+        <div class="field-group"><label>Schedule Unit</label><select id="outputUnit" onchange="calcAll()"><option value="m" selected>metres</option><option value="ft">feet</option></select></div>
+        <div class="field-group"><label>Decimal Places</label><select id="decimalPlaces" onchange="calcAll()"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></div>
+      </div>
+</div>
+</div>
+<aside class="result-panel" aria-label="Result">
+  <div class="r-label">Total physical fixtures</div>
+  <div class="r-value" id="totalResult" aria-live="polite">—</div>
+  <div class="r-note" id="totalNote">Enter a segment list to generate the layout.</div>
+  <div id="pBadge"></div>
+  <div class="mini-grid"><div class="mini"><b id="pEdge">—</b><span>Edge lights</span></div><div class="mini"><b id="pCL">—</b><span>Centreline lights</span></div><div class="mini"><b id="pLen">—</b><span>Centreline length</span></div><div class="mini"><b id="pSeg">—</b><span>Segments</span></div></div>
+  <div class="panel-h">Checks &amp; notes <span class="cnt" id="noteCount">none</span></div>
+  <div id="geometryFlags"></div>
+  <div id="complianceDashboard"></div>
+  <div class="calc-warn"><i class="fa-solid fa-circle-info"></i><span>Calculated / nominal layout for design planning — not an issued drawing or Final BOQ.</span></div>
+  <button type="button" class="linkbtn" onclick="showTab('plan')">Open plan view &amp; exports</button>
+  <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('schedule')">Quantity schedule</button>
+  <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method</button>
+</aside>
+</div></div></section>
+
+<section class="tab-panel" id="tab-plan" role="tabpanel" aria-labelledby="t-plan" hidden><div class="container">
+    <div class="block-label">Plan View</div>
+    <h2 class="block-title">Generated Layout</h2>
+    <p class="block-note">Top: the whole taxiway to scale, fitted to the page. Bottom: a zoomed window you can slide along the taxiway by chainage, with fixture chainage labels. Hover a fixture for its ID, chainage and coordinates.</p>
+    <div class="calc-card" style="padding:20px;">
+      <div class="layer-bar" id="layerBar">
+        <label><input type="checkbox" data-layer="pave" checked/> Pavement</label>
+        <label><input type="checkbox" data-layer="edge" checked/> Edge</label>
+        <label><input type="checkbox" data-layer="cl" checked/> Centreline</label>
+        <label><input type="checkbox" data-layer="lab" checked/> Labels</label>
+      </div>
+      <div class="svg-wrap" id="overviewWrap"></div>
+
+      <div class="subsection-head"><h3>Detail Window</h3><div class="sub-line"></div></div>
+      <div class="detail-controls">
+        <button class="mini-btn" onclick="jumpDetail('start')">Start</button>
+        <button class="mini-btn" onclick="jumpDetail('mid')">Middle</button>
+        <button class="mini-btn" onclick="jumpDetail('end')">End</button>
+        <label class="range-lab">Start <input type="range" id="detStart" min="0" max="100" step="1" value="0" oninput="renderDetail()"/><span id="detStartLab">0 m</span></label>
+        <label class="range-lab">Window <input type="range" id="detWin" min="40" max="400" step="10" value="120" oninput="renderDetail()"/><span id="detWinLab">120 m</span></label>
+      </div>
+      <div class="svg-wrap" id="detailWrap"></div>
+      <div class="legend" id="legend"></div>
+      <div class="export-row">
+        <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button>
+        <button class="report-btn" onclick="downloadSVG()"><i class="fa-solid fa-file-image"></i> Layout SVG</button>
+        <button class="report-btn" onclick="downloadPNG()"><i class="fa-solid fa-image"></i> Layout PNG</button>
+        <button class="report-btn" onclick="downloadCSV()"><i class="fa-solid fa-file-csv"></i> Fixture Schedule CSV</button>
+        <button class="report-btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button>
+      </div>
+      <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
+    </div>
+  </div></section>
+
+<section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container">
+    <div class="block-label">Quantities</div>
+    <h2 class="block-title">Quantity Schedule</h2>
+    <div class="calc-card">
+      <table class="std-table qty-table" id="qtyTable"></table>
+      <p class="field-hint" style="margin-top:12px;">Calculated / Nominal Quantity — installed fixtures, no serviceability allowance, no spares. A fixture at the joint between two segments is counted once.</p>
+      <div class="subsection-head"><h3>Fixture Schedule <span style="font-size:12px;color:var(--text);font-weight:500;letter-spacing:0;text-transform:none;" id="schedCount"></span></h3><div class="sub-line"></div></div>
+      <div class="scroll-table-wrap"><table id="schedTable"></table></div>
+      <div class="revision-bar">
+        <div class="rev-tag">Layout Generator &nbsp;|&nbsp; Rev. <strong>1.5</strong> &nbsp;|&nbsp; 26 Oct 2026</div>
+        <div class="rev-disclaimer">Engineering reference tool. Final design shall be verified against the applicable approved airport lighting layout and governing standard.</div>
+      </div>
+    </div>
+  </div></section>
+
+<section class="tab-panel" id="tab-method" role="tabpanel" aria-labelledby="t-method" hidden><div class="container">
+    <div class="block-label">Methodology</div>
+    <h2 class="block-title">How the Layout Is Built</h2>
+    <p class="block-note">The taxiway is walked segment by segment from the start point. Chainage c is distance along the centreline; lateral offset d is positive to the left of the direction of travel.</p>
+    <div class="ref-cols">
+      <div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-ruler-horizontal"></i> Straight segments</h4>
+          <div class="formula">N = ⌈ L / S ⌉ &nbsp;→&nbsp; S<sub>actual</sub> = L / N</div>
+          <p>Edge rows sit at d = ±(W/2 + D<sub>E</sub>), the centreline at d = 0. All rows share the same stations, so edge lights stay opposite each other.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-rotate-right"></i> Curves</h4>
+          <div class="formula">R<sub>row</sub> = R<sub>CL</sub> − d·(turn) &nbsp;|&nbsp; N = ⌈ R<sub>row</sub>·θ / S<sub>curve</sub> ⌉</div>
+          <p>The inner edge row has a smaller radius and the outer row a larger one, so each row is spaced on its own arc length and the left and right quantities differ. If the inner row radius reaches zero, the tool flags it.</p>
+        </div>
+      </div>
+      <div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-palette"></i> Colours and spacing basis</h4>
+          <table class="std-table">
+            <tr><th>Light</th><th>Colour</th><th>Straight limit</th></tr>
+            <tr><td>Edge</td><td class="val">Blue</td><td class="val">ICAO 60 m · FAA 200 ft</td></tr>
+            <tr><td>Centreline</td><td class="val">Green</td><td class="val">ICAO 30 m (15 m below 350 m RVR) · FAA 100 ft (50 ft below 1,200 ft RVR)</td></tr>
+          </table>
+          <p class="field-hint" style="margin-top:12px;">These are pre-filled, editable defaults. Closer spacing is common for low-visibility operation, and curve spacing depends on radius, so confirm every value against the standard and the approved project layout.</p>
+        </div>
+        <div class="method-card">
+          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <p>It does not draw stop bars, holding-position lights, lead-on/lead-off lights, runway-entry geometry or signs. An intersection segment only omits edge lights and keeps the centreline running; the real configuration there is project-specific.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title" id="faq-title">Taxiway Lighting Layout: Frequently Asked Questions</h2>
+    <p class="block-note">Quick answers on how the generator builds a taxiway lighting layout.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What does the Taxiway Lighting Layout Generator do?</summary><p>You describe the taxiway as straights and curves, pick ICAO or FAA, and it produces a plan-view layout of blue edge lights and green centreline lights, with fixture-by-fixture coordinates, a quantity schedule and SVG, PNG and CSV exports. Every fixture is a real X,Y position and chainage, so the drawing, schedule and CSV always agree.</p></details>
+      <details class="faq-item"><summary>How do I describe the taxiway geometry?</summary><p>Enter one segment per line in order of travel: a straight with its length, a curve with its centreline radius, angle and left or right direction, or an intersection with its length. The start point and heading are local project coordinates, with heading 0° along the +X axis and counter-clockwise positive.</p></details>
+      <details class="faq-item"><summary>How are straight sections spaced?</summary><p>N = ⌈L ÷ S⌉ equal intervals, so S_actual = L ÷ N and the pitch never exceeds the design spacing. Edge rows sit at ±(W/2 + D_E) from the centreline, and all rows share the same stations so edge lights stay opposite each other.</p></details>
+      <details class="faq-item"><summary>How are curves counted?</summary><p>The inner edge row has a smaller radius and the outer row a larger one, so each row is spaced on its own arc length and the left and right quantities differ. If a row radius reaches zero or goes negative, the tool flags it so you can increase the curve radius or reduce the width or offset.</p></details>
+      <details class="faq-item"><summary>Which spacing limits are pre-filled?</summary><p>Edge lights: ICAO 60 m, FAA 200 ft on straights. Centreline: ICAO 30 m (15 m below 350 m RVR), FAA 100 ft (50 ft below 1,200 ft RVR). These are editable defaults. The centreline curve limit is taken automatically from each standard’s radius table (ICAO 7.5 m up to 400 m radius; FAA 25 ft under 400 ft radius, 12.5 ft below 1,200 ft RVR); edge-light curve limits are left for you to enter. An edge-light offset beyond 3 m (10 ft) from the pavement edge is flagged.</p></details>
+      <details class="faq-item"><summary>What happens at an intersection segment?</summary><p>An intersection segment omits the edge lights and keeps the centreline running, and it is flagged for layout review because the real configuration there is project-specific. The tool does not draw stop bars, holding-position lights, lead-on and lead-off lights, runway-entry geometry or signs.</p></details>
+      <details class="faq-item"><summary>What can I export?</summary><p>You can download the plan view as SVG or PNG, the full fixture schedule as CSV with ID, system, segment, chainage and X,Y in metres and feet, or print the layout. The plan has a whole-taxiway view and a zoomed detail window you can slide along the taxiway by chainage.</p></details>
+      <details class="faq-item"><summary>Is the result a final bill of quantities figure?</summary><p>No. It is a calculated, nominal layout for design planning, with no serviceability allowance and no spares. A fixture at the joint between two segments is counted once. Verify the layout against the approved airport lighting layout and the governing standard.</p></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="block-label">More Tools</div>
+    <h2 class="block-title">Related Knowledge Hub Resources</h2>
+    <div class="link-grid">
+      <a href="calc-taxiway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-ruler-horizontal"></i><h5>Taxiway Edge Spacing</h5><p>Edge-light spacing and quantity.</p></a>
+      <a href="calc-taxiway-centreline-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-road"></i><h5>Taxiway Centreline</h5><p>Centreline spacing and quantity.</p></a>
+      <a href="calc-runway-lighting-layout-generator.html" class="tool-link"><i class="fa-solid fa-drafting-compass"></i><h5>Runway Layout Generator</h5><p>Plan-view runway lighting layout.</p></a>
+      <a href="calc-stop-bar-holding-position-lights.html" class="tool-link"><i class="fa-solid fa-hand"></i><h5>Stop Bar Lights</h5><p>Holding position stop bars.</p></a>
+      <a href="calc-runway-taxiway-lighting-load-power-calculator.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Lighting Load</h5><p>kW and kVA by circuit.</p></a>
+      <a href="calc-agl-boq-generator.html" class="tool-link"><i class="fa-solid fa-list-check"></i><h5>BOQ Generator</h5><p>Turn quantities into a BOQ.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators.</p></a>
+      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><h5>Standards Companion</h5><p>ICAO/FAA/IEC requirements explained.</p></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v2.9 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any result or record produced by it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Applies to the Taxiway Lighting Layout Generator (calculator), including its CSV downloads, print views.</div><ol class="legal-list"><li><strong>Calculated results.</strong> Results, tables, charts, status indicators (such as &ldquo;OK&rdquo;, &ldquo;within limit&rdquo; or &ldquo;pass&rdquo;/&ldquo;fail&rdquo;), recommended or selected values and the example presets on this page are first-pass planning and training estimates calculated in your browser from the values you enter, using simplified formulas, generic tables and typical values. They do not take account of every factor of a real installation, may contain errors or rounding differences, and are not a design, specification, selection, sizing, procurement or acceptance decision. A competent person must check them against the approved design, the manufacturer&rsquo;s data and the applicable standard before any use. &ldquo;Recommended&rdquo; means an indicative estimate, not an endorsement of any rating, product or supplier.</li><li><strong>Spacing, quantity and layout.</strong> Spacings, light counts, patterns, dimensions and configurations are simplified readings of ICAO Annex 14, FAA advisory circulars and similar documents and may not reflect the edition, aerodrome reference code, runway category, local variations or approved design that apply to your aerodrome. Counts and layouts are planning estimates only; the approved aerodrome lighting layout, the contract specification and the competent regulator prevail. Nothing here is an approved design or drawing, or evidence that any lighting meets a standard.</li><li><strong>Bills of quantities and material lists.</strong> BOQ and material quantities are first-pass estimates based on your inputs and generic allowances. They omit items, wastage, spares, civil works, cable lengths and site conditions that a real project will need. A BOQ produced here is not a tender document, quotation, purchase order or an approved material take-off, and no price, product or supplier is implied. We do not sell the items listed.</li><li><strong>Reports, downloads and printouts.</strong> PDF reports, CSV files and printed pages produced by this tool are uncontrolled working records generated in your browser. They are not approved designs, drawings, controlled documents, certificates, permits or regulatory records. Calculator numbers, revision labels, dates, project names, signature or approval fields on them are layout only and carry no authority unless made under your own approved document-control system. You must not present an output as an approved, verified or certified document. If you enter personal or confidential information, you are responsible for handling any exported file lawfully, including under the Digital Personal Data Protection Act, 2023.</li><li><strong>Your data and third-party services.</strong> Calculations run in your browser. Values you type, select or tick, and any report you generate, are not sent to us. We use no advertising or analytics tools on this page. Your browser requests fonts from Google Fonts and icon files (and, on some pages, scripts) from the cdnjs/Cloudflare network, which receive your IP address and basic browser details under their own policies. Please do not include confidential, classified or security-sensitive information in anything you send to us.</li><li><strong>Educational reference only.</strong> This page is general information for competent, suitably trained and authorised aviation and electrical personnel and for learners. It is not professional engineering, legal, regulatory or safety advice, is not an approved procedure, and creates no professional or client relationship. Values, tolerances, intervals, sequences and examples are generic and indicative; real installations differ by design, make, model, age and condition, and your aerodrome&rsquo;s approved procedures and the manufacturer&rsquo;s documents prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS (IS), DGCA, AAI and other documents are paraphrased summaries for orientation. They are not official text, may be incomplete or superseded, and do not state what any airport, project or regulator requires. Always consult the current official editions and the controlling project specification. Using this tool, or following its output, does not guarantee compliance with any law, standard or approval, and nothing on this page states that any airport, product or project complies or does not comply.</li><li><strong>Safety.</strong> Series-circuit airfield ground lighting equipment can carry lethal voltages. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s permit-to-work and LOTO procedures and the manufacturer&rsquo;s instructions. Nothing on this page authorises work on live equipment, bypassing of any safety device or interlock, installation, adjustment, energisation, return to service, a change of operating category (CAT I/II/III), a NOTAM or any certification decision; those rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>No warranty; limitation of liability.</strong> Content and calculation results are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranty of any kind, including accuracy, completeness, currency, freedom from error or fitness for a particular purpose. To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty, cost or regulatory consequence arising from use of, reliance on, or inability to use this page or any result or file produced by it. Nothing here excludes or limits liability that cannot lawfully be excluded or limited.</li><li><strong>Copyright and third-party names.</strong> &copy; 2026 Precision AGL Academy and Precision AGL Solutions. All rights reserved; copying, republication, scraping or commercial reuse of this tool, its formulas, text, structure and layout needs our prior written permission. You may use results and downloaded reports for your own reference and internal project working. We are not affiliated with, endorsed by or sponsored by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or manufacturer. Third-party names, standard designations and trademarks belong to their owners and are used only for identification.</li><li><strong>Corrections, governing law and contact.</strong> If you find an error in a formula, table or result, or have a safety concern, copyright or other rights issue, or a privacy question, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>. The full Legal Notice governs your use of this website. It is governed by the laws of India; subject to any mandatory rights you may have, the courts at New Delhi have jurisdiction.</li></ol><p class="legal-meta">Notice v2.9 &middot; 27 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+  <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="component-library.html">Components</a>
+    <a href="standards-companion.html">Standards</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="legal-notice.html">Legal Notice</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="mobile-bar" id="mobileBar"><div><small>Fixtures</small><strong id="mbTotal">—</strong></div><span class="mb-status" id="mbStatus"></span><button type="button" class="chip" onclick="document.querySelector('.result-panel').scrollIntoView({behavior:'smooth'})">Details</button></div>
+
+<script>
+  const M_PER_FT = 0.3048, D2R = Math.PI / 180;
+  const COL = { edge:'#4da3ff', cl:'#2ecc71' };
+  const SYS_NAME = { edge:'Edge', cl:'Centreline' };
+  let FIX = [], G = null, OUT = { unit:'m', dp:2 }, lastOverview = '';
+
+  function val(id){ return document.getElementById(id).value; }
+  function chk(id){ return document.getElementById(id).checked; }
+  function num(id){ const v = parseFloat(document.getElementById(id).value); return isNaN(v) ? 0 : v; }
+  function setText(id, t){ document.getElementById(id).textContent = t; }
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function toM(v){ return val('lengthUnit') === 'ft' ? v * M_PER_FT : v; }
+  function inU(m){ return val('lengthUnit') === 'ft' ? m / M_PER_FT : m; }
+  function u(m){ return OUT.unit === 'ft' ? m / M_PER_FT : m; }
+  function fmt(m){ return u(m).toFixed(OUT.dp) + ' ' + OUT.unit; }
+  function f2(m){ return u(m).toFixed(OUT.dp); }
+  function r2(n){ return +n.toFixed(2); }
+  function chip(st, label){
+    const ic = { pass:'fa-circle-check', fail:'fa-circle-xmark', review:'fa-triangle-exclamation', na:'fa-circle-minus' };
+    return `<div class="dash-chip ${st}"><i class="fa-solid ${ic[st]}"></i>${label}</div>`;
+  }
+  function banner(t, cls){ return `<div class="${cls || 'flag-banner'}"><i class="fa-solid fa-triangle-exclamation"></i> ${t}</div>`; }
+
+  /* Max centreline pitch on a curve (m), radius table, normal visibility.
+     ICAO Annex 14 Vol I 5.3.17 / CS-ADR-DSN: R <= 400 m 7.5 m; 401-899 m 15 m; >= 900 m 30 m (never above 15 m below 350 m RVR).
+     FAA AC 150/5340-30J Table 4-1 (RVR >= 1,200 ft): < 400 ft 25 ft; 400-1,199 ft 50 ft; >= 1,200 ft 100 ft (half below 1,200 ft RVR). */
+  function curveLimitM(std, Rm){
+    if (std === 'faa'){ const Rft = Rm / M_PER_FT; return (Rft < 400 ? 25 : Rft < 1200 ? 50 : 100) * M_PER_FT; }
+    return Rm <= 400 ? 7.5 : (Rm < 900 ? 15 : 30);
+  }
+
+  /* ───────── standards (editable defaults, metres) ───────── */
+  const DEF = {
+    icao:{ eMaxS:60, cMaxS:30, eDesS:60, cDesS:30, eDesC:15, cDesC:7.5 },
+    faa:{ eMaxS:200*M_PER_FT, cMaxS:100*M_PER_FT, eDesS:200*M_PER_FT, cDesS:100*M_PER_FT, eDesC:50*M_PER_FT, cDesC:12.5*M_PER_FT }
+  };
+
+  let lastUnit = 'm';
+  function convNum(v, f){ const n = parseFloat(v); return isNaN(n) ? v : String(+(n * f).toFixed(3)); }
+  function convSegText(raw, f){
+    const map = {straight:[1], intersection:[1], curve:[1]};
+    return raw.split('\n').map(line => {
+      const ci = line.indexOf('#'), code = ci >= 0 ? line.slice(0, ci) : line, cmt = ci >= 0 ? line.slice(ci) : '';
+      const p = code.split(',');
+      const idx = map[(p[0] || '').trim().toLowerCase()];
+      if (!idx) return line;
+      idx.forEach(k => { if (p[k] !== undefined && p[k].trim() !== '') p[k] = convNum(p[k].trim(), f); });
+      return p.join(',') + cmt;
+    }).join('\n');
+  }
+  function convCoordText(raw, f){
+    return raw.split('\n').map(line => line.trim() === '' ? line : line.split(',').map(t => convNum(t.trim(), f)).join(',')).join('\n');
+  }
+  function onUnitChange(){
+    const to = val('lengthUnit');
+    if (to === lastUnit){ calcAll(); return; }
+    const f = to === 'ft' ? 1 / M_PER_FT : M_PER_FT;
+    const cv = id => { const el = document.getElementById(id); if (el && el.value !== '') el.value = convNum(el.value, f); };
+    ['twyWidth','edgeOffset','startX','startY'].forEach(cv);
+    if (val('designStandard') === 'project') [].forEach(cv);
+    const sl = document.getElementById('segList'); sl.value = convSegText(sl.value, f);
+    
+    lastUnit = to;
+    onStandardChange();
+  }
+
+  function onStandardChange(){
+    const std = val('designStandard');
+    setText('standardHint', std === 'icao'
+      ? 'ICAO Annex 14, Volume I — edge lights ≤ 60 m on straights and closer on curves; centreline nominally 30 m on straights (15 m where RVR is below 350 m), closer on curves. Pre-filled values are editable.'
+      : 'FAA AC 150/5340-30J — edge lights ≤ 200 ft on straights; centreline nominally 100 ft on straights (50 ft where RVR is below 1,200 ft); curve spacing depends on radius. Pre-filled values are editable.');
+    Object.keys(DEF[std]).forEach(k => { document.getElementById(k).value = r2(inU(DEF[std][k])); });
+    calcAll();
+  }
+
+  /* ───────── input parsing ───────── */
+  function readInputs(){
+    const P = {};
+    P.W = toM(num('twyWidth')); P.DE = toM(num('edgeOffset')); P.half = P.W / 2 + P.DE;
+    P.sides = val('edgeSides'); P.edgeOn = chk('sysEdge'); P.clOn = chk('sysCL');
+    P.desig = (val('twyDesignation') || 'TWY').trim().replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'TWY';
+    ['eDesS','eDesC','cDesS','cDesC','eMaxS','eMaxC','cMaxS','cMaxC'].forEach(k => { P[k] = toM(num(k)); });
+    return P;
+  }
+  function parseSegs(raw){
+    const segs = [], errs = [];
+    raw.split('\n').forEach((ln, i) => {
+      ln = ln.replace(/#.*/, '').trim(); if (!ln) return;
+      const p = ln.split(',').map(s => s.trim()), t = p[0].toLowerCase();
+      if (t === 'straight' || t === 'intersection'){
+        const L = toM(parseFloat(p[1]));
+        if (L > 0) segs.push({ type:t, L }); else errs.push(`Line ${i+1}: ${t} needs a length greater than 0.`);
+      } else if (t === 'curve'){
+        const R = toM(parseFloat(p[1])), a = parseFloat(p[2]), d = (p[3] || 'left').toLowerCase();
+        if (R > 0 && a > 0 && a < 360 && (d === 'left' || d === 'right')) segs.push({ type:'curve', R, a, dir: d === 'left' ? 1 : -1, L: R * a * D2R });
+        else errs.push(`Line ${i+1}: curve needs a radius, an angle between 0° and 360°, and left or right.`);
+      } else errs.push(`Line ${i+1}: unknown segment "${esc(p[0])}".`);
+    });
+    return { segs, errs };
+  }
+
+  /* ───────── fixture generation ───────── */
+  function generate(P){
+    const fx = [], segs = [], flags = [], cls = [], cnt = {}, advis = [];
+    let x = toM(num('startX')), y = toM(num('startY')), h = num('startHeading') * D2R, c0 = 0, prevEdge = false;
+    const start = { x, y, h };
+    const lab = { straight:0, curve:0, intersection:0 }, pre = { straight:'S', curve:'C', intersection:'X' };
+    const rows = [];
+    const offLim = val('designStandard') === 'faa' ? 10 * M_PER_FT : 3;
+    if (P.edgeOn && P.DE > offLim + 1e-9) flags.push(`Edge-light offset is more than ${val('designStandard') === 'faa' ? '10 ft (FAA AC 150/5340-30J)' : '3 m (ICAO Annex 14)'} from the pavement edge — beyond the limit for taxiway edge lights.`);
+    if (P.edgeOn){ if (P.sides !== 'right') rows.push(['edgeL', P.half]); if (P.sides !== 'left') rows.push(['edgeR', -P.half]); }
+    const code = { edgeL:'EL', edgeR:'ER', cl:'CL' };
+    const stdSel = val('designStandard');
+    if (P.edgeOn && P.clOn && stdSel === 'icao') advis.push('ICAO Annex 14 (5.3.18.1) requires edge lights on night-use taxiways that have no centreline lights. With both systems on, confirm edge lights are intended here (for example on curves, aprons or where centreline guidance is absent).');
+    if (P.clOn && P.segs.some(s => s.type === 'curve')){
+      if (P.cDesS > 0 && P.cDesC >= P.cDesS - 1e-6) advis.push('Centreline curve spacing is not closer than the straight spacing — ICAO and FAA both require closer spacing on curves so the curve is clearly indicated.');
+      advis.push(stdSel === 'faa'
+        ? 'Centreline curve limits come from the FAA AC 150/5340-30J Table 4-1 radius table for normal visibility (25 ft under 400 ft radius, 50 ft to 1,199 ft, 100 ft above); halve them where RVR is below 1,200 ft. FAA AC 150/5340-30J also asks for closer-spaced lights on the straights just before and after a curve (check the AC for the number and pitch) — not modelled here.'
+        : 'Centreline curve limits come from the ICAO Annex 14 radius table (7.5 m up to 400 m radius, 15 m to 899 m, 30 m above; never over 15 m below 350 m RVR). ICAO recommends carrying the curve spacing 60 m before and after a curve — not modelled here.');
+    }
+
+    P.segs.forEach((sg, k) => {
+      const name = pre[sg.type] + (++lab[sg.type]), isC = sg.type === 'curve';
+      const info = { name, type:sg.type, c0, L:sg.L, q:{ edgeL:0, edgeR:0, cl:0 }, spE:[], spC:null, g:{ type:sg.type, x0:x, y0:y, R:sg.R, dir:sg.dir, a:sg.a } };
+      const nx = -Math.sin(h), ny = Math.cos(h), ux = Math.cos(h), uy = Math.sin(h);
+      const cx = isC ? x + nx * sg.dir * sg.R : 0, cy = isC ? y + ny * sg.dir * sg.R : 0, a0 = h - sg.dir * Math.PI / 2;
+      const pos = (t, d) => {
+        if (!isC) return [x + ux * sg.L * t + nx * d, y + uy * sg.L * t + ny * d];
+        const Rr = sg.R - sg.dir * d, a = a0 + sg.dir * sg.a * D2R * t;
+        return [cx + Rr * Math.cos(a), cy + Rr * Math.sin(a)];
+      };
+      const addRow = (grp, d, S, skipFirst) => {
+        const Rr = isC ? sg.R - sg.dir * d : 0;
+        if (isC && Rr <= 0){ flags.push(`${name}: the ${grp === 'cl' ? 'centreline' : 'inner edge'} row radius is zero or negative — increase the curve radius or reduce width/offset.`); return null; }
+        if (!(S > 0)){ flags.push('A design spacing is blank or zero — rows using it were not generated.'); return null; }
+        const len = isC ? Rr * sg.a * D2R : sg.L, N = Math.max(1, Math.ceil(len / S - 1e-9));
+        for (let i = skipFirst ? 1 : 0; i <= N; i++){
+          const t = i / N, p = pos(t, d);
+          cnt[grp] = (cnt[grp] || 0) + 1; info.q[grp]++;
+          fx.push({ id:`${P.desig}-${code[grp]}-${String(cnt[grp]).padStart(3,'0')}`, sys: grp === 'cl' ? 'cl' : 'edge', grp, x:p[0], y:p[1], c:c0 + t * sg.L, seg:name,
+                    note: sg.type === 'intersection' ? 'Intersection — review' : '' });
+        }
+        return len / N;
+      };
+      if (sg.type !== 'intersection') rows.forEach(([grp, d]) => { const Sa = addRow(grp, d, isC ? P.eDesC : P.eDesS, k > 0 && prevEdge); if (Sa) info.spE.push(Sa); });
+      if (P.clOn) info.spC = addRow('cl', 0, isC ? P.cDesC : P.cDesS, k > 0);
+      const n = Math.max(2, Math.ceil(sg.L / 2));
+      for (let j = 0; j <= n; j++){ const p = pos(j / n, 0); cls.push({ x:p[0], y:p[1], c:c0 + sg.L * j / n }); }
+      info.mid = pos(0.5, 0); info.midC = c0 + sg.L / 2;
+      if (isC){ const e = pos(1, 0); x = e[0]; y = e[1]; h += sg.dir * sg.a * D2R; } else { x += ux * sg.L; y += uy * sg.L; }
+      info.g.x1 = x; info.g.y1 = y;
+      prevEdge = sg.type !== 'intersection'; c0 += sg.L; segs.push(info);
+    });
+
+    const cViol = [];
+    if (P.clOn) segs.forEach(s => { if (s.type === 'curve' && s.spC != null){ const t = curveLimitM(stdSel, s.g.R); s.cLim = P.cMaxC > 0 ? Math.min(P.cMaxC, t) : t; if (s.spC > s.cLim + 1e-6) cViol.push(`${s.name}: ${s.spC} > ${s.cLim}`); } });
+    const mx = { eS:null, eC:null, cS:null, cC:null }, up = (key, v) => { if (v != null) mx[key] = Math.max(mx[key] == null ? 0 : mx[key], v); };
+    segs.forEach(s => {
+      const isC = s.type === 'curve';
+      s.spE.forEach(v => up(isC ? 'eC' : 'eS', v)); up(isC ? 'cC' : 'cS', s.spC);
+    });
+    return { cViol, fx, segs, advis, flags:[...new Set(flags)], cls, total:c0, half:P.half, W:P.W, start, end:{ x, y }, mx, P, nInt:segs.filter(s => s.type === 'intersection').length };
+  }
+
+  /* ───────── main ───────── */
+  function clearAll(msg){
+    G = null; FIX = []; lastOverview = '';
+    setText('totalResult', '—'); setText('totalNote', msg); setText('schedCount', '');
+    ['complianceDashboard','overviewWrap','detailWrap','qtyTable','schedTable','legend'].forEach(id => { document.getElementById(id).innerHTML = ''; });
+  }
+  function calcAll(){
+    OUT.unit = val('outputUnit'); OUT.dp = parseInt(val('decimalPlaces'), 10);
+    const P = readInputs(), ps = parseSegs(val('segList')); P.segs = ps.segs;
+    const gf = document.getElementById('geometryFlags');
+    gf.innerHTML = ps.errs.map(e => banner(e)).join('');
+    if (!(P.W > 0)){ gf.innerHTML += banner('Taxiway width must be greater than 0.'); clearAll('Fix the inputs to generate the layout.'); return; }
+    if (!P.segs.length){ clearAll('Enter at least one valid segment.'); return; }
+    if (!P.edgeOn && !P.clOn){ clearAll('Switch on edge or centreline lights.'); return; }
+    G = generate(P); FIX = G.fx;
+    gf.innerHTML += G.flags.map(e => banner(e)).join('') + G.advis.map(e => banner(e, 'info-banner')).join('');
+    renderTotals(); renderCompliance(); renderQuantities(); renderSchedule(); renderLegend(); renderOverview(); renderDetail();
+  }
+  function renderTotals(){
+    const e = FIX.filter(f => f.sys === 'edge').length, c = FIX.length - e;
+    setText('totalResult', FIX.length.toLocaleString());
+    setText('totalNote', `${e.toLocaleString()} edge + ${c.toLocaleString()} centreline fixtures over ${fmt(G.total)} of taxiway centreline.`);
+  }
+  function renderCompliance(){
+    const mx = G.mx, P = G.P;
+    const test = (label, act, max) => act == null ? chip('na', `${label}: no such rows`)
+      : max > 0 ? (act <= max + 1e-6 ? chip('pass', `${label}: ${f2(act)} ≤ ${f2(max)} ${OUT.unit}`) : chip('fail', `${label}: ${f2(act)} > ${f2(max)} ${OUT.unit}`))
+      : chip('review', `${label}: ${f2(act)} ${OUT.unit} — max not set`);
+    let h = '<div class="dash-group"><h5>Spacing &amp; geometry checks</h5><div class="dash-grid">';
+    h += test('Edge, straight', mx.eS, P.eMaxS) + test('Edge, curve', mx.eC, P.eMaxC);
+    h += test('Centreline, straight', mx.cS, P.cMaxS) + (mx.cC == null ? chip('na', 'Centreline, curve: no such rows') : (G.cViol.length ? chip('fail', `Centreline, curve: coarser than the radius-table limit (${G.cViol.map(v => { const q = v.split(': ')[0], sg = G.segs.find(z => z.name === q); return q + ' ' + f2(sg.spC) + ' > ' + f2(sg.cLim); }).join('; ')} ${OUT.unit})`) : chip('pass', `Centreline, curve: ${f2(mx.cC)} ${OUT.unit} within the radius-table limit`)));
+    h += G.flags.length ? chip('fail', 'Row geometry: see flags above') : chip('pass', 'Row geometry valid');
+    h += G.nInt && P.edgeOn ? chip('review', `${G.nInt} intersection segment(s): edge lights omitted`) : chip('na', 'No intersection segments');
+    document.getElementById('complianceDashboard').innerHTML = h + '</div></div>';
+  }
+  function pitch(a){
+    if (!a || !a.length) return '—';
+    const lo = Math.min(...a), hi = Math.max(...a);
+    return hi - lo < 1e-6 ? f2(lo) : f2(lo) + '–' + f2(hi);
+  }
+  function renderQuantities(){
+    const T = { edgeL:0, edgeR:0, cl:0, len:0 };
+    let h = '<tr><th>Segment</th><th>Type</th><th class="val">CL length</th><th class="val">Edge L</th><th class="val">Edge R</th><th class="val">Centreline</th><th class="val">Edge pitch (' + OUT.unit + ')</th><th class="val">CL pitch (' + OUT.unit + ')</th></tr>';
+    G.segs.forEach(s => {
+      T.edgeL += s.q.edgeL; T.edgeR += s.q.edgeR; T.cl += s.q.cl; T.len += s.L;
+      h += `<tr><td class="val">${s.name}</td><td>${s.type}</td><td class="val">${fmt(s.L)}</td><td class="val">${s.q.edgeL}</td><td class="val">${s.q.edgeR}</td><td class="val">${s.q.cl}</td><td class="val">${pitch(s.spE)}</td><td class="val">${s.spC ? f2(s.spC) : '—'}</td></tr>`;
+    });
+    h += `<tr class="qty-total"><td class="qty-total-label">Total</td><td></td><td class="val qty-total-val">${fmt(T.len)}</td><td class="val qty-total-val">${T.edgeL}</td><td class="val qty-total-val">${T.edgeR}</td><td class="val qty-total-val">${T.cl}</td><td class="qty-basis" colspan="2" style="text-align:right;">Grand total ${FIX.length}</td></tr>`;
+    document.getElementById('qtyTable').innerHTML = h;
+  }
+  function renderSchedule(){
+    const LIM = 600;
+    let h = '<tr><th>ID</th><th>System</th><th>Segment</th><th>Chainage</th><th>X</th><th>Y</th><th>Note</th></tr>';
+    FIX.slice(0, LIM).forEach(f => {
+      h += `<tr><td class="val">${esc(f.id)}</td><td><span class="dot" style="background:${COL[f.sys]}"></span>${SYS_NAME[f.sys]}</td><td>${f.seg}</td><td>${f2(f.c)}</td><td>${f2(f.x)}</td><td>${f2(f.y)}</td><td>${f.note}</td></tr>`;
+    });
+    document.getElementById('schedTable').innerHTML = h;
+    setText('schedCount', `(${FIX.length} fixtures, ${OUT.unit}${FIX.length > LIM ? ' — first ' + LIM + ' shown, the CSV has all' : ''})`);
+  }
+  function renderLegend(){
+    document.getElementById('legend').innerHTML =
+      `<span class="lg"><span class="dot" style="background:${COL.edge}"></span>Edge light (blue)</span>` +
+      `<span class="lg"><span class="dot" style="background:${COL.cl}"></span>Centreline light (green)</span>` +
+      `<span class="lg"><span class="swatch" style="background:#12233f;border:1px solid #2f5588"></span>Pavement</span>` +
+      `<span class="lg"><span class="swatch" style="background:rgba(255,140,66,0.5)"></span>Intersection (no edge lights)</span>`;
+  }
+
+  /* ───────── plan view ───────── */
+  function layers(){ const o = {}; document.querySelectorAll('#layerBar input').forEach(i => { o[i.dataset.layer] = i.checked; }); return o; }
+  function niceStep(v){ const p = Math.pow(10, Math.floor(Math.log10(v))), n = v / p; return (n < 1.5 ? 1 : n < 3.5 ? 2 : n < 7.5 ? 5 : 10) * p; }
+
+  function planSVG(win){
+    if (!G) return '';
+    const Ly = layers(), segs = G.segs, U = OUT.unit === 'ft' ? M_PER_FT : 1;
+    let S = win ? G.cls.filter(p => p.c >= win[0] - 1e-6 && p.c <= win[1] + 1e-6) : G.cls;
+    if (!S.length) S = G.cls;
+    const m = G.half + (win ? 10 : 25);
+    let minx = Infinity, maxx = -Infinity, miny = Infinity, maxy = -Infinity;
+    S.forEach(p => { minx = Math.min(minx, p.x); maxx = Math.max(maxx, p.x); miny = Math.min(miny, p.y); maxy = Math.max(maxy, p.y); });
+    minx -= m; maxx += m; miny -= m; maxy += m;
+    const dx = maxx - minx, dy = maxy - miny, pad = 30;
+    let s = (1200 - 2 * pad) / dx; const maxH = win ? 520 : 560;
+    if (dy * s > maxH) s = maxH / dy;
+    const Wd = Math.round(dx * s + 2 * pad), Ht = Math.round(dy * s + 2 * pad + 34);
+    const tx = x => r2(pad + (x - minx) * s), ty = y => r2(pad + (maxy - y) * s);
+    const wpx = G.W * s;
+    let o = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${Wd} ${Ht}" font-family="Barlow,Arial,sans-serif"><rect width="${Wd}" height="${Ht}" fill="#060d1a"/>`;
+    o += `<text x="${pad}" y="20" fill="#c8d8f0" font-size="12" font-weight="600">${esc(val('projectName'))} · Taxiway ${esc(G.P.desig)} · ${val('designStandard') === 'icao' ? 'ICAO Annex 14' : 'FAA AC 150/5340-30J'}</text>`;
+
+    let d = `M${tx(segs[0].g.x0)} ${ty(segs[0].g.y0)}`, di = '';
+    segs.forEach(sg => {
+      const g = sg.g, step = g.type === 'curve' ? ` A${r2(g.R * s)} ${r2(g.R * s)} 0 ${g.a > 180 ? 1 : 0} ${g.dir === 1 ? 0 : 1} ${tx(g.x1)} ${ty(g.y1)}` : ` L${tx(g.x1)} ${ty(g.y1)}`;
+      d += step;
+      if (g.type === 'intersection') di += `M${tx(g.x0)} ${ty(g.y0)} L${tx(g.x1)} ${ty(g.y1)} `;
+    });
+    if (Ly.pave){
+      o += `<path d="${d}" fill="none" stroke="#2f5588" stroke-width="${r2(wpx + 3)}" stroke-linejoin="round"/>`;
+      o += `<path d="${d}" fill="none" stroke="#12233f" stroke-width="${r2(wpx)}" stroke-linejoin="round"/>`;
+      if (di) o += `<path d="${di}" fill="none" stroke="rgba(255,140,66,0.3)" stroke-width="${r2(wpx)}"/>`;
+      o += `<path d="${d}" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="1" stroke-dasharray="7 6"/>`;
+    }
+    const rad = win ? 4.2 : 2.3;
+    FIX.forEach(f => {
+      if (win && (f.c < win[0] - 1e-6 || f.c > win[1] + 1e-6)) return;
+      if (!Ly[f.sys]) return;
+      o += `<circle cx="${tx(f.x)}" cy="${ty(f.y)}" r="${rad}" fill="${COL[f.sys]}"><title>${esc(f.id)} · chainage ${f2(f.c)} ${OUT.unit} · X ${f2(f.x)} Y ${f2(f.y)}</title></circle>`;
+    });
+    if (Ly.lab){
+      const lab = (t, x, y, col, sz, anc) => `<text x="${x}" y="${y}" fill="${col}" font-size="${sz}" font-weight="700" text-anchor="${anc || 'middle'}" stroke="#060d1a" stroke-width="3" paint-order="stroke">${t}</text>`;
+      segs.forEach(sg => {
+        if (win && (sg.midC < win[0] || sg.midC > win[1])) return;
+        o += lab(sg.name, tx(sg.mid[0]), ty(sg.mid[1]) - wpx / 2 - 8, '#FFB400', 12);
+      });
+      const range = win ? win[1] - win[0] : G.total, st = niceStep(range / U / 6) * U, c1 = win ? win[1] : G.total;
+      for (let c = Math.ceil((win ? win[0] : 0) / st - 1e-9) * st; c <= c1 + 1e-6; c += st){
+        let p = S[0], bd = Infinity; S.forEach(q => { const dd = Math.abs(q.c - c); if (dd < bd){ bd = dd; p = q; } });
+        o += `<circle cx="${tx(p.x)}" cy="${ty(p.y)}" r="${win ? 7 : 5}" fill="none" stroke="#FFB400" stroke-width="1"/>` + lab(f2(c), tx(p.x), ty(p.y) + wpx / 2 + 14, '#f0f4ff', 11);
+      }
+      if (!win || win[0] <= 1e-6) o += lab('START', tx(G.start.x), ty(G.start.y) - wpx / 2 - 22, '#00d4ff', 11);
+      if (!win || win[1] >= G.total - 1e-6) o += lab('END', tx(G.end.x), ty(G.end.y) - wpx / 2 - 22, '#00d4ff', 11);
+    }
+    const bl = niceStep(150 / s / U) * U, by = Ht - 16;
+    o += `<path d="M${pad} ${by} h${r2(bl * s)} M${pad} ${by - 4} v8 M${r2(pad + bl * s)} ${by - 4} v8" stroke="#c8d8f0" stroke-width="1.5" fill="none"/>`;
+    o += `<text x="${pad + r2(bl * s) + 8}" y="${by + 4}" fill="#c8d8f0" font-size="11">${r2(bl / U)} ${OUT.unit}</text>`;
+    return o + '</svg>';
+  }
+  function renderOverview(){ lastOverview = planSVG(null); document.getElementById('overviewWrap').innerHTML = lastOverview; }
+  function renderDetail(){
+    if (!G) return;
+    const win = Math.min(num('detWin'), G.total), st = document.getElementById('detStart');
+    st.max = Math.max(0, Math.floor(G.total - win));
+    const a = Math.min(num('detStart'), +st.max);
+    setText('detStartLab', u(a).toFixed(0) + ' ' + OUT.unit); setText('detWinLab', u(win).toFixed(0) + ' ' + OUT.unit);
+    document.getElementById('detailWrap').innerHTML = planSVG([a, a + win]);
+  }
+  function jumpDetail(w){
+    if (!G) return;
+    const win = Math.min(num('detWin'), G.total), st = document.getElementById('detStart');
+    st.max = Math.max(0, Math.floor(G.total - win));
+    const v = w === 'start' ? 0 : w === 'end' ? G.total - win : (G.total - win) / 2;
+    st.value = Math.round(Math.max(0, Math.min(v, +st.max)));
+    renderDetail();
+  }
+
+  /* ───────── exports ───────── */
+  function fileBase(){ return 'TWY-' + (G ? G.P.desig : 'layout') + '-lighting-layout'; }
+  function save(blob, name){
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name;
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+  }
+  function status(t){ setText('reportStatus', t); }
+  function downloadSVG(){
+    if (!G){ status('Nothing to export — fix the inputs first.'); return; }
+    save(new Blob(['<?xml version="1.0" encoding="UTF-8"?>\n' + lastOverview], { type:'image/svg+xml' }), fileBase() + '.svg'); status('Layout SVG downloaded.');
+  }
+  function downloadPNG(){
+    if (!G){ status('Nothing to export — fix the inputs first.'); return; }
+    const img = new Image(), url = URL.createObjectURL(new Blob([lastOverview], { type:'image/svg+xml' }));
+    img.onload = () => {
+      const w = 3000, h = Math.round(w * img.naturalHeight / img.naturalWidth), cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const ctx = cv.getContext('2d'); ctx.fillStyle = '#060d1a'; ctx.fillRect(0, 0, w, h); ctx.drawImage(img, 0, 0, w, h); URL.revokeObjectURL(url);
+      cv.toBlob(b => { save(b, fileBase() + '.png'); status('Layout PNG downloaded.'); }, 'image/png');
+    };
+    img.onerror = () => { status('PNG export failed in this browser — use the SVG instead.'); URL.revokeObjectURL(url); };
+    img.src = url;
+  }
+  function csvCell(v){ const s = String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+  function downloadCSV(){
+    if (!G){ status('Nothing to export — fix the inputs first.'); return; }
+    const head = ['ID','System','Group','Segment','Chainage_m','Chainage_ft','X_m','X_ft','Y_m','Y_ft','Note'];
+    const rows = FIX.map(f => [f.id, SYS_NAME[f.sys], f.grp, f.seg, f.c.toFixed(3), (f.c / M_PER_FT).toFixed(3), f.x.toFixed(3), (f.x / M_PER_FT).toFixed(3), f.y.toFixed(3), (f.y / M_PER_FT).toFixed(3), f.note].map(csvCell).join(','));
+    save(new Blob(['﻿' + head.join(',') + '\n' + rows.join('\n') + '\n'], { type:'text/csv;charset=utf-8' }), fileBase() + '-schedule.csv');
+    status('Fixture schedule CSV downloaded (' + FIX.length + ' rows). Chainage along the centreline from the start point; local X,Y.');
+  }
+
+  /* ───────── init ───────── */
+  document.getElementById('layerBar').addEventListener('change', () => { if (G){ renderOverview(); renderDetail(); } });
+  (function(){
+    const navbar = document.getElementById('navbar'), scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 400); navbar.classList.toggle('scrolled', window.scrollY > 40); });
+    scrollBtn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+  })();
+  onStandardChange();
+</script>
+
+<script>
+(function(){
+
+  const $ = id => document.getElementById(id);
+  const TABS = ['calc', 'plan', 'schedule', 'method'];
+  function showTab(id, o){
+    if (!TABS.includes(id)) id = 'calc';
+    TABS.forEach(k => { const on = k === id; $('tab-'+k).hidden = !on; const b = $('t-'+k); b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    $('mobileBar').hidden = id !== 'calc';
+    document.body.classList.toggle('has-bar', id === 'calc');
+    if (!(o && o.keep)){
+      history.replaceState(null, '', id === 'calc' ? location.pathname + location.search : '#' + id);
+      const top = $('tabbar').getBoundingClientRect().top + scrollY - 70;
+      if (scrollY > top) scrollTo({ top, behavior:'smooth' });
+    }
+  }
+  window.showTab = showTab;
+  document.querySelectorAll('.tab').forEach((b,i,all) => {
+    b.addEventListener('click', () => showTab(b.dataset.tab));
+    b.addEventListener('keydown', e => {
+      const k = { ArrowRight:i+1, ArrowLeft:i-1, Home:0, End:all.length-1 }[e.key];
+      if (k === undefined) return; e.preventDefault();
+      const t = all[(k + all.length) % all.length]; t.focus(); showTab(t.dataset.tab, { keep:true });
+    });
+  });
+  window.addEventListener('hashchange', () => showTab(location.hash.slice(1), { keep:true }));
+  function resetInputs(){
+    document.querySelectorAll('#tab-calc input[id],#tab-calc select[id],#tab-calc textarea[id],#tab-inspect input[id],#tab-inspect select[id],#tab-inspect textarea[id]').forEach(e => {
+      if (e.type === 'checkbox') e.checked = e.defaultChecked;
+      else if (e.tagName === 'SELECT'){ let i = [...e.options].findIndex(o => o.defaultSelected); e.selectedIndex = i < 0 ? 0 : i; }
+      else e.value = e.defaultValue;
+    });
+  }
+  const setv = (id, v) => { const e = $(id); if (e.type === 'checkbox') e.checked = !!v; else e.value = v; };
+  const clipCopy = (txt, st) => {
+    const done = () => { st.textContent = 'Summary copied to clipboard.'; };
+    const fallback = () => { const a = document.createElement('textarea'); a.value = txt; document.body.appendChild(a); a.select();
+      try { document.execCommand('copy'); done(); } catch(e){ st.textContent = 'Copy failed — select and copy manually.'; } a.remove(); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
+  };
+  const setBadge = (el, status, label, sub) => {
+    const ic = { pass:'fa-circle-check', fail:'fa-circle-xmark', review:'fa-triangle-exclamation' };
+    el.innerHTML = status ? `<div class="req-badge ${status}"><i class="fa-solid ${ic[status]}"></i><div>${label}<span class="req-sub">${sub}</span></div></div>` : '';
+  };
+  const mobile = (total, status) => {
+    $('mbTotal').textContent = total;
+    const ms = $('mbStatus'); const L = { pass:'Pass', fail:'Fail', review:'Review' };
+    ms.textContent = status ? L[status] : ''; ms.className = 'mb-status' + (status ? ' ' + status : '');
+  };
+  const countNotes = (ids, extraWarn) => {
+    let w = 0, n = 0;
+    ids.forEach(id => { const f = $(id); w += f.querySelectorAll('.flag-banner').length; n += f.querySelectorAll('.info-banner').length; });
+    $('noteCount').textContent = (w || n) ? w + ' warning' + (w == 1 ? '' : 's') + ', ' + n + ' note' + (n == 1 ? '' : 's') : 'none';
+    $('noteCount').className = 'cnt' + (w ? ' warn' : '');
+    return { w, n };
+  };
+  const chipStatus = (w) => {
+    const c = $('complianceDashboard');
+    if (w) return 'fail';
+    if (c.querySelector('.dash-chip.fail')) return 'fail';
+    if (c.querySelector('.dash-chip.review')) return 'review';
+    if (c.querySelector('.dash-chip.pass')) return 'pass';
+    return '';
+  };
+
+  function resetAll(){ resetInputs(); lastUnit = 'm'; onStandardChange(); }
+  $('resetBtn').addEventListener('click', resetAll);
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => { resetInputs(); PRESETS[b.dataset.preset](); lastUnit = val('lengthUnit'); onStandardChange(); }));
+  function syncPanel(){
+    const total = $('totalResult').textContent;
+    const { w } = countNotes(['geometryFlags']);
+    const st = (G && total !== '—') ? chipStatus(w) : (w ? 'fail' : '');
+    const L = { pass:'PASS', fail:'FAIL', review:'ENGINEERING REVIEW' };
+    const S = { pass:'No fail conditions in the generated layout.', fail:'One or more checks failed or an input is invalid — see the flags and checks below.', review:'Spacing passes where limits are set; the items flagged below need layout review.' };
+    setBadge($('pBadge'), st, L[st], S[st]);
+    const ne = G ? FIX.filter(f => f.sys === 'edge').length : '—';
+    $('pEdge').textContent = ne; $('pCL').textContent = G ? FIX.length - ne : '—';
+    $('pLen').textContent = G ? fmt(G.total) : '—'; $('pSeg').textContent = G ? G.segs.length : '—';
+    mobile(total, st);
+  }
+  const _calc = window.calcAll;
+  window.calcAll = function(){ _calc.apply(this, arguments); try { syncPanel(); } catch(e){ console.error(e); } };
+  showTab(location.hash.slice(1), { keep:true });
+  calcAll();
+
+  const PRESETS = {
+    icao:  () => {},
+    sbend: () => { setv('segList', 'straight,250\ncurve,100,45,left\ncurve,100,45,right\nstraight,250'); },
+    edge:  () => { setv('sysCL', false); },
+    faa:   () => { setv('lengthUnit', 'ft'); setv('outputUnit', 'ft'); setv('designStandard', 'faa'); setv('twyWidth', 75); setv('edgeOffset', 2);
+                   setv('segList', 'straight,1000\ncurve,330,90,left\nstraight,800'); }
+  };
+  function copySummary(){
+    const t = id => $(id).textContent;
+    const txt = ['Taxiway Lighting Layout Generator',
+      'Project: ' + ($('projectName').value || '—') + ' | Taxiway: ' + ($('twyDesignation').value || '—'),
+      'Total physical fixtures: ' + t('totalResult'),
+      t('totalNote'),
+      'Status: ' + ($('pBadge').textContent.replace(/\s+/g,' ').trim() || '—'),
+      'Calculated / nominal layout for design planning — not an issued drawing or Final BOQ.'].join('\n');
+    clipCopy(txt, $('reportStatus'));
+  }
+  window.copySummary = copySummary;
+
+})();
+</script>
+<script>
+  (function(){
+    const navbar=document.getElementById('navbar'), scrollBtn=document.getElementById('scrollTop');
+    const hb=document.getElementById('hamburger'), nl=document.getElementById('navLinks');
+    window.addEventListener('scroll',()=>{
+      scrollBtn.classList.toggle('visible',window.scrollY>400);
+      navbar.classList.toggle('scrolled',window.scrollY>40);
+    });
+    scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    hb.addEventListener('click',()=>{const o=nl.classList.toggle('open');hb.setAttribute('aria-expanded',o);});
+  })();
+</script>
+</body>
+</html>

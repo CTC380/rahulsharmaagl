@@ -1,0 +1,2364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LED Beacon | AGL Component Library</title>
+    <meta name="description" content="LED beacon reference guide: rotating turntable and fixed-ring sequencing designs, LED driver and photocell control, and colour and flash pattern requirements." />
+    <meta name="keywords" content="LED beacon, airport beacon, AGL, airfield ground lighting, LED driver, FAA standards" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="rating" content="general" />
+    <meta name="revisit-after" content="7 days" />
+    <meta http-equiv="content-language" content="en-us" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-led-beacon.html" />
+    <link rel="alternate" hreflang="en" href="https://rahulsharmaagl.in/component-led-beacon.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/component-led-beacon.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="LED Beacon | AGL Component Library" />
+    <meta property="og:description" content="LED beacon reference guide: rotating turntable and fixed-ring sequencing designs, LED driver and photocell control, and colour and flash pattern requirements." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-led-beacon.html" />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:updated_time" content="2026-09-18T00:00:00+00:00" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="Airport Beacon Systems" />
+    <meta property="og:image" content="https://bhullarbha.com/cdn/shop/files/rn-image_picker_lib_temp_86d7fac7-4bfa-43f8-9ce7-edc8d1b06845.png?v=1782722862&amp;width=1445" />
+    <meta property="og:image:alt" content="LED Beacon" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LED Beacon | AGL Component Library" />
+    <meta name="twitter:description" content="LED beacon reference guide: rotating turntable and fixed-ring sequencing designs, LED driver and photocell control, and colour and flash pattern requirements." />
+    <meta name="twitter:image" content="https://bhullarbha.com/cdn/shop/files/rn-image_picker_lib_temp_86d7fac7-4bfa-43f8-9ce7-edc8d1b06845.png?v=1782722862&amp;width=1445" />
+    <meta name="twitter:image:alt" content="LED Beacon" />
+    <meta name="twitter:site" content="@rahulsharma" />
+    <meta name="theme-color" content="#060d1a" />
+    <meta name="apple-mobile-web-app-title" content="LED Beacon" />
+    <meta name="application-name" content="AGL Component Library" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-led-beacon.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Airport Beacon Systems",
+            "item": "https://rahulsharmaagl.in/component-library.html#airport-beacon-systems"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "LED Beacon",
+            "item": "https://rahulsharmaagl.in/component-led-beacon.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-led-beacon.html#article",
+        "headline": "LED Beacon",
+        "description": "LED beacon reference guide: rotating turntable and fixed-ring sequencing designs, LED driver and photocell control, and colour and flash pattern requirements.",
+        "url": "https://rahulsharmaagl.in/component-led-beacon.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-led-beacon.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "LED Beacon"
+        },
+        "articleSection": "Airport Beacon Systems",
+        "keywords": "LED beacon, airport beacon, AGL, airfield ground lighting, LED driver, FAA standards",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://bhullarbha.com/cdn/shop/files/rn-image_picker_lib_temp_86d7fac7-4bfa-43f8-9ce7-edc8d1b06845.png?v=1782722862&width=1445"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-led-beacon.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-led-beacon.html#faq"
+        },
+        "datePublished": "2026-09-18",
+        "dateModified": "2026-09-18"
+      }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-led-beacon.html#faq", "url": "https://rahulsharmaagl.in/component-led-beacon.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-led-beacon.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is an LED beacon?", "acceptedAnswer": {"@type": "Answer", "text": "An LED beacon is a rotating or flashing beacon that uses high-power LEDs instead of halogen lamps or xenon flashtubes. It performs the same identification function with alternating colour flashes, but with a service life of 50,000+ hours, instant-on at full intensity and no warm-up time."}}, {"@type": "Question", "name": "What is the difference between a rotating LED beacon and an electronic LED beacon?", "acceptedAnswer": {"@type": "Answer", "text": "A rotating LED beacon mounts the LED array on a motor-driven turntable with reflectors to produce a sweeping beam. A static, or electronic, LED beacon arranges several LED modules in a circle and sequences them electronically to simulate rotation, so it has no moving parts."}}, {"@type": "Question", "name": "What colours and flash rate do LED beacons use?", "acceptedAnswer": {"@type": "Answer", "text": "Typical sequences are green/white for airports, white/yellow for heliports and water airports, and red/white for obstruction warning. The effective flash rate is 24–30 flashes per minute, matching an equivalent rotating beacon."}}, {"@type": "Question", "name": "How bright is an LED beacon?", "acceptedAnswer": {"@type": "Answer", "text": "Effective intensity is up to 50,000 cd for rotating versions and up to 30,000 cd for electronic versions, with peak beam intensity of at least 2,000 cd per colour per ICAO Annex 14 and FAA AC 150/5345-12. Intensity is controlled by PWM dimming steps selected by the Beacon Controller."}}, {"@type": "Question", "name": "How much power does an LED beacon save compared with halogen?", "acceptedAnswer": {"@type": "Answer", "text": "An LED beacon typically draws 50–150 W compared with 200–400 W for a halogen beacon, a saving of roughly 50–70%. The lower load also allows lighter-gauge supply cable and lets the beacon run from battery or solar power in portable or temporary applications."}}, {"@type": "Question", "name": "Can an LED beacon replace an existing halogen beacon?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. It is designed as a like-for-like replacement that mounts into the same base, turntable or fixed housing and, in most retrofits, reuses the existing structural mounting and power and control wiring. Check compatibility with the Beacon Controller and the flash rate requirement before changeover."}}, {"@type": "Question", "name": "What power supply does an LED beacon use?", "acceptedAnswer": {"@type": "Answer", "text": "A dedicated beacon circuit, typically 230 V AC or 24 V DC with a converter, independent of the airfield series circuit. The Beacon Controller manages colour sequence, flash rate and PWM dimming, and detects LED array or driver failure and loss of sync."}}, {"@type": "Question", "name": "Which standards apply to LED beacons?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 14, FAA AC 150/5345-12 (airport rotating beacons, LED version) and FAA Engineering Brief #67 for LED beacon performance and durability. Always verify the current edition and your approved requirements."}}, {"@type": "Question", "name": "How often should an LED beacon be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are quarterly for lens cleaning, semi-annual for heat sink cleaning, and annual for photometric and colour checks, driver and surge protection checks, seal and housing inspection and cable and connector inspection. Plan LED module replacement around the 50,000-hour mark. Your approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "Why is my LED beacon dark or stuck on?", "acceptedAnswer": {"@type": "Answer", "text": "A dark beacon is often a failed driver board, blown fuse or breaker, an open supply circuit, or a photocell stuck in the daylight state. A beacon that stays on in daylight usually has a failed or dirty photocell, or a driver timer fault overriding it. Clean the photocell lens, test its switching by shading it, and check the driver output."}}]}</script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+
+        /* DIAGRAM BLOCK */
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 34px;
+            margin-bottom: 24px;
+        }
+        .config-compare {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .config-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 26px 24px;
+            flex: 1;
+            min-width: 220px;
+            max-width: 280px;
+        }
+        .config-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-align: center;
+        }
+        .config-visual {
+            position: relative;
+            width: 100px;
+            height: 100px;
+        }
+        .config-visual .hub {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--gold);
+            transform: translate(-50%, -50%);
+        }
+        .config-visual .beam-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 44px;
+            height: 3px;
+            background: linear-gradient(to right, var(--gold), transparent);
+            transform-origin: left center;
+            box-shadow: 0 0 8px var(--gold);
+        }
+        .config-visual.rotating .beam-line { transform: rotate(-20deg); }
+        .config-visual .led-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+        }
+        .config-visual .led-node.on {
+            background: var(--gold);
+            border-color: var(--gold);
+            box-shadow: 0 0 8px var(--gold);
+        }
+        .config-desc {
+            font-size: 12.5px;
+            color: var(--text);
+            text-align: center;
+            line-height: 1.6;
+        }
+        .led-benefits {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 34px;
+            flex-wrap: wrap;
+        }
+        .led-benefit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            min-width: 130px;
+        }
+        .led-benefit .num {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            color: var(--gold);
+            letter-spacing: 1px;
+        }
+        .led-benefit .lbl {
+            font-size: 11px;
+            color: var(--text);
+            text-align: center;
+            letter-spacing: .3px;
+        }
+        .vasi-caption {
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.7;
+            border-left: 2px solid var(--border);
+            padding-left: 14px;
+            text-align: left;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+            /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">LED Beacon</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-regular fa-lightbulb"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">LED <span>Beacon</span></h1>
+            <p class="comp-sub">A modern solid‑state rotating or flashing beacon system that uses high‑power LEDs as the light source. Offers significantly longer life, lower power consumption, instant‑on capability, and reduced maintenance compared to traditional halogen or xenon beacons. Available in airport (green/white), heliport (white/yellow), and obstruction (red/white) configurations.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:480px;height:480px;">
+                <img src="https://bhullarbha.com/cdn/shop/files/rn-image_picker_lib_temp_86d7fac7-4bfa-43f8-9ce7-edc8d1b06845.png?v=1782722862&amp;width=1445" alt="LED Beacon" width="480" height="480" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>An <strong>LED Beacon</strong> is a rotating or flashing beacon system that utilizes high‑power light‑emitting diodes (LEDs) as the light source instead of traditional halogen lamps or xenon flashtubes. It provides the same identification function—alternating colour flashes (green/white, white/yellow, or red/white)—but with the advantages of LED technology: up to 50,000+ hours of service life, instant‑on at full intensity, lower power consumption (typically 50–70% less than halogen), and no warm‑up time. LED beacons are available in rotating (motor‑driven) and static (electronic flashing) configurations, with the latter using multiple LED modules to simulate rotation. They are increasingly the standard for new installations and retrofits at airports, heliports, and obstruction warning systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The LED beacon exists to deliver the identical identification function of a traditional halogen or xenon beacon while removing the specific reliability weaknesses that come with a mechanical light source: filament or flashtube burnout, warm-up delay before reaching full intensity, and the higher power draw of a heated light source. Because the beacon's purpose is continuous, unattended operation, often for years between service visits, an LED source's 50,000+ hour service life and instant-on behaviour directly serve that purpose better than a technology that degrades and requires a warm-up period every time it activates. The static electronic-flashing configuration exists for a related reason: it reproduces the beacon's rotating-beam identification pattern without any moving parts at all, eliminating drive-motor and turntable wear as failure modes entirely, which is precisely why it is becoming the preferred choice for new installations and retrofits.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Used as a replacement for traditional halogen beacons in all aviation applications: airport identification beacons (green/white), heliport beacons (white/yellow), water airport beacons (yellow/white), and obstruction warning beacons (red/white). Installed on control towers, hangar roofs, helipads, offshore platforms, and tall structures. The LED beacon is also used in portable and temporary applications due to its low power consumption and ability to run on battery or solar power.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>As a like-for-like replacement, the LED beacon mounts into the same base, turntable, or fixed housing as the halogen or xenon unit it replaces, using the existing structural mounting and, in most retrofits, the existing power and control wiring. New installations follow the same siting principles as any rotating or static beacon: an elevated, unobstructed position on a tower, mast, or rooftop with a clear 360° sweep. Because LED beacons draw substantially less power, some installations take advantage of the reduced load to run from a smaller supply, standby battery, or solar-charged system, which is particularly useful at remote or off-grid sites. Static (electronic-flashing) configurations are mounted as a fixed unit with no rotating parts, simplifying the mounting bracket to a rigid fixed mount rather than a bearing-supported turntable, and cabling runs directly to the beacon controller for flash-pattern and photocell control.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>An LED beacon uses an array of high‑intensity LEDs (typically 5–20 W each) with specific colour outputs (white, red, yellow) or with dichroic filters. In a rotating configuration, the LED array is mounted on a motor‑driven turntable with reflectors to produce a sweeping beam. In a static configuration, multiple LED modules are arranged in a circle and electronically sequenced to simulate a rotating beam (this is known as an "LED strobe" or "electronic beacon"). The intensity is controlled by pulse‑width modulation (PWM) to achieve the required effective intensity. The LED driver provides constant current regulation and includes surge protection. A photocell or timer controls the on/off cycle. The housing is weatherproof with a transparent dome, and the LEDs are mounted on a heat sink to dissipate heat efficiently.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>The LED beacon's control architecture is built around its own driver board rather than any shared airfield circuit. Mains or DC power feeds the driver, which performs constant-current regulation and PWM dimming to hold the array at the required effective intensity, and a photocell or timer wired directly into that same board decides when the beacon switches on and off. From there the driver's logic forks depending on configuration: in a rotating unit it feeds a small motor controller that turns the turntable at a fixed speed, while in a static unit it feeds an electronic sequencer that steps current through the ring of LED modules in order, simulating the same sweep with no moving parts. Since both configurations produce the same white/red/yellow identification signal, this driver-level fork is really the only thing distinguishing the two internally. Surge protection and thermal monitoring of the heat sink also live on the driver board, so the beacon can throttle or shut down the array locally in response to overheating or a power surge well before that condition would ever reach a wider monitoring system.</p>
+            </div>
+            <div class="diagram-block" style="margin-top:24px;">
+                <p style="font-size:13.5px; color:var(--text); text-align:center; margin-bottom:22px;">Power In → LED Driver (PWM + Surge/Thermal Protection) → Photocell/Timer → Motor Controller or Sequencer → LED Output</p>
+                <svg viewBox="0 0 680 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="ledArchArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                        </marker>
+                    </defs>
+
+                    <rect x="170" y="20" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="340" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">POWER IN (MAINS OR DC)</text>
+                    <text x="340" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Feeds the LED driver board directly</text>
+
+                    <line x1="340" y1="76" x2="340" y2="100" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#ledArchArrow)"/>
+
+                    <rect x="140" y="104" width="400" height="66" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="340" y="128" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">LED DRIVER</text>
+                    <text x="340" y="145" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">PWM dimming, constant current,</text>
+                    <text x="340" y="159" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">surge + thermal protection · photocell/timer input</text>
+
+                    <line x1="340" y1="170" x2="340" y2="194" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#ledArchArrow)"/>
+
+                    <path d="M340,194 L280,220" stroke="#FFB400" stroke-width="1.5" opacity="0.7" fill="none" marker-end="url(#ledArchArrow)"/>
+                    <path d="M340,194 L400,220" stroke="#FFB400" stroke-width="1.5" opacity="0.7" fill="none" marker-end="url(#ledArchArrow)"/>
+
+                    <rect x="150" y="224" width="200" height="56" rx="9" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="250" y="248" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#f0f4ff">MOTOR CONTROLLER</text>
+                    <text x="250" y="264" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Rotating configuration</text>
+
+                    <rect x="380" y="224" width="200" height="56" rx="9" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="480" y="248" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12.5" fill="#f0f4ff">ELECTRONIC SEQUENCER</text>
+                    <text x="480" y="264" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Static configuration</text>
+
+                    <path d="M250,280 L250,300 L340,320" stroke="#FFB400" stroke-width="1.5" opacity="0.7" fill="none" marker-end="url(#ledArchArrow)"/>
+                    <path d="M480,280 L480,300 L400,320" stroke="#FFB400" stroke-width="1.5" opacity="0.7" fill="none" marker-end="url(#ledArchArrow)"/>
+
+                    <rect x="190" y="324" width="300" height="56" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                    <text x="340" y="348" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" fill="#f0f4ff">LED ARRAY OUTPUT</text>
+                    <text x="340" y="365" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Same colour-flash signal, either way</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Two Ways to Sweep</div>
+            <h2 class="block-title">Rotating vs. Static LED Configuration</h2>
+            <div class="diagram-block">
+                <div class="config-compare">
+                    <div class="config-card">
+                        <div class="config-title">Rotating</div>
+                        <div class="config-visual rotating">
+                            <div class="hub"></div>
+                            <div class="beam-line"></div>
+                        </div>
+                        <p class="config-desc">LED array mounted on a motor-driven turntable, just like a halogen rotating beacon — the whole assembly physically turns to sweep the beam.</p>
+                    </div>
+                    <div class="config-card">
+                        <div class="config-title">Static</div>
+                        <div class="config-visual">
+                            <div class="hub"></div>
+                            <div class="led-node on" style="left:84px; top:44px;"></div>
+                            <div class="led-node on" style="left:72.28px; top:72.28px;"></div>
+                            <div class="led-node" style="left:44px; top:84px;"></div>
+                            <div class="led-node" style="left:15.72px; top:72.28px;"></div>
+                            <div class="led-node" style="left:4px; top:44px;"></div>
+                            <div class="led-node" style="left:15.72px; top:15.72px;"></div>
+                            <div class="led-node" style="left:44px; top:4px;"></div>
+                            <div class="led-node" style="left:72.28px; top:15.72px;"></div>
+                        </div>
+                        <p class="config-desc">No moving parts — a ring of fixed LED modules is electronically sequenced, switching on and off in order to simulate the same sweeping flash.</p>
+                    </div>
+                </div>
+                <div class="led-benefits">
+                    <div class="led-benefit"><span class="num">50,000+</span><span class="lbl">Hours service life</span></div>
+                    <div class="led-benefit"><span class="num">-60%</span><span class="lbl">Power vs. halogen</span></div>
+                    <div class="led-benefit"><span class="num">0s</span><span class="lbl">Warm-up, instant-on</span></div>
+                </div>
+                <p class="vasi-caption" style="margin-top:26px;">Both configurations produce the same colour-flash identification signal covered on the Airport, Heliport, and Rotating Beacon pages — the difference is entirely mechanical: motion vs. electronics, with the static design trading a moving part for a driver circuit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The beacon body is a weatherproof cast aluminium or moulded composite housing, anodised or powder-coated for corrosion resistance, built around a ring or cluster of high-power LED modules rather than a single filament lamp or flashtube. In rotating configurations, the LED cluster and its coloured lens segments are mounted on a low-friction bearing turned by a small, low-power drive motor; in static electronic configurations, multiple fixed LED modules are arranged around the housing and sequentially switched to simulate the sweep of a rotating beam, eliminating moving parts entirely. Each LED module sits behind a coloured (green, white, yellow, or red) polycarbonate or acrylic lens, gasket-sealed to the housing to achieve an IP66/IP67 rating, with the solid-state design allowing a smaller, lighter optical head than equivalent halogen or xenon units. The housing mounts to a mast, rooftop plinth, or tower structure via a flanged base and stainless-steel fasteners, and internal driver electronics, which manage flash timing, dimming, and thermal regulation, are potted or conformal-coated and isolated from the optical chamber, drawing from a 230V AC or 24V DC supply with the reduced power draw of the LED source easing load on backup and solar-powered installations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Light Source</td><td class="val">High‑power LED array (5–20 W per LED)</td></tr>
+                <tr><td>Colour Sequence</td><td class="val">Green/White, White/Yellow, White/Red, Red/White</td></tr>
+                <tr><td>Flash Rate</td><td class="val">24–30 flashes per minute (rotating or electronic)</td></tr>
+                <tr><td>Effective Intensity</td><td class="val">Up to 50,000 cd (rotating), up to 30,000 cd (electronic)</td></tr>
+                <tr><td>Lamp Life</td><td class="val">50,000+ hours (LED)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">50–150 W (vs. 200–400 W for halogen)</td></tr>
+                <tr><td>Beam Coverage</td><td class="val">Omnidirectional (360° horizontal)</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP66 / IP67, weather‑resistant</td></tr>
+                <tr><td>Power Supply</td><td class="val">230V AC or 24V DC (with converter)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Type</td><td class="val">Dedicated mains-fed beacon circuit, independent of the airfield series lighting circuit</td></tr>
+                <tr><td>Supply Voltage</td><td class="val">230V AC or 24V DC (with converter)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">50–150W, substantially lower than the 200–400W drawn by an equivalent halogen beacon, allowing lighter-gauge supply cable</td></tr>
+                <tr><td>Control Input</td><td class="val">Beacon Controller regulates colour sequence, flash rate, and intensity dimming via PWM</td></tr>
+                <tr><td>Insulation Resistance</td><td class="val">≥ 50 MΩ (megger test, cable-to-ground)</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">Fixture body and mounting structure bonded to the airfield earth grid</td></tr>
+                <tr><td>Fault Protection</td><td class="val">LED array/driver failure and loss-of-sync detection at the Beacon Controller</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Optical Performance</div>
+            <h2 class="block-title">Photometric Requirements</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Colour Sequence</td><td class="val">Alternating white and green (or per-site designation) produced electronically or via slow physical rotation</td></tr>
+                <tr><td>Effective Flash Rate</td><td class="val">24–30 flashes per minute, matched to an equivalent rotating beacon's output</td></tr>
+                <tr><td>Peak Beam Intensity</td><td class="val">≥ 2,000 cd per colour, per ICAO Annex 14 / FAA AC 150/5345-12</td></tr>
+                <tr><td>Beam Delivery</td><td class="val">Sequenced LED array or slow-rotating optic to reproduce the traditional sweeping beam appearance</td></tr>
+                <tr><td>Horizontal Coverage</td><td class="val">360° visibility from all approach directions</td></tr>
+                <tr><td>Chromaticity</td><td class="val">White and green (or site-specific colours) within ICAO Annex 14 colour boundaries</td></tr>
+                <tr><td>Day/Night Intensity Control</td><td class="val">PWM dimming steps selected by the Beacon Controller</td></tr>
+                <tr><td>Test Method</td><td class="val">Rotation speed / LED sequencing rate check at commissioning</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>LED beacon colour, intensity, and flash pattern requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-12</h5><p>Specification for airport rotating beacons (LED version)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA Engineering Brief #67</h5><p>LED beacon performance and durability requirements</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-tower-observation"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mast/Structure Mounting Check</h5><span class="test-stage">Civil</span></div>
+                        <p>Confirm the mast, rooftop plinth, or tower structure is rated for the beacon's weight and wind loading before fixing the flanged base.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Bearing/Sequencing Alignment</h5><span class="test-stage">Mechanical</span></div>
+                        <p>On rotating configurations, level the base so the bearing tracks true under the drive motor; on static electronic configurations, confirm all LED modules are seated evenly around the housing for a consistent simulated sweep.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-palette"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Colour Segment Verification</h5><span class="test-stage">Configuration</span></div>
+                        <p>Confirm the correct lens colours (green, white, yellow, or red) are fitted to the LED modules in the correct positions for the site's beacon colour sequence.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Driver Electronics Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <p>Terminate wiring to the potted or conformal-coated driver electronics per the wiring diagram, keeping the driver compartment isolated from the optical chamber as designed.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply Termination</h5><span class="test-stage">Electrical</span></div>
+                        <p>Terminate the 230V AC or 24V DC supply, confirming the converter (where fitted) matches the installed voltage, especially on backup- or solar-fed installations.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Housing Seal Check</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Confirm gaskets around each LED module lens seat correctly to achieve the rated IP66/IP67 protection before the housing is closed and energised.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record mounting position, colour sequence configuration, and wiring termination as-built before the beacon is closed out for service.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insulation Resistance Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Megger-test the supply cable and driver board before energisation, confirming insulation resistance clears the acceptable minimum.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Driver Board Power-Up &amp; Self-Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Energise the LED driver on its own and confirm constant-current regulation and PWM dimming initialise correctly before the beacon is connected.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Photocell / Timer Threshold Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm the beacon switches on and off at the correct ambient light threshold via the driver board's integrated photocell or timer input.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Colour Output &amp; Sequencing Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm the correct alternating colour output (green/white, white/yellow, or red/white) matches the application, and that any electronic sequencing (static configuration) fires in the correct order.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Rotation Speed / LED Sequencing Rate Check</h5><span class="test-stage">Energisation</span></div>
+                        <p>For rotating configurations, confirm turntable speed matches 12&ndash;15 RPM; for static configurations, confirm the electronic sweep produces the equivalent 24&ndash;30 flashes per minute.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Photometric Intensity Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Measure beam intensity and colour with a calibrated photometer against ICAO/FAA thresholds prior to operational handover.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Thermal Performance Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Monitor LED array and driver temperature under sustained operation, confirming heat sinking keeps the array within its rated thermal envelope.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record insulation, colour, rotation/sequencing, and photometric readings alongside driver firmware/configuration in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Photometric &amp; Colour Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Test intensity and colour output, since LEDs gradually lose brightness and can shift colour; plan module replacement around the 50,000-hour mark.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Heat Sink Cleaning</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Clean heat sink fins and confirm airflow is unobstructed, since blocked or inadequate heat dissipation shortens LED life significantly.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Driver &amp; Surge Protection Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Inspect the LED driver and surge protection devices, which are vulnerable to voltage transients and lightning-induced surges.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Lens Cleaning</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Wipe the lens free of dust, salt film, or debris that would otherwise reduce measured intensity below spec.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Seal &amp; Housing Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check gaskets and housing seams for cracking or compression set to keep moisture out of the driver and LED compartments.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Cable &amp; Connector Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Examine power connections for corrosion or loose crimps, a common cause of intermittent beacon outages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">LED Degradation and Colour Shift</h5><p>LEDs gradually lose intensity and can shift colour over time. Regular photometric testing is essential to ensure the beacon still meets intensity and colour requirements. Replacement of LED modules is typically needed after 50,000 hours.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Heat Sink and Thermal Management</h5><p>LEDs generate heat that must be dissipated to maintain performance and life. Blocked or inadequate heat sinks can cause premature failure. Regular cleaning of heat sink fins and ensuring proper airflow is critical.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Driver Failure and Surge Damage</h5><p>LED drivers are susceptible to voltage surges and lightning. Use of high‑quality surge protection devices and regular inspection of the driver's condition is recommended to avoid unexpected outages.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Beacon Completely Dark</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Failed driver board, blown fuse or breaker at the supply, an open circuit in the incoming power feed, or a photocell stuck in the "daylight" state and holding the beacon off.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check incoming supply voltage at the beacon base; test driver output with the photocell bypassed or covered; inspect the fuse/breaker; confirm the photocell responds correctly when shaded.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace a failed driver board or photocell, repair the supply wiring fault, or reset/replace the fuse or breaker before re-energising.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Beacon Stuck On or Fails to Switch Off in Daylight</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Photocell failure, dirt or debris shading the sensor lens, or a driver-board timer fault overriding the photocell input.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Clean the photocell lens and re-test; cover and uncover the sensor to confirm it switches correctly; check the driver's timer/override setting if fitted.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean or replace the photocell, and reprogram or replace the driver's timer control if it is not honouring the photocell input.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reduced Intensity or Dim Flash</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">LED array degradation approaching end of rated service life, a hazy or dirty dome, or the driver's PWM duty cycle set below the required effective intensity.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Run a photometric intensity check against the applicable ICAO/FAA threshold; inspect and clean the transparent dome; verify the driver's PWM/intensity setting against the design requirement.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the degraded LED module, clean or replace a hazed dome, or correct the driver's PWM setting; re-verify with a follow-up photometric reading.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Rotating Beacon Sweep Stalled or Running Slow</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Worn or seized turntable bearings, debris binding the rotating assembly, or a fault in the motor controller.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect the turntable for binding or resistance when turned by hand; measure motor current draw against the rated value; test the motor controller output independently of the motor.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Lubricate or replace worn bearings, clear any obstruction from the turntable, or replace the motor controller if it is not delivering the correct drive signal.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Static (Electronic) Beacon Sweep Pattern Irregular</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">A failed LED module within the sequenced ring, or a timing fault in the electronic sequencer driving the simulated sweep.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Observe a full sequence cycle to identify which module fails to fire or fires out of order; check the sequencer board for a stepping fault; test the suspect module in isolation.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the failed LED module, or replace the sequencer board if the stepping fault persists across modules.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Beacon Overheats or Trips on Thermal Protection</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Blocked or dust-clogged heat sink fins restricting heat dissipation, inadequate ventilation at the mounting location, or an oversensitive driver thermal-protection threshold.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect and clean the heat sink fins; confirm adequate airflow around the housing; check the driver's thermal fault indicator or log for repeated trips.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the heat sink, improve ventilation or shading at the site, or replace the driver board if it continues to trip below its rated thermal limit.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Driver Board Failure</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A failed driver board, blown fuse or breaker at the supply, or an open circuit in the incoming power feed.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Beacon goes completely dark, with no rotation or flash output.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Incoming supply-voltage checks at the beacon base, driver-output testing with the photocell bypassed, and fuse/breaker inspection.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Photocell Fault</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Photocell failure, dirt or debris shading the sensor lens, or a driver-board timer fault overriding the photocell input.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Beacon stuck on during daylight, or fails to switch off in daylight conditions.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Photocell lens cleaning and re-test, cover/uncover switching checks, and driver timer/override setting verification.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">LED Array Lumen Depreciation</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">LED array degradation approaching end of rated service life, a hazy or dirty dome, or an incorrectly set PWM duty cycle.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reduced intensity or a dim flash below the applicable ICAO/FAA threshold.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Photometric intensity checks against threshold, dome inspection and cleaning, and driver PWM/intensity-setting verification.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Turntable Bearing Wear (Rotating Type)</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Worn or seized turntable bearings, debris binding the rotating assembly, or a motor controller fault.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Rotating beacon sweep stalls or runs slower than the rated speed.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Binding/resistance checks when turning by hand, motor current-draw measurement, and motor controller output testing.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sequencer Board Fault (Static Type)</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A failed LED module within the sequenced ring, or a timing fault in the electronic sequencer driving the simulated sweep.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Irregular sweep pattern where modules fail to fire, or fire out of order.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Full sequence-cycle observation to identify the failing module, sequencer board stepping-fault checks, and isolated module testing.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Heat Sink Blockage / Thermal Trip</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Blocked or dust-clogged heat sink fins, inadequate ventilation at the mounting location, or an oversensitive thermal-protection threshold.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Beacon overheats or trips on thermal protection, interrupting normal operation.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Heat sink inspection and cleaning, airflow verification, and driver thermal fault-indicator/log review.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Lock out and verify zero energy at the LED driver before opening the housing; because LEDs are instant-on with no warm-up delay, treat the fixture as live the moment power is present, not just once it appears lit.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Driver Board ESD Precautions</h5><span class="test-stage">Component Handling</span></div>
+                        <p>Use anti-static precautions when handling the LED driver or module boards; the low-voltage electronics are more sensitive to static discharge than a traditional halogen lamp or ballast.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-eye-slash"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Direct Beam Viewing</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Avoid staring directly into the LED array during functional testing, particularly on high-output rotating or flashing configurations.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-temperature-high"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Heat Sink Handling</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Allow the LED module's heat sink to cool after sustained operation before handling; despite lower overall power draw than halogen, the LED junction and heat sink can still run hot.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Outage Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>Notify ATC or the site operator before taking the beacon offline for module replacement or driver work.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Use insulated tools for driver-side connections and fall-protection PPE appropriate to the mounting height.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Verify colour, flash rate, and intensity meet specification before closing out the work, since a like-for-like LED module swap can still shift chromaticity slightly if the wrong part is fitted.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Instant-On Changes the Sequencing Verification, Not Just the Warm-Up</h5><span class="expert-tag">Commissioning</span></div>
+                        <p>Because an LED source reaches full intensity instantly rather than ramping up like halogen or xenon, colour sequencing verification needs to catch timing errors at the very start of each segment rather than allowing for a brief rise period. Set commissioning acceptance criteria for this fixture around instant full-intensity switching, not the tolerances written for lamp-based beacons.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-temperature-high"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Heat Sink Cleaning Is the Maintenance Item Lamp-Based Beacons Never Needed</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>An LED beacon's long service life depends on the driver electronics and LED junctions staying within their thermal design envelope, which a dust- or grime-fouled heat sink quietly undermines long before an actual light-output failure appears. Add heat sink cleaning to the routine schedule even though it has no equivalent on a traditional lamp-based beacon.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Driver Board Failure Looks Different From Lamp Failure</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>A failed LED driver board can produce partial, flickering, or wrong-colour output rather than the clean total darkness a burnt-out halogen lamp gives, which can be misread as a filter or lens problem. Run the driver board's self-test and check surge protection status before assuming an optical fault on an LED beacon showing degraded output.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Surge Protection Matters More Here Than on a Lamp-Based Beacon</h5><span class="expert-tag">Electrical</span></div>
+                        <p>LED driver electronics are considerably more sensitive to voltage transients than a simple halogen filament circuit, so a beacon retrofitted from lamp to LED without upgrading surge protection is taking on new vulnerability the original design didn't carry. Verify surge protection is sized for the LED driver, not just carried over from the legacy lamp circuit.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Retrofit Power Draw Calculations Need Redoing, Not Assumed</h5><span class="expert-tag">Retrofit</span></div>
+                        <p>The 50-70% power reduction an LED beacon offers over halogen changes the load seen by the existing supply and any shared circuit protection, which was sized for the old lamp's draw. Recalculate circuit protection and any shared transformer sizing at retrofit rather than assuming the existing electrical infrastructure is simply "more than enough" for the lighter LED load.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Long Rated Life Doesn't Remove the Need for Photometric Checks</h5><span class="expert-tag">Reliability</span></div>
+                        <p>A 50,000+ hour rated life covers gradual LED lumen depreciation, but doesn't guarantee the beacon stays within chromaticity and intensity limits over that whole span, particularly if individual LEDs within a segment fail unevenly. Keep photometric and colour checks on the normal inspection cycle rather than extending the interval on the strength of the LED life rating alone.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about LED beacons: how they work, colours, power savings, standards, maintenance and common faults.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is an LED beacon?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>An LED beacon is a rotating or flashing beacon that uses high-power LEDs instead of halogen lamps or xenon flashtubes. It performs the same identification function with alternating colour flashes, but with a service life of 50,000+ hours, instant-on at full intensity and no warm-up time.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">What is the difference between a rotating LED beacon and an electronic LED beacon?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A rotating LED beacon mounts the LED array on a motor-driven turntable with reflectors to produce a sweeping beam. A static, or electronic, LED beacon arranges several LED modules in a circle and sequences them electronically to simulate rotation, so it has no moving parts.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">What colours and flash rate do LED beacons use?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical sequences are green/white for airports, white/yellow for heliports and water airports, and red/white for obstruction warning. The effective flash rate is 24–30 flashes per minute, matching an equivalent rotating beacon.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">How bright is an LED beacon?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Effective intensity is up to 50,000 cd for rotating versions and up to 30,000 cd for electronic versions, with peak beam intensity of at least 2,000 cd per colour per ICAO Annex 14 and FAA AC 150/5345-12. Intensity is controlled by PWM dimming steps selected by the Beacon Controller.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">How much power does an LED beacon save compared with halogen?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>An LED beacon typically draws 50–150 W compared with 200–400 W for a halogen beacon, a saving of roughly 50–70%. The lower load also allows lighter-gauge supply cable and lets the beacon run from battery or solar power in portable or temporary applications.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">Can an LED beacon replace an existing halogen beacon?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Yes. It is designed as a like-for-like replacement that mounts into the same base, turntable or fixed housing and, in most retrofits, reuses the existing structural mounting and power and control wiring. Check compatibility with the Beacon Controller and the flash rate requirement before changeover.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">What power supply does an LED beacon use?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A dedicated beacon circuit, typically 230 V AC or 24 V DC with a converter, independent of the airfield series circuit. The Beacon Controller manages colour sequence, flash rate and PWM dimming, and detects LED array or driver failure and loss of sync.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">Which standards apply to LED beacons?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are ICAO Annex 14, FAA AC 150/5345-12 (airport rotating beacons, LED version) and FAA Engineering Brief #67 for LED beacon performance and durability. Always verify the current edition and your approved requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How often should an LED beacon be maintained?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical intervals are quarterly for lens cleaning, semi-annual for heat sink cleaning, and annual for photometric and colour checks, driver and surge protection checks, seal and housing inspection and cable and connector inspection. Plan LED module replacement around the 50,000-hour mark. Your approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">Why is my LED beacon dark or stuck on?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A dark beacon is often a failed driver board, blown fuse or breaker, an open supply circuit, or a photocell stuck in the daylight state. A beacon that stays on in daylight usually has a failed or dirty photocell, or a driver timer fault overriding it. Clean the photocell lens, test its switching by shading it, and check the driver output.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-airport-beacon.html" class="related-card"><i class="fa-solid fa-lighthouse"></i><h5 role="heading" aria-level="3">Airport Beacon</h5></a>
+                <a href="component-heliport-beacon.html" class="related-card"><i class="fa-solid fa-helicopter"></i><h5 role="heading" aria-level="3">Heliport Beacon</h5></a>
+                <a href="component-rotating-beacon.html" class="related-card"><i class="fa-solid fa-sync"></i><h5 role="heading" aria-level="3">Rotating Beacon</h5></a>
+                <a href="component-beacon-controller.html" class="related-card"><i class="fa-solid fa-sliders"></i><h5 role="heading" aria-level="3">Beacon Controller</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on LED beacon selection or retrofitting?</h4><p>Precision AGL Academy provides advice on LED technology, thermal management, and compliance for solid‑state beacon systems.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> The lights, fixtures and parts on this page operate on energised series or constant-current circuits and can be hot, high-voltage or high-intensity. Isolate, lock out and prove dead under the aerodrome&rsquo;s procedure before any work. Photometric, intensity, colour, spacing and fixture-type statements are typical and general; the approved lighting design, the regulator&rsquo;s requirements and the manufacturer&rsquo;s data decide what is installed, how it is set and when it may be used. Nothing here authorises a change to any lighting configuration, intensity setting, category or NOTAM.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on LED Beacon is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20LED%20Beacon">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20LED%20Beacon" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

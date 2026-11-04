@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AGL Communication Gateway: Design &amp; Specs</title>
+    <meta name="description" content="Communication gateway: protocol translation between AGL field equipment and ALCMS monitoring — specifications, standards, testing and failure modes." />
+    <meta name="keywords" content="communication gateway, protocol translation, AGL monitoring, ALCMS integration, Modbus, airfield ground lighting" />
+    <meta name="author" content="Precision AGL Academy" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-communication-gateway.html" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="AGL Communication Gateway: Design &amp; Specs | Precision AGL Academy" />
+    <meta property="og:description" content="Communication gateway: protocol translation between AGL field equipment and ALCMS monitoring — specifications, standards, testing and failure modes." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-communication-gateway.html" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://www.uotek.com/Uploads/image/20211202/20211202163348_71689.png" />
+    <meta property="og:image:alt" content="Communication Gateway – AGL Component Library" />
+    <meta property="article:author" content="https://www.linkedin.com/in/rahulsharmaagl" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AGL Communication Gateway: Design &amp; Specs | Precision AGL Academy" />
+    <meta name="twitter:description" content="Communication gateway: protocol translation between AGL field equipment and ALCMS monitoring — specifications, standards, testing and failure modes." />
+    <meta name="twitter:image" content="https://www.uotek.com/Uploads/image/20211202/20211202163348_71689.png" />
+    <meta name="twitter:image:alt" content="Communication Gateway – AGL Component Library" />
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-communication-gateway.html#faq", "url": "https://rahulsharmaagl.in/component-communication-gateway.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-communication-gateway.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a Communication Gateway?", "acceptedAnswer": {"@type": "Answer", "text": "A Communication Gateway (also known as a protocol gateway or protocol converter) is a network device that enables communication between systems using different protocols, data formats, or physical media. In AGL applications, the gateway serves as the central protocol translation hub, bridging the gap between legacy fieldbus networks (such as Modbus RTU, Profibus DP, and serial RS‑485) and modern IP-based networks (including Ethernet/IP, Profinet, Modbus TCP, and OPC UA)."}}, {"@type": "Question", "name": "What is the purpose of a Communication Gateway?", "acceptedAnswer": {"@type": "Answer", "text": "The communication gateway exists to solve a very practical airfield problem: an AGL system installed over decades will inevitably contain a mix of legacy fieldbus equipment and modern IP-based devices, and replacing every older CCR or sensor just to standardise on one protocol would be prohibitively expensive and operationally disruptive. The gateway lets that mixed-vintage equipment coexist on one coherent network by translating between the different languages the various devices speak."}}, {"@type": "Question", "name": "Where is a Communication Gateway used and installed?", "acceptedAnswer": {"@type": "Answer", "text": "Communication gateways are deployed in all areas where protocol translation is required, including: Legacy CCR Integration: Bridging older Modbus RTU or Profibus-based CCRs to a modern Ethernet/IP or Modbus TCP ALCMS network. Remote I/O Networks: Converting serial fieldbus (Profibus, DeviceNet) to Ethernet-based protocols for connection to the main PLC or SCADA system. ALCMS Interface: Providing a standardized data interface (OPC UA, MQTT) between the AGL control system and higher-level airport SCADA, building management, or IoT platforms."}}, {"@type": "Question", "name": "How does a Communication Gateway work?", "acceptedAnswer": {"@type": "Answer", "text": "The Communication Gateway operates as a protocol translation engine, performing several key functions to enable seamless data exchange: Protocol Conversion: The gateway decodes data packets from one protocol (e.g., Modbus RTU) and re-encodes them into another protocol (e.g., Modbus TCP or Ethernet/IP), preserving the data content while transforming the framing, addressing, and data representation."}}, {"@type": "Question", "name": "What are the typical technical parameters of a Communication Gateway?", "acceptedAnswer": {"@type": "Answer", "text": "Typical values are — Supported Protocols (Serial): Modbus RTU, Profibus DP, DeviceNet, CANopen, RS‑232/485 (ASCII), DF1; Supported Protocols (Ethernet): Modbus TCP, Ethernet/IP, Profinet, OPC UA, MQTT, BACnet/IP, SNMP; Port Configuration: 2-4 serial ports (RS‑232/485), 2-4 Ethernet ports (10/100/1000BASE-T), optional SFP fiber slots; Data Mapping Capacity: Up to 10,000 data points (configurable); Throughput: Up to 1,000 transactions/second (depending on configuration); Cybersecurity Features: Firewall, VPN (IPsec/OpenVPN), IEEE 802.1X, RADIUS, HTTPS, SSH, access control lists; Alarm Management: OPC UA Alarms & Conditions, SNMP traps, email alerts."}}, {"@type": "Question", "name": "What are the electrical requirements for a Communication Gateway?", "acceptedAnswer": {"@type": "Answer", "text": "Typical requirements are — Circuit Position: Standalone powered networking device, field or control-room mounted; Power Supply: 24 VDC (nominal, 18‑32 VDC) with dual redundant inputs; Power Consumption: 5‑25 W (depending on model and load); Isolation: Powered separately from the AGL series circuit; data-only interface to field devices; Earthing: Enclosure bonded to local earth; Fault Protection: Dual-input redundancy with internal overcurrent protection."}}, {"@type": "Question", "name": "Which standards apply to a Communication Gateway?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEC 61158 — Industrial communication networks — Fieldbus specifications; IEC 62541 (OPC UA) — OPC Unified Architecture — platform-independent communication; IEC 62443 — Industrial communication networks — network and system security; FAA AC 150/5345‑56 — Specification for L-890 Airport Lighting Control and Monitoring System (ALCMS). Always verify the current edition and your aerodrome's approved requirements."}}, {"@type": "Question", "name": "How often should a Communication Gateway be inspected and maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical maintenance tasks and intervals are: Data Mapping Verification (semi-annual); Serial Port Parameter Check (annual); Latency & Timeout Audit (quarterly); Firmware Update Review (quarterly); Security Configuration Audit (quarterly); Power Supply & UPS Check (semi-annual); Cable & Connector Inspection (annual); Diagnostic Log Review (monthly). Your airport's approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "How do I troubleshoot common Communication Gateway faults?", "acceptedAnswer": {"@type": "Answer", "text": "Common symptoms covered are: Values Reported Are Wrong But Communication Is Established; Garbled Data or No Communication on a Serial Device; Intermittent Communication Errors with a Legacy Device; Connected Device's Full Feature Set Not Supported; Unauthorised Access or Configuration Change Detected; Gateway Resets or Data Corruption During Power Events. For example, for \"Values Reported Are Wrong But Communication Is Established\": Likely Cause: A misconfigured register address, data type, or scaling factor in the data mapping table, since the gateway is successfully exchanging data but translating it incorrectly. Diagnostic Steps: Cross-check the affected point's mapping table entry (register address, data type, scaling) against the source device's documentation; compare the raw register value to the translated output to identify where the error is introduced. Corrective Action: Correct the mapping table entry and re-validate against the device specification; re-test the specific point before considering it resolved, since a scaling error can affect multiple points from the same table."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── COMPONENT HERO ── */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* ── DIAGRAM BLOCK ── */
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 34px 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        .diagram-node {
+            background: rgba(255, 180, 0, 0.06);
+            border: 1.5px solid var(--gold);
+            border-radius: 10px;
+            padding: 16px 26px;
+            text-align: center;
+            min-width: 260px;
+            max-width: 460px;
+        }
+        .diagram-node h5 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: var(--white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .diagram-node p {
+            font-size: 12.5px;
+            color: var(--text);
+            line-height: 1.55;
+        }
+        .diagram-node.cyan { border-color: var(--cyan); background: rgba(0, 212, 255, 0.06); }
+        .diagram-node.red { border-color: var(--red); background: rgba(230, 57, 70, 0.06); }
+        .diagram-node.outcome { border-width: 2px; }
+        .diagram-arrow {
+            width: 2px;
+            height: 30px;
+            background: var(--gold);
+            position: relative;
+        }
+        .diagram-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--gold);
+        }
+        .diagram-arrow.dashed {
+            background: repeating-linear-gradient(to bottom, var(--red) 0 6px, transparent 6px 12px);
+        }
+        .diagram-arrow.dashed::after { border-top-color: var(--red); }
+        .diagram-arrow.cyan-arrow { background: var(--cyan); }
+        .diagram-arrow.cyan-arrow::after { border-top-color: var(--cyan); }
+        .diagram-split {
+            display: flex;
+            gap: 36px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 6px 0;
+        }
+        .diagram-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 220px;
+            max-width: 320px;
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .diagram-branch-label.gold { color: var(--gold); }
+        .diagram-branch-label.red { color: var(--red); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-caption {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text);
+            opacity: .75;
+            margin-top: 18px;
+            font-style: italic;
+        }
+        @media(max-width:768px) {
+            .diagram-split { flex-direction: column; align-items: center; }
+        }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-communication-gateway.html#article",
+        "headline": "Communication Gateway in AGL Systems: Architecture, Specifications and Failure Modes",
+        "name": "AGL Communication Gateway: Design & Specs | Precision AGL Academy",
+        "description": "Communication gateway: protocol translation between AGL field equipment and ALCMS monitoring — specifications, standards, testing and failure modes.",
+        "url": "https://rahulsharmaagl.in/component-communication-gateway.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-communication-gateway.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Communication Gateway"
+        },
+        "articleSection": "Control & Monitoring",
+        "keywords": "communication gateway, protocol translation, AGL monitoring, ALCMS integration, Modbus, airfield ground lighting",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://www.uotek.com/Uploads/image/20211202/20211202163348_71689.png"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-communication-gateway.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-communication-gateway.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-communication-gateway.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Communication Gateway",
+            "item": "https://rahulsharmaagl.in/component-communication-gateway.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Communication Gateway</span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-gateway"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Communication <span>Gateway</span></h1>
+            <p class="comp-sub">The universal protocol translator that bridges disparate communication systems in modern AGL networks. A Communication Gateway enables seamless data exchange between legacy serial protocols (Modbus RTU, Profibus) and modern IP-based networks (Ethernet/IP, Modbus TCP, OPC UA), ensuring interoperability across the entire airfield lighting infrastructure.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:450px;height:320px;">
+                <img src="https://www.uotek.com/Uploads/image/20211202/20211202163348_71689.png" alt="Communication Gateway" width="450" height="320" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <!-- ─── OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Communication Gateway</strong> (also known as a protocol gateway or protocol converter) is a network device that enables communication between systems using different protocols, data formats, or physical media. In AGL applications, the gateway serves as the central protocol translation hub, bridging the gap between legacy fieldbus networks (such as Modbus RTU, Profibus DP, and serial RS‑485) and modern IP-based networks (including Ethernet/IP, Profinet, Modbus TCP, and OPC UA). This allows older CCRs, Remote I/O units, and sensors with serial interfaces to be integrated into the modern ALCMS without costly equipment replacement. The gateway performs protocol conversion, data mapping, and often includes advanced functions such as data aggregation, buffering, alarm handling, and cybersecurity features (firewall, VPN, authentication). It is the key enabler for mixed-vendor, multi‑protocol airfield control systems, providing a unified data model for the entire AGL infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The communication gateway exists to solve a very practical airfield problem: an AGL system installed over decades will inevitably contain a mix of legacy fieldbus equipment and modern IP-based devices, and replacing every older CCR or sensor just to standardise on one protocol would be prohibitively expensive and operationally disruptive. The gateway lets that mixed-vintage equipment coexist on one coherent network by translating between the different languages the various devices speak.</p>
+                <p style="margin-top: 18px;">This matters directly for system reliability and security: without a controlled translation point, integrating old and new equipment ad hoc risks introducing communication gaps or unmonitored access points. By consolidating protocol conversion, data mapping, and cybersecurity functions like firewalling and authentication into a single hub, the gateway gives an airfield a defensible, unified point of control over its entire mixed-protocol data flow.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPLICATION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Communication gateways are deployed in all areas where protocol translation is required, including:</p>
+                <ul>
+                    <li><strong>Legacy CCR Integration:</strong> Bridging older Modbus RTU or Profibus-based CCRs to a modern Ethernet/IP or Modbus TCP ALCMS network.</li>
+                    <li><strong>Remote I/O Networks:</strong> Converting serial fieldbus (Profibus, DeviceNet) to Ethernet-based protocols for connection to the main PLC or SCADA system.</li>
+                    <li><strong>ALCMS Interface:</strong> Providing a standardized data interface (OPC UA, MQTT) between the AGL control system and higher-level airport SCADA, building management, or IoT platforms.</li>
+                    <li><strong>RWSL (Runway Status Light) Systems:</strong> Integrating sensors and controllers with different communication interfaces into a unified control network.</li>
+                    <li><strong>Sensor Integration:</strong> Connecting weather stations, wind sensors, and visibility sensors that use proprietary or serial protocols to the IP-based network.</li>
+                    <li><strong>Multi‑vendor Environments:</strong> Enabling seamless data exchange between equipment from different manufacturers that use different industrial protocols.</li>
+                    <li><strong>Remote Substations:</strong> Aggregating data from multiple serial devices at a substation and converting to a single Ethernet uplink to the control room.</li>
+                    <li><strong>Cybersecurity Zones:</strong> Acting as a secure edge gateway with firewall and VPN capabilities to protect the AGL network from external threats.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNCTION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>Gateways are DIN-rail or rack-mounted inside the field cabinet, substation, or control room where the two networks being bridged both terminate, positioned close to the field-side wiring (CCR, Remote I/O, or fieldbus devices) it serves so the legacy-protocol cable run stays short. Enclosure selection depends on location: a hardened, sealed unit for an outdoor runway-edge cabinet, a standard panel-mount unit for an indoor substation or control room. Power is typically fed from the same DC supply as the PLC or Remote I/O it's paired with, and its network-side connection runs on structured Ethernet cabling back to the nearest switch rather than sharing conduit with the legacy fieldbus wiring on its field side.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The Communication Gateway operates as a protocol translation engine, performing several key functions to enable seamless data exchange:</p>
+                <ul>
+                    <li><strong>Protocol Conversion:</strong> The gateway decodes data packets from one protocol (e.g., Modbus RTU) and re-encodes them into another protocol (e.g., Modbus TCP or Ethernet/IP), preserving the data content while transforming the framing, addressing, and data representation.</li>
+                    <li><strong>Data Mapping:</strong> The gateway maps data points from the source protocol's address space (e.g., Modbus registers) to the target protocol's object model (e.g., OPC UA nodes or Ethernet/IP tags), creating a unified data model for the entire system.</li>
+                    <li><strong>Buffering and Caching:</strong> The gateway can buffer data from slow serial devices, presenting a consistent data view to faster IP-based clients, and reducing the polling load on legacy field devices.</li>
+                    <li><strong>Alarm and Event Handling:</strong> Advanced gateways can detect alarm conditions (e.g., value out of range, communication loss) and generate standardized alarm notifications (e.g., OPC UA Alarms &amp; Conditions, SNMP traps).</li>
+                    <li><strong>Cybersecurity:</strong> The gateway often includes a built-in firewall, access control lists, authentication mechanisms (IEEE 802.1X, RADIUS), and VPN client/server capabilities to secure communication and protect the AGL network from unauthorized access.</li>
+                    <li><strong>Diagnostics and Logging:</strong> The gateway maintains logs of communication events, errors, and performance metrics, supporting proactive maintenance and troubleshooting.</li>
+                </ul>
+                <p style="margin-top:12px;">Gateways are typically configured via a web interface or dedicated software tool, where users define the protocol parameters, data mapping tables, and network settings.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>The Communication Gateway sits at the boundary between the legacy or vendor-specific field network and the IP-based ALCMS backbone. On the field side it speaks whatever protocol the older CCRs, PLCs, or third-party equipment use — commonly Modbus RTU/ASCII, DNP3, or a proprietary serial link — polling or listening for status and accepting commands in that native format. On the ALCMS side it re-publishes the same data as OPC UA, Modbus TCP, or another standard IP protocol over the Ethernet backbone, so the ALCMS server sees a uniform data model regardless of what is actually installed in the field. Because it sits directly in this path, a gateway fault or protocol mismatch isolates the ALCMS from an entire branch of field equipment even though the equipment itself is functioning normally, which is why gateway health is monitored as its own point in the architecture.</p>
+            </div>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Legacy / Vendor Field Devices</h5>
+                        <p>CCRs, PLCs or third-party controllers on serial or proprietary links (Modbus RTU, DNP3)</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node outcome">
+                        <h5 role="heading" aria-level="3">Communication Gateway</h5>
+                        <p>Protocol translation &amp; data model mapping</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">ALCMS Backbone</h5>
+                        <p>Ethernet Switch → ALCMS Server (OPC UA / Modbus TCP)</p>
+                    </div>
+                </div>
+                <div class="diagram-caption">A single gateway failure isolates its entire field branch from the ALCMS even though the branch's own equipment keeps operating.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PROTOCOL BRIDGE OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Mechanism</div>
+            <h2 class="block-title">How the Gateway Bridges Two Protocols</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Source Protocol Device</h5>
+                        <p>e.g., legacy Modbus RTU field device on a serial bus</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Packet Decoded</h5>
+                        <p>Data extracted from the source protocol's framing &amp; addressing</p>
+                    </div>
+                    <div class="diagram-arrow cyan-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Data Mapped to Target Model</h5>
+                        <p>Registers translated to OPC UA nodes or Ethernet/IP tags</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Packet Re-Encoded</h5>
+                        <p>Re-framed in the target protocol (e.g., Modbus TCP, Ethernet/IP)</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-split">
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label gold">Normal Data</div>
+                            <div class="diagram-node outcome">
+                                <h5 role="heading" aria-level="3">Delivered to IP Client</h5>
+                                <p>Buffered/cached for a consistent view, reducing polling load on legacy devices</p>
+                            </div>
+                        </div>
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label red">Fault Condition</div>
+                            <div class="diagram-node red outcome">
+                                <h5 role="heading" aria-level="3">Standardized Alarm Generated</h5>
+                                <p>Value out of range or comms loss → OPC UA A&amp;C event or SNMP trap</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="diagram-caption">A built-in firewall, ACLs and 802.1X authentication secure the bridge between legacy serial devices and the IP network.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TECHNICAL PARAMETERS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The gateway is housed in a compact extruded-aluminium or steel enclosure designed for DIN-rail mounting inside a control cabinet, with a conformally coated internal circuit board to resist dust, humidity, and airborne contaminants in unconditioned equipment rooms. Serial and Ethernet ports are brought out through the front or top face with keyed, panel-mounted connectors, and where fibre SFP slots are fitted, the cage is soldered directly to the board and accessed through a dedicated cutout. Where the unit is deployed in a field-mount enclosure rather than a control cabinet, the housing is upgraded to a sealed IP65 box with cable glands for each conductor entry, keeping the internal electronics isolated from moisture. The dual power inputs terminate at screw-clamp terminals rated for the 24 VDC nominal supply, and the enclosure includes a chassis earth stud for bonding to the cabinet ground bus.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Supported Protocols (Serial)</td><td class="val">Modbus RTU, Profibus DP, DeviceNet, CANopen, RS‑232/485 (ASCII), DF1</td></tr>
+                <tr><td>Supported Protocols (Ethernet)</td><td class="val">Modbus TCP, Ethernet/IP, Profinet, OPC UA, MQTT, BACnet/IP, SNMP</td></tr>
+                <tr><td>Port Configuration</td><td class="val">2-4 serial ports (RS‑232/485), 2-4 Ethernet ports (10/100/1000BASE-T), optional SFP fiber slots</td></tr>
+                <tr><td>Data Mapping Capacity</td><td class="val">Up to 10,000 data points (configurable)</td></tr>
+                <tr><td>Throughput</td><td class="val">Up to 1,000 transactions/second (depending on configuration)</td></tr>
+                <tr><td>Cybersecurity Features</td><td class="val">Firewall, VPN (IPsec/OpenVPN), IEEE 802.1X, RADIUS, HTTPS, SSH, access control lists</td></tr>
+                <tr><td>Alarm Management</td><td class="val">OPC UA Alarms &amp; Conditions, SNMP traps, email alerts</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (nominal, 18‑32 VDC) with dual redundant inputs</td></tr>
+                <tr><td>Power Consumption</td><td class="val">5‑25 W (depending on model and load)</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-40°C to +70°C (industrial grade)</td></tr>
+                <tr><td>Storage Temperature</td><td class="val">-40°C to +85°C</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP30 (panel mount), IP40 (ruggedized), IP65 (field mount with enclosure)</td></tr>
+                <tr><td>Mounting</td><td class="val">DIN rail (standard) or panel mount</td></tr>
+                <tr><td>Configuration</td><td class="val">Web GUI, command-line interface (CLI), or dedicated configuration software</td></tr>
+                <tr><td>Diagnostics</td><td class="val">Status LEDs, system log, port statistics, SNMP traps</td></tr>
+                <tr><td>Certifications</td><td class="val">CE, FCC, UL, IEC 61000‑6‑2 (EMC immunity)</td></tr>
+            </table>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Position</td><td class="val">Standalone powered networking device, field or control-room mounted</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (nominal, 18‑32 VDC) with dual redundant inputs</td></tr>
+                <tr><td>Power Consumption</td><td class="val">5‑25 W (depending on model and load)</td></tr>
+                <tr><td>Isolation</td><td class="val">Powered separately from the AGL series circuit; data-only interface to field devices</td></tr>
+                <tr><td>Earthing</td><td class="val">Enclosure bonded to local earth</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Dual-input redundancy with internal overcurrent protection</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ─── STANDARDS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61158</h5><p>Industrial communication networks — Fieldbus specifications</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 62541 (OPC UA)</h5><p>OPC Unified Architecture — platform-independent communication</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 62443</h5><p>Industrial communication networks — network and system security</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑56</h5><p>Specification for L-890 Airport Lighting Control and Monitoring System (ALCMS)</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FIELD ISSUES ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-warehouse"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Enclosure Selection</h5><span class="test-stage">Civil</span></div>
+                        <p>Select a hardened, sealed enclosure for an outdoor runway-edge cabinet or a standard panel-mount unit for an indoor substation or control room, matching the gateway's installed environment.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">DIN-Rail or Rack Mounting</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Mount the gateway close to the field-side wiring it serves — CCR, Remote I/O, or fieldbus devices — so the legacy-protocol cable run stays short.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Shared DC Power Feed</h5><span class="test-stage">Electrical</span></div>
+                        <p>Feed power from the same DC supply as the PLC or Remote I/O the gateway is paired with, confirming voltage and loading before connecting the field-side wiring.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Segregated Cable Routing</h5><span class="test-stage">Electrical</span></div>
+                        <p>Run the network-side connection on structured Ethernet cabling back to the nearest switch, kept separate from the legacy fieldbus wiring on the field side.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Protocol Configuration &amp; Mapping</h5><span class="test-stage">Documentation</span></div>
+                        <p>Configure and verify the protocol translation mapping between the two networks being bridged before the gateway is relied on for live data.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record enclosure type, power feed, and cable routing as-built before commissioning testing begins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Protocol Conversion Verification</h5><span class="test-stage">Commissioning</span></div>
+                        <p>Confirm data correctly translates between the legacy fieldbus protocol and the IP-based network in both directions.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Data Mapping Verification</h5><span class="test-stage">Commissioning</span></div>
+                        <p>Confirm each field point maps to the correct register or tag on the ALCMS side, point by point.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Serial Port Parameter Verification</h5><span class="test-stage">Pre-Commissioning</span></div>
+                        <p>Confirm baud rate, parity, and other serial parameters match the connected field devices before enabling the link.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Latency &amp; Timeout Test</h5><span class="test-stage">Commissioning</span></div>
+                        <p>Measure round-trip latency under load and confirm it stays within the tolerance the control loop requires.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Failover / Redundancy Test</h5><span class="test-stage">Commissioning</span></div>
+                        <p>Where a redundant gateway is fitted, simulate a failure and confirm seamless handover to the standby unit.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Security Configuration Verification</h5><span class="test-stage">Pre-Commissioning</span></div>
+                        <p>Confirm firewall, VPN, and authentication settings match the design before the gateway is connected to the live network.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; UPS Check</h5><span class="test-stage">Pre-Commissioning</span></div>
+                        <p>Confirm the gateway operates correctly on both primary and backup power sources.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record protocol mapping, latency, and security configuration in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Data Mapping Verification</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Re-validate register addresses, data types, and scaling factors against connected devices, especially after firmware updates or field device swaps.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Serial Port Parameter Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Confirm baud rate, parity, stop bits, and data bits still match each connected serial device to prevent garbled data or dropped comms.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Latency &amp; Timeout Audit</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Review polling rates and timeout margins against actual device response times, adjusting for any legacy equipment added to the loop.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Firmware Update Review</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Check for gateway firmware releases and compatibility matrix changes, testing updates on a bench unit before applying in the field.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Security Configuration Audit</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Verify default credentials remain changed, unused services are disabled, and network segmentation rules are still correctly applied.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; UPS Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Measure the 24 VDC supply for stability and test UPS backup runtime to guard against resets or data corruption during voltage dips.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Cable &amp; Connector Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Examine serial and network cabling, terminals, and connectors for corrosion or loose contacts, a common cause of intermittent comms faults.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Diagnostic Log Review</h5><span class="maint-freq">Monthly</span></div>
+                        <p>Review the gateway's error and event logs for recurring communication faults or protocol errors before they escalate into outages.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Data Mapping Configuration</h5><p>Misconfigured register addresses, data types, or scaling factors can cause incorrect values to be reported (e.g., current readings showing wrong values). Thorough validation and testing of data mapping tables is essential before commissioning.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Serial Communication Parameters Mismatch</h5><p>Baud rate, parity, stop bits, and data bits must match between the gateway and the serial device. A mismatch results in garbled data or no communication. Verify settings against device specifications.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Network Timing &amp; Timeout Issues</h5><p>Slow serial devices may not respond within the gateway's timeout window, causing communication errors. Adjust timeout settings and consider using a slower polling rate to accommodate legacy equipment.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Firmware Incompatibility</h5><p>Gateway firmware versions may not support all protocol variants or features of connected devices. Always check compatibility matrices and update firmware if necessary.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Cybersecurity Vulnerabilities</h5><p>Gateways with exposed web interfaces or default credentials can be attacked. Change default passwords, disable unused services, and implement network segmentation to protect critical AGL control data.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Gateways, like all industrial electronics, are sensitive to voltage fluctuations. Use a dedicated, regulated 24 VDC power supply with UPS backup to prevent resets or data corruption.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Values Reported Are Wrong But Communication Is Established</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">A misconfigured register address, data type, or scaling factor in the data mapping table, since the gateway is successfully exchanging data but translating it incorrectly.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Cross-check the affected point's mapping table entry (register address, data type, scaling) against the source device's documentation; compare the raw register value to the translated output to identify where the error is introduced.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Correct the mapping table entry and re-validate against the device specification; re-test the specific point before considering it resolved, since a scaling error can affect multiple points from the same table.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Garbled Data or No Communication on a Serial Device</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">A mismatch in baud rate, parity, stop bits, or data bits between the gateway and the serial device.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare the gateway's configured serial parameters against the device's specification sheet; check for recent configuration changes on either end.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Align serial parameters on both ends to match the device specification; re-verify clean communication after the change.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Intermittent Communication Errors with a Legacy Device</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The device is slow to respond and isn't answering within the gateway's configured timeout window.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the gateway's timeout setting against the device's typical response time; monitor for a pattern of errors correlating with polling frequency.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Increase the timeout setting and/or reduce the polling rate to accommodate the legacy device's response time; re-verify stable communication over an extended monitoring period.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Connected Device's Full Feature Set Not Supported</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The gateway's firmware version doesn't support the protocol variant or feature required by the connected device.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the current firmware version against the manufacturer's compatibility matrix for the connected device and protocol variant.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Update the gateway firmware to a version that supports the required protocol variant/feature, following a controlled maintenance window and re-testing communication afterward.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Unauthorised Access or Configuration Change Detected</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">An exposed web interface or default credentials left unchanged since commissioning, allowing unauthorised access to the gateway.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review access logs for unrecognised login attempts or configuration changes; check whether default credentials are still in use and whether unused services remain enabled.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Change default passwords, disable unused services, and implement network segmentation to isolate the gateway from unauthorised network access; review and revert any unauthorised configuration changes found.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Gateway Resets or Data Corruption During Power Events</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Voltage fluctuation on the power supply, particularly if the gateway isn't running from a dedicated, regulated 24 VDC supply with UPS backup.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the power supply type and rating feeding the gateway; correlate reset events with known power disturbances or UPS switchover logs.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Install or repair a dedicated, regulated 24 VDC supply with UPS backup if not already fitted correctly; re-verify stable operation through a subsequent power disturbance test if feasible.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Data Mapping Configuration Error</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Misconfigured register address, data type, or scaling factor in the data mapping table for a connected device.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Values reported through the gateway are wrong even though communication itself is established and stable.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Cross-check of the mapping table entry against source device documentation, and comparison of raw versus translated register values.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Serial Communication Parameter Mismatch</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mismatch in baud rate, parity, stop bits, or data bits between the gateway and a connected serial device.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Garbled data or complete loss of communication on the affected serial device.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Comparison of the gateway's configured serial parameters against the device's specification sheet.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Polling Timeout Mismatch with Legacy Devices</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A legacy device responding slower than the gateway's configured timeout window allows.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Intermittent communication errors appear with the affected legacy device even though it is otherwise functioning normally.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Comparison of the timeout setting against the device's typical response time, and monitoring for errors correlating with polling frequency.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Firmware / Protocol Incompatibility</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Gateway firmware version not supporting the protocol variant or feature required by a newly connected device.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">The connected device's full feature set is not supported, limiting available data points or control functions.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Firmware version check against the manufacturer's compatibility matrix for the connected device and protocol variant.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Unauthorised Access</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">An exposed web interface or default credentials left unchanged since commissioning.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Unauthorised access or configuration changes are detected, risking unintended control of connected field devices.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Access log review for unrecognised logins or configuration changes, and a check of default credential and unused service status.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Supply Instability</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Voltage fluctuation on the power supply, particularly where the gateway is not running from a dedicated, regulated 24 VDC supply with UPS backup.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Gateway resets or experiences data corruption during power events.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Power supply type and rating check, and correlation of reset events with known power disturbances or UPS switchover logs.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── RELATED COMPONENTS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Both Redundant Power Inputs</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Where the gateway is fed by dual redundant 24VDC inputs, isolate and verify zero energy on both before internal work, since disconnecting only one leaves the unit powered from the other.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">ESD-Sensitive Electronics</h5><span class="test-stage">Operational</span></div>
+                        <p>Use anti-static precautions when handling the gateway's internal protocol-conversion boards or communication interface modules.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Coordinate Before Taking Down Protocol Translation</h5><span class="test-stage">Operational</span></div>
+                        <p>The gateway may be the only bridge between legacy fieldbus-connected CCRs/sensors and the IP-based ALCMS network; confirm what monitoring or control capability is lost before isolating it, and coordinate with control-room operators accordingly.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Firmware/Configuration Change Control</h5><span class="test-stage">Compliance</span></div>
+                        <p>Make firmware updates or protocol-mapping changes only under an authorised change-control process, and verify each connected legacy device is still correctly represented on the IP side afterward.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Confirm data is passing correctly in both directions between the legacy and IP-based networks before closing out the work and returning the gateway to unattended operation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-table-list"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Version-Control the Data Mapping Table Like Firmware</h5><span class="expert-tag">Configuration</span></div>
+                        <p>A gateway's register-to-tag mapping table is as critical to correct operation as its firmware, yet it's often changed informally during troubleshooting and never re-documented. Treat mapping table edits with the same change-control discipline as firmware updates, since an undocumented mapping change is one of the hardest faults to trace months later.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Legacy Serial Devices Set the Polling Ceiling</h5><span class="expert-tag">Performance</span></div>
+                        <p>A gateway can support fast IP-side polling while the legacy serial device on the other side simply cannot respond that quickly; forcing a fast poll rate against a slow legacy device produces intermittent timeouts that look like a gateway fault but are actually a mismatch with the field device's real response time. Set poll rates to the slowest device on a given port, not the gateway's maximum capability.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Default Credentials Are the Most Common Real-World Breach Point</h5><span class="expert-tag">Cybersecurity</span></div>
+                        <p>Gateways are frequently commissioned with vendor default passwords left in place because the installer's focus was on getting protocol conversion working, not securing the web interface. Change default credentials and disable unused services as a mandatory commissioning step, verified independently of functional testing.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Serial Parameter Mismatches Masquerade as Intermittent Faults</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>A baud rate or parity mismatch doesn't always produce a hard failure; it can intermittently succeed on short messages and fail on longer ones, making the fault look like a flaky cable rather than a configuration error. Verify serial parameters against the device datasheet as a first troubleshooting step whenever a serial-connected device reports intermittent, rather than constant, communication loss.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-code-compare"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Firmware Compatibility Isn't Symmetric</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>A gateway firmware update that adds support for a new protocol variant can simultaneously change default behaviour on an existing, previously working connection. Check the compatibility matrix and changelog against every currently connected device type before updating, not just the device the update was intended to support.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Segregate Legacy Fieldbus Traffic From the IP Backbone</h5><span class="expert-tag">Network Design</span></div>
+                        <p>Running converted legacy protocol traffic over the same VLAN as general IP traffic without segmentation means a broadcast storm or misbehaving IP device elsewhere on the network can starve time-sensitive lighting control messages. Keep the gateway's IP-side connection on a dedicated or prioritised VLAN rather than sharing it with general-purpose network traffic.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about the Communication Gateway: what it is, how it works, typical specifications, standards, maintenance and common faults.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a Communication Gateway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A Communication Gateway (also known as a protocol gateway or protocol converter) is a network device that enables communication between systems using different protocols, data formats, or physical media. In AGL applications, the gateway serves as the central protocol translation hub, bridging the gap between legacy fieldbus networks (such as Modbus RTU, Profibus DP, and serial RS‑485) and modern IP-based networks (including Ethernet/IP, Profinet, Modbus TCP, and OPC UA).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">What is the purpose of a Communication Gateway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The communication gateway exists to solve a very practical airfield problem: an AGL system installed over decades will inevitably contain a mix of legacy fieldbus equipment and modern IP-based devices, and replacing every older CCR or sensor just to standardise on one protocol would be prohibitively expensive and operationally disruptive. The gateway lets that mixed-vintage equipment coexist on one coherent network by translating between the different languages the various devices speak.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Where is a Communication Gateway used and installed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Communication gateways are deployed in all areas where protocol translation is required, including: Legacy CCR Integration: Bridging older Modbus RTU or Profibus-based CCRs to a modern Ethernet/IP or Modbus TCP ALCMS network. Remote I/O Networks: Converting serial fieldbus (Profibus, DeviceNet) to Ethernet-based protocols for connection to the main PLC or SCADA system. ALCMS Interface: Providing a standardized data interface (OPC UA, MQTT) between the AGL control system and higher-level airport SCADA, building management, or IoT platforms.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">How does a Communication Gateway work?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The Communication Gateway operates as a protocol translation engine, performing several key functions to enable seamless data exchange: Protocol Conversion: The gateway decodes data packets from one protocol (e.g., Modbus RTU) and re-encodes them into another protocol (e.g., Modbus TCP or Ethernet/IP), preserving the data content while transforming the framing, addressing, and data representation.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">What are the typical technical parameters of a Communication Gateway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical values are — Supported Protocols (Serial): Modbus RTU, Profibus DP, DeviceNet, CANopen, RS‑232/485 (ASCII), DF1; Supported Protocols (Ethernet): Modbus TCP, Ethernet/IP, Profinet, OPC UA, MQTT, BACnet/IP, SNMP; Port Configuration: 2-4 serial ports (RS‑232/485), 2-4 Ethernet ports (10/100/1000BASE-T), optional SFP fiber slots; Data Mapping Capacity: Up to 10,000 data points (configurable); Throughput: Up to 1,000 transactions/second (depending on configuration); Cybersecurity Features: Firewall, VPN (IPsec/OpenVPN), IEEE 802.1X, RADIUS, HTTPS, SSH, access control lists; Alarm Management: OPC UA Alarms &amp; Conditions, SNMP traps, email alerts.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">What are the electrical requirements for a Communication Gateway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical requirements are — Circuit Position: Standalone powered networking device, field or control-room mounted; Power Supply: 24 VDC (nominal, 18‑32 VDC) with dual redundant inputs; Power Consumption: 5‑25 W (depending on model and load); Isolation: Powered separately from the AGL series circuit; data-only interface to field devices; Earthing: Enclosure bonded to local earth; Fault Protection: Dual-input redundancy with internal overcurrent protection.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">Which standards apply to a Communication Gateway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are IEC 61158 — Industrial communication networks — Fieldbus specifications; IEC 62541 (OPC UA) — OPC Unified Architecture — platform-independent communication; IEC 62443 — Industrial communication networks — network and system security; FAA AC 150/5345‑56 — Specification for L-890 Airport Lighting Control and Monitoring System (ALCMS). Always verify the current edition and your aerodrome's approved requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">How often should a Communication Gateway be inspected and maintained?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical maintenance tasks and intervals are: Data Mapping Verification (semi-annual); Serial Port Parameter Check (annual); Latency &amp; Timeout Audit (quarterly); Firmware Update Review (quarterly); Security Configuration Audit (quarterly); Power Supply &amp; UPS Check (semi-annual); Cable &amp; Connector Inspection (annual); Diagnostic Log Review (monthly). Your airport's approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How do I troubleshoot common Communication Gateway faults?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Common symptoms covered are: Values Reported Are Wrong But Communication Is Established; Garbled Data or No Communication on a Serial Device; Intermittent Communication Errors with a Legacy Device; Connected Device's Full Feature Set Not Supported; Unauthorised Access or Configuration Change Detected; Gateway Resets or Data Corruption During Power Events. For example, for "Values Reported Are Wrong But Communication Is Established": Likely Cause: A misconfigured register address, data type, or scaling factor in the data mapping table, since the gateway is successfully exchanging data but translating it incorrectly. Diagnostic Steps: Cross-check the affected point's mapping table entry (register address, data type, scaling) against the source device's documentation; compare the raw register value to the translated output to identify where the error is introduced. Corrective Action: Correct the mapping table entry and re-validate against the device specification; re-test the specific point before considering it resolved, since a scaling error can affect multiple points from the same table.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-plc.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">PLC</h5></a>
+                <a href="component-ethernet-switch.html" class="related-card"><i class="fa-solid fa-network-wired"></i><h5 role="heading" aria-level="3">Ethernet Switch</h5></a>
+                <a href="component-fiber-converter.html" class="related-card"><i class="fa-solid fa-wave-sine"></i><h5 role="heading" aria-level="3">Fiber Converter</h5></a>
+                <a href="component-alcms-server.html" class="related-card"><i class="fa-solid fa-server"></i><h5 role="heading" aria-level="3">ALCMS Server</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on Communication Gateway selection, protocol integration, or cybersecurity for your AGL system?</h4><p>Precision AGL Academy provides advice on protocol mapping, device integration, network security, and field commissioning for mixed-protocol environments.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Communication Gateway is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Communication%20Gateway">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Communication%20Gateway" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

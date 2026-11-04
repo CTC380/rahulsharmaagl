@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AGL Transformer Test Analyzer | Precision AGL Academy</title>
+<meta name="description" content="Isolating transformer test analyzer: winding resistance at 20 °C, insulation resistance, HV withstand, ratio and polarity, with pass/fail and PDF record."/>
+<meta name="author" content="Precision AGL Academy"/>
+<link rel="canonical" href="https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="theme-color" content="#060d1a"/>
+<link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html"/>
+<link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="keywords" content="AGL Transformer Test Analyzer, AGL Transformer Test Analyzer online, AGL Transformer Test Analyzer calculation, isolating transformer calculation, series isolating transformer, VA rating, AGL calculator, airfield ground lighting calculator, airfield lighting design calculations, free online AGL engineering calculator, ICAO Annex 14, Precision AGL Academy"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script src="assets/vendor/jspdf.umd.min.js"></script>
+<script src="assets/vendor/jspdf.plugin.autotable.min.js"></script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#2ecc71;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.15);transition:all .4s ease;}
+  nav.scrolled{background:rgba(6,13,26,0.97);border-bottom-color:rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white);text-decoration:none;white-space:nowrap;}
+  .nav-logo span{color:var(--gold);}
+  @media(max-width:900px){.nav-logo{font-size:20px;letter-spacing:2px;}}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:9px 20px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;white-space:nowrap;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:2px;background:var(--white);}
+  @media(max-width:1050px){.nav-links{display:none;} .hamburger{display:flex;}}
+
+  .breadcrumb{padding:110px 40px 0;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 30px;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:18px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:17px;line-height:1.8;color:var(--text);max-width:760px;}
+  @media(max-width:768px){.page-title{font-size:42px;}}
+
+  section{padding:0 0 90px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1300px;margin:auto;padding:0 40px;}
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;line-height:1;margin-bottom:10px;}
+  .block-note{font-size:13.5px;color:var(--text);margin-bottom:26px;max-width:700px;line-height:1.7;}
+
+  /* CALCULATOR CARD */
+  .calc-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:34px;margin-bottom:24px;}
+  .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  @media(max-width:800px){.calc-grid{grid-template-columns:1fr;}}
+  .field-group{margin-bottom:18px;}
+  .field-group label{display:block;font-size:12px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .field-group input, .field-group select, .field-group textarea{width:100%;padding:13px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;transition:border-color .3s;}
+  .field-group textarea{resize:vertical;min-height:84px;font-family:'Barlow Condensed',sans-serif;font-size:13px;line-height:1.5;}
+  .field-group input:focus, .field-group select:focus, .field-group textarea:focus{border-color:rgba(255,180,0,0.4);}
+  .field-hint{font-size:11.5px;color:var(--text);margin-top:6px;}
+  .calc-result{background:rgba(255,180,0,0.05);border:1px solid rgba(255,180,0,0.2);border-radius:12px;padding:24px;display:flex;flex-direction:column;justify-content:center;}
+  .calc-result .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text);margin-bottom:8px;}
+  .calc-result .r-value{font-family:'Bebas Neue',sans-serif;font-size:38px;color:var(--gold);line-height:1;margin-bottom:10px;}
+  .calc-result .r-note{font-size:12.5px;color:var(--text);line-height:1.7;}
+  .calc-warn{margin-top:14px;font-size:11.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
+  .calc-warn i{color:var(--cyan);margin-top:2px;}
+
+  /* REQUIREMENT BADGE */
+  .req-badge{margin-top:16px;padding:16px 20px;border-radius:10px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;letter-spacing:.3px;}
+  .req-badge i{font-size:18px;}
+  .req-badge.required{background:rgba(46,204,113,0.1);border:1px solid rgba(46,204,113,0.35);color:var(--green);}
+  .req-badge.recommended{background:rgba(255,180,0,0.08);border:1px solid rgba(255,180,0,0.3);color:var(--gold);}
+  .req-badge.notreq{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
+  .req-badge.tbd{background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);}
+  .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
+
+  /* SECTION DIVIDER WITHIN THE CARD */
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
+  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
+  .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
+
+  /* CALCULATOR BREAKDOWN GRID */
+  .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px;padding-top:22px;border-top:1px solid var(--border);}
+  @media(max-width:800px){.calc-breakdown{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.calc-breakdown{grid-template-columns:1fr;}}
+  .bd-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+  .bd-label{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;}
+  .bd-val{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--white);letter-spacing:.5px;}
+  .bd-sub{font-size:11px;color:var(--text);margin-top:4px;line-height:1.5;}
+  .bd-val.pass{color:var(--green);}
+  .bd-val.fail{color:var(--red);}
+  .bd-val.na{color:var(--text);font-size:16px;}
+
+  /* SPECIAL CONDITION FLAGS */
+  .flag-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);color:#ffb3ba;}
+  .flag-banner i{color:var(--red);margin-top:2px;}
+  .flag-banner + .flag-banner{margin-top:10px;}
+
+  /* INFO / VALIDATION BANNER (non-blocking) */
+  .info-banner{margin-top:16px;padding:14px 18px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:10px;align-items:flex-start;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.25);color:var(--cyan);}
+  .info-banner i{color:var(--cyan);margin-top:2px;}
+  .info-banner + .info-banner{margin-top:10px;}
+
+  /* META ROW (project name / runway designation) */
+  .meta-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);}
+  @media(max-width:600px){.meta-row{grid-template-columns:1fr;}}
+
+  /* PAIRED SUB-FIELDS */
+  .sub-field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .check-row{display:flex;gap:22px;flex-wrap:wrap;}
+  .check-row label{display:flex;align-items:center;gap:8px;text-transform:none;font-size:13px;color:var(--white);font-weight:500;cursor:pointer;}
+  .check-row input[type=checkbox]{width:auto;accent-color:var(--gold);}
+
+  /* QUANTITY TABLES */
+  .qty-table td.qty-total-label{color:var(--white);font-weight:700;}
+  .qty-table tr.qty-total td{border-top:1px solid rgba(255,180,0,0.25);border-bottom:none;padding-top:14px;}
+  .qty-table td.qty-total-val{color:var(--gold);font-weight:700;font-size:15px;}
+  .qty-table td.qty-basis{font-size:11px;color:var(--text);}
+
+  .scroll-table-wrap{max-height:320px;overflow-y:auto;border:1px solid var(--border);border-radius:10px;margin-top:14px;}
+  .scroll-table-wrap table{width:100%;border-collapse:collapse;font-size:12px;}
+  .scroll-table-wrap th{position:sticky;top:0;background:#0d1e38;text-align:left;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .scroll-table-wrap td{padding:7px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .scroll-table-wrap td.val{color:var(--white);font-weight:600;}
+  .scroll-table-wrap td.pass{color:var(--green);font-weight:700;}
+  .scroll-table-wrap td.fail{color:var(--red);font-weight:700;}
+
+  /* GEOMETRY DIAGRAM */
+  .geo-diagram{font-family:'Barlow Condensed',sans-serif;font-size:12px;color:var(--text);background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:16px 20px;white-space:pre;overflow-x:auto;line-height:1.6;}
+  .geo-diagram .cl{color:var(--gold);}
+  .geo-diagram .bar{color:var(--cyan);}
+
+  /* REPORT BUTTON */
+  .report-btn{margin-top:22px;padding:14px 28px;background:var(--gold);color:#0a1628;border:none;border-radius:8px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-size:12.5px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:all .3s;font-family:'Barlow',sans-serif;}
+  .report-btn:hover{background:#ffc637;transform:translateY(-2px);}
+  .report-btn:active{transform:translateY(0);}
+
+  /* REVISION BAR */
+  .revision-bar{margin-top:24px;padding-top:18px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px;}
+  .revision-bar .rev-tag{font-size:11.5px;font-weight:700;letter-spacing:1px;color:var(--text);text-transform:uppercase;}
+  .revision-bar .rev-tag strong{color:var(--gold);}
+  .revision-bar .rev-disclaimer{font-size:11.5px;color:var(--text);font-style:italic;line-height:1.6;max-width:560px;}
+
+  /* REFERENCE / METHODOLOGY SECTION */
+  .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
+  @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
+  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+  .method-card h4 i{color:var(--gold);}
+  .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
+  .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
+
+  .std-table{width:100%;font-size:12.5px;border-collapse:collapse;}
+  .std-table th{text-align:left;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 10px;border-bottom:1px solid var(--border);}
+  .std-table td{padding:10px 10px;color:var(--text);border-bottom:1px solid var(--border);}
+  .std-table td.val{color:var(--white);font-weight:600;}
+  .std-table tr:last-child td{border-bottom:none;}
+
+  /* TOOLKIT LINKS */
+  .link-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
+  .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
+  .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
+  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link p{font-size:11.5px;color:var(--text);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  .scroll-top{position:fixed;bottom:30px;right:30px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;color:#000;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:0 8px 24px rgba(255,180,0,0.25);}
+  .scroll-top.visible{opacity:1;transform:translateY(0);}
+  .scroll-top:hover{transform:translateY(-4px) scale(1.05);}
+
+  @media(max-width:600px){
+    nav{padding:0 20px;}
+    .breadcrumb{padding:100px 20px 0;}
+    .page-hero{padding:30px 20px 20px;}
+    .container{padding:0 20px;}
+    footer{padding:20px;flex-direction:column;text-align:center;}
+    .calc-card{padding:22px 18px;}
+  }
+
+  /* SERIES CIRCUIT LOAD — additions */
+  .grp-table{width:100%;border-collapse:collapse;font-size:13px;}
+  .grp-table th{text-align:left;font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);padding:8px 8px;border-bottom:1px solid var(--border);}
+  .grp-table td{padding:6px 6px;vertical-align:middle;}
+  .grp-table input{width:100%;padding:10px 12px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;}
+  .grp-table input:focus{border-color:rgba(255,180,0,0.4);}
+  .grp-table td.sub{color:var(--white);font-weight:700;text-align:right;white-space:nowrap;padding-right:12px;}
+  .grp-table .rm{background:none;border:1px solid var(--border);color:var(--text);border-radius:8px;width:36px;height:36px;cursor:pointer;}
+  .grp-table .rm:hover{border-color:var(--red);color:var(--red);}
+  .add-row{margin-top:12px;background:transparent;border:1px dashed rgba(255,180,0,.4);color:var(--gold);padding:10px 18px;border-radius:8px;font-family:'Barlow',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+  .add-row:hover{background:rgba(255,180,0,.08);}
+  .grp-scroll{overflow-x:auto;}
+  .grp-table{min-width:560px;}
+  .load-bar{height:14px;border-radius:100px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:14px;position:relative;}
+  .load-bar i{display:block;height:100%;width:0;background:var(--green);transition:width .4s,background .3s;}
+  .load-bar-lab{display:flex;justify-content:space-between;font-size:11px;color:var(--text);margin-top:6px;}
+  .tag-mini{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--text);opacity:.7;font-weight:600;margin-left:6px;text-transform:none;}
+
+  /* Dropdown fix: dark list background so option text is visible */
+  select{color-scheme:dark;}
+  select option,select optgroup{background:#0d1e38;color:#f0f4ff;}
+
+  .chart-wrap{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:10px;padding:14px 10px 6px;margin-top:6px;}
+  .chart-wrap svg{width:100%;height:auto;display:block;}
+  .chart-wrap text{font-family:'Barlow',sans-serif;font-size:11px;fill:#c8d8f0;}
+  .hide{display:none;}
+  .req-badge.fail{background:rgba(230,57,70,0.1);border:1px solid rgba(230,57,70,0.4);color:#ff8a94;}
+  .grp-table select{width:100%;padding:10px 8px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;outline:none;}
+  .grp-table select:focus{border-color:rgba(255,180,0,0.4);}
+  .grp-table input:disabled,.grp-table select:disabled{opacity:.35;cursor:not-allowed;}
+  .field-group input[type=date]{color-scheme:dark;}
+  .scroll-table-wrap{overflow-x:auto;}
+
+  /* ═══ MULTI-TAB LAYOUT (same as Calculators #05 / #49) ═══ */
+  .page-hero{padding-top:20px;padding-bottom:14px}.page-title{font-size:56px;margin-bottom:12px}
+  details summary{cursor:pointer;color:var(--cyan);font-size:12.5px;font-weight:600}
+  details.about .page-sub{margin-top:10px;font-size:15px}details.why{margin-top:6px}details.why .field-hint{margin-top:4px}
+  .u{text-transform:none;color:var(--text);font-weight:500}
+  :focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+  .subsection-head h2{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;margin:0}
+  .tabbar{position:sticky;top:70px;z-index:20;background:rgba(6,13,26,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);margin-bottom:28px}
+  .tabbar .container{display:flex;gap:4px;overflow-x:auto}
+  .tab{background:none;border:0;border-bottom:3px solid transparent;color:var(--text);font:600 14px 'Barlow',sans-serif;padding:15px 18px;cursor:pointer;white-space:nowrap}
+  .tab:hover{color:var(--white)}.tab[aria-selected=true]{color:var(--gold);border-bottom-color:var(--gold)}
+  .tab-panel[hidden]{display:none}
+  .tool-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;gap:28px;align-items:start}
+  .inputs{display:grid;gap:18px;min-width:0}
+  .presets{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.presets b{font-size:12.5px;color:var(--text);margin-right:4px}
+  .chip,.btn{border:1px solid rgba(255,180,0,.3);background:none;color:var(--text);border-radius:100px;padding:8px 14px;font:600 12.5px 'Barlow',sans-serif;cursor:pointer;transition:all .2s}
+  .chip:hover,.btn:hover{border-color:var(--gold);color:var(--gold)}.chip.ghost{border-color:var(--border)}
+  .btn{border-radius:8px;padding:14px 20px;letter-spacing:.5px}
+  .step{border:1px solid var(--border);border-radius:12px;padding:22px 24px;background:rgba(255,255,255,.02);min-width:0}
+  .step .subsection-head{margin:0 0 16px;padding:0;border:0}
+  .step .field-group:last-child{margin-bottom:0}
+  .step .calc-grid{grid-template-columns:minmax(0,1fr);gap:0}
+  .step .calc-grid>div:empty{display:none}
+  .step textarea{max-width:100%}
+  .result-panel{position:sticky;top:136px;max-height:calc(100vh - 156px);overflow:auto;background:rgba(255,180,0,.05);border:1px solid rgba(255,180,0,.22);border-radius:14px;padding:22px}
+  .result-panel .r-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text)}
+  .result-panel .r-value{font-family:'Bebas Neue',sans-serif;font-size:76px;line-height:1;color:var(--gold)}
+  .result-panel .r-note{font-size:12px;color:var(--text);line-height:1.6;margin-top:8px}
+  .mini-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:14px}
+  .mini{background:rgba(255,255,255,.04);border-radius:8px;padding:8px 6px;text-align:center}
+  .mini b{display:block;font-family:'Bebas Neue',sans-serif;font-size:22px;font-weight:400;color:var(--white);overflow-wrap:anywhere}.mini span{font-size:10.5px;color:var(--text)}
+  .panel-h{display:flex;justify-content:space-between;align-items:baseline;margin:18px 0 0;padding-top:14px;border-top:1px solid var(--border);font-size:13px;font-weight:700}
+  .cnt{font-size:11.5px;font-weight:600;color:var(--text)}.cnt.warn{color:#ffb3ba}
+  .result-panel .flag-banner,.result-panel .info-banner{margin-top:8px;padding:10px 12px;font-size:12px}
+  .result-panel .req-badge{margin-top:12px;padding:12px 14px;font-size:13px}
+  .result-panel .dash-group{margin-top:10px}
+  .result-panel .calc-warn{margin-top:12px}
+  .linkbtn{background:none;border:0;color:var(--cyan);font:600 12.5px 'Barlow',sans-serif;cursor:pointer;margin-top:12px;padding:0}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}.actions .report-btn{margin-top:0}
+  .calc-card .subsection-head{margin-top:28px}
+  .tab-panel .calc-breakdown.flat{border-top:0;margin-top:0;padding-top:0}
+  .tab-panel .method-card:first-child{margin-top:0}
+  .inspect-note{font-size:12.5px;color:var(--text);margin:0 0 16px}
+  .req-badge{margin-top:16px;padding:16px 20px;border-radius:10px;display:flex;align-items:center;gap:12px;font-weight:700;font-size:14px;letter-spacing:.3px}
+  .req-badge i{font-size:18px}
+  .req-badge.pass{background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.35);color:var(--green)}
+  .req-badge.fail{background:rgba(230,57,70,.1);border:1px solid rgba(230,57,70,.35);color:var(--red)}
+  .req-badge.review{background:rgba(255,140,66,.1);border:1px solid rgba(255,140,66,.35);color:var(--orange)}
+  .req-badge .req-sub{display:block;font-size:12px;font-weight:500;color:var(--text);margin-top:3px;letter-spacing:0}
+  .mobile-bar{display:none}
+  @media(max-width:1180px){
+    .tool-layout{grid-template-columns:1fr}.result-panel{position:static;max-height:none}
+    .mobile-bar{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;align-items:center;gap:12px;padding:8px 16px;background:rgba(6,13,26,.97);border-top:1px solid rgba(255,180,0,.3)}
+    .mobile-bar[hidden]{display:none!important}
+    .mobile-bar small{display:block;font-size:10.5px;color:var(--text);text-transform:uppercase;letter-spacing:1px}
+    .mobile-bar strong{font-family:'Bebas Neue',sans-serif;font-size:30px;line-height:1;color:var(--gold);font-weight:400}
+    .mb-status{font-size:12px;font-weight:700;flex:1;text-align:right}
+    .mb-status.pass{color:var(--green)}.mb-status.fail{color:var(--red)}.mb-status.review{color:var(--orange)}
+    body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}
+  }
+  @media(max-width:768px){.page-title{font-size:40px}}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  .r-value.txt{font-size:34px;line-height:1.1;margin:6px 0 4px}
+  .mobile-bar strong{font-size:24px}
+  /* FAQ */
+  .faq-list{display:grid;gap:10px;max-width:900px}
+  .faq-item{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.03);transition:border-color .3s}
+  .faq-item[open]{border-color:rgba(255,180,0,.3)}
+  .faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 20px;font-size:15px;font-weight:700;color:var(--white)}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:'+';font-size:22px;line-height:1;color:var(--gold);flex-shrink:0}
+  .faq-item[open] summary::after{content:'\2212'}
+  .faq-item p{padding:0 20px 18px;font-size:13.5px;line-height:1.75;color:var(--text)}
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<link rel="stylesheet" href="assets/agl-common.css"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Precision AGL Academy"/>
+<meta property="og:title" content="AGL Transformer Test Analyzer | Precision AGL Academy"/>
+<meta property="og:description" content="Isolating transformer test analyzer: winding resistance at 20 °C, insulation resistance, HV withstand, ratio and polarity, with pass/fail and PDF record."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/calc-agl-transformer-test-analyzer-og.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="AGL Isolating Transformer Test Analyzer | Precision AGL Academy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/calc-agl-transformer-test-analyzer-og.jpg"/>
+<meta name="twitter:image:alt" content="AGL Isolating Transformer Test Analyzer | Precision AGL Academy"/>
+<meta name="twitter:title" content="AGL Transformer Test Analyzer | Precision AGL Academy"/>
+<meta name="twitter:description" content="Isolating transformer test analyzer: winding resistance at 20 °C, insulation resistance, HV withstand, ratio and polarity, with pass/fail and PDF record."/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "AGL Transformer Test Analyzer",
+      "url": "https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html",
+      "applicationCategory": "EngineeringApplication",
+      "operatingSystem": "Any",
+      "description": "Isolating transformer test analyzer: winding resistance at 20 °C, insulation resistance, HV withstand, ratio and polarity, with pass/fail and PDF record.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://rahulsharmaagl.in/#academy",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "@id": "https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html#app",
+      "inLanguage": "en-IN",
+      "isAccessibleForFree": true,
+      "dateModified": "2026-10-27",
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Airfield ground lighting engineers, airport electrical engineers and AGL maintenance technicians"
+      },
+      "browserRequirements": "Requires JavaScript. Works in any modern browser.",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/agl-toolkit.html#webpage"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html#breadcrumb"
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/assets/calc-agl-transformer-test-analyzer-og.jpg"
+      }
+    },
+    {
+      "@id": "https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html#breadcrumb",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Hub",
+          "item": "https://rahulsharmaagl.in/index.html#knowledge-hub"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AGL Engineering Calculators",
+          "item": "https://rahulsharmaagl.in/agl-toolkit.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Calculator #43"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does the AGL Transformer Test Analyzer do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It checks test readings for each isolating transformer: winding resistance, insulation resistance, HV withstand and, where applicable, ratio and polarity. It corrects readings to 20 °C, compares winding resistance with a reference or with the rest of the batch, checks every reading against your limits, and issues a pass or fail record that you can sign."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is winding resistance corrected and checked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each reading is brought back to 20 °C with R20 = RT ÷ [1 + 0.00393 × (T − 20)] and the deviation is (R20 − Rref) ÷ Rref × 100. A high reading suggests a poor joint or lead termination, and a low one suggests shorted turns or the wrong rating. Against a given reference, a deviation beyond the tolerance fails the unit. Against the batch median (3 or more units) it only raises a note, because a median cannot show that the whole batch is wrong."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is insulation resistance corrected and checked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three pairs are read: primary to earth, secondary to earth and primary to secondary. Each is checked against the minimum you set, and each is corrected to 20 °C using the rule of thumb that insulation resistance halves for every 10 °C rise, IR20 = IRT × 2^((T − 20) ÷ 10). Correcting a warm reading to 20 °C raises it, so applying the minimum to the reading as measured is the stricter choice above 20 °C."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the HV withstand result treated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The result is Pass or Fail, where Pass means no breakdown or flashover. If the applied voltage or duration is below what you set as required, a Pass is not accepted, because the unit has not been tested to the required level. Use the same basis (AC rms or DC) for the applied and required values. HV testing is hazardous and must follow your site safety procedure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are ratio and polarity checked?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When switched on, the measured ratio is compared with the nominal ratio of the type, with deviation = (ratio − nominal) ÷ nominal × 100, and polarity must be recorded as Pass. The ratio is primary current ÷ secondary current, so 6.6/6.6 A is 1.000 and 20/6.6 A is 3.030."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What do PASS, PASS*, FAIL and incomplete mean?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A unit fails if any check fails. It is incomplete if a required reading is missing or invalid, and it passes with notes (shown as PASS*) if every limit is met but a review note is raised, such as a winding resistance far from the batch median. The record fails if any unit fails, is incomplete if any unit is, and otherwise passes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the tool contain standard acceptance limits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It holds no standard's limits. The reference resistance, minimum insulation resistance, HV level, duration and tolerances are yours to set from the specification or the manufacturer. In the worked example the limits are ±10 % and 100 MΩ. It assumes copper windings and a rule-of-thumb insulation correction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the result an approved test certificate, and what does it not cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is a working test record, not an approved test certificate, and the acceptance limits are project criteria. It does not cover no-load or load losses, temperature rise, or the secondary open-circuit behaviour, so use the isolating transformer calculators for those. Confirm limits, test voltages and the test method against the specification and the manufacturer before accepting a transformer."
+          }
+        }
+      ],
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html#app"
+      }
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;box-sizing:border-box}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);font-family:'Barlow',sans-serif;}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;font-family:'Barlow',sans-serif;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
+@media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
+</style>
+</head>
+<body>
+
+<nav id="navbar" aria-label="Main">
+  <a href="index.html" class="nav-logo" aria-label="Precision AGL Academy – home">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#knowledge-hub">Knowledge Hub</a></li>
+    <li><a href="agl-toolkit.html" class="active" aria-current="page">Toolkit</a></li>
+    <li><a href="component-library.html">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span><a href="index.html#knowledge-hub">Knowledge Hub</a><span>/</span><a href="agl-toolkit.html">AGL Engineering Calculators</a><span>/</span><span class="current">Calculator #43</span>
+</div>
+
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Planning aid, not a test record or certificate.</strong> Results, limits and pass/fail indications are generic estimates from the values you enter. They are not a test certificate, calibration or evidence of compliance, and test voltages are hazardous. Isolate, lock out and prove dead under your aerodrome&rsquo;s permit-to-work. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+<div class="page-tag"><i class="fa-solid fa-vial"></i> Calculator #43</div>
+  <h1 class="page-title">AGL Transformer <span>Test Analyzer</span></h1>
+  <p class="page-sub" style="color:var(--gold);font-weight:600;font-size:15px;margin-bottom:14px;">Winding resistance, insulation resistance, HV withstand and, where applicable, ratio and polarity for each isolating transformer, with a pass / fail record.</p>
+  <details class="about"><summary>About this calculator</summary><p class="page-sub">Isolating transformers are tested one by one, often in batches before they go into the field. Enter each unit's readings and this tool corrects them to 20 °C, compares winding resistance with a reference or with the rest of the batch, checks every insulation reading and the HV result against your limits, and issues a record you can sign.</p></details>
+</div>
+
+<main>
+<div class="tabbar" id="tabbar"><div class="container" role="tablist" aria-label="Calculator sections">
+<button class="tab" role="tab" id="t-calc" data-tab="calc" aria-controls="tab-calc">Calculate</button>
+<button class="tab" role="tab" id="t-report" data-tab="report" aria-controls="tab-report">Unit results &amp; report</button>
+<button class="tab" role="tab" id="t-method" data-tab="method" aria-controls="tab-method">Method &amp; reference</button>
+</div></div>
+
+<section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout">
+<div class="inputs">
+  <div class="presets"><b>Quick start</b>
+<button type="button" class="chip" data-preset="base">Example batch (6.6/6.6 A)</button>
+<button type="button" class="chip" data-preset="t20">20 / 6.6 A type</button>
+<button type="button" class="chip" data-preset="ratio">Ratio &amp; polarity tested</button>
+<button type="button" class="chip" data-preset="blank">Blank record</button>
+<button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
+<div class="step">
+<div class="subsection-head"><h2>Transformer &amp; Test Conditions</h2><div class="sub-line"></div></div>
+  <div class="calc-grid"><div>
+    <div class="field-group"><label>Transformer type</label><select id="xfmrType"><option value="1" selected>6.6 / 6.6 A series isolating (ratio 1.000)</option><option value="3.0303">20 / 6.6 A series isolating (ratio 3.030)</option><option value="custom">Other (set the ratio below)</option></select><div class="field-hint">Used for the ratio check only. The ratio is primary current ÷ secondary current (the inverse of the primary ÷ secondary turns ratio), so enter your test set's reading in the same sense. Everything else works for any type.</div></div>
+    <div class="field-group"><label>Rated insulation voltage (V)</label><input type="number" id="vRate" value="5000" min="1" step="100"/><div class="field-hint">From the nameplate or data sheet.</div></div>
+    <div class="field-group"><label>Winding temperature (°C)</label><input type="number" id="tempC" value="30" min="-20" max="90" step="1"/><div class="field-hint">Measured on the transformer, which should have settled to room temperature before the test.</div></div>
+  </div><div>
+    <div class="field-group"><label>Insulation resistance test voltage (V DC)</label><select id="vTest"><option value="500">500 V</option><option value="1000" selected>1,000 V</option><option value="2500">2,500 V</option><option value="5000">5,000 V</option></select></div>
+    <div class="sub-field-row">
+      <div class="field-group"><label>HV applied (kV)</label><input type="number" id="hvApp" value="10" min="0" step="0.5"/></div>
+      <div class="field-group"><label>Duration (s)</label><input type="number" id="tApp" value="60" min="0" step="1"/></div>
+    </div>
+    <div class="field-hint" style="margin-top:-8px;">The HV actually applied (AC rms or DC, as your specification states). If it is below the required level, a Pass cannot be accepted.</div>
+  </div></div>
+</div>
+<div class="step">
+<div class="subsection-head"><h2>Acceptance Criteria</h2><div class="sub-line"></div></div>
+  <div class="calc-grid"><div>
+    <div class="sub-field-row">
+      <div class="field-group"><label>Reference primary R at 20 °C (Ω)</label><input type="number" id="refRp" value="0.060" min="0" step="0.0001"/></div>
+      <div class="field-group"><label>Reference secondary R at 20 °C (Ω)</label><input type="number" id="refRs" value="0.056" min="0" step="0.0001"/></div>
+    </div>
+    <div class="field-hint" style="margin-top:-8px;margin-bottom:18px;">From the type test or data sheet. Clear both to compare each unit with the batch median instead (3 or more units); that comparison gives notes, not failures.</div>
+    <div class="field-group"><label>Winding resistance tolerance (±%)</label><input type="number" id="tolR" value="10" min="0" step="0.5"/><div class="field-hint">Set from your specification or the manufacturer.</div></div>
+    <div class="field-group"><label>Minimum insulation resistance (MΩ)</label><input type="number" id="minIR" value="100" min="0" step="10"/><div class="field-hint">Applied to primary–earth, secondary–earth and primary–secondary. Set it from the specification; it is not a universal figure.</div></div>
+  </div><div>
+    <div class="field-group"><label>Apply the minimum to</label><select id="irBasis"><option value="meas" selected>Reading as measured</option><option value="corr">Reading corrected to 20 °C</option></select><div class="field-hint">Correcting a warm reading to 20 °C raises it, so as measured is the stricter choice above 20 °C.</div></div>
+    <div class="sub-field-row">
+      <div class="field-group"><label>Required HV (kV)</label><input type="number" id="hvReq" value="10" min="0" step="0.5"/></div>
+      <div class="field-group"><label>Required duration (s)</label><input type="number" id="tReq" value="60" min="0" step="1"/></div>
+    </div>
+    <div class="field-hint" style="margin-top:-8px;margin-bottom:18px;">HV withstand between primary and secondary and to earth, from the specification. Use the same basis (AC rms or DC) as the applied value.</div>
+    <div class="field-group"><label>Ratio and polarity</label><select id="ratioOn"><option value="no" selected>Not tested</option><option value="yes">Tested, record ratio and polarity</option></select></div>
+    <div id="ratioBox" class="hide"><div class="sub-field-row">
+      <div class="field-group"><label>Nominal ratio</label><input type="number" id="nomRatio" value="1" min="0" step="0.001"/></div>
+      <div class="field-group"><label>Ratio tolerance (±%)</label><input type="number" id="tolRatio" value="2" min="0" step="0.1"/></div>
+    </div></div>
+  </div></div>
+</div>
+<div class="step">
+<div class="subsection-head"><h2>Test Readings by Transformer</h2><div class="sub-line"></div></div>
+  <details class="why"><summary>Rule note</summary><p class="field-hint" style="margin:-6px 0 14px;">Winding resistance in Ω as measured at the winding temperature above. Insulation resistance in MΩ at 1 minute. HV: Pass means no breakdown or flashover. A blank reading shows the unit as incomplete. P = primary, S = secondary, E = earth.</p></details>
+  <div class="grp-scroll"><table class="grp-table" style="min-width:960px;"><thead><tr><th>Serial</th><th>Primary R (Ω)</th><th>Secondary R (Ω)</th><th>IR P–E (MΩ)</th><th>IR S–E (MΩ)</th><th>IR P–S (MΩ)</th><th>HV withstand</th><th>Ratio</th><th>Polarity</th><th></th></tr></thead><tbody id="rowBody"></tbody></table></div>
+  <button type="button" class="add-row" onclick="addRow()"><i class="fa-solid fa-plus"></i> Add transformer</button>
+</div>
+</div>
+<aside class="result-panel" aria-label="Result">
+  <div class="r-label">Overall record result</div>
+  <div class="r-value txt" id="resV" aria-live="polite">—</div>
+  <div class="r-note" id="resSub">—</div>
+  <div id="tBadge"></div>
+  <div class="mini-grid"><div class="mini"><b id="pN">—</b><span>Transformers</span></div><div class="mini"><b id="pAcc">—</b><span>Accepted</span></div><div class="mini"><b id="pFail">—</b><span>Failed</span></div><div class="mini"><b id="pDev">—</b><span>Worst R deviation</span></div><div class="mini"><b id="pIR">—</b><span>Lowest IR</span></div><div class="mini"><b id="pHV">—</b><span>HV passed</span></div></div>
+  <div class="panel-h">Checks &amp; notes <span class="cnt" id="noteCount">none</span></div>
+  <div id="flags"></div>
+  <div class="calc-warn"><i class="fa-solid fa-circle-info"></i><span>The tool applies the limits you enter and does not know your specification. Confirm limits, test voltages and the test method against the specification and the manufacturer before accepting a transformer. HV testing is hazardous and must follow your site safety procedure.</span></div>
+  <button type="button" class="linkbtn" onclick="showTab('report')">Open unit results &amp; PDF record</button>
+  <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method</button>
+</aside>
+</div></div></section>
+
+<section class="tab-panel" id="tab-report" role="tabpanel" aria-labelledby="t-report" hidden><div class="container"><div class="calc-card">
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h2>Record details</h2><div class="sub-line"></div></div>
+  <div class="meta-row">
+    <div class="field-group" style="margin-bottom:0;"><label>Project Name <span style="text-transform:none;color:var(--text);font-weight:500;">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
+    <div class="field-group" style="margin-bottom:0;"><label>Batch / Order <span style="text-transform:none;color:var(--text);font-weight:500;">(for report)</span></label><input type="text" id="batchId" placeholder="e.g. PO 1042, 45 W, 6.6/6.6 A"/></div>
+  </div>
+
+  <div class="step">
+<div class="subsection-head"><h2>Test Details</h2><div class="sub-line"></div></div>
+  <div class="calc-grid"><div>
+    <div class="field-group"><label>Tested by</label><input type="text" id="testedBy" placeholder="Name and company"/></div>
+    <div class="field-group"><label>Test date</label><input type="date" id="testDate"/></div>
+    <div class="field-group"><label>HV tester</label><input type="text" id="hvMeter" placeholder="Make, serial no., calibration due"/></div>
+  </div><div>
+    <div class="field-group"><label>Insulation tester</label><input type="text" id="irMeter" placeholder="Make, serial no., calibration due"/></div>
+    <div class="field-group"><label>Resistance meter</label><input type="text" id="rMeter" placeholder="Make, serial no., calibration due"/></div>
+  </div></div>
+</div>
+  <div class="actions">
+    <button type="button" class="report-btn" onclick="generateReport()"><i class="fa-solid fa-file-pdf"></i> Generate Test Record (PDF)</button>
+    <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button>
+  </div>
+  <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
+  <div class="subsection-head"><h2>Unit Results</h2><div class="sub-line"></div></div>
+  <div class="scroll-table-wrap" style="max-height:none;"><table id="resTable" style="min-width:980px;"><thead><tr><th>Serial</th><th>Primary R at 20 °C (Ω)</th><th>Dev. (%)</th><th>Secondary R at 20 °C (Ω)</th><th>Dev. (%)</th><th>IR P–E at 20 °C</th><th>IR S–E at 20 °C</th><th>IR P–S at 20 °C</th><th>HV</th><th>Ratio</th><th>Polarity</th><th>Result</th></tr></thead><tbody></tbody></table></div>
+  <p class="field-hint" id="refNote" style="margin-top:10px;"></p>
+  <p class="field-hint" style="margin-top:4px;">PASS* means every limit is met but there is a note to review, such as a winding resistance far from the batch median.</p>
+  
+  <div class="subsection-head"><h2>Build-up</h2><div class="sub-line"></div></div>
+  <div class="calc-breakdown flat">
+    <div class="bd-card"><div class="bd-label">Transformers</div><div class="bd-val" id="bdN">—</div><div class="bd-sub">In this record</div></div>
+    <div class="bd-card"><div class="bd-label">Accepted</div><div class="bd-val" id="bdPass">—</div><div class="bd-sub" id="bdPassSub">—</div></div>
+    <div class="bd-card"><div class="bd-label">Failed</div><div class="bd-val" id="bdFail">—</div><div class="bd-sub" id="bdFailSub">—</div></div>
+    <div class="bd-card"><div class="bd-label">Worst winding R deviation</div><div class="bd-val" id="bdDev">—</div><div class="bd-sub">At 20 °C, against reference or batch median</div></div>
+    <div class="bd-card"><div class="bd-label">Lowest insulation resistance</div><div class="bd-val" id="bdIR">—</div><div class="bd-sub" id="bdIRSub">—</div></div>
+    <div class="bd-card"><div class="bd-label">HV withstand passed</div><div class="bd-val" id="bdHV">—</div><div class="bd-sub" id="bdHVsub">—</div></div>
+    <div class="bd-card"><div class="bd-label">Temperature factor</div><div class="bd-val" id="bdF">—</div><div class="bd-sub" id="bdFsub">1 + 0.00393 × (T − 20)</div></div>
+  </div>
+
+  <div class="revision-bar"><div class="rev-tag">Calculator #43 &nbsp;|&nbsp; Rev. <strong>1.1</strong> &nbsp;|&nbsp; 14 Oct 2026</div><div class="rev-disclaimer">Engineering reference tool. Acceptance limits are project criteria. This is a working test record, not an approved test certificate.</div></div>
+
+</div></div></section>
+
+<section class="tab-panel" id="tab-method" role="tabpanel" aria-labelledby="t-method" hidden><div class="container">
+  <div class="block-label">Method &amp; Reference</div><h2 class="block-title">How each unit is checked</h2><p class="block-note">Every step is shown so a reading can be checked by hand.</p>
+  <div class="ref-cols"><div>
+    <div class="method-card"><h4><i class="fa-solid fa-ruler"></i> 1. Winding resistance</h4><p>Copper winding resistance rises with temperature, so each reading is brought back to 20 °C and compared with the reference. Without a reference, it is compared with the batch median.</p><div class="formula">R₂₀ = R_T ÷ [1 + 0.00393 × (T − 20)]</div><div class="formula">Deviation = (R₂₀ − R_ref) ÷ R_ref × 100</div><p>A high reading suggests a poor joint or lead termination, and a low one suggests shorted turns or the wrong rating. Against a given reference a deviation beyond the tolerance fails the unit. Against the batch median it only raises a note, because a median cannot show that the whole batch is wrong.</p></div>
+    <div class="method-card"><h4><i class="fa-solid fa-bolt-lightning"></i> 2. Insulation resistance</h4><p>Three pairs are read: primary to earth, secondary to earth and primary to secondary. Each is checked against the minimum, and each is corrected to 20 °C for comparison, using the rule of thumb that insulation resistance halves for every 10 °C rise.</p><div class="formula">IR₂₀ = IR_T × 2^((T − 20) ÷ 10)</div></div>
+    <div class="method-card"><h4><i class="fa-solid fa-plug-circle-bolt"></i> 3. HV withstand</h4><p>The result is Pass or Fail. If the applied voltage or duration is below what you set as required, a Pass is not accepted, because the unit has not been tested to the level required.</p></div>
+    <div class="method-card"><h4><i class="fa-solid fa-code-compare"></i> 4. Ratio and polarity</h4><p>When switched on, the measured ratio is compared with the nominal ratio of the type, and polarity must be recorded as Pass.</p><div class="formula">Ratio deviation = (ratio − nominal) ÷ nominal × 100</div></div>
+  </div><div>
+    <div class="method-card"><h4><i class="fa-solid fa-vial"></i> Worked example, unit T1</h4><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
+      <tr><td>Winding temperature 30 °C</td><td class="val">factor 1.0393</td></tr>
+      <tr><td>Primary R measured 0.0624 Ω</td><td class="val">0.0600 Ω at 20 °C</td></tr>
+      <tr><td>Reference 0.060 Ω, deviation</td><td class="val">+0.07 %</td></tr>
+      <tr><td>Secondary R 0.0581 Ω</td><td class="val">0.0559 Ω at 20 °C</td></tr>
+      <tr><td>Reference 0.056 Ω, deviation</td><td class="val">−0.17 %</td></tr>
+      <tr><td>IR P–E 2,000 MΩ at 30 °C</td><td class="val">4,000 MΩ at 20 °C</td></tr>
+      <tr><td>HV 10 kV for 60 s, no breakdown</td><td class="val">Pass</td></tr>
+      <tr><td>Result against ±10 % and 100 MΩ</td><td class="val">PASS</td></tr></table></div>
+    <div class="method-card"><h4><i class="fa-solid fa-flag-checkered"></i> Unit and record result</h4><p>A unit fails if any check fails. It is incomplete if a required reading is missing or invalid, and passes with notes if only a review note is raised. The record fails if any unit fails, is incomplete if any unit is, and otherwise passes.</p></div>
+    <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4><p>It holds no standard's limits: the reference resistance, minimum IR, HV level and tolerances are yours to set from the specification or the manufacturer. It assumes copper windings and a rule-of-thumb insulation correction. It does not cover no-load or load losses, temperature rise, or the secondary open-circuit behaviour; use the isolating transformer calculators for those.</p></div>
+  </div></div>
+</div></section>
+
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title" id="faq-title">AGL Transformer Test Analyzer: Frequently Asked Questions</h2>
+    <p class="block-note">Quick answers on how isolating transformer test readings are corrected, checked and recorded.</p>
+    <div class="faq-list">
+      <details class="faq-item"><summary>What does the AGL Transformer Test Analyzer do?</summary><p>It checks test readings for each isolating transformer: winding resistance, insulation resistance, HV withstand and, where applicable, ratio and polarity. It corrects readings to 20 °C, compares winding resistance with a reference or with the rest of the batch, checks every reading against your limits, and issues a pass or fail record that you can sign.</p></details>
+      <details class="faq-item"><summary>How is winding resistance corrected and checked?</summary><p>Each reading is brought back to 20 °C with R20 = RT ÷ [1 + 0.00393 × (T − 20)] and the deviation is (R20 − Rref) ÷ Rref × 100. A high reading suggests a poor joint or lead termination, and a low one suggests shorted turns or the wrong rating. Against a given reference, a deviation beyond the tolerance fails the unit. Against the batch median (3 or more units) it only raises a note, because a median cannot show that the whole batch is wrong.</p></details>
+      <details class="faq-item"><summary>How is insulation resistance corrected and checked?</summary><p>Three pairs are read: primary to earth, secondary to earth and primary to secondary. Each is checked against the minimum you set, and each is corrected to 20 °C using the rule of thumb that insulation resistance halves for every 10 °C rise, IR20 = IRT × 2^((T − 20) ÷ 10). Correcting a warm reading to 20 °C raises it, so applying the minimum to the reading as measured is the stricter choice above 20 °C.</p></details>
+      <details class="faq-item"><summary>How is the HV withstand result treated?</summary><p>The result is Pass or Fail, where Pass means no breakdown or flashover. If the applied voltage or duration is below what you set as required, a Pass is not accepted, because the unit has not been tested to the required level. Use the same basis (AC rms or DC) for the applied and required values. HV testing is hazardous and must follow your site safety procedure.</p></details>
+      <details class="faq-item"><summary>How are ratio and polarity checked?</summary><p>When switched on, the measured ratio is compared with the nominal ratio of the type, with deviation = (ratio − nominal) ÷ nominal × 100, and polarity must be recorded as Pass. The ratio is primary current ÷ secondary current, so 6.6/6.6 A is 1.000 and 20/6.6 A is 3.030.</p></details>
+      <details class="faq-item"><summary>What do PASS, PASS*, FAIL and incomplete mean?</summary><p>A unit fails if any check fails. It is incomplete if a required reading is missing or invalid, and it passes with notes (shown as PASS*) if every limit is met but a review note is raised, such as a winding resistance far from the batch median. The record fails if any unit fails, is incomplete if any unit is, and otherwise passes.</p></details>
+      <details class="faq-item"><summary>Does the tool contain standard acceptance limits?</summary><p>No. It holds no standard's limits. The reference resistance, minimum insulation resistance, HV level, duration and tolerances are yours to set from the specification or the manufacturer. In the worked example the limits are ±10 % and 100 MΩ. It assumes copper windings and a rule-of-thumb insulation correction.</p></details>
+      <details class="faq-item"><summary>Is the result an approved test certificate, and what does it not cover?</summary><p>No. It is a working test record, not an approved test certificate, and the acceptance limits are project criteria. It does not cover no-load or load losses, temperature rise, or the secondary open-circuit behaviour, so use the isolating transformer calculators for those. Confirm limits, test voltages and the test method against the specification and the manufacturer before accepting a transformer.</p></details>
+    </div>
+  </div>
+</section>
+
+<section><div class="container"><div class="block-label">More Tools</div><h2 class="block-title">Related Knowledge Hub Resources</h2><div class="link-grid">
+  <a href="calc-cable-test-record-calculator.html" class="tool-link"><i class="fa-solid fa-file-circle-check"></i><h5>Cable Test Record</h5><p>Continuity, loop resistance and IR by cable section.</p></a>
+  <a href="calc-isolating-transformer-efficiency-loss.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Transformer Efficiency &amp; Loss</h5><p>Core and copper losses and loading.</p></a>
+  <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><h5>Isolating Transformer Load</h5><p>Match transformer size to fixture load.</p></a>
+  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+</div></div></section>
+</main>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v2.9 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any result or record produced by it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Applies to the AGL Transformer Test Analyzer (test and record tool), including its PDF reports.</div><ol class="legal-list"><li><strong>Calculated results.</strong> Results, tables, charts, status indicators (such as &ldquo;OK&rdquo;, &ldquo;within limit&rdquo; or &ldquo;pass&rdquo;/&ldquo;fail&rdquo;), recommended or selected values and the example presets on this page are first-pass planning and training estimates calculated in your browser from the values you enter, using simplified formulas, generic tables and typical values. They do not take account of every factor of a real installation, may contain errors or rounding differences, and are not a design, specification, selection, sizing, procurement or acceptance decision. A competent person must check them against the approved design, the manufacturer&rsquo;s data and the applicable standard before any use. &ldquo;Recommended&rdquo; means an indicative estimate, not an endorsement of any rating, product or supplier.</li><li><strong>Electrical values.</strong> Voltage, current, resistance, impedance, power, power factor, voltage drop, loss, load, capacity and efficiency figures depend on cable data, temperature, connector and transformer losses, CCR type, tolerances and other site conditions that a simplified calculation cannot fully capture. Default and example values are typical only. Do not rely on a result to load, energise, re-rate, tap or modify any circuit, CCR, cable or transformer.</li><li><strong>Test and record tools.</strong> Test voltages, limits, trend bands and &ldquo;pass&rdquo; or &ldquo;fail&rdquo; statuses shown are generic and indicative and are not acceptance criteria. A result or record produced with this tool is not a test certificate, calibration record, commissioning or completion certificate, inspection report or declaration of serviceability, and is not evidence of compliance. Readings must come from calibrated instruments used by competent, authorised persons. Insulation-resistance and other test voltages are hazardous: treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s procedures.</li><li><strong>Reports, downloads and printouts.</strong> PDF reports, CSV files and printed pages produced by this tool are uncontrolled working records generated in your browser. They are not approved designs, drawings, controlled documents, certificates, permits or regulatory records. Calculator numbers, revision labels, dates, project names, signature or approval fields on them are layout only and carry no authority unless made under your own approved document-control system. You must not present an output as an approved, verified or certified document. If you enter personal or confidential information, you are responsible for handling any exported file lawfully, including under the Digital Personal Data Protection Act, 2023.</li><li><strong>Your data and third-party services.</strong> Calculations run in your browser. Values you type, select or tick, and any report you generate, are not sent to us. We use no advertising or analytics tools on this page. Your browser requests fonts from Google Fonts and icon files (and, on some pages, scripts) from the cdnjs/Cloudflare network, which receive your IP address and basic browser details under their own policies. Please do not include confidential, classified or security-sensitive information in anything you send to us.</li><li><strong>Educational reference only.</strong> This page is general information for competent, suitably trained and authorised aviation and electrical personnel and for learners. It is not professional engineering, legal, regulatory or safety advice, is not an approved procedure, and creates no professional or client relationship. Values, tolerances, intervals, sequences and examples are generic and indicative; real installations differ by design, make, model, age and condition, and your aerodrome&rsquo;s approved procedures and the manufacturer&rsquo;s documents prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS (IS), DGCA, AAI and other documents are paraphrased summaries for orientation. They are not official text, may be incomplete or superseded, and do not state what any airport, project or regulator requires. Always consult the current official editions and the controlling project specification. Using this tool, or following its output, does not guarantee compliance with any law, standard or approval, and nothing on this page states that any airport, product or project complies or does not comply.</li><li><strong>Safety.</strong> Series-circuit airfield ground lighting equipment can carry lethal voltages. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s permit-to-work and LOTO procedures and the manufacturer&rsquo;s instructions. Nothing on this page authorises work on live equipment, bypassing of any safety device or interlock, installation, adjustment, energisation, return to service, a change of operating category (CAT I/II/III), a NOTAM or any certification decision; those rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>No warranty; limitation of liability.</strong> Content and calculation results are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranty of any kind, including accuracy, completeness, currency, freedom from error or fitness for a particular purpose. To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty, cost or regulatory consequence arising from use of, reliance on, or inability to use this page or any result or file produced by it. Nothing here excludes or limits liability that cannot lawfully be excluded or limited.</li><li><strong>Copyright and third-party names.</strong> &copy; 2026 Precision AGL Academy and Precision AGL Solutions. All rights reserved; copying, republication, scraping or commercial reuse of this tool, its formulas, text, structure and layout needs our prior written permission. You may use results and downloaded reports for your own reference and internal project working. We are not affiliated with, endorsed by or sponsored by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or manufacturer. Third-party names, standard designations and trademarks belong to their owners and are used only for identification.</li><li><strong>Corrections, governing law and contact.</strong> If you find an error in a formula, table or result, or have a safety concern, copyright or other rights issue, or a privacy question, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>. The full Legal Notice governs your use of this website. It is governed by the laws of India; subject to any mandatory rights you may have, the courts at New Delhi have jurisdiction.</li></ol><p class="legal-meta">Notice v2.9 &middot; 27 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+  <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="component-library.html">Components</a>
+    <a href="standards-companion.html">Standards</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="legal-notice.html">Legal Notice</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<div class="mobile-bar" id="mobileBar"><div><small>Accepted</small><strong id="mbTotal">—</strong></div><span class="mb-status" id="mbStatus"></span><button type="button" class="chip" onclick="document.querySelector('.result-panel').scrollIntoView({behavior:'smooth'})">Details</button></div>
+
+<script>
+  const ALPHA_CU = 0.00393;
+  function fmtIR(v){ return v >= 100 ? Math.round(v).toLocaleString('en-IN') : v >= 10 ? v.toFixed(1) : v.toFixed(2); }
+  const median = a => { const s = a.slice().sort((x, y) => x - y), m = s.length >> 1; return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+
+  /* Evaluate one transformer test record. Pure function: settings S + unit rows in, results out. */
+  function evaluate(S, rows){
+    const errors = [];
+    if (!(S.T >= -20 && S.T <= 90)) errors.push('Winding temperature must be between −20 and 90 °C.');
+    if (!(S.tolR >= 0)) errors.push('Winding resistance tolerance cannot be negative.');
+    if (!isNaN(S.refRp) && !(S.refRp > 0)) errors.push('Reference primary resistance must be greater than 0 Ω, or left blank.');
+    if (!isNaN(S.refRs) && !(S.refRs > 0)) errors.push('Reference secondary resistance must be greater than 0 Ω, or left blank.');
+    if (!(S.minIR > 0)) errors.push('Minimum insulation resistance must be greater than 0 MΩ.');
+    if (!(S.vTest > 0) || !(S.vRate > 0)) errors.push('IR test voltage and transformer rated insulation voltage must be greater than 0 V.');
+    if (!(S.hvReq > 0) || !(S.tReq > 0)) errors.push('Required HV withstand voltage and duration must be greater than 0.');
+    if (!(S.hvApp >= 0) || !(S.tApp >= 0)) errors.push('Applied HV voltage and duration cannot be negative.');
+    if (S.ratioOn && (!(S.nomRatio > 0) || !(S.tolRatio >= 0))) errors.push('Nominal ratio must be greater than 0 and the ratio tolerance cannot be negative.');
+    if (!rows.length) errors.push('Add at least one transformer.');
+    if (errors.length) return { errors };
+
+    const f = 1 + ALPHA_CU * (S.T - 20), k = Math.pow(2, (S.T - 20) / 10);
+    const hvLow = S.hvApp < S.hvReq || S.tApp < S.tReq;
+    const res = rows.map((r, i) => {
+      const o = { id: String(r.id || '').trim() || ('Unit ' + (i + 1)), fails: [], warns: [], missing: [], bad: [],
+        Rp: NaN, Rs: NaN, Rp20: NaN, Rs20: NaN, dRp: NaN, dRs: NaN, ir: { pe: NaN, se: NaN, ps: NaN }, irC: { pe: NaN, se: NaN, ps: NaN },
+        hv: r.hv || '', ratio: NaN, dRatio: NaN, pol: r.pol || '' };
+      const rd = (key, label) => {
+        const s = String(r[key] == null ? '' : r[key]).trim(); if (s === '') return NaN;
+        const v = Number(s); if (!isFinite(v) || v < 0){ o.bad.push(label + ' must be a number, 0 or more.'); return NaN; } return v;
+      };
+      o.Rp = rd('Rp', 'Primary resistance'); o.Rs = rd('Rs', 'Secondary resistance');
+      o.ir.pe = rd('irPE', 'IR primary–earth'); o.ir.se = rd('irSE', 'IR secondary–earth'); o.ir.ps = rd('irPS', 'IR primary–secondary');
+      o.ratio = rd('ratio', 'Ratio');
+      if (!isNaN(o.Rp)) o.Rp20 = o.Rp / f;
+      if (!isNaN(o.Rs)) o.Rs20 = o.Rs / f;
+      return o;
+    });
+    // winding resistance comparison: reference if given, otherwise the batch median (needs 3 or more units)
+    const basis = {};
+    [['Rp', 'primary', S.refRp], ['Rs', 'secondary', S.refRs]].forEach(([key, name, ref]) => {
+      const vals = res.map(x => x[key + '20']).filter(v => v > 0);
+      if (!isNaN(ref)) basis[key] = { ref, mode: 'ref' };
+      else if (vals.length >= 3) basis[key] = { ref: median(vals), mode: 'batch' };
+    });
+    const labels = { pe: 'primary–earth', se: 'secondary–earth', ps: 'primary–secondary' };
+    res.forEach(o => {
+      [['Rp', 'Primary', 'dRp'], ['Rs', 'Secondary', 'dRs']].forEach(([key, name, dk]) => {
+        if (isNaN(o[key])) { o.missing.push(name.toLowerCase() + ' winding resistance'); return; }
+        const b = basis[key]; if (!b || !(b.ref > 0)) return;
+        o[dk] = (o[key + '20'] - b.ref) / b.ref * 100;
+        if (Math.abs(o[dk]) > S.tolR + 1e-9){
+          const msg = name + ' winding resistance is ' + Math.abs(o[dk]).toFixed(1) + ' % ' + (o[dk] > 0 ? 'above' : 'below') + ' the ' + (b.mode === 'ref' ? 'reference' : 'batch median') + ' of ' + b.ref.toFixed(4) + ' Ω at 20 °C (limit ±' + S.tolR + ' %). ' +
+            (o[dk] > 0 ? 'Look for a poor internal joint or lead termination.' : 'Check for shorted turns or a wrong-rating unit.');
+          (b.mode === 'ref' ? o.fails : o.warns).push(msg);
+        }
+      });
+      Object.keys(labels).forEach(key => {
+        if (isNaN(o.ir[key])) { o.missing.push('IR ' + labels[key]); return; }
+        o.irC[key] = o.ir[key] * k;
+        const cmp = S.irBasis === 'corr' ? o.irC[key] : o.ir[key];
+        if (cmp < S.minIR) o.fails.push('Insulation resistance ' + labels[key] + ' ' + fmtIR(cmp) + ' MΩ (' + (S.irBasis === 'corr' ? 'corrected to 20 °C' : 'as measured') + ') is below the ' + S.minIR + ' MΩ minimum.');
+      });
+      if (o.hv === '') o.missing.push('HV withstand result');
+      else if (o.hv === 'fail') o.fails.push('HV withstand test failed (breakdown or flashover).');
+      else if (hvLow) o.fails.push('HV test applied (' + S.hvApp + ' kV for ' + S.tApp + ' s) is below the required ' + S.hvReq + ' kV for ' + S.tReq + ' s, so the pass cannot be accepted.');
+      if (S.ratioOn){
+        if (isNaN(o.ratio)) o.missing.push('ratio'); else {
+          o.dRatio = (o.ratio - S.nomRatio) / S.nomRatio * 100;
+          if (Math.abs(o.dRatio) > S.tolRatio + 1e-9) o.fails.push('Ratio ' + o.ratio.toFixed(3) + ' is ' + Math.abs(o.dRatio).toFixed(2) + ' % ' + (o.dRatio > 0 ? 'above' : 'below') + ' the nominal ' + S.nomRatio + ' (limit ±' + S.tolRatio + ' %).');
+        }
+        if (o.pol === '') o.missing.push('polarity result'); else if (o.pol === 'fail') o.fails.push('Polarity check failed.');
+      }
+      o.status = o.fails.length ? 'FAIL' : (o.bad.length || o.missing.length) ? 'INCOMPLETE' : o.warns.length ? 'CHECK' : 'PASS';
+    });
+
+    const globalWarns = [];
+    if (S.vTest > S.vRate) globalWarns.push('The IR test voltage (' + S.vTest + ' V) is above the transformer rated insulation voltage (' + S.vRate + ' V). Confirm it against the manufacturer and the test procedure.');
+    ['Rp', 'Rs'].forEach(key => { if (!basis[key]) globalWarns.push('No ' + (key === 'Rp' ? 'primary' : 'secondary') + ' winding resistance comparison was made. Enter a reference value, or test at least 3 units to compare against the batch median.'); });
+    const cnt = st => res.filter(x => x.status === st).length;
+    const sum = { n: res.length, pass: cnt('PASS'), check: cnt('CHECK'), fail: cnt('FAIL'), inc: cnt('INCOMPLETE'), f, k, basis };
+    const devs = res.flatMap(x => [x.dRp, x.dRs]).filter(v => !isNaN(v));
+    sum.worstDev = devs.length ? devs.reduce((a, b) => Math.abs(b) > Math.abs(a) ? b : a) : NaN;
+    const irs = res.flatMap(x => [x.irC.pe, x.irC.se, x.irC.ps]).filter(v => !isNaN(v));
+    sum.minIRc = irs.length ? Math.min(...irs) : NaN;
+    sum.hvPass = res.filter(x => x.hv === 'pass').length;
+    sum.overall = sum.fail ? 'FAIL' : sum.inc ? 'INCOMPLETE' : (sum.check || globalWarns.length) ? 'CHECK' : 'PASS';
+    return { errors: [], res, sum, globalWarns };
+  }
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const fx = (v, d) => isNaN(v) ? '—' : v.toFixed(d);
+  const sg = v => isNaN(v) ? '—' : (v > 0 ? '+' : '') + v.toFixed(2);
+  const fi = v => isNaN(v) ? '—' : fmtIR(v);
+  const rowsData = [
+    { id:'T1', Rp:0.0624, Rs:0.0581, irPE:2000, irSE:2200, irPS:3000, hv:'pass', ratio:'', pol:'' },
+    { id:'T2', Rp:0.0619, Rs:0.0583, irPE:1800, irSE:2500, irPS:2800, hv:'pass', ratio:'', pol:'' },
+    { id:'T3', Rp:0.0631, Rs:0.0579, irPE:2400, irSE:2100, irPS:3200, hv:'pass', ratio:'', pol:'' },
+    { id:'T4', Rp:0.0627, Rs:0.0586, irPE:2100, irSE:2300, irPS:2900, hv:'pass', ratio:'', pol:'' }
+  ];
+  let last = null;
+  const pn = id => { const s = $(id).value.trim(); return s === '' ? NaN : parseFloat(s); };
+
+  function settings(){
+    return { T: pn('tempC'), tolR: pn('tolR'), refRp: pn('refRp'), refRs: pn('refRs'), minIR: pn('minIR'), irBasis: $('irBasis').value,
+      vTest: pn('vTest'), vRate: pn('vRate'), hvReq: pn('hvReq'), tReq: pn('tReq'), hvApp: pn('hvApp'), tApp: pn('tApp'),
+      ratioOn: $('ratioOn').value === 'yes', nomRatio: pn('nomRatio'), tolRatio: pn('tolRatio') };
+  }
+  const sel = (v, opts) => opts.map(o => `<option value="${o[0]}" ${v === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('');
+  const PF = [['','—'],['pass','Pass'],['fail','Fail']];
+
+  function renderRows(){
+    const rt = $('ratioOn').value === 'yes';
+    const inp = (i, k, v, step, dis, lab) => `<td><input type="number" min="0" step="${step}" ${dis ? 'disabled' : ''} value="${esc(v)}" oninput="upd(${i},'${k}',this.value)" aria-label="${lab}"/></td>`;
+    $('rowBody').innerHTML = rowsData.map((r, i) => `<tr>
+      <td><input type="text" value="${esc(r.id)}" oninput="upd(${i},'id',this.value)" aria-label="Serial number"/></td>
+      ${inp(i,'Rp',r.Rp,'any',false,'Primary resistance')}${inp(i,'Rs',r.Rs,'any',false,'Secondary resistance')}
+      ${inp(i,'irPE',r.irPE,'any',false,'IR primary to earth')}${inp(i,'irSE',r.irSE,'any',false,'IR secondary to earth')}${inp(i,'irPS',r.irPS,'any',false,'IR primary to secondary')}
+      <td><select onchange="upd(${i},'hv',this.value)" aria-label="HV withstand">${sel(r.hv, PF)}</select></td>
+      ${inp(i,'ratio',r.ratio,'any',!rt,'Ratio')}
+      <td><select ${rt ? '' : 'disabled'} onchange="upd(${i},'pol',this.value)" aria-label="Polarity">${sel(r.pol, PF)}</select></td>
+      <td><button type="button" class="rm" onclick="delRow(${i})" aria-label="Remove unit"><i class="fa-solid fa-xmark"></i></button></td></tr>`).join('');
+  }
+  function upd(i, k, v){ rowsData[i][k] = v; calcAll(); }
+  function delRow(i){ rowsData.splice(i, 1); renderRows(); calcAll(); }
+  function addRow(){
+    if (rowsData.length >= 60) return;
+    rowsData.push({ id:'T' + (rowsData.length + 1), Rp:'', Rs:'', irPE:'', irSE:'', irPS:'', hv:'', ratio:'', pol:'' });
+    renderRows(); calcAll();
+  }
+  const STAT = { PASS:['required','fa-circle-check','PASS'], CHECK:['recommended','fa-circle-exclamation','PASS, WITH NOTES'], INCOMPLETE:['recommended','fa-hourglass-half','INCOMPLETE'], FAIL:['fail','fa-circle-xmark','FAIL'] };
+  const pf = v => v === 'pass' ? 'Pass' : v === 'fail' ? 'Fail' : '—';
+
+  function calcAll(){
+    $('ratioBox').classList.toggle('hide', $('ratioOn').value !== 'yes');
+    const S = settings(), out = evaluate(S, rowsData);
+    const ids = ['resV','bdN','bdPass','bdFail','bdDev','bdIR','bdHV','bdF'];
+    if (out.errors.length){
+      last = null; ids.forEach(id => $(id).textContent = '—'); ['resSub','bdPassSub','bdFailSub','bdIRSub','bdHVsub'].forEach(id => $(id).textContent = '');
+      $('tBadge').innerHTML = ''; $('resTable').querySelector('tbody').innerHTML = '';
+      $('flags').innerHTML = out.errors.map(b => `<div class="flag-banner"><i class="fa-solid fa-triangle-exclamation"></i><span>${esc(b)}</span></div>`).join('');
+      return;
+    }
+    const { res, sum, globalWarns } = out, st = STAT[sum.overall];
+    $('resV').textContent = st[2];
+    $('resSub').textContent = sum.n + ' transformer' + (sum.n === 1 ? '' : 's') + ' tested at a winding temperature of ' + S.T + ' °C';
+    $('tBadge').innerHTML = `<div class="req-badge ${st[0]}"><i class="fa-solid ${st[1]}"></i><div>${sum.pass + sum.check} of ${sum.n} unit${sum.n === 1 ? '' : 's'} accepted<span class="req-sub">${sum.fail} failed, ${sum.inc} incomplete${sum.check ? ', ' + sum.check + ' with notes' : ''}.</span></div></div>`;
+    $('bdN').textContent = sum.n;
+    $('bdPass').textContent = sum.pass + sum.check; $('bdPass').className = 'bd-val' + (sum.fail || sum.inc ? '' : ' pass'); $('bdPassSub').textContent = sum.check ? sum.check + ' with notes' : 'Accepted units';
+    $('bdFail').textContent = sum.fail; $('bdFail').className = 'bd-val' + (sum.fail ? ' fail' : ''); $('bdFailSub').textContent = sum.inc + ' incomplete';
+    $('bdDev').textContent = isNaN(sum.worstDev) ? '—' : sg(sum.worstDev) + ' %';
+    $('bdIR').textContent = isNaN(sum.minIRc) ? '—' : fmtIR(sum.minIRc) + ' MΩ'; $('bdIRSub').textContent = 'Any pair, corrected to 20 °C';
+    $('bdHV').textContent = sum.hvPass + ' / ' + sum.n; $('bdHVsub').textContent = S.hvApp + ' kV for ' + S.tApp + ' s applied';
+    $('bdF').textContent = sum.f.toFixed(4); $('bdFsub').textContent = 'R factor; IR factor ×' + sum.k.toFixed(2);
+
+    const b = [];
+    res.forEach(x => {
+      x.fails.forEach(t => b.push(`<div class="flag-banner"><i class="fa-solid fa-circle-xmark"></i><span><b>${esc(x.id)}:</b> ${esc(t)}</span></div>`));
+      x.bad.forEach(t => b.push(`<div class="flag-banner"><i class="fa-solid fa-triangle-exclamation"></i><span><b>${esc(x.id)}:</b> ${esc(t)}</span></div>`));
+    });
+    res.forEach(x => {
+      if (x.missing.length) b.push(`<div class="info-banner"><i class="fa-solid fa-hourglass-half"></i><span><b>${esc(x.id)}</b> still needs: ${esc(x.missing.join(', '))}.</span></div>`);
+      x.warns.forEach(t => b.push(`<div class="info-banner"><i class="fa-solid fa-circle-info"></i><span><b>${esc(x.id)}:</b> ${esc(t)}</span></div>`));
+    });
+    globalWarns.forEach(t => b.push(`<div class="info-banner"><i class="fa-solid fa-circle-info"></i><span>${esc(t)}</span></div>`));
+    $('flags').innerHTML = b.join('');
+
+    const bs = sum.basis;
+    $('refNote').textContent = (bs.Rp || bs.Rs) ? 'Winding resistance compared with: ' + [bs.Rp && 'primary ' + bs.Rp.ref.toFixed(4) + ' Ω (' + (bs.Rp.mode === 'ref' ? 'reference' : 'batch median') + ')', bs.Rs && 'secondary ' + bs.Rs.ref.toFixed(4) + ' Ω (' + (bs.Rs.mode === 'ref' ? 'reference' : 'batch median') + ')'].filter(Boolean).join(', ') + ', at 20 °C.' : '';
+    $('resTable').querySelector('tbody').innerHTML = res.map(x => {
+      const c = x.status === 'PASS' ? 'pass' : x.status === 'FAIL' ? 'fail' : 'val';
+      const dc = (d, key) => isNaN(d) ? '' : Math.abs(d) <= S.tolR ? 'pass' : (sum.basis[key] && sum.basis[key].mode === 'ref') ? 'fail' : 'val';
+      return `<tr><td class="val">${esc(x.id)}</td><td>${fx(x.Rp20, 4)}</td><td class="${dc(x.dRp, 'Rp')}">${sg(x.dRp)}</td><td>${fx(x.Rs20, 4)}</td><td class="${dc(x.dRs, 'Rs')}">${sg(x.dRs)}</td>
+        <td>${fi(x.irC.pe)}</td><td>${fi(x.irC.se)}</td><td>${fi(x.irC.ps)}</td><td class="${x.hv === 'pass' ? 'pass' : x.hv === 'fail' ? 'fail' : ''}">${pf(x.hv)}</td>
+        <td>${S.ratioOn ? fx(x.ratio, 3) + (isNaN(x.dRatio) ? '' : ' (' + sg(x.dRatio) + ' %)') : 'n/a'}</td><td>${S.ratioOn ? pf(x.pol) : 'n/a'}</td>
+        <td class="${c}" ${c === 'val' ? 'style="color:var(--gold)"' : ''}>${x.status === 'CHECK' ? 'PASS*' : x.status}</td></tr>`;
+    }).join('');
+    last = { S, out };
+  }
+  ['xfmrType','vRate','tempC','vTest','hvApp','tApp','refRp','refRs','tolR','minIR','irBasis','hvReq','tReq','ratioOn','nomRatio','tolRatio'].forEach(id => {
+    $(id).addEventListener('input', calcAll); $(id).addEventListener('change', calcAll);
+  });
+  $('ratioOn').addEventListener('change', renderRows);
+  $('xfmrType').addEventListener('change', () => { const v = $('xfmrType').value; if (v !== 'custom'){ $('nomRatio').value = v; calcAll(); } });
+
+  const pdfTxt = s => String(s).replace(/MΩ/g, 'Mohm').replace(/Ω/g, 'ohm').replace(/≥/g, '>=').replace(/≤/g, '<=').replace(/−/g, '-').replace(/[—–]/g, '-').replace(/[^\x00-\xFF]/g, '');
+  function generateReport(){
+    const st = $('reportStatus');
+    if (!window.jspdf || !window.jspdf.jsPDF){ st.textContent = 'PDF library did not load — check your internet connection and try again.'; st.style.color = 'var(--red)'; return; }
+    if (!last){ st.textContent = 'Enter valid data first.'; st.style.color = 'var(--red)'; return; }
+    st.textContent = ''; st.style.color = '';
+    const { S, out } = last, sum = out.sum, T = pdfTxt;
+    const typeTxt = $('xfmrType').selectedOptions[0].textContent;
+    const dRaw = $('testDate').value, dObj = dRaw ? new Date(dRaw + 'T00:00:00') : new Date();
+    const dateStr = dObj.toLocaleDateString('en-GB', { day:'2-digit', month:'short', year:'numeric' });
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF({ unit:'pt', format:'a4', orientation:'landscape' });
+    const pw = doc.internal.pageSize.getWidth(), ph = doc.internal.pageSize.getHeight(), mx = 36, cw = pw - mx * 2;
+    const navy = [10,22,40], gold = [255,180,0], ink = [25,35,55], muted = [100,112,135], line = [205,212,225];
+    doc.setFillColor(...navy); doc.rect(0, 0, pw, 62, 'F'); doc.setFillColor(...gold); doc.rect(0, 62, pw, 3, 'F');
+    doc.setFont('helvetica','bold'); doc.setFontSize(17); doc.setTextColor(255,255,255); doc.text('Isolating Transformer Test Record', mx, 31);
+    doc.setFontSize(8.5); doc.setTextColor(...gold); doc.text('PRECISION AGL ACADEMY  ·  CALCULATOR #43  ·  ' + T(STAT[sum.overall][2]), mx, 48);
+    doc.setTextColor(255,255,255); doc.setFontSize(9); doc.setFont('helvetica','normal');
+    doc.text(T('Project: ' + ($('projectName').value || '—')), pw - mx, 28, { align:'right' });
+    doc.text(T('Batch / order: ' + ($('batchId').value || '—')), pw - mx, 44, { align:'right' });
+    const refTxt = (k, n) => sum.basis[k] ? n + ' ' + sum.basis[k].ref.toFixed(4) + ' ohm (' + (sum.basis[k].mode === 'ref' ? 'reference' : 'batch median') + ')' : n + ' not compared';
+    const info = [
+      [['Test date', dateStr], ['Transformer type', typeTxt]],
+      [['Tested by', $('testedBy').value || '—'], ['Winding temperature', S.T + ' °C  (R factor ' + sum.f.toFixed(4) + ', IR factor x' + sum.k.toFixed(2) + ')']],
+      [['Insulation tester', $('irMeter').value || '—'], ['IR test voltage / rated insulation voltage', S.vTest + ' V / ' + S.vRate + ' V']],
+      [['Resistance meter', $('rMeter').value || '—'], ['HV applied / required', S.hvApp + ' kV for ' + S.tApp + ' s / ' + S.hvReq + ' kV for ' + S.tReq + ' s']],
+      [['HV tester', $('hvMeter').value || '—'], ['Winding R tolerance', '±' + S.tolR + ' %  —  ' + refTxt('Rp', 'primary') + '; ' + refTxt('Rs', 'secondary')]],
+      [['Minimum IR (' + (S.irBasis === 'corr' ? 'corrected to 20 °C' : 'as measured') + ')', S.minIR + ' Mohm'], ['Ratio / polarity', S.ratioOn ? 'Tested, nominal ' + S.nomRatio + ', ±' + S.tolRatio + ' %' : 'Not tested']]
+    ].map(r => [r[0][0], r[0][1], r[1][0], r[1][1]].map(T));
+    doc.autoTable({ startY: 80, margin:{ left:mx, right:mx }, tableWidth: cw, body: info, theme:'plain',
+      styles:{ font:'helvetica', fontSize:8.5, cellPadding:{ top:3.5, bottom:3.5, left:4, right:4 }, textColor: ink },
+      columnStyles:{ 0:{ cellWidth:100, textColor: muted }, 1:{ fontStyle:'bold', cellWidth: cw/2 - 100 }, 2:{ cellWidth:150, textColor: muted }, 3:{ fontStyle:'bold' } },
+      didDrawCell: x => { doc.setDrawColor(...line); doc.setLineWidth(0.5); doc.line(x.cell.x, x.cell.y + x.cell.height, x.cell.x + x.cell.width, x.cell.y + x.cell.height); } });
+    const head = [['Serial','Primary R at 20 °C (ohm)','Dev. (%)','Secondary R at 20 °C (ohm)','Dev. (%)','IR P-E at 20 °C (Mohm)','IR S-E at 20 °C (Mohm)','IR P-S at 20 °C (Mohm)','HV withstand','Ratio (dev. %)','Polarity','Result']];
+    const body = out.res.map(x => [x.id, fx(x.Rp20, 4), sg(x.dRp), fx(x.Rs20, 4), sg(x.dRs), fi(x.irC.pe), fi(x.irC.se), fi(x.irC.ps), pf(x.hv),
+      S.ratioOn ? fx(x.ratio, 3) + (isNaN(x.dRatio) ? '' : ' (' + sg(x.dRatio) + ')') : 'n/a', S.ratioOn ? pf(x.pol) : 'n/a', x.status === 'CHECK' ? 'PASS*' : x.status].map(T));
+    doc.autoTable({ startY: doc.lastAutoTable.finalY + 14, margin:{ left:mx, right:mx, bottom:40 }, tableWidth: cw, head, body, theme:'grid',
+      styles:{ font:'helvetica', fontSize:8, cellPadding:4, textColor: ink, lineColor: line, lineWidth:0.5, halign:'center', valign:'middle' },
+      headStyles:{ fillColor: navy, textColor:[255,255,255], fontSize:7, fontStyle:'bold' }, alternateRowStyles:{ fillColor:[246,248,251] },
+      columnStyles:{ 0:{ halign:'left', fontStyle:'bold' }, 11:{ fontStyle:'bold' } },
+      didParseCell: x => { if (x.section !== 'body') return; const v = x.cell.raw;
+        if (x.column.index === 11) x.cell.styles.textColor = v === 'FAIL' ? [200,30,45] : v === 'PASS' ? [20,130,70] : [170,110,0];
+        if ((x.column.index === 2 || x.column.index === 4) && Math.abs(parseFloat(v)) > S.tolR) x.cell.styles.textColor = (sum.basis[x.column.index === 2 ? 'Rp' : 'Rs'] || {}).mode === 'ref' ? [200,30,45] : [170,110,0];
+        if (x.column.index === 8 && v === 'Fail') x.cell.styles.textColor = [200,30,45]; } });
+    let y = doc.lastAutoTable.finalY + 16;
+    const notes = [];
+    out.res.forEach(x => { x.fails.concat(x.bad).forEach(t => notes.push(x.id + ': ' + t)); x.missing.length && notes.push(x.id + ' still needs: ' + x.missing.join(', ') + '.'); x.warns.forEach(t => notes.push(x.id + ': ' + t)); });
+    out.globalWarns.forEach(t => notes.push(t));
+    if (y + 30 + notes.length * 11 + 70 > ph - 40){ doc.addPage(); y = 50; }
+    doc.setFont('helvetica','bold'); doc.setFontSize(9); doc.setTextColor(...ink);
+    doc.text('Summary: ' + T(STAT[sum.overall][2]) + ' — ' + (sum.pass + sum.check) + ' of ' + sum.n + ' units accepted, ' + sum.fail + ' failed, ' + sum.inc + ' incomplete.' + (sum.check ? '  (* accepted with notes)' : ''), mx, y); y += 14;
+    doc.setFont('helvetica','normal'); doc.setFontSize(8);
+    if (notes.length){ doc.setTextColor(...muted); doc.text('Findings', mx, y); y += 11; doc.setTextColor(...ink);
+      notes.forEach(n => { const ls = doc.splitTextToSize('•  ' + T(n), cw); if (y + ls.length * 10 > ph - 100){ doc.addPage(); y = 50; } doc.text(ls, mx, y); y += ls.length * 10 + 1; }); y += 6; }
+    if (y + 70 > ph - 40){ doc.addPage(); y = 50; }
+    const bw = (cw - 40) / 3;
+    ['Tested by', 'Witnessed by', 'Approved by'].forEach((t, i) => { const bx = mx + i * (bw + 20);
+      doc.setDrawColor(...muted); doc.setLineWidth(0.6); doc.line(bx, y + 34, bx + bw, y + 34);
+      doc.setFontSize(7.5); doc.setTextColor(...muted); doc.text(t + '  —  name, signature, date', bx, y + 44); });
+    const total = doc.getNumberOfPages();
+    for (let p = 1; p <= total; p++){ doc.setPage(p); doc.setDrawColor(...line); doc.setLineWidth(0.6); doc.line(mx, ph - 32, mx + cw, ph - 32);
+      doc.setFont('helvetica','italic'); doc.setFontSize(7); doc.setTextColor(...muted);
+      doc.text('Engineering reference tool. Copper windings, R corrected with 0.00393 per °C; IR corrected to 20 °C by halving per +10 °C (rule of thumb). Acceptance limits are the project criteria entered. Working record, not an approved test certificate.', mx, ph - 22, { maxWidth: cw - 70 });
+      doc.setFont('helvetica','normal'); doc.text('Page ' + p + ' of ' + total, mx + cw, ph - 22, { align:'right' }); }
+    const safe = ($('batchId').value || 'transformer-test').replace(/[^a-z0-9]+/gi, '-').toLowerCase();
+    doc.save('calc43-transformer-test-' + safe + '.pdf');
+  }
+  $('testDate').value = new Date().toLocaleDateString('en-CA');
+  renderRows(); calcAll();
+</script>
+
+<script>
+(function(){
+
+  const $ = id => document.getElementById(id);
+  const TABS = ['calc', 'report', 'method'];
+  function showTab(id, o){
+    if (!TABS.includes(id)) id = 'calc';
+    TABS.forEach(k => { const on = k === id; $('tab-'+k).hidden = !on; const b = $('t-'+k); b.setAttribute('aria-selected', on); b.tabIndex = on ? 0 : -1; });
+    $('mobileBar').hidden = id !== 'calc';
+    document.body.classList.toggle('has-bar', id === 'calc');
+    if (!(o && o.keep)){
+      history.replaceState(null, '', id === 'calc' ? location.pathname + location.search : '#' + id);
+      const top = $('tabbar').getBoundingClientRect().top + scrollY - 70;
+      if (scrollY > top) scrollTo({ top, behavior:'smooth' });
+    }
+  }
+  window.showTab = showTab;
+  document.querySelectorAll('.tab').forEach((b,i,all) => {
+    b.addEventListener('click', () => showTab(b.dataset.tab));
+    b.addEventListener('keydown', e => {
+      const k = { ArrowRight:i+1, ArrowLeft:i-1, Home:0, End:all.length-1 }[e.key];
+      if (k === undefined) return; e.preventDefault();
+      const t = all[(k + all.length) % all.length]; t.focus(); showTab(t.dataset.tab, { keep:true });
+    });
+  });
+  window.addEventListener('hashchange', () => showTab(location.hash.slice(1), { keep:true }));
+  function resetInputs(){
+    document.querySelectorAll('#tab-calc input[id],#tab-calc select[id],#tab-calc textarea[id],#tab-inspect input[id],#tab-inspect select[id],#tab-inspect textarea[id]').forEach(e => {
+      if (e.type === 'checkbox') e.checked = e.defaultChecked;
+      else if (e.tagName === 'SELECT'){ let i = [...e.options].findIndex(o => o.defaultSelected); e.selectedIndex = i < 0 ? 0 : i; }
+      else e.value = e.defaultValue;
+    });
+  }
+  const setv = (id, v) => { const e = $(id); if (e.type === 'checkbox') e.checked = !!v; else e.value = v; };
+  const clipCopy = (txt, st) => {
+    const done = () => { st.textContent = 'Summary copied to clipboard.'; };
+    const fallback = () => { const a = document.createElement('textarea'); a.value = txt; document.body.appendChild(a); a.select();
+      try { document.execCommand('copy'); done(); } catch(e){ st.textContent = 'Copy failed — select and copy manually.'; } a.remove(); };
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fallback); else fallback();
+  };
+  const setBadge = (el, status, label, sub) => {
+    const ic = { pass:'fa-circle-check', fail:'fa-circle-xmark', review:'fa-triangle-exclamation' };
+    el.innerHTML = status ? `<div class="req-badge ${status}"><i class="fa-solid ${ic[status]}"></i><div>${label}<span class="req-sub">${sub}</span></div></div>` : '';
+  };
+  const mobile = (total, status) => {
+    $('mbTotal').textContent = total;
+    const ms = $('mbStatus'); const L = { pass:'Pass', fail:'Fail', review:'Review' };
+    ms.textContent = status ? L[status] : ''; ms.className = 'mb-status' + (status ? ' ' + status : '');
+  };
+  const countNotes = (ids, extraWarn) => {
+    let w = 0, n = 0;
+    ids.forEach(id => { const f = $(id); w += f.querySelectorAll('.flag-banner').length; n += f.querySelectorAll('.info-banner').length; });
+    $('noteCount').textContent = (w || n) ? w + ' warning' + (w == 1 ? '' : 's') + ', ' + n + ' note' + (n == 1 ? '' : 's') : 'none';
+    $('noteCount').className = 'cnt' + (w ? ' warn' : '');
+    return { w, n };
+  };
+  const chipStatus = (w) => {
+    const c = $('complianceDashboard');
+    if (w) return 'fail';
+    if (c.querySelector('.dash-chip.fail')) return 'fail';
+    if (c.querySelector('.dash-chip.review')) return 'review';
+    if (c.querySelector('.dash-chip.pass')) return 'pass';
+    return '';
+  };
+
+  const ROWS0 = JSON.parse(JSON.stringify(rowsData));
+  const setRows = rs => { rowsData.length = 0; rs.forEach(x => rowsData.push(Object.assign({}, x))); };
+  const TODAY = new Date().toLocaleDateString('en-CA');
+  const REFRESH = () => { renderRows(); calcAll(); };
+  function resetAll(){ resetInputs(); $('testDate').value = TODAY; setRows(ROWS0); REFRESH(); }
+  $('resetBtn').addEventListener('click', resetAll);
+  const PRESETS = {
+    base:  () => {},
+    t20:   () => { setv('xfmrType', '3.0303'); setv('nomRatio', 3.0303); },
+    ratio: () => { setv('ratioOn', 'yes'); },
+    blank: () => { setRows([{ id:'T1', Rp:'', Rs:'', irPE:'', irSE:'', irPS:'', hv:'', ratio:'', pol:'' }]); }
+  };
+  document.querySelectorAll('[data-preset]').forEach(b => b.addEventListener('click', () => {
+    resetInputs(); setRows(ROWS0); PRESETS[b.dataset.preset](); REFRESH(); }));
+  function syncPanel(){
+    const t = id => $(id).textContent;
+    $('pN').textContent = t('bdN'); $('pAcc').textContent = t('bdPass'); $('pFail').textContent = t('bdFail');
+    $('pDev').textContent = t('bdDev'); $('pIR').textContent = t('bdIR'); $('pHV').textContent = t('bdHV');
+    const { w } = countNotes(['flags']);
+    const b = $('tBadge').querySelector('.req-badge');
+    const st = !b ? '' : b.classList.contains('fail') ? 'fail' : b.classList.contains('required') ? 'pass' : 'review';
+    $('resV').style.color = st === 'fail' ? 'var(--red)' : st === 'pass' ? 'var(--green)' : '';
+    mobile(t('resV') === '—' ? '—' : t('bdPass') + ' / ' + t('bdN'), t('resV') === '—' ? '' : st);
+  }
+  const mo = new MutationObserver(syncPanel);
+  ['resV','tBadge','flags','bdN','bdPass','bdFail','bdDev','bdIR','bdHV'].forEach(id => mo.observe($(id), { childList:true, subtree:true, characterData:true }));
+  function copySummary(){
+    const t = id => $(id).textContent;
+    const txt = ['AGL Isolating Transformer Test Analyzer — Calculator #43',
+      'Project: ' + ($('projectName').value || '—') + ' | Batch: ' + ($('batchId').value || '—'),
+      'Overall record result: ' + t('resV'), t('resSub'),
+      'Transformers: ' + t('bdN') + ' | Accepted: ' + t('bdPass') + ' | Failed: ' + t('bdFail'),
+      'Worst winding R deviation: ' + t('bdDev') + ' | Lowest IR: ' + t('bdIR') + ' | HV passed: ' + t('bdHV'),
+      'Working test record, not an approved test certificate. Limits are project criteria.'].join('\n');
+    clipCopy(txt, $('reportStatus'));
+  }
+  window.copySummary = copySummary;
+  showTab(location.hash.slice(1), { keep:true });
+  syncPanel();
+
+})();
+</script>
+<script>
+  (function(){
+    const navbar=document.getElementById('navbar'), scrollBtn=document.getElementById('scrollTop');
+    const hb=document.getElementById('hamburger'), nl=document.getElementById('navLinks');
+    window.addEventListener('scroll',()=>{
+      scrollBtn.classList.toggle('visible',window.scrollY>400);
+      navbar.classList.toggle('scrolled',window.scrollY>40);
+    });
+    scrollBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+    hb.addEventListener('click',()=>{const o=nl.classList.toggle('open');hb.setAttribute('aria-expanded',o);});
+  })();
+</script>
+</body>
+</html>

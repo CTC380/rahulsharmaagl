@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Airfield Environmental Sensors: RVR, Wind &amp; Weather</title>
+    <meta name="description" content="Airfield environmental sensors guide: RVR, wind, temperature and ceilometer sensors feeding ATC and ALCMS. Specs, ICAO Annex 3, FAA AC 150/5220-17 standards." />
+    <meta name="keywords" content="airfield environmental sensors, RVR, runway visual range, wind sensor, ceilometer, AWOS, visibility sensor, ALCMS, ICAO Annex 3, FAA AC 150/5220-17" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-environmental-sensors.html" />
+    
+        <!-- Open Graph -->
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content="Airfield Environmental Sensors: RVR, Wind &amp; Weather" />
+        <meta property="og:description" content="Airfield environmental sensors guide: RVR, wind, temperature and ceilometer sensors feeding ATC and ALCMS. Specs, ICAO Annex 3, FAA AC 150/5220-17 standards." />
+        <meta property="og:url" content="https://rahulsharmaagl.in/component-environmental-sensors.html" />
+        <meta property="og:site_name" content="AGL Component Library" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content="https://www.biral.com/wp-content/uploads/2024/06/Aviation-set-up.png" />
+        <meta property="og:image:alt" content="Runway visual range, wind and weather sensors at an airfield" />
+        <meta property="article:author" content="https://www.linkedin.com/in/rahulsharmaagl" />
+        <meta property="article:section" content="AGL Component Library" />
+        <meta property="article:tag" content="airfield environmental sensors" />
+        <meta property="article:tag" content="RVR" />
+        <meta property="article:tag" content="runway visual range" />
+        <meta property="article:tag" content="wind sensor" />
+        <meta property="article:tag" content="ceilometer" />
+        <meta property="article:tag" content="AWOS" />
+        <meta property="article:modified_time" content="2026-09-19T00:00:00+05:30" />
+    
+        <!-- Twitter / X -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Airfield Environmental Sensors: RVR, Wind &amp; Weather" />
+        <meta name="twitter:description" content="Airfield environmental sensors guide: RVR, wind, temperature and ceilometer sensors feeding ATC and ALCMS. Specs, ICAO Annex 3, FAA AC 150/5220-17 standards." />
+        <meta name="twitter:image" content="https://www.biral.com/wp-content/uploads/2024/06/Aviation-set-up.png" />
+        <meta name="twitter:image:alt" content="Runway visual range, wind and weather sensors at an airfield" />
+    
+        <meta name="theme-color" content="#060d1a" />
+    
+        <!-- Performance hints -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    
+        <!-- Structured data (JSON-LD) -->
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "@id": "https://rahulsharmaagl.in/component-environmental-sensors.html#article",
+            "headline": "Airfield Environmental Sensors – Technical Reference Guide",
+            "description": "Airfield environmental sensors guide: RVR, wind, temperature and ceilometer sensors feeding ATC and ALCMS. Specs, ICAO Annex 3, FAA AC 150/5220-17 standards.",
+            "url": "https://rahulsharmaagl.in/component-environmental-sensors.html",
+            "inLanguage": "en",
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://rahulsharmaagl.in/component-environmental-sensors.html"
+            },
+            "about": {
+              "@type": "Thing",
+              "name": "Airfield Environmental Sensors",
+              "description": "Airfield environmental sensors guide: RVR, wind, temperature and ceilometer sensors feeding ATC and ALCMS. Specs, ICAO Annex 3, FAA AC 150/5220-17 standards."
+            },
+            "articleSection": "AGL Component Library",
+            "keywords": "airfield environmental sensors, RVR, runway visual range, wind sensor, ceilometer, AWOS, visibility sensor, ALCMS, ICAO Annex 3, FAA AC 150/5220-17",
+            "image": {
+              "@type": "ImageObject",
+              "url": "https://www.biral.com/wp-content/uploads/2024/06/Aviation-set-up.png"
+            },
+            "isAccessibleForFree": true,
+            "author": {
+              "@type": "Organization",
+              "@id": "https://rahulsharmaagl.in/#organization",
+              "name": "Precision AGL Academy",
+              "url": "https://rahulsharmaagl.in/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://rahulsharmaagl.in/favicon.png"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/in/rahulsharmaagl",
+                "https://youtube.com/@rahulsharmaagl",
+                "https://www.instagram.com/aglrahulsharma/"
+              ]
+            },
+            "publisher": {
+              "@type": "Organization",
+              "@id": "https://rahulsharmaagl.in/#organization",
+              "name": "Precision AGL Academy",
+              "url": "https://rahulsharmaagl.in/",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://rahulsharmaagl.in/favicon.png"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/in/rahulsharmaagl",
+                "https://youtube.com/@rahulsharmaagl",
+                "https://www.instagram.com/aglrahulsharma/"
+              ]
+            },
+            "isPartOf": {
+              "@type": "CollectionPage",
+              "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+              "name": "AGL Component Library",
+              "url": "https://rahulsharmaagl.in/component-library.html"
+            },
+            "breadcrumb": {
+              "@id": "https://rahulsharmaagl.in/component-environmental-sensors.html#breadcrumb"
+            },
+            "hasPart": {
+              "@id": "https://rahulsharmaagl.in/component-environmental-sensors.html#faq"
+            },
+            "dateModified": "2026-09-19",
+            "mentions": [
+              {
+                "@type": "Thing",
+                "name": "ICAO Annex 3"
+              },
+              {
+                "@type": "Thing",
+                "name": "FAA AC 150/5220-17"
+              },
+              {
+                "@type": "Thing",
+                "name": "FAA AC 150/5220-16"
+              },
+              {
+                "@type": "Thing",
+                "name": "WMO CIMO Guide"
+              },
+              {
+                "@type": "Thing",
+                "name": "DGCA CAR Section 4"
+              }
+            ]
+          }
+        </script>
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "@id": "https://rahulsharmaagl.in/component-environmental-sensors.html#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://rahulsharmaagl.in/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Knowledge Hub",
+                "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Component Library",
+                "item": "https://rahulsharmaagl.in/component-library.html"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Airfield Environmental Sensors",
+                "item": "https://rahulsharmaagl.in/component-environmental-sensors.html"
+              }
+            ]
+          }
+        </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-environmental-sensors.html#faq", "url": "https://rahulsharmaagl.in/component-environmental-sensors.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-environmental-sensors.html#article"}, "mainEntity": [{"@type": "Question", "name": "What are airfield environmental sensors?", "acceptedAnswer": {"@type": "Answer", "text": "They are instruments that continuously measure runway and airfield conditions such as visibility (RVR), wind, temperature, humidity and cloud base. They replace subjective or stale judgement with instrumented measurements that pilots, ATC and airfield systems can rely on."}}, {"@type": "Question", "name": "What does an RVR sensor measure?", "acceptedAnswer": {"@type": "Answer", "text": "Runway Visual Range, giving a specific, defensible distance figure for how far a pilot can see along the runway. Measurement range is 50–2,000 m (or more for CAT III), with accuracy of ±10% or ±20 m, whichever is greater, over 100–1,500 m."}}, {"@type": "Question", "name": "What other measurements are typical?", "acceptedAnswer": {"@type": "Answer", "text": "Wind speed of 0–99 m/s (±0.2 m/s) with direction accuracy of ±2° (ultrasonic) or ±3° (mechanical), temperature from −40 °C to +60 °C (±0.2 °C), humidity (±2% RH up to 90%) and ceilometer cloud base height up to 7,500 m."}}, {"@type": "Question", "name": "Where are the sensors installed?", "acceptedAnswer": {"@type": "Answer", "text": "RVR transmissometers and forward-scatter sensors sit on short masts at a set offset from the runway centreline at the touchdown, mid-point and stop-end positions, with a clear optical path and within the obstacle-limitation surface. Wind masts go near each threshold and at mid-field."}}, {"@type": "Question", "name": "How often do sensors update?", "acceptedAnswer": {"@type": "Answer", "text": "Typically every minute for RVR and every 10 seconds for wind gust, over RS-232, RS-485 or Ethernet (Modbus, SDI-12 or proprietary interfaces)."}}, {"@type": "Question", "name": "How are environmental sensors powered?", "acceptedAnswer": {"@type": "Answer", "text": "From 230 V AC or 12/24 V DC, with solar options for remote sensors and battery or solar-charged backup recommended at remote or unmanned sites. Signal cable is shielded instrumentation cable, and surge suppression on power and signal lines is required."}}, {"@type": "Question", "name": "Which standards apply to environmental sensors?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 3, FAA AC 150/5220-17 (RVR systems), FAA AC 150/5220-16 (AWOS), the WMO CIMO Guide and DGCA CAR Section 4 for Indian aerodromes. Always verify the current edition and your national authority's requirements."}}, {"@type": "Question", "name": "How often should environmental sensors be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are quarterly for optics and lens cleaning, semi-annual for communication link checks, and annual for RVR calibration, wind sensor calibration, temperature and humidity checks and ceilometer function tests. Your approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "Why is my RVR reading erratic or suspiciously low?", "acceptedAnswer": {"@type": "Answer", "text": "Transmissometer or forward-scatter lenses contaminated with dust, insects or condensation, or ice on the optical path. Compare with other RVR positions, clean the lenses, check heater and anti-icing operation and recalibrate if the offset persists."}}, {"@type": "Question", "name": "Why is a wind reading frozen or implausible?", "acceptedAnswer": {"@type": "Answer", "text": "Ice or debris is jamming a mechanical anemometer or vane, or fouling the transducer path on an ultrasonic sensor. Look for a constant reading regardless of conditions, inspect the sensor head for ice, debris or insect nests and compare with an adjacent wind mast."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --green: #2ecc71;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .comp-img-box i {
+            font-size: 100px;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            padding-left: 24px;
+            margin-top: 12px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* DIAGRAM */
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 30px;
+            overflow-x: auto;
+        }
+        .diagram-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+            min-width: fit-content;
+        }
+        .diagram-node {
+            background: var(--card);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 14px 18px;
+            text-align: center;
+            min-width: 150px;
+            max-width: 190px;
+        }
+        .diagram-node .dn-title {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .diagram-node .dn-sub {
+            font-size: 11px;
+            color: var(--text);
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+        .diagram-node.cyan { border-color: var(--cyan); }
+        .diagram-node.red { border-color: var(--red); }
+        .diagram-node.fill-gold { background: rgba(255, 180, 0, 0.08); }
+        .diagram-node.fill-cyan { background: rgba(0, 212, 255, 0.08); }
+        .diagram-node.fill-red { background: rgba(230, 57, 70, 0.08); }
+        .diagram-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
+            color: var(--gold);
+            font-size: 22px;
+            font-weight: 700;
+        }
+        .diagram-arrow.red { color: var(--red); }
+        .diagram-arrow.cyan { color: var(--cyan); }
+        .diagram-branches {
+            display: flex;
+            gap: 50px;
+            justify-content: center;
+            margin-top: 26px;
+            flex-wrap: wrap;
+        }
+        .diagram-branch-col {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .diagram-branch-label {
+            font-size: 10.5px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .diagram-branch-label.red { color: var(--red); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-down-arrow {
+            color: var(--gold);
+            font-size: 20px;
+            text-align: center;
+        }
+        .diagram-down-arrow.red { color: var(--red); }
+        .diagram-down-arrow.cyan { color: var(--cyan); }
+        @media(max-width:768px) {
+            .diagram-flow { flex-direction: column; }
+            .diagram-arrow { transform: rotate(90deg); padding: 6px 0; }
+        }
+        .diagram-arrow-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 8px;
+        }
+        .diagram-arrow-stack .al {
+            font-size: 9px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 3px;
+            white-space: nowrap;
+        }
+        .diagram-arrow-stack .aa {
+            font-size: 20px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+            /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Airfield Environmental Sensors</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-cloud-sun-rain"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Airfield <span>Environmental Sensors</span></h1>
+            <p class="comp-sub">The network of visibility, wind, and weather sensors that feed real-time data to air traffic control, pilots, and ALCMS — enabling safe operations and informed intensity decisions for approach lighting and runway visual range reporting.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:720px;height:578px;">
+                <img src="https://www.biral.com/wp-content/uploads/2024/06/Aviation-set-up.png" alt="Runway visual range, wind and weather sensors at an airfield" width="720" height="578" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Are They?</h2>
+            <div class="info-panel">
+                <p><strong>Airfield environmental sensors</strong> are the suite of instruments that measure meteorological conditions critical to aviation safety — visibility (RVR – Runway Visual Range), wind speed and direction, temperature, humidity, barometric pressure, and precipitation. These sensors are typically installed alongside runways, at thresholds, and at mid‑points, and they feed data to the control tower, MET office, and increasingly to the ALCMS for automated lighting intensity adjustments.</p>
+                <p style="margin-top:14px;"><strong>RVR (Runway Visual Range)</strong> is a derived value that combines visibility, background luminance, and runway light intensity to estimate the distance a pilot can see runway markings or lights. It is measured using forward-scatter or transmissometer sensors installed at the touchdown, mid, and stop‑end points of each runway.</p>
+                <p style="margin-top:14px;"><strong>Wind sensors</strong> (anemometers and wind vanes) provide real-time wind speed, gust, and direction, essential for takeoff and landing decisions. Wind data is also used to calculate crosswind and tailwind components.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The safety margins built into aviation operations depend on knowing the actual visibility and wind conditions at the runway right now, not an estimate from a tower window or a forecast from an hour ago. Environmental sensors exist to replace that kind of subjective or stale judgement with a continuous, instrumented measurement pilots, ATC, and airfield systems can rely on. RVR sensors give a specific, defensible distance figure for how far a pilot can actually expect to see runway lights or markings — the number that determines whether an approach or takeoff is permitted to proceed under a given category of operation. Wind sensors give the crosswind and tailwind components that decide which runway is safe to use and whether conditions remain within an aircraft's operating limits. Feeding this same data into the ALCMS closes a further gap: rather than running the runway lighting at a fixed default intensity, the system can match light output to the visibility that has actually been measured, so pilots see the intensity level appropriate to conditions rather than one set for the worst case or guessed by an operator.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Are They Used?</h2>
+            <div class="info-panel">
+                <p>Environmental sensors are strategically placed across the airfield to capture representative conditions:</p>
+                <ul>
+                    <li><strong>RVR Sensors (Transmissometers / Forward Scatter):</strong> Installed at three positions along each runway — touchdown zone (typically 300m from threshold), mid-point, and stop end — to provide RVR values for the full runway.</li>
+                    <li><strong>Wind Sensors:</strong> Typically mounted on masts near the runway thresholds (both ends) and at mid-field, to capture surface wind conditions.</li>
+                    <li><strong>Automatic Weather Observing Systems (AWOS):</strong> Integrated sensor suites that include temperature, humidity, dew point, barometric pressure, and precipitation detection.</li>
+                    <li><strong>Ceilometers:</strong> Measure cloud base height, important for approach minima.</li>
+                    <li><strong>Present Weather Sensors:</strong> Detect precipitation type (rain, snow, drizzle) and intensity.</li>
+                </ul>
+                <p style="margin-top:14px;">Data from these sensors is distributed to ATC, the aerodrome meteorological office, and, in modern systems, directly to the ALCMS for automated intensity step selection based on RVR thresholds.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>RVR transmissometers and forward-scatter sensors are mounted on short masts a set offset from the runway centreline at each of the touchdown, mid-point, and stop-end positions, sited so the sensor's optical path is clear of any obstruction and positioned to keep the equipment within the runway strip's obstacle-limitation surface. Wind masts are erected near each runway threshold and at mid-field, at a height and distance from the runway that avoids local turbulence from nearby structures or terrain skewing the reading, with the sensor itself mounted at the standard reference height above ground level used for the airfield's wind reporting. All sensor types are fed by cable — power and signal — run in duct or direct-buried conduit back to a local remote terminal unit or straight to the AWOS processing equipment, with the cable route planned to avoid the runway strip's graded and load-bearing areas. Because these sensors report values pilots and ATC act on directly, foundation and mast installation is carried out under a survey that fixes each sensor's exact position and height, since even a modest siting error can bias the readings the whole safety margin depends on.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Do They Work?</h2>
+            <div class="info-panel">
+                <p>Each sensor type uses a distinct measurement principle:</p>
+                <ul>
+                    <li><strong>Transmissometer:</strong> Measures the extinction of a light beam over a known baseline (typically 75m). The receiver measures the transmitted light, and the instrument calculates the Meteorological Optical Range (MOR). RVR is then derived using background luminance and runway light intensity.</li>
+                    <li><strong>Forward Scatter Sensor:</strong> Measures the amount of light scattered by particles in a small sample volume. It is more compact than a transmissometer and is widely used as an alternative.</li>
+                    <li><strong>Anemometer:</strong> Uses a three‑cup or ultrasonic design to measure wind speed, and a vane or sonic array for direction. Ultrasonic anemometers are increasingly preferred for their lack of moving parts.</li>
+                    <li><strong>Temperature / Humidity Sensors:</strong> Typically platinum resistance thermometers (PRT) and capacitive humidity sensors housed in a radiation shield.</li>
+                    <li><strong>Ceilometer:</strong> Uses a laser or infrared beam to detect cloud base height by measuring the time of flight of backscattered light.</li>
+                </ul>
+                <p style="margin-top:14px;">All sensors are connected to a data acquisition system (often an AWOS) that processes, formats, and transmits data to displays and networked systems. Data is typically updated once per minute or faster.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>Individual environmental sensors &mdash; transmissometers, forward-scatter sensors, anemometers, temperature/humidity probes, ceilometers &mdash; each measure a single physical quantity and have no interconnection with one another; the control architecture lives in the data acquisition and processing layer above them. Each sensor's analogue or digital output is polled by a local data acquisition unit, which timestamps and validates the reading (flagging out-of-range or stuck values) before forwarding it to the central AWOS processor. The AWOS processor combines readings from multiple sensor sites, applies the required algorithms &mdash; deriving RVR from MOR and background luminance, for instance &mdash; and pushes the resulting product to ATC and pilot-facing displays, typically refreshing at least once a minute; if a sensor drops out or its data fails validation, the processor flags that specific parameter as unavailable rather than silently substituting a stale or estimated value.</p>
+            </div>
+            <div class="diagram-block" style="margin-top:24px;">
+                <p class="diagram-sub">Sensor &rarr; Data Acquisition Unit &rarr; AWOS Processor &rarr; Derived Products &rarr; ATC / Pilot Displays</p>
+                <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="componentenvArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" style="fill: var(--gold); opacity:0.7;" />
+                        </marker>
+                        <marker id="componentenvFbArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" style="fill: var(--cyan); opacity:0.8;" />
+                        </marker>
+                    </defs>
+
+                    <rect x="170" y="20" width="340" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="46" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:13.5px; fill: var(--white);">ENVIRONMENTAL SENSORS</text>
+                    <text x="340" y="63" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">Transmissometer, anemometer, ceilometer, etc.</text>
+
+                    <line x1="340" y1="76" x2="340" y2="100" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#componentenvArrow)"/>
+
+                    <rect x="170" y="104" width="340" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="130" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14.5px; fill: var(--white);">LOCAL DATA ACQUISITION UNIT</text>
+                    <text x="340" y="147" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10.5px; fill: var(--text);">Polls, timestamps, and validates each reading</text>
+
+                    <line x1="340" y1="160" x2="340" y2="184" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#componentenvArrow)"/>
+
+                    <rect x="140" y="188" width="400" height="56" rx="10" style="fill: rgba(0,212,255,0.06); stroke: rgba(0,212,255,0.28); stroke-width:1.5;"/>
+                    <text x="340" y="214" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14.5px; fill: var(--white);">AWOS CENTRAL PROCESSOR</text>
+                    <text x="340" y="231" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">Combines sites, derives RVR / weather products</text>
+
+                    <line x1="340" y1="244" x2="340" y2="268" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#componentenvArrow)"/>
+
+                    <rect x="170" y="272" width="340" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="298" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14px; fill: var(--white);">PRODUCT GENERATION</text>
+                    <text x="340" y="315" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10.5px; fill: var(--text);">Applies required algorithms to raw measurements</text>
+
+                    <line x1="340" y1="328" x2="340" y2="352" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#componentenvArrow)"/>
+
+                    <rect x="190" y="356" width="300" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="382" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14.5px; fill: var(--white);">ATC / PILOT DISPLAYS</text>
+                    <text x="340" y="399" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10.5px; fill: var(--text);">Refreshed at least once per minute</text>
+
+                    <line x1="340" y1="412" x2="340" y2="436" style="stroke: var(--gold); stroke-width:1.5; opacity:0.6;" marker-end="url(#componentenvArrow)"/>
+
+                    <rect x="170" y="440" width="340" height="64" rx="10" style="fill: rgba(255,180,0,0.08); stroke: var(--gold); stroke-width:1.5;"/>
+                    <text x="340" y="464" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:13.5px; fill: var(--white);">INVALID DATA FLAGGED, NOT SILENTLY SUBSTITUTED</text>
+                    <text x="340" y="483" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">A dropped-out sensor marks its parameter</text>
+                    <text x="340" y="497" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">unavailable rather than estimated</text>
+
+                    <path d="M 540 216 C 630 216, 630 48, 510 48" fill="none" style="stroke: var(--cyan); stroke-width:1.5; stroke-dasharray:5,4; opacity:0.75;" marker-end="url(#componentenvFbArrow)"/>
+                    <text x="547" y="105" text-anchor="start" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.5px; fill: var(--cyan);">VALIDATION CHECK</text>
+                    <text x="547" y="120" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">Each reading is checked</text>
+                    <text x="547" y="132" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">for range and staleness</text>
+                    <text x="547" y="144" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">before use; failure flags</text>
+                    <text x="547" y="156" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">that parameter as unavailable</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Process</div>
+            <h2 class="block-title">Data Acquisition Path</h2>
+            <div class="diagram-block">
+                <div class="diagram-branches" style="margin-top:0;margin-bottom:26px;gap:24px;">
+                    <div class="diagram-branch-col">
+                        <div class="diagram-node"><div class="dn-title">Transmissometer</div><div class="dn-sub">Beam extinction &#8594; MOR/RVR</div></div>
+                    </div>
+                    <div class="diagram-branch-col">
+                        <div class="diagram-node"><div class="dn-title">Forward Scatter Sensor</div></div>
+                    </div>
+                    <div class="diagram-branch-col">
+                        <div class="diagram-node"><div class="dn-title">Anemometer</div><div class="dn-sub">Wind speed &amp; direction</div></div>
+                    </div>
+                    <div class="diagram-branch-col">
+                        <div class="diagram-node"><div class="dn-title">Temp / Humidity Sensors</div></div>
+                    </div>
+                    <div class="diagram-branch-col">
+                        <div class="diagram-node cyan"><div class="dn-title">Ceilometer</div><div class="dn-sub">Laser time-of-flight</div></div>
+                    </div>
+                </div>
+                <div style="display:flex;justify-content:center;">
+                    <div class="diagram-down-arrow">&#8595;</div>
+                </div>
+                <div class="diagram-flow" style="margin-top:14px;">
+                    <div class="diagram-node fill-gold"><div class="dn-title">AWOS Data Acquisition</div><div class="dn-sub">Processes &amp; formats data</div></div>
+                    <div class="diagram-arrow">&#8594;</div>
+                    <div class="diagram-node"><div class="dn-title">Displays &amp; Networked Systems</div><div class="dn-sub">Updated ~once per minute or faster</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>Each sensor type within an environmental sensor suite follows construction appropriate to its measurement principle, but shares common design features: a weatherproof sensor head or optical assembly, typically aluminium or corrosion-resistant composite, rated to IP66/IP67, mounted on a rigid pole or mast at a height standardised for that measurement type. Optical sensors such as RVR and visibility instruments house their transmitter and receiver components in sealed enclosures with heated windows to prevent condensation or icing from obscuring the measurement path, while wind and temperature sensors use sealed bearing assemblies or radiation shields appropriate to their mechanism. All sensor heads connect via shielded, weather-rated cable to a common signal processing or data concentrator unit, often housed in a nearby equipment cabinet, which aggregates readings from the full sensor suite before forwarding them to the ALCMS or MET office over the site communication network. Mounting structures are corrosion-resistant steel or aluminium poles set in concrete foundations, positioned to keep each sensor clear of obstructions or turbulence sources that could bias its readings, and all outdoor enclosures and cabling are built to withstand continuous exposure to airfield weather extremes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>RVR Measurement Range</td><td class="val">50 m – 2,000 m (or more for CAT III)</td></tr>
+                <tr><td>RVR Accuracy</td><td class="val">±10% or ±20 m (whichever is greater) over 100–1,500 m</td></tr>
+                <tr><td>Wind Speed Range</td><td class="val">0 – 99 m/s (0–220 kt) with ±0.2 m/s accuracy</td></tr>
+                <tr><td>Wind Direction Accuracy</td><td class="val">±2° (ultrasonic) or ±3° (mechanical)</td></tr>
+                <tr><td>Temperature Range</td><td class="val">-40°C to +60°C, accuracy ±0.2°C</td></tr>
+                <tr><td>Humidity Accuracy</td><td class="val">±2% RH (0–90%), ±3% RH (90–100%)</td></tr>
+                <tr><td>Ceilometer Range</td><td class="val">0 – 7,500 m (cloud base height)</td></tr>
+                <tr><td>Data Update Rate</td><td class="val">Typically 1 minute for RVR, 10 seconds for wind gust</td></tr>
+                <tr><td>Communication Interface</td><td class="val">RS-232, RS-485, Ethernet (MODBUS, SDI-12, or proprietary)</td></tr>
+                <tr><td>Power Supply</td><td class="val">230V AC or 12/24V DC (solar options for remote sensors)</td></tr>
+                <tr><td>Standards</td><td class="val">ICAO Annex 3 (Meteorology), WMO CIMO Guide, FAA AC 150/5220-16, FAA AC 150/5220-17</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Supply Voltage</td><td class="val">230V AC or 12/24V DC (solar options for remote sensors)</td></tr>
+                <tr><td>Backup Power</td><td class="val">Battery or solar-charged backup recommended for remote/unmanned sites</td></tr>
+                <tr><td>Cable Type</td><td class="val">Shielded instrumentation cable, direct-burial or conduit-routed</td></tr>
+                <tr><td>Communication Wiring</td><td class="val">Twisted-pair (RS-485) or Ethernet, separately screened from power feed</td></tr>
+                <tr><td>Insulation Resistance</td><td class="val">≥ 20 MΩ (megger test, cable-to-ground)</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">Sensor mast and enclosure bonded to local earth grid; lightning protection recommended for exposed masts</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Surge suppression on power and signal lines; sensor fault/self-test reporting</td></tr>
+                <tr><td>Power Source</td><td class="val">Mains-fed distribution board or dedicated solar/battery supply, per site</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 3</h5><p>International standards for meteorological service provision, including RVR and wind measurement</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5220-17</h5><p>U.S. specification for Runway Visual Range (RVR) systems</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5220-16</h5><p>U.S. specification for Automated Weather Observing Systems (AWOS)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">WMO CIMO Guide</h5><p>World Meteorological Organization guide for instrument and measurement methods</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">DGCA CAR Section 4</h5><p>Indian regulatory requirements for aerodrome meteorological equipment</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mast/Pole Foundation</h5><span class="test-stage">Civil</span></div>
+                        <p>Set each sensor's corrosion-resistant pole in a concrete foundation sized for the site's wind loading, positioned to the standard mounting height for that measurement type.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Obstruction-Free Siting</h5><span class="test-stage">Civil</span></div>
+                        <p>Site each sensor clear of buildings, trees, or turbulence sources that could bias its readings, per the siting criteria for that instrument type (RVR, wind, ceilometer, etc.).</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Shielded Cable Route to Concentrator</h5><span class="test-stage">Electrical</span></div>
+                        <p>Run weather-rated, shielded cable from each sensor head to the data concentrator unit, keeping runs separated from high-voltage AGL cabling to avoid signal interference.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply Termination</h5><span class="test-stage">Electrical</span></div>
+                        <p>Terminate 230V AC or 12/24V DC supply at each sensor head, confirming solar-powered remote sensors have adequately sized panel and battery capacity for the site.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Heater/Anti-Icing Circuit Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <p>Where fitted, wire the heated-window or anti-icing circuit on optical sensors so condensation and icing cannot obscure the measurement path.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communication Interface Configuration</h5><span class="test-stage">Configuration</span></div>
+                        <p>Configure and address the RS-232/RS-485/Ethernet interface at the data concentrator so readings correctly reach the ALCMS or MET office network.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record each sensor's foundation position, siting clearance, and cable route as-built before final acceptance testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Calibration Verification Against Reference</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Compare each sensor's RVR, wind, temperature, and humidity readings against a traceable calibrated reference before the unit is commissioned into service.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power &amp; Communication Interface Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Confirm the sensor powers correctly from its 230V AC or 12/24V DC (or solar) supply and communicates over RS-232, RS-485, or Ethernet using the specified protocol.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">RVR / Transmissometer Baseline Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Verify the transmissometer's baseline extinction-coefficient reading against a known reference target or calibration standard before it is trusted for operational RVR reporting.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Wind Sensor Alignment &amp; Response Check</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm true-north alignment of the wind sensor and verify its speed and direction response against a known reference before commissioning.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Ceilometer Range Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Where a ceilometer is fitted, verify cloud-base height reporting against a known reference target or calibration procedure across the sensor's operating range.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Data Update Rate &amp; ALCMS/Met System Integration Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm data feeds correctly to the ALCMS or meteorological system at the specified update rate, with values matching the sensor's local display.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record calibration comparisons, communication tests, and integration verification alongside as-built sensor positions in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">RVR Accuracy Calibration</h5><span class="maint-freq">Annual</span></div>
+                        <p>Calibrate transmissometer or forward-scatter RVR sensors against a reference standard to keep accuracy within ±10% or ±20&#160;m over the operational range.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Optics / Lens Cleaning</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Clean transmissometer lenses and ceilometer optics of dust, insects, and film build-up, which can bias readings low.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Wind Sensor Calibration</h5><span class="maint-freq">Annual</span></div>
+                        <p>Verify wind speed and direction accuracy against a reference anemometer, checking ultrasonic sensors for icing or debris that can skew readings.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Temperature &amp; Humidity Sensor Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Cross-check temperature and humidity readings against a calibrated reference to confirm accuracy stays within ±0.2°C and ±2&#8211;3% RH.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Ceilometer Function Test</h5><span class="maint-freq">Annual</span></div>
+                        <p>Verify cloud base height readings against known references and inspect the laser aperture for contamination that could reduce range accuracy.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Communication Link Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Verify RS-232/RS-485/Ethernet links deliver data at the expected update rate, since gaps in RVR or wind gust data affect operational decisions.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply / Solar Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Verify supply voltage on mains-powered units, or battery and panel condition on solar-powered remote sensors.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Mounting &amp; Siting Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Confirm the sensor's mounting and surrounding site remain free of obstructions or vegetation growth that could bias wind or visibility readings.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Sensor Contamination (Dirt, Ice, Birds)</h5><p>Optical sensors (transmissometers, forward scatter, ceilometers) are sensitive to lens soiling from dust, bird droppings, or ice accretion. Regular cleaning and anti‑icing systems are essential to maintain accuracy.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Calibration Drift</h5><p>All sensors require periodic calibration against reference standards. Drift can cause RVR values to be over‑ or under‑estimated, affecting operational minima decisions.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Communication / Network Failures</h5><p>Sensor data is transmitted over field networks. Cable cuts, radio interference, or power supply issues can cause data loss, requiring redundancy (dual sensors, alternate paths).</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Lightning / EMI Damage</h5><p>Sensors mounted on masts are vulnerable to lightning strikes and electromagnetic interference. Proper grounding and surge protection are critical to prevent hardware damage.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Siting</h5><p>Siting errors (e.g., wind sensors too close to buildings, or RVR sensors not aligned with the runway centreline) can produce unrepresentative data. ICAO and WMO siting guidelines must be followed.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Interruptions</h5><p>Remote sensors often rely on local power (mains or solar). Battery failure or UPS issues can take sensors offline, reducing the availability of critical data.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">RVR Reading Erratic or Suspiciously Low</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Transmissometer or forward-scatter lens contaminated with dust, insects, or condensation, or ice accretion on the optical path.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare the affected sensor's output against the other RVR positions on the runway; inspect and clean the transmit/receive lenses; check heater and anti-icing element operation.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the optics, confirm heaters are functioning, and re-verify against a reference standard; recalibrate if the offset persists after cleaning.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Wind Speed / Direction Reading Frozen or Implausible</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Ice or debris jamming a mechanical anemometer/vane, or a fouled transducer path on an ultrasonic sensor.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for a stuck or constant reading regardless of actual conditions; visually inspect the sensor head for ice, debris, or insect nests; compare against an adjacent wind mast if available.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clear ice or debris, confirm sensor heater operation where fitted, and replace the sensor head if bearings or transducers are damaged.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Sensor Data Not Reaching ATC / ALCMS</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Broken or degraded communication link (cable fault, radio interference, or network switch/converter failure) between the sensor and the receiving system.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check local sensor status/output directly at the unit to confirm it is measuring correctly; trace the RS-232/RS-485/Ethernet link for loose connectors, damaged cable, or a failed converter; check network switch and router status.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the faulted cable, connector, or converter; fail over to the redundant sensor or path where fitted while repairs are completed.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reading Drifts Out of Tolerance Over Time</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Normal calibration drift in the sensing element, or a slow change in siting conditions (new obstruction, vegetation growth) skewing the reading.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Cross-check the sensor against a calibrated reference instrument; review site photos or recent survey notes for new obstructions, vegetation, or ground cover changes near the sensor.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate the sensor to bring it back within tolerance, or clear/relocate per ICAO and WMO siting guidance if the drift is siting-related.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Sensor Offline After Storm Activity</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Lightning strike or induced surge damage to the sensor electronics, or a tripped/failed surge protection device.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check surge protection devices and grounding continuity at the mast; inspect the sensor and its power supply for visible damage; attempt a local power-cycle and re-test.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace tripped or damaged surge protection devices, verify grounding resistance meets spec, and replace the sensor electronics if damage is confirmed.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Remote / Solar-Powered Sensor Intermittently Drops Out</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Degraded battery capacity, a fouled solar panel, or a marginal charge controller unable to sustain the sensor overnight or in low-light conditions.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check battery voltage and charge/discharge behaviour over a full day-night cycle; inspect the solar panel for dirt, shading, or physical damage; verify charge controller operation.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the solar panel, replace a degraded battery, and confirm the charge controller is regulating correctly before returning the sensor to service.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Optical Path Contamination</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, insects, or condensation building up on the transmissometer or forward-scatter sensor's optical windows.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">RVR reading erratic or suspiciously low, potentially triggering low-visibility procedures that aren't actually warranted.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Visual inspection and cleaning of optical windows during scheduled maintenance, and cross-check against a second RVR sensor where available.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Anemometer Mechanical Seizure</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ice accumulation, insect nesting, or bearing wear seizing the wind speed/direction sensor's moving parts.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Wind speed or direction reading frozen or implausible, removing a key data input from wind-dependent operational decisions.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Functional check of anemometer rotation during scheduled maintenance, and comparison against a nearby reference sensor.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Communication Loss to ATC / ALCMS</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Damaged or corroded communication cabling, a failed communication port, or electrical noise on a shared conduit run.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Sensor data not reaching ATC or the ALCMS, leaving a gap in the operational picture until communication is restored.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Communication diagnostic/heartbeat check at the receiving system, and continuity testing of the comms cable.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Calibration Drift Over Time</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ageing of the sensing element, or accumulated environmental exposure shifting the sensor's reference away from factory calibration.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reading drifts out of tolerance over time, producing data that looks plausible but is quietly inaccurate.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Scheduled calibration verification against a certified reference instrument, at the interval specified by the manufacturer.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Storm-Related Sensor Outage</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Lightning strike damage, wind-driven debris impact, or power/communication infrastructure damage during severe weather.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Sensor offline after storm activity, at precisely the time its data may be most operationally relevant.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Post-storm functional check of all field sensors, and priority dispatch to restore any sensor found offline.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Remote Power Supply Instability</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Battery degradation or a fouled solar panel reducing available power at a remote, off-grid sensor location.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Remote or solar-powered sensor intermittently drops out, especially during extended low-light periods.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Battery/solar charge trend monitoring, and inspection of the solar panel and battery during scheduled maintenance.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Power Before Servicing</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>De-energise and lock out the sensor's local power supply before opening its enclosure or disconnecting field wiring, particularly for mains-powered or remotely-fed units.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-person-falling"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Working at Height</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Use appropriate fall protection and follow site procedures when servicing mast- or pole-mounted sensors such as anemometers or visibility sensors.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>Coordinate with ATC/airside operations before taking a sensor out of service or working near the movement area, since ATC may rely on live wind, visibility, or ceiling data for operational decisions.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-cloud-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Weather Awareness</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Avoid servicing elevated or exposed sensors during high wind, lightning, or icing conditions; check the forecast and stand down work if conditions deteriorate.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-gears"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Lock Out Moving Parts</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Secure or lock rotating components such as anemometer cups before working near them, and be aware that a seized bearing can release suddenly once cleared.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Calibration After Service</h5><span class="test-stage">Compliance</span></div>
+                        <p>Check the sensor reading against a reference standard or a known local condition after cleaning, replacement, or calibration before returning it to service.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Data Reaches ATC/ALCMS</h5><span class="test-stage">Compliance</span></div>
+                        <p>After maintenance, confirm the sensor's data is being received correctly and within expected tolerance at ATC and/or the ALCMS before closing out the work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-spider"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Insect Ingress Fouls Optical Sensors Before They Fail Outright</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>A visibility or RVR sensor reading that drifts gradually rather than failing cleanly is often insects or debris partially obstructing the optical path rather than an electronic fault. Include a physical lens and aperture inspection in routine maintenance, not just an electrical function check.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-sun"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Direct Sun Angle Can Saturate a Sensor Briefly Each Day</h5><span class="expert-tag">Diagnostics</span></div>
+                        <p>A sensor that reports an anomalous reading at roughly the same time every clear day is frequently reacting to a specific sun angle relative to its optical axis rather than an intermittent hardware fault. Check whether the anomaly correlates with time of day and season before troubleshooting the unit itself.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-snowflake"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Heater Elements Need Verification, Not Just Presence</h5><span class="expert-tag">Electrical</span></div>
+                        <p>A sensor's anti-icing or condensation heater can fail while the sensor otherwise continues to report plausible-looking data, until icing or condensation eventually degrades accuracy. Verify heater function directly during cold-weather checks rather than inferring it from normal-looking sensor output.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-arrows-turn-to-dots"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Cross-Check Against a Nearby Reference Sensor When Available</h5><span class="expert-tag">Verification</span></div>
+                        <p>Where a second environmental sensor covers a similar or overlapping area, a reading that diverges from that reference over time is a stronger signal of calibration drift than a single sensor's trend on its own. Use available redundancy for cross-checking, not just for failover.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-wind"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Siting Relative to Obstructions Affects Wind Readings Long-Term</h5><span class="expert-tag">Siting</span></div>
+                        <p>New construction, vegetation growth, or even a parked large aircraft near an anemometer can introduce turbulence that skews wind readings in a way that looks like sensor drift. Periodically reassess the site's exposure against current siting criteria, not only at initial installation.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Calibrate Against Traceable References on a Fixed Schedule</h5><span class="expert-tag">Compliance</span></div>
+                        <p>Sensor drift is often too gradual to notice from day-to-day readings alone, which is why a fixed calibration schedule against a traceable reference matters more than reacting only when a reading looks obviously wrong.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about airfield environmental sensors: RVR, wind, temperature, humidity and ceilometers, accuracy, siting, standards, maintenance and common faults.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What are airfield environmental sensors?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>They are instruments that continuously measure runway and airfield conditions such as visibility (RVR), wind, temperature, humidity and cloud base. They replace subjective or stale judgement with instrumented measurements that pilots, ATC and airfield systems can rely on.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">What does an RVR sensor measure?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Runway Visual Range, giving a specific, defensible distance figure for how far a pilot can see along the runway. Measurement range is 50–2,000 m (or more for CAT III), with accuracy of ±10% or ±20 m, whichever is greater, over 100–1,500 m.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">What other measurements are typical?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Wind speed of 0–99 m/s (±0.2 m/s) with direction accuracy of ±2° (ultrasonic) or ±3° (mechanical), temperature from −40 °C to +60 °C (±0.2 °C), humidity (±2% RH up to 90%) and ceilometer cloud base height up to 7,500 m.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">Where are the sensors installed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>RVR transmissometers and forward-scatter sensors sit on short masts at a set offset from the runway centreline at the touchdown, mid-point and stop-end positions, with a clear optical path and within the obstacle-limitation surface. Wind masts go near each threshold and at mid-field.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">How often do sensors update?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typically every minute for RVR and every 10 seconds for wind gust, over RS-232, RS-485 or Ethernet (Modbus, SDI-12 or proprietary interfaces).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How are environmental sensors powered?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>From 230 V AC or 12/24 V DC, with solar options for remote sensors and battery or solar-charged backup recommended at remote or unmanned sites. Signal cable is shielded instrumentation cable, and surge suppression on power and signal lines is required.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">Which standards apply to environmental sensors?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are ICAO Annex 3, FAA AC 150/5220-17 (RVR systems), FAA AC 150/5220-16 (AWOS), the WMO CIMO Guide and DGCA CAR Section 4 for Indian aerodromes. Always verify the current edition and your national authority's requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">How often should environmental sensors be maintained?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical intervals are quarterly for optics and lens cleaning, semi-annual for communication link checks, and annual for RVR calibration, wind sensor calibration, temperature and humidity checks and ceilometer function tests. Your approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">Why is my RVR reading erratic or suspiciously low?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Transmissometer or forward-scatter lenses contaminated with dust, insects or condensation, or ice on the optical path. Compare with other RVR positions, clean the lenses, check heater and anti-icing operation and recalibrate if the offset persists.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">Why is a wind reading frozen or implausible?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Ice or debris is jamming a mechanical anemometer or vane, or fouling the transducer path on an ultrasonic sensor. Look for a constant reading regardless of conditions, inspect the sensor head for ice, debris or insect nests and compare with an adjacent wind mast.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-alcms-server.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">ALCMS</h5></a>
+                <a href="component-approach-lighting.html" class="related-card"><i class="fa-solid fa-tower-broadcast"></i><h5 role="heading" aria-level="3">Approach Lighting</h5></a>
+                <a href="component-runway-lighting.html" class="related-card"><i class="fa-solid fa-road"></i><h5 role="heading" aria-level="3">Runway Lighting</h5></a>
+                <a href="fundamentals.html" class="related-card"><i class="fa-solid fa-seedling"></i><h5 role="heading" aria-level="3">AGL Fundamentals</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need help with sensor selection, siting, or integration with your AGL system?</h4><p>Precision AGL Academy advises on environmental sensor specification, site surveys, and data integration with ALCMS and other airfield systems.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Airfield Environmental Sensors is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Environmental%20Sensors">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Environmental%20Sensors" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

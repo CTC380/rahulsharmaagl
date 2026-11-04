@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AGL Calculators: Voltage Drop, Light Spacing &amp; Load</title>
+<meta name="description" content="AGL calculators for airfield lighting: cable voltage drop, circuit load, CCR sizing, runway and taxiway light spacing, PAPI geometry and photometry."/>
+<meta name="author" content="Precision AGL Academy"/>
+<meta name="keywords" content="AGL design calculations, AGL engineering calculations, airfield ground lighting calculation, airfield lighting calculation, airport lighting calculation, runway lighting calculation, taxiway lighting calculation, approach lighting calculation, runway edge lights calculation, runway centreline lights calculation, threshold lights calculation, airfield lighting load calculation, AGL power calculation, AGL series circuit calculation, constant current regulator calculation"/>
+<link rel="canonical" href="https://rahulsharmaagl.in/agl-toolkit.html"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="theme-color" content="#060d1a"/>
+<link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/agl-toolkit.html"/>
+<link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/agl-toolkit.html"/>
+<meta property="og:locale" content="en_IN"/>
+<meta name="twitter:title" content="AGL Calculators: Voltage Drop, Light Spacing &amp; Load"/>
+<meta name="twitter:description" content="AGL calculators for airfield lighting: cable voltage drop, circuit load, CCR sizing, runway and taxiway light spacing, PAPI geometry and photometry."/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700;800&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is airport lighting load calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Add the wattage of every fixture on the circuit, then add the losses in the isolating transformers and the I²R loss in the primary cable. The total, in kW and kVA, is the circuit load. Compare it with the CCR rating, leaving spare capacity for expansion. The Series Circuit Load calculator does this."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is CCR size calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Work out the voltage the CCR must supply at full current (current times total circuit resistance or impedance), multiply by that current to get kVA, add an allowance for growth, and choose the next standard size up. See CCR Capacity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is airport lighting cable sized?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pick a conductor whose resistance keeps voltage drop and I²R loss acceptable over the full circuit length, and whose voltage and current ratings suit the circuit. Larger conductors lower the loss but cost more, so designers compare options. The Cable Voltage Drop and Primary Cable Resistance calculators support that comparison."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is airport lighting voltage drop calculated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply the circuit current by the resistance of the cable section (resistance per unit length times length, corrected for temperature). Sum the sections for the whole run. The Cable Voltage Drop calculator works section by section."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to calculate AGL voltage drop?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Multiply the circuit current by the total cable resistance, which is the conductor resistance per length times the full circuit length. In a series circuit the current is set by the CCR brightness step, and the voltage drop adds to the voltage the CCR must supply. Check the result against the CCR output and the cable rating with the Cable Voltage Drop calculator."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How to calculate runway light spacing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take the required spacing for the light type from the applicable standard and the approved design, then divide the length to be lit by that spacing and add the end light. Adjust for intersections, curves and changes in spacing, and round to whole lights. The light count then feeds the load and CCR calculations."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/agl-toolkit.html#webpage"
+  }
+}
+</script>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#2ecc71;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.15);transition:all .4s ease;}
+  nav.scrolled{background:rgba(6,13,26,0.97);border-bottom-color:rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:2px;color:var(--white);text-decoration:none;white-space:nowrap;}
+  .nav-logo span{color:var(--gold);}
+  @media(max-width:900px){.nav-logo{font-size:20px;letter-spacing:2px;}}
+  .nav-links{display:flex;gap:26px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:9px 20px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;white-space:nowrap;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:22px;height:2px;background:var(--white);}
+  @media(max-width:1050px){.nav-links{display:none;} .hamburger{display:flex;}}
+
+  .breadcrumb{padding:110px 40px 0;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 30px;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:18px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:17px;line-height:1.8;color:var(--text);max-width:760px;}
+  .page-stat{margin-top:18px;font-size:14px;color:var(--text);display:flex;gap:30px;flex-wrap:wrap;}
+  .page-stat strong{color:var(--gold);font-size:20px;}
+  @media(max-width:768px){.page-title{font-size:42px;} .page-stat{gap:16px;}}
+
+  .filter-section{margin-top:36px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;}
+  .search-box{flex:1 1 280px;position:relative;}
+  .search-box input{width:100%;padding:12px 20px 12px 48px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.04);color:var(--white);font-family:'Barlow',sans-serif;font-size:14px;transition:border-color .3s,background .3s;outline:none;}
+  .search-box input::placeholder{color:rgba(255,255,255,0.35);}
+  .search-box input:focus{border-color:var(--gold);background:rgba(255,255,255,0.07);}
+  .search-box i{position:absolute;left:18px;top:50%;transform:translateY(-50%);color:var(--text);opacity:.5;font-size:16px;}
+  .search-box .clear-btn{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text);opacity:.4;cursor:pointer;font-size:14px;display:none;}
+  .search-box .clear-btn.visible{display:block;}
+  .search-box .clear-btn:hover{opacity:.9;}
+
+  .filter-bar{display:flex;gap:10px;flex-wrap:wrap;flex:1 1 100%;max-height:160px;overflow-y:auto;padding-right:8px;scrollbar-width:thin;scrollbar-color:rgba(255,180,0,0.3) transparent;}
+  .filter-bar::-webkit-scrollbar{width:4px;}
+  .filter-bar::-webkit-scrollbar-thumb{background:rgba(255,180,0,0.3);border-radius:4px;}
+  .filter-chip{padding:9px 20px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.03);font-size:12px;font-weight:600;color:var(--text);cursor:pointer;transition:all .3s;white-space:nowrap;flex-shrink:0;}
+  .filter-chip:hover{border-color:rgba(255,180,0,0.3);color:var(--white);}
+  .filter-chip.active{background:var(--gold);border-color:var(--gold);color:#000;}
+  .filter-chip .count{opacity:.5;font-weight:400;margin-left:4px;font-size:10px;}
+
+  section{padding:0 0 90px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1300px;margin:auto;padding:0 40px;}
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:1px;line-height:1;margin-bottom:10px;}
+  .block-note{font-size:13.5px;color:var(--text);margin-bottom:26px;max-width:700px;line-height:1.7;}
+
+  .cat-block{margin-bottom:60px;display:none;}
+  .cat-block.visible{display:block;}
+  .cat-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;flex-wrap:wrap;}
+  .cat-head h2{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white);}
+  .cat-head .cat-count{font-size:13px;color:var(--text);font-weight:600;opacity:.6;}
+  .cat-line{flex:1;height:1px;background:var(--border);min-width:40px;}
+
+  .calc-grid-lib{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media(max-width:1100px){.calc-grid-lib{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:640px){.calc-grid-lib{grid-template-columns:1fr;}}
+
+  .calc-lib-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:24px 22px;text-decoration:none;transition:all .35s ease;position:relative;overflow:hidden;display:block;}
+  .calc-lib-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);transform:scaleY(0);transition:transform .35s ease;transform-origin:bottom;}
+  a.calc-lib-card:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+  a.calc-lib-card:hover::before{transform:scaleY(1);}
+  .calc-lib-card.is-soon{opacity:.6;cursor:default;}
+  .calc-icon-row{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
+  .calc-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,180,0,0.1);border:1px solid rgba(255,180,0,0.2);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gold);flex-shrink:0;}
+  .calc-badge{font-size:9.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:100px;flex-shrink:0;}
+  .calc-badge.live{background:rgba(46,204,113,0.12);border:1px solid rgba(46,204,113,0.3);color:var(--green);}
+  .calc-badge.soon{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text);}
+  .calc-lib-card h4{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;letter-spacing:0.2px;line-height:1.3;}
+  .calc-lib-card p{font-size:12px;color:var(--text);line-height:1.5;opacity:.8;}
+  .calc-lib-card .calc-arrow{margin-top:14px;font-size:11px;color:var(--gold);font-weight:700;letter-spacing:0.5px;text-transform:uppercase;display:flex;align-items:center;gap:6px;opacity:0;transform:translateX(-6px);transition:all .3s;}
+  a.calc-lib-card:hover .calc-arrow{opacity:1;transform:translateX(0);}
+
+  .no-results{display:none;text-align:center;padding:80px 20px;color:var(--text);}
+  .no-results i{font-size:48px;color:var(--gold);opacity:.3;margin-bottom:20px;}
+  .no-results h3{font-size:22px;color:var(--white);margin-bottom:8px;}
+
+  /* TOOLKIT LINKS */
+
+  .seo-block{max-width:900px;}
+  .seo-block h3{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:.5px;color:var(--white);margin:30px 0 8px;}
+  .seo-block p{font-size:15px;line-height:1.7;color:var(--text);margin-bottom:10px;}
+  .seo-block a{color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(255,180,0,0.3);}
+  .seo-block a:hover{border-bottom-color:var(--gold);}
+  .seo-block code{font-family:ui-monospace,Consolas,monospace;font-size:13.5px;color:var(--cyan);background:rgba(255,255,255,0.05);padding:1px 6px;border-radius:4px;}
+  .faq-item{border:1px solid var(--border);border-radius:10px;background:rgba(255,255,255,0.03);margin-bottom:10px;padding:0 18px;}
+  .seo-block .faq-item summary h3{display:inline;font:inherit;letter-spacing:inherit;color:inherit;margin:0;}
+  .faq-item summary{cursor:pointer;padding:16px 0;font-size:15.5px;font-weight:600;color:var(--white);}
+  .faq-item p{padding-bottom:6px;}
+  .link-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
+  .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
+  .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
+  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link p{font-size:11.5px;color:var(--text);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  .scroll-top{position:fixed;bottom:30px;right:30px;z-index:999;width:44px;height:44px;border-radius:50%;background:var(--gold);border:none;color:#000;font-size:18px;cursor:pointer;opacity:0;transform:translateY(20px);transition:all .3s;box-shadow:0 8px 24px rgba(255,180,0,0.25);}
+  .scroll-top.visible{opacity:1;transform:translateY(0);}
+  .scroll-top:hover{transform:translateY(-4px) scale(1.05);}
+
+  @media(max-width:600px){
+    nav{padding:0 20px;}
+    .breadcrumb{padding:100px 20px 0;}
+    .page-hero{padding:30px 20px 20px;}
+    .container{padding:0 20px;}
+    .cat-head h2{font-size:24px;}
+    .calc-lib-card{padding:18px 16px;}
+    footer{padding:20px;flex-direction:column;text-align:center;}
+    .filter-bar{max-height:120px;}
+    .filter-chip{font-size:11px;padding:7px 14px;}
+    .search-box input{font-size:13px;padding:10px 18px 10px 42px;}
+  }
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Precision AGL Academy"/>
+<meta property="og:title" content="AGL Calculators: Voltage Drop, Light Spacing &amp; Load"/>
+<meta property="og:description" content="AGL calculators for airfield lighting: cable voltage drop, circuit load, CCR sizing, runway and taxiway light spacing, PAPI geometry and photometry."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/agl-toolkit.html"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/agl-toolkit-og.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="AGL Calculators: Voltage Drop, Light Spacing &amp; Load – Precision AGL Academy"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/agl-toolkit-og.jpg"/>
+<meta name="twitter:image:alt" content="AGL Calculators: Voltage Drop, Light Spacing &amp; Load – Precision AGL Academy"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://rahulsharmaagl.in/agl-toolkit.html#webpage",
+      "url": "https://rahulsharmaagl.in/agl-toolkit.html",
+      "name": "AGL Calculators: Voltage Drop, Light Spacing & Load",
+      "description": "AGL calculators for airfield lighting: cable voltage drop, circuit load, CCR sizing, runway and taxiway light spacing, PAPI geometry and photometry.",
+      "inLanguage": "en-IN",
+      "dateModified": "2026-10-27",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://rahulsharmaagl.in/#website",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/agl-toolkit.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://rahulsharmaagl.in/agl-toolkit.html#calculators"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/academy.html#org"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/assets/agl-toolkit-og.jpg"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/agl-toolkit.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Knowledge Hub",
+          "item": "https://rahulsharmaagl.in/index.html#knowledge-hub"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AGL Engineering Calculators",
+          "item": "https://rahulsharmaagl.in/agl-toolkit.html"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://rahulsharmaagl.in/agl-toolkit.html#calculators",
+      "name": "AGL Engineering Calculators",
+      "numberOfItems": 66,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "AGL BOQ Generator",
+          "url": "https://rahulsharmaagl.in/calc-agl-boq-generator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AGL Circuit Cable Drum Calculator",
+          "url": "https://rahulsharmaagl.in/calc-agl-cable-drum-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "AGL Cable Size Selection Calculator",
+          "url": "https://rahulsharmaagl.in/calc-agl-cable-size-selection-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "AGL Circuit Fault Analysis Tool",
+          "url": "https://rahulsharmaagl.in/calc-agl-circuit-fault-analysis-tool.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "AGL Circuit Length Estimator",
+          "url": "https://rahulsharmaagl.in/calc-agl-circuit-length-estimator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "AGL Circuit Load Schedule Generator",
+          "url": "https://rahulsharmaagl.in/calc-agl-circuit-load-schedule-generator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "AGL Commissioning Checklist Tool",
+          "url": "https://rahulsharmaagl.in/calc-agl-commissioning-calculator-checklist.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "AGL Component Replacement Tool",
+          "url": "https://rahulsharmaagl.in/calc-agl-component-replacement-decision-tool.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "AGL Fault Location Calculator",
+          "url": "https://rahulsharmaagl.in/calc-agl-fault-location-calculator-advanced.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "AGL Lux to Candela Calculator",
+          "url": "https://rahulsharmaagl.in/calc-agl-photometric-intensity-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "AGL Photometric Uniformity Tool",
+          "url": "https://rahulsharmaagl.in/calc-agl-photometric-uniformity-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "AGL Preventive Maintenance Scheduler",
+          "url": "https://rahulsharmaagl.in/calc-agl-preventive-maintenance-scheduler.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "AGL CCR Spare Capacity Calculator",
+          "url": "https://rahulsharmaagl.in/calc-agl-spare-capacity-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "AGL Transformer Test Analyzer",
+          "url": "https://rahulsharmaagl.in/calc-agl-transformer-test-analyzer.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "AGL Troubleshooting Decision Tool",
+          "url": "https://rahulsharmaagl.in/calc-agl-troubleshooting-decision-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "AGL Unit Converter",
+          "url": "https://rahulsharmaagl.in/calc-agl-unit-converter.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "Airport Sign Dimension Calculator",
+          "url": "https://rahulsharmaagl.in/calc-airport-sign-dimension-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "name": "Approach Lighting System (ALS)",
+          "url": "https://rahulsharmaagl.in/calc-als-quantity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "name": "Beam Coverage Calculator",
+          "url": "https://rahulsharmaagl.in/calc-beam-coverage-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "name": "AGL Cable Power Loss Calculator",
+          "url": "https://rahulsharmaagl.in/calc-cable-power-loss.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "name": "Cable Test Record Calculator",
+          "url": "https://rahulsharmaagl.in/calc-cable-test-record-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "name": "AGL Cable Voltage Drop Calculator",
+          "url": "https://rahulsharmaagl.in/calc-cable-voltage-drop.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "name": "CCR Capacity Calculator",
+          "url": "https://rahulsharmaagl.in/calc-ccr-capacity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "name": "CCR Efficiency Calculator",
+          "url": "https://rahulsharmaagl.in/calc-ccr-performance-efficiency-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 25,
+          "name": "CCR Selection & Loading Calculator",
+          "url": "https://rahulsharmaagl.in/calc-ccr-selection-loading.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 26,
+          "name": "CCR Step Current Reference",
+          "url": "https://rahulsharmaagl.in/calc-ccr-step-brightness-reference.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 27,
+          "name": "Circuit Power Factor Calculator",
+          "url": "https://rahulsharmaagl.in/calc-circuit-power-factor.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 28,
+          "name": "Circuit Voltage Calculator",
+          "url": "https://rahulsharmaagl.in/calc-circuit-voltage.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 29,
+          "name": "L-823 Connector Load Calculator",
+          "url": "https://rahulsharmaagl.in/calc-connector-circuit-load-reference.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 30,
+          "name": "Earth Resistance Calculator",
+          "url": "https://rahulsharmaagl.in/calc-earth-resistance.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 31,
+          "name": "Insulation Resistance Analyzer",
+          "url": "https://rahulsharmaagl.in/calc-insulation-resistance-test-analyzer.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 32,
+          "name": "Transformer Efficiency & Loss",
+          "url": "https://rahulsharmaagl.in/calc-isolating-transformer-efficiency-loss.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 33,
+          "name": "Isolating Transformer Load",
+          "url": "https://rahulsharmaagl.in/calc-isolating-transformer-load.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 34,
+          "name": "Ohm's Law Calculator (V, I, R, P)",
+          "url": "https://rahulsharmaagl.in/calc-ohms-law.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 35,
+          "name": "PAPI BOQ Calculator",
+          "url": "https://rahulsharmaagl.in/calc-papi-boq-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 36,
+          "name": "PAPI Indication Reference",
+          "url": "https://rahulsharmaagl.in/calc-papi-indication-reference.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 37,
+          "name": "PAPI Glide-Path Geometry",
+          "url": "https://rahulsharmaagl.in/calc-papi-installation-glide-path-geometry.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 38,
+          "name": "PAPI Survey & Aiming Verification",
+          "url": "https://rahulsharmaagl.in/calc-papi-survey-aiming-verification.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 39,
+          "name": "PAPI Unit Separation Geometry",
+          "url": "https://rahulsharmaagl.in/calc-papi-unit-separation-lateral-geometry.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 40,
+          "name": "Photometric Grid Compliance Analyzer",
+          "url": "https://rahulsharmaagl.in/calc-photometric-grid-compliance-analyzer.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 41,
+          "name": "Photometric Test Data Analyzer",
+          "url": "https://rahulsharmaagl.in/calc-photometric-test-data-analyzer.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 42,
+          "name": "Photometric Trend / Asset Health",
+          "url": "https://rahulsharmaagl.in/calc-photometric-trend-asset-health.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 43,
+          "name": "Primary Cable Resistance",
+          "url": "https://rahulsharmaagl.in/calc-primary-cable-resistance.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 44,
+          "name": "Runway Centreline Lights",
+          "url": "https://rahulsharmaagl.in/calc-runway-centreline-spacing.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 45,
+          "name": "Runway Edge Light Spacing & Quantity",
+          "url": "https://rahulsharmaagl.in/calc-runway-edge-light-spacing-quantity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 46,
+          "name": "Runway Edge Light Spacing",
+          "url": "https://rahulsharmaagl.in/calc-runway-edge-light-spacing.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 47,
+          "name": "Runway Guard Lights (RGL)",
+          "url": "https://rahulsharmaagl.in/calc-runway-guard-lights.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 48,
+          "name": "Runway Light Photometry Reference",
+          "url": "https://rahulsharmaagl.in/calc-runway-light-photometry-reference.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 49,
+          "name": "Runway Light Quantity",
+          "url": "https://rahulsharmaagl.in/calc-runway-light-quantity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 50,
+          "name": "Runway Lighting Layout Generator",
+          "url": "https://rahulsharmaagl.in/calc-runway-lighting-layout-generator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 51,
+          "name": "Runway & Taxiway Lighting Load",
+          "url": "https://rahulsharmaagl.in/calc-runway-taxiway-lighting-load-power-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 52,
+          "name": "Threshold Geometry Checker",
+          "url": "https://rahulsharmaagl.in/calc-runway-threshold-geometry-checker.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 53,
+          "name": "Secondary Cable Voltage Drop",
+          "url": "https://rahulsharmaagl.in/calc-secondary-cable-voltage-drop.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 54,
+          "name": "Series Circuit Energy & Cost",
+          "url": "https://rahulsharmaagl.in/calc-series-circuit-energy-operating-cost.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 55,
+          "name": "Series Circuit Impedance",
+          "url": "https://rahulsharmaagl.in/calc-series-circuit-impedance.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 56,
+          "name": "Series Circuit Load",
+          "url": "https://rahulsharmaagl.in/calc-series-circuit-load.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 57,
+          "name": "Sign BOQ & Material Calculator",
+          "url": "https://rahulsharmaagl.in/calc-sign-boq-material-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 58,
+          "name": "Stop Bar & Holding Position Lights",
+          "url": "https://rahulsharmaagl.in/calc-stop-bar-holding-position-lights.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 59,
+          "name": "Taxiway Centreline Light Spacing",
+          "url": "https://rahulsharmaagl.in/calc-taxiway-centreline-light-spacing-quantity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 60,
+          "name": "Taxiway Edge Light Spacing",
+          "url": "https://rahulsharmaagl.in/calc-taxiway-edge-light-spacing-quantity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 61,
+          "name": "Taxiway Intersection Lighting",
+          "url": "https://rahulsharmaagl.in/calc-taxiway-intersection-lighting-calculator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 62,
+          "name": "Taxiway Lighting Layout Generator",
+          "url": "https://rahulsharmaagl.in/calc-taxiway-lighting-layout-generator.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 63,
+          "name": "TDZL Quantity Calculator",
+          "url": "https://rahulsharmaagl.in/calc-tdzl-quantity.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 64,
+          "name": "Threshold & Runway-End Lights",
+          "url": "https://rahulsharmaagl.in/calc-threshold-runway-end.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 65,
+          "name": "Transformer VA Selection Calculator",
+          "url": "https://rahulsharmaagl.in/calc-transformer-va-selection.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 66,
+          "name": "Isolating Transformer Sizing",
+          "url": "https://rahulsharmaagl.in/calc-transformer-va-wattage-auto-selection.html"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://rahulsharmaagl.in/academy.html#org",
+      "name": "Precision AGL Academy",
+      "url": "https://rahulsharmaagl.in/academy.html",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/favicon.svg"
+      },
+      "description": "Specialized Airfield Ground Lighting (AGL) training platform in India offering design, photometry, maintenance and diploma-level engineering programs.",
+      "email": "precisionaglsolutions@gmail.com",
+      "telephone": "+91-9821496412",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "founder": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;box-sizing:border-box}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);font-family:'Barlow',sans-serif;}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;font-family:'Barlow',sans-serif;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
+@media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo" aria-label="Precision AGL Academy – home">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#knowledge-hub">Knowledge Hub</a></li>
+    <li><a href="agl-toolkit.html" class="active">Toolkit</a></li>
+    <li><a href="component-library.html">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="index.html#knowledge-hub">Knowledge Hub</a><span>/</span>
+  <span class="current">AGL Engineering Calculators</span>
+</div>
+
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Engineering reference tools for trained personnel &mdash; not approved designs.</strong> Every calculator in this toolkit gives first-pass planning and training estimates, not designs, specifications, test certificates or evidence of compliance. Verify all results against the approved design, the manufacturer&rsquo;s data and the applicable standard. Series circuits can carry lethal voltages: isolate, lock out and prove dead before any work. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+  <div class="page-tag"><i class="fa-solid fa-toolbox"></i> The AGL Knowledge Hub by Precision AGL Academy </div>
+  <h1 class="page-title">AGL Engineering <span>Calculators</span></h1>
+  <p class="page-sub">Practical calculation tools for Airfield Ground Lighting design, electrical systems, equipment selection, and field engineering — organised by category and technically validated before publishing.</p>
+  <div class="page-stat">
+    <span><strong id="totalCount">0</strong> calculators</span>
+    <span><strong id="liveCount">0</strong> live now</span>
+    <span><strong id="categoryCount">0</strong> categories</span>
+  </div>
+
+  <div class="filter-section">
+    <div class="search-box">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="searchInput" placeholder="Search calculators by name or description..." autocomplete="off"/>
+      <button class="clear-btn" id="clearSearch" aria-label="Clear search"><i class="fa-regular fa-circle-xmark"></i></button>
+    </div>
+    <div class="filter-bar" id="filterBar"></div>
+  </div>
+</div>
+
+<section>
+  <div class="container" id="calcContainer">
+    <div class="no-results" id="noResults">
+      <i class="fa-regular fa-compass"></i>
+      <h3>No calculators found</h3>
+      <p>Try adjusting your search or filter criteria.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container seo-block">
+    <div class="block-label">Guide</div>
+    <h2 class="block-title">Airport Lighting Calculations: Voltage Drop, Load, Power and Cable Size</h2>
+    <p>Airfield lighting runs on constant-current series circuits: a constant current regulator (CCR) pushes the same current through every fixture, and the voltage it must deliver depends on the total resistance and impedance of the loop. The calculators above follow that logic, so you can size a CCR, check a cable run or plan a new circuit without a spreadsheet.</p>
+
+    <h3>Ohms law calculator for AGL circuits</h3>
+    <p>Everything starts with <code>V = I × R</code>. In a series circuit the current is fixed by the CCR brightness step, so the voltage the CCR must supply is that current multiplied by the total circuit resistance. Power lost as heat in the cable is <code>P = I² × R</code>. Use the <a href="calc-ohms-law.html">Ohm's Law Calculator</a> to solve any one of V, I, R or P from two known values; the <a href="calc-series-circuit-impedance.html">Series Circuit Impedance</a>, <a href="calc-primary-cable-resistance.html">Primary Cable Resistance</a> and <a href="calc-circuit-voltage.html">Circuit Voltage</a> calculators apply it directly to airfield circuits.</p>
+
+    <h3>Airport lighting series circuit calculator</h3>
+    <p>The <a href="calc-series-circuit-load.html">Series Circuit Load</a> calculator totals fixture wattage, isolating transformer losses and cable I²R loss, then checks the result against the CCR. Use <a href="calc-agl-circuit-length-estimator.html">AGL Circuit Length Estimator</a> to estimate primary cable from fixture count and spacing, and <a href="calc-circuit-power-factor.html">Circuit Power Factor</a> when the load mixes fixture types.</p>
+
+    <h3>Airport lighting voltage drop calculator, runway lighting voltage drop calculator and taxiway lighting voltage drop calculator</h3>
+    <p>Voltage drop in the primary cable is the circuit current times the cable resistance over its length. A longer run or a smaller conductor raises it, and the CCR has to make up the difference. The <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a> calculator handles runway lighting voltage drop, taxiway lighting voltage drop and any other primary series run, and shows the maximum length for a chosen drop limit. For the short lead between an isolating transformer and its fixture, use <a href="calc-secondary-cable-voltage-drop.html">Secondary Cable Voltage Drop</a>.</p>
+
+    <h3>Airport lighting cable size calculator</h3>
+    <p>Cable size is chosen so that voltage drop, I²R loss and the cable's voltage rating all stay within limits for the length of the circuit. Use the <a href="calc-agl-cable-size-selection-calculator.html">AGL Cable Size Selection Calculator</a> to pick the smallest conductor that meets your limits, or compare conductors in the <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a>, <a href="calc-primary-cable-resistance.html">Primary Cable Resistance</a> and <a href="calc-cable-power-loss.html">Cable Power Loss</a> calculators.</p>
+
+    <h3>Airport lighting load calculation, power calculation and current calculation (load calculator)</h3>
+    <p>An airport lighting load calculation, airport lighting power calculation and airport lighting current calculation all start from the same circuit data. Circuit load is the sum of all fixture watts, plus isolating transformer losses and cable loss, expressed in kW and kVA. Current is set by the CCR step you run the circuit on, so a current calculation is really a check that each step stays within the allowable range; the <a href="calc-ccr-step-brightness-reference.html">CCR Step Current / Brightness Reference</a> lists those steps. To see how many more fixtures an existing circuit can take, use <a href="calc-agl-spare-capacity-calculator.html">AGL Spare Capacity Calculator</a>.</p>
+
+    <h3>Runway lighting load calculation, runway lighting power calculation, taxiway lighting load calculation and taxiway lighting power calculation</h3>
+    <p>Runway lighting load calculation, runway lighting power calculation, taxiway lighting load calculation and taxiway lighting power calculation all use the same method as above; only the fixture counts and cable lengths differ.</p>
+
+    <h3>Airport lighting load calculator, runway lighting load calculator, runway lighting power calculator, taxiway lighting load calculator and taxiway lighting power calculator</h3>
+    <p>The <a href="calc-runway-taxiway-lighting-load-power-calculator.html">Runway &amp; Taxiway Lighting Load / Power Calculator</a> gives kW and kVA by circuit for the runway, the taxiway and the whole system. The <a href="calc-series-circuit-load.html">Series Circuit Load</a> calculator works as an airport lighting load calculator, runway lighting load calculator, runway lighting power calculator, taxiway lighting load calculator and taxiway lighting power calculator. Enter the fixture count, transformer losses and cable length for the circuit in question.</p>
+
+    <h3>CCR size calculator: kVA calculator for CCR sizing</h3>
+    <p>CCR size is the output voltage times the circuit current, divided by 1,000 to give kVA. The <a href="calc-ccr-capacity.html">CCR Capacity</a> calculator adds an expansion allowance and a maximum loading limit, then picks the smallest standard CCR size that covers the load. <a href="calc-ccr-selection-loading.html">CCR Selection &amp; Loading</a> picks the smallest standard CCR and checks loading at every brightness step. <a href="calc-transformer-va-selection.html">Transformer VA Selection</a> does the equivalent for isolating transformers.</p>
+
+    <h3>Energy calculator for airfield lighting</h3>
+    <p>Energy use is power times operating hours, and cost is energy times your tariff. The <a href="calc-cable-power-loss.html">Cable Power Loss</a> calculator already reports yearly cable-loss energy. The <a href="calc-series-circuit-energy-operating-cost.html">Series Circuit Energy &amp; Operating Cost</a> calculator covers CCR load, operating hours and tariff for the full yearly energy and cost.</p>
+
+    <h3>Light spacing: approach, runway threshold and stop bar</h3>
+    <p>Light spacing depends on the lighting type and the standard you design to (ICAO Annex 14 or FAA AC 150/5340-30). Try <a href="calc-als-quantity.html">Approach Lighting Quantity Tool</a> for approach light spacing and station counts, <a href="calc-threshold-runway-end.html">Threshold &amp; Runway-End Lights</a> for runway threshold light spacing, and <a href="calc-stop-bar-holding-position-lights.html">Stop Bar &amp; Holding Position Lights</a> for stop bar light spacing. <a href="calc-runway-edge-light-spacing.html">Edge Light Spacing</a> covers runway edge lights.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container seo-block">
+    <div class="block-label alt">Calculation Reference</div>
+    <h2 class="block-title">AGL Calculations and Light Spacing Reference</h2>
+    <h3>AGL design calculations</h3>
+    <p>AGL design calculations turn a lighting layout into circuit data: number of lights, circuit load, cable resistance, voltage drop and CCR size. Do them in order, and recheck them when the layout changes. The calculators above cover each step.</p>
+    <h3>AGL engineering calculations</h3>
+    <p>AGL engineering calculations cover the electrical sizing of the series circuit and the layout of the lights. Keep a record of the inputs, the method and the results, so the design can be reviewed and later changes can be checked.</p>
+    <h3>Airfield ground lighting calculation</h3>
+    <p>An airfield ground lighting calculation starts with the lights on a circuit and ends with the CCR rating. Typical steps are fixture and transformer load, cable resistance, total voltage, kVA and a margin for growth.</p>
+    <h3>Airfield lighting calculation</h3>
+    <p>An airfield lighting calculation sizes the electrical system that feeds the lights: load, current, voltage, cable and regulator. It is separate from the photometric calculation, which checks the light output.</p>
+    <h3>Airport lighting calculation</h3>
+    <p>An airport lighting calculation covers the electrical and layout figures behind an AGL design. The sections below list the main ones, and the calculators above carry them out.</p>
+    <h3>Runway lighting calculation</h3>
+    <p>A runway lighting calculation finds the number of lights, the circuit split, the load on each circuit and the size of each CCR. Runway circuits are usually separated so one fault does not remove all the lights.</p>
+    <h3>Taxiway lighting calculation</h3>
+    <p>A taxiway lighting calculation sizes the circuits for edge and centreline lights, which are often spread over long and branching routes. Cable length and voltage drop usually need most attention.</p>
+    <h3>Approach lighting calculation</h3>
+    <p>An approach lighting calculation sizes the circuits for the approach lights, which can be long and carry high-wattage lamps. Load and cable resistance determine the CCR size and the circuit split.</p>
+    <h3>Runway edge lights calculation</h3>
+    <p>A runway edge lights calculation counts the lights along both edges and finds the load they place on the circuit, including the isolating transformers and cable.</p>
+    <h3>Runway centreline lights calculation</h3>
+    <p>A runway centreline lights calculation counts the lights along the centreline and finds their load on the circuit. The centreline lights are normally on their own circuit.</p>
+    <h3>Threshold lights calculation</h3>
+    <p>A threshold lights calculation counts the threshold and wing bar lights and finds their load. They are often supplied from a separate circuit from the edge lights.</p>
+    <h3>Airfield lighting load calculation</h3>
+    <p>An airfield lighting load calculation adds the fixture wattages, transformer losses and cable loss to give the circuit load in kW and kVA. Compare it with the CCR rating and leave spare capacity. The <a href="calc-series-circuit-load.html">Series Circuit Load</a> calculator does this.</p>
+    <h3>AGL power calculation</h3>
+    <p>An AGL power calculation finds the real power and the apparent power drawn by a circuit. The cable loss is I² × R, and the CCR also has its own losses and power factor, which the manufacturer gives.</p>
+    <h3>AGL series circuit calculation</h3>
+    <p>An AGL series circuit calculation finds the total resistance or impedance the CCR must drive at full current, then the voltage and kVA needed. The same current flows through every light.</p>
+    <h3>Constant current regulator calculation</h3>
+    <p>A constant current regulator calculation finds the output voltage and kVA needed for a circuit, then selects the next standard CCR size with margin. See <a href="calc-ccr-capacity.html">CCR Capacity</a>.</p>
+    <h3>Airfield lighting isolation transformer calculation</h3>
+    <p>An airfield lighting isolation transformer calculation chooses the transformer rating for the lamp wattage, and adds the transformer losses and magnetising effect to the circuit load. Use the manufacturer's data for the figures.</p>
+    <h3>Airfield lighting control system calculation</h3>
+    <p>An airfield lighting control system calculation sizes the control hardware: the number of inputs and outputs, the circuits to be monitored and the power for the control equipment. It follows the circuit schedule.</p>
+    <h3>ALCMS calculation</h3>
+    <p>An ALCMS calculation sizes the control and monitoring system: the number of circuits, monitoring points, panels and communication links. It follows the circuit schedule and the control philosophy.</p>
+    <h3>Airfield lighting cable calculation</h3>
+    <p>An airfield lighting cable calculation picks a conductor size and checks resistance, voltage drop, I² × R loss and ratings over the full circuit length. The <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a> calculator supports it.</p>
+    <h3>AGL cable voltage drop</h3>
+    <p>AGL cable voltage drop is the voltage lost in the cable at the circuit current, I × R. In a series circuit it adds to the voltage the CCR must supply, so long cables raise the CCR size. Use the <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a> calculator.</p>
+    <h3>AGL voltage drop calculation</h3>
+    <p>An AGL voltage drop calculation multiplies the circuit current by the total cable resistance, using the conductor resistance per length and the full length. Check the result against the CCR output and the cable rating. See <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a>.</p>
+    <h3>Runway lights spacing</h3>
+    <p>Runway lights spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Runway lighting spacing</h3>
+    <p>Runway lighting spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Runway centreline light spacing</h3>
+    <p>Runway centreline light spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves. The centreline lights are checked against the runway length and any changes in spacing along it.</p>
+    <h3>Runway centreline lights spacing</h3>
+    <p>Runway centreline lights spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Taxiway lighting spacing</h3>
+    <p>Taxiway lighting spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves. Spacing is often closer on curves and at intersections.</p>
+    <h3>Airfield lighting spacing</h3>
+    <p>Airfield lighting spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Airfield ground lighting spacing</h3>
+    <p>Airfield ground lighting spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Airport lighting spacing</h3>
+    <p>Airport lighting spacing is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Runway light spacing calculation</h3>
+    <p>Runway light spacing calculation is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves. Divide the length by the spacing, then add the end light.</p>
+    <h3>Taxiway light spacing calculation</h3>
+    <p>Taxiway light spacing calculation is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>Airfield lighting spacing calculation</h3>
+    <p>Airfield lighting spacing calculation is set by the applicable standard and the approved design, and it depends on the light type and the layout. The count of lights follows from the length and the spacing, with allowance for ends, intersections and curves.</p>
+    <h3>AGL series circuit spacing</h3>
+    <p>AGL series circuit spacing is how the lights and transformers are placed along a circuit. Placement sets the cable length, so it affects the circuit resistance and voltage drop.</p>
+    <h3>Constant current regulator spacing</h3>
+    <p>Constant current regulator spacing is where the CCRs are placed in relation to the circuits they feed. A CCR close to its circuit reduces the cable length and the voltage drop.</p>
+    <h3>Airfield lighting isolation transformer spacing</h3>
+    <p>Airfield lighting isolation transformer spacing follows the light spacing, as there is normally one transformer for each light. Place it close to the fixture so the secondary leads stay short.</p>
+    <h3>Airfield lighting cable spacing</h3>
+    <p>Airfield lighting cable spacing covers the separation between cables, ducts and other services. It affects heating, installation and fault risk, and comes from the cable data and the design.</p>
+    <h3>Airfield lighting control system spacing</h3>
+    <p>Airfield lighting control system spacing is how control and monitoring equipment is spread over the airfield. It follows the circuit layout and the communication limits of the equipment.</p>
+    <h3>ALCMS spacing</h3>
+    <p>ALCMS spacing is where the ALCMS field units, panels and network nodes are placed. It follows the circuit layout, the cable routes and the communication limits.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container seo-block">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title">AGL Calculation Questions</h2>
+    <details class="faq-item"><summary><h3>How is airport lighting load calculated?</h3></summary>
+      <p>Add the wattage of every fixture on the circuit, then add the losses in the isolating transformers and the I²R loss in the primary cable. The total, in kW and kVA, is the circuit load. Compare it with the CCR rating, leaving spare capacity for expansion. The <a href="calc-series-circuit-load.html">Series Circuit Load</a> calculator does this.</p></details>
+    <details class="faq-item"><summary><h3>How is CCR size calculated?</h3></summary>
+      <p>Work out the voltage the CCR must supply at full current (current times total circuit resistance or impedance), multiply by that current to get kVA, add an allowance for growth, and choose the next standard size up. See <a href="calc-ccr-capacity.html">CCR Capacity</a>.</p></details>
+    <details class="faq-item"><summary><h3>How is airport lighting cable sized?</h3></summary>
+      <p>Pick a conductor whose resistance keeps voltage drop and I²R loss acceptable over the full circuit length, and whose voltage and current ratings suit the circuit. Larger conductors lower the loss but cost more, so designers compare options. The <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a> and <a href="calc-primary-cable-resistance.html">Primary Cable Resistance</a> calculators support that comparison.</p></details>
+    <details class="faq-item"><summary><h3>How is airport lighting voltage drop calculated?</h3></summary>
+      <p>Multiply the circuit current by the resistance of the cable section (resistance per unit length times length, corrected for temperature). Sum the sections for the whole run. The <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a> calculator works section by section.</p></details>
+    <details class="faq-item"><summary><h3>How to calculate AGL voltage drop?</h3></summary>
+      <p>Multiply the circuit current by the total cable resistance, which is the conductor resistance per length times the full circuit length. In a series circuit the current is set by the CCR brightness step, and the voltage drop adds to the voltage the CCR must supply. Check the result against the CCR output and the cable rating with the <a href="calc-cable-voltage-drop.html">Cable Voltage Drop</a> calculator.</p></details>
+    <details class="faq-item"><summary><h3>How to calculate runway light spacing?</h3></summary>
+      <p>Take the required spacing for the light type from the applicable standard and the approved design, then divide the length to be lit by that spacing and add the end light. Adjust for intersections, curves and changes in spacing, and round to whole lights. The light count then feeds the load and CCR calculations.</p></details>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="block-label">More Tools</div>
+    <h2 class="block-title">Related Knowledge Hub Resources</h2>
+    <div class="link-grid">
+      <a href="glossary.html" class="tool-link"><i class="fa-solid fa-spell-check"></i><h5>Glossary</h5><p>Look up any AGL term or abbreviation.</p></a>
+      <a href="component-library.html" class="tool-link"><i class="fa-solid fa-layer-group"></i><h5>Component Library</h5><p>Every AGL component, explained in depth.</p></a>
+      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><h5>Standards Companion</h5><p>ICAO/FAA/IEC requirements explained.</p></a>
+      <a href="sop-library.html" class="tool-link"><i class="fa-solid fa-clipboard-list"></i><h5>SOP Library</h5><p>Step-by-step testing &amp; maintenance procedures.</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v2.9 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any result or record produced by it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Applies to the AGL Engineering Calculators hub (the AGL Toolkit), its search, category filters and tool listings, and to every calculator, reference tool and report generator opened from it.</div><ol class="legal-list"><li><strong>Toolkit content.</strong> The hub lists calculators and quick-reference tools published by Precision AGL Academy for planning, learning and first-pass checking. Tool names, descriptions, calculator numbers, categories, &ldquo;live&rdquo; or &ldquo;coming soon&rdquo; labels and counts are index information describing scope and intent; they are not a commitment that any tool is complete, current or suitable for your project. The introductory guide text on this page is general explanation only.</li><li><strong>Calculated results.</strong> Every calculator in the toolkit produces first-pass planning and training estimates, calculated in your browser from the values you enter and from simplified formulas, generic tables and typical values. Results, charts, status indicators, recommended values and example presets are not designs, specifications, selections, sizing or procurement decisions, test certificates, photometric reports, inspection records or evidence of compliance, and may contain errors or rounding differences. Statements such as &ldquo;technically validated&rdquo; describe the Academy&rsquo;s own review of a tool&rsquo;s method, not an independent certification, type approval or guarantee of accuracy for any installation. A competent person must check every result against the approved design, the manufacturer&rsquo;s data and the applicable standard before any use.</li><li><strong>Tool-specific limits.</strong> Individual calculators carry their own notice covering the points that matter for that tool, such as test and record tools, photometric analysers, PAPI and visual-aid geometry, safety-critical lighting such as runway guard lights and stop bars, cost, energy and bill-of-quantities tools, sign tools and reference tables. Read the notice at the foot of each tool before using its output.</li><li><strong>Your data and third-party services.</strong> Calculations run in your browser. Values you type, select or tick, and any report you generate, are not sent to us. We use no advertising or analytics tools on this page. Your browser requests fonts from Google Fonts and icon files (and, on some pages, scripts) from the cdnjs/Cloudflare network, which receive your IP address and basic browser details under their own policies. Please do not include confidential, classified or security-sensitive information in anything you send to us.</li><li><strong>Educational reference only.</strong> This page is general information for competent, suitably trained and authorised aviation and electrical personnel and for learners. It is not professional engineering, legal, regulatory or safety advice, is not an approved procedure, and creates no professional or client relationship. Values, tolerances, intervals, sequences and examples are generic and indicative; real installations differ by design, make, model, age and condition, and your aerodrome&rsquo;s approved procedures and the manufacturer&rsquo;s documents prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS (IS), DGCA, AAI and other documents are paraphrased summaries for orientation. They are not official text, may be incomplete or superseded, and do not state what any airport, project or regulator requires. Always consult the current official editions and the controlling project specification. Using this tool, or following its output, does not guarantee compliance with any law, standard or approval, and nothing on this page states that any airport, product or project complies or does not comply.</li><li><strong>Safety.</strong> Series-circuit airfield ground lighting equipment can carry lethal voltages. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under your aerodrome&rsquo;s permit-to-work and LOTO procedures and the manufacturer&rsquo;s instructions. Nothing on this page authorises work on live equipment, bypassing of any safety device or interlock, installation, adjustment, energisation, return to service, a change of operating category (CAT I/II/III), a NOTAM or any certification decision; those rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>No warranty; limitation of liability.</strong> Content and calculation results are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo; without warranty of any kind, including accuracy, completeness, currency, freedom from error or fitness for a particular purpose. To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty, cost or regulatory consequence arising from use of, reliance on, or inability to use this page or any result or file produced by it. Nothing here excludes or limits liability that cannot lawfully be excluded or limited.</li><li><strong>Copyright and third-party names.</strong> &copy; 2026 Precision AGL Academy and Precision AGL Solutions. All rights reserved; copying, republication, scraping or commercial reuse of this tool, its formulas, text, structure and layout needs our prior written permission. You may use results and downloaded reports for your own reference and internal project working. We are not affiliated with, endorsed by or sponsored by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or manufacturer. Third-party names, standard designations and trademarks belong to their owners and are used only for identification.</li><li><strong>Corrections, governing law and contact.</strong> If you find an error in a formula, table or result, or have a safety concern, copyright or other rights issue, or a privacy question, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>. The full Legal Notice governs your use of this website. It is governed by the laws of India; subject to any mandatory rights you may have, the courts at New Delhi have jurisdiction.</li></ol><p class="legal-meta">Notice v2.9 &middot; 27 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+  <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="component-library.html">Components</a>
+    <a href="standards-companion.html">Standards</a>
+    <a href="index.html#gallery">Gallery</a>
+    <a href="legal-notice.html">Legal Notice</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<script>
+  // ─── DATA ───────────────────────────────────────────────────────────────
+  // status: 'live' = page built and linked · 'soon' = on the roadmap, not yet published
+
+  const CALCULATOR_DATA = [
+    {
+      category: "Layout & Spacing",
+      icon: "fa-solid fa-ruler-combined",
+      items: [
+        { name: "Edge Light Spacing", slug: "runway-edge-light-spacing", icon: "fa-solid fa-lightbulb", desc: "Longitudinal spacing for runway edge lights by design basis, with threshold fixtures and field verification.", status: "live" },
+        { name: "Runway Light Quantity", slug: "runway-light-quantity", icon: "fa-solid fa-calculator", desc: "Total fixture count across edge, threshold, and runway-end lighting for a full runway.", status: "live" },
+        { name: "Runway Centreline Spacing", slug: "runway-centreline-spacing", icon: "fa-solid fa-road", desc: "Centreline light spacing and colour transition zones for precision approach runways.", status: "live" },
+        { name: "Touchdown Zone Lights (TDZL)", slug: "tdzl-quantity", icon: "fa-solid fa-plane-arrival", desc: "TDZL extent, station/bar/fixture quantity, spacing and toe-in per FAA AC 150/5340-30J.", status: "live" },
+        { name: "Threshold & Runway-End Lights", slug: "threshold-runway-end", icon: "fa-solid fa-arrows-left-right-to-line", desc: "Threshold, wing-bar & runway-end quantity with shared-fixture and physical-vs-functional logic.", status: "live" },
+        { name: "Edge Light Spacing & Quantity Engine", slug: "runway-edge-light-spacing-quantity", icon: "fa-solid fa-ruler-horizontal", desc: "Full station generation, per-side quantity, offset geometry and end-specific caution-zone colour, ICAO/FAA.", status: "live" },
+        { name: "Taxiway Centreline Spacing & Quantity", slug: "taxiway-centreline-light-spacing-quantity", icon: "fa-solid fa-route", desc: "Straight/curve coordinate engine, enhanced-centreline zone, intersection handling and duplicate-fixture control.", status: "live" },
+        { name: "Taxiway Edge Light Spacing & Quantity", slug: "taxiway-edge-light-spacing-quantity", icon: "fa-solid fa-route", desc: "Segment-based straight/curve engine, inner/outer curve radius, intersection & duplicate-fixture handling.", status: "live" },
+        { name: "Runway Lighting Layout Generator", slug: "runway-lighting-layout-generator", icon: "fa-solid fa-plane", desc: "Plan-view layout of edge, threshold, wing-bar, runway-end, centreline and TDZ lights, with fixture coordinates, colours by approach, quantities and SVG/PNG/CSV export.", status: "live" },
+        { name: "Taxiway Lighting Layout Generator", slug: "taxiway-lighting-layout-generator", icon: "fa-solid fa-route", desc: "Straights, curves, intersections and holding positions combined into fixture coordinates, spacing and quantity.", status: "live" },
+        { name: "Taxiway Intersection Lighting Calculator", slug: "taxiway-intersection-lighting-calculator", icon: "fa-solid fa-code-branch", desc: "Centreline intersections, curves, fillets, duplicate fixtures, holding positions and lead-on/lead-off lighting.", status: "live" },
+        { name: "Runway Strip / Threshold Geometry Checker", slug: "runway-threshold-geometry-checker", icon: "fa-solid fa-arrows-left-right-to-line", desc: "Checks threshold and end-light arrangement, runway edge offsets and displaced-threshold conditions against runway geometry.", status: "live" }
+      ]
+    },
+    {
+      category: "Electrical Fundamentals",
+      icon: "fa-solid fa-bolt",
+      items: [
+        { name: "Series Circuit Load", slug: "series-circuit-load", icon: "fa-solid fa-plug", desc: "Airport, runway and taxiway lighting load and power calculation for a series circuit: fixtures, isolating transformer losses, cable I²R loss, kW/kVA and CCR loading check.", status: "live" },
+        { name: "Circuit Voltage", slug: "circuit-voltage", icon: "fa-solid fa-wave-square", desc: "Estimated CCR output voltage from load, circuit current, power factor and primary cable drop, with cable rating check.", status: "live" },
+        { name: "Cable Voltage Drop", slug: "cable-voltage-drop", icon: "fa-solid fa-arrow-trend-down", desc: "Airport, runway and taxiway lighting voltage drop calculator: voltage drop and I²R loss along a primary cable run by section, with conductor comparison and maximum length for a drop limit.", status: "live" },
+        { name: "CCR Capacity", slug: "ccr-capacity", icon: "fa-solid fa-server", desc: "CCR size calculator: required CCR kVA rating with expansion allowance and max loading, smallest standard size, spare capacity and circuit-split guidance.", status: "live" },
+        { name: "Isolating Transformer Load", slug: "isolating-transformer-load", icon: "fa-solid fa-bolt", desc: "Matches isolating transformer size to fixture load and series current: loading %, secondary voltage, losses and size comparison.", status: "live" },
+        { name: "CCR Selection & Loading Calculator", slug: "ccr-selection-loading", icon: "fa-solid fa-server", desc: "Required CCR kVA, current steps, circuit voltage, loading %, spare capacity and standard CCR selection.", status: "live" },
+        { name: "AGL Cable Size Selection Calculator", slug: "agl-cable-size-selection-calculator", icon: "fa-solid fa-ruler", desc: "Airport lighting cable sizing against length, voltage drop, I²R loss, temperature effect and allowable loading.", status: "live" },
+        { name: "Ohms Law Calculator (V, I, R, P)", slug: "ohms-law", icon: "fa-solid fa-calculator", desc: "Ohms law calculator for AGL circuits: enter any two of voltage, current, resistance or power and get the rest, with series circuit and cable I²R loss examples.", status: "live" },
+        { name: "Runway & Taxiway Lighting Load / Power Calculator", slug: "runway-taxiway-lighting-load-power-calculator", icon: "fa-solid fa-plug-circle-bolt", desc: "Runway lighting load calculation, runway lighting power calculation, taxiway lighting load calculation and taxiway lighting power calculation from fixture counts and cable lengths, in kW and kVA.", status: "live" }
+      ]
+    },
+    {
+      category: "Utility",
+      icon: "fa-solid fa-sliders",
+      items: [
+        { name: "AGL Unit Converter", slug: "agl-unit-converter", icon: "fa-solid fa-right-left", desc: "Metric and imperial conversions for AGL work: length, speed, angle and slope, cd/lux/luminance, power with VA and power factor, AWG and cable resistance.", status: "live" }
+      ]
+    },
+    {
+      category: "Advanced Electrical Engineering",
+      icon: "fa-solid fa-microchip",
+      items: [
+        { name: "CCR Step Current / Brightness Reference", slug: "ccr-step-brightness-reference", icon: "fa-solid fa-layer-group", desc: "Airport lighting current calculation by L-828/L-829 CCR brightness step: nominal and allowable step currents for 6.6 A and 20 A classes, percent of full current, relative cable loss and a field check.", status: "live" },
+        { name: "Transformer VA Selection", slug: "transformer-va-selection", icon: "fa-solid fa-bolt", desc: "Smallest standard isolating transformer VA size per fixture type on a schedule, with design margin, nearest-size check and order count by size.", status: "live" },
+        { name: "Primary Cable Resistance", slug: "primary-cable-resistance", icon: "fa-solid fa-ruler", desc: "Loop resistance of a primary series cable from conductor size, length and temperature, with temperature table, conductor comparison and field test check.", status: "live" },
+        { name: "Cable Power Loss", slug: "cable-power-loss", icon: "fa-solid fa-fire", desc: "I²R power loss along a primary cable at each brightness step, with heat per metre, share of load, yearly energy and conductor comparison.", status: "live" },
+        { name: "Series Circuit Impedance", slug: "series-circuit-impedance", icon: "fa-solid fa-diagram-project", desc: "Total series-circuit impedance from fixtures, isolating transformers and primary cable: resistance, reactance, power factor, required CCR voltage and kVA.", status: "live" },
+        { name: "Circuit Power Factor", slug: "circuit-power-factor", icon: "fa-solid fa-gauge", desc: "Circuit power factor from fixture groups with their own power factor: real, reactive and apparent power and voltage across the load.", status: "live" },
+        { name: "AGL Circuit Length Estimator", slug: "agl-circuit-length-estimator", icon: "fa-solid fa-map", desc: "Total primary cable for a series circuit from fixture count and average spacing, with feeder, return path, allowances and drum count.", status: "live" },
+        { name: "Secondary Cable Voltage Drop", slug: "secondary-cable-voltage-drop", icon: "fa-solid fa-arrow-trend-down", desc: "Voltage drop and heat loss on the transformer-to-fixture secondary cable, with transformer loading and a conductor comparison.", status: "live" },
+        { name: "Connector/Circuit Load Reference", slug: "connector-circuit-load-reference", icon: "fa-solid fa-plug-circle-bolt", desc: "Checks series circuit current and voltage against L-823 connector ratings, with allowed contact resistance, contact voltage drop and loss, and a field reading check.", status: "live" },
+        { name: "AGL Spare Capacity Calculator", slug: "agl-spare-capacity-calculator", icon: "fa-solid fa-battery-half", desc: "Spare capacity of an existing circuit and its CCR: existing load, usable capacity at a maximum loading and how many more fixtures fit.", status: "live" },
+        { name: "AGL Circuit Load Schedule Generator", slug: "agl-circuit-load-schedule-generator", icon: "fa-solid fa-table-list", desc: "Fixture count to transformer quantity, connected load, cable and CCR, summarised as a circuit schedule.", status: "live" },
+        { name: "CCR Performance / Efficiency Calculator", slug: "ccr-performance-efficiency-calculator", icon: "fa-solid fa-gauge-high", desc: "Input kW, output kVA, power factor, efficiency, regulation and losses for FAT/SAT and commissioning.", status: "live" },
+        { name: "Series Circuit Energy & Operating Cost", slug: "series-circuit-energy-operating-cost", icon: "fa-solid fa-coins", desc: "CCR load, operating hours and tariff converted to daily, monthly and yearly energy cost, including runway lighting energy saving from LED conversion.", status: "live" },
+        { name: "AGL Circuit Cable Drum Calculator", slug: "agl-cable-drum-calculator", icon: "fa-solid fa-circle-notch", desc: "Feeder and return cable, installation allowance, joints, wastage and required drum quantity.", status: "live" },
+        { name: "Isolating Transformer Efficiency & Loss", slug: "isolating-transformer-efficiency-loss", icon: "fa-solid fa-bolt", desc: "Efficiency, core and copper losses and loading for isolating transformers, to support selection.", status: "live" },
+        { name: "Transformer VA/Wattage Auto-Selection", slug: "transformer-va-wattage-auto-selection", icon: "fa-solid fa-plug-circle-bolt", desc: "Auto-selects the smallest standard isolating transformer per fixture for 6.6/6.6 A and 20/6.6 A types, with lamp-current compatibility, margin and loading checks and order count by size.", status: "live" }
+      ]
+    },
+    {
+      category: "Photometry & Specialist Tools",
+      icon: "fa-solid fa-eye",
+      items: [
+        { name: "AGL Photometric Intensity Calculator", slug: "agl-photometric-intensity-calculator", icon: "fa-solid fa-sun", desc: "Beam intensity in candela: convert a field illuminance reading by the inverse-square law, or read intensity from photometric grid data at an aiming angle.", status: "live" },
+        { name: "Beam Coverage Calculator", slug: "beam-coverage-calculator", icon: "fa-solid fa-circle-notch", desc: "Coverage width at range and overlap between adjacent fixtures from beam spread and spacing, with the spread or spacing needed for a target overlap.", status: "live" },
+        { name: "Photometric Test Data Analyzer", slug: "photometric-test-data-analyzer", icon: "fa-solid fa-chart-line", desc: "Field intensity readings against a required minimum: percent of required, average, spread, pass/investigate/replace bands and a PDF record.", status: "live" },
+        { name: "Runway Light Photometry Reference", slug: "runway-light-photometry-reference", icon: "fa-solid fa-table", desc: "Minimum beam intensity for runway light fixtures per FAA AC 150/5345-46F: in-pavement L-850 and elevated L-860/861/862 series by colour, with beam coverage and a check.", status: "live" },
+        { name: "PAPI Installation & Glide-Path Geometry", slug: "papi-installation-glide-path-geometry", icon: "fa-solid fa-angle-up", desc: "Unit configuration, placement, TCH, aiming angles, check-stick verification and OPS screening for PAPI.", status: "live" },
+        { name: "PAPI Indication Reference", slug: "papi-indication-reference", icon: "fa-solid fa-eye", desc: "PAPI red/white bar combinations mapped to the glide-path indication a pilot sees, with unit settings, on-course band, angle and height bands.", status: "live" },
+        { name: "Approach Lighting Quantity Tool", slug: "als-quantity", icon: "fa-solid fa-tower-broadcast", desc: "ALS station generation, centreline/crossbar/side-row/SFL quantity and compliance dashboard.", status: "live" },
+        { name: "Stop Bar & Holding Position Lights", slug: "stop-bar-holding-position-lights", icon: "fa-solid fa-hand", desc: "Stop bar spacing engine, in-pavement/elevated configuration, serviceability and existing-installation inspection.", status: "live" },
+        { name: "Runway Guard Lights (RGL)", slug: "runway-guard-lights", icon: "fa-solid fa-triangle-exclamation", desc: "RGL applicability, elevated/in-pavement configuration, intersection geometry, flash checks and BOQ.", status: "live" },
+        { name: "AGL Circuit Fault Analysis Tool", slug: "agl-circuit-fault-analysis-tool", icon: "fa-solid fa-triangle-exclamation", desc: "Ranks likely causes of a series circuit fault from symptoms, loop resistance and insulation readings, with distance-to-short estimate and half-split planner.", status: "live" },
+        { name: "AGL Troubleshooting Decision Calculator", slug: "agl-troubleshooting-decision-calculator", icon: "fa-solid fa-diagram-project", desc: "Scores likely root causes of a series circuit fault from symptoms, alarms and readings, with first checks and a PDF record.", status: "live" },
+        { name: "AGL Photometric Uniformity Calculator", slug: "agl-photometric-uniformity-calculator", icon: "fa-solid fa-chart-simple", desc: "Minimum, maximum and average intensity, uniformity ratios, deviation from average, percentage of design intensity and a per-fixture compliance flag with chart.", status: "live" },
+        { name: "Photometric Grid Compliance Analyzer", slug: "photometric-grid-compliance-analyzer", icon: "fa-solid fa-border-all", desc: "Import a full measurement grid and classify points as PASS, INVESTIGATE or REPLACE, with an evaluation zone, heat map, worst-point list and PDF record.", status: "live" },
+        { name: "Photometric Trend / Asset Health Tool", slug: "photometric-trend-asset-health", icon: "fa-solid fa-chart-line", desc: "Previous against current test per fixture: % degradation, yearly rate, months to the required minimum and a ranked maintenance priority with PDF record.", status: "live" },
+        { name: "PAPI Unit Separation & Lateral Geometry", slug: "papi-unit-separation-lateral-geometry", icon: "fa-solid fa-arrows-left-right", desc: "Unit spacing, inner-unit distance from the runway edge, bar length, stagger and skew: design layout, set-out coordinates and an as-built survey check.", status: "live" },
+        { name: "PAPI Survey / Aiming Verification", slug: "papi-survey-aiming-verification", icon: "fa-solid fa-crosshairs", desc: "Measured aiming angles and unit elevations checked per unit against design settings and tolerance: effective glide path, on-slope sector and indication bands.", status: "live" }
+      ]
+    },
+    {
+      category: "Testing, Commissioning & BOQ",
+      icon: "fa-solid fa-clipboard-check",
+      items: [
+        { name: "Insulation Resistance Test Analyzer", slug: "insulation-resistance-test-analyzer", icon: "fa-solid fa-bolt-lightning", desc: "IR readings corrected to 20 °C, polarization index, conductor comparison, trend against earlier tests, abnormal-reading flags and a printable test record.", status: "live" },
+        { name: "Earth Resistance Calculator", slug: "earth-resistance", icon: "fa-solid fa-earth-asia", desc: "Wenner soil resistivity, earth rod design with multi-rod grouping to a target resistance, and fall-of-potential test validation.", status: "live" },
+        { name: "AGL Transformer Test Analyzer", slug: "agl-transformer-test-analyzer", icon: "fa-solid fa-vial", desc: "Winding resistance, insulation resistance, HV test, ratio/polarity where applicable and a pass/fail record.", status: "live" },
+        { name: "Cable Test Record Calculator", slug: "cable-test-record-calculator", icon: "fa-solid fa-file-circle-check", desc: "Continuity, loop resistance, IR, sheath/screen, test voltage and result in one record.", status: "live" },
+        { name: "AGL Commissioning Calculator & Checklist", slug: "agl-commissioning-calculator-checklist", icon: "fa-solid fa-clipboard-check", desc: "CCR step-current and circuit-voltage checks plus a saved commissioning checklist from pre-checks and cable tests to photometry and acceptance, with a printable sign-off summary.", status: "live" },
+        { name: "AGL BOQ Generator", slug: "agl-boq-generator", icon: "fa-solid fa-file-invoice", desc: "Automatic BOQ for fixtures, transformers, cable, connectors, signs, bases, CCRs, junction boxes and accessories.", status: "live" },
+        { name: "PAPI BOQ Calculator", slug: "papi-boq-calculator", icon: "fa-solid fa-file-invoice", desc: "PAPI BOQ for a 2-box or 4-box system: units, bases, transformers, cable, connectors, CCR and aiming equipment.", status: "live" }
+      ]
+    },
+    {
+      category: "Signs & Visual Aids",
+      icon: "fa-solid fa-sign-hanging",
+      items: [
+        { name: "Airport Sign Dimension Calculator", slug: "airport-sign-dimension-calculator", icon: "fa-solid fa-sign-hanging", desc: "Sign type, legend, character size and lines converted to dimensions, border and spacing (FAA AC 150/5340-18H).", status: "live" },
+        { name: "Sign BOQ & Material Calculator", slug: "sign-boq-material-calculator", icon: "fa-solid fa-boxes-stacked", desc: "Sign size to aluminium sheet, fascia, vinyl, LED, driver, frame, legs, base plates and hardware.", status: "live" }
+      ]
+    },
+    {
+      category: "Maintenance & Asset Management",
+      icon: "fa-solid fa-screwdriver-wrench",
+      items: [
+        { name: "AGL Preventive Maintenance Scheduler", slug: "agl-preventive-maintenance-scheduler", icon: "fa-solid fa-calendar-check", desc: "Asset counts turned into a preventive maintenance schedule: daily to annual tasks, labour hours, monthly workload, crew loading and a PDF plan (FAA AC 150/5340-26C).", status: "live" },
+        { name: "AGL Fault Location Calculator (Advanced)", slug: "agl-fault-location-calculator-advanced", icon: "fa-solid fa-location-crosshairs", desc: "Classifies the fault from IR, continuity and CCR readings, then locates it by Murray loop, conductor resistance, TDR and half-split, combined into one probable location and search window.", status: "live" },
+        { name: "AGL Component Replacement Decision Tool", slug: "agl-component-replacement-decision-tool", icon: "fa-solid fa-arrows-rotate", desc: "Scores test result, condition, age, failure history, repair cost and circuit criticality into Continue / Monitor / Repair / Replace for transformers, connectors, cables, fittings, CCRs and signs.", status: "live" }
+      ]
+    }
+  ];
+
+  // ─── RENDER ────────────────────────────────────────────────────────────
+
+  const container = document.getElementById('calcContainer');
+  const filterBar = document.getElementById('filterBar');
+  const noResults = document.getElementById('noResults');
+  const totalSpan = document.getElementById('totalCount');
+  const liveSpan = document.getElementById('liveCount');
+  const catSpan = document.getElementById('categoryCount');
+  const searchInput = document.getElementById('searchInput');
+  const clearBtn = document.getElementById('clearSearch');
+
+  let totalCalcs = 0, liveCalcs = 0;
+  CALCULATOR_DATA.forEach(cat => {
+    totalCalcs += cat.items.length;
+    liveCalcs += cat.items.filter(i => i.status === 'live').length;
+  });
+  totalSpan.textContent = totalCalcs;
+  liveSpan.textContent = liveCalcs;
+  catSpan.textContent = CALCULATOR_DATA.length;
+
+  const allChip = document.createElement('div');
+  allChip.className = 'filter-chip active';
+  allChip.dataset.cat = '__all__';
+  allChip.innerHTML = `All Calculators <span class="count">${totalCalcs}</span>`;
+  filterBar.appendChild(allChip);
+
+  CALCULATOR_DATA.forEach((cat, idx) => {
+    const chip = document.createElement('div');
+    chip.className = 'filter-chip';
+    chip.dataset.cat = idx;
+    chip.innerHTML = `${cat.category} <span class="count">${cat.items.length}</span>`;
+    filterBar.appendChild(chip);
+  });
+
+  let currentFilter = '__all__';
+  let currentSearch = '';
+
+  function render(){
+    const search = currentSearch.toLowerCase().trim();
+    const filter = currentFilter;
+
+    container.innerHTML = '';
+    let visibleBlocks = 0;
+
+    CALCULATOR_DATA.forEach((cat, idx) => {
+      if (filter !== '__all__' && filter != idx) return;
+
+      const filtered = cat.items.filter(item => {
+        if (!search) return true;
+        return item.name.toLowerCase().includes(search) || item.desc.toLowerCase().includes(search);
+      });
+
+      if (filtered.length === 0) return;
+
+      const block = document.createElement('div');
+      block.className = 'cat-block visible';
+      block.dataset.cat = idx;
+
+      const head = document.createElement('div');
+      head.className = 'cat-head';
+      head.innerHTML = `
+        <h2><i class="${cat.icon}" style="color:var(--gold);margin-right:10px;"></i>${cat.category}</h2>
+        <div class="cat-line"></div>
+        <span class="cat-count">${filtered.length} calculator${filtered.length === 1 ? '' : 's'}</span>
+      `;
+      block.appendChild(head);
+
+      const grid = document.createElement('div');
+      grid.className = 'calc-grid-lib';
+
+      filtered.forEach(item => {
+        const isLive = item.status === 'live';
+        const card = document.createElement(isLive ? 'a' : 'div');
+        card.className = 'calc-lib-card' + (isLive ? '' : ' is-soon');
+        if (isLive) card.href = `calc-${item.slug}.html`;
+        card.innerHTML = `
+          <div class="calc-icon-row">
+            <div class="calc-icon"><i class="${item.icon}"></i></div>
+            <span class="calc-badge ${isLive ? 'live' : 'soon'}">${isLive ? 'Live' : 'Coming Soon'}</span>
+          </div>
+          <h4>${item.name}</h4>
+          <p>${item.desc}</p>
+          ${isLive ? '<div class="calc-arrow">Open Calculator <i class="fa-solid fa-arrow-right"></i></div>' : ''}
+        `;
+        grid.appendChild(card);
+      });
+
+      block.appendChild(grid);
+      container.appendChild(block);
+      visibleBlocks++;
+    });
+
+    noResults.style.display = visibleBlocks === 0 ? 'block' : 'none';
+
+    document.querySelectorAll('.filter-chip').forEach(ch => {
+      ch.classList.toggle('active', ch.dataset.cat == filter);
+    });
+
+    clearBtn.classList.toggle('visible', search.length > 0);
+  }
+
+  filterBar.addEventListener('click', (e) => {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    currentFilter = chip.dataset.cat;
+    render();
+    document.querySelector('section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  searchInput.addEventListener('input', (e) => {
+    currentSearch = e.target.value;
+    render();
+  });
+
+  clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    currentSearch = '';
+    render();
+    searchInput.focus();
+  });
+
+  const navbar = document.getElementById('navbar');
+  const scrollBtn = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  render();
+</script>
+
+</body>
+</html>

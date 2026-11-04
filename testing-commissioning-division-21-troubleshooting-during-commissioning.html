@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Division 21 — Troubleshooting During Commissioning</title>
+<meta name="description" content="Fault management during AGL commissioning: identification, classification, isolation, root-cause analysis, corrective action, retesting and closure."/>
+<meta name="keywords" content="AGL troubleshooting, commissioning fault management, airport ground lighting faults, root cause analysis, non-conformance management, corrective action, retesting, Division 21, ALCMS troubleshooting"/>
+<meta name="author" content="Precision AGL Academy"/>
+<meta name="publisher" content="AGL Testing & Commissioning Manual"/>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow"/>
+<meta name="theme-color" content="#0a1628"/>
+<meta name="color-scheme" content="dark"/>
+<meta name="format-detection" content="telephone=no"/>
+<link rel="canonical" href="https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html"/>
+<link rel="alternate" hreflang="en" href="https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html"/>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="AGL Testing &amp; Commissioning Manual"/>
+<meta property="og:title" content="Division 21 — Troubleshooting During Commissioning"/>
+<meta property="og:description" content="Fault management during AGL commissioning: identification, classification, isolation, root-cause analysis, corrective action, retesting and closure."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/og/testing-commissioning-division-21-troubleshooting-during-commissioning.jpg"/>
+<meta property="og:image:secure_url" content="https://rahulsharmaagl.in/assets/og/testing-commissioning-division-21-troubleshooting-during-commissioning.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:image:alt" content="Division 21 — Troubleshooting During Commissioning — AGL Testing &amp; Commissioning Manual"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="article:author" content="Precision AGL Academy"/>
+<meta property="article:section" content="Airfield Ground Lighting"/>
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@rahulsharma_agl"/>
+<meta name="twitter:title" content="Division 21 — Troubleshooting During Commissioning"/>
+<meta name="twitter:description" content="Fault management during AGL commissioning: identification, classification, isolation, root-cause analysis, corrective action, retesting and closure."/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og/testing-commissioning-division-21-troubleshooting-during-commissioning.jpg"/>
+<meta name="twitter:image:alt" content="Division 21 — Troubleshooting During Commissioning — AGL Testing &amp; Commissioning Manual"/>
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#article",
+      "headline": "Division 21 — Troubleshooting During Commissioning",
+      "description": "Fault management during AGL commissioning: identification, classification, isolation, root-cause analysis, corrective action, retesting and closure.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#webpage"
+      },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://rahulsharmaagl.in/#organization",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://rahulsharmaagl.in/#organization",
+        "name": "Precision AGL Academy",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "about": "Airfield Ground Lighting (AGL) testing and commissioning procedures",
+      "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html",
+      "mainEntityOfPage": {
+        "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#webpage"
+      },
+      "keywords": "AGL troubleshooting, commissioning fault management, airport ground lighting faults, root cause analysis, non-conformance management, corrective action, retesting, Division 21, ALCMS troubleshooting",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/assets/og/testing-commissioning-division-21-troubleshooting-during-commissioning.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "isAccessibleForFree": true,
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#breadcrumb"
+      },
+      "hasPart": {
+        "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#topics"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#webpage",
+      "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html",
+      "name": "Division 21 — Troubleshooting During Commissioning",
+      "description": "Fault management during AGL commissioning: identification, classification, isolation, root-cause analysis, corrective action, retesting and closure.",
+      "inLanguage": "en",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://rahulsharmaagl.in/#website",
+        "name": "AGL Testing & Commissioning Manual",
+        "url": "https://rahulsharmaagl.in/index.html"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Testing & Commissioning Manual",
+          "item": "https://rahulsharmaagl.in/testing-commissioning-manual.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Division 21 — Troubleshooting During Commissioning",
+          "item": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#topics",
+      "name": "Division 21 Topics",
+      "numberOfItems": 22,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Commissioning Fault Identification",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-001"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Fault Classification",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-002"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Fault Isolation",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-003"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Fault Investigation",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-004"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Electrical Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-005"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Cable Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-006"
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Connector Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-007"
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "name": "Transformer Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-008"
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "name": "Fixture Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-009"
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "name": "CCR Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-010"
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "name": "PAPI Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-011"
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "name": "Sign Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-012"
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "name": "Control-System Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-013"
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "name": "Communication Fault Diagnosis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-014"
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "name": "Root-Cause Analysis",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-015"
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "name": "Corrective Action",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-016"
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "name": "Temporary Corrective Action",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-017"
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "name": "Permanent Corrective Action",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-018"
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "name": "Retesting After Correction",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-019"
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "name": "Commissioning Deviation Management",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-020"
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "name": "Non-Conformance Management",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-021"
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "name": "Fault Closure",
+          "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#tc-tsc-022"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#faq",
+  "url": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/testing-commissioning-division-21-troubleshooting-during-commissioning.html#article"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Division 21 — Troubleshooting During Commissioning in the AGL Testing & Commissioning Manual?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Division 21 of the AGL Testing & Commissioning Manual covers Troubleshooting During Commissioning. Faults surface throughout commissioning — in pre-commissioning checks, electrical testing, CCR and transformer testing, fixture and photometric testing, ALCMS and SAT. Division 21 provides the structured method for taking a fault from first detection through to a formally closed record, holding the line at every stage that a symptom is not a diagnosis and a diagnosis is not yet a root cause. It governs identification, classification, isolation, investigation, equipment-specific diagnosis, root-cause analysis, corrective action, retesting, and deviation/non-conformance management. It contains 22 topics (TC-TSC-001 to TC-TSC-022) organised into 7 groups (A–G), each topic with its own verification checks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the philosophy behind Division 21 — Troubleshooting During Commissioning?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Do not treat the symptom as the fault. Identify the actual root cause, correct it, retest the affected system, verify the fault has not propagated to another function, and formally close the deviation. This is the commissioning fault-management and problem-solving division — the bridge between commissioning failures found under Divisions 01–20 and final acceptance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the step-by-step sequence in Division 21?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Every fault discovered during commissioning moves through the same underlying sequence, regardless of which system or division it was found in. Steps: Identify → Classify → Isolate → Investigate → Diagnose → Root-Cause Analyze → Correct → Retest → Verify → Document → Close. Focus areas: Electrical & cable faults; Connector & equipment faults; Control & communication faults; Root-cause & corrective action; Deviation & NCR management."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which topics does Division 21 cover?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Division 21 has 22 topics in 7 groups. A — Identification & Classification: Commissioning Fault Identification, Fault Classification. B — Isolation & Investigation: Fault Isolation, Fault Investigation. C — Electrical & Cable/Connector Diagnosis: Electrical Fault Diagnosis, Cable Fault Diagnosis, Connector Fault Diagnosis. D — Equipment-Specific Diagnosis: Transformer Fault Diagnosis, Fixture Fault Diagnosis, CCR Fault Diagnosis, PAPI Fault Diagnosis, Sign Fault Diagnosis. E — Control & Communication Diagnosis: Control-System Fault Diagnosis, Communication Fault Diagnosis. F — Root Cause & Corrective Action: Root-Cause Analysis, Corrective Action, Temporary Corrective Action, Permanent Corrective Action. G — Retest, Deviation & Closure: Retesting After Correction, Commissioning Deviation Management, Non-Conformance Management, Fault Closure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the fault closure chain in Division 21?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A fault is only closed once every stage in the chain is evidenced — skipping a stage leaves the closure unsupported. Fault Identified: The fault is captured with location, equipment, circuit, and test reference; Fault Classified: The fault type is assigned so the correct diagnostic sequence is used; Fault Isolated: The fault is narrowed to the smallest practical section of the system; Investigation: Evidence is gathered and the actual sequence of events is established; Root Cause Identified: The underlying cause is confirmed, not just the immediate symptom; Corrective Action: An action addressing the cause is defined and implemented; Retest: The original test and every related function are re-verified; Result Verified: Retest results confirm the fault has not propagated elsewhere; Documentation Updated: Drawings, schedules, configuration and test records reflect the fix; NCR/Deviation Closed: Any raised NCR or deviation is formally dispositioned and closed; Fault Closed: Objective evidence demonstrates the problem is fully resolved."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What must be in place before diagnosis begins in Division 21?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two principles govern how Division 21 is applied, whatever system the fault was found in. Prove the Fault Before Replacing: Never replace an AGL component merely because it appears faulty; First prove the fault, isolate its location, and determine the root cause; Correct the actual cause, then retest the complete affected circuit or function; Example: \"Runway light OFF\" should not immediately become \"replace runway light\" — trace CCR Output → Primary Series Circuit → Isolation Transformer → Secondary Lead → L-823 Connector → Fixture → Optical/Mechanical Condition first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Division 21 relate to the neighbouring divisions?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Division boundary: Divisions 01–20 perform the testing and commissioning itself; Division 21 governs what happens when any of those tests fails; Division 21 is the problem-solving bridge between commissioning failures and final acceptance, maintaining the traceability needed for Divisions 18–20; A temporary corrective action used to keep commissioning moving must always convert to a permanent one before final acceptance; Every deviation and non-conformance is recorded and dispositioned here — never absorbed into general commissioning remarks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the Troubleshooting Flow in Division 21?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Division 21 runs as a single continuous sequence per fault, from first detection through to formal closure. (1) Fault Detected — A test failure or abnormal condition is observed during commissioning; (2) Identify Fault — Capture location, equipment, circuit, test reference, and description; (3) Classify Fault — Assign the fault to its correct type before investigation; (4) Isolate Fault — Narrow the fault to the smallest practical section of the system; (5) Investigate — Gather evidence and establish what actually happened; (6) Diagnose — Apply the equipment-specific diagnostic sequence; (7) Root-Cause Analysis — Trace from symptom through to the underlying root cause; (8) Corrective Action — Define an action that addresses the cause, not the symptom; (9) Temporary/Permanent Correction — Implement and track through to the final approved solution; (10) Retest — Re-verify the original test and every related function; (11) Verify Performance — Confirm the fault has not propagated to another function; (12) NCR/Deviation Management — Formally record and disposition any deviation or non-conformance; (13) Documentation Update — Update drawings, records, and reports to reflect the fix; (14) Fault Closure — Close the fault only once objective evidence confirms resolution."
+      }
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#2ecc71;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:10px 24px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;}
+  .hamburger span{width:24px;height:2px;background:var(--white);}
+  @media(max-width:1000px){.nav-links,.nav-cta{display:none;} .hamburger{display:flex;}}
+
+  .breadcrumb{padding:110px 40px 0;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 40px;max-width:1300px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:64px;letter-spacing:2px;line-height:1;margin-bottom:18px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:17px;line-height:1.8;color:var(--text);max-width:820px;}
+  @media(max-width:768px){.page-title{font-size:38px;}}
+
+  .distinct-note{margin-top:22px;display:flex;align-items:flex-start;gap:12px;padding:14px 20px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.18);border-radius:10px;max-width:840px;}
+  .distinct-note i{color:var(--cyan);font-size:14px;margin-top:2px;}
+  .distinct-note p{font-size:12.5px;color:var(--text);line-height:1.7;}
+  .distinct-note strong{color:var(--cyan);}
+
+  .stat-strip{max-width:1300px;margin:36px auto 0;padding:0 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative;z-index:1;}
+  .stat-box{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:18px 20px;}
+  .stat-box .num{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--gold);letter-spacing:1px;line-height:1;}
+  .stat-box .lbl{font-size:11px;color:var(--text);letter-spacing:1px;text-transform:uppercase;margin-top:6px;}
+  @media(max-width:800px){.stat-strip{grid-template-columns:repeat(2,1fr);}}
+
+  section{padding:70px 0 0;position:relative;z-index:1;}
+  section.last{padding-bottom:90px;}
+  .container{width:100%;max-width:1300px;margin:auto;padding:0 40px;}
+
+  .section-head{margin-bottom:36px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .section-head h2{font-family:'Bebas Neue',sans-serif;font-size:34px;letter-spacing:1px;}
+  .section-head h2 span{color:var(--gold);}
+  .section-head p{font-size:14px;color:var(--text);margin-top:8px;max-width:740px;line-height:1.7;}
+  .section-count{font-family:'Bebas Neue',sans-serif;font-size:15px;color:var(--gold);letter-spacing:1px;white-space:nowrap;padding-bottom:4px;}
+
+  /* methodology flow */
+  .flow-wrap{display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .flow-step{display:flex;align-items:center;gap:10px;padding:12px 16px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:10px;}
+  .flow-step span{font-size:12.5px;font-weight:600;color:var(--white);letter-spacing:.3px;white-space:nowrap;}
+  .flow-arrow{color:var(--text);opacity:.35;font-size:12px;}
+  @media(max-width:900px){.flow-wrap{flex-direction:column;align-items:stretch;} .flow-arrow{transform:rotate(90deg);align-self:center;}}
+
+  .condition-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;}
+  .condition-pill{padding:9px 18px;border-radius:100px;background:rgba(0,212,255,0.06);border:1px solid rgba(0,212,255,0.2);font-size:12.5px;font-weight:600;color:var(--cyan);letter-spacing:.3px;}
+
+  /* gate table */
+  .freq-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .freq-table thead th{background:rgba(255,255,255,0.04);text-align:left;padding:14px 20px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--border);}
+  .freq-table tbody td{padding:14px 20px;font-size:13.5px;color:var(--text);border-bottom:1px solid var(--border);}
+  .freq-table tbody tr:last-child td{border-bottom:none;}
+  .freq-table tbody tr:hover{background:rgba(255,255,255,0.02);}
+  .freq-table td.freq-name{color:var(--white);font-weight:600;white-space:nowrap;}
+
+  /* pre-verification accordion */
+  .pre-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:800px){.pre-grid{grid-template-columns:1fr;}}
+  .pre-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:22px;}
+  .pre-card h4{font-size:15px;color:var(--white);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+  .pre-card h4 i{color:var(--cyan);font-size:13px;}
+  .pre-card ul{list-style:none;display:flex;flex-direction:column;gap:7px;}
+  .pre-card li{font-size:12.5px;color:var(--text);line-height:1.6;padding-left:16px;position:relative;}
+  .pre-card li::before{content:'';position:absolute;left:0;top:7px;width:5px;height:5px;border-radius:50%;background:var(--gold);opacity:.6;}
+
+  /* group tabs */
+  .group-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:34px;position:sticky;top:70px;z-index:50;background:rgba(6,13,26,0.94);backdrop-filter:blur(14px);padding:14px 0;border-bottom:1px solid var(--border);}
+  .group-nav a{padding:9px 18px;border-radius:100px;border:1px solid var(--border);background:rgba(255,255,255,0.02);color:var(--text);text-decoration:none;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:all .25s;}
+  .group-nav a:hover{border-color:rgba(255,180,0,0.35);color:var(--gold);}
+
+  .group-block{margin-bottom:64px;}
+  .group-block:last-child{margin-bottom:0;}
+  .group-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border);}
+  .group-letter{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--gold);}
+  .group-head h3{font-size:19px;font-weight:700;color:var(--white);}
+  .group-head .group-tally{margin-left:auto;font-size:11.5px;color:var(--text);letter-spacing:.5px;}
+
+  /* topic accordion cards — matching SOP library style */
+  .topic-list{display:flex;flex-direction:column;gap:10px;}
+  .topic-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:0;overflow:hidden;}
+  .topic-card[open]{border-color:rgba(255,180,0,0.25);}
+  .topic-card summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;}
+  .topic-card summary::-webkit-details-marker{display:none;}
+  .topic-card .code-badge{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 11px;border-radius:5px;white-space:nowrap;}
+  .topic-card .topic-title{font-size:14.5px;font-weight:600;color:var(--white);flex-grow:1;}
+  .topic-card .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+  .topic-card[open] .chev{transform:rotate(180deg);}
+  .topic-card summary:hover{background:rgba(255,255,255,0.02);}
+  .topic-body{padding:4px 24px 26px;border-top:1px solid var(--border);}
+  .tfield{margin-bottom:18px;}
+  .tfield h5{font-family:'Bebas Neue',sans-serif;font-size:13.5px;letter-spacing:1px;color:var(--gold);margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+  .tfield h5 i{font-size:12px;}
+  .tfield p{font-size:12.5px;color:var(--text);line-height:1.75;margin-bottom:8px;}
+  .tfield p:last-child{margin-bottom:0;}
+  .tfield p strong{color:var(--white);}
+  .tfield ul{margin-left:18px;margin-bottom:8px;}
+  .tfield ul li{font-size:12.5px;color:var(--text);line-height:1.8;margin-bottom:4px;}
+  .tfield:last-child ul{margin-bottom:0;}
+  .tfield.risk{background:rgba(230,57,70,0.05);border:1px solid rgba(230,57,70,0.18);border-radius:8px;padding:12px 14px;}
+  .tfield.risk h5{color:var(--red);}
+  .tfield.risk p strong{color:var(--red);}
+  .tfield .check-block{margin-bottom:14px;}
+  .tfield .check-block:last-child{margin-bottom:0;}
+  .tfield .check-lbl{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;}
+  .tfield table.class-table{width:100%;border-collapse:collapse;margin-top:10px;}
+  .tfield table.class-table th{background:rgba(255,255,255,0.04);color:var(--gold);font-size:10.5px;text-transform:uppercase;letter-spacing:1px;padding:8px 12px;text-align:left;border:1px solid var(--border);}
+  .tfield table.class-table td{padding:8px 12px;font-size:12.5px;color:var(--text);border:1px solid var(--border);}
+  .tfield table.class-table .class-name{color:var(--white);font-weight:700;}
+  .download-box{margin-top:6px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px 18px;background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.25);border-radius:10px;}
+  .download-box p{font-size:12px;color:var(--text);line-height:1.6;flex:1 1 260px;margin:0;}
+  .download-box p strong{color:var(--gold);}
+  .download-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;background:var(--gold);color:#000;border:none;border-radius:7px;font-family:'Barlow',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:transform .2s;}
+  .download-btn:hover{transform:translateY(-2px);}
+  .download-btn i{font-size:13px;}
+
+  /* gate steps */
+  .gate-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  @media(max-width:1000px){.gate-steps{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.gate-steps{grid-template-columns:1fr;}}
+  .gate-step{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:18px;}
+  .gate-step .dnum{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--cyan);margin-bottom:8px;}
+  .gate-step h5{font-size:13px;color:var(--white);margin-bottom:6px;}
+  .gate-step p{font-size:12px;color:var(--text);line-height:1.6;}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  /* academy cta (matches component-page academy-cta design) */
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;line-height:1;margin-bottom:20px;}
+  .academy-cta{position:relative;background:linear-gradient(160deg,#0d1e38,#0a1628 60%,#0d1e38);border:1px solid rgba(255,180,0,0.25);border-radius:20px;padding:50px;overflow:hidden;margin:50px 0;}
+  .academy-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--cyan));}
+  .academy-cta-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;}
+  @media(max-width:900px){.academy-cta-grid{grid-template-columns:1fr;}}
+  .academy-cta p{color:var(--text);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:560px;}
+  .academy-cta-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;}
+  .academy-pathway{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:22px 20px;}
+  .academy-pathway-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .academy-pathway-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;}
+  .academy-pathway-flow span{font-family:'Barlow Condensed',sans-serif;font-size:13.5px;font-weight:600;color:var(--white);background:rgba(255,180,0,0.08);border:1px solid rgba(255,180,0,0.2);padding:5px 10px;border-radius:20px;white-space:nowrap;}
+  .academy-pathway-flow i{color:var(--gold);font-size:10px;opacity:.6;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;}
+  .btn-gold{background:var(--gold);color:#000;}
+  .btn-gold:hover{background:#ffc933;transform:translateY(-3px);}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green);color:var(--green);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+  /* FAQ */
+  .faq-list{display:flex;flex-direction:column;gap:10px;max-width:960px;}
+  .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+  .faq-item summary:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
+  .faq-item .faq-q{flex-grow:1;}
+  .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:5px;white-space:nowrap;}
+  .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+  .faq-item[open] .chev{transform:rotate(180deg);}
+  .faq-item[open] summary{border-bottom:1px solid var(--border);}
+  .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+
+  /* mobile fit: long flow-step labels wrap; wide tables scroll inside themselves */
+  @media(max-width:900px){.flow-step{min-width:0;}.flow-step span{white-space:normal;}}
+  @media(max-width:760px){table.freq-table,table.div-table,table.class-table,table.status-table,table.struct-table,table.dash-table,table.mini-table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;}.part-divider .part-tag{white-space:normal;}}
+
+/* LEGAL-NOTICE v1.0 */
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}.legal-wrap{scroll-margin-top:90px;}
+@media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+</style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#knowledge-hub">Knowledge Hub</a></li>
+    <li><a href="maintenance-handbook.html">Maintenance Handbook</a></li>
+    <li><a href="inspection-handbook.html">Inspection Handbook</a></li>
+    <li><a href="troubleshooting-atlas.html">Troubleshooting</a></li>
+    <li><a href="sop-library.html">SOP Library</a></li>
+    <li><a href="testing-commissioning-manual.html" class="active">Testing &amp; Commissioning</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <div class="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="testing-commissioning-manual.html">Testing &amp; Commissioning Manual</a><span>/</span>
+  <span class="current">Division 21 — Troubleshooting During Commissioning</span>
+</div>
+
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL personnel. It is not an approved procedure or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO and maintenance procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+  <div class="page-tag"><i class="fa-solid fa-bug"></i> Division 21 &middot; TSC &middot; Commissioning Fault Management</div>
+  <h1 class="page-title">Troubleshooting <span>During Commissioning</span></h1>
+  <p class="page-sub">Faults surface throughout commissioning — in pre-commissioning checks, electrical testing, CCR and transformer testing, fixture and photometric testing, ALCMS and SAT. Division 21 provides the structured method for taking a fault from first detection through to a formally closed record, holding the line at every stage that a symptom is not a diagnosis and a diagnosis is not yet a root cause. It governs identification, classification, isolation, investigation, equipment-specific diagnosis, root-cause analysis, corrective action, retesting, and deviation/non-conformance management.</p>
+
+  <div class="distinct-note"><i class="fa-solid fa-circle-info"></i><p><strong>Philosophy:</strong> do not treat the symptom as the fault. Identify the actual root cause, correct it, retest the affected system, verify the fault has not propagated to another function, and formally close the deviation. This is the <strong>commissioning fault-management and problem-solving division</strong> — the bridge between commissioning failures found under Divisions 01&ndash;20 and final acceptance.</p></div>
+</div>
+
+<div class="stat-strip">
+  <div class="stat-box"><div class="num">22</div><div class="lbl">Topics in Division</div></div>
+  <div class="stat-box"><div class="num">07</div><div class="lbl">Diagnostic &amp; Management Groups (A&ndash;G)</div></div>
+  <div class="stat-box"><div class="num">11</div><div class="lbl">Fault Closure Chain Stages</div></div>
+  <div class="stat-box"><div class="num">14</div><div class="lbl">Step Troubleshooting Flow</div></div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Fault-Handling <span>Philosophy</span></h2>
+      <p>Every fault discovered during commissioning moves through the same underlying sequence, regardless of which system or division it was found in.</p>
+    </div>
+    <div class="flow-wrap">
+      <div class="flow-step"><span>Identify</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Classify</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Isolate</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Investigate</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Diagnose</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Root-Cause Analyze</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Correct</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Retest</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Verify</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Document</span></div><i class="fa-solid fa-arrow-right flow-arrow"></i>
+      <div class="flow-step"><span>Close</span></div>
+    </div>
+    <div class="condition-row">
+      <span class="condition-pill">Electrical &amp; cable faults</span>
+      <span class="condition-pill">Connector &amp; equipment faults</span>
+      <span class="condition-pill">Control &amp; communication faults</span>
+      <span class="condition-pill">Root-cause &amp; corrective action</span>
+      <span class="condition-pill">Deviation &amp; NCR management</span>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Fault Closure <span>Chain</span></h2>
+      <p>A fault is only closed once every stage in the chain is evidenced — skipping a stage leaves the closure unsupported.</p>
+    </div>
+    <table class="freq-table">
+      <thead><tr><th>Stage</th><th>What It Confirms</th></tr></thead>
+      <tbody>
+        <tr><td class="freq-name">Fault Identified</td><td>The fault is captured with location, equipment, circuit, and test reference</td></tr>
+        <tr><td class="freq-name">Fault Classified</td><td>The fault type is assigned so the correct diagnostic sequence is used</td></tr>
+        <tr><td class="freq-name">Fault Isolated</td><td>The fault is narrowed to the smallest practical section of the system</td></tr>
+        <tr><td class="freq-name">Investigation</td><td>Evidence is gathered and the actual sequence of events is established</td></tr>
+        <tr><td class="freq-name">Root Cause Identified</td><td>The underlying cause is confirmed, not just the immediate symptom</td></tr>
+        <tr><td class="freq-name">Corrective Action</td><td>An action addressing the cause is defined and implemented</td></tr>
+        <tr><td class="freq-name">Retest</td><td>The original test and every related function are re-verified</td></tr>
+        <tr><td class="freq-name">Result Verified</td><td>Retest results confirm the fault has not propagated elsewhere</td></tr>
+        <tr><td class="freq-name">Documentation Updated</td><td>Drawings, schedules, configuration and test records reflect the fix</td></tr>
+        <tr><td class="freq-name">NCR/Deviation Closed</td><td>Any raised NCR or deviation is formally dispositioned and closed</td></tr>
+        <tr><td class="freq-name">Fault Closed</td><td>Objective evidence demonstrates the problem is fully resolved</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Before Diagnosis <span>Begins</span></h2>
+      <p>Two principles govern how Division 21 is applied, whatever system the fault was found in.</p>
+    </div>
+    <div class="pre-grid">
+      <div class="pre-card">
+        <h4><i class="fa-solid fa-triangle-exclamation"></i>Prove the Fault Before Replacing</h4>
+        <ul>
+          <li>Never replace an AGL component merely because it appears faulty</li>
+          <li>First prove the fault, isolate its location, and determine the root cause</li>
+          <li>Correct the actual cause, then retest the complete affected circuit or function</li>
+          <li>Example: "Runway light OFF" should not immediately become "replace runway light" — trace CCR Output &rarr; Primary Series Circuit &rarr; Isolation Transformer &rarr; Secondary Lead &rarr; L-823 Connector &rarr; Fixture &rarr; Optical/Mechanical Condition first</li>
+        </ul>
+      </div>
+      <div class="pre-card">
+        <h4><i class="fa-solid fa-diagram-project"></i>Division Boundary</h4>
+        <ul>
+          <li>Divisions 01&ndash;20 perform the testing and commissioning itself; Division 21 governs what happens when any of those tests fails</li>
+          <li>Division 21 is the problem-solving bridge between commissioning failures and final acceptance, maintaining the traceability needed for Divisions 18&ndash;20</li>
+          <li>A temporary corrective action used to keep commissioning moving must always convert to a permanent one before final acceptance</li>
+          <li>Every deviation and non-conformance is recorded and dispositioned here — never absorbed into general commissioning remarks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="last">
+  <div class="container">
+    <div class="section-head">
+      <h2>The 22 <span>Topics</span></h2>
+      <p>Grouped by diagnostic focus, in the order a fault is normally worked through — click any topic to expand its checks and acceptance criteria.</p>
+    </div>
+    <div class="group-nav">
+      <a href="#group-a"><i class="fa-solid fa-list-check"></i> A — Identification &amp; Classification</a>
+      <a href="#group-b">B — Isolation &amp; Investigation</a>
+      <a href="#group-c">C — Electrical &amp; Cable/Connector Diagnosis</a>
+      <a href="#group-d">D — Equipment-Specific Diagnosis</a>
+      <a href="#group-e">E — Control &amp; Communication Diagnosis</a>
+      <a href="#group-f">F — Root Cause &amp; Corrective Action</a>
+      <a href="#group-g">G — Retest, Deviation &amp; Closure</a>
+    </div>
+
+    <!-- GROUP A -->
+    <div class="group-block" id="group-a">
+      <div class="group-head"><span class="group-letter">A</span><h3>Identification &amp; Classification</h3><span class="group-tally">2 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-001" data-search="tc-tsc-001 commissioning fault identification diagnostic checks identify faults arising in pre-commissioning, electrical testing, ccr and transformer testing, fixture testing, runway/taxiway/approach-light commissioning, papi and sign commissioning identify faults arising in alcms testing, functional testing, photometric testing, sat, system integration testing, and performance acceptance testing recognize fault sources: test failure, equipment malfunction, incorrect installation/wiring/configuration, communication failure, abnormal electrical measurement recognize fault sources: incorrect field response, incorrect control response, incorrect alarm, photometric non-compliance record fault number, date/time, location, equipment, circuit, and test reference at first detection capture an accurate fault description, the name of the person reporting it, and an initial status acceptance criteria: every fault discovered at any stage of commissioning is captured on an initial record with location, equipment, circuit, and test reference before investigation proceeds."><summary><span class="code-badge">TC-TSC-001</span><span class="topic-title">Commissioning Fault Identification</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Identify faults arising in pre-commissioning, electrical testing, CCR and transformer testing, fixture testing, runway/taxiway/approach-light commissioning, PAPI and sign commissioning</li>
+<li>Identify faults arising in ALCMS testing, functional testing, photometric testing, SAT, system integration testing, and performance acceptance testing</li>
+<li>Recognize fault sources: test failure, equipment malfunction, incorrect installation/wiring/configuration, communication failure, abnormal electrical measurement</li>
+<li>Recognize fault sources: incorrect field response, incorrect control response, incorrect alarm, photometric non-compliance</li>
+<li>Record fault number, date/time, location, equipment, circuit, and test reference at first detection</li>
+<li>Capture an accurate fault description, the name of the person reporting it, and an initial status</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> every fault discovered at any stage of commissioning is captured on an initial record with location, equipment, circuit, and test reference before investigation proceeds.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-002" data-search="tc-tsc-002 fault classification diagnostic checks classify as electrical: insulation failure, continuity failure, voltage/current abnormality, earth fault classify as mechanical: loose mounting, misalignment, damage, incorrect installation classify as cable: open circuit, short circuit, insulation failure, incorrect identification, termination failure classify as connector: poor contact, incorrect mating, locking/sealing failure, moisture ingress classify as equipment (transformer, fixture, ccr, papi, sign, control panel) or control/communication (plc, alcms, scada, network, interface) classify as photometric (intensity, alignment, colour, uniformity, distribution) or documentation/configuration (parameter, drawing, mapping, control logic) acceptance criteria: the fault is assigned a classification before detailed investigation begins, so the correct diagnostic sequence is selected."><summary><span class="code-badge">TC-TSC-002</span><span class="topic-title">Fault Classification</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Classify as Electrical: insulation failure, continuity failure, voltage/current abnormality, earth fault</li>
+<li>Classify as Mechanical: loose mounting, misalignment, damage, incorrect installation</li>
+<li>Classify as Cable: open circuit, short circuit, insulation failure, incorrect identification, termination failure</li>
+<li>Classify as Connector: poor contact, incorrect mating, locking/sealing failure, moisture ingress</li>
+<li>Classify as Equipment (transformer, fixture, CCR, PAPI, sign, control panel) or Control/Communication (PLC, ALCMS, SCADA, network, interface)</li>
+<li>Classify as Photometric (intensity, alignment, colour, uniformity, distribution) or Documentation/Configuration (parameter, drawing, mapping, control logic)</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the fault is assigned a classification before detailed investigation begins, so the correct diagnostic sequence is selected.</p></div></div></details>
+
+      </div>
+    </div>
+
+    <!-- GROUP B -->
+    <div class="group-block" id="group-b">
+      <div class="group-head"><span class="group-letter">B</span><h3>Isolation &amp; Investigation</h3><span class="group-tally">2 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-003" data-search="tc-tsc-003 fault isolation diagnostic checks work through system → subsystem → circuit → equipment → component → connection narrow the fault to the smallest practical section before any further action example: for a runway light off, isolate through runway system → runway circuit → transformer → secondary cable → connector → fixture avoid unnecessary replacement of correctly functioning equipment hold point: do not authorize component replacement until the fault has been isolated to the smallest practical section of the system."><summary><span class="code-badge">TC-TSC-003</span><span class="topic-title">Fault Isolation</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Work through System → Subsystem → Circuit → Equipment → Component → Connection</li>
+<li>Narrow the fault to the smallest practical section before any further action</li>
+<li>Example: for a runway light OFF, isolate through Runway System → Runway Circuit → Transformer → Secondary Cable → Connector → Fixture</li>
+<li>Avoid unnecessary replacement of correctly functioning equipment</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> do not authorize component replacement until the fault has been isolated to the smallest practical section of the system.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-004" data-search="tc-tsc-004 fault investigation diagnostic checks establish what was expected versus what actually happened, and when it occurred determine the operating condition at the time of failure and whether the fault is repeatable determine whether the fault is isolated to one location or widespread, and whether the system was recently modified check whether previous tests were normal and what changed before the failure review test readings, previous test reports, alarm/event logs, photographs, and drawings review cable schedules, equipment datasheets, configuration records, maintenance records, fat results, and prior commissioning results acceptance criteria: the investigation produces a documented, evidence-based account of what happened before diagnosis begins."><summary><span class="code-badge">TC-TSC-004</span><span class="topic-title">Fault Investigation</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Establish what was expected versus what actually happened, and when it occurred</li>
+<li>Determine the operating condition at the time of failure and whether the fault is repeatable</li>
+<li>Determine whether the fault is isolated to one location or widespread, and whether the system was recently modified</li>
+<li>Check whether previous tests were normal and what changed before the failure</li>
+<li>Review test readings, previous test reports, alarm/event logs, photographs, and drawings</li>
+<li>Review cable schedules, equipment datasheets, configuration records, maintenance records, FAT results, and prior commissioning results</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the investigation produces a documented, evidence-based account of what happened before diagnosis begins.</p></div></div></details>
+
+      </div>
+    </div>
+
+    <!-- GROUP C -->
+    <div class="group-block" id="group-c">
+      <div class="group-head"><span class="group-letter">C</span><h3>Electrical &amp; Cable/Connector Diagnosis</h3><span class="group-tally">3 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-005" data-search="tc-tsc-005 electrical fault diagnosis diagnostic checks check supply voltage, circuit current, continuity, insulation resistance, and circuit resistance check earth continuity, earth resistance, polarity, control voltage, and auxiliary supply check transformer electrical condition and connector continuity follow the diagnostic sequence: supply → protection → ccr → circuit → transformer → connector → fixture hold point: do not repeatedly energize a circuit with an unresolved electrical fault where doing so could create a safety or equipment hazard."><summary><span class="code-badge">TC-TSC-005</span><span class="topic-title">Electrical Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check supply voltage, circuit current, continuity, insulation resistance, and circuit resistance</li>
+<li>Check earth continuity, earth resistance, polarity, control voltage, and auxiliary supply</li>
+<li>Check transformer electrical condition and connector continuity</li>
+<li>Follow the diagnostic sequence: Supply → Protection → CCR → Circuit → Transformer → Connector → Fixture</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> do not repeatedly energize a circuit with an unresolved electrical fault where doing so could create a safety or equipment hazard.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-006" data-search="tc-tsc-006 cable fault diagnosis diagnostic checks investigate open circuit, short circuit, insulation breakdown, and high resistance check for incorrect cable identification, incorrect routing, joint failure, and termination failure check for moisture-related deterioration follow the diagnostic sequence: cable identification → route verification → continuity → insulation resistance → resistance measurement → section isolation → fault location acceptance criteria: the cable fault is located to a specific section, with both cause and location confirmed by measurement."><summary><span class="code-badge">TC-TSC-006</span><span class="topic-title">Cable Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Investigate open circuit, short circuit, insulation breakdown, and high resistance</li>
+<li>Check for incorrect cable identification, incorrect routing, joint failure, and termination failure</li>
+<li>Check for moisture-related deterioration</li>
+<li>Follow the diagnostic sequence: Cable Identification → Route Verification → Continuity → Insulation Resistance → Resistance Measurement → Section Isolation → Fault Location</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the cable fault is located to a specific section, with both cause and location confirmed by measurement.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-007" data-search="tc-tsc-007 connector fault diagnosis diagnostic checks check connector identification, correct mating, contact condition, locking, and sealing check cable lead, moisture ingress, mechanical damage, continuity, and electrical connection investigate the complete path — ccr → cable → transformer → connector → secondary lead → fixture — rather than assuming a fixture fault hold point: &quot;fixture off&quot; does not automatically mean &quot;fixture fault&quot; — verify the complete circuit path before condemning the fixture."><summary><span class="code-badge">TC-TSC-007</span><span class="topic-title">Connector Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check connector identification, correct mating, contact condition, locking, and sealing</li>
+<li>Check cable lead, moisture ingress, mechanical damage, continuity, and electrical connection</li>
+<li>Investigate the complete path — CCR → Cable → Transformer → Connector → Secondary Lead → Fixture — rather than assuming a fixture fault</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> "Fixture OFF" does not automatically mean "fixture fault" — verify the complete circuit path before condemning the fixture.</p></div></div></details>
+
+      </div>
+    </div>
+
+    <!-- GROUP D -->
+    <div class="group-block" id="group-d">
+      <div class="group-head"><span class="group-letter">D</span><h3>Equipment-Specific Diagnosis</h3><span class="group-tally">5 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-008" data-search="tc-tsc-008 transformer fault diagnosis diagnostic checks check nameplate, rating, primary connection, secondary connection, and continuity check insulation, winding condition where applicable, connector, and cable leads check housing, moisture/water ingress, mechanical condition, loading, and output compare expected transformer behaviour against measured transformer behaviour acceptance criteria: measured transformer behaviour is confirmed to match expected behaviour under the tested condition, or the deviation is fully explained."><summary><span class="code-badge">TC-TSC-008</span><span class="topic-title">Transformer Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check nameplate, rating, primary connection, secondary connection, and continuity</li>
+<li>Check insulation, winding condition where applicable, connector, and cable leads</li>
+<li>Check housing, moisture/water ingress, mechanical condition, loading, and output</li>
+<li>Compare expected transformer behaviour against measured transformer behaviour</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> measured transformer behaviour is confirmed to match expected behaviour under the tested condition, or the deviation is fully explained.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-009" data-search="tc-tsc-009 fixture fault diagnosis diagnostic checks check physical condition, mounting, alignment, and lens/prism check lamp/led module, driver where applicable, secondary lead, connector, and insulation check continuity, illumination, and intensity before declaring a fixture defective, verify electrical supply → transformer → connector → secondary lead → fixture hold point: do not declare a fixture defective until the complete supply chain ahead of it has been verified."><summary><span class="code-badge">TC-TSC-009</span><span class="topic-title">Fixture Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check physical condition, mounting, alignment, and lens/prism</li>
+<li>Check lamp/LED module, driver where applicable, secondary lead, connector, and insulation</li>
+<li>Check continuity, illumination, and intensity</li>
+<li>Before declaring a fixture defective, verify Electrical Supply → Transformer → Connector → Secondary Lead → Fixture</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> do not declare a fixture defective until the complete supply chain ahead of it has been verified.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-010" data-search="tc-tsc-010 ccr fault diagnosis diagnostic checks check input supply, protection, controller, output current, and current regulation check load, step operation, alarm, and fault indication check control wiring, local control, remote control, communication, and internal configuration follow the diagnostic flow: input → ccr control → ccr output → series circuit → load → feedback acceptance criteria: the ccr fault is traced through the diagnostic flow to a confirmed cause before any adjustment is made."><summary><span class="code-badge">TC-TSC-010</span><span class="topic-title">CCR Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check input supply, protection, controller, output current, and current regulation</li>
+<li>Check load, step operation, alarm, and fault indication</li>
+<li>Check control wiring, local control, remote control, communication, and internal configuration</li>
+<li>Follow the diagnostic flow: Input → CCR Control → CCR Output → Series Circuit → Load → Feedback</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the CCR fault is traced through the diagnostic flow to a confirmed cause before any adjustment is made.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-011" data-search="tc-tsc-011 papi fault diagnosis diagnostic checks check power supply, cable, connector, and unit operation check lamp/led, optical window, beam angle, alignment, elevation, and azimuth check indication, photometric performance, and calibration status separate electrical fault from optical/alignment fault from calibration/configuration fault acceptance criteria: the fault is correctly attributed to one of electrical, optical/alignment, or calibration/configuration cause — not treated as a single undifferentiated issue."><summary><span class="code-badge">TC-TSC-011</span><span class="topic-title">PAPI Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check power supply, cable, connector, and unit operation</li>
+<li>Check lamp/LED, optical window, beam angle, alignment, elevation, and azimuth</li>
+<li>Check indication, photometric performance, and calibration status</li>
+<li>Separate electrical fault from optical/alignment fault from calibration/configuration fault</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the fault is correctly attributed to one of electrical, optical/alignment, or calibration/configuration cause — not treated as a single undifferentiated issue.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-012" data-search="tc-tsc-012 sign fault diagnosis diagnostic checks check input supply, cable, connector, and driver check led module, internal wiring, internal voltage, illumination, brightness, and colour check control and monitoring check the complete electrical and control chain before attributing the fault to the led module hold point: &quot;no illumination&quot; does not necessarily indicate an led-module failure — verify the complete electrical and control chain first."><summary><span class="code-badge">TC-TSC-012</span><span class="topic-title">Sign Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check input supply, cable, connector, and driver</li>
+<li>Check LED module, internal wiring, internal voltage, illumination, brightness, and colour</li>
+<li>Check control and monitoring</li>
+<li>Check the complete electrical and control chain before attributing the fault to the LED module</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> "no illumination" does not necessarily indicate an LED-module failure — verify the complete electrical and control chain first.</p></div></div></details>
+
+      </div>
+    </div>
+
+    <!-- GROUP E -->
+    <div class="group-block" id="group-e">
+      <div class="group-head"><span class="group-letter">E</span><h3>Control &amp; Communication Diagnosis</h3><span class="group-tally">2 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-013" data-search="tc-tsc-013 control-system fault diagnosis diagnostic checks applies to plc, hmi, alcms, scada, control panel, and remote-control interface check power supply, input signals, output signals, logic, and configuration check equipment addressing, communication, interlocks, status feedback, alarm mapping, and event logging for a failed alcms command, trace operator command → hmi → plc → communication → ccr interface → ccr → field circuit to determine exactly where the chain stops acceptance criteria: the point in the command chain where the fault occurs is identified and confirmed by trace-through, not assumed."><summary><span class="code-badge">TC-TSC-013</span><span class="topic-title">Control-System Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Applies to PLC, HMI, ALCMS, SCADA, control panel, and remote-control interface</li>
+<li>Check power supply, input signals, output signals, logic, and configuration</li>
+<li>Check equipment addressing, communication, interlocks, status feedback, alarm mapping, and event logging</li>
+<li>For a failed ALCMS command, trace Operator Command → HMI → PLC → Communication → CCR Interface → CCR → Field Circuit to determine exactly where the chain stops</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the point in the command chain where the fault occurs is identified and confirmed by trace-through, not assumed.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-014" data-search="tc-tsc-014 communication fault diagnosis diagnostic checks check device power, network connection, communication path, and device addressing check configuration, switch/network equipment, and communication interface check plc, ccr, alcms, and scada communication individually verify source → network → destination and record expected versus actual result with fault location acceptance criteria: the communication fault is located to a specific point between source and destination, supported by a source/destination/expected/actual record."><summary><span class="code-badge">TC-TSC-014</span><span class="topic-title">Communication Fault Diagnosis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Check device power, network connection, communication path, and device addressing</li>
+<li>Check configuration, switch/network equipment, and communication interface</li>
+<li>Check PLC, CCR, ALCMS, and SCADA communication individually</li>
+<li>Verify Source → Network → Destination and record expected versus actual result with fault location</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the communication fault is located to a specific point between source and destination, supported by a source/destination/expected/actual record.</p></div></div></details>
+
+      </div>
+    </div>
+
+    <!-- GROUP F -->
+    <div class="group-block" id="group-f">
+      <div class="group-head"><span class="group-letter">F</span><h3>Root Cause &amp; Corrective Action</h3><span class="group-tally">4 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-015" data-search="tc-tsc-015 root-cause analysis diagnostic checks classify the potential root-cause category: design, material, manufacturing, installation, wiring, configuration, programming, or commissioning procedure consider human error, environmental condition, equipment failure, communication/network, or documentation as the category work through symptom → evidence → immediate cause → underlying cause → root cause → corrective action apply an appropriate method: 5-why analysis, fault-tree analysis, cause-and-effect analysis, test-data comparison, or circuit tracing acceptance criteria: the identified cause is the underlying root cause, not merely the immediate symptom."><summary><span class="code-badge">TC-TSC-015</span><span class="topic-title">Root-Cause Analysis</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Classify the potential root-cause category: design, material, manufacturing, installation, wiring, configuration, programming, or commissioning procedure</li>
+<li>Consider human error, environmental condition, equipment failure, communication/network, or documentation as the category</li>
+<li>Work through Symptom → Evidence → Immediate Cause → Underlying Cause → Root Cause → Corrective Action</li>
+<li>Apply an appropriate method: 5-Why analysis, fault-tree analysis, cause-and-effect analysis, test-data comparison, or circuit tracing</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the identified cause is the underlying root cause, not merely the immediate symptom.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-016" data-search="tc-tsc-016 corrective action diagnostic checks select an action appropriate to the identified cause: reconnection, re-termination, connector replacement, cable repair/replacement consider transformer replacement, fixture replacement, ccr adjustment, or configuration correction consider plc logic correction, communication correction, alignment correction, mechanical correction, or documentation correction confirm the action addresses the root cause, not only the symptom hold point: corrective action must address the identified cause — an action that only removes the symptom does not close the fault."><summary><span class="code-badge">TC-TSC-016</span><span class="topic-title">Corrective Action</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Select an action appropriate to the identified cause: reconnection, re-termination, connector replacement, cable repair/replacement</li>
+<li>Consider transformer replacement, fixture replacement, CCR adjustment, or configuration correction</li>
+<li>Consider PLC logic correction, communication correction, alignment correction, mechanical correction, or documentation correction</li>
+<li>Confirm the action addresses the root cause, not only the symptom</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> corrective action must address the identified cause — an action that only removes the symptom does not close the fault.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-017" data-search="tc-tsc-017 temporary corrective action diagnostic checks use only where necessary to support controlled continuation of commissioning examples: temporary replacement equipment, temporary communication arrangement, temporary configuration, formally authorized bypass, temporary isolation of defective equipment record the temporary nature, reason, risk, responsible person, approval, and validity period record the permanent corrective action requirement that will follow hold point: a temporary corrective action must never be allowed to silently become the final installation."><summary><span class="code-badge">TC-TSC-017</span><span class="topic-title">Temporary Corrective Action</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Use only where necessary to support controlled continuation of commissioning</li>
+<li>Examples: temporary replacement equipment, temporary communication arrangement, temporary configuration, formally authorized bypass, temporary isolation of defective equipment</li>
+<li>Record the temporary nature, reason, risk, responsible person, approval, and validity period</li>
+<li>Record the permanent corrective action requirement that will follow</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> a temporary corrective action must never be allowed to silently become the final installation.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-018" data-search="tc-tsc-018 permanent corrective action diagnostic checks verify the correct component is installed, with correct configuration and correct wiring verify correct mechanical installation, correct documentation, and correct test result update drawings, cable schedules, and equipment schedules as required update configuration records, test reports, and asset records as required acceptance criteria: the final approved solution is installed, verified, and reflected in every affected record."><summary><span class="code-badge">TC-TSC-018</span><span class="topic-title">Permanent Corrective Action</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Verify the correct component is installed, with correct configuration and correct wiring</li>
+<li>Verify correct mechanical installation, correct documentation, and correct test result</li>
+<li>Update drawings, cable schedules, and equipment schedules as required</li>
+<li>Update configuration records, test reports, and asset records as required</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the final approved solution is installed, verified, and reflected in every affected record.</p></div></div></details>
+
+      </div>
+    </div>
+
+    <!-- GROUP G -->
+    <div class="group-block" id="group-g">
+      <div class="group-head"><span class="group-letter">G</span><h3>Retest, Deviation &amp; Closure</h3><span class="group-tally">4 topics</span></div>
+      <div class="topic-list">
+
+        <details class="topic-card" id="tc-tsc-019" data-search="tc-tsc-019 retesting after correction diagnostic checks retest the original failed test, the affected equipment, and the affected circuit retest related function, related control, related alarm, and related performance parameter example: after a connector replacement, verify connector → transformer/fixture circuit → fixture operation → control/feedback, not connector continuity alone record fault, corrective action, original test, retest, and result hold point: do not close a fault on the original failed test alone — retest every related function the correction could have affected."><summary><span class="code-badge">TC-TSC-019</span><span class="topic-title">Retesting After Correction</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Retest the original failed test, the affected equipment, and the affected circuit</li>
+<li>Retest related function, related control, related alarm, and related performance parameter</li>
+<li>Example: after a connector replacement, verify Connector → Transformer/Fixture Circuit → Fixture Operation → Control/Feedback, not connector continuity alone</li>
+<li>Record fault, corrective action, original test, retest, and result</li>
+</ul></div><div class="tfield risk"><h5><i class="fa-solid fa-triangle-exclamation"></i> Hold Point</h5><p><strong>Hold Point:</strong> do not close a fault on the original failed test alone — retest every related function the correction could have affected.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-020" data-search="tc-tsc-020 commissioning deviation management diagnostic checks identify the deviation type: equipment substitution, drawing deviation, configuration deviation, test deviation identify the deviation type: temporary arrangement, installation deviation, acceptance-criterion deviation, or incomplete test record deviation number, requirement, actual condition, reason, and impact record proposed action, approval, and final status acceptance criteria: every commissioning deviation is formally recorded and dispositioned — never absorbed into general commissioning remarks."><summary><span class="code-badge">TC-TSC-020</span><span class="topic-title">Commissioning Deviation Management</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Identify the deviation type: equipment substitution, drawing deviation, configuration deviation, test deviation</li>
+<li>Identify the deviation type: temporary arrangement, installation deviation, acceptance-criterion deviation, or incomplete test</li>
+<li>Record deviation number, requirement, actual condition, reason, and impact</li>
+<li>Record proposed action, approval, and final status</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> every commissioning deviation is formally recorded and dispositioned — never absorbed into general commissioning remarks.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-021" data-search="tc-tsc-021 non-conformance management diagnostic checks raise an ncr with number, date, equipment/system, requirement, and non-conformance description record supporting evidence, identified cause, corrective action, and responsible party record retest result and disposition: correct, replace, repair, reconfigure, retest, approved deviation, or reject obtain formal closure approval acceptance criteria: the non-conformance is fully documented from identification through disposition and formal closure."><summary><span class="code-badge">TC-TSC-021</span><span class="topic-title">Non-Conformance Management</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Raise an NCR with number, date, equipment/system, requirement, and non-conformance description</li>
+<li>Record supporting evidence, identified cause, corrective action, and responsible party</li>
+<li>Record retest result and disposition: correct, replace, repair, reconfigure, retest, approved deviation, or reject</li>
+<li>Obtain formal closure approval</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> the non-conformance is fully documented from identification through disposition and formal closure.</p></div></div></details>
+
+        <details class="topic-card" id="tc-tsc-022" data-search="tc-tsc-022 fault closure diagnostic checks confirm the fault has been identified, classified, isolated, and investigated confirm root cause identified, corrective action completed, and retest passed confirm documentation updated and any ncr/deviation formally closed complete the master commissioning troubleshooting record with closure by and closure date acceptance criteria: a fault is closed only when objective evidence demonstrates the problem is resolved — the full identification → classification → isolation → investigation → root cause → corrective action → retest → documentation → closure sequence is complete."><summary><span class="code-badge">TC-TSC-022</span><span class="topic-title">Fault Closure</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="topic-body"><div class="tfield"><h5><i class="fa-solid fa-list-check"></i> Diagnostic Checks</h5><ul>
+<li>Confirm the fault has been identified, classified, isolated, and investigated</li>
+<li>Confirm root cause identified, corrective action completed, and retest passed</li>
+<li>Confirm documentation updated and any NCR/deviation formally closed</li>
+<li>Complete the master commissioning troubleshooting record with closure by and closure date</li>
+</ul></div><div class="tfield"><h5><i class="fa-solid fa-circle-check"></i> Acceptance / Record</h5><p><strong>Acceptance Criteria:</strong> a fault is closed only when objective evidence demonstrates the problem is resolved — the full identification → classification → isolation → investigation → root cause → corrective action → retest → documentation → closure sequence is complete.</p></div></div></details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <h2>Division 21 <span>Troubleshooting Flow</span></h2>
+      <p>Division 21 runs as a single continuous sequence per fault, from first detection through to formal closure.</p>
+    </div>
+    <div class="gate-steps">
+      <div class="gate-step"><div class="dnum">1</div><h5>Fault Detected</h5><p>A test failure or abnormal condition is observed during commissioning.</p></div>
+      <div class="gate-step"><div class="dnum">2</div><h5>Identify Fault</h5><p>Capture location, equipment, circuit, test reference, and description.</p></div>
+      <div class="gate-step"><div class="dnum">3</div><h5>Classify Fault</h5><p>Assign the fault to its correct type before investigation.</p></div>
+      <div class="gate-step"><div class="dnum">4</div><h5>Isolate Fault</h5><p>Narrow the fault to the smallest practical section of the system.</p></div>
+      <div class="gate-step"><div class="dnum">5</div><h5>Investigate</h5><p>Gather evidence and establish what actually happened.</p></div>
+      <div class="gate-step"><div class="dnum">6</div><h5>Diagnose</h5><p>Apply the equipment-specific diagnostic sequence.</p></div>
+      <div class="gate-step"><div class="dnum">7</div><h5>Root-Cause Analysis</h5><p>Trace from symptom through to the underlying root cause.</p></div>
+      <div class="gate-step"><div class="dnum">8</div><h5>Corrective Action</h5><p>Define an action that addresses the cause, not the symptom.</p></div>
+      <div class="gate-step"><div class="dnum">9</div><h5>Temporary/Permanent Correction</h5><p>Implement and track through to the final approved solution.</p></div>
+      <div class="gate-step"><div class="dnum">10</div><h5>Retest</h5><p>Re-verify the original test and every related function.</p></div>
+      <div class="gate-step"><div class="dnum">11</div><h5>Verify Performance</h5><p>Confirm the fault has not propagated to another function.</p></div>
+      <div class="gate-step"><div class="dnum">12</div><h5>NCR/Deviation Management</h5><p>Formally record and disposition any deviation or non-conformance.</p></div>
+      <div class="gate-step"><div class="dnum">13</div><h5>Documentation Update</h5><p>Update drawings, records, and reports to reflect the fix.</p></div>
+      <div class="gate-step"><div class="dnum">14</div><h5>Fault Closure</h5><p>Close the fault only once objective evidence confirms resolution.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="last" id="faq">
+<div class="container">
+<div class="section-head">
+<h2>Frequently Asked <span>Questions</span></h2>
+<p>Quick answers about Division 21 — Troubleshooting During Commissioning in the AGL Testing &amp; Commissioning Manual.</p>
+</div>
+<div class="faq-list">
+<details class="faq-item">
+<summary><span class="faq-num">Q1</span><span class="faq-q">What is Division 21 — Troubleshooting During Commissioning in the AGL Testing &amp; Commissioning Manual?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Division 21 of the AGL Testing &amp; Commissioning Manual covers Troubleshooting During Commissioning. Faults surface throughout commissioning — in pre-commissioning checks, electrical testing, CCR and transformer testing, fixture and photometric testing, ALCMS and SAT. Division 21 provides the structured method for taking a fault from first detection through to a formally closed record, holding the line at every stage that a symptom is not a diagnosis and a diagnosis is not yet a root cause. It governs identification, classification, isolation, investigation, equipment-specific diagnosis, root-cause analysis, corrective action, retesting, and deviation/non-conformance management. It contains 22 topics (TC-TSC-001 to TC-TSC-022) organised into 7 groups (A–G), each topic with its own verification checks.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q2</span><span class="faq-q">What is the philosophy behind Division 21 — Troubleshooting During Commissioning?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Do not treat the symptom as the fault. Identify the actual root cause, correct it, retest the affected system, verify the fault has not propagated to another function, and formally close the deviation. This is the commissioning fault-management and problem-solving division — the bridge between commissioning failures found under Divisions 01–20 and final acceptance.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q3</span><span class="faq-q">What is the step-by-step sequence in Division 21?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Every fault discovered during commissioning moves through the same underlying sequence, regardless of which system or division it was found in. Steps: Identify → Classify → Isolate → Investigate → Diagnose → Root-Cause Analyze → Correct → Retest → Verify → Document → Close. Focus areas: Electrical &amp; cable faults; Connector &amp; equipment faults; Control &amp; communication faults; Root-cause &amp; corrective action; Deviation &amp; NCR management.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q4</span><span class="faq-q">Which topics does Division 21 cover?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Division 21 has 22 topics in 7 groups. A — Identification &amp; Classification: Commissioning Fault Identification, Fault Classification. B — Isolation &amp; Investigation: Fault Isolation, Fault Investigation. C — Electrical &amp; Cable/Connector Diagnosis: Electrical Fault Diagnosis, Cable Fault Diagnosis, Connector Fault Diagnosis. D — Equipment-Specific Diagnosis: Transformer Fault Diagnosis, Fixture Fault Diagnosis, CCR Fault Diagnosis, PAPI Fault Diagnosis, Sign Fault Diagnosis. E — Control &amp; Communication Diagnosis: Control-System Fault Diagnosis, Communication Fault Diagnosis. F — Root Cause &amp; Corrective Action: Root-Cause Analysis, Corrective Action, Temporary Corrective Action, Permanent Corrective Action. G — Retest, Deviation &amp; Closure: Retesting After Correction, Commissioning Deviation Management, Non-Conformance Management, Fault Closure.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q5</span><span class="faq-q">What is the fault closure chain in Division 21?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>A fault is only closed once every stage in the chain is evidenced — skipping a stage leaves the closure unsupported. Fault Identified: The fault is captured with location, equipment, circuit, and test reference; Fault Classified: The fault type is assigned so the correct diagnostic sequence is used; Fault Isolated: The fault is narrowed to the smallest practical section of the system; Investigation: Evidence is gathered and the actual sequence of events is established; Root Cause Identified: The underlying cause is confirmed, not just the immediate symptom; Corrective Action: An action addressing the cause is defined and implemented; Retest: The original test and every related function are re-verified; Result Verified: Retest results confirm the fault has not propagated elsewhere; Documentation Updated: Drawings, schedules, configuration and test records reflect the fix; NCR/Deviation Closed: Any raised NCR or deviation is formally dispositioned and closed; Fault Closed: Objective evidence demonstrates the problem is fully resolved.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q6</span><span class="faq-q">What must be in place before diagnosis begins in Division 21?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Two principles govern how Division 21 is applied, whatever system the fault was found in. Prove the Fault Before Replacing: Never replace an AGL component merely because it appears faulty; First prove the fault, isolate its location, and determine the root cause; Correct the actual cause, then retest the complete affected circuit or function; Example: "Runway light OFF" should not immediately become "replace runway light" — trace CCR Output → Primary Series Circuit → Isolation Transformer → Secondary Lead → L-823 Connector → Fixture → Optical/Mechanical Condition first.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q7</span><span class="faq-q">How does Division 21 relate to the neighbouring divisions?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Division boundary: Divisions 01–20 perform the testing and commissioning itself; Division 21 governs what happens when any of those tests fails; Division 21 is the problem-solving bridge between commissioning failures and final acceptance, maintaining the traceability needed for Divisions 18–20; A temporary corrective action used to keep commissioning moving must always convert to a permanent one before final acceptance; Every deviation and non-conformance is recorded and dispositioned here — never absorbed into general commissioning remarks.</p></div>
+</details>
+<details class="faq-item">
+<summary><span class="faq-num">Q8</span><span class="faq-q">What is the Troubleshooting Flow in Division 21?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+<div class="faq-a"><p>Division 21 runs as a single continuous sequence per fault, from first detection through to formal closure. (1) Fault Detected — A test failure or abnormal condition is observed during commissioning; (2) Identify Fault — Capture location, equipment, circuit, test reference, and description; (3) Classify Fault — Assign the fault to its correct type before investigation; (4) Isolate Fault — Narrow the fault to the smallest practical section of the system; (5) Investigate — Gather evidence and establish what actually happened; (6) Diagnose — Apply the equipment-specific diagnostic sequence; (7) Root-Cause Analysis — Trace from symptom through to the underlying root cause; (8) Corrective Action — Define an action that addresses the cause, not the symptom; (9) Temporary/Permanent Correction — Implement and track through to the final approved solution; (10) Retest — Re-verify the original test and every related function; (11) Verify Performance — Confirm the fault has not propagated to another function; (12) NCR/Deviation Management — Formally record and disposition any deviation or non-conformance; (13) Documentation Update — Update drawings, records, and reports to reflect the fix; (14) Fault Closure — Close the fault only once objective evidence confirms resolution.</p></div>
+</details>
+</div>
+</div>
+</section>
+<section>
+<div class="container">
+<div class="academy-cta">
+<div class="block-label">Go Further</div>
+<div class="academy-cta-grid">
+<div>
+<h2 class="block-title">Don't Just Fix the Fault. Understand Why It Happened.</h2>
+<p>Troubleshooting during commissioning is where engineering judgment matters most — under time pressure, with a system not yet proven.</p>
+<p>Build the technical knowledge to understand systematic fault-finding methodology, root-cause analysis, and how to resolve issues without introducing new ones into a system still being verified.</p>
+<p><strong>Diagnose with precision. Resolve with confidence. Commission with certainty.</strong></p>
+<div class="academy-cta-actions">
+<a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore Precision AGL Academy</a>
+<a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start AGL Training</a>
+</div>
+</div>
+<div class="academy-pathway">
+<div class="academy-pathway-label">Build Complete AGL Testing &amp; Commissioning Capability</div>
+<div class="academy-pathway-flow">
+<span>AGL Fundamentals</span><i class="fa-solid fa-chevron-right"></i>
+<span>Installation</span><i class="fa-solid fa-chevron-right"></i>
+<span>Electrical Systems</span><i class="fa-solid fa-chevron-right"></i>
+<span>Pre-Commissioning</span><i class="fa-solid fa-chevron-right"></i>
+<span>Testing</span><i class="fa-solid fa-chevron-right"></i>
+<span>Photometry</span><i class="fa-solid fa-chevron-right"></i>
+<span>Commissioning</span><i class="fa-solid fa-chevron-right"></i>
+<span>Troubleshooting</span><i class="fa-solid fa-chevron-right"></i>
+<span>Maintenance</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this division:</strong> Tests here apply test voltages or currents to circuits and equipment, such as insulation resistance, high-potential, CCR output, transformer and earth-resistance testing. Apply the aerodrome&rsquo;s isolation/LOTO procedure, prove dead, discharge circuits after every test, keep people and test leads clear, and never test equipment still connected to energised circuits or to electronics not rated for the test voltage. Test values and durations are indicative; use the project specification and the manufacturer&rsquo;s limits.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) testing and commissioning personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables and connectors can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, a change of operating category, a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications and regulations.</strong> What a system must achieve depends on your contract, project specification, the equipment manufacturer&rsquo;s requirements and the standards and regulations that apply to your aerodrome. This content summarises general practice, may be incomplete or out of date, and does not replace those documents. Consult the current official editions. Following it does not guarantee compliance with any law, standard or regulatory approval.</li><li><strong>Generic content; no warranty.</strong> Diagnostic sequences, cause rankings (High/Medium/Low), tolerances and values are generic and indicative; real installations differ in design, equipment make and model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, the IEC, DGCA, any airport, regulator or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Templates and downloads.</strong> Downloaded test records are blank, generic templates. They are not controlled project documents unless you adopt them under your own document-control system and project specification. They are for personal reference and internal use, must keep this notice, and must not be presented as approved or official documents.</li><li><strong>Copyright.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Copying, republication or commercial use requires prior written permission.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+  <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; AGL Specialist &middot; All rights reserved</p>
+  <div class="footer-links">
+    <a href="index.html#about">About</a>
+    <a href="testing-commissioning-manual.html">Testing &amp; Commissioning</a>
+    <a href="inspection-handbook.html">Inspection Handbook</a>
+    <a href="maintenance-handbook.html">Maintenance Handbook</a>
+    <a href="sop-library.html">SOP Library</a>
+    <a href="index.html#contact">Contact</a>
+      <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+  </div>
+</footer>
+<script>
+  /* ===================== WORD (.doc) DOWNLOAD — ONE PER TESTING & COMMISSIONING TOPIC ===================== */
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function slugify(str) {
+    return str.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  }
+
+  function buildMaintenanceWordHtml(details) {
+    const code = details.querySelector('.code-badge').textContent.trim();
+    const topicId = code.split('-').pop();
+    const title = details.querySelector('.topic-title').textContent.trim();
+    const tfields = Array.from(details.querySelectorAll('.tfield'));
+    const activityField = tfields[0] || null;
+    const label = (activityField?.querySelector('h5')?.textContent || 'Verification Checks').trim();
+    const items = activityField ? Array.from(activityField.querySelectorAll('ul li')).map(li => li.textContent.trim()) : [];
+    const acceptField = tfields[1] || null;
+    const acceptText = acceptField ? acceptField.querySelector('p').textContent.trim() : '';
+    const acceptLabel = acceptField ? (acceptField.querySelector('h5')?.textContent || 'Acceptance / Record').trim() : 'Acceptance / Record';
+    const today = new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const divisionLabel = (document.querySelector('.breadcrumb .current')?.textContent || '').trim();
+
+    const itemRows = items.map((it, i) => {
+      const num = String(i + 1).padStart(2, '0');
+      const rowBg = (i % 2 === 0) ? '#FFFFFF' : '#F5F7FB';
+      return `
+      <tr>
+        <td style="border:1px solid #C7CEDC; background:${rowBg}; padding:9px 10px; width:34px; text-align:center; vertical-align:top; font-size:13pt; color:#0B2C7A;">&#9744;</td>
+        <td style="border:1px solid #C7CEDC; background:${rowBg}; padding:9px 10px; vertical-align:top;">
+          <span style="font-size:8.5pt; color:#5B6478; letter-spacing:.5px;">ITEM ${num}</span><br/>
+          <b style="font-size:10.5pt; color:#1C1F26;">${escapeHtml(it)}</b>
+        </td>
+        <td style="border:1px solid #C7CEDC; background:${rowBg}; padding:9px 10px; width:120px; vertical-align:top; font-size:9.5pt; color:#5B6478;">
+          Pass:&nbsp;&#9744;&nbsp;&nbsp;Fail:&nbsp;&#9744;
+        </td>
+      </tr>`;
+    }).join('');
+
+    return `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+<meta charset='utf-8'>
+<title>${code} — ${title}</title>
+<!--[if gte mso 9]>
+<xml>
+<w:WordDocument>
+<w:View>Print</w:View>
+<w:Zoom>100</w:Zoom>
+<w:DoNotOptimizeForBrowser/>
+</w:WordDocument>
+</xml>
+<![endif]-->
+<style>
+  @page { size: 8.27in 11.69in; margin: 0.85in 0.75in 0.85in 0.75in; }
+  body{ font-family:Calibri,'Segoe UI',Arial,sans-serif; font-size:11pt; color:#1C1F26; line-height:1.45; }
+  table{ border-collapse:collapse; }
+  h1{ margin:0; }
+  h2{ margin:0; }
+</style>
+</head>
+<body>
+
+  <table class="letterhead" width="100%" style="background-color:#0B2C7A;border-collapse:collapse;"><tr>
+    <td style="width:64%; padding:14px 20px; vertical-align:middle; background-color:#0B2C7A;">
+      <table style="border-collapse:collapse;"><tr>
+        <td style="vertical-align:middle;">
+          <div style="font-family:Calibri,Arial,sans-serif; font-size:19pt; font-weight:bold; letter-spacing:1px; color:#FFFFFF;">PRECISION AGL ACADEMY</div>
+          <div style="font-size:8pt; letter-spacing:1px; text-transform:uppercase; color:#B9C6E8; margin-top:3px;">AGL Testing &amp; Commissioning Manual &middot; ${divisionLabel}</div>
+        </td>
+      </tr></table>
+    </td>
+    <td style="width:36%; padding:14px 20px; vertical-align:middle; background-color:#0B2C7A;">
+      <table width="100%" style="border-collapse:collapse; font-size:8.5pt;">
+        <tr>
+          <td style="color:#B9C6E8; width:80px; padding:3px 0; border-bottom:1px solid #3153A0;">Form No.</td>
+          <td style="color:#FFFFFF; font-weight:bold; text-align:right; padding:3px 0; border-bottom:1px solid #3153A0;">${code}</td>
+        </tr>
+        <tr>
+          <td style="color:#B9C6E8; padding:3px 0; border-bottom:1px solid #3153A0;">Revision</td>
+          <td style="color:#FFFFFF; font-weight:bold; text-align:right; padding:3px 0; border-bottom:1px solid #3153A0;">00</td>
+        </tr>
+        <tr>
+          <td style="color:#B9C6E8; padding:3px 0; border-bottom:1px solid #3153A0;">Issue Date</td>
+          <td style="color:#FFFFFF; font-weight:bold; text-align:right; padding:3px 0; border-bottom:1px solid #3153A0;">${today}</td>
+        </tr>
+        <tr>
+          <td style="color:#B9C6E8; padding:3px 0;">Page</td>
+          <td style="color:#FFFFFF; font-weight:bold; text-align:right; padding:3px 0;">1 of 1</td>
+        </tr>
+      </table>
+    </td>
+  </tr></table>
+
+  <div style="background-color:#F2F4F9; border:1px solid #C7CEDC; border-top:3px solid #0B2C7A; padding:18px 20px; margin-top:18px;">
+    <span style="display:inline-block; background-color:#0B2C7A; color:#FFFFFF; font-size:9pt; font-weight:bold; letter-spacing:1px; padding:3px 10px;">${code}</span>
+    <span style="display:inline-block; font-size:8pt; letter-spacing:.5px; text-transform:uppercase; color:#0B2C7A; border:1px solid #0B2C7A; padding:2px 8px; margin-left:8px;">Topic ${topicId}</span>
+    <h1 style="font-size:18pt; color:#0B2C7A; margin:10px 0 0;">${escapeHtml(title)}</h1>
+  </div>
+
+  <h2 style="font-size:12.5pt; color:#0B2C7A; text-transform:uppercase; letter-spacing:.6px; border-bottom:2px solid #0B2C7A; padding-bottom:6px; margin:32px 0 14px;"><span style="display:inline-block; background-color:#0B2C7A; color:#FFFFFF; font-size:9pt; padding:2px 7px; margin-right:8px;">1</span>&nbsp;&nbsp;&nbsp;Asset / Test Identification</h2>
+  <table width="100%" style="border-collapse:collapse; font-size:10pt;">
+    <tr>
+      <td style="width:26%; color:#0B2C7A; background-color:#E9ECF2; font-weight:bold; border:1px solid #C7CEDC; padding:8px 10px;">Asset ID / Circuit</td><td style="border:1px solid #C7CEDC; padding:8px 10px;">&nbsp;</td>
+      <td style="width:22%; color:#0B2C7A; background-color:#E9ECF2; font-weight:bold; border:1px solid #C7CEDC; padding:8px 10px;">Location</td><td style="border:1px solid #C7CEDC; padding:8px 10px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="color:#0B2C7A; background-color:#E9ECF2; font-weight:bold; border:1px solid #C7CEDC; padding:8px 10px;">Airport</td><td style="border:1px solid #C7CEDC; padding:8px 10px;">&nbsp;</td>
+      <td style="color:#0B2C7A; background-color:#E9ECF2; font-weight:bold; border:1px solid #C7CEDC; padding:8px 10px;">Work Order No.</td><td style="border:1px solid #C7CEDC; padding:8px 10px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="color:#0B2C7A; background-color:#E9ECF2; font-weight:bold; border:1px solid #C7CEDC; padding:8px 10px;">Technician</td><td style="border:1px solid #C7CEDC; padding:8px 10px;">&nbsp;</td>
+      <td style="color:#0B2C7A; background-color:#E9ECF2; font-weight:bold; border:1px solid #C7CEDC; padding:8px 10px;">Date</td><td style="border:1px solid #C7CEDC; padding:8px 10px;">&nbsp;</td>
+    </tr>
+  </table>
+
+  <h2 style="font-size:12.5pt; color:#0B2C7A; text-transform:uppercase; letter-spacing:.6px; border-bottom:2px solid #0B2C7A; padding-bottom:6px; margin:32px 0 14px;"><span style="display:inline-block; background-color:#0B2C7A; color:#FFFFFF; font-size:9pt; padding:2px 7px; margin-right:8px;">2</span>&nbsp;&nbsp;&nbsp;${escapeHtml(label)}</h2>
+  <table width="100%" style="border-collapse:collapse; font-size:10pt;">
+    <tr>
+      <th style="width:34px; background-color:#E9ECF2; color:#0B2C7A; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 10px; text-align:left; border:1px solid #C7CEDC;">&nbsp;</th>
+      <th style="background-color:#E9ECF2; color:#0B2C7A; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 10px; text-align:left; border:1px solid #C7CEDC;">Item</th>
+      <th style="width:120px; background-color:#E9ECF2; color:#0B2C7A; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 10px; text-align:left; border:1px solid #C7CEDC;">Result</th>
+    </tr>
+    ${itemRows}
+  </table>
+
+  ${acceptText ? `
+  <h2 style="font-size:12.5pt; color:#0B2C7A; text-transform:uppercase; letter-spacing:.6px; border-bottom:2px solid #0B2C7A; padding-bottom:6px; margin:32px 0 14px;"><span style="display:inline-block; background-color:#0B2C7A; color:#FFFFFF; font-size:9pt; padding:2px 7px; margin-right:8px;">3</span>&nbsp;&nbsp;&nbsp;${escapeHtml(acceptLabel)}</h2>
+  <div style="background-color:#EEF2FA; border-left:3.5pt solid #1B4F91; padding:12px 16px; font-size:10.5pt; color:#28324A;">${escapeHtml(acceptText)}</div>
+  ` : ''}
+
+  <h2 style="font-size:12.5pt; color:#0B2C7A; text-transform:uppercase; letter-spacing:.6px; border-bottom:2px solid #0B2C7A; padding-bottom:6px; margin:32px 0 14px;"><span style="display:inline-block; background-color:#0B2C7A; color:#FFFFFF; font-size:9pt; padding:2px 7px; margin-right:8px;">${acceptText ? '4' : '3'}</span>&nbsp;&nbsp;&nbsp;Remarks / Non-Conformances</h2>
+  <table width="100%" style="border-collapse:collapse; border:1px solid #C7CEDC;"><tr><td style="padding:6px 10px;">
+    <div style="border-bottom:1px solid #DCE1EC; height:22pt;">&nbsp;</div>
+    <div style="border-bottom:1px solid #DCE1EC; height:22pt;">&nbsp;</div>
+    <div style="border-bottom:1px solid #DCE1EC; height:22pt;">&nbsp;</div>
+  </td></tr></table>
+
+  <h2 style="font-size:12.5pt; color:#0B2C7A; text-transform:uppercase; letter-spacing:.6px; border-bottom:2px solid #0B2C7A; padding-bottom:6px; margin:32px 0 14px;"><span style="display:inline-block; background-color:#0B2C7A; color:#FFFFFF; font-size:9pt; padding:2px 7px; margin-right:8px;">${acceptText ? '5' : '4'}</span>&nbsp;&nbsp;&nbsp;Sign-Off</h2>
+  <table width="100%" style="border-collapse:collapse; font-size:9.5pt;">
+    <tr>
+      <th style="width:22%; background-color:#0B2C7A; color:#FFFFFF; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 8px; text-align:left; border:1px solid #0B2C7A;">Role</th>
+      <th style="width:30%; background-color:#0B2C7A; color:#FFFFFF; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 8px; text-align:left; border:1px solid #0B2C7A;">Name</th>
+      <th style="width:26%; background-color:#0B2C7A; color:#FFFFFF; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 8px; text-align:left; border:1px solid #0B2C7A;">Signature</th>
+      <th style="background-color:#0B2C7A; color:#FFFFFF; font-size:8.5pt; text-transform:uppercase; letter-spacing:.5px; padding:7px 8px; text-align:left; border:1px solid #0B2C7A;">Date</th>
+    </tr>
+    <tr>
+      <td style="background-color:#F5F7FB; color:#0B2C7A; font-weight:bold; border:1px solid #C7CEDC; padding:14px 8px 6px; height:26pt; vertical-align:bottom;">Tested By</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="background-color:#F5F7FB; color:#0B2C7A; font-weight:bold; border:1px solid #C7CEDC; padding:14px 8px 6px; height:26pt; vertical-align:bottom;">Witnessed By</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+    </tr>
+    <tr>
+      <td style="background-color:#F5F7FB; color:#0B2C7A; font-weight:bold; border:1px solid #C7CEDC; padding:14px 8px 6px; height:26pt; vertical-align:bottom;">Approved By</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+      <td style="border:1px solid #C7CEDC; padding:14px 8px 6px;">&nbsp;</td>
+    </tr>
+  </table>
+
+  <table width="100%" style="margin-top:34px; border-collapse:collapse;"><tr><td style="border-top:2px solid #0B2C7A; padding-top:11px; font-size:8pt; color:#5B6478;">
+    <b style="color:#0B2C7A;">${code}</b> &middot; ${escapeHtml(title)} &middot; Rev. 00 &middot; AGL Testing &amp; Commissioning Manual &middot; Precision AGL Academy
+    <span style="float:right; color:#5B6478;">Page 1 of 1</span><br/>
+    IMPORTANT &mdash; UNCONTROLLED TEMPLATE. This is a generic educational test and commissioning template for qualified personnel. It is not a contract document, approved procedure, regulatory form or certificate, and becomes a project record only if adopted and controlled under your own document-control system and project specification. Pass/fail criteria and values are indicative. Test energy and energised AGL equipment can be lethal: follow the aerodrome&rsquo;s permit-to-work, isolation/LOTO and the manufacturer&rsquo;s instructions. Acceptance, return-to-service and operating-category decisions rest with the aerodrome operator and the competent authority. Each signatory remains responsible for their own entries. Provided &ldquo;as is&rdquo; without warranty; Precision AGL Academy accepts no liability to the fullest extent permitted by law. Full notice: rahulsharmaagl.in/legal-notice.html &middot; &copy; 2026 Precision AGL Academy.
+  </td></tr></table>
+
+</body>
+</html>`;
+  }
+
+  function downloadTopicAsWord(details) {
+    const code = details.querySelector('.code-badge').textContent.trim();
+    const title = details.querySelector('.topic-title').textContent.trim();
+    const html = buildMaintenanceWordHtml(details);
+    const blob = new Blob(['\ufeff', html], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${code}-${slugify(title)}.doc`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  document.querySelectorAll('details.topic-card').forEach(details => {
+    const body = details.querySelector('.topic-body');
+    if (!body) return;
+    const box = document.createElement('div');
+    box.className = 'download-box';
+    box.innerHTML = `<p><strong>Printable copy available.</strong> Download a controlled Word version of this test record — letterhead, document-control block, checklist table, and a three-tier sign-off, ready to print or take to the field.</p>
+      <button class="download-btn" type="button"><i class="fa-solid fa-download"></i> Download as Word</button>`;
+    body.appendChild(box);
+    box.querySelector('.download-btn').addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      downloadTopicAsWord(details);
+    });
+  });
+</script>
+
+</body>
+</html>

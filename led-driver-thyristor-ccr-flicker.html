@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LED Flicker on a Thyristor CCR | Precision AGL Academy</title>
+    <meta name="description" content="Why can an LED fixture flicker on a thyristor CCR? A visual guide to flicker and the stroboscopic effect, why the lowest steps are worst, and how to test." />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html" />
+    <meta property="og:title" content="LED Flicker on a Thyristor CCR | Precision AGL Academy" />
+    <meta property="og:description" content="Why can an LED fixture flicker on a thyristor CCR? A visual guide to flicker and the stroboscopic effect, why the lowest steps are worst, and how to test." />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:image" content="https://rahulsharmaagl.in/assets/og-led-driver-thyristor-ccr-flicker.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html" />
+    <meta name="twitter:title" content="LED Flicker on a Thyristor CCR | Precision AGL Academy" />
+    <meta name="twitter:description" content="Why can an LED fixture flicker on a thyristor CCR? A visual guide to flicker and the stroboscopic effect, why the lowest steps are worst, and how to test." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-led-driver-thyristor-ccr-flicker.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#article",
+  "headline": "LED Flicker on a Thyristor CCR",
+  "description": "Why can an LED fixture flicker on a thyristor CCR? A visual guide to flicker and the stroboscopic effect, why the lowest steps are worst, and how to test.",
+  "url": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html",
+  "mainEntityOfPage": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html",
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "@id": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html#webpage",
+    "name": "AGL Visual Encyclopedia",
+    "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Precision AGL Academy"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://rahulsharmaagl.in/academy.html#org",
+    "name": "Precision AGL Academy",
+    "url": "https://rahulsharmaagl.in/academy.html"
+  },
+  "inLanguage": "en-IN",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-led-driver-thyristor-ccr-flicker.jpg"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#breadcrumb"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Knowledge Hub",
+      "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AGL Visual Encyclopedia",
+      "item": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "LED Driver and Thyristor CCR Flicker",
+      "item": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html"
+    }
+  ]
+}
+</script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#faq",
+  "url": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why can an LED driver flicker on a thyristor CCR?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A thyristor CCR controls the current by switching on part-way through each half-cycle, so its output waveform is chopped. A halogen filament smooths that out because it stays hot. An LED responds almost at once, so unless the driver smooths the waveform, the light follows the gaps and pulses in the current."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is flicker worse at the low brightness steps?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At the low steps the thyristors fire late in each half-cycle, so the current flows in narrower pulses with longer gaps between them. A driver has less to work with in the gaps, so any lack of smoothing shows most at the lowest steps."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the stroboscopic effect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is the effect seen when the eye, or a camera, moves relative to a light that is rapidly switching in brightness. A steady light then appears as a row of separate points or a broken trail. It can be visible even when a fixed observer sees no flicker."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does a halogen lamp not show the same problem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Its filament has thermal inertia. It warms and cools slowly, so it averages out the fast pulses in the current and the light stays almost steady. This is the same slow response that makes a halogen light change more gradually at a step change."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is the problem reduced?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mainly by the design of the driver, with enough energy storage or smoothing to carry the light through the gaps in the current, and by choosing a driver and a CCR that are made to work together. Some CCRs filter or shape their output. The right combination depends on the products, so check the manufacturers' data."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is it checked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Test the real fixture with the real CCR, at every brightness step and with the lowest step looked at closely. Look at the light while moving and with the cameras or vision systems used on the airfield, and keep a record of the combination tested. Repeat the check if the CCR or the fixture type changes."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#article"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#related",
+  "name": "Related entries: LED Driver and Thyristor CCR Flicker",
+  "about": {
+    "@id": "https://rahulsharmaagl.in/led-driver-thyristor-ccr-flicker.html#article"
+  },
+  "numberOfItems": 13,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "CCR Thyristor",
+      "url": "https://rahulsharmaagl.in/ccr-thyristor.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "LED Driver in a Sign",
+      "url": "https://rahulsharmaagl.in/led-driver.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "CCR Intensity Steps",
+      "url": "https://rahulsharmaagl.in/ccr-intensity-steps.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Different CCR Technologies",
+      "url": "https://rahulsharmaagl.in/different-ccr-technologies.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Mixed Halogen and LED Circuits",
+      "url": "https://rahulsharmaagl.in/mixed-halogen-led-circuits.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "LED Power-Draw and CCR Re-sizing After Retrofit",
+      "url": "https://rahulsharmaagl.in/led-power-draw-and-ccr-resizing-after-retrofit.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "LED Retrofit in a Halogen Series Circuit",
+      "url": "https://rahulsharmaagl.in/led-retrofit-halogen-series-circuit.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Halogen-to-LED Migration Sequence",
+      "url": "https://rahulsharmaagl.in/halogen-to-led-migration-sequence.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "LED Driver in an AGL Fixture",
+      "url": "https://rahulsharmaagl.in/led-driver-fixture.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "CCR Communication",
+      "url": "https://rahulsharmaagl.in/ccr-communication.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "CCR Control Architecture",
+      "url": "https://rahulsharmaagl.in/ccr-control-architecture.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "CCR Controller",
+      "url": "https://rahulsharmaagl.in/ccr-controller.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "AGL Visual Encyclopedia",
+      "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    }
+  ]
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* ─── reset & base ─── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --taxi-blue: #2f8fff;
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --gold-dim: rgba(255, 180, 0, 0.7);
+            --gold-glow: rgba(255, 180, 0, 0.25);
+            --red: #E63946;
+            --red-glow: rgba(230, 57, 70, 0.3);
+            --cyan: #00d4ff;
+            --green: #35d07f;
+            --green-glow: rgba(53, 208, 127, 0.35);
+            --text: #c8d8f0;
+            --grey-dim: rgba(200, 216, 240, 0.45);
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-height: 100vh;
+            background: var(--dark);
+            font-family: 'Barlow', Arial, Helvetica, sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── runway lines background, matching site ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── nav ── */
+
+        main { position: relative; z-index: 1; padding-top: 70px; }
+
+        .container { width: 100%; max-width: 1120px; margin: auto; padding: 70px 40px 90px; }
+
+        /* ── section label / eyebrow ── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+        }
+        .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+        .section-label .entry-tag {
+            margin-left: 14px;
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--grey-dim);
+            font-size: 11px; letter-spacing: 1.5px; font-weight: 600;
+        }
+
+        /* ── heading ── */
+        .heading-group h1 {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            max-width: 860px;
+        }
+        .heading-group h1 .accent {
+            color: var(--white);
+            text-shadow: 0 0 40px rgba(240, 244, 255, 0.35);
+        }
+        .heading-group .sub {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 680px;
+            line-height: 1.8;
+            margin-top: 18px;
+        }
+
+        /* ── diagram card ── */
+        .diagram-card {
+            margin-top: 50px;
+            display: flex; flex-direction: column; align-items: center;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px 30px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .diagram-card:hover {
+            border-color: rgba(255, 180, 0, 0.2);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .diagram-card svg {
+            width: 100%;
+            height: auto;
+            max-width: 940px;
+        }
+
+        .caption-row {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 36px;
+        }
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            letter-spacing: 1.5px;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: default;
+            transition: color var(--transition);
+        }
+        .legend:hover { color: var(--white); }
+        .legend .dot {
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: transform var(--transition);
+        }
+        .legend:hover .dot { transform: scale(1.2); }
+        .dot.green { background: var(--green); box-shadow: 0 0 14px var(--green-glow); }
+        .dot.white { background: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+        .dot.red { background: var(--red); box-shadow: 0 0 14px var(--red-glow); }
+        .dot.mark {
+            width: 15px; height: 8px; border-radius: 2px;
+            background: #f5f7fb; box-shadow: 0 0 8px rgba(245, 247, 251, 0.4);
+        }
+
+        /* ── fact card ── */
+        .fact-card {
+            margin-top: 34px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .fact-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .fact-card:hover { border-color: rgba(255, 180, 0, 0.2); }
+        .fact-card:hover::before { transform: scaleX(1); }
+        .fact-card .label {
+            display: flex; align-items: center;
+            font-size: 12px; letter-spacing: 2.5px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 16px; font-weight: 700;
+        }
+        .fact-card .label .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.16);
+            color: var(--cyan);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 11px; letter-spacing: 1px; font-weight: 700;
+            margin-left: 12px;
+        }
+        .fact-card p {
+            font-size: 16.5px;
+            line-height: 1.9;
+            color: var(--text);
+            font-weight: 400;
+        }
+        .fact-card p + p { margin-top: 16px; }
+        .fact-card b { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-green { color: var(--green); font-weight: 600; }
+        .fact-card .highlight-red { color: var(--red); font-weight: 600; }
+        .fact-card .highlight-white { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-yellow { color: var(--gold); font-weight: 600; }
+        .fact-card .note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+            font-size: 12.5px;
+            letter-spacing: 0.3px;
+            color: var(--grey-dim);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .fact-card .note .icon { font-size: 15px; color: var(--gold-dim); }
+
+        /* ── prev/next nav ── */
+        .entry-nav {
+            margin-top: 18px;
+            display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        }
+        .entry-nav a {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--grey-dim); text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .entry-nav a:hover { color: var(--gold); }
+
+        /* ── specs mini-grid ── */
+        .specs-grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+        .spec-item {
+            display: flex; flex-direction: column; gap: 6px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .spec-item .spec-label {
+            font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey-dim); text-transform: uppercase; font-weight: 600;
+        }
+        .spec-item .spec-value {
+            font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: 0.2px;
+        }
+        .spec-item .spec-value .unit {
+            font-size: 12px; font-weight: 400; color: var(--grey-dim); margin-left: 4px;
+        }
+
+        /* ── footer ── */
+
+        /* ── responsive ── */
+        @media (max-width: 860px) {
+            .container { padding: 50px 24px 60px; }
+            .heading-group h1 { font-size: 46px; }
+            .heading-group .sub { font-size: 16px; }
+            .fact-card { padding: 26px 22px; }
+            .fact-card p { font-size: 15.5px; }
+            .diagram-card { padding: 24px 18px 22px; }
+            .caption-row { gap: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .heading-group h1 { font-size: 34px; }
+            .specs-grid { grid-template-columns: 1fr 1fr; }
+            .legend { font-size: 11px; gap: 6px; }
+        }
+
+        /* ── utilities ── */
+        .glow-pulse { animation: pulseGlow 2.8s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── RELATED ── */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .related-card .rc-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 6px;
+        }
+        .related-card h5 {
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong { color: var(--gold); }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+        .academy-cta {
+            position: relative;
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(160deg, rgba(255, 180, 0, 0.08), var(--card) 55%);
+            padding: 48px 44px;
+            overflow: hidden;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+            pointer-events: none;
+        }
+        .academy-cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .academy-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .academy-cta h4 {
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+        .academy-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .academy-path span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .academy-path i {
+            color: var(--gold);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .academy-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .academy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .academy-btn-primary {
+            background: var(--gold);
+            color: #060d1a;
+            border: 1px solid var(--gold);
+        }
+        .academy-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .academy-btn-outline {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+        .academy-btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .academy-cta-tagline {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        @media(max-width:600px) {
+            .academy-cta { padding: 32px 22px; }
+            .academy-cta h2 { font-size: 26px; }
+        }
+
+        /* ── shell sections (Academy template) ── */
+        .shell-section { padding: 46px 0 10px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .shell-section .section-tag { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
+        .shell-section > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 18px; font-weight: 400; }
+        .shell-section.cta-wrap { border-top: none; padding-top: 10px; }
+        .breadcrumb { max-width: 1120px; }
+        .breadcrumb .current { opacity: 1; }
+        main { padding-top: 0; }
+        .container { padding-top: 30px; }
+        .nav-links.open { display: flex; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(6,13,26,.98); border-bottom: 1px solid rgba(255,180,0,.3); padding: 10px 20px 16px; }
+        .nav-links.open li a { display: block; padding: 12px 0; }
+        .hamburger { background: none; border: none; padding: 6px; }
+        @media(max-width:600px) { .breadcrumb { padding: 100px 20px 0; } .container { padding-left: 20px; padding-right: 20px; } footer { padding: 20px; flex-direction: column; text-align: center; } }
+
+
+        .faq-list{display:flex;flex-direction:column;gap:10px;max-width:900px;margin-top:6px;}
+        .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+        .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+        .faq-item summary::-webkit-details-marker{display:none;}
+        .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+        .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+        .faq-item .faq-q{flex-grow:1;}
+        .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+        .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+        .faq-item[open] .chev{transform:rotate(180deg);}
+        .faq-item[open] summary{border-bottom:1px solid var(--border);}
+        .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+
+        /* ── entry-specific ── */
+        .entry-nav .is-soon { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--grey-dim); opacity:.45; cursor:default; }
+        .dot.gold { background: var(--gold); box-shadow: 0 0 14px var(--gold-glow); }
+        .dot.cyan { background: var(--cyan); box-shadow: 0 0 14px rgba(0,212,255,.35); }
+        .compare-row { margin-top: 22px; display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+        .compare-box { padding:16px 18px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:10px; }
+        .compare-box .cb-tag { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:var(--gold); margin-bottom:6px; }
+        .compare-box.dim .cb-tag { color:var(--grey-dim); }
+        .compare-box p { font-size:14px !important; line-height:1.7 !important; }
+        @media (max-width:600px){ .compare-row{ grid-template-columns:1fr; } }
+        
+        /* ── entry-specific: LED vs halogen ── */
+        .dot.amber { background: var(--gold); box-shadow: 0 0 14px var(--gold-glow); }
+        .cmp-wrap { margin-top: 26px; overflow-x: auto; border: 1px solid var(--border); border-radius: 12px; }
+        .cmp-table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 14px; }
+        .cmp-table th, .cmp-table td { padding: 13px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.6; }
+        .cmp-table thead th { font-size: 11.5px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 700; background: rgba(255,255,255,0.04); }
+        .cmp-table thead th.h-led { color: var(--cyan); }
+        .cmp-table thead th.h-hal { color: var(--gold); }
+        .cmp-table tbody th { font-size: 12px; letter-spacing: 1.3px; text-transform: uppercase; color: var(--white); font-weight: 700; width: 18%; }
+        .cmp-table td { color: var(--text); width: 41%; }
+        .cmp-table tbody tr:last-child th, .cmp-table tbody tr:last-child td { border-bottom: none; }
+        .cmp-table tbody tr:hover { background: rgba(255,255,255,0.02); }
+        .cmp-table .win { color: var(--green); font-weight: 600; }
+        .check-list { margin-top: 6px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
+        .check-item { padding: 16px 18px; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; }
+        .check-item h5 { font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--white); margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }
+        .check-item h5 i { color: var(--gold); font-size: 12px; }
+        .check-item p { font-size: 13.5px; line-height: 1.7; color: var(--text); }
+        @media (max-width: 600px) { .compare-row { grid-template-columns: 1fr; } }
+
+        .cmp-table.cmp-4 { min-width: 880px; }
+        .cmp-table.cmp-4 td { width: 21%; }
+        .cmp-table.cmp-4 tbody th { width: 12%; }
+        .cmp-table thead th.h-wh { color: var(--white); }
+        .cmp-table thead th.h-gr { color: var(--green); }
+    
+        .cmp-table.cmp-3 { min-width: 760px; }
+        .cmp-table.cmp-3 td { width: 27%; }
+        .cmp-table.cmp-3 tbody th { width: 19%; }
+        .cmp-table thead th.h-red { color: var(--red); }
+        .cmp-table thead th.h-gr { color: var(--green); }
+            /* dz-feature:start — full diagram viewer with zoom and pan */
+        .dz-btn{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,180,0,0.1);border:1px solid rgba(255,180,0,0.35);color:var(--gold);font:700 12.5px 'Barlow',sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:10px 18px;border-radius:100px;cursor:pointer;transition:background .3s;}
+        .dz-btn:hover{background:rgba(255,180,0,0.2);}
+        .diagram-card > svg{cursor:zoom-in;}
+        .dz-overlay{position:fixed;inset:0;z-index:1000;background:#060d1a;display:none;flex-direction:column;}
+        .dz-overlay.open{display:flex;}
+        .dz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;flex-wrap:wrap;}
+        .dz-title{flex:1 1 220px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .dz-tools{display:flex;align-items:center;gap:6px;}
+        .dz-tools button{background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);border-radius:100px;min-width:38px;height:38px;padding:0 12px;font:800 15px 'Barlow',sans-serif;cursor:pointer;line-height:1;}
+        .dz-tools button:hover{background:rgba(255,180,0,0.18);}
+        .dz-tools button.dz-fit{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;}
+        .dz-tools button.dz-close{background:var(--gold);color:#060d1a;border:0;font-size:12.5px;letter-spacing:.5px;padding:0 18px;margin-left:6px;}
+        .dz-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+        .dz-zoom{min-width:52px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.5px;}
+        .dz-stage{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+        .dz-stage.drag{cursor:grabbing;}
+        .dz-stage svg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;}
+        .dz-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(6,13,26,0.85);border:1px solid var(--border);color:var(--grey,#9fb0c8);font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border-radius:100px;pointer-events:none;white-space:nowrap;transition:opacity .6s;}
+        .dz-hint.hide{opacity:0;}
+        @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
+        /* dz-feature:end */
+    </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+</head>
+<body>
+
+        <nav id="navbar">
+        <a href="../index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../knowledge-hub.html" class="active">Knowledge Hub</a></li>
+            <li><a href="../component-library.html">Components</a></li>
+            <li><a href="../agl-comparisons.html">Comparisons</a></li>
+            <li><a href="../standards-companion.html">Standards</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <a href="../index.html#contact" class="nav-cta">Get in Touch</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="../index.html">Home</a><span>/</span>
+        <a href="../knowledge-hub.html">Knowledge Hub</a><span>/</span>
+        <a href="../agl-visual-encyclopedia.html">AGL Visual Encyclopedia</a><span>/</span>
+        <span class="current">LED Driver and Thyristor CCR Flicker</span>
+    </div>
+
+    <main>
+        <div class="container">
+
+            <div class="section-label">
+                AGL Visual Encyclopedia
+                <span class="entry-tag">ENTRY 37 &middot; AGL FIXTURES &amp; PRODUCT ENGINEERING</span>
+            </div>
+
+            <div class="heading-group">
+                <h1>LED driver on a <span class="accent">thyristor CCR</span>: flicker and stroboscopic effects</h1>
+                <p class="sub">The CCR delivers a chopped current. A halogen filament smooths it, but an LED follows it unless the driver does the smoothing, and the lowest brightness steps are where it shows.</p>
+            </div>
+
+            <div class="diagram-card">
+<svg viewBox="0 0 980 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three panels, each showing the CCR output current above and the LED light output below, as illustrative waveforms. Full step: the current is close to a sine wave and the light is steady. Low step with a driver that does not smooth: the thyristors fire late, the current flows in narrow pulses with gaps, and the light follows the pulses, so flicker and the stroboscopic effect show. Low step with a driver that smooths: the same pulsed current, but an energy store carries the light through the gaps and it is steady again with the same average. Below, a chain: the thyristors fire late at low steps, the loop current is chopped into pulses, the transformer passes the waveform, the LED driver smooths or follows it, and the light is steady or shows flicker and strobing.">
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--grey-dim)"/></marker></defs>
+<text x="40" y="30" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13.5" letter-spacing="1.6" text-anchor="start">CCR OUTPUT CURRENT AND LED LIGHT OUTPUT &#183; ILLUSTRATIVE WAVEFORMS</text>
+<rect x="40" y="48" width="290" height="290" rx="10" fill="rgba(255,255,255,0.03)" stroke="var(--green)" stroke-opacity=".7"/>
+<text x="56" y="72" fill="var(--green)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13.5" letter-spacing="1.3" text-anchor="start">1 &#183; FULL STEP (B5)</text>
+<text x="50" y="129" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" text-anchor="start">AMPS</text>
+<text x="48" y="234" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" text-anchor="start">LIGHT</text>
+<path d="M84,125 H314" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<path d="M84,252 H314" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<path d="M84.0,125.0 L84.3,125.0 L84.6,125.0 L84.9,125.0 L85.2,125.0 L85.4,125.0 L85.7,125.0 L86.0,125.0 L86.3,125.0 L86.6,125.0 L86.9,125.0 L87.2,125.0 L87.5,125.0 L87.7,125.0 L88.0,125.0 L88.3,125.0 L88.6,125.0 L88.9,125.0 L89.2,125.0 L89.5,125.0 L89.8,125.0 L90.0,115.9 L90.3,115.5 L90.6,115.1 L90.9,114.7 L91.2,114.3 L91.5,113.9 L91.8,113.5 L92.1,113.1 L92.3,112.7 L92.6,112.3 L92.9,111.9 L93.2,111.5 L93.5,111.1 L93.8,110.7 L94.1,110.4 L94.4,110.0 L94.7,109.6 L94.9,109.3 L95.2,108.9 L95.5,108.5 L95.8,108.2 L96.1,107.8 L96.4,107.5 L96.7,107.2 L97.0,106.8 L97.2,106.5 L97.5,106.2 L97.8,105.8 L98.1,105.5 L98.4,105.2 L98.7,104.9 L99.0,104.6 L99.3,104.3 L99.5,104.0 L99.8,103.7 L100.1,103.4 L100.4,103.1 L100.7,102.9 L101.0,102.6 L101.3,102.3 L101.6,102.1 L101.8,101.8 L102.1,101.6 L102.4,101.4 L102.7,101.1 L103.0,100.9 L103.3,100.7 L103.6,100.5 L103.9,100.3 L104.2,100.1 L104.4,99.9 L104.7,99.7 L105.0,99.5 L105.3,99.3 L105.6,99.1 L105.9,99.0 L106.2,98.8 L106.5,98.7 L106.7,98.5 L107.0,98.4 L107.3,98.2 L107.6,98.1 L107.9,98.0 L108.2,97.9 L108.5,97.8 L108.8,97.7 L109.0,97.6 L109.3,97.5 L109.6,97.4 L109.9,97.3 L110.2,97.3 L110.5,97.2 L110.8,97.2 L111.1,97.1 L111.3,97.1 L111.6,97.1 L111.9,97.0 L112.2,97.0 L112.5,97.0 L112.8,97.0 L113.1,97.0 L113.4,97.0 L113.6,97.0 L113.9,97.1 L114.2,97.1 L114.5,97.1 L114.8,97.2 L115.1,97.2 L115.4,97.3 L115.7,97.3 L116.0,97.4 L116.2,97.5 L116.5,97.6 L116.8,97.7 L117.1,97.8 L117.4,97.9 L117.7,98.0 L118.0,98.1 L118.3,98.2 L118.5,98.4 L118.8,98.5 L119.1,98.7 L119.4,98.8 L119.7,99.0 L120.0,99.1 L120.3,99.3 L120.6,99.5 L120.8,99.7 L121.1,99.9 L121.4,100.1 L121.7,100.3 L122.0,100.5 L122.3,100.7 L122.6,100.9 L122.9,101.1 L123.1,101.4 L123.4,101.6 L123.7,101.8 L124.0,102.1 L124.3,102.3 L124.6,102.6 L124.9,102.9 L125.2,103.1 L125.5,103.4 L125.7,103.7 L126.0,104.0 L126.3,104.3 L126.6,104.6 L126.9,104.9 L127.2,105.2 L127.5,105.5 L127.8,105.8 L128.0,106.2 L128.3,106.5 L128.6,106.8 L128.9,107.2 L129.2,107.5 L129.5,107.8 L129.8,108.2 L130.1,108.5 L130.3,108.9 L130.6,109.3 L130.9,109.6 L131.2,110.0 L131.5,110.4 L131.8,110.7 L132.1,111.1 L132.4,111.5 L132.6,111.9 L132.9,112.3 L133.2,112.7 L133.5,113.1 L133.8,113.5 L134.1,113.9 L134.4,114.3 L134.7,114.7 L135.0,115.1 L135.2,115.5 L135.5,115.9 L135.8,116.3 L136.1,116.8 L136.4,117.2 L136.7,117.6 L137.0,118.0 L137.3,118.5 L137.5,118.9 L137.8,119.3 L138.1,119.8 L138.4,120.2 L138.7,120.6 L139.0,121.1 L139.3,121.5 L139.6,121.9 L139.8,122.4 L140.1,122.8 L140.4,123.2 L140.7,123.7 L141.0,124.1 L141.3,124.6 L141.6,125.0 L141.9,125.0 L142.1,125.0 L142.4,125.0 L142.7,125.0 L143.0,125.0 L143.3,125.0 L143.6,125.0 L143.9,125.0 L144.2,125.0 L144.5,125.0 L144.7,125.0 L145.0,125.0 L145.3,125.0 L145.6,125.0 L145.9,125.0 L146.2,125.0 L146.5,125.0 L146.8,125.0 L147.0,125.0 L147.3,125.0 L147.6,134.1 L147.9,134.5 L148.2,134.9 L148.5,135.3 L148.8,135.7 L149.1,136.1 L149.3,136.5 L149.6,136.9 L149.9,137.3 L150.2,137.7 L150.5,138.1 L150.8,138.5 L151.1,138.9 L151.4,139.3 L151.6,139.6 L151.9,140.0 L152.2,140.4 L152.5,140.7 L152.8,141.1 L153.1,141.5 L153.4,141.8 L153.7,142.2 L153.9,142.5 L154.2,142.8 L154.5,143.2 L154.8,143.5 L155.1,143.8 L155.4,144.2 L155.7,144.5 L156.0,144.8 L156.3,145.1 L156.5,145.4 L156.8,145.7 L157.1,146.0 L157.4,146.3 L157.7,146.6 L158.0,146.9 L158.3,147.1 L158.6,147.4 L158.8,147.7 L159.1,147.9 L159.4,148.2 L159.7,148.4 L160.0,148.6 L160.3,148.9 L160.6,149.1 L160.9,149.3 L161.1,149.5 L161.4,149.7 L161.7,149.9 L162.0,150.1 L162.3,150.3 L162.6,150.5 L162.9,150.7 L163.2,150.9 L163.4,151.0 L163.7,151.2 L164.0,151.3 L164.3,151.5 L164.6,151.6 L164.9,151.8 L165.2,151.9 L165.5,152.0 L165.8,152.1 L166.0,152.2 L166.3,152.3 L166.6,152.4 L166.9,152.5 L167.2,152.6 L167.5,152.7 L167.8,152.7 L168.1,152.8 L168.3,152.8 L168.6,152.9 L168.9,152.9 L169.2,152.9 L169.5,153.0 L169.8,153.0 L170.1,153.0 L170.4,153.0 L170.6,153.0 L170.9,153.0 L171.2,153.0 L171.5,152.9 L171.8,152.9 L172.1,152.9 L172.4,152.8 L172.7,152.8 L172.9,152.7 L173.2,152.7 L173.5,152.6 L173.8,152.5 L174.1,152.4 L174.4,152.3 L174.7,152.2 L175.0,152.1 L175.3,152.0 L175.5,151.9 L175.8,151.8 L176.1,151.6 L176.4,151.5 L176.7,151.3 L177.0,151.2 L177.3,151.0 L177.6,150.9 L177.8,150.7 L178.1,150.5 L178.4,150.3 L178.7,150.1 L179.0,149.9 L179.3,149.7 L179.6,149.5 L179.9,149.3 L180.1,149.1 L180.4,148.9 L180.7,148.6 L181.0,148.4 L181.3,148.2 L181.6,147.9 L181.9,147.7 L182.2,147.4 L182.4,147.1 L182.7,146.9 L183.0,146.6 L183.3,146.3 L183.6,146.0 L183.9,145.7 L184.2,145.4 L184.5,145.1 L184.8,144.8 L185.0,144.5 L185.3,144.2 L185.6,143.8 L185.9,143.5 L186.2,143.2 L186.5,142.8 L186.8,142.5 L187.1,142.2 L187.3,141.8 L187.6,141.5 L187.9,141.1 L188.2,140.7 L188.5,140.4 L188.8,140.0 L189.1,139.6 L189.4,139.3 L189.6,138.9 L189.9,138.5 L190.2,138.1 L190.5,137.7 L190.8,137.3 L191.1,136.9 L191.4,136.5 L191.7,136.1 L191.9,135.7 L192.2,135.3 L192.5,134.9 L192.8,134.5 L193.1,134.1 L193.4,133.7 L193.7,133.2 L194.0,132.8 L194.3,132.4 L194.5,132.0 L194.8,131.5 L195.1,131.1 L195.4,130.7 L195.7,130.2 L196.0,129.8 L196.3,129.4 L196.6,128.9 L196.8,128.5 L197.1,128.1 L197.4,127.6 L197.7,127.2 L198.0,126.8 L198.3,126.3 L198.6,125.9 L198.9,125.4 L199.1,125.0 L199.4,125.0 L199.7,125.0 L200.0,125.0 L200.3,125.0 L200.6,125.0 L200.9,125.0 L201.2,125.0 L201.4,125.0 L201.7,125.0 L202.0,125.0 L202.3,125.0 L202.6,125.0 L202.9,125.0 L203.2,125.0 L203.5,125.0 L203.7,125.0 L204.0,125.0 L204.3,125.0 L204.6,125.0 L204.9,125.0 L205.2,115.9 L205.5,115.5 L205.8,115.1 L206.1,114.7 L206.3,114.3 L206.6,113.9 L206.9,113.5 L207.2,113.1 L207.5,112.7 L207.8,112.3 L208.1,111.9 L208.4,111.5 L208.6,111.1 L208.9,110.7 L209.2,110.4 L209.5,110.0 L209.8,109.6 L210.1,109.3 L210.4,108.9 L210.7,108.5 L210.9,108.2 L211.2,107.8 L211.5,107.5 L211.8,107.2 L212.1,106.8 L212.4,106.5 L212.7,106.2 L213.0,105.8 L213.2,105.5 L213.5,105.2 L213.8,104.9 L214.1,104.6 L214.4,104.3 L214.7,104.0 L215.0,103.7 L215.3,103.4 L215.6,103.1 L215.8,102.9 L216.1,102.6 L216.4,102.3 L216.7,102.1 L217.0,101.8 L217.3,101.6 L217.6,101.4 L217.9,101.1 L218.1,100.9 L218.4,100.7 L218.7,100.5 L219.0,100.3 L219.3,100.1 L219.6,99.9 L219.9,99.7 L220.2,99.5 L220.4,99.3 L220.7,99.1 L221.0,99.0 L221.3,98.8 L221.6,98.7 L221.9,98.5 L222.2,98.4 L222.5,98.2 L222.7,98.1 L223.0,98.0 L223.3,97.9 L223.6,97.8 L223.9,97.7 L224.2,97.6 L224.5,97.5 L224.8,97.4 L225.1,97.3 L225.3,97.3 L225.6,97.2 L225.9,97.2 L226.2,97.1 L226.5,97.1 L226.8,97.1 L227.1,97.0 L227.4,97.0 L227.6,97.0 L227.9,97.0 L228.2,97.0 L228.5,97.0 L228.8,97.0 L229.1,97.1 L229.4,97.1 L229.7,97.1 L229.9,97.2 L230.2,97.2 L230.5,97.3 L230.8,97.3 L231.1,97.4 L231.4,97.5 L231.7,97.6 L232.0,97.7 L232.2,97.8 L232.5,97.9 L232.8,98.0 L233.1,98.1 L233.4,98.2 L233.7,98.4 L234.0,98.5 L234.3,98.7 L234.6,98.8 L234.8,99.0 L235.1,99.1 L235.4,99.3 L235.7,99.5 L236.0,99.7 L236.3,99.9 L236.6,100.1 L236.9,100.3 L237.1,100.5 L237.4,100.7 L237.7,100.9 L238.0,101.1 L238.3,101.4 L238.6,101.6 L238.9,101.8 L239.2,102.1 L239.4,102.3 L239.7,102.6 L240.0,102.9 L240.3,103.1 L240.6,103.4 L240.9,103.7 L241.2,104.0 L241.5,104.3 L241.7,104.6 L242.0,104.9 L242.3,105.2 L242.6,105.5 L242.9,105.8 L243.2,106.2 L243.5,106.5 L243.8,106.8 L244.1,107.2 L244.3,107.5 L244.6,107.8 L244.9,108.2 L245.2,108.5 L245.5,108.9 L245.8,109.3 L246.1,109.6 L246.4,110.0 L246.6,110.4 L246.9,110.7 L247.2,111.1 L247.5,111.5 L247.8,111.9 L248.1,112.3 L248.4,112.7 L248.7,113.1 L248.9,113.5 L249.2,113.9 L249.5,114.3 L249.8,114.7 L250.1,115.1 L250.4,115.5 L250.7,115.9 L251.0,116.3 L251.2,116.8 L251.5,117.2 L251.8,117.6 L252.1,118.0 L252.4,118.5 L252.7,118.9 L253.0,119.3 L253.3,119.8 L253.5,120.2 L253.8,120.6 L254.1,121.1 L254.4,121.5 L254.7,121.9 L255.0,122.4 L255.3,122.8 L255.6,123.2 L255.9,123.7 L256.1,124.1 L256.4,124.6 L256.7,125.0 L257.0,125.0 L257.3,125.0 L257.6,125.0 L257.9,125.0 L258.2,125.0 L258.4,125.0 L258.7,125.0 L259.0,125.0 L259.3,125.0 L259.6,125.0 L259.9,125.0 L260.2,125.0 L260.5,125.0 L260.7,125.0 L261.0,125.0 L261.3,125.0 L261.6,125.0 L261.9,125.0 L262.2,125.0 L262.5,125.0 L262.8,134.1 L263.0,134.5 L263.3,134.9 L263.6,135.3 L263.9,135.7 L264.2,136.1 L264.5,136.5 L264.8,136.9 L265.1,137.3 L265.4,137.7 L265.6,138.1 L265.9,138.5 L266.2,138.9 L266.5,139.3 L266.8,139.6 L267.1,140.0 L267.4,140.4 L267.7,140.7 L267.9,141.1 L268.2,141.5 L268.5,141.8 L268.8,142.2 L269.1,142.5 L269.4,142.8 L269.7,143.2 L270.0,143.5 L270.2,143.8 L270.5,144.2 L270.8,144.5 L271.1,144.8 L271.4,145.1 L271.7,145.4 L272.0,145.7 L272.3,146.0 L272.5,146.3 L272.8,146.6 L273.1,146.9 L273.4,147.1 L273.7,147.4 L274.0,147.7 L274.3,147.9 L274.6,148.2 L274.9,148.4 L275.1,148.6 L275.4,148.9 L275.7,149.1 L276.0,149.3 L276.3,149.5 L276.6,149.7 L276.9,149.9 L277.2,150.1 L277.4,150.3 L277.7,150.5 L278.0,150.7 L278.3,150.9 L278.6,151.0 L278.9,151.2 L279.2,151.3 L279.5,151.5 L279.7,151.6 L280.0,151.8 L280.3,151.9 L280.6,152.0 L280.9,152.1 L281.2,152.2 L281.5,152.3 L281.8,152.4 L282.0,152.5 L282.3,152.6 L282.6,152.7 L282.9,152.7 L283.2,152.8 L283.5,152.8 L283.8,152.9 L284.1,152.9 L284.4,152.9 L284.6,153.0 L284.9,153.0 L285.2,153.0 L285.5,153.0 L285.8,153.0 L286.1,153.0 L286.4,153.0 L286.7,152.9 L286.9,152.9 L287.2,152.9 L287.5,152.8 L287.8,152.8 L288.1,152.7 L288.4,152.7 L288.7,152.6 L289.0,152.5 L289.2,152.4 L289.5,152.3 L289.8,152.2 L290.1,152.1 L290.4,152.0 L290.7,151.9 L291.0,151.8 L291.3,151.6 L291.5,151.5 L291.8,151.3 L292.1,151.2 L292.4,151.0 L292.7,150.9 L293.0,150.7 L293.3,150.5 L293.6,150.3 L293.8,150.1 L294.1,149.9 L294.4,149.7 L294.7,149.5 L295.0,149.3 L295.3,149.1 L295.6,148.9 L295.9,148.6 L296.2,148.4 L296.4,148.2 L296.7,147.9 L297.0,147.7 L297.3,147.4 L297.6,147.1 L297.9,146.9 L298.2,146.6 L298.5,146.3 L298.7,146.0 L299.0,145.7 L299.3,145.4 L299.6,145.1 L299.9,144.8 L300.2,144.5 L300.5,144.2 L300.8,143.8 L301.0,143.5 L301.3,143.2 L301.6,142.8 L301.9,142.5 L302.2,142.2 L302.5,141.8 L302.8,141.5 L303.1,141.1 L303.3,140.7 L303.6,140.4 L303.9,140.0 L304.2,139.6 L304.5,139.3 L304.8,138.9 L305.1,138.5 L305.4,138.1 L305.7,137.7 L305.9,137.3 L306.2,136.9 L306.5,136.5 L306.8,136.1 L307.1,135.7 L307.4,135.3 L307.7,134.9 L308.0,134.5 L308.2,134.1 L308.5,133.7 L308.8,133.2 L309.1,132.8 L309.4,132.4 L309.7,132.0 L310.0,131.5 L310.3,131.1 L310.5,130.7 L310.8,130.2 L311.1,129.8 L311.4,129.4 L311.7,128.9 L312.0,128.5 L312.3,128.1 L312.6,127.6 L312.8,127.2 L313.1,126.8 L313.4,126.3 L313.7,125.9 L314.0,125.4" stroke="var(--taxi-blue)" stroke-width="2" fill="none"/>
+<path d="M84.0,236.2 L84.3,236.3 L84.6,236.3 L84.9,236.4 L85.2,236.5 L85.4,236.5 L85.7,236.6 L86.0,236.6 L86.3,236.7 L86.6,236.8 L86.9,236.8 L87.2,236.9 L87.5,236.9 L87.7,237.0 L88.0,237.1 L88.3,237.1 L88.6,237.2 L88.9,237.2 L89.2,237.3 L89.5,237.3 L89.8,237.4 L90.0,237.4 L90.3,237.4 L90.6,237.5 L90.9,237.5 L91.2,237.5 L91.5,237.5 L91.8,237.5 L92.1,237.5 L92.3,237.6 L92.6,237.6 L92.9,237.6 L93.2,237.6 L93.5,237.6 L93.8,237.6 L94.1,237.6 L94.4,237.6 L94.7,237.6 L94.9,237.6 L95.2,237.6 L95.5,237.6 L95.8,237.6 L96.1,237.6 L96.4,237.6 L96.7,237.6 L97.0,237.6 L97.2,237.6 L97.5,237.5 L97.8,237.5 L98.1,237.5 L98.4,237.5 L98.7,237.5 L99.0,237.5 L99.3,237.5 L99.5,237.4 L99.8,237.4 L100.1,237.4 L100.4,237.4 L100.7,237.4 L101.0,237.3 L101.3,237.3 L101.6,237.3 L101.8,237.3 L102.1,237.2 L102.4,237.2 L102.7,237.2 L103.0,237.1 L103.3,237.1 L103.6,237.1 L103.9,237.1 L104.2,237.0 L104.4,237.0 L104.7,237.0 L105.0,236.9 L105.3,236.9 L105.6,236.9 L105.9,236.8 L106.2,236.8 L106.5,236.8 L106.7,236.7 L107.0,236.7 L107.3,236.7 L107.6,236.6 L107.9,236.6 L108.2,236.5 L108.5,236.5 L108.8,236.5 L109.0,236.4 L109.3,236.4 L109.6,236.4 L109.9,236.3 L110.2,236.3 L110.5,236.2 L110.8,236.2 L111.1,236.2 L111.3,236.1 L111.6,236.1 L111.9,236.1 L112.2,236.0 L112.5,236.0 L112.8,235.9 L113.1,235.9 L113.4,235.9 L113.6,235.8 L113.9,235.8 L114.2,235.8 L114.5,235.7 L114.8,235.7 L115.1,235.6 L115.4,235.6 L115.7,235.6 L116.0,235.5 L116.2,235.5 L116.5,235.5 L116.8,235.4 L117.1,235.4 L117.4,235.4 L117.7,235.3 L118.0,235.3 L118.3,235.3 L118.5,235.3 L118.8,235.2 L119.1,235.2 L119.4,235.2 L119.7,235.1 L120.0,235.1 L120.3,235.1 L120.6,235.1 L120.8,235.0 L121.1,235.0 L121.4,235.0 L121.7,235.0 L122.0,234.9 L122.3,234.9 L122.6,234.9 L122.9,234.9 L123.1,234.9 L123.4,234.9 L123.7,234.8 L124.0,234.8 L124.3,234.8 L124.6,234.8 L124.9,234.8 L125.2,234.8 L125.5,234.8 L125.7,234.7 L126.0,234.7 L126.3,234.7 L126.6,234.7 L126.9,234.7 L127.2,234.7 L127.5,234.7 L127.8,234.7 L128.0,234.7 L128.3,234.7 L128.6,234.7 L128.9,234.7 L129.2,234.7 L129.5,234.7 L129.8,234.7 L130.1,234.7 L130.3,234.8 L130.6,234.8 L130.9,234.8 L131.2,234.8 L131.5,234.8 L131.8,234.8 L132.1,234.8 L132.4,234.9 L132.6,234.9 L132.9,234.9 L133.2,234.9 L133.5,234.9 L133.8,235.0 L134.1,235.0 L134.4,235.0 L134.7,235.0 L135.0,235.1 L135.2,235.1 L135.5,235.1 L135.8,235.2 L136.1,235.2 L136.4,235.3 L136.7,235.3 L137.0,235.3 L137.3,235.4 L137.5,235.4 L137.8,235.5 L138.1,235.5 L138.4,235.5 L138.7,235.6 L139.0,235.6 L139.3,235.7 L139.6,235.7 L139.8,235.8 L140.1,235.9 L140.4,235.9 L140.7,236.0 L141.0,236.0 L141.3,236.1 L141.6,236.1 L141.9,236.2 L142.1,236.3 L142.4,236.3 L142.7,236.4 L143.0,236.4 L143.3,236.5 L143.6,236.6 L143.9,236.6 L144.2,236.7 L144.5,236.7 L144.7,236.8 L145.0,236.9 L145.3,236.9 L145.6,237.0 L145.9,237.0 L146.2,237.1 L146.5,237.2 L146.8,237.2 L147.0,237.3 L147.3,237.3 L147.6,237.3 L147.9,237.4 L148.2,237.4 L148.5,237.4 L148.8,237.4 L149.1,237.4 L149.3,237.5 L149.6,237.5 L149.9,237.5 L150.2,237.5 L150.5,237.5 L150.8,237.5 L151.1,237.5 L151.4,237.5 L151.6,237.5 L151.9,237.5 L152.2,237.5 L152.5,237.5 L152.8,237.5 L153.1,237.5 L153.4,237.5 L153.7,237.5 L153.9,237.5 L154.2,237.5 L154.5,237.5 L154.8,237.5 L155.1,237.5 L155.4,237.5 L155.7,237.5 L156.0,237.4 L156.3,237.4 L156.5,237.4 L156.8,237.4 L157.1,237.4 L157.4,237.4 L157.7,237.3 L158.0,237.3 L158.3,237.3 L158.6,237.3 L158.8,237.2 L159.1,237.2 L159.4,237.2 L159.7,237.2 L160.0,237.1 L160.3,237.1 L160.6,237.1 L160.9,237.1 L161.1,237.0 L161.4,237.0 L161.7,237.0 L162.0,236.9 L162.3,236.9 L162.6,236.9 L162.9,236.8 L163.2,236.8 L163.4,236.8 L163.7,236.7 L164.0,236.7 L164.3,236.7 L164.6,236.6 L164.9,236.6 L165.2,236.6 L165.5,236.5 L165.8,236.5 L166.0,236.4 L166.3,236.4 L166.6,236.4 L166.9,236.3 L167.2,236.3 L167.5,236.3 L167.8,236.2 L168.1,236.2 L168.3,236.1 L168.6,236.1 L168.9,236.1 L169.2,236.0 L169.5,236.0 L169.8,236.0 L170.1,235.9 L170.4,235.9 L170.6,235.8 L170.9,235.8 L171.2,235.8 L171.5,235.7 L171.8,235.7 L172.1,235.7 L172.4,235.6 L172.7,235.6 L172.9,235.6 L173.2,235.5 L173.5,235.5 L173.8,235.5 L174.1,235.4 L174.4,235.4 L174.7,235.4 L175.0,235.3 L175.3,235.3 L175.5,235.3 L175.8,235.2 L176.1,235.2 L176.4,235.2 L176.7,235.1 L177.0,235.1 L177.3,235.1 L177.6,235.1 L177.8,235.0 L178.1,235.0 L178.4,235.0 L178.7,235.0 L179.0,234.9 L179.3,234.9 L179.6,234.9 L179.9,234.9 L180.1,234.9 L180.4,234.8 L180.7,234.8 L181.0,234.8 L181.3,234.8 L181.6,234.8 L181.9,234.8 L182.2,234.7 L182.4,234.7 L182.7,234.7 L183.0,234.7 L183.3,234.7 L183.6,234.7 L183.9,234.7 L184.2,234.7 L184.5,234.7 L184.8,234.7 L185.0,234.7 L185.3,234.7 L185.6,234.7 L185.9,234.7 L186.2,234.7 L186.5,234.7 L186.8,234.7 L187.1,234.7 L187.3,234.7 L187.6,234.7 L187.9,234.7 L188.2,234.7 L188.5,234.7 L188.8,234.7 L189.1,234.8 L189.4,234.8 L189.6,234.8 L189.9,234.8 L190.2,234.8 L190.5,234.9 L190.8,234.9 L191.1,234.9 L191.4,234.9 L191.7,235.0 L191.9,235.0 L192.2,235.0 L192.5,235.0 L192.8,235.1 L193.1,235.1 L193.4,235.1 L193.7,235.2 L194.0,235.2 L194.3,235.2 L194.5,235.3 L194.8,235.3 L195.1,235.4 L195.4,235.4 L195.7,235.5 L196.0,235.5 L196.3,235.6 L196.6,235.6 L196.8,235.7 L197.1,235.7 L197.4,235.8 L197.7,235.8 L198.0,235.9 L198.3,235.9 L198.6,236.0 L198.9,236.0 L199.1,236.1 L199.4,236.2 L199.7,236.2 L200.0,236.3 L200.3,236.4 L200.6,236.4 L200.9,236.5 L201.2,236.5 L201.4,236.6 L201.7,236.7 L202.0,236.7 L202.3,236.8 L202.6,236.8 L202.9,236.9 L203.2,236.9 L203.5,237.0 L203.7,237.1 L204.0,237.1 L204.3,237.2 L204.6,237.2 L204.9,237.3 L205.2,237.3 L205.5,237.3 L205.8,237.4 L206.1,237.4 L206.3,237.4 L206.6,237.4 L206.9,237.4 L207.2,237.4 L207.5,237.5 L207.8,237.5 L208.1,237.5 L208.4,237.5 L208.6,237.5 L208.9,237.5 L209.2,237.5 L209.5,237.5 L209.8,237.5 L210.1,237.5 L210.4,237.5 L210.7,237.5 L210.9,237.5 L211.2,237.5 L211.5,237.5 L211.8,237.5 L212.1,237.5 L212.4,237.5 L212.7,237.4 L213.0,237.4 L213.2,237.4 L213.5,237.4 L213.8,237.4 L214.1,237.4 L214.4,237.4 L214.7,237.3 L215.0,237.3 L215.3,237.3 L215.6,237.3 L215.8,237.3 L216.1,237.2 L216.4,237.2 L216.7,237.2 L217.0,237.2 L217.3,237.1 L217.6,237.1 L217.9,237.1 L218.1,237.1 L218.4,237.0 L218.7,237.0 L219.0,237.0 L219.3,236.9 L219.6,236.9 L219.9,236.9 L220.2,236.8 L220.4,236.8 L220.7,236.8 L221.0,236.7 L221.3,236.7 L221.6,236.7 L221.9,236.6 L222.2,236.6 L222.5,236.6 L222.7,236.5 L223.0,236.5 L223.3,236.5 L223.6,236.4 L223.9,236.4 L224.2,236.3 L224.5,236.3 L224.8,236.3 L225.1,236.2 L225.3,236.2 L225.6,236.2 L225.9,236.1 L226.2,236.1 L226.5,236.0 L226.8,236.0 L227.1,236.0 L227.4,235.9 L227.6,235.9 L227.9,235.9 L228.2,235.8 L228.5,235.8 L228.8,235.7 L229.1,235.7 L229.4,235.7 L229.7,235.6 L229.9,235.6 L230.2,235.6 L230.5,235.5 L230.8,235.5 L231.1,235.5 L231.4,235.4 L231.7,235.4 L232.0,235.4 L232.2,235.3 L232.5,235.3 L232.8,235.3 L233.1,235.2 L233.4,235.2 L233.7,235.2 L234.0,235.1 L234.3,235.1 L234.6,235.1 L234.8,235.1 L235.1,235.0 L235.4,235.0 L235.7,235.0 L236.0,235.0 L236.3,234.9 L236.6,234.9 L236.9,234.9 L237.1,234.9 L237.4,234.9 L237.7,234.8 L238.0,234.8 L238.3,234.8 L238.6,234.8 L238.9,234.8 L239.2,234.8 L239.4,234.7 L239.7,234.7 L240.0,234.7 L240.3,234.7 L240.6,234.7 L240.9,234.7 L241.2,234.7 L241.5,234.7 L241.7,234.7 L242.0,234.7 L242.3,234.7 L242.6,234.7 L242.9,234.7 L243.2,234.7 L243.5,234.7 L243.8,234.7 L244.1,234.7 L244.3,234.7 L244.6,234.7 L244.9,234.7 L245.2,234.7 L245.5,234.7 L245.8,234.7 L246.1,234.7 L246.4,234.7 L246.6,234.7 L246.9,234.8 L247.2,234.8 L247.5,234.8 L247.8,234.8 L248.1,234.8 L248.4,234.9 L248.7,234.9 L248.9,234.9 L249.2,234.9 L249.5,235.0 L249.8,235.0 L250.1,235.0 L250.4,235.1 L250.7,235.1 L251.0,235.1 L251.2,235.2 L251.5,235.2 L251.8,235.2 L252.1,235.3 L252.4,235.3 L252.7,235.4 L253.0,235.4 L253.3,235.4 L253.5,235.5 L253.8,235.5 L254.1,235.6 L254.4,235.6 L254.7,235.7 L255.0,235.7 L255.3,235.8 L255.6,235.9 L255.9,235.9 L256.1,236.0 L256.4,236.0 L256.7,236.1 L257.0,236.2 L257.3,236.2 L257.6,236.3 L257.9,236.3 L258.2,236.4 L258.4,236.5 L258.7,236.5 L259.0,236.6 L259.3,236.6 L259.6,236.7 L259.9,236.8 L260.2,236.8 L260.5,236.9 L260.7,236.9 L261.0,237.0 L261.3,237.0 L261.6,237.1 L261.9,237.2 L262.2,237.2 L262.5,237.3 L262.8,237.3 L263.0,237.3 L263.3,237.3 L263.6,237.4 L263.9,237.4 L264.2,237.4 L264.5,237.4 L264.8,237.4 L265.1,237.4 L265.4,237.4 L265.6,237.5 L265.9,237.5 L266.2,237.5 L266.5,237.5 L266.8,237.5 L267.1,237.5 L267.4,237.5 L267.7,237.5 L267.9,237.5 L268.2,237.5 L268.5,237.5 L268.8,237.5 L269.1,237.5 L269.4,237.5 L269.7,237.5 L270.0,237.4 L270.2,237.4 L270.5,237.4 L270.8,237.4 L271.1,237.4 L271.4,237.4 L271.7,237.4 L272.0,237.3 L272.3,237.3 L272.5,237.3 L272.8,237.3 L273.1,237.3 L273.4,237.2 L273.7,237.2 L274.0,237.2 L274.3,237.2 L274.6,237.1 L274.9,237.1 L275.1,237.1 L275.4,237.1 L275.7,237.0 L276.0,237.0 L276.3,237.0 L276.6,237.0 L276.9,236.9 L277.2,236.9 L277.4,236.9 L277.7,236.8 L278.0,236.8 L278.3,236.8 L278.6,236.7 L278.9,236.7 L279.2,236.7 L279.5,236.6 L279.7,236.6 L280.0,236.6 L280.3,236.5 L280.6,236.5 L280.9,236.4 L281.2,236.4 L281.5,236.4 L281.8,236.3 L282.0,236.3 L282.3,236.3 L282.6,236.2 L282.9,236.2 L283.2,236.1 L283.5,236.1 L283.8,236.1 L284.1,236.0 L284.4,236.0 L284.6,236.0 L284.9,235.9 L285.2,235.9 L285.5,235.8 L285.8,235.8 L286.1,235.8 L286.4,235.7 L286.7,235.7 L286.9,235.7 L287.2,235.6 L287.5,235.6 L287.8,235.6 L288.1,235.5 L288.4,235.5 L288.7,235.5 L289.0,235.4 L289.2,235.4 L289.5,235.4 L289.8,235.3 L290.1,235.3 L290.4,235.3 L290.7,235.2 L291.0,235.2 L291.3,235.2 L291.5,235.1 L291.8,235.1 L292.1,235.1 L292.4,235.1 L292.7,235.0 L293.0,235.0 L293.3,235.0 L293.6,235.0 L293.8,234.9 L294.1,234.9 L294.4,234.9 L294.7,234.9 L295.0,234.8 L295.3,234.8 L295.6,234.8 L295.9,234.8 L296.2,234.8 L296.4,234.8 L296.7,234.7 L297.0,234.7 L297.3,234.7 L297.6,234.7 L297.9,234.7 L298.2,234.7 L298.5,234.7 L298.7,234.7 L299.0,234.7 L299.3,234.7 L299.6,234.6 L299.9,234.6 L300.2,234.6 L300.5,234.6 L300.8,234.6 L301.0,234.6 L301.3,234.6 L301.6,234.6 L301.9,234.7 L302.2,234.7 L302.5,234.7 L302.8,234.7 L303.1,234.7 L303.3,234.7 L303.6,234.7 L303.9,234.7 L304.2,234.7 L304.5,234.8 L304.8,234.8 L305.1,234.8 L305.4,234.8 L305.7,234.8 L305.9,234.8 L306.2,234.9 L306.5,234.9 L306.8,234.9 L307.1,235.0 L307.4,235.0 L307.7,235.0 L308.0,235.0 L308.2,235.1 L308.5,235.1 L308.8,235.1 L309.1,235.2 L309.4,235.2 L309.7,235.3 L310.0,235.3 L310.3,235.3 L310.5,235.4 L310.8,235.4 L311.1,235.5 L311.4,235.5 L311.7,235.6 L312.0,235.6 L312.3,235.7 L312.6,235.7 L312.8,235.8 L313.1,235.8 L313.4,235.9 L313.7,236.0 L314.0,236.0" stroke="var(--green)" stroke-width="2" fill="none"/>
+<text x="185" y="286" fill="var(--green)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="14" letter-spacing="1.3" text-anchor="middle">STEADY LIGHT</text>
+<text x="185" y="304" fill="var(--white)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="11.5" letter-spacing="0.9" text-anchor="middle">CURRENT CLOSE TO A SINE WAVE</text>
+<text x="185" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">ANY GOOD DRIVER COPES</text>
+<rect x="345" y="48" width="290" height="290" rx="10" fill="rgba(255,255,255,0.03)" stroke="var(--red)" stroke-opacity=".7"/>
+<text x="361" y="72" fill="var(--red)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13.5" letter-spacing="1.3" text-anchor="start">2 &#183; LOW STEP, DRIVER NOT SMOOTHING</text>
+<text x="355" y="129" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" text-anchor="start">AMPS</text>
+<text x="353" y="234" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" text-anchor="start">LIGHT</text>
+<path d="M389,125 H619" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<path d="M389,252 H619" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<path d="M389.0,125.0 L389.3,125.0 L389.6,125.0 L389.9,125.0 L390.2,125.0 L390.4,125.0 L390.7,125.0 L391.0,125.0 L391.3,125.0 L391.6,125.0 L391.9,125.0 L392.2,125.0 L392.5,125.0 L392.7,125.0 L393.0,125.0 L393.3,125.0 L393.6,125.0 L393.9,125.0 L394.2,125.0 L394.5,125.0 L394.8,125.0 L395.0,125.0 L395.3,125.0 L395.6,125.0 L395.9,125.0 L396.2,125.0 L396.5,125.0 L396.8,125.0 L397.1,125.0 L397.3,125.0 L397.6,125.0 L397.9,125.0 L398.2,125.0 L398.5,125.0 L398.8,125.0 L399.1,125.0 L399.4,125.0 L399.7,125.0 L399.9,125.0 L400.2,125.0 L400.5,125.0 L400.8,125.0 L401.1,125.0 L401.4,125.0 L401.7,125.0 L402.0,125.0 L402.2,125.0 L402.5,125.0 L402.8,125.0 L403.1,125.0 L403.4,125.0 L403.7,125.0 L404.0,125.0 L404.3,125.0 L404.5,125.0 L404.8,125.0 L405.1,125.0 L405.4,125.0 L405.7,125.0 L406.0,125.0 L406.3,125.0 L406.6,125.0 L406.8,125.0 L407.1,125.0 L407.4,125.0 L407.7,125.0 L408.0,125.0 L408.3,125.0 L408.6,125.0 L408.9,125.0 L409.2,125.0 L409.4,125.0 L409.7,125.0 L410.0,125.0 L410.3,125.0 L410.6,125.0 L410.9,125.0 L411.2,125.0 L411.5,125.0 L411.7,125.0 L412.0,125.0 L412.3,125.0 L412.6,125.0 L412.9,125.0 L413.2,125.0 L413.5,125.0 L413.8,125.0 L414.0,125.0 L414.3,125.0 L414.6,125.0 L414.9,87.5 L415.2,87.4 L415.5,87.3 L415.8,87.2 L416.1,87.2 L416.3,87.1 L416.6,87.1 L416.9,87.0 L417.2,87.0 L417.5,87.0 L417.8,87.0 L418.1,87.0 L418.4,87.0 L418.6,87.0 L418.9,87.1 L419.2,87.1 L419.5,87.2 L419.8,87.2 L420.1,87.3 L420.4,87.4 L420.7,87.5 L421.0,87.6 L421.2,87.7 L421.5,87.8 L421.8,87.9 L422.1,88.0 L422.4,88.2 L422.7,88.3 L423.0,88.5 L423.3,88.7 L423.5,88.9 L423.8,89.0 L424.1,89.2 L424.4,89.5 L424.7,89.7 L425.0,89.9 L425.3,90.1 L425.6,90.4 L425.8,90.6 L426.1,90.9 L426.4,91.1 L426.7,91.4 L427.0,91.7 L427.3,92.0 L427.6,92.3 L427.9,92.6 L428.1,92.9 L428.4,93.2 L428.7,93.6 L429.0,93.9 L429.3,94.3 L429.6,94.6 L429.9,95.0 L430.2,95.3 L430.5,95.7 L430.7,96.1 L431.0,96.5 L431.3,96.9 L431.6,97.3 L431.9,97.7 L432.2,98.1 L432.5,98.6 L432.8,99.0 L433.0,99.4 L433.3,99.9 L433.6,100.3 L433.9,100.8 L434.2,101.2 L434.5,101.7 L434.8,102.2 L435.1,102.7 L435.3,103.1 L435.6,103.6 L435.9,104.1 L436.2,104.6 L436.5,105.1 L436.8,105.7 L437.1,106.2 L437.4,106.7 L437.6,107.2 L437.9,107.7 L438.2,108.3 L438.5,108.8 L438.8,109.4 L439.1,109.9 L439.4,110.5 L439.7,111.0 L440.0,111.6 L440.2,112.1 L440.5,112.7 L440.8,113.3 L441.1,113.8 L441.4,114.4 L441.7,115.0 L442.0,115.5 L442.3,116.1 L442.5,116.7 L442.8,117.3 L443.1,117.9 L443.4,118.5 L443.7,119.1 L444.0,119.6 L444.3,120.2 L444.6,120.8 L444.8,121.4 L445.1,122.0 L445.4,122.6 L445.7,123.2 L446.0,123.8 L446.3,124.4 L446.6,125.0 L446.9,125.0 L447.1,125.0 L447.4,125.0 L447.7,125.0 L448.0,125.0 L448.3,125.0 L448.6,125.0 L448.9,125.0 L449.2,125.0 L449.5,125.0 L449.7,125.0 L450.0,125.0 L450.3,125.0 L450.6,125.0 L450.9,125.0 L451.2,125.0 L451.5,125.0 L451.8,125.0 L452.0,125.0 L452.3,125.0 L452.6,125.0 L452.9,125.0 L453.2,125.0 L453.5,125.0 L453.8,125.0 L454.1,125.0 L454.3,125.0 L454.6,125.0 L454.9,125.0 L455.2,125.0 L455.5,125.0 L455.8,125.0 L456.1,125.0 L456.4,125.0 L456.6,125.0 L456.9,125.0 L457.2,125.0 L457.5,125.0 L457.8,125.0 L458.1,125.0 L458.4,125.0 L458.7,125.0 L458.9,125.0 L459.2,125.0 L459.5,125.0 L459.8,125.0 L460.1,125.0 L460.4,125.0 L460.7,125.0 L461.0,125.0 L461.3,125.0 L461.5,125.0 L461.8,125.0 L462.1,125.0 L462.4,125.0 L462.7,125.0 L463.0,125.0 L463.3,125.0 L463.6,125.0 L463.8,125.0 L464.1,125.0 L464.4,125.0 L464.7,125.0 L465.0,125.0 L465.3,125.0 L465.6,125.0 L465.9,125.0 L466.1,125.0 L466.4,125.0 L466.7,125.0 L467.0,125.0 L467.3,125.0 L467.6,125.0 L467.9,125.0 L468.2,125.0 L468.4,125.0 L468.7,125.0 L469.0,125.0 L469.3,125.0 L469.6,125.0 L469.9,125.0 L470.2,125.0 L470.5,125.0 L470.8,125.0 L471.0,125.0 L471.3,125.0 L471.6,125.0 L471.9,125.0 L472.2,125.0 L472.5,162.5 L472.8,162.6 L473.1,162.7 L473.3,162.8 L473.6,162.8 L473.9,162.9 L474.2,162.9 L474.5,163.0 L474.8,163.0 L475.1,163.0 L475.4,163.0 L475.6,163.0 L475.9,163.0 L476.2,163.0 L476.5,162.9 L476.8,162.9 L477.1,162.8 L477.4,162.8 L477.7,162.7 L477.9,162.6 L478.2,162.5 L478.5,162.4 L478.8,162.3 L479.1,162.2 L479.4,162.1 L479.7,162.0 L480.0,161.8 L480.3,161.7 L480.5,161.5 L480.8,161.3 L481.1,161.1 L481.4,161.0 L481.7,160.8 L482.0,160.5 L482.3,160.3 L482.6,160.1 L482.8,159.9 L483.1,159.6 L483.4,159.4 L483.7,159.1 L484.0,158.9 L484.3,158.6 L484.6,158.3 L484.9,158.0 L485.1,157.7 L485.4,157.4 L485.7,157.1 L486.0,156.8 L486.3,156.4 L486.6,156.1 L486.9,155.7 L487.2,155.4 L487.4,155.0 L487.7,154.7 L488.0,154.3 L488.3,153.9 L488.6,153.5 L488.9,153.1 L489.2,152.7 L489.5,152.3 L489.8,151.9 L490.0,151.4 L490.3,151.0 L490.6,150.6 L490.9,150.1 L491.2,149.7 L491.5,149.2 L491.8,148.8 L492.1,148.3 L492.3,147.8 L492.6,147.3 L492.9,146.9 L493.2,146.4 L493.5,145.9 L493.8,145.4 L494.1,144.9 L494.4,144.3 L494.6,143.8 L494.9,143.3 L495.2,142.8 L495.5,142.3 L495.8,141.7 L496.1,141.2 L496.4,140.6 L496.7,140.1 L496.9,139.5 L497.2,139.0 L497.5,138.4 L497.8,137.9 L498.1,137.3 L498.4,136.7 L498.7,136.2 L499.0,135.6 L499.3,135.0 L499.5,134.5 L499.8,133.9 L500.1,133.3 L500.4,132.7 L500.7,132.1 L501.0,131.5 L501.3,130.9 L501.6,130.4 L501.8,129.8 L502.1,129.2 L502.4,128.6 L502.7,128.0 L503.0,127.4 L503.3,126.8 L503.6,126.2 L503.9,125.6 L504.1,125.0 L504.4,125.0 L504.7,125.0 L505.0,125.0 L505.3,125.0 L505.6,125.0 L505.9,125.0 L506.2,125.0 L506.4,125.0 L506.7,125.0 L507.0,125.0 L507.3,125.0 L507.6,125.0 L507.9,125.0 L508.2,125.0 L508.5,125.0 L508.7,125.0 L509.0,125.0 L509.3,125.0 L509.6,125.0 L509.9,125.0 L510.2,125.0 L510.5,125.0 L510.8,125.0 L511.1,125.0 L511.3,125.0 L511.6,125.0 L511.9,125.0 L512.2,125.0 L512.5,125.0 L512.8,125.0 L513.1,125.0 L513.4,125.0 L513.6,125.0 L513.9,125.0 L514.2,125.0 L514.5,125.0 L514.8,125.0 L515.1,125.0 L515.4,125.0 L515.7,125.0 L515.9,125.0 L516.2,125.0 L516.5,125.0 L516.8,125.0 L517.1,125.0 L517.4,125.0 L517.7,125.0 L518.0,125.0 L518.2,125.0 L518.5,125.0 L518.8,125.0 L519.1,125.0 L519.4,125.0 L519.7,125.0 L520.0,125.0 L520.3,125.0 L520.6,125.0 L520.8,125.0 L521.1,125.0 L521.4,125.0 L521.7,125.0 L522.0,125.0 L522.3,125.0 L522.6,125.0 L522.9,125.0 L523.1,125.0 L523.4,125.0 L523.7,125.0 L524.0,125.0 L524.3,125.0 L524.6,125.0 L524.9,125.0 L525.2,125.0 L525.4,125.0 L525.7,125.0 L526.0,125.0 L526.3,125.0 L526.6,125.0 L526.9,125.0 L527.2,125.0 L527.5,125.0 L527.7,125.0 L528.0,125.0 L528.3,125.0 L528.6,125.0 L528.9,125.0 L529.2,125.0 L529.5,125.0 L529.8,125.0 L530.1,125.0 L530.3,87.4 L530.6,87.3 L530.9,87.2 L531.2,87.2 L531.5,87.1 L531.8,87.1 L532.1,87.0 L532.4,87.0 L532.6,87.0 L532.9,87.0 L533.2,87.0 L533.5,87.0 L533.8,87.0 L534.1,87.1 L534.4,87.1 L534.7,87.2 L534.9,87.2 L535.2,87.3 L535.5,87.4 L535.8,87.5 L536.1,87.6 L536.4,87.7 L536.7,87.8 L537.0,87.9 L537.2,88.0 L537.5,88.2 L537.8,88.3 L538.1,88.5 L538.4,88.7 L538.7,88.9 L539.0,89.0 L539.3,89.2 L539.6,89.5 L539.8,89.7 L540.1,89.9 L540.4,90.1 L540.7,90.4 L541.0,90.6 L541.3,90.9 L541.6,91.1 L541.9,91.4 L542.1,91.7 L542.4,92.0 L542.7,92.3 L543.0,92.6 L543.3,92.9 L543.6,93.2 L543.9,93.6 L544.2,93.9 L544.4,94.3 L544.7,94.6 L545.0,95.0 L545.3,95.3 L545.6,95.7 L545.9,96.1 L546.2,96.5 L546.5,96.9 L546.7,97.3 L547.0,97.7 L547.3,98.1 L547.6,98.6 L547.9,99.0 L548.2,99.4 L548.5,99.9 L548.8,100.3 L549.1,100.8 L549.3,101.2 L549.6,101.7 L549.9,102.2 L550.2,102.7 L550.5,103.1 L550.8,103.6 L551.1,104.1 L551.4,104.6 L551.6,105.1 L551.9,105.7 L552.2,106.2 L552.5,106.7 L552.8,107.2 L553.1,107.7 L553.4,108.3 L553.7,108.8 L553.9,109.4 L554.2,109.9 L554.5,110.5 L554.8,111.0 L555.1,111.6 L555.4,112.1 L555.7,112.7 L556.0,113.3 L556.2,113.8 L556.5,114.4 L556.8,115.0 L557.1,115.5 L557.4,116.1 L557.7,116.7 L558.0,117.3 L558.3,117.9 L558.5,118.5 L558.8,119.1 L559.1,119.6 L559.4,120.2 L559.7,120.8 L560.0,121.4 L560.3,122.0 L560.6,122.6 L560.9,123.2 L561.1,123.8 L561.4,124.4 L561.7,125.0 L562.0,125.0 L562.3,125.0 L562.6,125.0 L562.9,125.0 L563.2,125.0 L563.4,125.0 L563.7,125.0 L564.0,125.0 L564.3,125.0 L564.6,125.0 L564.9,125.0 L565.2,125.0 L565.5,125.0 L565.7,125.0 L566.0,125.0 L566.3,125.0 L566.6,125.0 L566.9,125.0 L567.2,125.0 L567.5,125.0 L567.8,125.0 L568.0,125.0 L568.3,125.0 L568.6,125.0 L568.9,125.0 L569.2,125.0 L569.5,125.0 L569.8,125.0 L570.1,125.0 L570.4,125.0 L570.6,125.0 L570.9,125.0 L571.2,125.0 L571.5,125.0 L571.8,125.0 L572.1,125.0 L572.4,125.0 L572.7,125.0 L572.9,125.0 L573.2,125.0 L573.5,125.0 L573.8,125.0 L574.1,125.0 L574.4,125.0 L574.7,125.0 L575.0,125.0 L575.2,125.0 L575.5,125.0 L575.8,125.0 L576.1,125.0 L576.4,125.0 L576.7,125.0 L577.0,125.0 L577.3,125.0 L577.5,125.0 L577.8,125.0 L578.1,125.0 L578.4,125.0 L578.7,125.0 L579.0,125.0 L579.3,125.0 L579.6,125.0 L579.9,125.0 L580.1,125.0 L580.4,125.0 L580.7,125.0 L581.0,125.0 L581.3,125.0 L581.6,125.0 L581.9,125.0 L582.2,125.0 L582.4,125.0 L582.7,125.0 L583.0,125.0 L583.3,125.0 L583.6,125.0 L583.9,125.0 L584.2,125.0 L584.5,125.0 L584.7,125.0 L585.0,125.0 L585.3,125.0 L585.6,125.0 L585.9,125.0 L586.2,125.0 L586.5,125.0 L586.8,125.0 L587.0,125.0 L587.3,125.0 L587.6,125.0 L587.9,162.6 L588.2,162.7 L588.5,162.8 L588.8,162.8 L589.1,162.9 L589.4,162.9 L589.6,163.0 L589.9,163.0 L590.2,163.0 L590.5,163.0 L590.8,163.0 L591.1,163.0 L591.4,163.0 L591.7,162.9 L591.9,162.9 L592.2,162.8 L592.5,162.8 L592.8,162.7 L593.1,162.6 L593.4,162.5 L593.7,162.4 L594.0,162.3 L594.2,162.2 L594.5,162.1 L594.8,162.0 L595.1,161.8 L595.4,161.7 L595.7,161.5 L596.0,161.3 L596.3,161.1 L596.5,161.0 L596.8,160.8 L597.1,160.5 L597.4,160.3 L597.7,160.1 L598.0,159.9 L598.3,159.6 L598.6,159.4 L598.8,159.1 L599.1,158.9 L599.4,158.6 L599.7,158.3 L600.0,158.0 L600.3,157.7 L600.6,157.4 L600.9,157.1 L601.2,156.8 L601.4,156.4 L601.7,156.1 L602.0,155.7 L602.3,155.4 L602.6,155.0 L602.9,154.7 L603.2,154.3 L603.5,153.9 L603.7,153.5 L604.0,153.1 L604.3,152.7 L604.6,152.3 L604.9,151.9 L605.2,151.4 L605.5,151.0 L605.8,150.6 L606.0,150.1 L606.3,149.7 L606.6,149.2 L606.9,148.8 L607.2,148.3 L607.5,147.8 L607.8,147.3 L608.1,146.9 L608.3,146.4 L608.6,145.9 L608.9,145.4 L609.2,144.9 L609.5,144.3 L609.8,143.8 L610.1,143.3 L610.4,142.8 L610.7,142.3 L610.9,141.7 L611.2,141.2 L611.5,140.6 L611.8,140.1 L612.1,139.5 L612.4,139.0 L612.7,138.4 L613.0,137.9 L613.2,137.3 L613.5,136.7 L613.8,136.2 L614.1,135.6 L614.4,135.0 L614.7,134.5 L615.0,133.9 L615.3,133.3 L615.5,132.7 L615.8,132.1 L616.1,131.5 L616.4,130.9 L616.7,130.4 L617.0,129.8 L617.3,129.2 L617.6,128.6 L617.8,128.0 L618.1,127.4 L618.4,126.8 L618.7,126.2 L619.0,125.6" stroke="var(--taxi-blue)" stroke-width="2" fill="none"/>
+<path d="M389.0,252.0 L389.3,252.0 L389.6,252.0 L389.9,252.0 L390.2,252.0 L390.4,252.0 L390.7,252.0 L391.0,252.0 L391.3,252.0 L391.6,252.0 L391.9,252.0 L392.2,252.0 L392.5,252.0 L392.7,252.0 L393.0,252.0 L393.3,252.0 L393.6,252.0 L393.9,252.0 L394.2,252.0 L394.5,252.0 L394.8,252.0 L395.0,252.0 L395.3,252.0 L395.6,252.0 L395.9,252.0 L396.2,252.0 L396.5,252.0 L396.8,252.0 L397.1,252.0 L397.3,252.0 L397.6,252.0 L397.9,252.0 L398.2,252.0 L398.5,252.0 L398.8,252.0 L399.1,252.0 L399.4,252.0 L399.7,252.0 L399.9,252.0 L400.2,252.0 L400.5,252.0 L400.8,252.0 L401.1,252.0 L401.4,252.0 L401.7,252.0 L402.0,252.0 L402.2,252.0 L402.5,252.0 L402.8,252.0 L403.1,252.0 L403.4,252.0 L403.7,252.0 L404.0,252.0 L404.3,252.0 L404.5,252.0 L404.8,252.0 L405.1,252.0 L405.4,252.0 L405.7,252.0 L406.0,252.0 L406.3,252.0 L406.6,252.0 L406.8,252.0 L407.1,252.0 L407.4,252.0 L407.7,252.0 L408.0,252.0 L408.3,252.0 L408.6,252.0 L408.9,252.0 L409.2,252.0 L409.4,252.0 L409.7,252.0 L410.0,252.0 L410.3,252.0 L410.6,252.0 L410.9,252.0 L411.2,252.0 L411.5,252.0 L411.7,252.0 L412.0,252.0 L412.3,252.0 L412.6,252.0 L412.9,252.0 L413.2,252.0 L413.5,252.0 L413.8,252.0 L414.0,252.0 L414.3,252.0 L414.6,252.0 L414.9,209.1 L415.2,209.0 L415.5,208.9 L415.8,208.8 L416.1,208.7 L416.3,208.7 L416.6,208.6 L416.9,208.6 L417.2,208.6 L417.5,208.5 L417.8,208.5 L418.1,208.5 L418.4,208.6 L418.6,208.6 L418.9,208.6 L419.2,208.7 L419.5,208.7 L419.8,208.8 L420.1,208.9 L420.4,209.0 L420.7,209.1 L421.0,209.2 L421.2,209.3 L421.5,209.4 L421.8,209.6 L422.1,209.7 L422.4,209.9 L422.7,210.1 L423.0,210.3 L423.3,210.5 L423.5,210.7 L423.8,210.9 L424.1,211.1 L424.4,211.3 L424.7,211.6 L425.0,211.8 L425.3,212.1 L425.6,212.4 L425.8,212.7 L426.1,213.0 L426.4,213.3 L426.7,213.6 L427.0,213.9 L427.3,214.2 L427.6,214.6 L427.9,214.9 L428.1,215.3 L428.4,215.7 L428.7,216.0 L429.0,216.4 L429.3,216.8 L429.6,217.2 L429.9,217.7 L430.2,218.1 L430.5,218.5 L430.7,218.9 L431.0,219.4 L431.3,219.9 L431.6,220.3 L431.9,220.8 L432.2,221.3 L432.5,221.8 L432.8,222.2 L433.0,222.7 L433.3,223.3 L433.6,223.8 L433.9,224.3 L434.2,224.8 L434.5,225.4 L434.8,225.9 L435.1,226.5 L435.3,227.0 L435.6,227.6 L435.9,228.1 L436.2,228.7 L436.5,229.3 L436.8,229.9 L437.1,230.5 L437.4,231.1 L437.6,231.7 L437.9,232.3 L438.2,232.9 L438.5,233.5 L438.8,234.1 L439.1,234.7 L439.4,235.4 L439.7,236.0 L440.0,236.6 L440.2,237.3 L440.5,237.9 L440.8,238.6 L441.1,239.2 L441.4,239.9 L441.7,240.5 L442.0,241.2 L442.3,241.9 L442.5,242.5 L442.8,243.2 L443.1,243.9 L443.4,244.5 L443.7,245.2 L444.0,245.9 L444.3,246.6 L444.6,247.2 L444.8,247.9 L445.1,248.6 L445.4,249.3 L445.7,250.0 L446.0,250.6 L446.3,251.3 L446.6,252.0 L446.9,252.0 L447.1,252.0 L447.4,252.0 L447.7,252.0 L448.0,252.0 L448.3,252.0 L448.6,252.0 L448.9,252.0 L449.2,252.0 L449.5,252.0 L449.7,252.0 L450.0,252.0 L450.3,252.0 L450.6,252.0 L450.9,252.0 L451.2,252.0 L451.5,252.0 L451.8,252.0 L452.0,252.0 L452.3,252.0 L452.6,252.0 L452.9,252.0 L453.2,252.0 L453.5,252.0 L453.8,252.0 L454.1,252.0 L454.3,252.0 L454.6,252.0 L454.9,252.0 L455.2,252.0 L455.5,252.0 L455.8,252.0 L456.1,252.0 L456.4,252.0 L456.6,252.0 L456.9,252.0 L457.2,252.0 L457.5,252.0 L457.8,252.0 L458.1,252.0 L458.4,252.0 L458.7,252.0 L458.9,252.0 L459.2,252.0 L459.5,252.0 L459.8,252.0 L460.1,252.0 L460.4,252.0 L460.7,252.0 L461.0,252.0 L461.3,252.0 L461.5,252.0 L461.8,252.0 L462.1,252.0 L462.4,252.0 L462.7,252.0 L463.0,252.0 L463.3,252.0 L463.6,252.0 L463.8,252.0 L464.1,252.0 L464.4,252.0 L464.7,252.0 L465.0,252.0 L465.3,252.0 L465.6,252.0 L465.9,252.0 L466.1,252.0 L466.4,252.0 L466.7,252.0 L467.0,252.0 L467.3,252.0 L467.6,252.0 L467.9,252.0 L468.2,252.0 L468.4,252.0 L468.7,252.0 L469.0,252.0 L469.3,252.0 L469.6,252.0 L469.9,252.0 L470.2,252.0 L470.5,252.0 L470.8,252.0 L471.0,252.0 L471.3,252.0 L471.6,252.0 L471.9,252.0 L472.2,252.0 L472.5,209.1 L472.8,209.0 L473.1,208.9 L473.3,208.8 L473.6,208.7 L473.9,208.7 L474.2,208.6 L474.5,208.6 L474.8,208.6 L475.1,208.5 L475.4,208.5 L475.6,208.5 L475.9,208.6 L476.2,208.6 L476.5,208.6 L476.8,208.7 L477.1,208.7 L477.4,208.8 L477.7,208.9 L477.9,209.0 L478.2,209.1 L478.5,209.2 L478.8,209.3 L479.1,209.4 L479.4,209.6 L479.7,209.7 L480.0,209.9 L480.3,210.1 L480.5,210.3 L480.8,210.5 L481.1,210.7 L481.4,210.9 L481.7,211.1 L482.0,211.3 L482.3,211.6 L482.6,211.8 L482.8,212.1 L483.1,212.4 L483.4,212.7 L483.7,213.0 L484.0,213.3 L484.3,213.6 L484.6,213.9 L484.9,214.2 L485.1,214.6 L485.4,214.9 L485.7,215.3 L486.0,215.7 L486.3,216.0 L486.6,216.4 L486.9,216.8 L487.2,217.2 L487.4,217.7 L487.7,218.1 L488.0,218.5 L488.3,218.9 L488.6,219.4 L488.9,219.9 L489.2,220.3 L489.5,220.8 L489.8,221.3 L490.0,221.8 L490.3,222.2 L490.6,222.7 L490.9,223.3 L491.2,223.8 L491.5,224.3 L491.8,224.8 L492.1,225.4 L492.3,225.9 L492.6,226.5 L492.9,227.0 L493.2,227.6 L493.5,228.1 L493.8,228.7 L494.1,229.3 L494.4,229.9 L494.6,230.5 L494.9,231.1 L495.2,231.7 L495.5,232.3 L495.8,232.9 L496.1,233.5 L496.4,234.1 L496.7,234.7 L496.9,235.4 L497.2,236.0 L497.5,236.6 L497.8,237.3 L498.1,237.9 L498.4,238.6 L498.7,239.2 L499.0,239.9 L499.3,240.5 L499.5,241.2 L499.8,241.9 L500.1,242.5 L500.4,243.2 L500.7,243.9 L501.0,244.5 L501.3,245.2 L501.6,245.9 L501.8,246.6 L502.1,247.2 L502.4,247.9 L502.7,248.6 L503.0,249.3 L503.3,250.0 L503.6,250.6 L503.9,251.3 L504.1,252.0 L504.4,252.0 L504.7,252.0 L505.0,252.0 L505.3,252.0 L505.6,252.0 L505.9,252.0 L506.2,252.0 L506.4,252.0 L506.7,252.0 L507.0,252.0 L507.3,252.0 L507.6,252.0 L507.9,252.0 L508.2,252.0 L508.5,252.0 L508.7,252.0 L509.0,252.0 L509.3,252.0 L509.6,252.0 L509.9,252.0 L510.2,252.0 L510.5,252.0 L510.8,252.0 L511.1,252.0 L511.3,252.0 L511.6,252.0 L511.9,252.0 L512.2,252.0 L512.5,252.0 L512.8,252.0 L513.1,252.0 L513.4,252.0 L513.6,252.0 L513.9,252.0 L514.2,252.0 L514.5,252.0 L514.8,252.0 L515.1,252.0 L515.4,252.0 L515.7,252.0 L515.9,252.0 L516.2,252.0 L516.5,252.0 L516.8,252.0 L517.1,252.0 L517.4,252.0 L517.7,252.0 L518.0,252.0 L518.2,252.0 L518.5,252.0 L518.8,252.0 L519.1,252.0 L519.4,252.0 L519.7,252.0 L520.0,252.0 L520.3,252.0 L520.6,252.0 L520.8,252.0 L521.1,252.0 L521.4,252.0 L521.7,252.0 L522.0,252.0 L522.3,252.0 L522.6,252.0 L522.9,252.0 L523.1,252.0 L523.4,252.0 L523.7,252.0 L524.0,252.0 L524.3,252.0 L524.6,252.0 L524.9,252.0 L525.2,252.0 L525.4,252.0 L525.7,252.0 L526.0,252.0 L526.3,252.0 L526.6,252.0 L526.9,252.0 L527.2,252.0 L527.5,252.0 L527.7,252.0 L528.0,252.0 L528.3,252.0 L528.6,252.0 L528.9,252.0 L529.2,252.0 L529.5,252.0 L529.8,252.0 L530.1,252.0 L530.3,209.0 L530.6,208.9 L530.9,208.8 L531.2,208.7 L531.5,208.7 L531.8,208.6 L532.1,208.6 L532.4,208.6 L532.6,208.5 L532.9,208.5 L533.2,208.5 L533.5,208.6 L533.8,208.6 L534.1,208.6 L534.4,208.7 L534.7,208.7 L534.9,208.8 L535.2,208.9 L535.5,209.0 L535.8,209.1 L536.1,209.2 L536.4,209.3 L536.7,209.4 L537.0,209.6 L537.2,209.7 L537.5,209.9 L537.8,210.1 L538.1,210.3 L538.4,210.5 L538.7,210.7 L539.0,210.9 L539.3,211.1 L539.6,211.3 L539.8,211.6 L540.1,211.8 L540.4,212.1 L540.7,212.4 L541.0,212.7 L541.3,213.0 L541.6,213.3 L541.9,213.6 L542.1,213.9 L542.4,214.2 L542.7,214.6 L543.0,214.9 L543.3,215.3 L543.6,215.7 L543.9,216.0 L544.2,216.4 L544.4,216.8 L544.7,217.2 L545.0,217.7 L545.3,218.1 L545.6,218.5 L545.9,218.9 L546.2,219.4 L546.5,219.9 L546.7,220.3 L547.0,220.8 L547.3,221.3 L547.6,221.8 L547.9,222.2 L548.2,222.7 L548.5,223.3 L548.8,223.8 L549.1,224.3 L549.3,224.8 L549.6,225.4 L549.9,225.9 L550.2,226.5 L550.5,227.0 L550.8,227.6 L551.1,228.1 L551.4,228.7 L551.6,229.3 L551.9,229.9 L552.2,230.5 L552.5,231.1 L552.8,231.7 L553.1,232.3 L553.4,232.9 L553.7,233.5 L553.9,234.1 L554.2,234.7 L554.5,235.4 L554.8,236.0 L555.1,236.6 L555.4,237.3 L555.7,237.9 L556.0,238.6 L556.2,239.2 L556.5,239.9 L556.8,240.5 L557.1,241.2 L557.4,241.9 L557.7,242.5 L558.0,243.2 L558.3,243.9 L558.5,244.5 L558.8,245.2 L559.1,245.9 L559.4,246.6 L559.7,247.2 L560.0,247.9 L560.3,248.6 L560.6,249.3 L560.9,250.0 L561.1,250.6 L561.4,251.3 L561.7,252.0 L562.0,252.0 L562.3,252.0 L562.6,252.0 L562.9,252.0 L563.2,252.0 L563.4,252.0 L563.7,252.0 L564.0,252.0 L564.3,252.0 L564.6,252.0 L564.9,252.0 L565.2,252.0 L565.5,252.0 L565.7,252.0 L566.0,252.0 L566.3,252.0 L566.6,252.0 L566.9,252.0 L567.2,252.0 L567.5,252.0 L567.8,252.0 L568.0,252.0 L568.3,252.0 L568.6,252.0 L568.9,252.0 L569.2,252.0 L569.5,252.0 L569.8,252.0 L570.1,252.0 L570.4,252.0 L570.6,252.0 L570.9,252.0 L571.2,252.0 L571.5,252.0 L571.8,252.0 L572.1,252.0 L572.4,252.0 L572.7,252.0 L572.9,252.0 L573.2,252.0 L573.5,252.0 L573.8,252.0 L574.1,252.0 L574.4,252.0 L574.7,252.0 L575.0,252.0 L575.2,252.0 L575.5,252.0 L575.8,252.0 L576.1,252.0 L576.4,252.0 L576.7,252.0 L577.0,252.0 L577.3,252.0 L577.5,252.0 L577.8,252.0 L578.1,252.0 L578.4,252.0 L578.7,252.0 L579.0,252.0 L579.3,252.0 L579.6,252.0 L579.9,252.0 L580.1,252.0 L580.4,252.0 L580.7,252.0 L581.0,252.0 L581.3,252.0 L581.6,252.0 L581.9,252.0 L582.2,252.0 L582.4,252.0 L582.7,252.0 L583.0,252.0 L583.3,252.0 L583.6,252.0 L583.9,252.0 L584.2,252.0 L584.5,252.0 L584.7,252.0 L585.0,252.0 L585.3,252.0 L585.6,252.0 L585.9,252.0 L586.2,252.0 L586.5,252.0 L586.8,252.0 L587.0,252.0 L587.3,252.0 L587.6,252.0 L587.9,209.0 L588.2,208.9 L588.5,208.8 L588.8,208.7 L589.1,208.7 L589.4,208.6 L589.6,208.6 L589.9,208.6 L590.2,208.5 L590.5,208.5 L590.8,208.5 L591.1,208.6 L591.4,208.6 L591.7,208.6 L591.9,208.7 L592.2,208.7 L592.5,208.8 L592.8,208.9 L593.1,209.0 L593.4,209.1 L593.7,209.2 L594.0,209.3 L594.2,209.4 L594.5,209.6 L594.8,209.7 L595.1,209.9 L595.4,210.1 L595.7,210.3 L596.0,210.5 L596.3,210.7 L596.5,210.9 L596.8,211.1 L597.1,211.3 L597.4,211.6 L597.7,211.8 L598.0,212.1 L598.3,212.4 L598.6,212.7 L598.8,213.0 L599.1,213.3 L599.4,213.6 L599.7,213.9 L600.0,214.2 L600.3,214.6 L600.6,214.9 L600.9,215.3 L601.2,215.7 L601.4,216.0 L601.7,216.4 L602.0,216.8 L602.3,217.2 L602.6,217.7 L602.9,218.1 L603.2,218.5 L603.5,218.9 L603.7,219.4 L604.0,219.9 L604.3,220.3 L604.6,220.8 L604.9,221.3 L605.2,221.8 L605.5,222.2 L605.8,222.7 L606.0,223.3 L606.3,223.8 L606.6,224.3 L606.9,224.8 L607.2,225.4 L607.5,225.9 L607.8,226.5 L608.1,227.0 L608.3,227.6 L608.6,228.1 L608.9,228.7 L609.2,229.3 L609.5,229.9 L609.8,230.5 L610.1,231.1 L610.4,231.7 L610.7,232.3 L610.9,232.9 L611.2,233.5 L611.5,234.1 L611.8,234.7 L612.1,235.4 L612.4,236.0 L612.7,236.6 L613.0,237.3 L613.2,237.9 L613.5,238.6 L613.8,239.2 L614.1,239.9 L614.4,240.5 L614.7,241.2 L615.0,241.9 L615.3,242.5 L615.5,243.2 L615.8,243.9 L616.1,244.5 L616.4,245.2 L616.7,245.9 L617.0,246.6 L617.3,247.2 L617.6,247.9 L617.8,248.6 L618.1,249.3 L618.4,250.0 L618.7,250.6 L619.0,251.3" stroke="var(--red)" stroke-width="2" fill="none"/>
+<text x="490" y="286" fill="var(--red)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="14" letter-spacing="1.3" text-anchor="middle">LIGHT FOLLOWS THE PULSES</text>
+<text x="490" y="304" fill="var(--white)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="11.5" letter-spacing="0.9" text-anchor="middle">FLICKER AND STROBING SHOW</text>
+<text x="490" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">WORST AT THE LOWEST STEPS</text>
+<rect x="650" y="48" width="290" height="290" rx="10" fill="rgba(255,255,255,0.03)" stroke="var(--cyan)" stroke-opacity=".7"/>
+<text x="666" y="72" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="13.5" letter-spacing="1.3" text-anchor="start">3 &#183; LOW STEP, DRIVER SMOOTHING</text>
+<text x="660" y="129" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" text-anchor="start">AMPS</text>
+<text x="658" y="234" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="1" text-anchor="start">LIGHT</text>
+<path d="M694,125 H924" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<path d="M694,252 H924" stroke="rgba(255,255,255,0.18)" stroke-width="1"/>
+<path d="M694.0,125.0 L694.3,125.0 L694.6,125.0 L694.9,125.0 L695.2,125.0 L695.4,125.0 L695.7,125.0 L696.0,125.0 L696.3,125.0 L696.6,125.0 L696.9,125.0 L697.2,125.0 L697.5,125.0 L697.7,125.0 L698.0,125.0 L698.3,125.0 L698.6,125.0 L698.9,125.0 L699.2,125.0 L699.5,125.0 L699.8,125.0 L700.0,125.0 L700.3,125.0 L700.6,125.0 L700.9,125.0 L701.2,125.0 L701.5,125.0 L701.8,125.0 L702.1,125.0 L702.3,125.0 L702.6,125.0 L702.9,125.0 L703.2,125.0 L703.5,125.0 L703.8,125.0 L704.1,125.0 L704.4,125.0 L704.7,125.0 L704.9,125.0 L705.2,125.0 L705.5,125.0 L705.8,125.0 L706.1,125.0 L706.4,125.0 L706.7,125.0 L707.0,125.0 L707.2,125.0 L707.5,125.0 L707.8,125.0 L708.1,125.0 L708.4,125.0 L708.7,125.0 L709.0,125.0 L709.3,125.0 L709.5,125.0 L709.8,125.0 L710.1,125.0 L710.4,125.0 L710.7,125.0 L711.0,125.0 L711.3,125.0 L711.6,125.0 L711.8,125.0 L712.1,125.0 L712.4,125.0 L712.7,125.0 L713.0,125.0 L713.3,125.0 L713.6,125.0 L713.9,125.0 L714.2,125.0 L714.4,125.0 L714.7,125.0 L715.0,125.0 L715.3,125.0 L715.6,125.0 L715.9,125.0 L716.2,125.0 L716.5,125.0 L716.7,125.0 L717.0,125.0 L717.3,125.0 L717.6,125.0 L717.9,125.0 L718.2,125.0 L718.5,125.0 L718.8,125.0 L719.0,125.0 L719.3,125.0 L719.6,125.0 L719.9,87.5 L720.2,87.4 L720.5,87.3 L720.8,87.2 L721.1,87.2 L721.3,87.1 L721.6,87.1 L721.9,87.0 L722.2,87.0 L722.5,87.0 L722.8,87.0 L723.1,87.0 L723.4,87.0 L723.6,87.0 L723.9,87.1 L724.2,87.1 L724.5,87.2 L724.8,87.2 L725.1,87.3 L725.4,87.4 L725.7,87.5 L726.0,87.6 L726.2,87.7 L726.5,87.8 L726.8,87.9 L727.1,88.0 L727.4,88.2 L727.7,88.3 L728.0,88.5 L728.3,88.7 L728.5,88.9 L728.8,89.0 L729.1,89.2 L729.4,89.5 L729.7,89.7 L730.0,89.9 L730.3,90.1 L730.6,90.4 L730.8,90.6 L731.1,90.9 L731.4,91.1 L731.7,91.4 L732.0,91.7 L732.3,92.0 L732.6,92.3 L732.9,92.6 L733.1,92.9 L733.4,93.2 L733.7,93.6 L734.0,93.9 L734.3,94.3 L734.6,94.6 L734.9,95.0 L735.2,95.3 L735.5,95.7 L735.7,96.1 L736.0,96.5 L736.3,96.9 L736.6,97.3 L736.9,97.7 L737.2,98.1 L737.5,98.6 L737.8,99.0 L738.0,99.4 L738.3,99.9 L738.6,100.3 L738.9,100.8 L739.2,101.2 L739.5,101.7 L739.8,102.2 L740.1,102.7 L740.3,103.1 L740.6,103.6 L740.9,104.1 L741.2,104.6 L741.5,105.1 L741.8,105.7 L742.1,106.2 L742.4,106.7 L742.6,107.2 L742.9,107.7 L743.2,108.3 L743.5,108.8 L743.8,109.4 L744.1,109.9 L744.4,110.5 L744.7,111.0 L745.0,111.6 L745.2,112.1 L745.5,112.7 L745.8,113.3 L746.1,113.8 L746.4,114.4 L746.7,115.0 L747.0,115.5 L747.3,116.1 L747.5,116.7 L747.8,117.3 L748.1,117.9 L748.4,118.5 L748.7,119.1 L749.0,119.6 L749.3,120.2 L749.6,120.8 L749.8,121.4 L750.1,122.0 L750.4,122.6 L750.7,123.2 L751.0,123.8 L751.3,124.4 L751.6,125.0 L751.9,125.0 L752.1,125.0 L752.4,125.0 L752.7,125.0 L753.0,125.0 L753.3,125.0 L753.6,125.0 L753.9,125.0 L754.2,125.0 L754.5,125.0 L754.7,125.0 L755.0,125.0 L755.3,125.0 L755.6,125.0 L755.9,125.0 L756.2,125.0 L756.5,125.0 L756.8,125.0 L757.0,125.0 L757.3,125.0 L757.6,125.0 L757.9,125.0 L758.2,125.0 L758.5,125.0 L758.8,125.0 L759.1,125.0 L759.3,125.0 L759.6,125.0 L759.9,125.0 L760.2,125.0 L760.5,125.0 L760.8,125.0 L761.1,125.0 L761.4,125.0 L761.6,125.0 L761.9,125.0 L762.2,125.0 L762.5,125.0 L762.8,125.0 L763.1,125.0 L763.4,125.0 L763.7,125.0 L763.9,125.0 L764.2,125.0 L764.5,125.0 L764.8,125.0 L765.1,125.0 L765.4,125.0 L765.7,125.0 L766.0,125.0 L766.3,125.0 L766.5,125.0 L766.8,125.0 L767.1,125.0 L767.4,125.0 L767.7,125.0 L768.0,125.0 L768.3,125.0 L768.6,125.0 L768.8,125.0 L769.1,125.0 L769.4,125.0 L769.7,125.0 L770.0,125.0 L770.3,125.0 L770.6,125.0 L770.9,125.0 L771.1,125.0 L771.4,125.0 L771.7,125.0 L772.0,125.0 L772.3,125.0 L772.6,125.0 L772.9,125.0 L773.2,125.0 L773.4,125.0 L773.7,125.0 L774.0,125.0 L774.3,125.0 L774.6,125.0 L774.9,125.0 L775.2,125.0 L775.5,125.0 L775.8,125.0 L776.0,125.0 L776.3,125.0 L776.6,125.0 L776.9,125.0 L777.2,125.0 L777.5,162.5 L777.8,162.6 L778.1,162.7 L778.3,162.8 L778.6,162.8 L778.9,162.9 L779.2,162.9 L779.5,163.0 L779.8,163.0 L780.1,163.0 L780.4,163.0 L780.6,163.0 L780.9,163.0 L781.2,163.0 L781.5,162.9 L781.8,162.9 L782.1,162.8 L782.4,162.8 L782.7,162.7 L782.9,162.6 L783.2,162.5 L783.5,162.4 L783.8,162.3 L784.1,162.2 L784.4,162.1 L784.7,162.0 L785.0,161.8 L785.3,161.7 L785.5,161.5 L785.8,161.3 L786.1,161.1 L786.4,161.0 L786.7,160.8 L787.0,160.5 L787.3,160.3 L787.6,160.1 L787.8,159.9 L788.1,159.6 L788.4,159.4 L788.7,159.1 L789.0,158.9 L789.3,158.6 L789.6,158.3 L789.9,158.0 L790.1,157.7 L790.4,157.4 L790.7,157.1 L791.0,156.8 L791.3,156.4 L791.6,156.1 L791.9,155.7 L792.2,155.4 L792.4,155.0 L792.7,154.7 L793.0,154.3 L793.3,153.9 L793.6,153.5 L793.9,153.1 L794.2,152.7 L794.5,152.3 L794.8,151.9 L795.0,151.4 L795.3,151.0 L795.6,150.6 L795.9,150.1 L796.2,149.7 L796.5,149.2 L796.8,148.8 L797.1,148.3 L797.3,147.8 L797.6,147.3 L797.9,146.9 L798.2,146.4 L798.5,145.9 L798.8,145.4 L799.1,144.9 L799.4,144.3 L799.6,143.8 L799.9,143.3 L800.2,142.8 L800.5,142.3 L800.8,141.7 L801.1,141.2 L801.4,140.6 L801.7,140.1 L801.9,139.5 L802.2,139.0 L802.5,138.4 L802.8,137.9 L803.1,137.3 L803.4,136.7 L803.7,136.2 L804.0,135.6 L804.3,135.0 L804.5,134.5 L804.8,133.9 L805.1,133.3 L805.4,132.7 L805.7,132.1 L806.0,131.5 L806.3,130.9 L806.6,130.4 L806.8,129.8 L807.1,129.2 L807.4,128.6 L807.7,128.0 L808.0,127.4 L808.3,126.8 L808.6,126.2 L808.9,125.6 L809.1,125.0 L809.4,125.0 L809.7,125.0 L810.0,125.0 L810.3,125.0 L810.6,125.0 L810.9,125.0 L811.2,125.0 L811.4,125.0 L811.7,125.0 L812.0,125.0 L812.3,125.0 L812.6,125.0 L812.9,125.0 L813.2,125.0 L813.5,125.0 L813.7,125.0 L814.0,125.0 L814.3,125.0 L814.6,125.0 L814.9,125.0 L815.2,125.0 L815.5,125.0 L815.8,125.0 L816.1,125.0 L816.3,125.0 L816.6,125.0 L816.9,125.0 L817.2,125.0 L817.5,125.0 L817.8,125.0 L818.1,125.0 L818.4,125.0 L818.6,125.0 L818.9,125.0 L819.2,125.0 L819.5,125.0 L819.8,125.0 L820.1,125.0 L820.4,125.0 L820.7,125.0 L820.9,125.0 L821.2,125.0 L821.5,125.0 L821.8,125.0 L822.1,125.0 L822.4,125.0 L822.7,125.0 L823.0,125.0 L823.2,125.0 L823.5,125.0 L823.8,125.0 L824.1,125.0 L824.4,125.0 L824.7,125.0 L825.0,125.0 L825.3,125.0 L825.6,125.0 L825.8,125.0 L826.1,125.0 L826.4,125.0 L826.7,125.0 L827.0,125.0 L827.3,125.0 L827.6,125.0 L827.9,125.0 L828.1,125.0 L828.4,125.0 L828.7,125.0 L829.0,125.0 L829.3,125.0 L829.6,125.0 L829.9,125.0 L830.2,125.0 L830.4,125.0 L830.7,125.0 L831.0,125.0 L831.3,125.0 L831.6,125.0 L831.9,125.0 L832.2,125.0 L832.5,125.0 L832.7,125.0 L833.0,125.0 L833.3,125.0 L833.6,125.0 L833.9,125.0 L834.2,125.0 L834.5,125.0 L834.8,125.0 L835.1,125.0 L835.3,87.4 L835.6,87.3 L835.9,87.2 L836.2,87.2 L836.5,87.1 L836.8,87.1 L837.1,87.0 L837.4,87.0 L837.6,87.0 L837.9,87.0 L838.2,87.0 L838.5,87.0 L838.8,87.0 L839.1,87.1 L839.4,87.1 L839.7,87.2 L839.9,87.2 L840.2,87.3 L840.5,87.4 L840.8,87.5 L841.1,87.6 L841.4,87.7 L841.7,87.8 L842.0,87.9 L842.2,88.0 L842.5,88.2 L842.8,88.3 L843.1,88.5 L843.4,88.7 L843.7,88.9 L844.0,89.0 L844.3,89.2 L844.6,89.5 L844.8,89.7 L845.1,89.9 L845.4,90.1 L845.7,90.4 L846.0,90.6 L846.3,90.9 L846.6,91.1 L846.9,91.4 L847.1,91.7 L847.4,92.0 L847.7,92.3 L848.0,92.6 L848.3,92.9 L848.6,93.2 L848.9,93.6 L849.2,93.9 L849.4,94.3 L849.7,94.6 L850.0,95.0 L850.3,95.3 L850.6,95.7 L850.9,96.1 L851.2,96.5 L851.5,96.9 L851.7,97.3 L852.0,97.7 L852.3,98.1 L852.6,98.6 L852.9,99.0 L853.2,99.4 L853.5,99.9 L853.8,100.3 L854.1,100.8 L854.3,101.2 L854.6,101.7 L854.9,102.2 L855.2,102.7 L855.5,103.1 L855.8,103.6 L856.1,104.1 L856.4,104.6 L856.6,105.1 L856.9,105.7 L857.2,106.2 L857.5,106.7 L857.8,107.2 L858.1,107.7 L858.4,108.3 L858.7,108.8 L858.9,109.4 L859.2,109.9 L859.5,110.5 L859.8,111.0 L860.1,111.6 L860.4,112.1 L860.7,112.7 L861.0,113.3 L861.2,113.8 L861.5,114.4 L861.8,115.0 L862.1,115.5 L862.4,116.1 L862.7,116.7 L863.0,117.3 L863.3,117.9 L863.5,118.5 L863.8,119.1 L864.1,119.6 L864.4,120.2 L864.7,120.8 L865.0,121.4 L865.3,122.0 L865.6,122.6 L865.9,123.2 L866.1,123.8 L866.4,124.4 L866.7,125.0 L867.0,125.0 L867.3,125.0 L867.6,125.0 L867.9,125.0 L868.2,125.0 L868.4,125.0 L868.7,125.0 L869.0,125.0 L869.3,125.0 L869.6,125.0 L869.9,125.0 L870.2,125.0 L870.5,125.0 L870.7,125.0 L871.0,125.0 L871.3,125.0 L871.6,125.0 L871.9,125.0 L872.2,125.0 L872.5,125.0 L872.8,125.0 L873.0,125.0 L873.3,125.0 L873.6,125.0 L873.9,125.0 L874.2,125.0 L874.5,125.0 L874.8,125.0 L875.1,125.0 L875.4,125.0 L875.6,125.0 L875.9,125.0 L876.2,125.0 L876.5,125.0 L876.8,125.0 L877.1,125.0 L877.4,125.0 L877.7,125.0 L877.9,125.0 L878.2,125.0 L878.5,125.0 L878.8,125.0 L879.1,125.0 L879.4,125.0 L879.7,125.0 L880.0,125.0 L880.2,125.0 L880.5,125.0 L880.8,125.0 L881.1,125.0 L881.4,125.0 L881.7,125.0 L882.0,125.0 L882.3,125.0 L882.5,125.0 L882.8,125.0 L883.1,125.0 L883.4,125.0 L883.7,125.0 L884.0,125.0 L884.3,125.0 L884.6,125.0 L884.9,125.0 L885.1,125.0 L885.4,125.0 L885.7,125.0 L886.0,125.0 L886.3,125.0 L886.6,125.0 L886.9,125.0 L887.2,125.0 L887.4,125.0 L887.7,125.0 L888.0,125.0 L888.3,125.0 L888.6,125.0 L888.9,125.0 L889.2,125.0 L889.5,125.0 L889.7,125.0 L890.0,125.0 L890.3,125.0 L890.6,125.0 L890.9,125.0 L891.2,125.0 L891.5,125.0 L891.8,125.0 L892.0,125.0 L892.3,125.0 L892.6,125.0 L892.9,162.6 L893.2,162.7 L893.5,162.8 L893.8,162.8 L894.1,162.9 L894.4,162.9 L894.6,163.0 L894.9,163.0 L895.2,163.0 L895.5,163.0 L895.8,163.0 L896.1,163.0 L896.4,163.0 L896.7,162.9 L896.9,162.9 L897.2,162.8 L897.5,162.8 L897.8,162.7 L898.1,162.6 L898.4,162.5 L898.7,162.4 L899.0,162.3 L899.2,162.2 L899.5,162.1 L899.8,162.0 L900.1,161.8 L900.4,161.7 L900.7,161.5 L901.0,161.3 L901.3,161.1 L901.5,161.0 L901.8,160.8 L902.1,160.5 L902.4,160.3 L902.7,160.1 L903.0,159.9 L903.3,159.6 L903.6,159.4 L903.8,159.1 L904.1,158.9 L904.4,158.6 L904.7,158.3 L905.0,158.0 L905.3,157.7 L905.6,157.4 L905.9,157.1 L906.2,156.8 L906.4,156.4 L906.7,156.1 L907.0,155.7 L907.3,155.4 L907.6,155.0 L907.9,154.7 L908.2,154.3 L908.5,153.9 L908.7,153.5 L909.0,153.1 L909.3,152.7 L909.6,152.3 L909.9,151.9 L910.2,151.4 L910.5,151.0 L910.8,150.6 L911.0,150.1 L911.3,149.7 L911.6,149.2 L911.9,148.8 L912.2,148.3 L912.5,147.8 L912.8,147.3 L913.1,146.9 L913.3,146.4 L913.6,145.9 L913.9,145.4 L914.2,144.9 L914.5,144.3 L914.8,143.8 L915.1,143.3 L915.4,142.8 L915.7,142.3 L915.9,141.7 L916.2,141.2 L916.5,140.6 L916.8,140.1 L917.1,139.5 L917.4,139.0 L917.7,138.4 L918.0,137.9 L918.2,137.3 L918.5,136.7 L918.8,136.2 L919.1,135.6 L919.4,135.0 L919.7,134.5 L920.0,133.9 L920.3,133.3 L920.5,132.7 L920.8,132.1 L921.1,131.5 L921.4,130.9 L921.7,130.4 L922.0,129.8 L922.3,129.2 L922.6,128.6 L922.8,128.0 L923.1,127.4 L923.4,126.8 L923.7,126.2 L924.0,125.6" stroke="var(--taxi-blue)" stroke-width="2" fill="none"/>
+<path d="M694.0,234.4 L694.3,234.5 L694.6,234.6 L694.9,234.6 L695.2,234.7 L695.4,234.8 L695.7,234.8 L696.0,234.9 L696.3,235.0 L696.6,235.0 L696.9,235.1 L697.2,235.2 L697.5,235.2 L697.7,235.3 L698.0,235.4 L698.3,235.4 L698.6,235.5 L698.9,235.6 L699.2,235.6 L699.5,235.7 L699.8,235.7 L700.0,235.8 L700.3,235.9 L700.6,235.9 L700.9,236.0 L701.2,236.1 L701.5,236.1 L701.8,236.2 L702.1,236.2 L702.3,236.3 L702.6,236.4 L702.9,236.4 L703.2,236.5 L703.5,236.5 L703.8,236.6 L704.1,236.7 L704.4,236.7 L704.7,236.8 L704.9,236.8 L705.2,236.9 L705.5,236.9 L705.8,237.0 L706.1,237.1 L706.4,237.1 L706.7,237.2 L707.0,237.2 L707.2,237.3 L707.5,237.3 L707.8,237.4 L708.1,237.5 L708.4,237.5 L708.7,237.6 L709.0,237.6 L709.3,237.7 L709.5,237.7 L709.8,237.8 L710.1,237.8 L710.4,237.9 L710.7,238.0 L711.0,238.0 L711.3,238.1 L711.6,238.1 L711.8,238.2 L712.1,238.2 L712.4,238.3 L712.7,238.3 L713.0,238.4 L713.3,238.4 L713.6,238.5 L713.9,238.5 L714.2,238.6 L714.4,238.6 L714.7,238.7 L715.0,238.7 L715.3,238.8 L715.6,238.8 L715.9,238.9 L716.2,238.9 L716.5,239.0 L716.7,239.0 L717.0,239.1 L717.3,239.1 L717.6,239.2 L717.9,239.2 L718.2,239.3 L718.5,239.3 L718.8,239.4 L719.0,239.4 L719.3,239.5 L719.6,239.5 L719.9,239.4 L720.2,239.3 L720.5,239.2 L720.8,239.1 L721.1,239.0 L721.3,238.8 L721.6,238.7 L721.9,238.6 L722.2,238.5 L722.5,238.4 L722.8,238.3 L723.1,238.1 L723.4,238.0 L723.6,237.9 L723.9,237.8 L724.2,237.7 L724.5,237.6 L724.8,237.5 L725.1,237.4 L725.4,237.3 L725.7,237.1 L726.0,237.0 L726.2,236.9 L726.5,236.8 L726.8,236.7 L727.1,236.6 L727.4,236.5 L727.7,236.4 L728.0,236.3 L728.3,236.2 L728.5,236.1 L728.8,236.0 L729.1,235.9 L729.4,235.8 L729.7,235.7 L730.0,235.6 L730.3,235.5 L730.6,235.5 L730.8,235.4 L731.1,235.3 L731.4,235.2 L731.7,235.1 L732.0,235.0 L732.3,235.0 L732.6,234.9 L732.9,234.8 L733.1,234.7 L733.4,234.7 L733.7,234.6 L734.0,234.5 L734.3,234.4 L734.6,234.4 L734.9,234.3 L735.2,234.3 L735.5,234.2 L735.7,234.1 L736.0,234.1 L736.3,234.0 L736.6,234.0 L736.9,233.9 L737.2,233.9 L737.5,233.8 L737.8,233.8 L738.0,233.7 L738.3,233.7 L738.6,233.7 L738.9,233.6 L739.2,233.6 L739.5,233.6 L739.8,233.5 L740.1,233.5 L740.3,233.5 L740.6,233.5 L740.9,233.4 L741.2,233.4 L741.5,233.4 L741.8,233.4 L742.1,233.4 L742.4,233.4 L742.6,233.4 L742.9,233.4 L743.2,233.4 L743.5,233.4 L743.8,233.4 L744.1,233.4 L744.4,233.4 L744.7,233.4 L745.0,233.4 L745.2,233.4 L745.5,233.4 L745.8,233.4 L746.1,233.5 L746.4,233.5 L746.7,233.5 L747.0,233.5 L747.3,233.6 L747.5,233.6 L747.8,233.6 L748.1,233.7 L748.4,233.7 L748.7,233.8 L749.0,233.8 L749.3,233.9 L749.6,233.9 L749.8,234.0 L750.1,234.0 L750.4,234.1 L750.7,234.1 L751.0,234.2 L751.3,234.3 L751.6,234.3 L751.9,234.4 L752.1,234.5 L752.4,234.6 L752.7,234.6 L753.0,234.7 L753.3,234.8 L753.6,234.8 L753.9,234.9 L754.2,234.9 L754.5,235.0 L754.7,235.1 L755.0,235.1 L755.3,235.2 L755.6,235.3 L755.9,235.3 L756.2,235.4 L756.5,235.5 L756.8,235.5 L757.0,235.6 L757.3,235.7 L757.6,235.7 L757.9,235.8 L758.2,235.8 L758.5,235.9 L758.8,236.0 L759.1,236.0 L759.3,236.1 L759.6,236.2 L759.9,236.2 L760.2,236.3 L760.5,236.3 L760.8,236.4 L761.1,236.5 L761.4,236.5 L761.6,236.6 L761.9,236.6 L762.2,236.7 L762.5,236.8 L762.8,236.8 L763.1,236.9 L763.4,236.9 L763.7,237.0 L763.9,237.0 L764.2,237.1 L764.5,237.2 L764.8,237.2 L765.1,237.3 L765.4,237.3 L765.7,237.4 L766.0,237.4 L766.3,237.5 L766.5,237.6 L766.8,237.6 L767.1,237.7 L767.4,237.7 L767.7,237.8 L768.0,237.8 L768.3,237.9 L768.6,237.9 L768.8,238.0 L769.1,238.0 L769.4,238.1 L769.7,238.2 L770.0,238.2 L770.3,238.3 L770.6,238.3 L770.9,238.4 L771.1,238.4 L771.4,238.5 L771.7,238.5 L772.0,238.6 L772.3,238.6 L772.6,238.7 L772.9,238.7 L773.2,238.8 L773.4,238.8 L773.7,238.9 L774.0,238.9 L774.3,239.0 L774.6,239.0 L774.9,239.1 L775.2,239.1 L775.5,239.2 L775.8,239.2 L776.0,239.3 L776.3,239.3 L776.6,239.4 L776.9,239.4 L777.2,239.5 L777.5,239.4 L777.8,239.2 L778.1,239.1 L778.3,239.0 L778.6,238.9 L778.9,238.8 L779.2,238.7 L779.5,238.5 L779.8,238.4 L780.1,238.3 L780.4,238.2 L780.6,238.1 L780.9,238.0 L781.2,237.9 L781.5,237.7 L781.8,237.6 L782.1,237.5 L782.4,237.4 L782.7,237.3 L782.9,237.2 L783.2,237.1 L783.5,237.0 L783.8,236.9 L784.1,236.8 L784.4,236.7 L784.7,236.6 L785.0,236.5 L785.3,236.4 L785.5,236.3 L785.8,236.2 L786.1,236.1 L786.4,236.0 L786.7,235.9 L787.0,235.8 L787.3,235.7 L787.6,235.6 L787.8,235.5 L788.1,235.4 L788.4,235.3 L788.7,235.2 L789.0,235.1 L789.3,235.1 L789.6,235.0 L789.9,234.9 L790.1,234.8 L790.4,234.7 L790.7,234.7 L791.0,234.6 L791.3,234.5 L791.6,234.5 L791.9,234.4 L792.2,234.3 L792.4,234.3 L792.7,234.2 L793.0,234.1 L793.3,234.1 L793.6,234.0 L793.9,234.0 L794.2,233.9 L794.5,233.9 L794.8,233.8 L795.0,233.8 L795.3,233.7 L795.6,233.7 L795.9,233.6 L796.2,233.6 L796.5,233.6 L796.8,233.5 L797.1,233.5 L797.3,233.5 L797.6,233.4 L797.9,233.4 L798.2,233.4 L798.5,233.4 L798.8,233.4 L799.1,233.3 L799.4,233.3 L799.6,233.3 L799.9,233.3 L800.2,233.3 L800.5,233.3 L800.8,233.3 L801.1,233.3 L801.4,233.3 L801.7,233.3 L801.9,233.3 L802.2,233.3 L802.5,233.3 L802.8,233.4 L803.1,233.4 L803.4,233.4 L803.7,233.4 L804.0,233.4 L804.3,233.5 L804.5,233.5 L804.8,233.5 L805.1,233.6 L805.4,233.6 L805.7,233.6 L806.0,233.7 L806.3,233.7 L806.6,233.8 L806.8,233.8 L807.1,233.9 L807.4,233.9 L807.7,234.0 L808.0,234.0 L808.3,234.1 L808.6,234.2 L808.9,234.2 L809.1,234.3 L809.4,234.4 L809.7,234.4 L810.0,234.5 L810.3,234.6 L810.6,234.6 L810.9,234.7 L811.2,234.8 L811.4,234.8 L811.7,234.9 L812.0,235.0 L812.3,235.0 L812.6,235.1 L812.9,235.2 L813.2,235.2 L813.5,235.3 L813.7,235.4 L814.0,235.4 L814.3,235.5 L814.6,235.6 L814.9,235.6 L815.2,235.7 L815.5,235.7 L815.8,235.8 L816.1,235.9 L816.3,235.9 L816.6,236.0 L816.9,236.1 L817.2,236.1 L817.5,236.2 L817.8,236.2 L818.1,236.3 L818.4,236.4 L818.6,236.4 L818.9,236.5 L819.2,236.5 L819.5,236.6 L819.8,236.7 L820.1,236.7 L820.4,236.8 L820.7,236.8 L820.9,236.9 L821.2,236.9 L821.5,237.0 L821.8,237.1 L822.1,237.1 L822.4,237.2 L822.7,237.2 L823.0,237.3 L823.2,237.3 L823.5,237.4 L823.8,237.5 L824.1,237.5 L824.4,237.6 L824.7,237.6 L825.0,237.7 L825.3,237.7 L825.6,237.8 L825.8,237.8 L826.1,237.9 L826.4,238.0 L826.7,238.0 L827.0,238.1 L827.3,238.1 L827.6,238.2 L827.9,238.2 L828.1,238.3 L828.4,238.3 L828.7,238.4 L829.0,238.4 L829.3,238.5 L829.6,238.5 L829.9,238.6 L830.2,238.6 L830.4,238.7 L830.7,238.7 L831.0,238.8 L831.3,238.8 L831.6,238.9 L831.9,238.9 L832.2,239.0 L832.5,239.0 L832.7,239.1 L833.0,239.1 L833.3,239.2 L833.6,239.2 L833.9,239.3 L834.2,239.3 L834.5,239.4 L834.8,239.4 L835.1,239.5 L835.3,239.4 L835.6,239.3 L835.9,239.1 L836.2,239.0 L836.5,238.9 L836.8,238.8 L837.1,238.7 L837.4,238.6 L837.6,238.4 L837.9,238.3 L838.2,238.2 L838.5,238.1 L838.8,238.0 L839.1,237.9 L839.4,237.8 L839.7,237.6 L839.9,237.5 L840.2,237.4 L840.5,237.3 L840.8,237.2 L841.1,237.1 L841.4,237.0 L841.7,236.9 L842.0,236.8 L842.2,236.7 L842.5,236.6 L842.8,236.5 L843.1,236.4 L843.4,236.3 L843.7,236.2 L844.0,236.1 L844.3,236.0 L844.6,235.9 L844.8,235.8 L845.1,235.7 L845.4,235.6 L845.7,235.5 L846.0,235.4 L846.3,235.3 L846.6,235.3 L846.9,235.2 L847.1,235.1 L847.4,235.0 L847.7,234.9 L848.0,234.9 L848.3,234.8 L848.6,234.7 L848.9,234.6 L849.2,234.6 L849.4,234.5 L849.7,234.4 L850.0,234.4 L850.3,234.3 L850.6,234.2 L850.9,234.2 L851.2,234.1 L851.5,234.1 L851.7,234.0 L852.0,234.0 L852.3,233.9 L852.6,233.9 L852.9,233.8 L853.2,233.8 L853.5,233.7 L853.8,233.7 L854.1,233.7 L854.3,233.6 L854.6,233.6 L854.9,233.6 L855.2,233.6 L855.5,233.5 L855.8,233.5 L856.1,233.5 L856.4,233.5 L856.6,233.4 L856.9,233.4 L857.2,233.4 L857.5,233.4 L857.8,233.4 L858.1,233.4 L858.4,233.4 L858.7,233.4 L858.9,233.4 L859.2,233.4 L859.5,233.4 L859.8,233.4 L860.1,233.4 L860.4,233.5 L860.7,233.5 L861.0,233.5 L861.2,233.5 L861.5,233.5 L861.8,233.6 L862.1,233.6 L862.4,233.6 L862.7,233.7 L863.0,233.7 L863.3,233.7 L863.5,233.8 L863.8,233.8 L864.1,233.9 L864.4,233.9 L864.7,234.0 L865.0,234.0 L865.3,234.1 L865.6,234.1 L865.9,234.2 L866.1,234.3 L866.4,234.3 L866.7,234.4 L867.0,234.5 L867.3,234.5 L867.6,234.6 L867.9,234.7 L868.2,234.7 L868.4,234.8 L868.7,234.9 L869.0,234.9 L869.3,235.0 L869.6,235.1 L869.9,235.1 L870.2,235.2 L870.5,235.3 L870.7,235.3 L871.0,235.4 L871.3,235.4 L871.6,235.5 L871.9,235.6 L872.2,235.6 L872.5,235.7 L872.8,235.8 L873.0,235.8 L873.3,235.9 L873.6,235.9 L873.9,236.0 L874.2,236.1 L874.5,236.1 L874.8,236.2 L875.1,236.3 L875.4,236.3 L875.6,236.4 L875.9,236.4 L876.2,236.5 L876.5,236.6 L876.8,236.6 L877.1,236.7 L877.4,236.7 L877.7,236.8 L877.9,236.8 L878.2,236.9 L878.5,237.0 L878.8,237.0 L879.1,237.1 L879.4,237.1 L879.7,237.2 L880.0,237.3 L880.2,237.3 L880.5,237.4 L880.8,237.4 L881.1,237.5 L881.4,237.5 L881.7,237.6 L882.0,237.6 L882.3,237.7 L882.5,237.8 L882.8,237.8 L883.1,237.9 L883.4,237.9 L883.7,238.0 L884.0,238.0 L884.3,238.1 L884.6,238.1 L884.9,238.2 L885.1,238.2 L885.4,238.3 L885.7,238.3 L886.0,238.4 L886.3,238.5 L886.6,238.5 L886.9,238.6 L887.2,238.6 L887.4,238.7 L887.7,238.7 L888.0,238.8 L888.3,238.8 L888.6,238.9 L888.9,238.9 L889.2,239.0 L889.5,239.0 L889.7,239.1 L890.0,239.1 L890.3,239.2 L890.6,239.2 L890.9,239.3 L891.2,239.3 L891.5,239.4 L891.8,239.4 L892.0,239.5 L892.3,239.5 L892.6,239.6 L892.9,239.4 L893.2,239.3 L893.5,239.2 L893.8,239.1 L894.1,239.0 L894.4,238.8 L894.6,238.7 L894.9,238.6 L895.2,238.5 L895.5,238.4 L895.8,238.3 L896.1,238.2 L896.4,238.0 L896.7,237.9 L896.9,237.8 L897.2,237.7 L897.5,237.6 L897.8,237.5 L898.1,237.4 L898.4,237.3 L898.7,237.2 L899.0,237.0 L899.2,236.9 L899.5,236.8 L899.8,236.7 L900.1,236.6 L900.4,236.5 L900.7,236.4 L901.0,236.3 L901.3,236.2 L901.5,236.1 L901.8,236.0 L902.1,235.9 L902.4,235.8 L902.7,235.8 L903.0,235.7 L903.3,235.6 L903.6,235.5 L903.8,235.4 L904.1,235.3 L904.4,235.2 L904.7,235.1 L905.0,235.1 L905.3,235.0 L905.6,234.9 L905.9,234.8 L906.2,234.8 L906.4,234.7 L906.7,234.6 L907.0,234.6 L907.3,234.5 L907.6,234.4 L907.9,234.4 L908.2,234.3 L908.5,234.2 L908.7,234.2 L909.0,234.1 L909.3,234.1 L909.6,234.0 L909.9,234.0 L910.2,233.9 L910.5,233.9 L910.8,233.8 L911.0,233.8 L911.3,233.8 L911.6,233.7 L911.9,233.7 L912.2,233.7 L912.5,233.6 L912.8,233.6 L913.1,233.6 L913.3,233.6 L913.6,233.5 L913.9,233.5 L914.2,233.5 L914.5,233.5 L914.8,233.5 L915.1,233.5 L915.4,233.5 L915.7,233.4 L915.9,233.4 L916.2,233.4 L916.5,233.4 L916.8,233.5 L917.1,233.5 L917.4,233.5 L917.7,233.5 L918.0,233.5 L918.2,233.5 L918.5,233.5 L918.8,233.6 L919.1,233.6 L919.4,233.6 L919.7,233.6 L920.0,233.7 L920.3,233.7 L920.5,233.7 L920.8,233.8 L921.1,233.8 L921.4,233.9 L921.7,233.9 L922.0,234.0 L922.3,234.0 L922.6,234.1 L922.8,234.1 L923.1,234.2 L923.4,234.2 L923.7,234.3 L924.0,234.4" stroke="var(--cyan)" stroke-width="2" fill="none"/>
+<text x="795" y="286" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="14" letter-spacing="1.3" text-anchor="middle">STEADY LIGHT AGAIN</text>
+<text x="795" y="304" fill="var(--white)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="11.5" letter-spacing="0.9" text-anchor="middle">SAME CURRENT, SAME AVERAGE LIGHT</text>
+<text x="795" y="322" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">ENERGY STORE CARRIES THE GAPS</text>
+<rect x="40" y="372" width="160" height="62" rx="8" fill="rgba(255,255,255,0.03)" stroke="var(--green)"/>
+<text x="120" y="397" fill="var(--green)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.1" text-anchor="middle">CCR</text>
+<text x="120" y="414" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">THYRISTORS FIRE LATE</text>
+<text x="120" y="452" fill="var(--text)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.7" text-anchor="middle">AT LOW STEPS</text>
+<path d="M202,403 H223" stroke="var(--grey-dim)" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+<rect x="225" y="372" width="160" height="62" rx="8" fill="rgba(255,255,255,0.03)" stroke="var(--taxi-blue)"/>
+<text x="305" y="397" fill="var(--taxi-blue)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.1" text-anchor="middle">LOOP CURRENT</text>
+<text x="305" y="414" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">CHOPPED INTO PULSES</text>
+<text x="305" y="452" fill="var(--text)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.7" text-anchor="middle">GAPS BETWEEN THEM</text>
+<path d="M387,403 H408" stroke="var(--grey-dim)" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+<rect x="410" y="372" width="160" height="62" rx="8" fill="rgba(255,255,255,0.03)" stroke="var(--gold)"/>
+<text x="490" y="397" fill="var(--gold)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.1" text-anchor="middle">TRANSFORMER</text>
+<text x="490" y="414" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">PASSES THE WAVEFORM</text>
+<text x="490" y="452" fill="var(--text)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.7" text-anchor="middle">TO THE FIXTURE</text>
+<path d="M572,403 H593" stroke="var(--grey-dim)" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+<rect x="595" y="372" width="160" height="62" rx="8" fill="rgba(255,255,255,0.03)" stroke="var(--red)"/>
+<text x="675" y="397" fill="var(--red)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.1" text-anchor="middle">LED DRIVER</text>
+<text x="675" y="414" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">SMOOTHS OR FOLLOWS</text>
+<text x="675" y="452" fill="var(--text)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.7" text-anchor="middle">THE DESIGN DECIDES</text>
+<path d="M757,403 H778" stroke="var(--grey-dim)" stroke-width="1.6" fill="none" marker-end="url(#ar)"/>
+<rect x="780" y="372" width="160" height="62" rx="8" fill="rgba(255,255,255,0.03)" stroke="var(--cyan)"/>
+<text x="860" y="397" fill="var(--cyan)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.1" text-anchor="middle">LIGHT</text>
+<text x="860" y="414" fill="var(--grey-dim)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.8" text-anchor="middle">STEADY, OR FLICKER</text>
+<text x="860" y="452" fill="var(--text)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.7" text-anchor="middle">AND STROBING</text>
+<rect x="40" y="484" width="900" height="34" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.18)"/><text x="490" y="505" fill="var(--white)" font-family="'Barlow Condensed',sans-serif" font-weight="700" font-size="12" letter-spacing="1" text-anchor="middle">FLICKER SHOWS FIRST AT THE LOW STEPS &#183; TEST THE REAL FIXTURE ON THE REAL CCR AT EVERY STEP</text>
+</svg>
+<button type="button" class="dz-btn dz-open"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> View full diagram</button>
+
+                <div class="caption-row">
+                    <div class="legend"><span class="dot blue"></span>CCR output current</div>
+                    <div class="legend"><span class="dot red"></span>light, following pulses</div>
+                    <div class="legend"><span class="dot cyan"></span>light, smoothed</div>
+                </div>
+            </div>
+
+            <div class="fact-card">
+                <div class="label">
+                    The Fact
+                    <span class="badge"><i class="fa-solid fa-check"></i> IEC 61820-3-2 &middot; FAA AC 150/5345-10</span>
+                </div>
+                <p>
+                    A thyristor CCR holds the loop current steady by switching on part-way through each half-cycle, so its output waveform is <b>chopped</b>. At the full step it is close to a sine wave. At the low steps the thyristors fire later, and the current flows in <b class="highlight-yellow">narrower pulses with longer gaps</b>.
+                </p>
+                <p>
+                    A halogen filament stays hot and averages this out. An <b>LED responds almost at once</b>, so what the <b>driver</b> does with the pulsed current decides whether the light is steady. A driver that cannot carry the light through the gaps lets it <b class="highlight-red">flicker</b>, and a moving eye or camera may also see the <b class="highlight-red">stroboscopic effect</b>.
+                </p>
+
+                <div class="compare-row">
+                    <div class="compare-box">
+                        <div class="cb-tag">Flicker</div>
+                        <p>A visible fluctuation in the light with time. It can be seen by a fixed observer, and is usually clearest at the lowest brightness steps.</p>
+                    </div>
+                    <div class="compare-box dim">
+                        <div class="cb-tag">Stroboscopic effect</div>
+                        <p>Seen when the eye or a camera moves across a light that is rapidly changing in brightness. A steady light then looks like separate points or a broken trail.</p>
+                    </div>
+                </div>
+
+                <div class="cmp-wrap">
+                    <table class="cmp-table cmp-3">
+                        <thead><tr><th>Aspect</th><th class="h-hal">Halogen</th><th class="h-red">LED, driver not smoothing</th><th class="h-led">LED, driver smoothing</th></tr></thead>
+                        <tbody>
+                            <tr><th>Response to the pulses</th><td>Filament averages them out</td><td>Light follows the pulses</td><td>Energy store carries the light through the gaps</td></tr>
+                            <tr><th>At the full step</th><td>Steady</td><td>Usually acceptable</td><td>Steady</td></tr>
+                            <tr><th>At the lowest step</th><td>Steady, but dim and slow to respond</td><td>Most likely to flicker</td><td>Steady</td></tr>
+                            <tr><th>Moving eye or camera</th><td>No strobing from the filament</td><td>Strobing or banding may show</td><td>Much reduced</td></tr>
+                            <tr><th>Set by</th><td>The lamp</td><td>The driver design</td><td>The driver design and its match to the CCR</td></tr>
+                            <tr><th>What to do</th><td>Nothing special</td><td>Choose another driver or a better matched CCR</td><td>Still test at every step</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="note">
+                    <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+                    Schematic &mdash; the waveforms are illustrative and show shape only, not measured values. How the output of a real CCR is shaped, how a driver responds and how much flicker is acceptable depend on the products and the specification. Follow the CCR and fixture manufacturers&rsquo; data, the design drawings and the applicable specification.
+                </div>
+            </div>
+
+            <div class="shell-section">
+                <div class="section-tag">Checks</div>
+                <h2>What to check for flicker</h2>
+                <div class="check-list">
+                    <div class="check-item"><h5><i class="fa-solid fa-plug-circle-check"></i> The real combination</h5><p>Test the actual fixture on the actual CCR type, not each on its own. A good driver on a poorly matched CCR can still flicker.</p></div>
+                    <div class="check-item"><h5><i class="fa-solid fa-sliders"></i> Every step</h5><p>Check all the brightness steps, and look closely at the lowest, where the pulses are narrowest.</p></div>
+                    <div class="check-item"><h5><i class="fa-solid fa-person-walking"></i> In motion</h5><p>Look at the lights while moving, as a pilot does, not only from a fixed position.</p></div>
+                    <div class="check-item"><h5><i class="fa-solid fa-video"></i> Cameras and vision systems</h5><p>Check how the lights look to the cameras or vision systems used on the airfield, because banding can appear on screen.</p></div>
+                    <div class="check-item"><h5><i class="fa-solid fa-file-circle-check"></i> Compatibility data</h5><p>Ask the driver and CCR manufacturers which combinations are approved, and keep the answer with the records.</p></div>
+                    <div class="check-item"><h5><i class="fa-solid fa-rotate"></i> After a change</h5><p>Repeat the check when the CCR, its settings or the fixture type changes.</p></div>
+                </div>
+            </div>
+
+            <div class="entry-nav">
+                <a href="mixed-halogen-led-circuits.html"><i class="fa-solid fa-arrow-left"></i> Entry 36 &middot; Mixed halogen and LED circuits</a>
+                <a href="led-power-draw-and-ccr-resizing-after-retrofit.html">Entry 38 &middot; LED power-draw and CCR re-sizing after retrofit <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="shell-section" id="faq">
+                <div class="section-tag">FAQ</div>
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">Why can an LED driver flicker on a thyristor CCR?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A thyristor CCR controls the current by switching on part-way through each half-cycle, so its output waveform is chopped. A halogen filament smooths that out because it stays hot. An LED responds almost at once, so unless the driver smooths the waveform, the light follows the gaps and pulses in the current.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Why is flicker worse at the low brightness steps?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>At the low steps the thyristors fire late in each half-cycle, so the current flows in narrower pulses with longer gaps between them. A driver has less to work with in the gaps, so any lack of smoothing shows most at the lowest steps.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">What is the stroboscopic effect?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It is the effect seen when the eye, or a camera, moves relative to a light that is rapidly switching in brightness. A steady light then appears as a row of separate points or a broken trail. It can be visible even when a fixed observer sees no flicker.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">Why does a halogen lamp not show the same problem?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Its filament has thermal inertia. It warms and cools slowly, so it averages out the fast pulses in the current and the light stays almost steady. This is the same slow response that makes a halogen light change more gradually at a step change.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">How is the problem reduced?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Mainly by the design of the driver, with enough energy storage or smoothing to carry the light through the gaps in the current, and by choosing a driver and a CCR that are made to work together. Some CCRs filter or shape their output. The right combination depends on the products, so check the manufacturers' data.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How is it checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Test the real fixture with the real CCR, at every brightness step and with the lowest step looked at closely. Look at the light while moving and with the cameras or vision systems used on the airfield, and keep a record of the combination tested. Repeat the check if the CCR or the fixture type changes.</p></div>
+                </details>
+                </div>
+            </div>
+<div class="shell-section cta-wrap">
+            <div class="academy-cta">
+                <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
+                <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
+                <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
+                <h4>Build Practical AGL Engineering Skills</h4>
+                <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
+                <div class="academy-path">
+                    <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Design &amp; Electrical Engineering</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Approach Lighting</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Photometry</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Installation &amp; Commissioning</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Maintenance &amp; Troubleshooting</span>
+                </div>
+                <p>Learn how each light, sign and circuit works as part of a complete airport lighting system, not just as an isolated diagram.</p>
+                <div class="academy-cta-actions">
+                    <a href="../academy.html" class="academy-btn academy-btn-primary"><i class="fa-solid fa-book-open"></i> Explore AGL Courses</a>
+                    <a href="../index.html#contact" class="academy-btn academy-btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Your AGL Learning Journey</a>
+                </div>
+                <div class="academy-cta-tagline">See. Understand. Apply. Engineer.</div>
+            </div>
+            </div>
+
+
+            <div class="shell-section">
+                <div class="section-tag">Related Entries</div>
+                <h2>Continue Exploring</h2>
+                <div class="related-grid">
+                <a class="related-card" href="../ccr/ccr-thyristor.html"><div class="rc-tag">Power Supply</div><h5>CCR Thyristor</h5></a>
+<a class="related-card" href="../signs/led-driver.html"><div class="rc-tag">Airfield Signs</div><h5>LED Driver in a Sign</h5></a>
+<a class="related-card" href="../ccr/ccr-intensity-steps.html"><div class="rc-tag">Power Supply</div><h5>CCR Intensity Steps</h5></a>
+<a class="related-card" href="../comparison-selection/different-ccr-technologies.html"><div class="rc-tag">Power Supply</div><h5>Different CCR Technologies</h5></a>
+<a class="related-card" href="mixed-halogen-led-circuits.html"><div class="rc-tag">AGL Fixtures</div><h5>Mixed Halogen and LED Circuits</h5></a>
+<a class="related-card" href="led-power-draw-and-ccr-resizing-after-retrofit.html"><div class="rc-tag">Fixtures &amp; Product Engineering</div><h5>LED Power-Draw and CCR Re-sizing After Retrofit</h5></a>
+<a class="related-card" href="led-retrofit-halogen-series-circuit.html"><div class="rc-tag">AGL Fixtures</div><h5>LED Retrofit in a Halogen Series Circuit</h5></a>
+<a class="related-card" href="halogen-to-led-migration-sequence.html"><div class="rc-tag">AGL Fixtures</div><h5>Halogen-to-LED Migration Sequence</h5></a>
+<a class="related-card" href="led-driver-fixture.html"><div class="rc-tag">Fixture Construction</div><h5>LED Driver in an AGL Fixture</h5></a>
+<a class="related-card" href="../ccr/ccr-communication.html"><div class="rc-tag">CCR & Power</div><h5>CCR Communication</h5></a>
+<a class="related-card" href="../ccr/ccr-control-architecture.html"><div class="rc-tag">CCR & Power</div><h5>CCR Control Architecture</h5></a>
+<a class="related-card" href="../ccr/ccr-controller.html"><div class="rc-tag">CCR & Power</div><h5>CCR Controller</h5></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+</div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+        <div class="footer-links">
+            <a href="../index.html#about">About</a>
+            <a href="../component-library.html">Components</a>
+            <a href="../agl-comparisons.html">Comparisons</a>
+            <a href="../standards-companion.html">Standards</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 400); });
+        scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const hb = document.getElementById('hamburger'), nl = document.getElementById('navLinks');
+        hb.addEventListener('click', () => { const o = nl.classList.toggle('open'); hb.setAttribute('aria-expanded', o); });
+    </script>
+
+    <!-- dz-feature:start -->
+    <div class="dz-overlay" id="dzOverlay" role="dialog" aria-modal="true" aria-label="Full diagram viewer">
+        <div class="dz-bar">
+            <span class="dz-title" id="dzTitle">Diagram</span>
+            <div class="dz-tools">
+                <button type="button" id="dzOut" aria-label="Zoom out" title="Zoom out (-)">&minus;</button>
+                <span class="dz-zoom" id="dzPct" aria-live="polite">100%</span>
+                <button type="button" id="dzIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
+                <button type="button" id="dzFit" class="dz-fit" aria-label="Fit diagram to screen" title="Fit to screen (0)">Fit</button>
+                <button type="button" id="dzClose" class="dz-close" title="Close (Esc)">Close</button>
+            </div>
+        </div>
+        <div class="dz-stage" id="dzStage">
+            <div class="dz-hint" id="dzHint">Drag to pan &middot; scroll or pinch to zoom &middot; double-click to zoom in</div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var ov=document.getElementById('dzOverlay'), stage=document.getElementById('dzStage');
+        var pct=document.getElementById('dzPct'), hint=document.getElementById('dzHint'), ttl=document.getElementById('dzTitle');
+        var svg=null, vw=0, vh=0, fit=1, s=1, tx=0, ty=0, opener=null, hintTimer=null;
+        var MIN=0.5, MAX=10; /* relative to fit */
+        var ptrs={}, last=null;
+
+        function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+        function apply(){
+            var W=stage.clientWidth, H=stage.clientHeight, m=80;
+            var w=vw*s, h=vh*s;
+            tx=clamp(tx, m-w, W-m); ty=clamp(ty, m-h, H-m);
+            svg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';
+            pct.textContent=Math.round(s/fit*100)+'%';
+        }
+        function fitView(){
+            var W=stage.clientWidth, H=stage.clientHeight, pad=24;
+            fit=Math.min((W-pad*2)/vw,(H-pad*2)/vh); if(!(fit>0)) fit=1;
+            s=fit; tx=(W-vw*s)/2; ty=(H-vh*s)/2; apply();
+        }
+        function zoomAt(f,cx,cy){
+            var ns=clamp(s*f, fit*MIN, fit*MAX); f=ns/s;
+            tx=cx-(cx-tx)*f; ty=cy-(cy-ty)*f; s=ns; apply();
+        }
+        function center(){ return [stage.clientWidth/2, stage.clientHeight/2]; }
+        function stagePt(e){ var r=stage.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; }
+
+        function open(src, trigger){
+            opener=trigger||null;
+            if(svg) stage.removeChild(svg);
+            svg=src.cloneNode(true); svg.removeAttribute('style'); svg.removeAttribute('class');
+            var vb=src.viewBox&&src.viewBox.baseVal;
+            if(vb&&vb.width){ vw=vb.width; vh=vb.height; }
+            else { var bb=src.getBoundingClientRect(); vw=bb.width||940; vh=bb.height||520; }
+            svg.setAttribute('width',vw); svg.setAttribute('height',vh);
+            svg.style.width=vw+'px'; svg.style.height=vh+'px';
+            stage.insertBefore(svg, hint);
+            var label=src.getAttribute('aria-label')||'';
+            var h1=document.querySelector('h1');
+            ttl.textContent=(h1?h1.textContent.trim():'Diagram');
+            svg.setAttribute('aria-label', label);
+            ov.classList.add('open'); document.body.style.overflow='hidden';
+            fitView();
+            hint.classList.remove('hide'); clearTimeout(hintTimer);
+            hintTimer=setTimeout(function(){ hint.classList.add('hide'); },4500);
+            document.getElementById('dzClose').focus();
+        }
+        function close(){
+            ov.classList.remove('open'); document.body.style.overflow='';
+            if(opener&&opener.focus) opener.focus();
+        }
+
+        document.querySelectorAll('.diagram-card').forEach(function(card){
+            var src=card.querySelector('svg'), btn=card.querySelector('.dz-open');
+            if(!src) return;
+            if(btn) btn.addEventListener('click',function(){ open(src,btn); });
+            src.addEventListener('click',function(){ open(src,btn); });
+        });
+
+        document.getElementById('dzClose').addEventListener('click',close);
+        document.getElementById('dzIn').addEventListener('click',function(){ var c=center(); zoomAt(1.4,c[0],c[1]); });
+        document.getElementById('dzOut').addEventListener('click',function(){ var c=center(); zoomAt(1/1.4,c[0],c[1]); });
+        document.getElementById('dzFit').addEventListener('click',fitView);
+
+        stage.addEventListener('wheel',function(e){
+            e.preventDefault(); var p=stagePt(e);
+            var dy=e.deltaMode===1?e.deltaY*16:e.deltaY;
+            zoomAt(Math.exp(-dy*(e.ctrlKey?0.01:0.0018)),p[0],p[1]);
+        },{passive:false});
+
+        stage.addEventListener('pointerdown',function(e){
+            stage.setPointerCapture(e.pointerId); ptrs[e.pointerId]=stagePt(e); last=null;
+            stage.classList.add('drag'); hint.classList.add('hide');
+        });
+        stage.addEventListener('pointermove',function(e){
+            if(!ptrs[e.pointerId]) return;
+            var p=stagePt(e), ids=Object.keys(ptrs);
+            if(ids.length===1){
+                tx+=p[0]-ptrs[e.pointerId][0]; ty+=p[1]-ptrs[e.pointerId][1]; ptrs[e.pointerId]=p; apply();
+            } else if(ids.length>=2){
+                ptrs[e.pointerId]=p;
+                var a=ptrs[ids[0]], b=ptrs[ids[1]];
+                var d=Math.hypot(a[0]-b[0],a[1]-b[1]), cx=(a[0]+b[0])/2, cy=(a[1]+b[1])/2;
+                if(last){
+                    tx+=cx-last.cx; ty+=cy-last.cy;
+                    if(last.d>0) zoomAt(d/last.d,cx,cy); else apply();
+                }
+                last={d:d,cx:cx,cy:cy};
+            }
+        });
+        function up(e){
+            delete ptrs[e.pointerId]; last=null;
+            if(!Object.keys(ptrs).length) stage.classList.remove('drag');
+        }
+        stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+
+        stage.addEventListener('dblclick',function(e){
+            var p=stagePt(e);
+            if(s>fit*1.05) fitView(); else zoomAt(2.5,p[0],p[1]);
+        });
+
+        window.addEventListener('resize',function(){ if(ov.classList.contains('open')) fitView(); });
+
+        document.addEventListener('keydown',function(e){
+            if(!ov.classList.contains('open')) return;
+            var c=center(), k=e.key, step=60;
+            if(k==='Escape') close();
+            else if(k==='+'||k==='=') zoomAt(1.25,c[0],c[1]);
+            else if(k==='-'||k==='_') zoomAt(1/1.25,c[0],c[1]);
+            else if(k==='0') fitView();
+            else if(k==='ArrowLeft'){ tx+=step; apply(); }
+            else if(k==='ArrowRight'){ tx-=step; apply(); }
+            else if(k==='ArrowUp'){ ty+=step; apply(); }
+            else if(k==='ArrowDown'){ ty-=step; apply(); }
+            else if(k==='Tab'){
+                var f=ov.querySelectorAll('button'), first=f[0], lastB=f[f.length-1];
+                if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); lastB.focus(); }
+                else if(!e.shiftKey&&document.activeElement===lastB){ e.preventDefault(); first.focus(); }
+            }
+            else return;
+            if(k!=='Tab') e.preventDefault();
+        });
+    })();
+    </script>
+    <!-- dz-feature:end -->
+
+<!-- motion-feature:start -->
+<style>
+/* AGL Visual Encyclopedia: live diagram motion v3 (light, glow, current) */
+@keyframes m3Power{0%{opacity:.25}10%{opacity:1}13%{opacity:.8}16%{opacity:1}85%{opacity:1}95%{opacity:.25}100%{opacity:.25}}
+@keyframes m3Breath{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes m3Face{0%{filter:brightness(.55) saturate(.8)}10%{filter:brightness(1.25) saturate(1.15)}13%{filter:brightness(.9)}16%,85%{filter:brightness(1.12) saturate(1.1)}95%,100%{filter:brightness(.55) saturate(.8)}}
+@keyframes m3Bloom{0%{opacity:0}10%{opacity:.55}13%{opacity:.3}16%{opacity:.6}50%{opacity:.45}85%{opacity:.6}95%,100%{opacity:0}}
+@keyframes m3Ring{0%{transform:scale(1);opacity:.5}100%{transform:scale(3);opacity:0}}
+@keyframes m3Travel{from{stroke-dashoffset:var(--m3-a,6)}to{stroke-dashoffset:var(--m3-b,-94)}}
+@keyframes m3March{to{stroke-dashoffset:var(--m3-d,-12)}}
+@keyframes m3Grow{from{transform:scaleX(0)}}
+@keyframes m3Draw{to{stroke-dashoffset:0}}
+@keyframes m3Sweep{0%{opacity:0;transform:translateX(0)}6%,94%{opacity:.9}100%{opacity:0;transform:translateX(var(--m3-w,200px))}}
+@keyframes m3Float{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
+@keyframes m3Shimmer{0%,100%{opacity:.25}50%{opacity:.85}}
+.m3-on{animation:m3Power 9s ease-in-out infinite}
+.m3-face{animation:m3Face 9s ease-in-out infinite}
+.m3-bloomg{animation:m3Bloom 9s ease-in-out infinite;pointer-events:none}
+.m3-halo{transform-box:fill-box;transform-origin:center;animation:m3Breath 2.4s ease-in-out infinite}
+.m3-ring{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:m3Ring 3s ease-out infinite}
+.m3-spark{fill:#fff;transform-box:fill-box;transform-origin:center;animation:m3Shimmer 1.8s ease-in-out infinite}
+.m3-src{animation:m3Power 9s ease-in-out infinite}
+.m3-filon{animation:m3Power 9s ease-in-out infinite,m3Fil 1.5s ease-in-out infinite}
+@keyframes m3Fil{0%,100%{filter:drop-shadow(0 0 3px #FFD400)}50%{filter:drop-shadow(0 0 9px #FFD400) drop-shadow(0 0 16px #ff9d00)}}
+.m3-pk{fill:none;stroke-linecap:round;pointer-events:none;stroke-dasharray:var(--m3-len,9) 400;animation:m3Travel var(--m3-t,2.4s) linear infinite;animation-delay:var(--m3-pd,0s);filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor)}
+.m3-march{animation:m3March var(--m3-dur,.8s) linear infinite}
+.m3-ready:not(.m3-play) .m3-bar{transform:scaleX(0)}
+.m3-bar{transform-box:fill-box;transform-origin:left center}
+.m3-play .m3-bar{animation:m3Grow 1.2s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--m3-bd,.3s)}
+.m3-ready .m3-draw{stroke-dasharray:1;stroke-dashoffset:1}
+.m3-play .m3-draw{animation:m3Draw 2.4s cubic-bezier(.4,0,.2,1) forwards;animation-delay:var(--m3-dd,.4s)}
+.m3-cursor{stroke:var(--gold,#FFB400);stroke-width:1.6;opacity:0;pointer-events:none;animation:m3Sweep 4.2s linear infinite;animation-delay:2.6s}
+.xv-part{animation:m3Float 4s ease-in-out infinite;animation-delay:calc(var(--m3-i,0) * -.5s)}
+.m3-toggle{margin-left:10px}
+.m3-off *,.m3-off *::before,.m3-off *::after{animation:none!important}
+.m3-off .m3-ready .m3-bar{transform:none!important}
+.m3-off .m3-ready .m3-draw{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+.m3-off .m3-fx{display:none}
+@media (prefers-reduced-motion:reduce){.m3-on,.m3-face,.m3-bloomg,.m3-halo,.m3-ring,.m3-spark,.m3-src,.m3-filon,.m3-pk,.m3-march,.xv-part{animation-duration:0s}}
+</style>
+<script>
+(function(){
+  var root=document.documentElement, NS='http://www.w3.org/2000/svg';
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pref=null; try{pref=localStorage.getItem('aglMotion');}catch(e){}
+  var off=rm?(pref!=='on'):(pref==='off');
+  function setOff(v){off=v;root.classList.toggle('m3-off',v);try{localStorage.setItem('aglMotion',v?'off':'on');}catch(e){}
+    document.querySelectorAll('.m3-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(!v));b.querySelector('span').textContent=v?'Motion off':'Motion on';});}
+  root.classList.toggle('m3-off',off);
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function rgb(s){var m=(s||'').match(/rgba?\(([^)]+)\)/);if(!m)return null;var p=m[1].split(/[ ,\/]+/).map(parseFloat);return {r:p[0],g:p[1],b:p[2],a:p.length>3?p[3]:1};}
+  function sat(c){return c&&c.a>=.6&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>60&&Math.max(c.r,c.g,c.b)>150;}
+  function lum(c){return c.r*.3+c.g*.59+c.b*.11;}
+  function css(c){return 'rgb('+Math.round(c.r)+','+Math.round(c.g)+','+Math.round(c.b)+')';}
+
+  function prep(svg){
+    var defs=svg.querySelector('defs')||svg.insertBefore(el('defs',{}),svg.firstChild), uid=Math.random().toString(36).slice(2,6), n=0;
+    var blur=el('filter',{id:'m3b'+uid,x:'-80%',y:'-80%',width:'260%',height:'260%'});blur.appendChild(el('feGaussianBlur',{stdDeviation:'7'}));defs.appendChild(blur);
+    function grad(c){var id='m3g'+uid+(n++),g=el('radialGradient',{id:id});
+      [[0,.9],[.4,.4],[1,0]].forEach(function(s){g.appendChild(el('stop',{offset:s[0],'stop-color':css(c),'stop-opacity':s[1]}));});defs.appendChild(g);return id;}
+    function fillOf(e){var c=rgb(getComputedStyle(e).fill);return c&&c.a>.4?c:null;}
+    function strokeOf(e){var c=rgb(getComputedStyle(e).stroke);return c&&c.a>.4?c:null;}
+    function inFx(e){return e.closest('.m3-fx,.m3-src,.m3-face,.m3-pk,.diagram-legend');}
+
+    /* 1 -- LEDs and lamps: glow cluster behind, warm-up, breathing halo, rings, sparkle */
+    var src=[],panels=[];
+    svg.querySelectorAll('[filter^="url(#gw"] > *,[filter^="url(#glow"] > *,circle[filter^="url(#gw"],circle[filter^="url(#glow"]').forEach(function(e){if(/^(rect|circle|ellipse|path)$/.test(e.tagName))src.push(e);});
+    svg.querySelectorAll('circle').forEach(function(c){var r=+c.getAttribute('r');if(r<3.5||r>14||c.closest('[filter]'))return;
+      var f=fillOf(c);if(!(f&&f.a>=.8&&f.r>220&&f.g>150&&f.b<90))return;
+      var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');
+      var badge=[].some.call(c.parentNode.querySelectorAll('text'),function(t){return Math.abs(+t.getAttribute('x')-cx)<r+1&&Math.abs(+t.getAttribute('y')-cy)<r+3;});
+      if(!badge)src.push(c);});
+    svg.querySelectorAll('path').forEach(function(q){var d=q.getAttribute('d')||'';if(d.length>120||!/ t/.test(d))return;
+      var c=strokeOf(q);if(c&&c.r>220&&c.g>150&&c.b<90){q.classList.add('m3-fil');src.push(q);}});
+    if(!src.length){svg.querySelectorAll('rect').forEach(function(r){var w=+r.getAttribute('width'),h=+r.getAttribute('height');
+      if(w<5||w>64||h<5||h>26||r.closest('defs'))return;var f=fillOf(r);if(f&&f.a>=.9&&f.r>238&&f.g>238&&f.b>238)src.push(r);});}
+    src.forEach(function(e){
+      var b;try{b=e.getBBox();}catch(x){return;} if(!b.width)return;
+      if(b.width>40||b.height>40){panels.push(e);return;}
+      var c=fillOf(e)||strokeOf(e)||{r:255,g:230,b:150}; if(lum(c)<90)return; if(Math.min(c.r,c.g,c.b)>235)c={r:255,g:238,b:180};
+      var cx=b.x+b.width/2,cy=b.y+b.height/2,m=Math.max(b.width,b.height),R=Math.min(80,Math.max(26,m*2.6));
+      var g=el('g',{'class':'m3-fx m3-bloomg'});
+      g.appendChild(el('circle',{cx:cx,cy:cy,r:R,fill:'url(#'+grad(c)+')','class':'m3-halo'}));
+      var rg=el('circle',{cx:cx,cy:cy,r:Math.max(5,m/2),stroke:css(c),'class':'m3-ring'});g.appendChild(rg);
+      var rg2=rg.cloneNode(false);rg2.style.animationDelay='1.5s';g.appendChild(rg2);
+      var ref=(e.parentNode.getAttribute&&e.parentNode.getAttribute('filter'))?e.parentNode:e;ref.parentNode.insertBefore(g,ref);
+      e.classList.add(e.classList.contains('m3-fil')?'m3-filon':'m3-src');
+    });
+
+    /* 2 -- self-luminous panels (drawn with the glow filter): light up and bloom */
+    panels.forEach(function(r){
+      if(r.tagName!=='rect')return;
+      var f=fillOf(r);if(!f)return;
+      var w=+r.getAttribute('width'),h=+r.getAttribute('height'),x=+r.getAttribute('x'),y=+r.getAttribute('y');
+      var bl=el('rect',{x:x,y:y,width:w,height:h,rx:+r.getAttribute('rx')||0,fill:css(f),filter:'url(#m3b'+uid+')','class':'m3-fx m3-bloomg'});
+      if(r.getAttribute('transform'))bl.setAttribute('transform',r.getAttribute('transform'));
+      var ref=(r.parentNode.getAttribute&&r.parentNode.getAttribute('filter'))?r.parentNode:r;
+      ref.parentNode.insertBefore(bl,ref);
+      r.classList.add('m3-face');
+    });
+
+    /* 3 -- light rays and current: bright pulses travelling along strokes */
+    var seen=0;
+    function packet(s,len,col,speed){
+      var t=Math.min(3.6,Math.max(1.2,len/(speed||95))),k=len>170?2:1;
+      for(var i=0;i<k;i++){var p=s.cloneNode(false);
+        ['id','class','stroke-dasharray','marker-end','marker-start','filter','opacity','style','stroke-opacity','transform'].forEach(function(a){p.removeAttribute(a);});
+        if(s.getAttribute('transform'))p.setAttribute('transform',s.getAttribute('transform'));
+        p.setAttribute('class','m3-fx m3-pk');p.setAttribute('pathLength','100');p.setAttribute('stroke',col);p.setAttribute('stroke-width','3.4');p.style.color=col;
+        p.style.setProperty('--m3-t',t.toFixed(2)+'s');p.style.setProperty('--m3-len','7');p.style.setProperty('--m3-a','7');p.style.setProperty('--m3-b','-100');
+        p.style.setProperty('--m3-pd',((seen%4)*.3+i*t/2).toFixed(2)+'s');
+        s.parentNode.insertBefore(p,s.nextSibling);}
+      seen++;}
+    svg.querySelectorAll('line,path,polyline').forEach(function(s){
+      if(inFx(s)||s.closest('defs'))return;
+      if(s.tagName==='path'&&/z\s*$/i.test((s.getAttribute('d')||'').trim()))return;
+      var cs=getComputedStyle(s);if(cs.fill!=='none'&&s.tagName!=='line'&&!/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(s.getAttribute('d')||''))return;
+      var c=rgb(cs.stroke),sw=parseFloat(cs.strokeWidth);
+      var dd=(s.getAttribute('d')||''),shaft=s.tagName==='path'&&/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(dd)&&s.nextElementSibling&&s.nextElementSibling.tagName==='path'&&s.nextElementSibling.getAttribute('fill')&&s.nextElementSibling.getAttribute('fill')!=='none';
+      if(shaft){var L;try{L=s.getTotalLength();}catch(x){return;} if(L>=18){packet(s,L,'rgb(255,180,0)',34);}return;}
+      if(!sat(c)||sw<1.3)return;
+      var len;try{len=s.getTotalLength();}catch(x){return;} if(len<34)return;
+      var d=(s.getAttribute('d')||'');if(d.length>500)return;
+      var dashed=cs.strokeDasharray&&cs.strokeDasharray!=='none';
+      var isRay=s.tagName==='path'&&/^[ML\d\s.,-]+$/i.test(d)&&(d.match(/L/gi)||[]).length>=2; /* zig-zag light path */
+      if(dashed&&!isRay){var nums=cs.strokeDasharray.split(/[ ,]+/).map(parseFloat).filter(function(q){return q>0;});
+        var sum=nums.reduce(function(a,b){return a+b;},0);if(nums.length%2)sum*=2;
+        s.classList.add('m3-march');s.style.setProperty('--m3-d',String(-sum));s.style.setProperty('--m3-dur',(sum/14).toFixed(2)+'s');return;}
+      packet(s,len,css(c),isRay?120:95);
+    });
+
+    /* 4 -- waveforms trace; cursor sweeps */
+    var waves=[].slice.call(svg.querySelectorAll('path[d]')).filter(function(p){return (p.getAttribute('d')||'').length>600;});
+    waves.forEach(function(p,i){p.setAttribute('pathLength','1');p.classList.add('m3-draw');p.style.setProperty('--m3-dd',(.4+(i%2)*.25)+'s');});
+    if(waves.length){[].slice.call(svg.querySelectorAll('rect[stroke-opacity]')).filter(function(r){return +r.getAttribute('width')>200&&+r.getAttribute('height')>200;}).forEach(function(r){
+      var x0=+r.getAttribute('x'),x1=x0+ +r.getAttribute('width'),mine=waves.filter(function(w){var b=w.getBBox();return b.x>=x0-2&&b.x+b.width<=x1+2;});if(!mine.length)return;
+      var a=1e9,z=-1e9,u=1e9,v=-1e9;mine.forEach(function(w){var b=w.getBBox();a=Math.min(a,b.x);z=Math.max(z,b.x+b.width);u=Math.min(u,b.y);v=Math.max(v,b.y+b.height);});
+      var c=el('line',{x1:a,x2:a,y1:u-8,y2:v+8,'class':'m3-fx m3-cursor'});c.style.setProperty('--m3-w',(z-a)+'px');svg.appendChild(c);});}
+
+    /* 5 -- bars fill; exploded parts hover */
+    var tracks={};svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(f.indexOf('rgba(255,255,255')===0)tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')]=+r.getAttribute('width');});
+    var bi=0;svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(!/^var\(--(gold|cyan|green|red|taxi-blue)\)$/.test(f))return;
+      var w=tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')];if(w&&w>=+r.getAttribute('width')){r.classList.add('m3-bar');r.style.setProperty('--m3-bd',(.3+(bi++%6)*.12)+'s');}});
+    svg.querySelectorAll('.xv-part').forEach(function(p,i){p.style.setProperty('--m3-i',i);});
+
+    svg.classList.add('m3-ready');
+    function play(){svg.classList.add('m3-play');}
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();play();}});},{threshold:.2});io.observe(svg);}else play();
+  }
+  function toggle(){
+    var card=document.querySelector('.diagram-card'),open=card&&card.querySelector('.dz-open'); if(!card)return;
+    var b=document.createElement('button');b.type='button';b.className='dz-btn m3-toggle';b.setAttribute('aria-pressed',String(!off));
+    b.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> <span>'+(off?'Motion off':'Motion on')+'</span>';
+    b.addEventListener('click',function(){setOff(!off);});
+    if(open)open.insertAdjacentElement('afterend',b);else card.appendChild(b);
+  }
+  function init(){document.querySelectorAll('.diagram-card > svg').forEach(prep);toggle();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- motion-feature:end -->
+
+</body>
+</html>

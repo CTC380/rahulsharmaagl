@@ -1,0 +1,2414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Runway Status Light (RWSL) | AGL Component Library</title>
+    <meta name="description" content="Runway Status Light (RWSL) reference guide: purpose at high-traffic airports, surveillance-driven runway incursion prevention and processing logic." />
+    <meta name="keywords" content="RWSL, runway status light, AGL, airfield ground lighting, runway incursion, surveillance, FAA standards" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-runway-status-light-rwsl.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Runway Status Light (RWSL) | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Runway Status Light (RWSL) reference guide: purpose at high-traffic airports, surveillance-driven runway incursion prevention and processing logic." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-runway-status-light-rwsl.html" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Runway Status Light (RWSL) | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Runway Status Light (RWSL) reference guide: purpose at high-traffic airports, surveillance-driven runway incursion prevention and processing logic." />
+    <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/8/87/9cMCO-Curved-RELs.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original" />
+    <meta property="og:image:alt" content="Runway Status Light (RWSL)" />
+    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/8/87/9cMCO-Curved-RELs.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original" />
+    <meta name="twitter:image:alt" content="Runway Status Light (RWSL)" />
+    <meta name="theme-color" content="#060d1a" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Runway Status Light (RWSL)",
+            "item": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html"
+          }
+        ]
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html#article",
+        "headline": "Runway Status Light (RWSL)",
+        "description": "Runway Status Light (RWSL) reference guide: purpose at high-traffic airports, surveillance-driven runway incursion prevention and processing logic.",
+        "url": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Runway Status Light (RWSL)"
+        },
+        "articleSection": "Runway Lighting Components",
+        "keywords": "RWSL, runway status light, AGL, airfield ground lighting, runway incursion, surveillance, FAA standards",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://upload.wikimedia.org/wikipedia/commons/8/87/9cMCO-Curved-RELs.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html#faq"
+        }
+      }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html#faq", "url": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-runway-status-light-rwsl.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is the Runway Status Light (RWSL) system?", "acceptedAnswer": {"@type": "Answer", "text": "RWSL is an automated safety system that gives pilots and vehicle operators direct, real-time visual indications of runway status. It uses surveillance data to detect aircraft and vehicles on the runway, and lights dedicated in-pavement red lights when the runway is occupied or a conflict is imminent."}}, {"@type": "Question", "name": "What lights does RWSL use?", "acceptedAnswer": {"@type": "Answer", "text": "Steady-burning red in-pavement lights: Runway Entrance Lights (REL) at taxiway/runway intersections, Runway Intersection Lights (RIL) at runway/runway crossings and Take-Off Hold Lights (THL) on the runway centreline at the departure position."}}, {"@type": "Question", "name": "Why add RWSL when air traffic control already gives instructions?", "acceptedAnswer": {"@type": "Answer", "text": "RWSL adds an automated layer of runway incursion protection that operates independently of, and in parallel with, ATC instructions and pilot awareness. Workload, communication breakdowns or a surveillance gap can compromise those, while the system continuously fuses surveillance on every aircraft and vehicle near the runway."}}, {"@type": "Question", "name": "What surveillance data does RWSL use?", "acceptedAnswer": {"@type": "Answer", "text": "Radar, ADS-B, surface movement radar and multilateration. A processing system analyses the data to determine runway occupancy and predict conflicts."}}, {"@type": "Question", "name": "How fast does RWSL react?", "acceptedAnswer": {"@type": "Answer", "text": "Under 1 second from detection to light activation. Reaction time is verified regularly, and drift usually points to surveillance data latency."}}, {"@type": "Question", "name": "Do RWSL lights flash?", "acceptedAnswer": {"@type": "Answer", "text": "No. They are steady-burning and are either illuminated or extinguished by the algorithm, with no intermediate state. The lights are at least 2,000 cd (red)."}}, {"@type": "Question", "name": "Where is RWSL used?", "acceptedAnswer": {"@type": "Answer", "text": "Busy airports with high traffic volumes and elevated incursion risk, including precision approach runways (CAT II and III), major international airports with complex taxiway layouts, intersecting runways and airports implementing advanced surface movement control."}}, {"@type": "Question", "name": "What does an RWSL installation involve?", "acceptedAnswer": {"@type": "Answer", "text": "It is a system installation rather than a single fixture. Field elements are in-pavement REL, RIL and THL fixtures (distinct from elevated Runway Guard Lights), on series circuits fed by CCRs, plus an airport surface surveillance processing system with dual redundant mains and UPS backup, integrated with ALCMS and A-SMGCS."}}, {"@type": "Question", "name": "Which standards apply to RWSL?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are FAA Engineering Brief No. 64D (RWSL system specification), FAA AC 150/5345-46 (L-850T and L-852S in-pavement fixtures), FAA JO 7110.65 §3-4-20 (ATC procedures) and ICAO Annex 14 Vol I, where RWSL-type systems fall under ICAO's ARIWS guidance. Always verify the current edition and your approved requirements."}}, {"@type": "Question", "name": "How often should an RWSL system be tested?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are monthly for output device activation tests, quarterly for reaction time verification and network and communication link audits, and semi-annual for sensor fusion and track accuracy checks and UPS backup and failover tests. Your approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "Why do the lights fail to activate for an occupied runway?", "acceptedAnswer": {"@type": "Answer", "text": "Loss or degradation of a surveillance feed (radar, ADS-B or multilateration), or a fault in the light control and monitoring subsystem at that light group. Check ATC display health alerts, confirm sensor feeds report valid tracks and test the field cabinet and circuit independently of the algorithm."}}, {"@type": "Question", "name": "Why do the lights activate with no traffic present?", "acceptedAnswer": {"@type": "Answer", "text": "Spurious or ghost targets from a surveillance sensor, such as radar clutter or multilateration multipath, are the likely cause. Investigate the sensor source and re-run response testing before returning the light group to live service."}}]}</script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px;
+        }
+        .diagram-block .diagram-sub {
+            font-size: 13.5px;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .diagram-block svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .diagram-inputs-row {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+        .diagram-input-node {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            padding: 14px 12px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 10px;
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: var(--cyan);
+        }
+        .diagram-arrow-down {
+            text-align: center;
+            color: var(--text);
+            opacity: .45;
+            font-size: 18px;
+            margin: 8px 0;
+        }
+        .diagram-main-node {
+            max-width: 560px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 22px 28px;
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            border-radius: 12px;
+        }
+        .diagram-main-node h5 {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+        .diagram-main-node p {
+            font-size: 13px;
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .diagram-fork {
+            display: flex;
+            gap: 30px;
+            margin-top: 14px;
+        }
+        .diagram-branch {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding-top: 18px;
+            border-top: 2px solid;
+        }
+        .diagram-branch.is-occupied {
+            border-color: var(--red);
+        }
+        .diagram-branch.is-clear {
+            border-color: var(--gold);
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .diagram-branch.is-occupied .diagram-branch-label {
+            color: var(--red);
+        }
+        .diagram-branch.is-clear .diagram-branch-label {
+            color: var(--gold);
+        }
+        .diagram-node {
+            width: 100%;
+            text-align: center;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .diagram-node.node-red {
+            background: rgba(230, 57, 70, 0.08);
+            border: 1px solid rgba(230, 57, 70, 0.3);
+        }
+        .diagram-node.node-gold {
+            background: rgba(255, 180, 0, 0.06);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+        }
+        .diagram-node.node-end {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            font-size: 16px;
+            padding: 16px;
+        }
+        @media(max-width:768px) {
+            .diagram-fork {
+                flex-direction: column;
+            }
+            .diagram-inputs-row {
+                flex-direction: column;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+            /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Runway Status Light (RWSL)</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-traffic-light"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Runway Status <span>Light (RWSL)</span></h1>
+            <p class="comp-sub">An advanced automated airfield safety system that provides real-time visual indications of runway status to pilots and vehicle operators. The RWSL system uses surveillance data to detect runway occupancy and activates Runway Entrance Lights, Runway Intersection Lights, and Take-Off Hold Lights — all red, in-pavement fixtures — to prevent runway incursions.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:620px;height:420px;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/9cMCO-Curved-RELs.jpg?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original" alt="Runway Status Light (RWSL)" width="620" height="420" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>The <strong>Runway Status Light (RWSL)</strong> system is an automated safety system that provides direct, real-time visual indications of runway status to pilots and vehicle operators. The system uses surveillance data (radar, ADS-B, surface movement radar) to detect the presence and movement of aircraft and vehicles on the runway. When the system determines that a runway is occupied or that a conflict is imminent, it illuminates its own dedicated field elements — steady-burning red, in-pavement Runway Entrance Lights (REL) at taxiway/runway intersections, Runway Intersection Lights (RIL) at runway/runway crossings, and Take-Off Hold Lights (THL) on the runway centreline at the departure position — to alert pilots and vehicle operators to stop or remain clear. RWSL is a distinct system from Runway Guard Lights (RGL), the separate elevated amber flashing fixtures at holding positions that are switched independently, typically by ATC or local control logic rather than by RWSL's surveillance algorithms.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>RWSL exists to add a fully automated layer of runway incursion protection that operates independently of, and in parallel with, air traffic control instructions and pilot situational awareness — both of which can be compromised by workload, communication breakdowns, or a surveillance gap that a controller cannot instantly perceive. By continuously fusing surveillance data on every aircraft and vehicle near the runway, the system can detect a developing conflict and illuminate the relevant lights (Runway Entrance, Runway Intersection, and Take-Off Hold Lights) automatically and immediately, without waiting for a human to notice the hazard and issue an instruction. Its purpose is best understood as a safety backstop: it does not replace ATC clearances or a pilot's own vigilance, but catches the specific failure mode where a conflict exists and neither party has yet recognized it in time to act.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>RWSL systems are installed at busy airports with high traffic volumes where runway incursion risk is elevated. They are typically used on:</p>
+                <ul style="color: var(--text); font-size: 15.5px; line-height: 1.9; margin-top: 12px; padding-left: 24px;">
+                    <li><strong>Precision approach runways</strong> (CAT II and III) where safety margins are critical</li>
+                    <li><strong>Major international airports</strong> with complex taxiway layouts</li>
+                    <li><strong>Intersecting runways</strong> where crossing traffic needs to be managed</li>
+                    <li><strong>Runways with high traffic density</strong> where incursion risk is significant</li>
+                    <li><strong>Airports implementing advanced surface movement control</strong></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>RWSL is a system installation rather than a single fixture: the field elements are in-pavement Runway Entrance Light, Runway Intersection Light, and Take-Off Hold Light fixtures (distinct from the elevated Runway Guard Lights described elsewhere in this library), so ground-side installation follows those fixtures' own base can, cabling, and frangibility requirements. What is specific to RWSL is the addition of an airport surface surveillance processing unit — typically housed in the airport's ATC facility or a dedicated equipment room — that ingests ASDE-X, ADS-B, or surface movement radar data, runs the occupancy and conflict-detection logic, and sends activation commands over a dedicated fibre or copper network to the field lighting controllers at each holding position and take-off position. Installation therefore centres on running this control network between the surveillance processing unit and each affected location, together with extensive integration testing to confirm the detection logic activates the correct lights within the required response time before the system is commissioned for live operational use.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The RWSL system operates through a sophisticated integration of surveillance data, processing algorithms, and visual output devices:</p>
+                <ul style="color: var(--text); font-size: 15.5px; line-height: 1.9; margin-top: 12px; padding-left: 24px;">
+                    <li><strong>Surveillance:</strong> Radar, ADS-B, and surface movement radar data continuously track all aircraft and vehicles on the airfield.</li>
+                    <li><strong>Processing:</strong> The RWSL processing system analyzes this data to determine runway occupancy status and predict potential conflicts.</li>
+                    <li><strong>Activation:</strong> When a runway is occupied, the system illuminates the affected Runway Entrance Lights and/or Runway Intersection Lights (steady red, in-pavement, at the intersection) and, for departing traffic, the Take-Off Hold Lights (steady red, on the runway centreline).</li>
+                    <li><strong>Indication:</strong> When the runway is clear, the system extinguishes the lights, allowing safe entry or crossing.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>RWSL is a fully automated, non-cooperative safety layer that sits on top of existing surface surveillance rather than depending on any controller action. Surveillance feeds — typically ASDE-X or ASSC surface radar/multilateration, supplemented by ADS-B where available — stream target position and velocity continuously into the RWSL processing system, which runs independent algorithm sets for each light function: Runway Entrance Light and Runway Intersection Light logic for the in-pavement fixtures at taxiway/runway and runway/runway intersections, and the Takeoff Hold Lights logic for the in-pavement lights at the departure end. Each algorithm evaluates occupancy and closing-speed predictions against the runway in question and issues an illuminate/extinguish command directly to the light control and monitoring subsystem, which drives the field circuits for that light group. Because the logic is deterministic and reaction time is sub-second, RWSL lights change state ahead of or in step with the conflict itself, with no controller-in-the-loop delay. The tower retains an ATC display showing overall system and light-group health, and the light control and monitoring subsystem reports back circuit status and individual light-group faults for maintenance dispatch, but tower personnel cannot directly command individual lights — the algorithms are the sole source of illumination commands.</p>
+            </div>
+            <div class="diagram-block" style="margin-top:24px;">
+                <p class="diagram-sub">Surveillance Sensors → RWSL Processing System (Algorithms) → Light Control &amp; Monitoring → Fixture Group (with health feedback to ATC display)</p>
+                <svg viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="rwslArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                        </marker>
+                        <marker id="rwslFbArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#00d4ff" opacity="0.8" />
+                        </marker>
+                    </defs>
+
+                    <rect x="130" y="20" width="420" height="64" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="340" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13.5" fill="#f0f4ff">SURVEILLANCE SENSORS</text>
+                    <text x="340" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">ASDE-X / ASSC radar, multilateration, ADS-B</text>
+                    <text x="340" y="77" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Continuous target position &amp; velocity</text>
+
+                    <line x1="340" y1="84" x2="340" y2="108" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#rwslArrow)"/>
+
+                    <rect x="130" y="112" width="420" height="64" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="340" y="138" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14.5" fill="#f0f4ff">RWSL PROCESSING SYSTEM</text>
+                    <text x="340" y="155" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">REL / RIL / THL algorithms — fully automated</text>
+                    <text x="340" y="169" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Sub-second occupancy &amp; conflict prediction</text>
+
+                    <line x1="340" y1="176" x2="340" y2="200" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#rwslArrow)"/>
+
+                    <rect x="150" y="204" width="380" height="56" rx="10" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1.5"/>
+                    <text x="340" y="230" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">LIGHT CONTROL &amp; MONITORING SUBSYSTEM</text>
+                    <text x="340" y="247" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Drives field circuits per light group, reports status</text>
+
+                    <line x1="340" y1="260" x2="340" y2="284" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#rwslArrow)"/>
+
+                    <rect x="150" y="288" width="380" height="64" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                    <text x="340" y="312" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">REL / RIL / THL FIXTURES</text>
+                    <text x="340" y="329" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Steady red, in-pavement, at intersections and runway</text>
+                    <text x="340" y="343" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Illuminate or extinguish per algorithm command</text>
+
+                    <line x1="340" y1="352" x2="340" y2="376" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#rwslArrow)"/>
+
+                    <rect x="130" y="380" width="420" height="64" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                    <text x="340" y="404" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">FULLY AUTOMATED — NO CONTROLLER-IN-THE-LOOP</text>
+                    <text x="340" y="423" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Algorithms alone issue illumination commands</text>
+                    <text x="340" y="437" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">ATC cannot directly switch an individual light</text>
+
+                    <path d="M 560 232 C 640 232, 640 60, 552 60" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.75" marker-end="url(#rwslFbArrow)"/>
+                    <text x="567" y="118" text-anchor="start" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.5" fill="#00d4ff">HEALTH FEEDBACK</text>
+                    <text x="567" y="133" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Light-group and system status</text>
+                    <text x="567" y="146" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">reported to the tower ATC display</text>
+                    <text x="567" y="159" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">and to maintenance for fault dispatch</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Logic</div>
+            <h2 class="block-title">Detection-to-Activation Logic</h2>
+            <div class="diagram-block">
+                <div class="diagram-inputs-row">
+                    <div class="diagram-input-node">Radar</div>
+                    <div class="diagram-input-node">ADS-B</div>
+                    <div class="diagram-input-node">Surface Movement Radar</div>
+                    <div class="diagram-input-node">Multilateration</div>
+                </div>
+                <div class="diagram-arrow-down"><i class="fa-solid fa-arrow-down"></i></div>
+                <div class="diagram-main-node">
+                    <h5 role="heading" aria-level="3">RWSL Processing System</h5>
+                    <p>Fuses surveillance data in real time to determine runway occupancy and predict potential conflicts &mdash; reaction time under 1 second, fully automated with no controller input.</p>
+                </div>
+                <div class="diagram-arrow-down"><i class="fa-solid fa-code-branch fa-rotate-180"></i></div>
+                <div class="diagram-fork">
+                    <div class="diagram-branch is-occupied">
+                        <div class="diagram-branch-label">Runway Occupied / Conflict Predicted</div>
+                        <div class="diagram-node node-red">Take-Off Hold Lights ON (Red, on runway)</div>
+                        <div class="diagram-node node-red">Runway Entrance / Intersection Lights ON (Red, in-pavement)</div>
+                        <div class="diagram-node node-red node-end">Pilot / Vehicle Holds Position</div>
+                    </div>
+                    <div class="diagram-branch is-clear">
+                        <div class="diagram-branch-label">Runway Clear</div>
+                        <div class="diagram-node node-gold">REL / RIL / THL Deactivated</div>
+                        <div class="diagram-node node-gold">No Conflict Indicated</div>
+                        <div class="diagram-node node-gold node-end">Safe Entry / Crossing / Take-Off</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>RWSL has no dedicated luminaire of its own — the field elements are in-pavement Runway Entrance Light, Runway Intersection Light, and Take-Off Hold Light fixtures, so their housings, optics, and base-can construction follow the standard in-pavement fixture designs described elsewhere in this library. What is specific to RWSL is the processing and control hardware: the surveillance processing system is typically built as a redundant server pair mounted in a 19-inch rack, housed in an environmentally controlled equipment room within the ATC facility or an airfield electrical building, with dual power feeds and UPS backup to keep detection logic running through a mains interruption. Field-side light control and monitoring units sit in weatherproof cabinets at or near each holding position and take-off position, sealed to at least IP65 to protect the switching electronics from the outdoor environment, and connected back to the processing racks over a dedicated fibre-optic or hardened copper network rather than the general airport LAN, keeping activation latency low and deterministic. Cabling between the processing system, field cabinets, and the tower ATC display follows the same duct and trench routes as other airfield electrical services, with fibre runs typically diverse-routed so a single cable cut cannot take down surveillance-to-light communication across the whole system.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>System Type</td><td class="val">Automated runway status indication system</td></tr>
+                <tr><td>Surveillance Inputs</td><td class="val">Radar, ADS-B, surface movement radar, multilateration</td></tr>
+                <tr><td>Output Devices</td><td class="val">Runway Entrance Lights (REL), Runway Intersection Lights (RIL), Take-Off Hold Lights (THL) — all steady red, in-pavement</td></tr>
+                <tr><td>Activation Criteria</td><td class="val">Runway occupancy detected or conflict predicted</td></tr>
+                <tr><td>Deactivation Criteria</td><td class="val">Runway clear and conflict resolved</td></tr>
+                <tr><td>Reaction Time</td><td class="val">&lt; 1 second from detection to activation</td></tr>
+                <tr><td>Power Supply</td><td class="val">Dedicated mains supply with UPS backup</td></tr>
+                <tr><td>Communication</td><td class="val">Networked (Ethernet, fiber optic, or wireless)</td></tr>
+                <tr><td>Integration</td><td class="val">ALCMS, A-SMGCS, and other airfield systems</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Processing Rack Supply</td><td class="val">Dual redundant mains feeds, 100–240VAC, with UPS backup</td></tr>
+                <tr><td>Field Light Circuits</td><td class="val">Series circuit, CCR fed, per underlying REL (L-852S) / THL / RIL (L-850T) fixture spec</td></tr>
+                <tr><td>Field Cabinet Supply</td><td class="val">Dedicated low-voltage feed for switching and monitoring electronics</td></tr>
+                <tr><td>UPS Autonomy</td><td class="val">Sized to ride through mains interruption without loss of detection logic</td></tr>
+                <tr><td>Network Medium</td><td class="val">Dedicated fibre-optic or hardened copper, diverse-routed</td></tr>
+                <tr><td>Cable Type</td><td class="val">L-824 series cable for light circuits; armoured fibre/copper for control links</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">Processing racks, field cabinets, and fixtures bonded to airfield earth grid</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Redundant server failover; CCR-level ground fault and open-circuit detection on light circuits</td></tr>
+                <tr><td>Surge Protection</td><td class="val">Surge suppression at rack, cabinet, and field cable entry points</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Optical Performance</div>
+            <h2 class="block-title">Photometric Requirements</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>REL Intensity</td><td class="val">≥ 2,000 cd (red), steady-burning per L-852S in-pavement fixture spec</td></tr>
+                <tr><td>THL / RIL Intensity</td><td class="val">≥ 2,000 cd (red), steady-burning per L-850T in-pavement fixture spec</td></tr>
+                <tr><td>Vertical Beam Spread</td><td class="val">Main beam 2°–15° above horizontal (peak ~3°–4°) for both device types</td></tr>
+                <tr><td>Horizontal Beam Spread</td><td class="val">± 5° to ± 7.5° either side of runway/taxiway centreline plane</td></tr>
+                <tr><td>Chromaticity (Red)</td><td class="val">Within ICAO Annex 14 / FAA aviation red boundary (CIE coordinates)</td></tr>
+                <tr><td>Operating Mode</td><td class="val">Steady-burning (not flashing) — illuminated or extinguished by the RWSL algorithm, no intermediate state</td></tr>
+                <tr><td>Isocandela Distribution</td><td class="val">Per L-850T / L-852S in-pavement fixture photometric specification</td></tr>
+                <tr><td>Maintenance Factor</td><td class="val">≥ 50% of new-fixture intensity before replacement/cleaning is due, checked per field device</td></tr>
+                <tr><td>Test Method</td><td class="val">Per-fixture photometric testing plus end-to-end system verification of detection-to-illumination response</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA Engineering Brief No. 64D</h5><p>Runway Status Lights system specification — the core U.S. RWSL design/functional standard</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-46</h5><p>Specifies the L-850T and L-852S in-pavement fixtures used for the THL, REL, and RIL functions</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA JO 7110.65, §3-4-20</h5><p>Air traffic control procedures governing RWSL operation, override, and reporting</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14, Vol I</h5><p>General aerodrome design/lighting provisions; RWSL-type systems fall under ICAO's Autonomous Runway Incursion Warning System (ARIWS) guidance</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Processing Rack Siting &amp; Environmental Control</h5><span class="test-stage">Civil</span></div>
+                        <p>Install the redundant surveillance processing servers in a 19-inch rack within an environmentally controlled equipment room, confirming HVAC capacity and dual power feeds are in place before hardware installation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-box-archive"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Field Cabinet Placement</h5><span class="test-stage">Civil</span></div>
+                        <p>Position light control and monitoring cabinets at each holding position and take-off position per the design layout, confirming the enclosure meets at least IP65 before field wiring begins.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Diverse Fibre/Copper Route Installation</h5><span class="test-stage">Electrical</span></div>
+                        <p>Lay dedicated fibre-optic or hardened copper links between the processing racks, field cabinets, and tower ATC display on diverse routes, so a single cable cut cannot break surveillance-to-light communication.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Surveillance Feed Interconnection</h5><span class="test-stage">Electrical</span></div>
+                        <p>Connect and configure the radar, ADS-B, and multilateration feeds into the processing system, verifying each source is live and correctly mapped before any logic testing begins.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Dedicated Supply &amp; UPS Installation</h5><span class="test-stage">Electrical</span></div>
+                        <p>Install the dedicated mains supply and UPS backup for the processing racks and field cabinets, sizing runtime to bridge a mains interruption without a loss of detection logic.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Field Circuit Termination to Existing Fixtures</h5><span class="test-stage">Electrical</span></div>
+                        <p>Terminate light control and monitoring outputs to the REL, RIL, and THL series circuits, confirming polarity and circuit assignment match the design drawings.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">ALCMS / A-SMGCS Interface Configuration</h5><span class="test-stage">Software</span></div>
+                        <p>Configure the network interface and data mapping between the RWSL processing system and the airport's ALCMS/A-SMGCS, confirming status reporting reaches the tower ATC display before activation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Activation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record rack and cabinet locations, cable routing, surveillance source mapping, and circuit terminations as-built before the system proceeds to logic and reaction-time testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sensor Fusion &amp; Track Accuracy Verification</h5><span class="test-stage">Pre-Activation</span></div>
+                        <p>Confirm surface-movement radar/ADS-B tracks correlate accurately with actual aircraft and vehicle positions before enabling automated light control.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">End-to-End Reaction Time Test</h5><span class="test-stage">Pre-Activation</span></div>
+                        <p>Measure elapsed time from a qualifying conflict detection to REL/THL illumination, confirming it meets the mandated response window.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Output Device Activation Test</h5><span class="test-stage">Commissioning</span></div>
+                        <p>Individually verify every REL and THL fixture on the runway/taxiway network illuminates correctly on command from the controller.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Network &amp; Communication Link Verification</h5><span class="test-stage">Pre-Activation</span></div>
+                        <p>Confirm controller-to-fixture and controller-to-ALCMS/A-SMGCS communication links remain stable under load.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">UPS Backup &amp; Failover Test</h5><span class="test-stage">Commissioning</span></div>
+                        <p>Simulate a primary power loss and confirm the system continues operating without interruption on backup power.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Software &amp; Logic Validation</h5><span class="test-stage">Pre-Activation</span></div>
+                        <p>Run scripted conflict scenarios and confirm the system's activation and deactivation logic responds correctly in each case.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">ALCMS / A-SMGCS Integration Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm the system correctly reports status and accepts control handoffs from the airport's surface management system.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Live Traffic Shadow-Mode Trial</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Run the system in shadow/observation mode against live traffic before operational activation, validating performance without affecting operations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Reaction Time Verification</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Time the interval from simulated runway occupancy detection to light activation and confirm it stays under the sub-one-second threshold; drift here points to surveillance data latency.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Sensor Fusion &amp; Track Accuracy Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Cross-check radar, ADS-B, surface movement radar, and multilateration tracks against known aircraft/vehicle positions to confirm the fused track feeding the logic engine stays accurate.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">UPS Backup &amp; Failover Test</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Simulate a mains loss and confirm the UPS carries the system without a gap in coverage, and that failover paths bring the system back cleanly.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Network &amp; Communication Link Audit</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Test Ethernet, fibre, or wireless links between the RWSL controller and its output devices for latency or packet loss that could delay light activation.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Output Device Activation Test</h5><span class="maint-freq">Monthly</span></div>
+                        <p>Trigger a controlled test activation of connected REL, RIL, and THL fixtures to confirm the RWSL logic engine correctly commands every downstream fixture.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Software &amp; Firmware Review</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check controller and logic-engine software against the latest vendor release and apply patches, since outdated firmware is a recurring source of false activations or missed conflicts.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">ALCMS / A-SMGCS Integration Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Confirm data exchange with the airfield lighting control and surface guidance systems remains synchronised, since a mismatch here can desync status indications across systems.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Controller &amp; Server Hardware Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Inspect server racks, controller cabinets, and cooling for dust, thermal stress, or failing components that could degrade system reliability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Surveillance Data Latency</h5><p>Delays in surveillance data processing can cause the RWSL system to react slowly, potentially failing to activate lights in time. Regular system performance monitoring and network optimization are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Communication Infrastructure Failure</h5><p>RWSL systems rely on network communication between surveillance sensors, processing units, and output devices. Network failures can result in system-wide loss of functionality. Redundant communication paths are critical.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">False Alarms</h5><p>The RWSL system can trigger false alarms due to surveillance errors, wildlife detection, or system faults. False alarms can desensitize pilots and vehicle operators, reducing the effectiveness of the system.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Lights Fail to Activate for an Occupied Runway</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Loss or degradation of a surveillance feed (radar, ADS-B, or multilateration) into the RWSL processing system, or a fault in the light control and monitoring subsystem at that light group.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the ATC display for surveillance/system health alerts; confirm the affected sensor feed is reporting valid tracks; test the field light control cabinet and circuit independently of the algorithm to confirm the fixture itself can illuminate.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Restore or fail over the degraded surveillance source, reset or replace the faulted light control unit, and re-run integration/response-time testing before returning the light group to live service.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Lights Activate with No Traffic Present (False Alarm)</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Spurious or ghost targets from a surveillance sensor (radar clutter, multilateration multipath, wildlife), or a processing-system software fault in the occupancy/conflict algorithm.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Correlate the activation event against recorded surveillance track data and video/ASDE-X playback if available; check sensor calibration and known clutter zones; review processing-system logs for the specific algorithm that fired.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Retune or recalibrate the offending sensor, apply a clutter/exclusion map update, or apply the relevant software patch; log the event for the false-alarm rate trend used in system acceptance monitoring.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Slow or Delayed Response to a Genuine Conflict</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Surveillance data latency, network congestion between the processing racks and field cabinets, or a processing load issue on the surveillance server pair.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure end-to-end detection-to-activation time against the sub-1-second design target; check network switch and fibre link statistics for errors or congestion; review server CPU/memory load during the event.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clear network congestion or reroute over the diverse fibre path, restart or rebalance the processing server pair, and re-verify reaction time meets spec before returning to service.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">System-Wide Loss of Function</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Failure of both processing servers, loss of the dedicated communication network to all field cabinets, or a mains power interruption not covered by UPS backup.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check server redundancy status and failover logs; verify UPS state of charge and runtime; test network links segment by segment from the processing rack outward to identify the break.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Fail over to the standby server or replace the failed unit, restore or reroute the communication network, and confirm UPS capacity is restored; notify ATC to revert to procedural runway safeguards until the system is re-verified.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Single Light Group Reports Fault but Others Operate Normally</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Fault in the local field light control cabinet, a damaged run of the dedicated fibre/copper link to that holding position or take-off position, or a failed fixture within that group.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the light-group fault reported on the ATC display and maintenance terminal; inspect the field cabinet for power and communication status; test the underlying REL/RIL/THL fixtures and circuit per their own troubleshooting procedure.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the field cabinet electronics, restore the communication link, or rectify the fixture/circuit fault as identified; confirm the light group re-reports healthy on the ATC display before closing out.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Surveillance Sensor Feed Loss or Degradation</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Radar, ADS-B, or multilateration sensor hardware fault, antenna/feed line damage, or loss of the data link carrying track data into the processing system.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Blind spots in surveillance coverage that can delay or prevent light activation for a genuine conflict, or force reliance on a degraded sensor mix.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Continuous sensor health monitoring on the ATC display, automated data-quality alarms, and periodic surveillance coverage verification testing.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Processing Server / Software Fault</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Software defect in the conflict-detection algorithm, a corrupted configuration or map database, or a hardware fault on the primary processing server.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Missed or delayed activations, false alarms, or a full failover to the standby server with a brief interruption in coverage.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Server health and failover-status monitoring, processing-system event logs, and scheduled response-time verification testing.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Field Light Control Cabinet Failure</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Power supply or control-board component failure inside the cabinet, moisture ingress, or a failed interface card between the network and the fixture circuit.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">The light group served by that cabinet fails to activate or reports a persistent fault while the rest of the RWSL system continues operating normally.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Cabinet fault reporting on the ATC and maintenance terminal, and scheduled functional testing of the cabinet independent of the surveillance algorithm.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Communication Network Link Failure</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Fibre or copper link damage from excavation or a cable fault, a failed network switch, or sustained congestion between the processing racks and field cabinets.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Delayed or lost activation commands to one or more light groups, ranging from a single stop bar to a full loss of function if the diverse path is also affected.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Network switch and fibre-link error/utilisation monitoring, segment-by-segment link testing, and end-to-end activation latency measurement against the design target.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Miscalibration / Clutter False Alarms</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Radar clutter from terrain or structures, multilateration multipath near buildings, wildlife activity, or sensor calibration drift over time.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Nuisance light activations with no actual runway conflict, eroding controller and pilot confidence in the system if left uncorrected.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Correlation of activation events against recorded track and video data, false-alarm rate trending, and periodic sensor calibration checks.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Fixture / Lamp Failure Within a Light Group</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">LED module or lamp end-of-life, moisture ingress at the fixture, or a degraded L-823 connector feeding an individual light within a REL, RIL, or THL group.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Reduced conspicuity or a fully dark fixture within an otherwise correctly triggered light group.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Nighttime visual patrol, photometric intensity survey, and fixture-level continuity checks during scheduled maintenance of the underlying circuit.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">UPS / Backup Power Failure</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Battery end-of-life or a failed charger circuit in the UPS supporting the processing racks or field cabinets, undetected until a mains interruption occurs.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Loss of system function coincident with a power outage, with no ride-through to bridge the gap to standby generation.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">UPS state-of-charge and runtime monitoring, and scheduled battery load testing as part of routine preventive maintenance.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Response-Time Degradation Under Load</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">High track density during peak traffic periods, background software processes competing for server resources, or accumulated data-latency across the network path.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Activation time creeps closer to, or exceeds, the sub-1-second design target without an outright system failure.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Ongoing end-to-end latency logging and periodic peak-load response-time verification against the specified performance envelope.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">System, Not a Single Fixture</h5><span class="test-stage">Operational</span></div>
+                        <p>RWSL is a surveillance-driven system commanding dedicated REL, RIL, and THL fixtures; before working on any element, confirm whether you're isolating the field fixture's own series circuit, the control network link, or the central processing unit, since each has its own isolation point.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Processing Unit Redundant Supply</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>The surveillance processing rack runs on dual redundant mains feeds with UPS backup; isolating one feed does not de-energise the rack, so confirm both feeds and the UPS are addressed per the manufacturer's lockout procedure before servicing it.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Field Circuit Isolation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Field lights remain series circuits fed by their own CCR per the underlying REL, RIL, or THL specification; de-energise and lock out the correct CCR, then verify zero energy at the fixture before opening a base can or handling connectors.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Do Not Disable the Automated Function Unannounced</h5><span class="test-stage">Compliance</span></div>
+                        <p>RWSL provides automated, real-time runway occupancy alerting relied on by both pilots and vehicle operators; never take the system, or an individual light it drives, out of service without prior ATC coordination and a NOTAM covering the affected function.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Integration Testing After Any Change</h5><span class="test-stage">Compliance</span></div>
+                        <p>After any change to field wiring, the control network, or the processing unit, run the full detection-to-activation test sequence to confirm the correct lights still activate within the required response time before returning the system to live operational use.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Fail-Safe Behaviour Before Closing Out</h5><span class="test-stage">Compliance</span></div>
+                        <p>Verify the system reverts to a safe, conservative state (rather than a false-clear indication) in the event of a sensor or network fault before closing out and cancelling the associated NOTAM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-satellite-dish"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Surveillance Latency Is the Real Spec, Not Just Flash State</h5><span class="expert-tag">System Integration</span></div>
+                        <p>RWSL activation depends on the surface surveillance feed detecting a conflict and commanding the lights in near real time; benchmark end-to-end latency from actual aircraft/vehicle position to light activation after any surveillance sensor or software update, not just confirm that the lights illuminate on command.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-microchip"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Correct-Looking Test Doesn't Confirm the Live Detection Logic</h5><span class="expert-tag">Testing</span></div>
+                        <p>A manual lamp test or forced activation confirms the fixture and wiring but says nothing about whether the underlying detection algorithm still correctly interprets real traffic patterns; schedule periodic live-traffic validation against actual surveillance data in addition to fixture-level testing.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Treat Software and Sensor Updates as Full-System Changes</h5><span class="expert-tag">Change Management</span></div>
+                        <p>An update to the surface surveillance radar, ADS-B feed, or RWSL control software can change detection behaviour even when no fixture or cabling changes; run a full functional revalidation after any such update rather than treating it as a fixture-level maintenance item.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Distinguish a False Activation From a Genuine Conflict</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>A pattern of unexplained light activations is more often a surveillance data quality issue — ghost tracks, multipath, or a misconfigured detection zone — than a fixture fault; correlate activation logs against actual traffic before assuming the problem is at the light itself.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Log and Trend Activation Response Times</h5><span class="expert-tag">Reliability</span></div>
+                        <p>RWSL response time can degrade gradually as sensor coverage or processing load changes, well before it fails outright; trend activation-to-illumination timing over successive test cycles rather than relying on a single pass/fail check at commissioning.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Fixture-Level Redundancy Doesn't Cover a Central Software Fault</h5><span class="expert-tag">Design</span></div>
+                        <p>Because many RWSL fixtures share a common detection and control backbone, redundant fixture wiring protects against a local failure but not a fault in the shared surveillance or processing chain; understand where the actual single points of failure sit in the system architecture, not just at the light fixtures.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about Runway Status Lights (RWSL): what they do, light types, surveillance inputs, response time, standards, maintenance and common faults.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is the Runway Status Light (RWSL) system?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>RWSL is an automated safety system that gives pilots and vehicle operators direct, real-time visual indications of runway status. It uses surveillance data to detect aircraft and vehicles on the runway, and lights dedicated in-pavement red lights when the runway is occupied or a conflict is imminent.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">What lights does RWSL use?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Steady-burning red in-pavement lights: Runway Entrance Lights (REL) at taxiway/runway intersections, Runway Intersection Lights (RIL) at runway/runway crossings and Take-Off Hold Lights (THL) on the runway centreline at the departure position.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Why add RWSL when air traffic control already gives instructions?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>RWSL adds an automated layer of runway incursion protection that operates independently of, and in parallel with, ATC instructions and pilot awareness. Workload, communication breakdowns or a surveillance gap can compromise those, while the system continuously fuses surveillance on every aircraft and vehicle near the runway.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">What surveillance data does RWSL use?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Radar, ADS-B, surface movement radar and multilateration. A processing system analyses the data to determine runway occupancy and predict conflicts.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">How fast does RWSL react?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Under 1 second from detection to light activation. Reaction time is verified regularly, and drift usually points to surveillance data latency.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">Do RWSL lights flash?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>No. They are steady-burning and are either illuminated or extinguished by the algorithm, with no intermediate state. The lights are at least 2,000 cd (red).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">Where is RWSL used?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Busy airports with high traffic volumes and elevated incursion risk, including precision approach runways (CAT II and III), major international airports with complex taxiway layouts, intersecting runways and airports implementing advanced surface movement control.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">What does an RWSL installation involve?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It is a system installation rather than a single fixture. Field elements are in-pavement REL, RIL and THL fixtures (distinct from elevated Runway Guard Lights), on series circuits fed by CCRs, plus an airport surface surveillance processing system with dual redundant mains and UPS backup, integrated with ALCMS and A-SMGCS.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">Which standards apply to RWSL?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are FAA Engineering Brief No. 64D (RWSL system specification), FAA AC 150/5345-46 (L-850T and L-852S in-pavement fixtures), FAA JO 7110.65 §3-4-20 (ATC procedures) and ICAO Annex 14 Vol I, where RWSL-type systems fall under ICAO's ARIWS guidance. Always verify the current edition and your approved requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">How often should an RWSL system be tested?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical intervals are monthly for output device activation tests, quarterly for reaction time verification and network and communication link audits, and semi-annual for sensor fusion and track accuracy checks and UPS backup and failover tests. Your approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q11</span><span class="faq-q">Why do the lights fail to activate for an occupied runway?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Loss or degradation of a surveillance feed (radar, ADS-B or multilateration), or a fault in the light control and monitoring subsystem at that light group. Check ATC display health alerts, confirm sensor feeds report valid tracks and test the field cabinet and circuit independently of the algorithm.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q12</span><span class="faq-q">Why do the lights activate with no traffic present?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Spurious or ghost targets from a surveillance sensor, such as radar clutter or multilateration multipath, are the likely cause. Investigate the sensor source and re-run response testing before returning the light group to live service.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-runway-guard-light.html" class="related-card"><i class="fa-solid fa-shield"></i><h5 role="heading" aria-level="3">Runway Guard Light</h5></a>
+                <a href="component-take-off-hold-light-thl.html" class="related-card"><i class="fa-solid fa-hand"></i><h5 role="heading" aria-level="3">Take-Off Hold Light (THL)</h5></a>
+                <a href="component-stop-bar-light.html" class="related-card"><i class="fa-solid fa-hand"></i><h5 role="heading" aria-level="3">Stop Bar Light</h5></a>
+                <a href="component-alcms-server.html" class="related-card"><i class="fa-solid fa-server"></i><h5 role="heading" aria-level="3">ALCMS</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on RWSL system selection or installation?</h4><p>Precision AGL Academy provides advice on system integration, surveillance optimization, and field testing of RWSL systems.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> The lights, fixtures and parts on this page operate on energised series or constant-current circuits and can be hot, high-voltage or high-intensity. Isolate, lock out and prove dead under the aerodrome&rsquo;s procedure before any work. Photometric, intensity, colour, spacing and fixture-type statements are typical and general; the approved lighting design, the regulator&rsquo;s requirements and the manufacturer&rsquo;s data decide what is installed, how it is set and when it may be used. Nothing here authorises a change to any lighting configuration, intensity setting, category or NOTAM.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Runway Status Light (RWSL) is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20RWSL">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20RWSL" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

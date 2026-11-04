@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vehicle Detection Sensor | Precision AGL Academy</title>
+    <meta name="description" content="How does a vehicle detection sensor work? Loops, magnetometers, radar or cameras detect a vehicle at a holding position and report to the ALCMS and tower." />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/vehicle-detection-sensor.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/vehicle-detection-sensor.html" />
+    <meta property="og:title" content="Vehicle Detection Sensor | Precision AGL Academy" />
+    <meta property="og:description" content="How does a vehicle detection sensor work? Loops, magnetometers, radar or cameras detect a vehicle at a holding position and report to the ALCMS and tower." />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://rahulsharmaagl.in/assets/og-vehicle-detection-sensor.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rahulsharmaagl.in/vehicle-detection-sensor.html" />
+    <meta name="twitter:title" content="Vehicle Detection Sensor | Precision AGL Academy" />
+    <meta name="twitter:description" content="How does a vehicle detection sensor work? Loops, magnetometers, radar or cameras detect a vehicle at a holding position and report to the ALCMS and tower." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-vehicle-detection-sensor.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#article",
+  "headline": "Vehicle Detection Sensor",
+  "description": "How does a vehicle detection sensor work? Loops, magnetometers, radar or cameras detect a vehicle at a holding position and report it to the ALCMS, the tower and stop bar logic.",
+  "url": "https://rahulsharmaagl.in/vehicle-detection-sensor.html",
+  "mainEntityOfPage": "https://rahulsharmaagl.in/vehicle-detection-sensor.html",
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "@id": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html#webpage",
+    "name": "AGL Visual Encyclopedia",
+    "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Precision AGL Academy"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://rahulsharmaagl.in/academy.html#org",
+    "name": "Precision AGL Academy",
+    "url": "https://rahulsharmaagl.in/academy.html"
+  },
+  "inLanguage": "en-IN",
+  "dateModified": "2026-10-29",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-vehicle-detection-sensor.jpg"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#breadcrumb"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Knowledge Hub",
+      "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AGL Visual Encyclopedia",
+      "item": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Vehicle Detection Sensor",
+      "item": "https://rahulsharmaagl.in/vehicle-detection-sensor.html"
+    }
+  ]
+}
+</script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#faq",
+  "url": "https://rahulsharmaagl.in/vehicle-detection-sensor.html",
+  "inLanguage": "en-IN",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a vehicle detection sensor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A device that detects whether a vehicle is present at a point on the airfield, such as a holding position or a crossing, and reports it as present or not present."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does it detect a vehicle?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An inductive loop is a wire loop in the pavement that senses the metal of a vehicle. A magnetometer senses the change in the magnetic field, radar detects position and movement, and a camera uses video analysis. The choice depends on the site."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where is vehicle detection used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At holding positions, near stop bars, at taxiway or road crossings of a runway, and anywhere else the system needs to know a vehicle is present."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does it connect to the AGL system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A detection unit turns the sensor signal into a status and sends it to the ALCMS and the tower display. Where fitted, the ALCMS uses it with stop bar logic. A sensor fault must show on the tower display and not give a false clear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it the same as runway occupancy sensing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. A vehicle detection sensor is a source of data. Runway occupancy sensing is the logic that reports each runway zone as free or occupied and acts on it, and vehicle detectors can be among the sensors that feed it."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#article"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#related",
+  "name": "Related entries: Vehicle Detection Sensor",
+  "about": {
+    "@id": "https://rahulsharmaagl.in/vehicle-detection-sensor.html#article"
+  },
+  "numberOfItems": 12,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Runway Occupancy Sensing",
+      "url": "https://rahulsharmaagl.in/runway-occupancy-sensing.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Surface Movement Radar",
+      "url": "https://rahulsharmaagl.in/surface-movement-radar.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Stop Bar Lights",
+      "url": "https://rahulsharmaagl.in/stop-bar-lights.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Stop Bar Monitoring",
+      "url": "https://rahulsharmaagl.in/stop-bar-monitoring.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "Interlocking",
+      "url": "https://rahulsharmaagl.in/interlocking.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "ALCMS-to-Runway",
+      "url": "https://rahulsharmaagl.in/alcms-to-runway.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "ALCMS Overview",
+      "url": "https://rahulsharmaagl.in/alcms-overview.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Runway Entrance Lights (REL)",
+      "url": "https://rahulsharmaagl.in/runway-entrance-lights.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Runway Status Lights (RWSL)",
+      "url": "https://rahulsharmaagl.in/runway-status-lights.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Holding Position",
+      "url": "https://rahulsharmaagl.in/holding-position.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "Critical Areas",
+      "url": "https://rahulsharmaagl.in/critical-areas.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "Lightning Detector",
+      "url": "https://rahulsharmaagl.in/lightning-detector.html"
+    }
+  ]
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* ─── reset & base ─── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --gold-dim: rgba(255, 180, 0, 0.7);
+            --gold-glow: rgba(255, 180, 0, 0.25);
+            --red: #E63946;
+            --red-glow: rgba(230, 57, 70, 0.3);
+            --cyan: #00d4ff;
+            --taxi-blue: #2f8fff;
+            --green: #35d07f;
+            --green-glow: rgba(53, 208, 127, 0.35);
+            --text: #c8d8f0;
+            --grey-dim: rgba(200, 216, 240, 0.45);
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-height: 100vh;
+            background: var(--dark);
+            font-family: 'Barlow', Arial, Helvetica, sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── runway lines background, matching site ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── nav ── */
+
+        main { position: relative; z-index: 1; padding-top: 70px; }
+
+        .container { width: 100%; max-width: 1120px; margin: auto; padding: 70px 40px 90px; }
+
+        /* ── section label / eyebrow ── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+        }
+        .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+        .section-label .entry-tag {
+            margin-left: 14px;
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--grey-dim);
+            font-size: 11px; letter-spacing: 1.5px; font-weight: 600;
+        }
+
+        /* ── heading ── */
+        .heading-group h1 {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            max-width: 860px;
+        }
+        .heading-group h1 .accent {
+            color: var(--green);
+            text-shadow: 0 0 40px var(--green-glow);
+        }
+        .heading-group .sub {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 680px;
+            line-height: 1.8;
+            margin-top: 18px;
+        }
+
+        /* ── diagram card ── */
+        .diagram-card {
+            margin-top: 50px;
+            display: flex; flex-direction: column; align-items: center;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px 30px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .diagram-card:hover {
+            border-color: rgba(255, 180, 0, 0.2);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .diagram-card svg {
+            width: 100%;
+            height: auto;
+            max-width: 940px;
+        }
+
+        .caption-row {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 36px;
+        }
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            letter-spacing: 1.5px;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: default;
+            transition: color var(--transition);
+        }
+        .legend:hover { color: var(--white); }
+        .legend .dot {
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: transform var(--transition);
+        }
+        .legend:hover .dot { transform: scale(1.2); }
+        .dot.green { background: var(--green); box-shadow: 0 0 14px var(--green-glow); }
+        .dot.white { background: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+        .dot.red { background: var(--red); box-shadow: 0 0 14px var(--red-glow); }
+        .dot.mark {
+            width: 15px; height: 8px; border-radius: 2px;
+            background: #f5f7fb; box-shadow: 0 0 8px rgba(245, 247, 251, 0.4);
+        }
+
+        /* ── fact card ── */
+        .fact-card {
+            margin-top: 34px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .fact-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .fact-card:hover { border-color: rgba(255, 180, 0, 0.2); }
+        .fact-card:hover::before { transform: scaleX(1); }
+        .fact-card .label {
+            display: flex; align-items: center;
+            font-size: 12px; letter-spacing: 2.5px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 16px; font-weight: 700;
+        }
+        .fact-card .label .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.16);
+            color: var(--cyan);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 11px; letter-spacing: 1px; font-weight: 700;
+            margin-left: 12px;
+        }
+        .fact-card p {
+            font-size: 16.5px;
+            line-height: 1.9;
+            color: var(--text);
+            font-weight: 400;
+        }
+        .fact-card p + p { margin-top: 16px; }
+        .fact-card b { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-green { color: var(--green); font-weight: 600; }
+        .fact-card .highlight-red { color: var(--red); font-weight: 600; }
+        .fact-card .note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+            font-size: 12.5px;
+            letter-spacing: 0.3px;
+            color: var(--grey-dim);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .fact-card .note .icon { font-size: 15px; color: var(--gold-dim); }
+
+        /* ── prev/next nav ── */
+        .entry-nav {
+            margin-top: 18px;
+            display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        }
+        .entry-nav a {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--grey-dim); text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .entry-nav a:hover { color: var(--gold); }
+
+        /* ── specs mini-grid ── */
+        .specs-grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+        .spec-item {
+            display: flex; flex-direction: column; gap: 6px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .spec-item .spec-label {
+            font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey-dim); text-transform: uppercase; font-weight: 600;
+        }
+        .spec-item .spec-value {
+            font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: 0.2px;
+        }
+        .spec-item .spec-value .unit {
+            font-size: 12px; font-weight: 400; color: var(--grey-dim); margin-left: 4px;
+        }
+
+        /* ── footer ── */
+
+        /* ── responsive ── */
+        @media (max-width: 860px) {
+            .container { padding: 50px 24px 60px; }
+            .heading-group h1 { font-size: 46px; }
+            .heading-group .sub { font-size: 16px; }
+            .fact-card { padding: 26px 22px; }
+            .fact-card p { font-size: 15.5px; }
+            .diagram-card { padding: 24px 18px 22px; }
+            .caption-row { gap: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .heading-group h1 { font-size: 34px; }
+            .specs-grid { grid-template-columns: 1fr 1fr; }
+            .legend { font-size: 11px; gap: 6px; }
+        }
+
+        /* ── utilities ── */
+        .glow-pulse { animation: pulseGlow 2.8s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── RELATED ── */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .related-card .rc-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 6px;
+        }
+        .related-card h5 {
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong { color: var(--gold); }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+        .academy-cta {
+            position: relative;
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(160deg, rgba(255, 180, 0, 0.08), var(--card) 55%);
+            padding: 48px 44px;
+            overflow: hidden;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+            pointer-events: none;
+        }
+        .academy-cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .academy-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .academy-cta h4 {
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+        .academy-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .academy-path span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .academy-path i {
+            color: var(--gold);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .academy-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .academy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .academy-btn-primary {
+            background: var(--gold);
+            color: #060d1a;
+            border: 1px solid var(--gold);
+        }
+        .academy-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .academy-btn-outline {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+        .academy-btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .academy-cta-tagline {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        @media(max-width:600px) {
+            .academy-cta { padding: 32px 22px; }
+            .academy-cta h2 { font-size: 26px; }
+        }
+
+        /* ── shell sections (Academy template) ── */
+        .shell-section { padding: 46px 0 10px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .shell-section .section-tag { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
+        .shell-section > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 18px; font-weight: 400; }
+        .shell-section.cta-wrap { border-top: none; padding-top: 10px; }
+        .breadcrumb { max-width: 1120px; }
+        .breadcrumb .current { opacity: 1; }
+        main { padding-top: 0; }
+        .container { padding-top: 30px; }
+        .nav-links.open { display: flex; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(6,13,26,.98); border-bottom: 1px solid rgba(255,180,0,.3); padding: 10px 20px 16px; }
+        .nav-links.open li a { display: block; padding: 12px 0; }
+        .hamburger { background: none; border: none; padding: 6px; }
+        @media(max-width:600px) { .breadcrumb { padding: 100px 20px 0; } .container { padding-left: 20px; padding-right: 20px; } footer { padding: 20px; flex-direction: column; text-align: center; } }
+
+
+        .faq-list{display:flex;flex-direction:column;gap:10px;max-width:900px;margin-top:6px;}
+        .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+        .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+        .faq-item summary::-webkit-details-marker{display:none;}
+        .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+        .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+        .faq-item .faq-q{flex-grow:1;}
+        .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+        .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+        .faq-item[open] .chev{transform:rotate(180deg);}
+        .faq-item[open] summary{border-bottom:1px solid var(--border);}
+        .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+        /* ── beacon animation ── */
+        .beam-spin { transform-origin: 700px 210px; animation: beamSpin 6s linear infinite; }
+        @keyframes beamSpin { to { transform: rotate(360deg); } }
+        .beam-spin3 { transform-origin: 160px 225px; animation: beamSpin 6s linear infinite; }
+        .seg { animation: segPulse 6s linear infinite; opacity: .25; }
+        @keyframes segPulse { 0% { opacity: 1; } 12% { opacity: .25; } 100% { opacity: .25; } }
+        .entry-nav .is-soon { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--grey-dim); opacity:.45; cursor:default; }
+        .tick-w { animation: tickW 1.2s steps(1) infinite; }
+        .tick-g { animation: tickG 1.2s steps(1) infinite; }
+        @keyframes tickW { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.25; } }
+        @keyframes tickG { 0%, 49% { opacity: 0.25; } 50%, 100% { opacity: 1; } }
+        @media (prefers-reduced-motion: reduce) { .beam-spin, .beam-spin3, .tick-w, .tick-g { animation: none; } .seg { animation: none; opacity: .8; } }
+            /* dz-feature:start — full diagram viewer with zoom and pan */
+        .dz-btn{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,180,0,0.1);border:1px solid rgba(255,180,0,0.35);color:var(--gold);font:700 12.5px 'Barlow',sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:10px 18px;border-radius:100px;cursor:pointer;transition:background .3s;}
+        .dz-btn:hover{background:rgba(255,180,0,0.2);}
+        .diagram-card > svg{cursor:zoom-in;}
+        .dz-overlay{position:fixed;inset:0;z-index:1000;background:#060d1a;display:none;flex-direction:column;}
+        .dz-overlay.open{display:flex;}
+        .dz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;flex-wrap:wrap;}
+        .dz-title{flex:1 1 220px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .dz-tools{display:flex;align-items:center;gap:6px;}
+        .dz-tools button{background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);border-radius:100px;min-width:38px;height:38px;padding:0 12px;font:800 15px 'Barlow',sans-serif;cursor:pointer;line-height:1;}
+        .dz-tools button:hover{background:rgba(255,180,0,0.18);}
+        .dz-tools button.dz-fit{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;}
+        .dz-tools button.dz-close{background:var(--gold);color:#060d1a;border:0;font-size:12.5px;letter-spacing:.5px;padding:0 18px;margin-left:6px;}
+        .dz-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+        .dz-zoom{min-width:52px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.5px;}
+        .dz-stage{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+        .dz-stage.drag{cursor:grabbing;}
+        .dz-stage svg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;}
+        .dz-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(6,13,26,0.85);border:1px solid var(--border);color:var(--grey,#9fb0c8);font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border-radius:100px;pointer-events:none;white-space:nowrap;transition:opacity .6s;}
+        .dz-hint.hide{opacity:0;}
+        @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
+        /* dz-feature:end */
+    </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+</head>
+<body>
+<nav id="navbar">
+<a href="../index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="../index.html#about">About</a></li>
+<li><a href="../knowledge-hub.html" class="active">Knowledge Hub</a></li>
+<li><a href="../component-library.html">Components</a></li>
+<li><a href="../agl-comparisons.html">Comparisons</a></li>
+<li><a href="../standards-companion.html">Standards</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+<a href="../index.html#contact" class="nav-cta">Get in Touch</a>
+<button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../knowledge-hub.html">Knowledge Hub</a><span>/</span><a href="../agl-visual-encyclopedia.html">AGL Visual Encyclopedia</a><span>/</span><span class="current">Vehicle Detection Sensor</span></div>
+<main>
+<div class="container">
+<div class="section-label">AGL Visual Encyclopedia <span class="entry-tag">ENTRY 11 &middot; NAVAIDS &amp; AIRFIELD SENSORS INTERFACE</span></div>
+<div class="heading-group">
+<h1>How does the system know a <span class="accent">vehicle</span> is there?</h1>
+<p class="sub">A sensor in or beside the pavement detects a vehicle at a holding position and reports it to the detection unit, the ALCMS and the tower.</p>
+</div>
+<div class="diagram-card">
+<svg viewBox="0 0 940 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vehicle detection sensor. Plan view of a taxiway meeting a runway, with a red stop bar across the taxiway, an inductive loop before the stop bar where a vehicle waits and a second loop beyond it. Right: four sensor types, inductive loop, magnetometer, radar and camera. Below: the sensor feeds a detection unit, then the ALCMS with stop bar logic, then the stop bar and tower display. Loop A detects a waiting vehicle, loop B detects that it has crossed so the stop bar can be set back to red, and a sensor fault must show on the tower display and not as a false clear. Animated: a vehicle drives up and waits on loop A, the signal runs through the detection unit and ALCMS to the tower, the stop bar is switched off by ATC, the vehicle crosses loop B and the stop bar returns to red; a sensor fault is then shown on the tower display, not as a false clear."><defs><filter id="gl" x="-250%" y="-250%" width="600%" height="600%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="vgl" x="-250%" y="-250%" width="600%" height="600%"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="vnf" filterUnits="userSpaceOnUse" x="0" y="0" width="940" height="560"><feOffset dx="0" dy="0"/></filter><filter id="vbl" x="-40%" y="-200%" width="180%" height="500%"><feGaussianBlur stdDeviation="5"/></filter><marker id="ar2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#aab5cf"/></marker></defs><rect x="14" y="14" width="912" height="290" rx="12" fill="#0b1531" stroke="#22305c" stroke-width="1.2"/><text x="34" y="40" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12" text-anchor="start">PLAN VIEW · LOOPS ON A TAXIWAY AT THE STOP BAR</text><text x="540" y="40" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12" text-anchor="start">SENSOR TYPES · SITE DEPENDENT</text><rect x="40" y="62" width="470" height="48" fill="#0d1a3f" stroke="#22305c" stroke-width="1.5"/><line x1="48" y1="86" x2="502" y2="86" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="14 10"/><text x="52" y="78" fill="#aab5cf" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">RUNWAY</text><rect x="230" y="110" width="60" height="184" fill="#0d1a3f" stroke="#22305c" stroke-width="1.5"/><line x1="260" y1="114" x2="260" y2="290" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-dasharray="10 8"/><text x="222" y="284" fill="#aab5cf" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="end">TAXIWAY</text><rect class="m3-fx vd-sbglow" x="228" y="147" width="64" height="14" rx="7" fill="#E63946" filter="url(#vbl)" opacity=".55"/><g class="vd-sb" filter="url(#vgl)"><circle cx="236" cy="154" r="3.6" fill="#E63946"/><circle cx="248" cy="154" r="3.6" fill="#E63946"/><circle cx="260" cy="154" r="3.6" fill="#E63946"/><circle cx="272" cy="154" r="3.6" fill="#E63946"/><circle cx="284" cy="154" r="3.6" fill="#E63946"/></g><text x="304" y="158" fill="#E63946" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">STOP BAR · RED</text><rect class="vd-loopB" x="238" y="120" width="44" height="26" rx="3" fill="#00d4ff" fill-opacity="0.08" stroke="#00d4ff" stroke-width="1.4" stroke-dasharray="4 3"/><text x="304" y="136" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">LOOP B · BEYOND THE STOP BAR</text><rect class="vd-loopA" x="238" y="172" width="44" height="40" rx="3" fill="#00d4ff" fill-opacity="0.08" stroke="#00d4ff" stroke-width="1.4" stroke-dasharray="4 3"/><text x="304" y="190" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">LOOP A · AT THE STOP BAR</text><g class="vd-veh" filter="url(#vgl)"><rect x="246" y="180" width="28" height="22" rx="4" fill="#FFB400" fill-opacity="0.9"/><rect x="250" y="183" width="20" height="5" rx="1.5" fill="#0b1531" opacity=".55"/></g><text x="304" y="222" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">VEHICLE WAITING</text><text x="304" y="252" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">LOOP IN THE PAVEMENT,</text><text x="304" y="266" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">CABLE TO THE DETECTION UNIT</text><rect x="540" y="62" width="360" height="46" rx="8" fill="#142347" stroke="#aab5cf" stroke-opacity="0.5" stroke-width="1.2"/><text x="556" y="82" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12.5" text-anchor="start">INDUCTIVE LOOP</text><text x="556" y="98" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">WIRE LOOP IN THE PAVEMENT SENSES METAL</text><rect x="540" y="120" width="360" height="46" rx="8" fill="#142347" stroke="#aab5cf" stroke-opacity="0.5" stroke-width="1.2"/><text x="556" y="140" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12.5" text-anchor="start">MAGNETOMETER</text><text x="556" y="156" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">SENSES A CHANGE IN THE MAGNETIC FIELD</text><rect x="540" y="178" width="360" height="46" rx="8" fill="#142347" stroke="#aab5cf" stroke-opacity="0.5" stroke-width="1.2"/><text x="556" y="198" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12.5" text-anchor="start">RADAR</text><text x="556" y="214" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">DETECTS POSITION AND MOVEMENT</text><rect x="540" y="236" width="360" height="46" rx="8" fill="#142347" stroke="#aab5cf" stroke-opacity="0.5" stroke-width="1.2"/><text x="556" y="256" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12.5" text-anchor="start">CAMERA</text><text x="556" y="272" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10.5" text-anchor="start">VIDEO ANALYSIS OF VEHICLES</text><rect x="14" y="320" width="912" height="212" rx="12" fill="#0b1531" stroke="#22305c" stroke-width="1.2"/><text x="34" y="346" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12" text-anchor="start">WHAT THE DETECTION DOES</text><rect x="34" y="364" width="190" height="64" rx="8" fill="#142347" stroke="#00d4ff" stroke-width="1.6"/><text x="129" y="390" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="13" text-anchor="middle">SENSOR</text><text x="129" y="410" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10" text-anchor="middle">PRESENT OR NOT</text><line x1="226" y1="396" x2="260" y2="396" stroke="#aab5cf" stroke-width="2" marker-end="url(#ar2)"/><rect x="262" y="364" width="190" height="64" rx="8" fill="#142347" stroke="#aab5cf" stroke-width="1.6"/><text x="357" y="390" fill="#aab5cf" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="13" text-anchor="middle">DETECTION UNIT</text><text x="357" y="410" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10" text-anchor="middle">SIGNAL BECOMES A STATUS</text><line x1="454" y1="396" x2="488" y2="396" stroke="#aab5cf" stroke-width="2" marker-end="url(#ar2)"/><rect x="490" y="364" width="190" height="64" rx="8" fill="#142347" stroke="#FFB400" stroke-width="1.6"/><text x="585" y="390" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="13" text-anchor="middle">ALCMS</text><text x="585" y="410" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10" text-anchor="middle">WITH STOP BAR LOGIC</text><line x1="682" y1="396" x2="716" y2="396" stroke="#aab5cf" stroke-width="2" marker-end="url(#ar2)"/><rect x="718" y="364" width="190" height="64" rx="8" fill="#142347" stroke="#E63946" stroke-width="1.6"/><text x="813" y="390" fill="#E63946" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="13" text-anchor="middle">STOP BAR, TOWER</text><text x="813" y="410" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="10" text-anchor="middle">SET TO RED, SHOW STATUS</text><text x="34" y="462" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">LOOP A DETECTS A VEHICLE WAITING AT THE STOP BAR</text><text x="34" y="480" fill="var(--white)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">LOOP B DETECTS THAT IT HAS CROSSED, SO THE STOP BAR CAN BE SET BACK TO RED</text><text x="34" y="506" fill="#E63946" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="start">A SENSOR FAULT MUST SHOW ON THE TOWER DISPLAY, NOT AS A FALSE CLEAR</text><g opacity="0.6"><text x="470" y="552" fill="var(--grey-dim)" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="12" text-anchor="middle">SCHEMATIC, NOT TO SCALE · SENSOR TYPES AND LOGIC DEPEND ON THE AIRPORT DESIGN</text></g><g class="m3-fx vd-ov" pointer-events="none"><g class="vd-gateA"><rect class="vd-field" x="238" y="172" width="44" height="40" rx="3" fill="none" stroke="#00d4ff" stroke-width="1.6"/><rect class="vd-field d2" x="238" y="172" width="44" height="40" rx="3" fill="none" stroke="#00d4ff" stroke-width="1.6"/></g><g class="vd-gateB"><rect class="vd-field" x="238" y="120" width="44" height="26" rx="3" fill="none" stroke="#00d4ff" stroke-width="1.6"/><rect class="vd-field d2" x="238" y="120" width="44" height="26" rx="3" fill="none" stroke="#00d4ff" stroke-width="1.6"/></g><rect class="vd-faultA" x="238" y="172" width="44" height="40" rx="3" fill="#E63946" fill-opacity=".28" stroke="#E63946" stroke-width="2.4" stroke-dasharray="4 3"/><rect class="vd-ghost" x="246" y="180" width="28" height="22" rx="4" fill="none" stroke="#FFB400" stroke-width="1.6" stroke-dasharray="3 3"/><rect class="vd-card" style="animation-delay:0.0s" x="540" y="62" width="360" height="46" rx="8" fill="rgba(0,212,255,.07)" stroke="#00d4ff" stroke-width="2.2"/><rect class="vd-card" style="animation-delay:4.5s" x="540" y="120" width="360" height="46" rx="8" fill="rgba(0,212,255,.07)" stroke="#00d4ff" stroke-width="2.2"/><rect class="vd-card" style="animation-delay:9.0s" x="540" y="178" width="360" height="46" rx="8" fill="rgba(0,212,255,.07)" stroke="#00d4ff" stroke-width="2.2"/><rect class="vd-card" style="animation-delay:13.5s" x="540" y="236" width="360" height="46" rx="8" fill="rgba(0,212,255,.07)" stroke="#00d4ff" stroke-width="2.2"/><rect class="vd-hl" style="animation-delay:2.90s;stroke:#00d4ff;color:#00d4ff" x="34" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:3.70s;stroke:#dfe8ff;color:#dfe8ff" x="262" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:4.50s;stroke:#FFB400;color:#FFB400" x="490" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:5.30s;stroke:#E63946;color:#E63946" x="718" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:8.70s;stroke:#00d4ff;color:#00d4ff" x="34" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:9.50s;stroke:#dfe8ff;color:#dfe8ff" x="262" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:10.30s;stroke:#FFB400;color:#FFB400" x="490" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:11.10s;stroke:#E63946;color:#E63946" x="718" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:14.20s;stroke:#E63946;color:#E63946" x="34" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:15.00s;stroke:#E63946;color:#E63946" x="262" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:15.80s;stroke:#E63946;color:#E63946" x="490" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><rect class="vd-hl" style="animation-delay:16.60s;stroke:#E63946;color:#E63946" x="718" y="364" width="190" height="64" rx="8" fill="none" stroke-width="3.2"/><g filter="url(#vnf)"><circle class="vd-dot t" style="animation-delay:3.04s;color:#FFB400" cx="129" cy="396" r="2.6" fill="#FFB400"/><circle class="vd-dot" style="animation-delay:2.90s;color:#FFB400" cx="129" cy="396" r="4.2" fill="#FFB400"/><circle class="vd-dot t" style="animation-delay:8.84s;color:#FFB400" cx="129" cy="396" r="2.6" fill="#FFB400"/><circle class="vd-dot" style="animation-delay:8.70s;color:#FFB400" cx="129" cy="396" r="4.2" fill="#FFB400"/><circle class="vd-dot t" style="animation-delay:14.34s;color:#E63946" cx="129" cy="396" r="2.6" fill="#E63946"/><circle class="vd-dot" style="animation-delay:14.20s;color:#E63946" cx="129" cy="396" r="4.2" fill="#E63946"/></g><rect class="vd-tfault" style="animation-delay:16.6s" x="718" y="364" width="190" height="64" rx="8" fill="rgba(230,57,70,.18)" stroke="#E63946" stroke-width="3.2"/><text class="vd-st vd-s0" x="470" y="446" fill="#aab5cf" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="middle">NO VEHICLE ON THE LOOPS · STOP BAR RED</text><text class="vd-st vd-s1" x="470" y="446" fill="#FFB400" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="middle">1 · LOOP A OCCUPIED · VEHICLE WAITING · STOP BAR STAYS RED · TOWER INFORMED</text><text class="vd-st vd-s2" x="470" y="446" fill="#35d07f" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="middle">2 · ATC CLEARANCE · STOP BAR SWITCHED OFF · VEHICLE CROSSES</text><text class="vd-st vd-s3" x="470" y="446" fill="#00d4ff" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="middle">3 · LOOP B OCCUPIED · VEHICLE HAS CROSSED · STOP BAR BACK TO RED</text><text class="vd-st vd-s4" x="470" y="446" fill="#E63946" font-family="'Barlow Condensed', sans-serif" font-weight="700" letter-spacing="1.3" font-size="11" text-anchor="middle">4 · SENSOR FAULT · TOWER DISPLAY SHOWS FAULT · NOT A FALSE CLEAR</text></g></svg>
+<button type="button" class="dz-btn dz-open"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> View full diagram</button>
+<div class="caption-row">
+<div class="legend"><span class="dot" style="background:var(--cyan);"></span>sensor and loop</div>
+<div class="legend"><span class="dot" style="background:#FFB400;box-shadow:0 0 12px rgba(255,180,0,0.5);"></span>vehicle and ALCMS</div>
+<div class="legend"><span class="dot red"></span>stop bar, fault</div>
+</div>
+</div>
+<div class="fact-card">
+<div class="label">The Fact <span class="badge"><i class="fa-solid fa-check"></i> Airfield sensors</span></div>
+<p>A vehicle detection sensor <b>detects whether a vehicle is present</b> at a point on the airfield, such as a <b>holding position</b> or a road crossing. It may be an <b>inductive loop</b> in the pavement, a <b>magnetometer</b>, <b>radar</b> or a <b>camera</b>. The sensor reports <b>present</b> or <b>not present</b> to a <b>detection unit</b>, which turns the signal into a status.</p>
+<p>The status goes to the <b>ALCMS</b> and the <b>tower display</b>. Where the airport has them, the ALCMS can use it with <b>stop bar logic</b>: a sensor before the stop bar shows that a vehicle is <b>waiting</b>, and a sensor beyond it shows that the vehicle has <b>crossed</b>, so the stop bar can be set back to <span class="highlight-red">red</span>. A sensor fault must show on the tower display and not give a <b>false clear</b>. Vehicle detection is a <b>source of data</b>, while <b>runway occupancy sensing</b> is the logic that turns data into free or occupied by zone.</p>
+<div class="specs-grid">
+<div class="spec-item"><span class="spec-label">Purpose</span><span class="spec-value" style="font-size:14px;">Know a vehicle is at a point</span></div>
+<div class="spec-item"><span class="spec-label">Sensors</span><span class="spec-value" style="font-size:14px;">Loop, magnetometer, radar, camera</span></div>
+<div class="spec-item"><span class="spec-label">Typical places</span><span class="spec-value" style="font-size:14px;">Holding positions, stop bars, crossings</span></div>
+<div class="spec-item"><span class="spec-label">Reports to</span><span class="spec-value" style="font-size:14px;">Detection unit, ALCMS, tower</span></div>
+<div class="spec-item"><span class="spec-label">Can support</span><span class="spec-value" style="font-size:14px;">Stop bar set back to red after crossing</span></div>
+<div class="spec-item"><span class="spec-label">Fault handling</span><span class="spec-value" style="font-size:14px;">Show on display, no false clear</span></div>
+<div class="spec-item"><span class="spec-label">Reference</span><span class="spec-value" style="font-size:14px;font-weight:500;color:var(--text);">ICAO Annex 14 Vol. I (stop bars) · ICAO Doc 9830 (A-SMGCS) · airport design and manufacturer data</span></div>
+</div>
+<div class="note"><span class="icon"><i class="fa-solid fa-circle-info"></i></span>Schematic. Sensor type, placement and logic depend on the airport design.</div>
+</div>
+<div class="entry-nav">
+                <a href="runway-occupancy-sensing.html"><i class="fa-solid fa-arrow-left"></i> Entry 10 &middot; Runway occupancy sensing</a>
+                <a href="lightning-detector.html">Entry 12 &middot; Lightning detector <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+<div class="shell-section" id="faq">
+<div class="section-tag">FAQ</div>
+<h2>Frequently Asked Questions</h2>
+<div class="faq-list">
+<details class="faq-item"><summary><span class="faq-num">Q1</span><span class="faq-q">What is a vehicle detection sensor?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>A device that detects whether a vehicle is present at a point on the airfield, such as a holding position or a crossing, and reports it as present or not present.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q2</span><span class="faq-q">How does it detect a vehicle?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>An inductive loop is a wire loop in the pavement that senses the metal of a vehicle. A magnetometer senses the change in the magnetic field, radar detects position and movement, and a camera uses video analysis. The choice depends on the site.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q3</span><span class="faq-q">Where is vehicle detection used?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>At holding positions, near stop bars, at taxiway or road crossings of a runway, and anywhere else the system needs to know a vehicle is present.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q4</span><span class="faq-q">How does it connect to the AGL system?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>A detection unit turns the sensor signal into a status and sends it to the ALCMS and the tower display. Where fitted, the ALCMS uses it with stop bar logic. A sensor fault must show on the tower display and not give a false clear.</p></div></details>
+<details class="faq-item"><summary><span class="faq-num">Q5</span><span class="faq-q">Is it the same as runway occupancy sensing?</span><i class="fa-solid fa-chevron-down chev"></i></summary><div class="faq-a"><p>No. A vehicle detection sensor is a source of data. Runway occupancy sensing is the logic that reports each runway zone as free or occupied and acts on it, and vehicle detectors can be among the sensors that feed it.</p></div></details>
+</div>
+</div>
+
+<div class="shell-section cta-wrap">
+            <div class="academy-cta">
+                <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
+                <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
+                <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
+                <h4>Build Practical AGL Engineering Skills</h4>
+                <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
+                <div class="academy-path">
+                    <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Design &amp; Electrical Engineering</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Approach Lighting</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Photometry</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Installation &amp; Commissioning</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Maintenance &amp; Troubleshooting</span>
+                </div>
+                <p>Learn how each light, sign and circuit works as part of a complete airport lighting system, not just as an isolated diagram.</p>
+                <div class="academy-cta-actions">
+                    <a href="../academy.html" class="academy-btn academy-btn-primary"><i class="fa-solid fa-book-open"></i> Explore AGL Courses</a>
+                    <a href="../index.html#contact" class="academy-btn academy-btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Your AGL Learning Journey</a>
+                </div>
+                <div class="academy-cta-tagline">See. Understand. Apply. Engineer.</div>
+            </div>
+            </div>
+
+<div class="shell-section">
+<div class="section-tag">Related Entries</div>
+<h2>Continue Exploring</h2>
+<div class="related-grid">
+<a class="related-card" href="runway-occupancy-sensing.html"><div class="rc-tag">Navaids &amp; Airfield Sensors Interface</div><h5>Runway Occupancy Sensing</h5></a>
+<a class="related-card" href="surface-movement-radar.html"><div class="rc-tag">Navaids &amp; Airfield Sensors Interface</div><h5>Surface Movement Radar</h5></a>
+<a class="related-card" href="../runway/stop-bar-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Stop Bar Lights</h5></a>
+<a class="related-card" href="../taxiway/stop-bar-monitoring.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Stop Bar Monitoring</h5></a>
+<a class="related-card" href="../alcms/interlocking.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Interlocking</h5></a>
+<a class="related-card" href="../alcms/alcms-to-runway.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS-to-Runway</h5></a>
+<a class="related-card" href="../alcms/alcms-overview.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Overview</h5></a>
+<a class="related-card" href="../runway/runway-entrance-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Entrance Lights</h5></a>
+<a class="related-card" href="../runway/runway-status-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Status Lights</h5></a>
+<a class="related-card" href="../layout/holding-position.html"><div class="rc-tag">Airfield Layout</div><h5>Holding Position</h5></a>
+<a class="related-card" href="../layout/critical-areas.html"><div class="rc-tag">Airfield Layout</div><h5>Critical Areas</h5></a>
+<a class="related-card" href="lightning-detector.html"><div class="rc-tag">Navaids &amp; Airfield Sensors Interface</div><h5>Lightning Detector</h5></a>
+</div>
+</div>
+</div>
+</main>
+
+<footer>
+        <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+        <div class="footer-links">
+            <a href="../index.html#about">About</a>
+            <a href="../component-library.html">Components</a>
+            <a href="../agl-comparisons.html">Comparisons</a>
+            <a href="../standards-companion.html">Standards</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 400); });
+        scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const hb = document.getElementById('hamburger'), nl = document.getElementById('navLinks');
+        hb.addEventListener('click', () => { const o = nl.classList.toggle('open'); hb.setAttribute('aria-expanded', o); });
+    </script>
+
+    <!-- dz-feature:start -->
+    <div class="dz-overlay" id="dzOverlay" role="dialog" aria-modal="true" aria-label="Full diagram viewer">
+        <div class="dz-bar">
+            <span class="dz-title" id="dzTitle">Diagram</span>
+            <div class="dz-tools">
+                <button type="button" id="dzOut" aria-label="Zoom out" title="Zoom out (-)">&minus;</button>
+                <span class="dz-zoom" id="dzPct" aria-live="polite">100%</span>
+                <button type="button" id="dzIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
+                <button type="button" id="dzFit" class="dz-fit" aria-label="Fit diagram to screen" title="Fit to screen (0)">Fit</button>
+                <button type="button" id="dzClose" class="dz-close" title="Close (Esc)">Close</button>
+            </div>
+        </div>
+        <div class="dz-stage" id="dzStage">
+            <div class="dz-hint" id="dzHint">Drag to pan &middot; scroll or pinch to zoom &middot; double-click to zoom in</div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var ov=document.getElementById('dzOverlay'), stage=document.getElementById('dzStage');
+        var pct=document.getElementById('dzPct'), hint=document.getElementById('dzHint'), ttl=document.getElementById('dzTitle');
+        var svg=null, vw=0, vh=0, fit=1, s=1, tx=0, ty=0, opener=null, hintTimer=null;
+        var MIN=0.5, MAX=10; /* relative to fit */
+        var ptrs={}, last=null;
+
+        function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+        function apply(){
+            var W=stage.clientWidth, H=stage.clientHeight, m=80;
+            var w=vw*s, h=vh*s;
+            tx=clamp(tx, m-w, W-m); ty=clamp(ty, m-h, H-m);
+            svg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';
+            pct.textContent=Math.round(s/fit*100)+'%';
+        }
+        function fitView(){
+            var W=stage.clientWidth, H=stage.clientHeight, pad=24;
+            fit=Math.min((W-pad*2)/vw,(H-pad*2)/vh); if(!(fit>0)) fit=1;
+            s=fit; tx=(W-vw*s)/2; ty=(H-vh*s)/2; apply();
+        }
+        function zoomAt(f,cx,cy){
+            var ns=clamp(s*f, fit*MIN, fit*MAX); f=ns/s;
+            tx=cx-(cx-tx)*f; ty=cy-(cy-ty)*f; s=ns; apply();
+        }
+        function center(){ return [stage.clientWidth/2, stage.clientHeight/2]; }
+        function stagePt(e){ var r=stage.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; }
+
+        function open(src, trigger){
+            opener=trigger||null;
+            if(svg) stage.removeChild(svg);
+            svg=src.cloneNode(true); svg.removeAttribute('style'); svg.removeAttribute('class');
+            var vb=src.viewBox&&src.viewBox.baseVal;
+            if(vb&&vb.width){ vw=vb.width; vh=vb.height; }
+            else { var bb=src.getBoundingClientRect(); vw=bb.width||940; vh=bb.height||520; }
+            svg.setAttribute('width',vw); svg.setAttribute('height',vh);
+            svg.style.width=vw+'px'; svg.style.height=vh+'px';
+            stage.insertBefore(svg, hint);
+            var label=src.getAttribute('aria-label')||'';
+            var h1=document.querySelector('h1');
+            ttl.textContent=(h1?h1.textContent.trim():'Diagram');
+            svg.setAttribute('aria-label', label);
+            ov.classList.add('open'); document.body.style.overflow='hidden';
+            fitView();
+            hint.classList.remove('hide'); clearTimeout(hintTimer);
+            hintTimer=setTimeout(function(){ hint.classList.add('hide'); },4500);
+            document.getElementById('dzClose').focus();
+        }
+        function close(){
+            ov.classList.remove('open'); document.body.style.overflow='';
+            if(opener&&opener.focus) opener.focus();
+        }
+
+        document.querySelectorAll('.diagram-card').forEach(function(card){
+            var src=card.querySelector('svg'), btn=card.querySelector('.dz-open');
+            if(!src) return;
+            if(btn) btn.addEventListener('click',function(){ open(src,btn); });
+            src.addEventListener('click',function(){ open(src,btn); });
+        });
+
+        document.getElementById('dzClose').addEventListener('click',close);
+        document.getElementById('dzIn').addEventListener('click',function(){ var c=center(); zoomAt(1.4,c[0],c[1]); });
+        document.getElementById('dzOut').addEventListener('click',function(){ var c=center(); zoomAt(1/1.4,c[0],c[1]); });
+        document.getElementById('dzFit').addEventListener('click',fitView);
+
+        stage.addEventListener('wheel',function(e){
+            e.preventDefault(); var p=stagePt(e);
+            var dy=e.deltaMode===1?e.deltaY*16:e.deltaY;
+            zoomAt(Math.exp(-dy*(e.ctrlKey?0.01:0.0018)),p[0],p[1]);
+        },{passive:false});
+
+        stage.addEventListener('pointerdown',function(e){
+            stage.setPointerCapture(e.pointerId); ptrs[e.pointerId]=stagePt(e); last=null;
+            stage.classList.add('drag'); hint.classList.add('hide');
+        });
+        stage.addEventListener('pointermove',function(e){
+            if(!ptrs[e.pointerId]) return;
+            var p=stagePt(e), ids=Object.keys(ptrs);
+            if(ids.length===1){
+                tx+=p[0]-ptrs[e.pointerId][0]; ty+=p[1]-ptrs[e.pointerId][1]; ptrs[e.pointerId]=p; apply();
+            } else if(ids.length>=2){
+                ptrs[e.pointerId]=p;
+                var a=ptrs[ids[0]], b=ptrs[ids[1]];
+                var d=Math.hypot(a[0]-b[0],a[1]-b[1]), cx=(a[0]+b[0])/2, cy=(a[1]+b[1])/2;
+                if(last){
+                    tx+=cx-last.cx; ty+=cy-last.cy;
+                    if(last.d>0) zoomAt(d/last.d,cx,cy); else apply();
+                }
+                last={d:d,cx:cx,cy:cy};
+            }
+        });
+        function up(e){
+            delete ptrs[e.pointerId]; last=null;
+            if(!Object.keys(ptrs).length) stage.classList.remove('drag');
+        }
+        stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+
+        stage.addEventListener('dblclick',function(e){
+            var p=stagePt(e);
+            if(s>fit*1.05) fitView(); else zoomAt(2.5,p[0],p[1]);
+        });
+
+        window.addEventListener('resize',function(){ if(ov.classList.contains('open')) fitView(); });
+
+        document.addEventListener('keydown',function(e){
+            if(!ov.classList.contains('open')) return;
+            var c=center(), k=e.key, step=60;
+            if(k==='Escape') close();
+            else if(k==='+'||k==='=') zoomAt(1.25,c[0],c[1]);
+            else if(k==='-'||k==='_') zoomAt(1/1.25,c[0],c[1]);
+            else if(k==='0') fitView();
+            else if(k==='ArrowLeft'){ tx+=step; apply(); }
+            else if(k==='ArrowRight'){ tx-=step; apply(); }
+            else if(k==='ArrowUp'){ ty+=step; apply(); }
+            else if(k==='ArrowDown'){ ty-=step; apply(); }
+            else if(k==='Tab'){
+                var f=ov.querySelectorAll('button'), first=f[0], lastB=f[f.length-1];
+                if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); lastB.focus(); }
+                else if(!e.shiftKey&&document.activeElement===lastB){ e.preventDefault(); first.focus(); }
+            }
+            else return;
+            if(k!=='Tab') e.preventDefault();
+        });
+    })();
+    </script>
+    <!-- dz-feature:end -->
+
+<!-- motion-feature:start -->
+<style>
+/* AGL Visual Encyclopedia: live diagram motion v3 (light, glow, current) */
+@keyframes m3Power{0%{opacity:.25}10%{opacity:1}13%{opacity:.8}16%{opacity:1}85%{opacity:1}95%{opacity:.25}100%{opacity:.25}}
+@keyframes m3Breath{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes m3Face{0%{filter:brightness(.55) saturate(.8)}10%{filter:brightness(1.25) saturate(1.15)}13%{filter:brightness(.9)}16%,85%{filter:brightness(1.12) saturate(1.1)}95%,100%{filter:brightness(.55) saturate(.8)}}
+@keyframes m3Bloom{0%{opacity:0}10%{opacity:.55}13%{opacity:.3}16%{opacity:.6}50%{opacity:.45}85%{opacity:.6}95%,100%{opacity:0}}
+@keyframes m3Ring{0%{transform:scale(1);opacity:.5}100%{transform:scale(3);opacity:0}}
+@keyframes m3Travel{from{stroke-dashoffset:var(--m3-a,6)}to{stroke-dashoffset:var(--m3-b,-94)}}
+@keyframes m3March{to{stroke-dashoffset:var(--m3-d,-12)}}
+@keyframes m3Grow{from{transform:scaleX(0)}}
+@keyframes m3Draw{to{stroke-dashoffset:0}}
+@keyframes m3Sweep{0%{opacity:0;transform:translateX(0)}6%,94%{opacity:.9}100%{opacity:0;transform:translateX(var(--m3-w,200px))}}
+@keyframes m3Float{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
+@keyframes m3Shimmer{0%,100%{opacity:.25}50%{opacity:.85}}
+.m3-on{animation:m3Power 9s ease-in-out infinite}
+.m3-face{animation:m3Face 9s ease-in-out infinite}
+.m3-bloomg{animation:m3Bloom 9s ease-in-out infinite;pointer-events:none}
+.m3-halo{transform-box:fill-box;transform-origin:center;animation:m3Breath 2.4s ease-in-out infinite}
+.m3-ring{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:m3Ring 3s ease-out infinite}
+.m3-spark{fill:#fff;transform-box:fill-box;transform-origin:center;animation:m3Shimmer 1.8s ease-in-out infinite}
+.m3-src{animation:m3Power 9s ease-in-out infinite}
+.m3-filon{animation:m3Power 9s ease-in-out infinite,m3Fil 1.5s ease-in-out infinite}
+@keyframes m3Fil{0%,100%{filter:drop-shadow(0 0 3px #FFD400)}50%{filter:drop-shadow(0 0 9px #FFD400) drop-shadow(0 0 16px #ff9d00)}}
+.m3-pk{fill:none;stroke-linecap:round;pointer-events:none;stroke-dasharray:var(--m3-len,9) 400;animation:m3Travel var(--m3-t,2.4s) linear infinite;animation-delay:var(--m3-pd,0s);filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor)}
+.m3-march{animation:m3March var(--m3-dur,.8s) linear infinite}
+.m3-ready:not(.m3-play) .m3-bar{transform:scaleX(0)}
+.m3-bar{transform-box:fill-box;transform-origin:left center}
+.m3-play .m3-bar{animation:m3Grow 1.2s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--m3-bd,.3s)}
+.m3-ready .m3-draw{stroke-dasharray:1;stroke-dashoffset:1}
+.m3-play .m3-draw{animation:m3Draw 2.4s cubic-bezier(.4,0,.2,1) forwards;animation-delay:var(--m3-dd,.4s)}
+.m3-cursor{stroke:var(--gold,#FFB400);stroke-width:1.6;opacity:0;pointer-events:none;animation:m3Sweep 4.2s linear infinite;animation-delay:2.6s}
+.xv-part{animation:m3Float 4s ease-in-out infinite;animation-delay:calc(var(--m3-i,0) * -.5s)}
+.m3-toggle{margin-left:10px}
+.m3-off *,.m3-off *::before,.m3-off *::after{animation:none!important}
+.m3-off .m3-ready .m3-bar{transform:none!important}
+.m3-off .m3-ready .m3-draw{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+.m3-off .m3-fx{display:none}
+@media (prefers-reduced-motion:reduce){.m3-on,.m3-face,.m3-bloomg,.m3-halo,.m3-ring,.m3-spark,.m3-src,.m3-filon,.m3-pk,.m3-march,.xv-part{animation-duration:0s}}
+</style>
+<script>
+(function(){
+  var root=document.documentElement, NS='http://www.w3.org/2000/svg';
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pref=null; try{pref=localStorage.getItem('aglMotion');}catch(e){}
+  var off=rm?(pref!=='on'):(pref==='off');
+  function setOff(v){off=v;root.classList.toggle('m3-off',v);try{localStorage.setItem('aglMotion',v?'off':'on');}catch(e){}
+    document.querySelectorAll('.m3-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(!v));b.querySelector('span').textContent=v?'Motion off':'Motion on';});}
+  root.classList.toggle('m3-off',off);
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function rgb(s){var m=(s||'').match(/rgba?\(([^)]+)\)/);if(!m)return null;var p=m[1].split(/[ ,\/]+/).map(parseFloat);return {r:p[0],g:p[1],b:p[2],a:p.length>3?p[3]:1};}
+  function sat(c){return c&&c.a>=.6&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>60&&Math.max(c.r,c.g,c.b)>150;}
+  function lum(c){return c.r*.3+c.g*.59+c.b*.11;}
+  function css(c){return 'rgb('+Math.round(c.r)+','+Math.round(c.g)+','+Math.round(c.b)+')';}
+
+  function prep(svg){
+    var defs=svg.querySelector('defs')||svg.insertBefore(el('defs',{}),svg.firstChild), uid=Math.random().toString(36).slice(2,6), n=0;
+    var blur=el('filter',{id:'m3b'+uid,x:'-80%',y:'-80%',width:'260%',height:'260%'});blur.appendChild(el('feGaussianBlur',{stdDeviation:'7'}));defs.appendChild(blur);
+    function grad(c){var id='m3g'+uid+(n++),g=el('radialGradient',{id:id});
+      [[0,.9],[.4,.4],[1,0]].forEach(function(s){g.appendChild(el('stop',{offset:s[0],'stop-color':css(c),'stop-opacity':s[1]}));});defs.appendChild(g);return id;}
+    function fillOf(e){var c=rgb(getComputedStyle(e).fill);return c&&c.a>.4?c:null;}
+    function strokeOf(e){var c=rgb(getComputedStyle(e).stroke);return c&&c.a>.4?c:null;}
+    function inFx(e){return e.closest('.m3-fx,.m3-src,.m3-face,.m3-pk,.diagram-legend');}
+
+    /* 1 -- LEDs and lamps: glow cluster behind, warm-up, breathing halo, rings, sparkle */
+    var src=[],panels=[];
+    svg.querySelectorAll('[filter^="url(#gw"] > *,[filter^="url(#glow"] > *,[filter="url(#gl)"] > *,circle[filter^="url(#gw"],circle[filter^="url(#glow"],circle[filter="url(#gl)"]').forEach(function(e){if(/^(rect|circle|ellipse|path)$/.test(e.tagName))src.push(e);});
+    svg.querySelectorAll('circle').forEach(function(c){var r=+c.getAttribute('r');if(r<3.5||r>14||c.closest('[filter]'))return;
+      var f=fillOf(c);if(!(f&&f.a>=.8&&f.r>220&&f.g>150&&f.b<90))return;
+      var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');
+      var badge=[].some.call(c.parentNode.querySelectorAll('text'),function(t){return Math.abs(+t.getAttribute('x')-cx)<r+1&&Math.abs(+t.getAttribute('y')-cy)<r+3;});
+      if(!badge)src.push(c);});
+    svg.querySelectorAll('path').forEach(function(q){var d=q.getAttribute('d')||'';if(d.length>120||!/ t/.test(d))return;
+      var c=strokeOf(q);if(c&&c.r>220&&c.g>150&&c.b<90){q.classList.add('m3-fil');src.push(q);}});
+    if(!src.length){svg.querySelectorAll('rect').forEach(function(r){var w=+r.getAttribute('width'),h=+r.getAttribute('height');
+      if(w<5||w>64||h<5||h>26||r.closest('defs'))return;var f=fillOf(r);if(f&&f.a>=.9&&f.r>238&&f.g>238&&f.b>238)src.push(r);});}
+    src.forEach(function(e){
+      var b;try{b=e.getBBox();}catch(x){return;} if(!b.width)return;
+      if(b.width>40||b.height>40){panels.push(e);return;}
+      var c=fillOf(e)||strokeOf(e)||{r:255,g:230,b:150}; if(lum(c)<90)return; if(Math.min(c.r,c.g,c.b)>235)c={r:255,g:238,b:180};
+      var cx=b.x+b.width/2,cy=b.y+b.height/2,m=Math.max(b.width,b.height),R=Math.min(80,Math.max(26,m*2.6));
+      var g=el('g',{'class':'m3-fx m3-bloomg'});
+      g.appendChild(el('circle',{cx:cx,cy:cy,r:R,fill:'url(#'+grad(c)+')','class':'m3-halo'}));
+      var rg=el('circle',{cx:cx,cy:cy,r:Math.max(5,m/2),stroke:css(c),'class':'m3-ring'});g.appendChild(rg);
+      var rg2=rg.cloneNode(false);rg2.style.animationDelay='1.5s';g.appendChild(rg2);
+      var ref=(e.parentNode.getAttribute&&e.parentNode.getAttribute('filter'))?e.parentNode:e;ref.parentNode.insertBefore(g,ref);
+      e.classList.add(e.classList.contains('m3-fil')?'m3-filon':'m3-src');
+    });
+
+    /* 2 -- self-luminous panels (drawn with the glow filter): light up and bloom */
+    panels.forEach(function(r){
+      if(r.tagName!=='rect')return;
+      var f=fillOf(r);if(!f)return;
+      var w=+r.getAttribute('width'),h=+r.getAttribute('height'),x=+r.getAttribute('x'),y=+r.getAttribute('y');
+      var bl=el('rect',{x:x,y:y,width:w,height:h,rx:+r.getAttribute('rx')||0,fill:css(f),filter:'url(#m3b'+uid+')','class':'m3-fx m3-bloomg'});
+      if(r.getAttribute('transform'))bl.setAttribute('transform',r.getAttribute('transform'));
+      var ref=(r.parentNode.getAttribute&&r.parentNode.getAttribute('filter'))?r.parentNode:r;
+      ref.parentNode.insertBefore(bl,ref);
+      r.classList.add('m3-face');
+    });
+
+    /* 3 -- light rays and current: bright pulses travelling along strokes */
+    var seen=0;
+    function packet(s,len,col,speed){
+      var t=Math.min(3.6,Math.max(1.2,len/(speed||95))),k=len>170?2:1;
+      for(var i=0;i<k;i++){var p=s.cloneNode(false);
+        ['id','class','stroke-dasharray','marker-end','marker-start','filter','opacity','style','stroke-opacity','transform'].forEach(function(a){p.removeAttribute(a);});
+        if(s.getAttribute('transform'))p.setAttribute('transform',s.getAttribute('transform'));
+        p.setAttribute('class','m3-fx m3-pk');p.setAttribute('pathLength','100');p.setAttribute('stroke',col);p.setAttribute('stroke-width','3.4');p.style.color=col;
+        p.style.setProperty('--m3-t',t.toFixed(2)+'s');p.style.setProperty('--m3-len','7');p.style.setProperty('--m3-a','7');p.style.setProperty('--m3-b','-100');
+        p.style.setProperty('--m3-pd',((seen%4)*.3+i*t/2).toFixed(2)+'s');
+        s.parentNode.insertBefore(p,s.nextSibling);}
+      seen++;}
+    svg.querySelectorAll('line,path,polyline').forEach(function(s){
+      if(inFx(s)||s.closest('defs'))return;if(s.getAttribute('marker-start')&&s.getAttribute('marker-end'))return;
+      if(s.tagName==='path'&&/z\s*$/i.test((s.getAttribute('d')||'').trim()))return;
+      var cs=getComputedStyle(s);if(cs.fill!=='none'&&s.tagName!=='line'&&!/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(s.getAttribute('d')||''))return;
+      var c=rgb(cs.stroke),sw=parseFloat(cs.strokeWidth);
+      var dd=(s.getAttribute('d')||''),shaft=s.tagName==='path'&&/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(dd)&&s.nextElementSibling&&s.nextElementSibling.tagName==='path'&&s.nextElementSibling.getAttribute('fill')&&s.nextElementSibling.getAttribute('fill')!=='none';
+      if(shaft){var L;try{L=s.getTotalLength();}catch(x){return;} if(L>=18){packet(s,L,'rgb(255,180,0)',34);}return;}
+      if(!sat(c)||sw<1.3)return;
+      var len;try{len=s.getTotalLength();}catch(x){return;} if(len<34)return;
+      var d=(s.getAttribute('d')||'');if(d.length>500)return;
+      var dashed=cs.strokeDasharray&&cs.strokeDasharray!=='none';
+      var isRay=s.tagName==='path'&&/^[ML\d\s.,-]+$/i.test(d)&&(d.match(/L/gi)||[]).length>=2; /* zig-zag light path */
+      if(dashed&&!isRay){var nums=cs.strokeDasharray.split(/[ ,]+/).map(parseFloat).filter(function(q){return q>0;});
+        var sum=nums.reduce(function(a,b){return a+b;},0);if(nums.length%2)sum*=2;
+        s.classList.add('m3-march');s.style.setProperty('--m3-d',String(-sum));s.style.setProperty('--m3-dur',(sum/14).toFixed(2)+'s');return;}
+      packet(s,len,css(c),isRay?120:95);
+    });
+
+    /* 4 -- waveforms trace; cursor sweeps */
+    var waves=[].slice.call(svg.querySelectorAll('path[d]')).filter(function(p){return (p.getAttribute('d')||'').length>600;});
+    waves.forEach(function(p,i){p.setAttribute('pathLength','1');p.classList.add('m3-draw');p.style.setProperty('--m3-dd',(.4+(i%2)*.25)+'s');});
+    if(waves.length){[].slice.call(svg.querySelectorAll('rect[stroke-opacity]')).filter(function(r){return +r.getAttribute('width')>200&&+r.getAttribute('height')>200;}).forEach(function(r){
+      var x0=+r.getAttribute('x'),x1=x0+ +r.getAttribute('width'),mine=waves.filter(function(w){var b=w.getBBox();return b.x>=x0-2&&b.x+b.width<=x1+2;});if(!mine.length)return;
+      var a=1e9,z=-1e9,u=1e9,v=-1e9;mine.forEach(function(w){var b=w.getBBox();a=Math.min(a,b.x);z=Math.max(z,b.x+b.width);u=Math.min(u,b.y);v=Math.max(v,b.y+b.height);});
+      var c=el('line',{x1:a,x2:a,y1:u-8,y2:v+8,'class':'m3-fx m3-cursor'});c.style.setProperty('--m3-w',(z-a)+'px');svg.appendChild(c);});}
+
+    /* 5 -- bars fill; exploded parts hover */
+    var tracks={};svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(f.indexOf('rgba(255,255,255')===0)tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')]=+r.getAttribute('width');});
+    var bi=0;svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(!/^var\(--(gold|cyan|green|red|taxi-blue)\)$/.test(f))return;
+      var w=tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')];if(w&&w>=+r.getAttribute('width')){r.classList.add('m3-bar');r.style.setProperty('--m3-bd',(.3+(bi++%6)*.12)+'s');}});
+    svg.querySelectorAll('.xv-part').forEach(function(p,i){p.style.setProperty('--m3-i',i);});
+
+    svg.classList.add('m3-ready');
+    function play(){svg.classList.add('m3-play');}
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();play();}});},{threshold:.2});io.observe(svg);}else play();
+  }
+  function toggle(){
+    var card=document.querySelector('.diagram-card'),open=card&&card.querySelector('.dz-open'); if(!card)return;
+    var b=document.createElement('button');b.type='button';b.className='dz-btn m3-toggle';b.setAttribute('aria-pressed',String(!off));
+    b.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> <span>'+(off?'Motion off':'Motion on')+'</span>';
+    b.addEventListener('click',function(){setOff(!off);});
+    if(open)open.insertAdjacentElement('afterend',b);else card.appendChild(b);
+  }
+  function init(){document.querySelectorAll('.diagram-card > svg,.diagram-card > .diagram-scroll > svg').forEach(prep);toggle();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- motion-feature:end -->
+
+
+<!-- navaid-motion:start -->
+<style>
+@keyframes nvRing{0%{transform:scale(.15);opacity:.85}100%{transform:scale(1);opacity:0}}
+@keyframes nvSpin{to{transform:rotate(360deg)}}
+@keyframes nvSwing{0%,100%{transform:rotate(-26deg)}50%{transform:rotate(26deg)}}
+@keyframes nvAlt1{0%,45%{opacity:1}50%,95%{opacity:.25}100%{opacity:1}}
+@keyframes nvAlt2{0%,45%{opacity:.25}50%,95%{opacity:1}100%{opacity:.25}}
+@keyframes nvDash{0%,12%,25%,37%,100%{opacity:.35}6%,18%,31%{opacity:1}}
+@keyframes nvDot{0%,8%,16%,100%{opacity:.35}2%,12%{opacity:1}}
+@keyframes nvDotDash{0%,5%,12%,60%,100%{opacity:.35}2%,9%,20%,35%{opacity:1}}
+@keyframes nvBreath{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes nvBolt{0%,62%,100%{opacity:.25}64%{opacity:1}67%{opacity:.3}70%{opacity:1}78%{opacity:.5}}
+@keyframes nvFlash{0%,62%,100%{opacity:0}64%{opacity:.28}67%{opacity:.05}70%{opacity:.22}82%{opacity:0}}
+@keyframes nvBlip{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.7);opacity:.2}}
+.nv-ring{fill:none;stroke-width:1.6;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;pointer-events:none;animation:nvRing var(--nv-p,3s) ease-out infinite;animation-delay:var(--nv-d,0s)}
+.nv-spin{animation:nvSpin var(--nv-p,8s) linear infinite;pointer-events:none}
+.nv-swing{animation:nvSwing var(--nv-p,6s) ease-in-out infinite;pointer-events:none}
+.nv-a1{animation:nvAlt1 var(--nv-p,1.6s) linear infinite}
+.nv-a2{animation:nvAlt2 var(--nv-p,1.6s) linear infinite}
+.nv-dash{animation:nvDash 3.4s linear infinite}
+.nv-dot{animation:nvDot 3.4s linear infinite}
+.nv-dotdash{animation:nvDotDash 3.4s linear infinite}
+.nv-breath{animation:nvBreath var(--nv-p,2.6s) ease-in-out infinite}
+.nv-bolt{animation:nvBolt 5s linear infinite}
+.nv-flash{fill:#fff;pointer-events:none;animation:nvFlash 5s linear infinite}
+.nv-blip{transform-box:fill-box;transform-origin:center;animation:nvBlip 1.8s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.nv-ring,.nv-spin,.nv-swing,.nv-a1,.nv-a2,.nv-dash,.nv-dot,.nv-dotdash,.nv-breath,.nv-bolt,.nv-flash,.nv-blip{animation:none}}
+</style>
+<script>
+(function(){
+  var NS='http://www.w3.org/2000/svg';
+  var page=(location.pathname.split('/').pop()||'').replace(/\.html?$/,'');
+  var svg=document.querySelector('svg[role="img"][viewBox]');
+  if(!svg)return;
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function add(e){svg.appendChild(e);return e;}
+  function fx(e){e.classList.add('m3-fx');return e;}
+  function rings(cx,cy,R,col,n,per,d0){for(var i=0;i<n;i++){var c=fx(el('circle',{cx:cx,cy:cy,r:R,stroke:col,'class':'nv-ring'}));c.style.setProperty('--nv-p',per+'s');c.style.setProperty('--nv-d',((d0||0)+i*per/n).toFixed(2)+'s');add(c);}}
+  function sweep(cx,cy,r,col,per,half,cls){
+    var a=half*Math.PI/180,x1=cx+r*Math.sin(-a),y1=cy-r*Math.cos(a),x2=cx+r*Math.sin(a),y2=y1;
+    var g=fx(el('g',{'class':cls||'nv-spin'}));g.style.transformOrigin=cx+'px '+cy+'px';g.style.setProperty('--nv-p',per+'s');
+    g.appendChild(el('path',{d:'M'+cx+' '+cy+' L'+x1.toFixed(1)+' '+y1.toFixed(1)+' A'+r+' '+r+' 0 0 1 '+x2.toFixed(1)+' '+y2.toFixed(1)+' Z',fill:col,'fill-opacity':'.2'}));
+    g.appendChild(el('line',{x1:cx,y1:cy,x2:x2.toFixed(1),y2:y2.toFixed(1),stroke:col,'stroke-width':'2','stroke-opacity':'.9'}));
+    add(g);}
+  function polyBy(pts){return svg.querySelector('polygon[points="'+pts+'"]');}
+  function tag(e,c,p){if(e){e.classList.add(c);if(p)e.style.setProperty('--nv-p',p+'s');}}
+  var C={
+   'vor':function(){sweep(300,265,165,'#35d07f',9,14);rings(300,265,150,'#00d4ff',3,4);},
+   'ndb':function(){rings(300,265,150,'#00d4ff',4,5);},
+   'dme':function(){rings(140,220,95,'#FFB400',2,3.2,0);rings(440,366,95,'#00d4ff',2,3.2,1.6);},
+   'gbas-and-sbas-ground-stations':function(){
+      rings(320,322,120,'#FFB400',3,4);[[120,110],[250,96],[380,112]].forEach(function(p,i){rings(p[0],p[1],46,'#00d4ff',2,3,i*.7);});},
+   'ils-localizer':function(){tag(polyBy('520,240 40,240 40,90'),'nv-a1',1.6);tag(polyBy('520,240 40,240 40,390'),'nv-a2',1.6);rings(520,240,120,'#00d4ff',3,3.6);},
+   'ils-glide-slope':function(){tag(polyBy('300,396 40,266 40,110'),'nv-a1',1.6);tag(polyBy('300,396 40,266 40,396'),'nv-a2',1.6);rings(300,348,110,'#00d4ff',3,3.6);},
+   'ils-siting-and-agl-interface':function(){rings(520,255,110,'#00d4ff',3,3.6);rings(232,310,70,'#00d4ff',2,3.2,.8);
+      [].forEach.call(svg.querySelectorAll('rect[stroke="#E63946"][stroke-dasharray]'),function(r,i){r.classList.add('nv-breath');r.style.setProperty('--nv-p',(3+i*.6)+'s');});},
+   'marker-beacons':function(){tag(polyBy('90,396 50,150 130,150'),'nv-dash');tag(polyBy('330,396 290,150 370,150'),'nv-dotdash');tag(polyBy('440,396 400,150 480,150'),'nv-dot');
+      rings(90,396,60,'#4aa3ff',2,3);rings(330,396,60,'#FFB400',2,3,.5);rings(440,396,60,'#ffffff',2,3,1);},
+   'surface-movement-radar':function(){var p=polyBy('310,100 205,480 262,480');if(p){p.classList.add('nv-swing');p.style.transformOrigin='310px 100px';p.style.setProperty('--nv-p','7s');}
+      rings(310,100,120,'#00d4ff',3,3.4);
+      [[440,240],[490,398],[150,398]].forEach(function(q,i){var c=fx(el('circle',{cx:q[0],cy:q[1],r:12,fill:'none',stroke:i==2?'#35d07f':'#FFB400','stroke-width':'1.6','class':'nv-blip'}));c.style.animationDelay=(i*.5)+'s';add(c);});},
+   'lightning-detector':function(){
+      var b=svg.querySelector('polygon[points^="338,74"]');if(b)b.classList.add('nv-bolt');
+      add(fx(el('rect',{x:14,y:14,width:912,height:290,rx:12,'class':'nv-flash'})));
+      rings(200,180,110,'#FFB400',3,4.5);rings(200,196,50,'#00d4ff',2,3);},
+   'pavement-temperature-sensor':function(){rings(123,382,40,'#FFB400',2,3);rings(196,352,34,'#FFD400',2,2.6,.4);}
+  };
+  function run(){try{(C[page]||function(){})();}catch(e){}}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(run,60);});else setTimeout(run,60);
+})();
+</script>
+<!-- navaid-motion:end -->
+
+
+<!-- vehicle-story:start -->
+<style>
+/* Vehicle detection sensor: scripted story, one 18 s loop, all layers on the same clock */
+@keyframes vdField{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.9,1.6);opacity:0}}
+@keyframes vdDotK{0%{opacity:0;transform:translateX(0)}1%{opacity:1;transform:translateX(0)}13%{opacity:1;transform:translateX(684px)}14.5%{opacity:0;transform:translateX(684px)}100%{opacity:0;transform:translateX(684px)}}
+@keyframes vdHLk{0%{opacity:0}0.833%{opacity:1}5%{opacity:.9}8.333%{opacity:0}100%{opacity:0}}
+@keyframes vdCardK{0%{opacity:0}2.222%{opacity:1}22.222%{opacity:1}25%{opacity:0}100%{opacity:0}}
+@keyframes vdTFk{0%{opacity:0}0.556%{opacity:1}2.222%{opacity:.25}3.889%{opacity:1}5.556%{opacity:.25}7.222%{opacity:1}8.889%{opacity:.25}10.556%{opacity:1}13.889%{opacity:0}100%{opacity:0}}
+@keyframes vdVeh{0%{transform:translateY(92px);opacity:0}1.944%{transform:translateY(92px);opacity:1;animation-timing-function:ease-in-out;}14.444%{transform:translateY(0);opacity:1}38.889%{transform:translateY(0);opacity:1;animation-timing-function:ease-in-out;}50.556%{transform:translateY(-58px);opacity:1}61.111%{transform:translateY(-58px);opacity:1;animation-timing-function:ease-in-out;}70%{transform:translateY(-90px);opacity:0}70.056%{transform:translateY(92px);opacity:0}100%{transform:translateY(92px);opacity:0}}
+@keyframes vdLA{0%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}13.333%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}15.556%{fill-opacity:.5;stroke-width:2.6;filter:drop-shadow(0 0 6px #00d4ff)}44.444%{fill-opacity:.5;stroke-width:2.6;filter:drop-shadow(0 0 6px #00d4ff)}46.667%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}100%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}}
+@keyframes vdLB{0%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}45.556%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}47.222%{fill-opacity:.5;stroke-width:2.6;filter:drop-shadow(0 0 6px #00d4ff)}66.667%{fill-opacity:.5;stroke-width:2.6;filter:drop-shadow(0 0 6px #00d4ff)}68.889%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}100%{fill-opacity:.08;stroke-width:1.4;filter:drop-shadow(0 0 0 rgba(0,212,255,0))}}
+@keyframes vdGA{0%{opacity:0}14.444%{opacity:0}16.111%{opacity:1}44.444%{opacity:1}46.111%{opacity:0}100%{opacity:0}}
+@keyframes vdGB{0%{opacity:0}46.111%{opacity:0}47.778%{opacity:1}66.667%{opacity:1}68.333%{opacity:0}100%{opacity:0}}
+@keyframes vdSbK{0%{opacity:1}35.556%{opacity:1}37.778%{opacity:.12}60.556%{opacity:.12}62.778%{opacity:1}100%{opacity:1}}
+@keyframes vdSbGK{0%{opacity:.55}35.556%{opacity:.55}37.778%{opacity:0}60.556%{opacity:0}62.778%{opacity:.55}100%{opacity:.55}}
+@keyframes vdFA{0%{opacity:0}76.667%{opacity:0}77.778%{opacity:1}79.444%{opacity:.25}81.111%{opacity:1}82.778%{opacity:.25}84.444%{opacity:1}86.111%{opacity:.25}87.778%{opacity:1}89.444%{opacity:.25}91.111%{opacity:1}92.778%{opacity:.25}94.444%{opacity:1}96.111%{opacity:1}97.778%{opacity:0}100%{opacity:0}}
+@keyframes vdGh{0%{opacity:0}77.222%{opacity:0}79.444%{opacity:.85}95.556%{opacity:.85}97.778%{opacity:0}100%{opacity:0}}
+@keyframes vdS0{0%{opacity:1}13.889%{opacity:1}15.556%{opacity:0}68.889%{opacity:0}71.111%{opacity:1}75%{opacity:1}76.667%{opacity:0}97.778%{opacity:0}100%{opacity:1}}
+@keyframes vdS1{0%{opacity:0}15.556%{opacity:0}17.222%{opacity:1}34.444%{opacity:1}36.111%{opacity:0}100%{opacity:0}}
+@keyframes vdS2{0%{opacity:0}35.556%{opacity:0}37.222%{opacity:1}47.222%{opacity:1}48.889%{opacity:0}100%{opacity:0}}
+@keyframes vdS3{0%{opacity:0}47.778%{opacity:0}49.444%{opacity:1}68.333%{opacity:1}70%{opacity:0}100%{opacity:0}}
+@keyframes vdS4{0%{opacity:0}76.667%{opacity:0}78.333%{opacity:1}96.111%{opacity:1}97.778%{opacity:0}100%{opacity:0}}
+.vd-veh{animation:vdVeh 18s linear infinite}
+.vd-loopA{animation:vdLA 18s linear infinite}
+.vd-loopB{animation:vdLB 18s linear infinite}
+.vd-gateA{opacity:0;animation:vdGA 18s linear infinite}
+.vd-gateB{opacity:0;animation:vdGB 18s linear infinite}
+.vd-field{transform-box:fill-box;transform-origin:center;animation:vdField 1.5s ease-out infinite}.vd-field.d2{animation-delay:.75s}
+.vd-sb{animation:vdSbK 18s linear infinite}
+.vd-sbglow{animation:vdSbGK 18s linear infinite}
+.vd-faultA{opacity:0;animation:vdFA 18s linear infinite}
+.vd-ghost{opacity:0;animation:vdGh 18s linear infinite}
+.vd-card{opacity:0;animation:vdCardK 18s linear infinite}
+.vd-hl{opacity:0;filter:drop-shadow(0 0 6px currentColor);animation:vdHLk 18s linear infinite}
+.vd-tfault{opacity:0;filter:drop-shadow(0 0 8px #E63946);animation:vdTFk 18s linear infinite}
+.vd-dot{opacity:0;filter:drop-shadow(0 0 5px currentColor);animation:vdDotK 18s linear infinite}.vd-dot.t{opacity:0}
+.vd-st{opacity:0}
+.vd-s0{animation:vdS0 18s linear infinite}
+.vd-s1{animation:vdS1 18s linear infinite}
+.vd-s2{animation:vdS2 18s linear infinite}
+.vd-s3{animation:vdS3 18s linear infinite}
+.vd-s4{animation:vdS4 18s linear infinite}
+.vd-s0{opacity:1}
+.m3-off .vd-ov *{animation:none!important}
+</style>
+<!-- vehicle-story:end -->
+</body>
+</html>

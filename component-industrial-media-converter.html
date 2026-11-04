@@ -1,0 +1,2374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Industrial Media Converter | AGL Component Library</title>
+    <meta name="description" content="Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation." />
+    <meta name="keywords" content="industrial media converter, fibre optic converter, AGL communication network, Ethernet" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-industrial-media-converter.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Industrial Media Converter | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-industrial-media-converter.html" />
+    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn1KfUSfl_-fPJI96xOecTMiGil0ZpwxvsxGS9Vlb1fl6XCeLUJ8uizLPd&amp;s=10" />
+    <meta property="og:image:alt" content="Industrial Media Converter" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Industrial Media Converter | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation." />
+    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn1KfUSfl_-fPJI96xOecTMiGil0ZpwxvsxGS9Vlb1fl6XCeLUJ8uizLPd&amp;s=10" />
+    <meta name="theme-color" content="#060d1a" />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#faq", "url": "https://rahulsharmaagl.in/component-industrial-media-converter.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is an industrial media converter?", "acceptedAnswer": {"@type": "Answer", "text": "An industrial media converter, also called a fibre optic media converter or Ethernet-to-fibre converter, is a network device that converts electrical signals from copper Ethernet to optical signals on fibre, and back."}}, {"@type": "Question", "name": "Where are media converters used in AGL systems?", "acceptedAnswer": {"@type": "Answer", "text": "On the ALCMS backbone to remote substations and field controllers, for CCR substation fibre uplinks, in runway edge cabinets and in approach lighting shelters connecting sequencers, flashers and remote I/O controllers."}}, {"@type": "Question", "name": "Why use fibre instead of copper on an airfield?", "acceptedAnswer": {"@type": "Answer", "text": "Fibre covers much longer distances and is immune to electrical noise and lightning-induced interference, which matters across large airfields with high-voltage cabling."}}, {"@type": "Question", "name": "What distances can a media converter reach?", "acceptedAnswer": {"@type": "Answer", "text": "The page gives 2 km for multi-mode 100BASE-FX and 550 m for 1000BASE-SX, and 20 to 80 km for single-mode links depending on the transceiver."}}, {"@type": "Question", "name": "Can I mix single-mode and multi-mode fibre?", "acceptedAnswer": {"@type": "Answer", "text": "No. Using single-mode fibre with a multi-mode transceiver, or the reverse, will cause link failure or heavy signal loss. Match the fibre type and wavelength at both ends."}}, {"@type": "Question", "name": "Which standards apply to industrial media converters?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEEE 802.3 (Ethernet), IEC 61000-6-2 (EMC immunity for industrial environments) and IEC 61000-4-5 (surge immunity)."}}, {"@type": "Question", "name": "How often should a media converter be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Quarterly link status and auto-negotiation checks, and annual fibre cable inspection and optical connector cleaning."}}, {"@type": "Question", "name": "What are the common problems with media converters?", "acceptedAnswer": {"@type": "Answer", "text": "Auto-negotiation mismatch, fibre cable damage from digging, construction or rodents, optical connector contamination, and incompatible fibre types."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET &amp; BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── COMPONENT HERO ── */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .comp-img-box i {
+            font-size: 100px;
+            color: var(--gold);
+            opacity: 0.6;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        .diagram-step {
+            flex: 1;
+            min-width: 150px;
+            background: rgba(255, 180, 0, 0.05);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagram-step i {
+            color: var(--gold);
+            font-size: 20px;
+        }
+        .diagram-step h6 {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: .3px;
+        }
+        .diagram-step p {
+            font-size: 11.5px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .diagram-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            padding: 0 10px;
+            flex-shrink: 0;
+        }
+        .diagram-chevron-mid {
+            display: flex;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            margin: 6px 0;
+        }
+        .diagram-hub {
+            display: flex;
+            justify-content: center;
+        }
+        .diagram-hub .diagram-step {
+            max-width: 340px;
+        }
+        .diagram-branches {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+        .diagram-branch {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 18px;
+            border-radius: 12px;
+        }
+        .diagram-branch.branch-gold {
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+        }
+        .diagram-branch.branch-cyan {
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+        .diagram-branch.branch-red {
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.2);
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+        .branch-gold .diagram-branch-label { color: var(--gold); }
+        .branch-cyan .diagram-branch-label { color: var(--cyan); }
+        .branch-red .diagram-branch-label { color: var(--red); }
+        .diagram-branch-step {
+            font-size: 13px;
+            color: var(--text);
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .diagram-branch-step i { flex-shrink: 0; font-size: 14px; }
+        .branch-gold .diagram-branch-step i { color: var(--gold); }
+        .branch-cyan .diagram-branch-step i { color: var(--cyan); }
+        .branch-red .diagram-branch-step i { color: var(--red); }
+        .diagram-branch-result {
+            margin-top: 4px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .branch-gold .diagram-branch-result { color: var(--gold); background: rgba(255, 180, 0, 0.08); }
+        .branch-cyan .diagram-branch-result { color: var(--cyan); background: rgba(0, 212, 255, 0.08); }
+        .branch-red .diagram-branch-result { color: var(--red); background: rgba(230, 57, 70, 0.08); }
+        .diagram-function-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            margin-top: 4px;
+        }
+        .diagram-function-card {
+            background: rgba(255, 180, 0, 0.05);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 10px;
+            padding: 18px 14px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .diagram-function-card i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .diagram-function-card h6 {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .diagram-function-card p {
+            font-size: 11px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+        .diagram-result {
+            margin-top: 20px;
+            text-align: center;
+            padding: 16px 20px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 10px;
+        }
+        .diagram-result h6 {
+            color: var(--cyan);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+        .diagram-result p {
+            color: var(--text);
+            font-size: 12.5px;
+            margin-top: 4px;
+        }
+        @media(max-width:900px) {
+            .diagram-flow {
+                flex-direction: column;
+            }
+            .diagram-arrow {
+                transform: rotate(90deg);
+                padding: 10px 0;
+            }
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: #2ecc71;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #2ecc71;
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#article",
+        "headline": "Industrial Media Converter",
+        "description": "Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation.",
+        "url": "https://rahulsharmaagl.in/component-industrial-media-converter.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Industrial Media Converter"
+        },
+        "articleSection": "Control & Monitoring",
+        "keywords": "industrial media converter, fibre optic converter, AGL communication network, Ethernet",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn1KfUSfl_-fPJI96xOecTMiGil0ZpwxvsxGS9Vlb1fl6XCeLUJ8uizLPd&s=10"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Industrial Media Converter",
+            "item": "https://rahulsharmaagl.in/component-industrial-media-converter.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Industrial Media Converter</span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-arrows-left-right"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Industrial <span>Media Converter</span></h1>
+            <p class="comp-sub">A rugged, DIN‑rail mounted device that converts between copper Ethernet (10/100/1000BASE‑T) and fibre optic (100BASE‑FX, 1000BASE‑SX/LX) media, extending network reach, providing galvanic isolation, and ensuring reliable communication in harsh airfield environments. The Industrial Media Converter is a fundamental building block of the AGL fibre optic backbone, enabling long‑distance, noise‑immune connectivity between control rooms, substations, and field equipment.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:450px;height:420px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn1KfUSfl_-fPJI96xOecTMiGil0ZpwxvsxGS9Vlb1fl6XCeLUJ8uizLPd&amp;s=10" alt="Industrial Media Converter" width="450" height="420" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <!-- ─── OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>An <strong>Industrial Media Converter</strong> — also known as a fibre optic media converter, Ethernet‑to‑fibre converter, or simply media converter — is a network device that converts electrical signals from copper Ethernet cables (twisted pair, RJ‑45) into optical signals for transmission over fibre optic cables, and vice versa. In AGL applications, media converters are deployed to extend Ethernet communication distances far beyond the 100‑meter limit of copper cabling (up to 2 km on multi‑mode fibre and 80+ km on single‑mode fibre), while providing complete galvanic isolation and immunity to electromagnetic interference (EMI) from high‑voltage AGL power circuits, lightning, and nearby RF transmitters.</p>
+                <p style="margin-top:12px;">Key characteristics of the Industrial Media Converter include:</p>
+                <ul>
+                    <li><strong>Media Conversion:</strong> Transparently converts between 10/100/1000BASE‑T copper Ethernet and 100BASE‑FX or 1000BASE‑SX/LX fibre optic interfaces, preserving all Ethernet frames and protocols.</li>
+                    <li><strong>Galvanic Isolation:</strong> Provides complete electrical isolation between the copper and fibre sides, protecting sensitive ALCMS equipment from electrical surges, ground loops, and lightning‑induced transients.</li>
+                    <li><strong>Extended Distance:</strong> Enables Ethernet communication over distances up to 2 km (multi‑mode) or 80 km (single‑mode), far exceeding the 100 m limit of copper cabling.</li>
+                    <li><strong>Industrial Design:</strong> Built with industrial‑grade components, wide operating temperature range (-40°C to +75°C), and rugged DIN‑rail mounting, suitable for harsh outdoor and substation environments.</li>
+                    <li><strong>Auto‑Negotiation and Auto‑MDIX:</strong> Supports automatic speed/duplex negotiation and automatic crossover detection on the copper port, simplifying installation and troubleshooting.</li>
+                    <li><strong>Diagnostic Features:</strong> Includes link status LEDs, optical power monitoring (on SFP models), and link‑loss alarm contacts for proactive maintenance and rapid fault isolation.</li>
+                </ul>
+                <p style="margin-top:12px;">In airfield lighting systems, industrial media converters are used to connect remote CCR substations, runway edge cabinets, approach lighting shelters, and sensor nodes back to the central ALCMS network over fibre optic backbones. They are often deployed in pairs — one at each end of a fibre link — to create a seamless copper‑to‑fibre‑to‑copper connection.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The media converter's purpose is less about extending distance than about protecting sensitive control electronics from the environment they have to operate in. Runway edge cabinets, CCR substations, and approach lighting shelters sit close to high-voltage AGL circuits and are exposed to lightning-induced transients — conditions where a long run of copper Ethernet cable would act as an antenna for electrical noise and surges, potentially carrying damaging voltage spikes straight back into an ALCMS switch or server. By converting to fibre, which carries no electrical current at all, the converter creates a hard galvanic break between the field environment and the control room network, so a surge or ground-loop fault out at a remote cabinet has no electrical path back to the core system. Extending communication beyond copper's 100-metre limit is a real benefit, but the isolation is the reason this device belongs specifically in a high-voltage, lightning-exposed environment like an airfield.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPLICATION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Industrial Media Converters are deployed throughout the AGL communication infrastructure wherever copper Ethernet needs to be extended over fibre optic media. Key applications include:</p>
+                <ul>
+                    <li><strong>ALCMS Backbone Extension:</strong> Connecting the central ALCMS server to remote substations and field controllers over long‑distance fibre optic links.</li>
+                    <li><strong>CCR Substation Connectivity:</strong> Providing a fibre uplink from the main PLC or Ethernet switch at a remote substation back to the control room network.</li>
+                    <li><strong>Runway Edge Cabinets:</strong> Extending Ethernet connectivity from the airfield fibre backbone to local switches and fibre converters in runway edge cabinets.</li>
+                    <li><strong>Approach Lighting Shelters:</strong> Connecting sequencer modules, flasher units, and remote I/O controllers to the ALCMS over fibre.</li>
+                    <li><strong>RWSL (Runway Status Light) Systems:</strong> Providing fibre connectivity between RWSL processing units, field controllers, and sensors.</li>
+                    <li><strong>Airfield Sensor Networks:</strong> Extending Ethernet to weather stations, visibility sensors, wind measurement systems, and RVR sensors.</li>
+                    <li><strong>Surveillance &amp; Radar Systems:</strong> Transmitting radar and surveillance data from remote sensor locations to ATC and control centers over fibre.</li>
+                    <li><strong>Inter‑building Links:</strong> Connecting terminal buildings, ATC towers, maintenance facilities, and fire stations to the airfield network via fibre.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── PLACEMENT ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>Converters are DIN-rail mounted in pairs, one at each end of the fibre link — typically one in the control room rack and one in the remote substation, runway cabinet, or shelter enclosure — with the copper Ethernet side kept to a short local run to the nearby switch or PLC and the fibre side carrying the long-distance span between locations. Because the converter's main purpose at an airfield is galvanic isolation, its copper and fibre connections are dressed and routed so the copper cabling never runs alongside high-voltage AGL circuits or through the same duct as series-circuit feeder cables, preserving the separation the isolation is meant to provide. The fibre connection is terminated through the location's patch panel rather than run loose into the converter, and the unit's power is drawn from the local control cabinet supply. Where link-loss alarm contacts are fitted, these are wired back to the ALCMS or a local annunciator so a fibre break or converter fault is reported immediately rather than only discovered when the connected equipment goes silent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNCTION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The Industrial Media Converter operates by translating electrical Ethernet signals into optical pulses and vice versa. Key functional aspects include:</p>
+                <ul>
+                    <li><strong>Signal Reception (Copper Side):</strong> The converter's copper port receives standard Ethernet frames over twisted‑pair cabling. The physical layer transceiver (PHY) recovers the clock and data from the electrical signals, and performs auto‑negotiation to determine the speed (10/100/1000 Mbps) and duplex mode (half/full) of the link.</li>
+                    <li><strong>Frame Buffering and Processing:</strong> The converter buffers the incoming Ethernet frame, checks for integrity (CRC), and prepares it for transmission over the fibre optic link. Some converters support store‑and‑forward or cut‑through switching, depending on the design.</li>
+                    <li><strong>Optical Transmission:</strong> The buffered frame is passed to the optical transceiver (either fixed or SFP‑based). The transceiver drives a laser diode or LED (light‑emitting diode) to transmit corresponding light pulses over the fibre optic cable at the appropriate wavelength (850 nm for multi‑mode, 1310 nm or 1550 nm for single‑mode).</li>
+                    <li><strong>Signal Reception (Fibre Side):</strong> The optical transceiver receives light pulses from the fibre optic cable and converts them back into electrical signals. The converter then recovers the Ethernet frames and transmits them over the copper port.</li>
+                    <li><strong>Media Independence:</strong> The converter is protocol‑agnostic at the data link layer, supporting all Ethernet‑based protocols (TCP/IP, Modbus TCP, Profinet, EtherNet/IP, etc.) as long as they are encapsulated in standard Ethernet frames.</li>
+                    <li><strong>Diagnostics &amp; Monitoring:</strong> Advanced converters provide link status LEDs, optical power monitoring (received power), and link‑loss alarm contacts (dry contacts that change state when a fibre link is lost). This enables proactive maintenance and rapid fault isolation.</li>
+                </ul>
+                <p style="margin-top:12px;">Industrial media converters are typically powered by 24 VDC (airfield standard) or 12 VDC, with dual redundant power inputs for high availability. They are housed in rugged industrial enclosures suitable for DIN‑rail mounting in control cabinets, substations, or outdoor shelters.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── DIAGRAM ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Signal Path</div>
+            <h2 class="block-title">Copper ⇄ Fibre Conversion &amp; Control Logic</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-step"><i class="fa-solid fa-ethernet"></i><h6 role="heading" aria-level="3">Copper Port</h6><p>Electrical Ethernet frames over twisted-pair, PHY auto-negotiates speed/duplex</p></div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="diagram-step"><i class="fa-solid fa-memory"></i><h6 role="heading" aria-level="3">Frame Buffer &amp; CRC Check</h6><p>Verifies integrity before passing to the optical side</p></div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="diagram-step"><i class="fa-solid fa-tower-broadcast"></i><h6 role="heading" aria-level="3">Optical Transceiver</h6><p>Laser/LED drives light pulses at 850/1310/1550 nm</p></div>
+                    <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
+                    <div class="diagram-step"><i class="fa-solid fa-wave-square"></i><h6 role="heading" aria-level="3">Fibre Optic Port</h6><p>Light pulses carry the same Ethernet frames onward</p></div>
+                </div>
+                <div class="diagram-result">
+                    <h6 role="heading" aria-level="3">Ethernet Frames Bridged Between Copper &amp; Fibre — Both Directions</h6>
+                    <p>Protocol-agnostic: TCP/IP, Modbus TCP, Profinet, EtherNet/IP all pass through unchanged</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TECHNICAL PARAMETERS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The converter is built into a small, ruggedised metal case designed to clip onto a 35 mm DIN rail as standard, with a panel-mount or field-enclosure variant available for locations needing a higher IP rating. One end of the case carries an RJ-45 copper port with auto-negotiation and auto-MDIX circuitry, and the other carries either a fixed SC/ST/LC fibre connector pair or an SFP cage that accepts a plug-in transceiver module, letting the same chassis support different fibre types, wavelengths, and distances simply by swapping the SFP. Internally, the copper and fibre sides are bridged through a switching or media-conversion chip with its own isolated power regulation, fed from dual redundant 24 VDC inputs on separate terminals so a single power-feed failure doesn't take the link down. Link-status and power LEDs are visible on the front face for at-a-glance diagnostics, and alarm relay contacts are brought out to terminals so a fibre link failure can be reported back to the control system. The base DIN-rail housing is rated IP30, with ruggedised (IP40) or fully sealed field-mount (IP65) enclosure options for locations outside a conditioned cabinet.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Copper Interface</td><td class="val">10/100/1000BASE‑T (RJ‑45), auto‑negotiation, auto‑MDIX</td></tr>
+                <tr><td>Fibre Interface</td><td class="val">100BASE‑FX (Fast Ethernet) or 1000BASE‑SX/LX (Gigabit)</td></tr>
+                <tr><td>Fibre Connector Type</td><td class="val">SC, ST, LC (duplex) — fixed or SFP‑based</td></tr>
+                <tr><td>Fibre Type</td><td class="val">Multi‑mode (50/125 µm, 62.5/125 µm) or Single‑mode (9/125 µm)</td></tr>
+                <tr><td>Wavelength</td><td class="val">850 nm (MM), 1310 nm / 1550 nm (SM), or WDM (single‑fibre)</td></tr>
+                <tr><td>Max Distance (Multi‑mode)</td><td class="val">2 km (100BASE‑FX), 550 m (1000BASE‑SX)</td></tr>
+                <tr><td>Max Distance (Single‑mode)</td><td class="val">20‑80 km (100BASE‑LX/1000BASE‑LX, depending on transceiver)</td></tr>
+                <tr><td>Forwarding Mode</td><td class="val">Store‑and‑forward or cut‑through (configurable)</td></tr>
+                <tr><td>Frame Size Support</td><td class="val">Up to 9,600 bytes (jumbo frame support)</td></tr>
+                <tr><td>Auto‑Negotiation</td><td class="val">Supported on copper port (10/100/1000 Mbps, full/half duplex)</td></tr>
+                <tr><td>Flow Control</td><td class="val">IEEE 802.3x (full duplex) and backpressure (half duplex)</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (nominal, 18‑32 VDC) with dual redundant inputs</td></tr>
+                <tr><td>Power Consumption</td><td class="val">3‑10 W (depending on model and transceiver)</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-40°C to +75°C (industrial grade)</td></tr>
+                <tr><td>Storage Temperature</td><td class="val">-40°C to +85°C</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP30 (panel mount), IP40 (ruggedized), IP65 (field mount with enclosure)</td></tr>
+                <tr><td>Mounting</td><td class="val">DIN rail (EN 60715, 35mm) — standard</td></tr>
+                <tr><td>Diagnostics</td><td class="val">Link status LEDs, optical power monitoring, alarm contacts (link loss)</td></tr>
+                <tr><td>Certifications</td><td class="val">CE, FCC, UL, IEC 61000‑6‑2 (EMC immunity), IEC 61000‑4‑5 (surge immunity)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ─── STANDARDS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Type</td><td class="val">Low-voltage DC auxiliary supply — network device, not part of the airfield series circuit</td></tr>
+                <tr><td>Power Supply</td><td class="val">24VDC (nominal, 18–32VDC), dual redundant inputs</td></tr>
+                <tr><td>Power Consumption</td><td class="val">3–10W depending on model and transceiver</td></tr>
+                <tr><td>Cable Type</td><td class="val">Cat5e/6 (copper), fibre optic (SC/ST/LC)</td></tr>
+                <tr><td>Isolation</td><td class="val">Fibre link provides inherent galvanic isolation between segments</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">DIN-rail chassis bonded to the cabinet earth bus</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Reverse-polarity and surge protection on the DC input; alarm relay on link loss</td></tr>
+                <tr><td>Standards</td><td class="val">IEC 61000-4-5 (surge immunity)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEEE 802.3</h5><p>Ethernet standards (10BASE‑T, 100BASE‑TX, 1000BASE‑T, 100BASE‑FX, 1000BASE‑SX/LX)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑2</h5><p>EMC immunity for industrial environments</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑4‑5</h5><p>Surge immunity (lightning protection)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑56</h5><p>Specification for AGL control and monitoring equipment (fibre infrastructure)</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FIELD ISSUES ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Paired DIN-Rail Mounting</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Mount the converter pair one at each end of the fibre link, DIN-rail mounted in the respective control room rack and remote enclosure.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Copper/Fibre Routing Separation</h5><span class="test-stage">Electrical</span></div>
+                        <p>Route the copper Ethernet side clear of high-voltage AGL circuits and series-circuit feeder ducts, preserving the galvanic isolation the converter provides.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fibre Connector Cleaning &amp; Inspection</h5><span class="test-stage">Optical</span></div>
+                        <p>Clean and inspect fibre connectors before mating to avoid attenuation from contamination on the ferrule.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Local Ethernet Run</h5><span class="test-stage">Electrical</span></div>
+                        <p>Keep the copper-side cabling to a short local run to the nearby switch or PLC.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply Redundancy Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <p>Wire dual power inputs from separate sources where redundant supply is specified for the installation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record mounting location, fibre route, and power wiring as-built before link testing begins.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fibre Link Budget Verification</h5><span class="test-stage">Pre-Installation</span></div>
+                        <p>Measure optical loss on the fibre run with a light source and power meter, confirming it falls within the converter's specified budget before connecting.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optical Connector Cleaning &amp; Inspection</h5><span class="test-stage">Installation</span></div>
+                        <p>Inspect and clean all fibre connectors and verify with a fibre-optic scope before mating, since contamination is the leading cause of link failure.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Link Status &amp; Auto-Negotiation Test</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm link, speed, and duplex settings establish correctly at both the copper and fibre ends once powered up.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Alarm Relay Function Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Simulate a link failure and confirm the alarm relay or SNMP trap reports correctly to the monitoring system.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; Redundancy Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Confirm dual power inputs, where fitted, are both connected and that the correct supply voltage is present at each.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record optical loss readings and link test results in the commissioning dossier.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Link Status &amp; Auto-Negotiation Check</h5><span class="maint-freq">Quarterly</span></div>
+                        <p>Verify copper port auto-negotiation matches the connected switch and check for CRC errors or link instability.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Fibre Cable Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Inspect fibre runs for physical damage from digging, construction, or rodents, confirming armored or duct-protected sections remain intact.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Optical Connector Cleaning</h5><span class="maint-freq">Annual</span></div>
+                        <p>Clean SC/ST/LC connectors with a proper fibre cleaning kit to prevent attenuation from dust, dirt, or oil contamination.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; UPS Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Verify the regulated 24 VDC supply and UPS backup remain stable to prevent converter resets or communication dropouts.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Enclosure Temperature Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Check enclosure ventilation or heating to confirm the converter stays within its rated operating temperature range.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Alarm Relay Test</h5><span class="maint-freq">Annual</span></div>
+                        <p>Test link-loss alarm relay wiring and configuration to confirm real faults are reported and false alarms are minimised.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Auto‑Negotiation Mismatch</h5><p>If the copper port's auto‑negotiation fails or is mismatched with the connected switch, speed/duplex mismatches can cause excessive collisions, CRC errors, or link instability. Manually configure the copper port to match the switch or ensure both sides are set to auto‑negotiation.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Fibre Optic Cable Damage</h5><p>Fibre cables are susceptible to damage from digging, construction, or rodent bites. The converter will show a loss of link (LOS) indication. Regular cable inspection and use of armored or duct‑protected fibre is recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Optical Connector Contamination</h5><p>Dust, dirt, or oil on SC/ST/LC connectors can cause significant signal attenuation (loss of optical power). Clean connectors with a proper fibre cleaning kit (e.g., pen cleaner or wipes) before reconnecting.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incompatible Fibre Types</h5><p>Using single‑mode fibre with a multi‑mode transceiver (or vice versa) will result in very high attenuation and link failure. Always match the converter's optical interface to the installed fibre type.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Industrial media converters are sensitive to voltage fluctuations. Use a dedicated, regulated 24 VDC power supply with sufficient capacity and UPS backup to prevent converter resets or communication dropouts.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Temperature Extremes</h5><p>Outdoor enclosures without proper ventilation can exceed the converter's operating temperature range, causing intermittent faults or permanent damage. Use industrial‑rated converters and ensure proper enclosure cooling or heating.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Link‑Loss Alarm Misconfiguration</h5><p>Some converters have alarm relay outputs that can be configured for link‑loss detection. Misconfiguration or incorrect wiring can cause false alarms or failure to report actual faults. Verify alarm relay settings during commissioning.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Link Unstable or High Error Rate on the Copper Port</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Auto-negotiation mismatch between the copper port and the connected switch causing a speed/duplex mismatch.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the negotiated speed/duplex on both ends; look for excessive collisions or CRC errors in port statistics.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Set both ends to auto-negotiation consistently, or manually configure matching speed/duplex settings on both the converter and switch.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Loss of Link (LOS) Indication on the Fibre Side</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Physical damage to the fibre cable from digging, construction, or rodent activity.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect accessible fibre runs for visible damage; check optical power levels against expected values; review any recent civil works near the cable route.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the damaged fibre segment, and consider armoured or duct-protected fibre for future runs in vulnerable areas.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">High Attenuation Without Visible Cable Damage</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Dust, dirt, or oil contamination on the optical connectors.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure received optical power against the link budget; inspect connector end-faces with a fibre scope if available.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean connectors with an appropriate fibre cleaning kit before reconnecting, and re-measure optical power to confirm the fix.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Link Fails Immediately After Installation</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Mismatched fibre type — single-mode fibre paired with a multi-mode transceiver, or vice versa.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Confirm the fibre type installed matches the converter's optical interface specification; check transceiver part numbers against the fibre type.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the transceiver or converter module to match the installed fibre type, or replace the fibre run if the transceiver type is fixed.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Converter Resets or Drops Communication Intermittently</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Power supply instability or voltage fluctuation feeding the converter.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Monitor supply voltage for dips or noise at the converter's power input; check whether the supply is dedicated and adequately rated.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Fit a dedicated, regulated 24 VDC supply with sufficient capacity and UPS backup for the converter.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Intermittent Faults Correlating With Weather or Time of Day</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Enclosure temperature exceeding the converter's rated operating range due to inadequate ventilation, heating, or cooling.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Log enclosure temperature over a full day/season cycle and compare against the converter's rated range; inspect enclosure ventilation, heating, or cooling provisions.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Improve enclosure thermal management (ventilation, heating/cooling) or fit an industrial-rated converter suited to the actual temperature extremes.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False Alarms or Missed Link-Loss Alarms at the ALCMS</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Alarm relay output misconfigured or incorrectly wired for link-loss detection.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check alarm relay configuration settings against the intended link-loss behaviour; verify relay wiring at the ALCMS input.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Reconfigure the alarm relay settings and correct wiring, then verify with a simulated link-loss test.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Fibre Cable Physical Damage</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Digging, construction work, or rodent activity damaging the fibre cable along its route.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Loss of link on the fibre side, cutting off communication carried over that segment entirely.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Inspecting accessible fibre runs for visible damage, and checking optical power levels against expected values.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Connector Contamination</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, dirt, or oil contamination on the optical connector end-faces, often introduced during handling.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Attenuation rises without any visible cable damage, weakening the optical link margin.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Measuring received optical power against the link budget, and inspecting connector end-faces with a fibre scope.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Fibre Type Mismatch</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Single-mode fibre paired with a multi-mode transceiver, or vice versa, at installation.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Link fails immediately after installation, or performs far below expectations even when it does connect.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Confirming the installed fibre type matches the converter's optical interface specification, and checking transceiver part numbers.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Supply Instability</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Voltage fluctuation or noise on a shared, non-dedicated power supply feeding the converter.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Converter resets or drops communication intermittently, disrupting the link without a clear external cause.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Monitoring supply voltage for dips or noise at the converter's power input, and checking whether the supply is dedicated and adequately rated.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Enclosure Thermal Extremes</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Enclosure temperature exceeding the converter's rated operating range due to inadequate ventilation, heating, or cooling.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Intermittent faults that correlate with weather or time of day, making the issue harder to pin down.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Logging enclosure temperature over a full day/season cycle, and comparing against the converter's rated range.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── RELATED COMPONENTS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-eye-slash"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Never Look Into a Fibre Connector or Transceiver</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Never look directly into an unterminated fibre connector or an active transceiver port; the laser source is invisible to the eye but can cause retinal damage. Use a fibre-certified optical power meter to check for light, never a direct visual check.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Before Internal Work</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>De-energise the converter before opening its enclosure, and use anti-static precautions when handling the internal board.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Inspect Connector End-Faces Before Mating</h5><span class="test-stage">Verification</span></div>
+                        <p>Inspect and clean fibre connector end-faces with a fibre scope and approved cleaning method before mating them, since dust or oil contamination introduced during handling is a common cause of rising attenuation without any visible cable damage.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Fibre Type Match</h5><span class="test-stage">Verification</span></div>
+                        <p>Verify single-mode or multi-mode fibre matches the transceiver type on both ends of the link before commissioning, since a mismatch can cause the link to fail immediately or perform far below expectation even when it connects.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Optical Power Budget</h5><span class="test-stage">Verification</span></div>
+                        <p>Measure received optical power against the link budget after installation or any splice/connector work, rather than relying on link-up status alone, since a weak but functioning link can still be operating with little margin.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Redundant Path Before Taking a Link Down</h5><span class="test-stage">Operational</span></div>
+                        <p>Verify an alternate communication path is active before disconnecting a media converter serving a live CCR or ALCMS link, since fibre cable damage from excavation or rodent activity is a recurring, hard-to-predict failure mode.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE &amp; Grounding</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Confirm the converter enclosure is bonded/grounded per the electrical design, and use standard PPE and cut-resistant gloves when handling exposed fibre strands.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Confirm link status, optical power margin, and correct data pass-through on both copper and fibre sides before closing out the work.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-eye-slash"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Laser Safety Applies Even to 'Dead' Looking Ports</h5><span class="expert-tag">Personnel Safety</span></div>
+                        <p>A fibre port that appears unused or a link that's reported down can still have an active laser source on the transceiver; treat every fibre connector as potentially live and never visually inspect it directly, regardless of the reported link status.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Rising Attenuation Without Cable Damage Usually Means Contamination</h5><span class="expert-tag">Verification</span></div>
+                        <p>A link that degrades gradually with no reported cable disturbance is a classic sign of dust or oil contamination accumulating on connector end-faces from repeated handling; inspect and clean end-faces as a first troubleshooting step before suspecting the fibre run itself.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Link That's Up Isn't Necessarily a Link With Margin</h5><span class="expert-tag">Verification</span></div>
+                        <p>Link-up status only confirms the receiver detected enough light to establish a connection, not how much margin exists above that threshold; measure actual received optical power against the link budget so a marginal link is caught before further degradation takes it down entirely.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-code-compare"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Single-Mode and Multi-Mode Connectors Can Physically Mate Despite Being Incompatible</h5><span class="expert-tag">Verification</span></div>
+                        <p>Because single-mode and multi-mode connectors on some standards are physically compatible despite being optically incompatible, a mismatched pairing can be assembled without any mechanical resistance, only revealing itself through poor or failed link performance.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-route"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Fibre Cable Damage Is a Different Failure Mode Than Copper</h5><span class="expert-tag">Operational</span></div>
+                        <p>Fibre runs are vulnerable to excavation strikes and rodent damage in ways that don't always produce the gradual warning signs a copper circuit might; treat any unexplained link interruption on a buried fibre run as a possible physical damage event worth a route inspection, not just a media converter fault.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">ESD Damage to the Converter Board Can Cause Intermittent, Not Just Hard, Faults</h5><span class="expert-tag">Electrical</span></div>
+                        <p>A board handled without anti-static precautions can suffer partial component damage that produces intermittent link drops or degraded throughput rather than outright failure, making the root cause hard to trace back to a handling event that happened much earlier.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about industrial media converters: function, fibre types, distances, standards and maintenance.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is an industrial media converter?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>An industrial media converter, also called a fibre optic media converter or Ethernet-to-fibre converter, is a network device that converts electrical signals from copper Ethernet to optical signals on fibre, and back.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Where are media converters used in AGL systems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>On the ALCMS backbone to remote substations and field controllers, for CCR substation fibre uplinks, in runway edge cabinets and in approach lighting shelters connecting sequencers, flashers and remote I/O controllers.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Why use fibre instead of copper on an airfield?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Fibre covers much longer distances and is immune to electrical noise and lightning-induced interference, which matters across large airfields with high-voltage cabling.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">What distances can a media converter reach?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The page gives 2 km for multi-mode 100BASE-FX and 550 m for 1000BASE-SX, and 20 to 80 km for single-mode links depending on the transceiver.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">Can I mix single-mode and multi-mode fibre?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>No. Using single-mode fibre with a multi-mode transceiver, or the reverse, will cause link failure or heavy signal loss. Match the fibre type and wavelength at both ends.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">Which standards apply to industrial media converters?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are IEEE 802.3 (Ethernet), IEC 61000-6-2 (EMC immunity for industrial environments) and IEC 61000-4-5 (surge immunity).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">How often should a media converter be checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Quarterly link status and auto-negotiation checks, and annual fibre cable inspection and optical connector cleaning.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">What are the common problems with media converters?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Auto-negotiation mismatch, fibre cable damage from digging, construction or rodents, optical connector contamination, and incompatible fibre types.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-fiber-converter.html" class="related-card"><i class="fa-solid fa-wave-sine"></i><h5 role="heading" aria-level="3">Fiber Converter</h5></a>
+                <a href="component-ethernet-switch.html" class="related-card"><i class="fa-solid fa-network-wired"></i><h5 role="heading" aria-level="3">Ethernet Switch</h5></a>
+                <a href="component-fibre-optic-patch-panel.html" class="related-card"><i class="fa-solid fa-plug"></i><h5 role="heading" aria-level="3">Fibre Optic Patch Panel</h5></a>
+                <a href="component-communication-gateway.html" class="related-card"><i class="fa-solid fa-gateway"></i><h5 role="heading" aria-level="3">Communication Gateway</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on Industrial Media Converter selection, deployment, or troubleshooting for your AGL network?</h4><p>Precision AGL Academy provides advice on converter types, fibre selection, distance planning, and best practices for reliable fibre optic network infrastructure.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Industrial Media Converter is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Industrial%20Media%20Converter">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Industrial%20Media%20Converter" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

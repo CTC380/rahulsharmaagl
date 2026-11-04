@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Common Isolating Transformer Issues and How to Detect Them</title>
+    <meta name="description" content="Early signs of AGL isolating transformer deterioration: rising primary voltage, uneven intensity, overheating and odd secondary readings, and how to spot them." />
+    <meta name="keywords" content="isolating transformer troubleshooting, AGL transformer failure signs, rising primary voltage CCR, uneven runway light intensity, transformer overheating AGL, secondary voltage current testing, preventive maintenance AGL, isolating transformer condition monitoring" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+        <link rel="canonical" href="https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html" />
+    <meta property="og:title" content="Common Isolating Transformer Issues and How to Detect Them" />
+    <meta property="og:description" content="Early signs of AGL isolating transformer deterioration: rising primary voltage, uneven intensity, overheating and odd secondary readings, and how to spot them." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-05-11" />
+    <meta property="article:modified_time" content="2026-10-26" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="AGL Components" />
+    <meta property="article:tag" content="Isolating Transformers" />
+    <meta property="article:tag" content="Troubleshooting" />
+    <meta property="article:tag" content="Preventive Maintenance" />
+    <meta property="article:tag" content="AGL Testing" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-common-isolating-transformer-issues.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="Common Isolating Transformer Issues and How to Detect Them | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Common Isolating Transformer Issues and How to Detect Them" />
+    <meta name="twitter:description" content="Early signs of AGL isolating transformer deterioration: rising primary voltage, uneven intensity, overheating and odd secondary readings, and how to spot them." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-common-isolating-transformer-issues.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 40px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color .3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-cta { padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: all .3s; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--white); }
+        @media(max-width:900px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        .breadcrumb { padding: 110px 40px 0; max-width: 900px; margin: auto; position: relative; z-index: 1; font-size: 13px; }
+        .breadcrumb a { color: var(--text); text-decoration: none; font-weight: 600; letter-spacing: .3px; }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb span.sep { color: var(--text); opacity: .4; margin: 0 8px; }
+        .breadcrumb .current { color: var(--gold); }
+
+        .article-hero { max-width: 900px; margin: auto; padding: 34px 40px 46px; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+        .page-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid rgba(230, 57, 70, 0.3); background: rgba(230, 57, 70, 0.07); border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 24px; }
+        .article-title { font-family: 'Bebas Neue', sans-serif; font-size: 50px; letter-spacing: 1px; line-height: 1.05; margin-bottom: 22px; color: var(--gold); }
+        @media(max-width:768px) { .article-title { font-size: 34px; } }
+        .article-lede { font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 26px; max-width: 720px; }
+        .author-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .author-avatar { width: 48px; height: 48px; border-radius: 10px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-size: 14.5px; font-weight: 700; color: var(--white); }
+        .author-info p { font-size: 12px; color: var(--text); margin-top: 2px; }
+        .article-meta-strip { display: flex; gap: 22px; flex-wrap: wrap; margin-left: auto; font-size: 12.5px; color: var(--text); }
+        .article-meta-strip span { display: flex; align-items: center; gap: 7px; }
+        .article-meta-strip i { color: var(--gold); font-size: 12px; }
+        @media(max-width:600px) { .article-meta-strip { margin-left: 0; } }
+
+        .article-body { max-width: 760px; margin: auto; padding: 50px 40px 20px; position: relative; z-index: 1; }
+        .article-body > p { font-size: 16.5px; line-height: 1.95; color: var(--text); margin-bottom: 24px; }
+        .article-body > p:first-of-type { font-size: 18px; color: var(--white); }
+
+        .art-section { margin: 46px 0 42px; scroll-margin-top: 92px; }
+
+        .toc-block { margin: 8px 0 40px; padding: 26px 28px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 14px; }
+        .toc-block .toc-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .toc-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+        @media(max-width:600px) { .toc-list { grid-template-columns: 1fr; } }
+        .toc-list a { display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text); text-decoration: none; padding: 7px 0; transition: color .2s; }
+        .toc-list a:hover { color: var(--gold); }
+        .toc-list .toc-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 14px; flex-shrink: 0; width: 22px; }
+        .art-section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+        .art-section-num { width: 42px; height: 42px; border-radius: 12px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .art-section-num.warn { background: rgba(230, 57, 70, 0.1); border-color: rgba(230, 57, 70, 0.3); color: var(--red); }
+        .art-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: .3px; color: var(--white); line-height: 1.3; }
+        .art-section > p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 16px; }
+        .insight-list { list-style: none; margin: 4px 0 18px; display: flex; flex-direction: column; gap: 11px; }
+        .insight-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.7; color: var(--text); padding: 12px 16px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .insight-list li i { color: var(--gold); font-size: 12px; margin-top: 5px; flex-shrink: 0; }
+        .insight-list.warn-list li i { color: var(--red); }
+        .closing-line { font-size: 15.5px; line-height: 1.85; color: var(--white); padding: 16px 20px; border-left: 3px solid var(--gold); background: rgba(255, 180, 0, 0.04); border-radius: 0 10px 10px 0; font-style: italic; }
+        .closing-line.warn { border-left-color: var(--red); background: rgba(230, 57, 70, 0.05); }
+
+        .diagram-block { margin: 50px 0 40px; padding: 32px 28px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 16px; }
+        .diagram-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; text-align: center; }
+        .diagram-block .diagram-sub { font-size: 13.5px; color: var(--text); text-align: center; margin-bottom: 22px; }
+        .diagram-block svg { width: 100%; height: auto; display: block; }
+
+        .conclusion-block { margin: 50px 0 40px; padding: 32px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; }
+        .conclusion-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--gold); margin-bottom: 16px; }
+        .conclusion-block p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 14px; }
+        .conclusion-block p:last-child { margin-bottom: 0; }
+
+        .pull-quote { text-align: center; margin: 50px auto; padding: 40px 30px; max-width: 640px; }
+        .pull-quote p { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 600; line-height: 1.35; color: var(--white); position: relative; }
+        .pull-quote p span { color: var(--gold); }
+        .pull-quote .quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: rgba(255, 180, 0, 0.25); line-height: .5; display: block; margin-bottom: 10px; }
+
+        .signoff { text-align: right; font-size: 14.5px; color: var(--text); font-style: italic; margin: -20px auto 50px; max-width: 760px; padding: 0 40px; }
+        .signoff strong { color: var(--gold); font-style: normal; }
+
+        .topic-tags { max-width: 760px; margin: 0 auto 50px; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .topic-tags span { padding: 7px 16px; background: rgba(0, 212, 255, 0.06); border: 1px solid rgba(0, 212, 255, 0.18); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--cyan); }
+
+        .author-bio { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; }
+        .author-bio-card { display: flex; gap: 20px; padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; align-items: flex-start; }
+        .author-bio-avatar { width: 60px; height: 60px; border-radius: 12px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); flex-shrink: 0; }
+        .author-bio-card h4 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+        .author-bio-card p { font-size: 14px; color: var(--text); line-height: 1.75; }
+        .author-bio-card .abio-links { margin-top: 14px; display: flex; gap: 14px; }
+        .author-bio-card .abio-links a { color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .author-bio-card .abio-links a:hover { gap: 9px; }
+
+        .article-nav-links { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .anav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 8px; border: 1px solid var(--border); color: var(--white); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: all .3s; }
+        .anav-btn:hover { border-color: rgba(255, 180, 0, 0.35); color: var(--gold); transform: translateY(-2px); }
+        .anav-btn.gold { background: var(--gold); border-color: var(--gold); color: #000; }
+        .anav-btn.gold:hover { background: #ffc933; color: #000; }
+
+        footer { padding: 30px 40px; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; position: relative; z-index: 1; }
+        footer p { font-size: 13px; color: var(--text); }
+        footer p strong { color: var(--gold); }
+        .footer-links { display: flex; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 50%; background: var(--gold); border: none; color: #000; font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all .3s; box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25); }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+
+        @media(max-width:600px) {
+            nav { padding: 0 20px; }
+            .breadcrumb { padding: 100px 20px 0; }
+            .article-hero, .article-body, .topic-tags, .author-bio, .article-nav-links, .signoff { padding-left: 20px; padding-right: 20px; }
+            .pull-quote p { font-size: 24px; }
+            .author-bio-card { flex-direction: column; }
+            footer { padding: 20px; flex-direction: column; text-align: center; }
+        }
+
+        .key-takeaway { margin: 8px 0 46px; padding: 26px 28px; display: flex; gap: 18px; align-items: flex-start; background: linear-gradient(135deg, rgba(230, 57, 70, 0.1), rgba(255, 180, 0, 0.05)); border: 1px solid rgba(230, 57, 70, 0.28); border-radius: 14px; }
+        .key-takeaway .kt-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(230, 57, 70, 0.12); border: 1px solid rgba(230, 57, 70, 0.3); display: flex; align-items: center; justify-content: center; color: var(--red); font-size: 16px; flex-shrink: 0; }
+        .key-takeaway .kt-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
+        .key-takeaway p { font-size: 16px; line-height: 1.8; color: var(--white); }
+
+        .measure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 18px; }
+        @media(max-width:700px) { .measure-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width:460px) { .measure-grid { grid-template-columns: 1fr; } }
+        .measure-card { padding: 16px 15px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .measure-card i { color: var(--cyan); font-size: 15px; }
+        .measure-card strong { display: block; color: var(--white); font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+        .measure-card span { font-size: 12.5px; color: var(--text); line-height: 1.5; }
+
+        .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 6px 0 20px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .compare-table th, .compare-table td { padding: 14px 18px; font-size: 14.5px; text-align: left; border-bottom: 1px solid var(--border); }
+        .compare-table th { background: rgba(255, 255, 255, 0.035); font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+        .compare-table td { color: var(--text); }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table td:first-child, .compare-table th:first-child { color: var(--white); border-right: 1px solid var(--border); }
+        @media(max-width:640px) {
+            .compare-table, .compare-table thead, .compare-table tbody, .compare-table th, .compare-table td, .compare-table tr { display: block; }
+            .compare-table thead { display: none; }
+            .compare-table tr { margin-bottom: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+            .compare-table tr:last-child { margin-bottom: 0; }
+            .compare-table td { border-right: none !important; }
+            .compare-table td:first-child { background: rgba(255, 180, 0, 0.05); font-weight: 700; }
+            .compare-table td::before { content: attr(data-label); display: block; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+        }
+
+        .decision-list { display: flex; flex-direction: column; gap: 12px; margin: 4px 0 18px; }
+        .decision-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .decision-item .d-finding { flex: 0 0 210px; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.4; }
+        .decision-item .d-finding i { color: var(--red); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+        .decision-item .d-arrow { color: var(--gold); flex-shrink: 0; padding-top: 2px; font-size: 13px; }
+        .decision-item .d-action { font-size: 14.5px; color: var(--text); line-height: 1.7; }
+        @media(max-width:640px) {
+            .decision-item { flex-direction: column; gap: 8px; }
+            .decision-item .d-finding { flex: none; }
+            .decision-item .d-arrow { display: none; }
+        }
+
+        .workflow-strip { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; margin: 10px 0 20px; }
+        .workflow-step { flex: 1 1 140px; padding: 16px 12px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+        .workflow-step .wf-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 20px; letter-spacing: 1px; }
+        .workflow-step strong { font-size: 13px; color: var(--white); font-weight: 700; }
+        .workflow-step span { font-size: 11.5px; color: var(--text); line-height: 1.4; }
+        .workflow-arrow { display: flex; align-items: center; justify-content: center; color: var(--gold); opacity: .5; font-size: 13px; padding: 0 6px; flex: 0 0 auto; }
+        @media(max-width:760px) {
+            .workflow-strip { flex-direction: column; }
+            .workflow-step { flex: none; }
+            .workflow-arrow { transform: rotate(90deg); padding: 2px 0; }
+        }
+
+        .related-block { max-width: 760px; margin: 54px auto 10px; padding: 0 40px; }
+        .related-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 18px; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        @media(max-width:600px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; transition: all .3s; }
+        .related-card:hover { border-color: rgba(255, 180, 0, 0.35); transform: translateY(-2px); }
+        .related-card .rc-title { font-size: 14.5px; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 10px; }
+        .related-card .rc-title i { color: var(--gold); font-size: 13px; }
+        .related-card .rc-sub { font-size: 12.5px; color: var(--text); padding-left: 23px; }
+    
+        @media(max-width:900px) {
+            .nav-links.mobile-open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #060d1a; padding: 16px 24px; gap: 14px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+        }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "Airfield Ground Lighting Specialist | Testing & Commissioning | ICAO & FAA Compliance",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#article",
+      "headline": "Common Isolating Transformer Issues and How to Detect Them",
+      "description": "Early signs of AGL isolating transformer deterioration: rising primary voltage, uneven intensity, overheating and odd secondary readings, and how to spot them.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "inLanguage": "en-IN",
+      "datePublished": "2026-05-11",
+      "dateModified": "2026-10-26",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/og-image-common-isolating-transformer-issues.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html",
+      "articleSection": "AGL Components",
+      "keywords": "Isolating Transformer Troubleshooting, Rising Primary Voltage, Uneven Light Intensity, Transformer Overheating, Secondary Voltage Testing, Preventive Maintenance",
+      "wordCount": 2732,
+      "timeRequired": "PT12M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "url": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html",
+      "name": "Common Isolating Transformer Issues and How to Detect Them",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Common Isolating Transformer Issues and How to Detect Them",
+          "item": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#faq",
+      "url": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-common-isolating-transformer-issues.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why are isolating transformers critical in an AGL series circuit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are one of the most critical reliability points, because a fault in a transformer's primary winding or insulation can affect not only one fitting but the entire series circuit. In a series AGL circuit, an open primary winding opens the series circuit and trips the CCR."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are the early warning signs of isolating transformer deterioration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The four main warning signs are rising primary voltage, uneven light intensity, excessive heating and abnormal secondary readings. Most transformer failures give warning signs first, which is why transformers deserve preventive attention and not reactive replacement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does rising primary voltage indicate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It can point to increased losses from shorted turns or winding damage, core deterioration or overheating damage, increased impedance or load mismatch, or poor high-resistance primary connections. The CCR compensates by increasing voltage to hold constant current, so log CCR output voltage at the same brightness step and rated current to compare like with like. Insulation degradation and moisture ingress mainly show up as falling insulation resistance or earth leakage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "If one light is dimmer than its neighbours, is the transformer to blame?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not always. Check the simple causes first, such as lens soiling, the lamp or LED module and the secondary connector, and then consider the transformer. Under Annex 14 maintenance provisions, a light whose main-beam average intensity falls below half the specified value is treated as unserviceable, so check the current edition for the exact rule."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should excessive heating in a transformer be assessed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Look for transformers that run noticeably hotter than nearby units under similar loading, assessed by thermal imaging or on de-energised, isolated equipment, never by touching live series-circuit equipment. Possible causes include overloading, internal shorted turns, poor secondary connections and age-related insulation breakdown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if the secondary of an isolating transformer opens?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An isolating transformer keeps the series circuit intact when the secondary opens, for example from a failed lamp, broken lead or unplugged connector. However, the secondary voltage and heating rise, so it should be corrected promptly and within the manufacturer's limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How should insulation testing of isolating transformers be done?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Insulation resistance is tested between primary and secondary and from each winding to earth, only on an isolated, locked-out circuit. Results should be trended against earlier readings and the manufacturer's limits, not judged from a single number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the risk of ignoring early transformer warning signs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A transformer fault is not always limited to one fitting. Risks include sudden outages when an open primary opens the series circuit and trips the CCR, earth-fault build-up (one insulation fault is tolerated, a second can trip the circuit), increased CCR load and emergency maintenance during live operations."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">Common Isolating Transformer Issues</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-triangle-exclamation"></i> AGL Components · Troubleshooting</div>
+        <h1 class="article-title">Common Isolating Transformer Issues and How to Detect Them</h1>
+        <p class="article-lede">Most isolating transformer problems show warning signs before complete failure. The issue is that these signs are often ignored until runway lights start tripping, dimming, or failing during operations.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial | AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> Published May 11, 2026</span>
+                <span><i class="fa-solid fa-pen"></i> Updated October 26, 2026</span>
+                <span><i class="fa-solid fa-tag"></i> AGL Components</span>
+                <span><i class="fa-solid fa-layer-group"></i> Troubleshooting</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>In Airfield Ground Lighting (AGL) systems, isolating transformers are often treated as passive components. But in reality, they are one of the most critical reliability points in a series circuit — a fault in a transformer&rsquo;s primary winding or insulation can affect not only one fitting but the entire series circuit.</p>
+        <p>Understanding the early warning signs of transformer deterioration can help airport maintenance teams catch problems before they become operational incidents.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#rising-voltage"><span class="toc-num">01</span> Rising Primary Voltage</a></li>
+                <li><a href="#uneven-intensity"><span class="toc-num">02</span> Uneven Light Intensity</a></li>
+                <li><a href="#excessive-heating"><span class="toc-num">03</span> Excessive Heating</a></li>
+                <li><a href="#abnormal-secondary"><span class="toc-num">04</span> Abnormal Secondary Readings</a></li>
+                <li><a href="#why-testing-matters"><span class="toc-num">05</span> Why Routine Testing Matters</a></li>
+                <li><a href="#real-risk"><span class="toc-num">06</span> The Real Risk of Ignoring Signs</a></li>
+                <li><a href="#reactive-to-preventive"><span class="toc-num">07</span> Reactive to Preventive Maintenance</a></li>
+                <li><a href="#final-thoughts"><span class="toc-num">08</span> Final Thoughts</a></li>
+                <li><a href="#faq"><span class="toc-num">09</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>Most isolating transformer failures give warning signs first — rising primary voltage, uneven light intensity, excessive heating, or abnormal secondary readings. Transformers deserve preventive attention, not reactive replacement.</p>
+            </div>
+        </div>
+
+        <div class="art-section" id="rising-voltage">
+            <div class="art-section-head">
+                <div class="art-section-num warn">01</div>
+                <h2>Rising Primary Voltage</h2>
+            </div>
+            <p>One of the earliest indicators of isolating transformer deterioration is an abnormal increase in primary voltage during testing. This can point toward several possible conditions, including:</p>
+            <ul class="insight-list warn-list">
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Increased losses from shorted turns or winding damage</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Core deterioration or overheating damage</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Increased impedance, or a load mismatch between transformer rating and fitting</li>
+                <li><i class="fa-solid fa-triangle-exclamation"></i> Poor or high-resistance primary connections</li>
+            </ul>
+            <p>When the transformer condition worsens, the Constant Current Regulator (CCR) compensates by increasing voltage to maintain constant current in the circuit. This is why rising primary voltage should never be ignored during routine maintenance — a gradual increase can be an early indication that a transformer is no longer operating under normal conditions.</p>
+            <p>Compare like with like: log the CCR output voltage at the same brightness step and rated current, and test individual units at the manufacturer&rsquo;s test conditions. Insulation degradation and moisture ingress mainly show up as falling insulation resistance or leakage to earth, not as a higher primary voltage, so they need the insulation tests described below.</p>
+        </div>
+
+        <div class="art-section" id="uneven-intensity">
+            <div class="art-section-head">
+                <div class="art-section-num warn">02</div>
+                <h2>Uneven Light Intensity</h2>
+            </div>
+            <p>If one light appears dimmer or brighter than adjacent fittings in the same circuit, the issue may not always be the lamp. The isolating transformer may be operating inefficiently, developing partial winding damage, or producing unstable secondary output.</p>
+            <p class="closing-line warn">In AGL systems, uniformity is extremely important — small intensity variations can become highly visible to pilots during low-visibility operations. When a fitting behaves differently from its neighbours, check the simple causes first — lens soiling, lamp or LED module, secondary connector — and then consider the transformer. Under Annex 14 maintenance provisions, a light whose main-beam average intensity falls below half the specified value is treated as unserviceable, so persistent dimming is a compliance matter as well as a reliability one (check the current edition for the exact rule).</p>
+        </div>
+
+        <div class="art-section" id="excessive-heating">
+            <div class="art-section-head">
+                <div class="art-section-num warn">03</div>
+                <h2>Excessive Heating</h2>
+            </div>
+            <p>Healthy isolating transformers generate heat during operation. However, abnormal heating is a warning sign. Possible causes include overloading, internal shorted turns, poor secondary connections, and age-related insulation breakdown.</p>
+            <p>Field technicians should pay particular attention to transformers that run noticeably hotter than nearby units under similar loading — assessed by thermal imaging or on de-energised, isolated equipment, never by touching live series-circuit equipment. Thermal irregularities can indicate internal deterioration long before total failure occurs — a transformer that consistently runs abnormally hot should receive further investigation, not be dismissed as normal operating heat.</p>
+        </div>
+
+        <div class="art-section" id="abnormal-secondary">
+            <div class="art-section-head">
+                <div class="art-section-num warn">04</div>
+                <h2>Abnormal Secondary Readings</h2>
+            </div>
+            <p>Routine testing can reveal secondary voltage or current values outside acceptable limits. Such abnormalities may indicate efficiency loss, winding damage, load mismatch, or partial internal faults.</p>
+            <p class="closing-line warn">Secondary abnormalities directly affect lamp performance and circuit stability. Ignoring these readings increases the probability of sudden outages during airport operations — secondary-side measurements should be a routine part of transformer condition monitoring.</p>
+            <p>Watch for an <strong>open secondary</strong> (failed lamp, broken lead or unplugged connector). An isolating transformer keeps the series circuit intact when the secondary opens, but the secondary voltage and heating rise, so it should be corrected promptly and within the manufacturer&rsquo;s limits.</p>
+        </div>
+
+        <div class="art-section" id="why-testing-matters">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>Why Routine Testing Matters</h2>
+            </div>
+            <p>Preventive testing is not only about compliance — it is about identifying degradation before operational failure occurs. Routine transformer testing can help detect:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-check"></i> Insulation deterioration</li>
+                <li><i class="fa-solid fa-check"></i> Efficiency reduction</li>
+                <li><i class="fa-solid fa-check"></i> Load mismatch between transformer rating and fitting</li>
+                <li><i class="fa-solid fa-check"></i> Leakage current issues</li>
+                <li><i class="fa-solid fa-check"></i> Thermal stress conditions</li>
+            </ul>
+            <p>Periodic testing also helps maintenance teams identify transformers approaching end-of-life conditions before they impact runway availability. The objective should be to identify trends and warning signs early rather than waiting for a complete component failure. Insulation resistance is tested between primary and secondary and from each winding to earth, only on an isolated, locked-out circuit, with results trended against earlier readings and the manufacturer&rsquo;s limits rather than judged from a single number.</p>
+        </div>
+
+        <div class="art-section" id="real-risk">
+            <div class="art-section-head">
+                <div class="art-section-num warn">06</div>
+                <h2>The Real Risk of Ignoring Early Signs</h2>
+            </div>
+            <p>A transformer fault is not always limited to one fitting. In a series AGL circuit, an open primary winding or a developing insulation fault can affect the whole circuit, leading to:</p>
+            <div class="measure-grid">
+                <div class="measure-card"><i class="fa-solid fa-power-off"></i><strong>Sudden Outages</strong><span>An open primary winding opens the series circuit and trips the CCR</span></div>
+                <div class="measure-card"><i class="fa-solid fa-lightbulb"></i><strong>Earth-Fault Build-Up</strong><span>One insulation fault is tolerated; a second can trip the circuit</span></div>
+                <div class="measure-card"><i class="fa-solid fa-gauge-high"></i><strong>Increased CCR Load</strong><span>The regulator raises voltage to hold current</span></div>
+                <div class="measure-card"><i class="fa-solid fa-screwdriver-wrench"></i><strong>Emergency Maintenance</strong><span>Unplanned intervention during live operations</span></div>
+            </div>
+            <p>Runway lighting failures can directly affect aerodrome operations and, in low visibility, safety. This makes early detection particularly important in AGL applications — a transformer may be physically small, but its failure can have consequences far beyond the individual component.</p>
+        </div>
+
+        <div class="art-section" id="reactive-to-preventive">
+            <div class="art-section-head">
+                <div class="art-section-num">07</div>
+                <h2>From Reactive Replacement to Preventive Maintenance</h2>
+            </div>
+            <p>The traditional approach of replacing a transformer only after failure is reactive. A more reliable approach is to monitor the transformer throughout its operating life:</p>
+            <div class="workflow-strip">
+                <div class="workflow-step"><div class="wf-num">01</div><strong>Primary Voltage</strong><span>Monitoring for gradual increases</span></div>
+                <div class="workflow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="workflow-step"><div class="wf-num">02</div><strong>Secondary Checks</strong><span>Voltage and current verification</span></div>
+                <div class="workflow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="workflow-step"><div class="wf-num">03</div><strong>Temperature</strong><span>Observation against similar units</span></div>
+                <div class="workflow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="workflow-step"><div class="wf-num">04</div><strong>Insulation Testing</strong><span>Resistance checks over time</span></div>
+                <div class="workflow-arrow"><i class="fa-solid fa-chevron-right"></i></div>
+                <div class="workflow-step"><div class="wf-num">05</div><strong>Load &amp; Visual</strong><span>Verification and physical inspection</span></div>
+            </div>
+            <p>The earlier deterioration is identified, the greater the opportunity to plan maintenance before an unexpected outage occurs.</p>
+        </div>
+
+        <div class="art-section" id="symptom-map">
+            <div class="art-section-head">
+                <div class="art-section-num">•</div>
+                <h2>Symptom-to-Action Quick Reference</h2>
+            </div>
+            <div class="decision-list">
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-triangle-exclamation"></i> Primary voltage trending up</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Log the trend, check against CCR compensation history, schedule insulation resistance testing.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-triangle-exclamation"></i> One fitting dimmer/brighter than neighbours</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Check lens, lamp or LED module and secondary connector first, then test the transformer and its secondary output stability.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-triangle-exclamation"></i> Unit noticeably hotter than similar units</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Investigate loading, connections, and winding condition rather than assuming normal heat.</div>
+                </div>
+                <div class="decision-item">
+                    <div class="d-finding"><i class="fa-solid fa-triangle-exclamation"></i> Secondary readings out of range</div>
+                    <div class="d-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="d-action">Cross-check load match and winding condition; flag for closer monitoring cycle.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="diagram-block">
+            <h3>Ignore the Signs, or Act on Them?</h3>
+            <p class="diagram-sub">Early Warning Signs → Two Very Different Outcomes</p>
+            <svg viewBox="0 0 680 470" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="ctArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                    </marker>
+                </defs>
+
+                <rect x="90" y="20" width="500" height="112" rx="12" fill="rgba(255,255,255,0.02)" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="40" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12" letter-spacing="1" fill="#FFB400">4 EARLY WARNING SIGNS</text>
+
+                <rect x="110" y="50" width="220" height="34" rx="8" fill="rgba(230,57,70,0.06)" stroke="rgba(230,57,70,0.28)" stroke-width="1"/>
+                <text x="220" y="71" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12" fill="#f0f4ff">Rising Primary Voltage</text>
+
+                <rect x="350" y="50" width="220" height="34" rx="8" fill="rgba(230,57,70,0.06)" stroke="rgba(230,57,70,0.28)" stroke-width="1"/>
+                <text x="460" y="71" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12" fill="#f0f4ff">Uneven Light Intensity</text>
+
+                <rect x="110" y="92" width="220" height="34" rx="8" fill="rgba(230,57,70,0.06)" stroke="rgba(230,57,70,0.28)" stroke-width="1"/>
+                <text x="220" y="113" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12" fill="#f0f4ff">Excessive Heating</text>
+
+                <rect x="350" y="92" width="220" height="34" rx="8" fill="rgba(230,57,70,0.06)" stroke="rgba(230,57,70,0.28)" stroke-width="1"/>
+                <text x="460" y="113" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="12" fill="#f0f4ff">Abnormal Secondary Readings</text>
+
+                <line x1="340" y1="132" x2="340" y2="158" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#ctArrow)"/>
+
+                <rect x="230" y="162" width="220" height="42" rx="8" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="188" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13" fill="#f0f4ff">SIGN DETECTED</text>
+
+                <line x1="340" y1="204" x2="190" y2="230" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#ctArrow)"/>
+                <line x1="340" y1="204" x2="490" y2="230" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#ctArrow)"/>
+
+                <rect x="60" y="232" width="260" height="40" rx="8" fill="rgba(230,57,70,0.1)" stroke="#E63946" stroke-width="1.5"/>
+                <text x="190" y="257" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="16" fill="#E63946">SIGN IGNORED</text>
+
+                <rect x="360" y="232" width="260" height="40" rx="8" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="490" y="257" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="16" fill="#FFB400">INVESTIGATED &amp; TESTED</text>
+
+                <rect x="60" y="280" width="260" height="100" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="80" y="302" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Sudden circuit-wide outage</text>
+                <text x="80" y="326" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Earth-fault build-up, circuit trips</text>
+                <text x="80" y="350" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Increased CCR compensation</text>
+                <text x="80" y="374" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Emergency maintenance</text>
+
+                <rect x="360" y="280" width="260" height="100" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="380" y="302" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Scheduled insulation testing</text>
+                <text x="380" y="326" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Planned component replacement</text>
+                <text x="380" y="350" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• Stable circuit performance</text>
+                <text x="380" y="374" font-family="Barlow, sans-serif" font-size="11" fill="#c8d8f0">• No unplanned outages</text>
+
+                <rect x="60" y="392" width="260" height="56" rx="10" fill="rgba(230,57,70,0.08)" stroke="rgba(230,57,70,0.35)" stroke-width="1"/>
+                <text x="190" y="415" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="13" fill="#E63946">UNPLANNED OUTAGE</text>
+                <text x="190" y="433" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Reactive replacement, safety risk</text>
+
+                <rect x="360" y="392" width="260" height="56" rx="10" fill="rgba(255,180,0,0.07)" stroke="rgba(255,180,0,0.3)" stroke-width="1"/>
+                <text x="490" y="415" text-anchor="middle" font-family="Barlow, sans-serif" font-weight="600" font-size="13" fill="#FFB400">RELIABLE OPERATION</text>
+                <text x="490" y="433" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Proactive, planned maintenance</text>
+            </svg>
+        </div>
+
+        <div class="art-section" id="standards-reference">
+            <div class="art-section-head">
+                <div class="art-section-num">&bull;</div>
+                <h2>Standards and Further Reference</h2>
+            </div>
+            <p>Series isolating transformers are specified in FAA AC 150/5345-47 (L-830/L-831) and IEC 61823; maintenance of visual aids is covered by ICAO Annex 14 Volume I and the Aerodrome Design Manual (Doc 9157) Part 5. Always work to the manufacturer&rsquo;s test procedure and acceptance limits, and check current editions and your regulator&rsquo;s requirements.</p>
+        </div>
+
+        <div class="conclusion-block" id="final-thoughts">
+            <h3>Final Thoughts</h3>
+            <p>Isolating transformers are small components with massive operational importance. They quietly protect the integrity of the entire AGL series circuit every second the airfield is active — and most failures provide warning signs long before breakdown happens.</p>
+            <p>In AGL systems, reliability is not achieved simply by installing a component and forgetting about it. It is achieved through proper selection, monitoring, testing, and timely maintenance. The difference between reliable operation and an unexpected outage is often proactive monitoring.</p>
+        </div>
+
+        <div class="pull-quote">
+            <span class="quote-mark">"</span>
+            <p>Transformers deserve <span>preventive attention, not reactive replacement.</span> Detect the warning signs before the failure.</p>
+        </div>
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">09</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>Why are isolating transformers critical in an AGL series circuit?</summary>
+                    <div class="faq-answer"><p>They are one of the most critical reliability points, because a fault in a transformer's primary winding or insulation can affect not only one fitting but the entire series circuit. In a series AGL circuit, an open primary winding opens the series circuit and trips the CCR.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What are the early warning signs of isolating transformer deterioration?</summary>
+                    <div class="faq-answer"><p>The four main warning signs are rising primary voltage, uneven light intensity, excessive heating and abnormal secondary readings. Most transformer failures give warning signs first, which is why transformers deserve preventive attention and not reactive replacement.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does rising primary voltage indicate?</summary>
+                    <div class="faq-answer"><p>It can point to increased losses from shorted turns or winding damage, core deterioration or overheating damage, increased impedance or load mismatch, or poor high-resistance primary connections. The CCR compensates by increasing voltage to hold constant current, so log CCR output voltage at the same brightness step and rated current to compare like with like. Insulation degradation and moisture ingress mainly show up as falling insulation resistance or earth leakage.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>If one light is dimmer than its neighbours, is the transformer to blame?</summary>
+                    <div class="faq-answer"><p>Not always. Check the simple causes first, such as lens soiling, the lamp or LED module and the secondary connector, and then consider the transformer. Under Annex 14 maintenance provisions, a light whose main-beam average intensity falls below half the specified value is treated as unserviceable, so check the current edition for the exact rule.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How should excessive heating in a transformer be assessed?</summary>
+                    <div class="faq-answer"><p>Look for transformers that run noticeably hotter than nearby units under similar loading, assessed by thermal imaging or on de-energised, isolated equipment, never by touching live series-circuit equipment. Possible causes include overloading, internal shorted turns, poor secondary connections and age-related insulation breakdown.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What happens if the secondary of an isolating transformer opens?</summary>
+                    <div class="faq-answer"><p>An isolating transformer keeps the series circuit intact when the secondary opens, for example from a failed lamp, broken lead or unplugged connector. However, the secondary voltage and heating rise, so it should be corrected promptly and within the manufacturer's limits.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How should insulation testing of isolating transformers be done?</summary>
+                    <div class="faq-answer"><p>Insulation resistance is tested between primary and secondary and from each winding to earth, only on an isolated, locked-out circuit. Results should be trended against earlier readings and the manufacturer's limits, not judged from a single number.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What is the risk of ignoring early transformer warning signs?</summary>
+                    <div class="faq-answer"><p>A transformer fault is not always limited to one fitting. Risks include sudden outages when an open primary opens the series circuit and trips the CCR, earth-fault build-up (one insulation fault is tolerated, a second can trip the circuit), increased CCR load and emergency maintenance during live operations.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong>, Airfield Ground Lighting (AGL) Specialist</p>
+
+    <div class="topic-tags">
+        <span>Isolating Transformer Troubleshooting</span>
+        <span>Rising Primary Voltage</span>
+        <span>Preventive Maintenance</span>
+        <span>AGL Testing</span>
+        <span>CCR Compensation</span>
+        <span>Condition Monitoring</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>Airfield Ground Lighting Specialist | Testing &amp; Commissioning | ICAO &amp; FAA Compliance. Manager – Technical &amp; Commercial, writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More on AGL Components</h3>
+        <div class="related-grid">
+            <a href="article-isolating-transformers-backbone.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-plug-circle-bolt"></i> Isolating Transformers: The Backbone</div>
+                <div class="rc-sub">Why isolating transformers matter in every AGL circuit</div>
+            </a>
+            <a href="article-manufacturing-ctc-isolating-transformers.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-industry"></i> Manufacturing CTC Isolating Transformers</div>
+                <div class="rc-sub">A field account of building AAI-approved transformers since 2020</div>
+            </a>
+            <a href="article-how-ccr-works.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-bolt"></i> How CCRs Work</div>
+                <div class="rc-sub">Understanding Constant Current Regulators in AGL</div>
+            </a>
+            <a href="article-sop-agl-photometry-testing.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-clipboard-check"></i> AGL Photometry Testing SOPs</div>
+                <div class="rc-sub">Standard operating procedures for routine testing</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="article-isolating-transformers-backbone.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> Previous Article</a>
+        <a href="article-how-ccr-works.html" class="anav-btn gold">Next: How CCRs Work <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> These pages cover testing, inspection, maintenance, installation or fault-finding on series circuits and associated equipment. Insulation-resistance and other test voltages are themselves hazardous, and a circuit that appears de-energised may hold a charge or be re-energised. Treat every circuit as live until it has been isolated, locked out, proved dead and discharged under the aerodrome&rsquo;s permit-to-work. Test sequences, instrument settings, readings, limits, intervals, checklists and pass/fail wording here are generic and indicative. They are not acceptance criteria, and a result obtained by following them is not a test certificate, inspection report or declaration of serviceability or compliance.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Images, diagrams and credits.</strong> Photographs on this page carry a credit line in their caption naming the source and, where stated, the licence (for example U.S. Government public-domain works or openly licensed images). They illustrate a type of equipment or situation, may not show the exact item described, imply no endorsement by or affiliation with any person, organisation or manufacturer shown, and remain subject to their owners&rsquo; rights. Diagrams are original schematic illustrations, are not to scale and are not engineering drawings. To request a correction, credit or removal, write to the contact address below.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        if (hamburger && navLinks) {
+            hamburger.setAttribute('role', 'button');
+            hamburger.setAttribute('tabindex', '0');
+            hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+            const toggleNav = () => {
+                const open = navLinks.classList.toggle('mobile-open');
+                hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            };
+            hamburger.addEventListener('click', toggleNav);
+            hamburger.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleNav(); } });
+        }
+
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behaviour: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

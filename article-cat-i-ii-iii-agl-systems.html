@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAT-I, CAT-II, CAT-III AGL Systems</title>
+    <meta name="description" content="How AGL configuration, photometry, reliability and redundancy scale across CAT-I, II and III approaches: decision height, RVR and low visibility operations." />
+    <meta name="keywords" content="CAT-I CAT-II CAT-III AGL, ILS category lighting requirements, low visibility operations AGL, runway centerline lighting CAT-III, touchdown zone lighting, ALSF-2 approach lighting, decision height runway visual range, CCR redundancy AGL, ICAO Annex 14 categories" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html" />
+    <meta property="og:title" content="CAT-I, CAT-II, CAT-III AGL Systems" />
+    <meta property="og:description" content="How AGL configuration, photometry, reliability and redundancy scale across CAT-I, II and III approaches: decision height, RVR and low visibility operations." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-03-21" />
+    <meta property="article:modified_time" content="2026-10-27" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="Standards & Compliance" />
+    <meta property="article:tag" content="CAT-I CAT-II CAT-III" />
+    <meta property="article:tag" content="Low Visibility Operations" />
+    <meta property="article:tag" content="ICAO Annex 14" />
+    <meta property="article:tag" content="AGL Photometry" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-cat-i-ii-iii-agl-systems.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="CAT-I, CAT-II, CAT-III AGL Systems | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CAT-I, CAT-II, CAT-III AGL Systems" />
+    <meta name="twitter:description" content="How AGL configuration, photometry, reliability and redundancy scale across CAT-I, II and III approaches: decision height, RVR and low visibility operations." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-cat-i-ii-iii-agl-systems.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            padding: 0 40px; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 3px; color: var(--white); text-decoration: none; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 32px; list-style: none; }
+        .nav-links a { color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; transition: color .3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-cta { padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); border-radius: 6px; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: all .3s; }
+        .nav-cta:hover { background: var(--gold); color: #000; }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 24px; height: 2px; background: var(--white); }
+        @media(max-width:900px) {
+            .nav-links, .nav-cta { display: none; }
+            .hamburger { display: flex; }
+        }
+
+        .breadcrumb { padding: 110px 40px 0; max-width: 900px; margin: auto; position: relative; z-index: 1; font-size: 13px; }
+        .breadcrumb a { color: var(--text); text-decoration: none; font-weight: 600; letter-spacing: .3px; }
+        .breadcrumb a:hover { color: var(--gold); }
+        .breadcrumb span.sep { color: var(--text); opacity: .4; margin: 0 8px; }
+        .breadcrumb .current { color: var(--gold); }
+
+        .article-hero { max-width: 900px; margin: auto; padding: 34px 40px 46px; position: relative; z-index: 1; border-bottom: 1px solid var(--border); }
+        .page-tag { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border: 1px solid rgba(0, 212, 255, 0.25); background: rgba(0, 212, 255, 0.06); border-radius: 100px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; }
+        .article-title { font-family: 'Bebas Neue', sans-serif; font-size: 54px; letter-spacing: 1px; line-height: 1.05; margin-bottom: 22px; color: var(--gold); }
+        @media(max-width:768px) { .article-title { font-size: 38px; } }
+        .article-lede { font-size: 17px; line-height: 1.8; color: var(--text); margin-bottom: 26px; max-width: 720px; }
+        .author-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+        .author-avatar { width: 48px; height: 48px; border-radius: 10px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .author-info h4 { font-size: 14.5px; font-weight: 700; color: var(--white); }
+        .author-info p { font-size: 12px; color: var(--text); margin-top: 2px; }
+        .article-meta-strip { display: flex; gap: 22px; flex-wrap: wrap; margin-left: auto; font-size: 12.5px; color: var(--text); }
+        .article-meta-strip span { display: flex; align-items: center; gap: 7px; }
+        .article-meta-strip i { color: var(--gold); font-size: 12px; }
+        @media(max-width:600px) { .article-meta-strip { margin-left: 0; } }
+
+        .article-body { max-width: 760px; margin: auto; padding: 50px 40px 20px; position: relative; z-index: 1; }
+        .article-body > p { font-size: 16.5px; line-height: 1.95; color: var(--text); margin-bottom: 24px; }
+        .article-body > p:first-of-type { font-size: 18px; color: var(--white); }
+
+        .art-section { margin: 46px 0 42px; scroll-margin-top: 92px; }
+
+        .toc-block { margin: 8px 0 40px; padding: 26px 28px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 14px; }
+        .toc-block .toc-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .toc-list { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 24px; }
+        @media(max-width:600px) { .toc-list { grid-template-columns: 1fr; } }
+        .toc-list a { display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--text); text-decoration: none; padding: 7px 0; transition: color .2s; }
+        .toc-list a:hover { color: var(--gold); }
+        .toc-list .toc-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 14px; flex-shrink: 0; width: 22px; }
+        .art-section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+        .art-section-num { width: 42px; height: 42px; border-radius: 12px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: var(--gold); flex-shrink: 0; }
+        .art-section h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 25px; font-weight: 700; letter-spacing: .3px; color: var(--white); line-height: 1.3; }
+        .art-section > p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 16px; }
+        .insight-list { list-style: none; margin: 4px 0 18px; display: flex; flex-direction: column; gap: 11px; }
+        .insight-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.7; color: var(--text); padding: 12px 16px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .insight-list li i { color: var(--gold); font-size: 12px; margin-top: 5px; flex-shrink: 0; }
+        .closing-line { font-size: 15.5px; line-height: 1.85; color: var(--white); padding: 16px 20px; border-left: 3px solid var(--gold); background: rgba(255, 180, 0, 0.04); border-radius: 0 10px 10px 0; font-style: italic; }
+
+        .diagram-block { margin: 50px 0 40px; padding: 32px 28px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 16px; }
+        .diagram-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 4px; text-align: center; }
+        .diagram-block .diagram-sub { font-size: 13.5px; color: var(--text); text-align: center; margin-bottom: 22px; }
+        .diagram-block svg { width: 100%; height: auto; display: block; }
+
+        .conclusion-block { margin: 50px 0 40px; padding: 32px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; }
+        .conclusion-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; color: var(--gold); margin-bottom: 16px; }
+        .conclusion-block p { font-size: 16px; line-height: 1.9; color: var(--text); margin-bottom: 14px; }
+        .conclusion-block p:last-child { margin-bottom: 0; }
+
+        .pull-quote { text-align: center; margin: 50px auto; padding: 40px 30px; max-width: 640px; }
+        .pull-quote p { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 600; line-height: 1.35; color: var(--white); position: relative; }
+        .pull-quote p span { color: var(--gold); }
+        .pull-quote .quote-mark { font-family: 'Bebas Neue', sans-serif; font-size: 60px; color: rgba(255, 180, 0, 0.25); line-height: .5; display: block; margin-bottom: 10px; }
+
+        .signoff { text-align: right; font-size: 14.5px; color: var(--text); font-style: italic; margin: -20px auto 50px; max-width: 760px; padding: 0 40px; }
+        .signoff strong { color: var(--gold); font-style: normal; }
+
+        .topic-tags { max-width: 760px; margin: 0 auto 50px; padding: 0 40px; display: flex; flex-wrap: wrap; gap: 10px; }
+        .topic-tags span { padding: 7px 16px; background: rgba(0, 212, 255, 0.06); border: 1px solid rgba(0, 212, 255, 0.18); border-radius: 100px; font-size: 12px; font-weight: 600; color: var(--cyan); }
+
+        .author-bio { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; }
+        .author-bio-card { display: flex; gap: 20px; padding: 30px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 16px; align-items: flex-start; }
+        .author-bio-avatar { width: 60px; height: 60px; border-radius: 12px; background: rgba(255, 180, 0, 0.1); border: 1px solid rgba(255, 180, 0, 0.25); display: flex; align-items: center; justify-content: center; font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--gold); flex-shrink: 0; }
+        .author-bio-card h4 { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+        .author-bio-card p { font-size: 14px; color: var(--text); line-height: 1.75; }
+        .author-bio-card .abio-links { margin-top: 14px; display: flex; gap: 14px; }
+        .author-bio-card .abio-links a { color: var(--gold); font-size: 13px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .author-bio-card .abio-links a:hover { gap: 9px; }
+
+        .article-nav-links { max-width: 760px; margin: 0 auto 60px; padding: 0 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+        .anav-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 24px; border-radius: 8px; border: 1px solid var(--border); color: var(--white); text-decoration: none; font-size: 13.5px; font-weight: 600; transition: all .3s; }
+        .anav-btn:hover { border-color: rgba(255, 180, 0, 0.35); color: var(--gold); transform: translateY(-2px); }
+        .anav-btn.gold { background: var(--gold); border-color: var(--gold); color: #000; }
+        .anav-btn.gold:hover { background: #ffc933; color: #000; }
+
+        footer { padding: 30px 40px; border-top: 1px solid rgba(255, 255, 255, 0.06); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; position: relative; z-index: 1; }
+        footer p { font-size: 13px; color: var(--text); }
+        footer p strong { color: var(--gold); }
+        .footer-links { display: flex; gap: 25px; flex-wrap: wrap; }
+        .footer-links a { font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top { position: fixed; bottom: 30px; right: 30px; z-index: 999; width: 44px; height: 44px; border-radius: 50%; background: var(--gold); border: none; color: #000; font-size: 18px; cursor: pointer; opacity: 0; transform: translateY(20px); transition: all .3s; box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25); }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+
+        @media(max-width:600px) {
+            nav { padding: 0 20px; }
+            .breadcrumb { padding: 100px 20px 0; }
+            .article-hero, .article-body, .topic-tags, .author-bio, .article-nav-links, .signoff { padding-left: 20px; padding-right: 20px; }
+            .pull-quote p { font-size: 24px; }
+            .author-bio-card { flex-direction: column; }
+            footer { padding: 20px; flex-direction: column; text-align: center; }
+        }
+
+        .key-takeaway { margin: 8px 0 46px; padding: 26px 28px; display: flex; gap: 18px; align-items: flex-start; background: linear-gradient(135deg, rgba(255, 180, 0, 0.09), rgba(0, 212, 255, 0.04)); border: 1px solid rgba(255, 180, 0, 0.28); border-radius: 14px; }
+        .key-takeaway .kt-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(255, 180, 0, 0.12); border: 1px solid rgba(255, 180, 0, 0.3); display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 16px; flex-shrink: 0; }
+        .key-takeaway .kt-label { font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .key-takeaway p { font-size: 16px; line-height: 1.8; color: var(--white); }
+
+        .measure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0 18px; }
+        @media(max-width:700px) { .measure-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media(max-width:460px) { .measure-grid { grid-template-columns: 1fr; } }
+        .measure-card { padding: 16px 15px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; display: flex; flex-direction: column; gap: 8px; }
+        .measure-card i { color: var(--cyan); font-size: 15px; }
+        .measure-card strong { display: block; color: var(--white); font-size: 13.5px; font-weight: 700; line-height: 1.35; }
+        .measure-card span { font-size: 12.5px; color: var(--text); line-height: 1.5; }
+
+        .compare-table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 6px 0 20px; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .compare-table th, .compare-table td { padding: 14px 18px; font-size: 14.5px; text-align: left; border-bottom: 1px solid var(--border); }
+        .compare-table th { background: rgba(255, 255, 255, 0.035); font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); font-weight: 700; }
+        .compare-table td { color: var(--text); }
+        .compare-table tr:last-child td { border-bottom: none; }
+        .compare-table td:first-child, .compare-table th:first-child { color: var(--white); border-right: 1px solid var(--border); }
+        @media(max-width:640px) {
+            .compare-table, .compare-table thead, .compare-table tbody, .compare-table th, .compare-table td, .compare-table tr { display: block; }
+            .compare-table thead { display: none; }
+            .compare-table tr { margin-bottom: 12px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+            .compare-table tr:last-child { margin-bottom: 0; }
+            .compare-table td { border-right: none !important; }
+            .compare-table td:first-child { background: rgba(255, 180, 0, 0.05); font-weight: 700; }
+            .compare-table td::before { content: attr(data-label); display: block; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+        }
+
+        .workflow-strip { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; margin: 10px 0 20px; }
+        .workflow-step { flex: 1 1 140px; padding: 16px 12px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
+        .workflow-step .wf-num { font-family: 'Bebas Neue', sans-serif; color: var(--gold); font-size: 20px; letter-spacing: 1px; }
+        .workflow-step strong { font-size: 13px; color: var(--white); font-weight: 700; }
+        .workflow-step span { font-size: 11.5px; color: var(--text); line-height: 1.4; }
+        .workflow-arrow { display: flex; align-items: center; justify-content: center; color: var(--gold); opacity: .5; font-size: 13px; padding: 0 6px; flex: 0 0 auto; }
+        @media(max-width:760px) {
+            .workflow-strip { flex-direction: column; }
+            .workflow-step { flex: none; }
+            .workflow-arrow { transform: rotate(90deg); padding: 2px 0; }
+        }
+
+        .decision-list { display: flex; flex-direction: column; gap: 12px; margin: 4px 0 18px; }
+        .decision-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 18px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .decision-item .d-finding { flex: 0 0 200px; display: flex; align-items: flex-start; gap: 10px; font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.4; }
+        .decision-item .d-finding i { color: var(--red); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+        .decision-item .d-arrow { color: var(--gold); flex-shrink: 0; padding-top: 2px; font-size: 13px; }
+        .decision-item .d-action { font-size: 14.5px; color: var(--text); line-height: 1.7; }
+        @media(max-width:640px) {
+            .decision-item { flex-direction: column; gap: 8px; }
+            .decision-item .d-finding { flex: none; }
+            .decision-item .d-arrow { display: none; }
+        }
+
+        .when-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 11px; margin: 4px 0 18px; }
+        @media(max-width:600px) { .when-grid { grid-template-columns: 1fr; } }
+        .when-grid .wg-item { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; line-height: 1.6; color: var(--text); padding: 12px 16px; background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border); border-radius: 10px; }
+        .when-grid .wg-item i { color: var(--gold); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+
+        .related-block { max-width: 760px; margin: 54px auto 10px; padding: 0 40px; }
+        .related-block h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 1px; color: var(--white); margin-bottom: 18px; }
+        .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        @media(max-width:600px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { display: flex; flex-direction: column; gap: 6px; padding: 18px 20px; background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; text-decoration: none; transition: all .3s; }
+        .related-card:hover { border-color: rgba(255, 180, 0, 0.35); transform: translateY(-2px); }
+        .related-card .rc-title { font-size: 14.5px; font-weight: 700; color: var(--white); display: flex; align-items: center; gap: 10px; }
+        .related-card .rc-title i { color: var(--gold); font-size: 13px; }
+        .related-card .rc-sub { font-size: 12.5px; color: var(--text); padding-left: 23px; }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#article",
+      "headline": "CAT-I, CAT-II, CAT-III AGL Systems",
+      "description": "How AGL configuration, photometry, reliability and redundancy scale across CAT-I, II and III approaches: decision height, RVR and low visibility operations.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "datePublished": "2026-03-21",
+      "dateModified": "2026-10-27",
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html",
+      "articleSection": "Standards & Compliance",
+      "keywords": "CAT-I, CAT-II, CAT-III, ILS Categories, Low Visibility Operations, Decision Height, Runway Visual Range, AGL Photometry, ICAO Annex 14",
+      "wordCount": 2625,
+      "timeRequired": "PT12M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "inLanguage": "en-IN",
+      "url": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html",
+      "name": "CAT-I, CAT-II, CAT-III AGL Systems",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CAT-I, CAT-II, CAT-III AGL Systems",
+          "item": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#faq",
+      "url": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-cat-i-ii-iii-agl-systems.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How are CAT-I, CAT-II and CAT-III defined?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They are defined by Decision Height (DH) and Runway Visual Range (RVR). CAT-I is DH of 200 ft or more with RVR of 550 m or more, CAT-II is DH below 200 ft and at least 100 ft with RVR of at least 300 m, and CAT-III is DH below 100 ft or no DH with RVR below 300 m, further divided into IIIA, IIIB and IIIC. Actual minima also depend on the runway, aircraft, crew and operator approvals."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What AGL is typical for a CAT-I runway?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A typical CAT-I system includes runway edge lights, threshold and runway end lights, a precision approach CAT I lighting system where practicable and taxiway lighting. It generally provides standard intensity levels, ICAO photometric compliance for installed fittings and limited redundancy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does CAT-II add to the lighting system?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CAT-II adds runway centreline lights, touchdown zone (TDZ) lights, a CAT II/III approach lighting system and tighter brightness control and monitoring through the CCR. It also brings tighter intensity matching and aiming and higher serviceability and monitoring expectations, making AGL a primary visual reference for pilots."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is special about CAT-III AGL systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CAT-III systems support very low-visibility operations and include centreline and TDZ lighting, a CAT II/III approach lighting system, stop bars at runway-holding positions and taxiway centreline lights for low-RVR taxi guidance. They also use redundant CCRs and interleaved circuits, and secondary power meeting Annex 14 switch-over times, as short as 1 second for key CAT II/III elements."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does AGL photometry matter at every category?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Photometry ensures precise beam alignment, exact intensity as per ICAO Annex 14, uniform light distribution and glare control at high intensity levels. Photometric validation is normally required by the project specification and the regulator before commissioning, and correct intensity alone is not sufficient."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do reliability and redundancy requirements change with category?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "They progress from basic circuit reliability at CAT-I, to improved monitoring and control at CAT-II, to full redundancy and fail-safe operation at CAT-III. Annex 14 Chapter 10 also sets minimum serviceability levels, for example 95% for key CAT II/III elements and 85% for CAT I elements with no adjacent lights out, which are the regulatory floor and not a design target."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is AGL the only thing needed for CAT-II and CAT-III operations?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AGL is only one of the enablers. CAT II/III operations also depend on ILS performance, aircraft and crew approvals and the aerodrome's Low Visibility Procedures. A higher AGL category supports Low Visibility Operations, reduces delays and diversions and helps protect airport capacity during fog and adverse weather."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">CAT-I, CAT-II, CAT-III AGL Systems</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-layer-group"></i> Standards &amp; Compliance · ILS Categories</div>
+        <h1 class="article-title">CAT-I, CAT-II, CAT-III AGL Systems</h1>
+        <p class="article-lede">Airfield Ground Lighting systems are designed to support aircraft operations under different visibility conditions, defined by precision approach categories CAT-I, CAT-II, and CAT-III. As visibility reduces, dependence on the lighting system for pilot guidance increases significantly.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial · AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> March 21, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>Airfield Ground Lighting (AGL) systems are designed to support aircraft operations under different visibility conditions. These conditions are defined by precision approach categories (CAT-I, CAT-II, and CAT-III), supported by Instrument Landing System (ILS) facilities of matching performance.</p>
+        <p>For professionals working in airport lighting systems, runway lighting design, and AGL project execution, understanding these categories is essential. Each category defines how critical the AGL system becomes for pilot guidance, especially during approach, landing, and taxiing operations.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#defining-categories"><span class="toc-num">01</span> What Defines CAT-I, CAT-II, CAT-III?</a></li>
+                <li><a href="#cat-1"><span class="toc-num">02</span> AGL Systems for CAT-I</a></li>
+                <li><a href="#cat-2"><span class="toc-num">03</span> AGL Systems for CAT-II</a></li>
+                <li><a href="#cat-3"><span class="toc-num">04</span> AGL Systems for CAT-III</a></li>
+                <li><a href="#photometry-role"><span class="toc-num">05</span> Role of AGL Photometry</a></li>
+                <li><a href="#reliability-redundancy"><span class="toc-num">06</span> Reliability &amp; Redundancy</a></li>
+                <li><a href="#operational-importance"><span class="toc-num">07</span> Operational Importance</a></li>
+                <li><a href="#key-takeaways"><span class="toc-num">08</span> Key Takeaways</a></li>
+                <li><a href="#faq"><span class="toc-num">09</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-eye-low-vision"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>Higher AGL category means higher dependency on lighting, higher reliability requirements, and higher operational safety. The progression from CAT-I to CAT-III is not simply an increase in intensity — it's increasing dependence on precise visual guidance.</p>
+            </div>
+        </div>
+
+        <div class="art-section" id="defining-categories">
+            <div class="art-section-head">
+                <div class="art-section-num">01</div>
+                <h2>What Defines CAT-I, CAT-II, CAT-III?</h2>
+            </div>
+            <p>The classification is based on Decision Height (DH) and Runway Visual Range (RVR):</p>
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Category</th><th>Decision Height (DH)</th><th>Runway Visual Range (RVR)</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Category">CAT-I</td><td data-label="Decision Height">≥ 200 ft</td><td data-label="RVR">≥ 550 m</td></tr>
+                    <tr><td data-label="Category">CAT-II</td><td data-label="Decision Height">&lt; 200 ft and ≥ 100 ft</td><td data-label="RVR">≥ 300 m</td></tr>
+                    <tr><td data-label="Category">CAT-III</td><td data-label="Decision Height">&lt; 100 ft or no DH</td><td data-label="RVR">&lt; 300 m (IIIA ≥ 175 m; IIIB 50–175 m; IIIC no limit)</td></tr>
+                </tbody>
+            </table>
+            <p class="closing-line">CAT-III is further divided into IIIA, IIIB, and IIIC (by RVR as shown), and is widely associated with low-visibility airport operations, particularly in fog-prone regions such as North India. As visibility decreases, requirements for precision, reliability, monitoring, and redundancy all increase. Actual minima for a given operation also depend on the runway, aircraft, crew and operator approvals.</p>
+        </div>
+
+        <div class="art-section" id="cat-1">
+            <div class="art-section-head">
+                <div class="art-section-num">02</div>
+                <h2>AGL Systems for CAT-I</h2>
+            </div>
+            <p>CAT-I is the basic precision approach category used at many standard airports. A typical CAT-I lighting system includes:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-road"></i> Runway edge lights</li>
+                <li><i class="fa-solid fa-flag-checkered"></i> Threshold and runway end lights</li>
+                <li><i class="fa-solid fa-arrows-down-to-line"></i> Precision approach CAT I lighting system, where practicable (FAA equivalents include MALSR or ALSF-1)</li>
+                <li><i class="fa-solid fa-diamond-turn-right"></i> Taxiway lighting system</li>
+            </ul>
+            <p>CAT-I systems generally provide standard intensity levels, ICAO photometric compliance for the fittings installed, and limited redundancy — suitable for normal night operations and medium-visibility conditions.</p>
+            <p class="closing-line">At this level, AGL provides essential visual guidance while operating with comparatively lower system complexity and redundancy than CAT-II and CAT-III installations.</p>
+        </div>
+
+        <div class="art-section" id="cat-2">
+            <div class="art-section-head">
+                <div class="art-section-num">03</div>
+                <h2>AGL Systems for CAT-II</h2>
+            </div>
+            <p>CAT-II requires higher precision and is commonly used at busy international airports. Important additions include:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-ruler-horizontal"></i> Runway centreline lights — required for CAT II/III</li>
+                <li><i class="fa-solid fa-plane-arrival"></i> Touchdown Zone (TDZ) lights</li>
+                <li><i class="fa-solid fa-tower-observation"></i> CAT II/III approach lighting system (FAA equivalent: ALSF-2)</li>
+                <li><i class="fa-solid fa-sliders"></i> Tighter brightness control and monitoring through the Constant Current Regulator (CCR)</li>
+            </ul>
+            <p>CAT-II systems add required elements, tighter intensity matching and aiming, and higher serviceability and monitoring expectations.</p>
+            <p class="closing-line">At this level, AGL becomes a primary visual reference system for pilots — alignment accuracy, photometric performance, brightness control, and reliability all grow in importance.</p>
+        </div>
+
+        <div class="art-section" id="cat-3">
+            <div class="art-section-head">
+                <div class="art-section-num">04</div>
+                <h2>AGL Systems for CAT-III</h2>
+            </div>
+            <p>CAT-III systems are designed for very low-visibility operations, including dense fog conditions. Critical features include:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-ruler-horizontal"></i> Runway centreline lighting system (as for CAT II)</li>
+                <li><i class="fa-solid fa-plane-arrival"></i> Touchdown Zone (TDZ) lighting (as for CAT II)</li>
+                <li><i class="fa-solid fa-tower-observation"></i> CAT II/III approach lighting system (FAA: ALSF-2)</li>
+                <li><i class="fa-solid fa-hand"></i> Stop bars at runway-holding positions (Annex 14 ties these to low-RVR operations)</li>
+                <li><i class="fa-solid fa-diamond-turn-right"></i> Taxiway centreline lights for low-RVR taxi guidance</li>
+                <li><i class="fa-solid fa-battery-full"></i> Redundant CCRs and interleaved circuits</li>
+                <li><i class="fa-solid fa-bolt"></i> Secondary power meeting Annex 14 switch-over times (as short as 1 second for key CAT II/III elements), typically via UPS and generators</li>
+            </ul>
+            <p>CAT-III systems rely on strict ICAO compliance, tight tolerances on intensity matching and aiming, and a high-integrity design with redundancy — critical for CAT-III-capable airports such as Delhi IGI and other major hubs.</p>
+            <p class="closing-line">At CAT-III level, the lighting system must provide highly reliable and precise visual guidance when pilots have very limited external visual references.</p>
+        </div>
+
+        <div class="art-section" id="photometry-role">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>Role of AGL Photometry in All Categories</h2>
+            </div>
+            <p>AGL photometry plays a key role in ensuring compliance and safety across all categories. Important considerations include:</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-crosshairs"></i> Precise beam alignment for correct pilot perception</li>
+                <li><i class="fa-solid fa-gauge-high"></i> Exact intensity as per ICAO Annex 14</li>
+                <li><i class="fa-solid fa-arrows-left-right"></i> Uniform light distribution across runway and taxiway</li>
+                <li><i class="fa-solid fa-sun"></i> Glare control at high intensity levels</li>
+            </ul>
+            <p>For AGL manufacturers, testing laboratories, and airport authorities, photometric validation is normally required, by the project specification and the regulator, before commissioning.</p>
+            <p class="closing-line">Correct intensity alone is not sufficient. Beam direction, distribution, uniformity, and glare control must also be considered to ensure effective visual guidance.</p>
+        </div>
+
+        <div class="art-section" id="reliability-redundancy">
+            <div class="art-section-head">
+                <div class="art-section-num">06</div>
+                <h2>Reliability &amp; Redundancy Requirements</h2>
+            </div>
+            <p>System reliability increases with category level:</p>
+            <div class="workflow-strip">
+                <div class="workflow-step"><span class="wf-num">I</span><strong>CAT-I</strong><span>Basic circuit reliability</span></div>
+                <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="workflow-step"><span class="wf-num">II</span><strong>CAT-II</strong><span>Improved monitoring and control</span></div>
+                <div class="workflow-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                <div class="workflow-step"><span class="wf-num">III</span><strong>CAT-III</strong><span>Full redundancy, fail-safe operation</span></div>
+            </div>
+            <p>This increasing level of reliability can include dual power sources, multiple CCR systems, continuous monitoring and control systems, and fast fault detection and isolation. Annex 14 Chapter 10 also sets minimum serviceability levels for lights (for example 95% for key CAT II/III elements and 85% for CAT I elements, with no adjacent lights out), which are the regulatory floor rather than a design target.</p>
+            <p class="closing-line">For CAT-III operations in particular, the AGL system must be designed so failures can be identified and managed quickly while maintaining the required operational capability.</p>
+        </div>
+
+        <div class="art-section" id="operational-importance">
+            <div class="art-section-head">
+                <div class="art-section-num">07</div>
+                <h2>Operational Importance for Airports</h2>
+            </div>
+            <p>A higher AGL category directly improves airport operational performance. Key benefits include:</p>
+            <div class="when-grid">
+                <div class="wg-item"><i class="fa-solid fa-smog"></i> Enables Low Visibility Operations (LVO)</div>
+                <div class="wg-item"><i class="fa-solid fa-plane-slash"></i> Reduces flight delays and diversions</div>
+                <div class="wg-item"><i class="fa-solid fa-road-circle-check"></i> Improves landing safety and taxi guidance</div>
+                <div class="wg-item"><i class="fa-solid fa-chart-line"></i> Increases airport operational capacity</div>
+            </div>
+            <p class="closing-line">Airports with CAT-III capability can operate efficiently even during dense fog and adverse weather — making advanced AGL infrastructure key to operational continuity in severe low-visibility regions. AGL is only one of the enablers: CAT II/III operations also depend on ILS performance, aircraft and crew approvals, and the aerodrome&rsquo;s Low Visibility Procedures.</p>
+        </div>
+
+        <div class="art-section" id="key-takeaways">
+            <div class="art-section-head">
+                <div class="art-section-num">08</div>
+                <h2>Key Takeaways</h2>
+            </div>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-circle-check"></i> Categories are defined by Decision Height and Runway Visual Range — CAT-I ≥ 200 ft / ≥ 550 m, down to CAT-III &lt; 100 ft / &lt; 300 m</li>
+                <li><i class="fa-solid fa-circle-check"></i> CAT-II/III require centreline and TDZ lighting and a CAT II/III approach lighting system; stop bars, taxiway centreline lights and tighter reliability follow low-RVR operations</li>
+                <li><i class="fa-solid fa-circle-check"></i> Photometric validation — intensity, beam direction, uniformity, and glare control — is normally required before commissioning at every category</li>
+                <li><i class="fa-solid fa-circle-check"></i> Reliability requirements progress from basic circuit reliability (CAT-I) to full redundancy and fail-safe operation (CAT-III)</li>
+                <li><i class="fa-solid fa-circle-check"></i> Higher-category AGL infrastructure enables Low Visibility Operations and protects airport capacity during fog and adverse weather</li>
+            </ul>
+        </div>
+
+        <table class="compare-table">
+            <thead>
+                <tr><th>Parameter</th><th>CAT-I</th><th>CAT-II</th><th>CAT-III</th></tr>
+            </thead>
+            <tbody>
+                <tr><td data-label="Parameter">Visibility environment</td><td data-label="CAT-I">Normal to medium visibility</td><td data-label="CAT-II">Reduced visibility</td><td data-label="CAT-III">Very low visibility</td></tr>
+                <tr><td data-label="Parameter">Runway centreline lighting</td><td data-label="CAT-I">Not required (recommended in some cases)</td><td data-label="CAT-II">Required</td><td data-label="CAT-III">Required</td></tr>
+                <tr><td data-label="Parameter">TDZ lighting</td><td data-label="CAT-I">Not required</td><td data-label="CAT-II">Required</td><td data-label="CAT-III">Required</td></tr>
+                <tr><td data-label="Parameter">Approach lighting</td><td data-label="CAT-I">CAT I approach lighting (where practicable)</td><td data-label="CAT-II">CAT II/III approach lighting</td><td data-label="CAT-III">CAT II/III approach lighting</td></tr>
+                <tr><td data-label="Parameter">Brightness control</td><td data-label="CAT-I">Multi-step</td><td data-label="CAT-II">Multi-step, tighter control</td><td data-label="CAT-III">Multi-step, monitored switching</td></tr>
+                <tr><td data-label="Parameter">Redundancy</td><td data-label="CAT-I">Limited</td><td data-label="CAT-II">Enhanced</td><td data-label="CAT-III">Full/redundant</td></tr>
+                <tr><td data-label="Parameter">Monitoring</td><td data-label="CAT-I">Basic</td><td data-label="CAT-II">Improved</td><td data-label="CAT-III">Continuous/advanced</td></tr>
+                <tr><td data-label="Parameter">Operational role</td><td data-label="CAT-I">Standard precision approach</td><td data-label="CAT-II">Higher-precision operations</td><td data-label="CAT-III">Low Visibility Operations</td></tr>
+            </tbody>
+        </table>
+
+        <div class="diagram-block">
+            <h3>Increasing Dependence on Precise Guidance</h3>
+            <p class="diagram-sub">CAT-I → CAT-II → CAT-III — reliability and redundancy scale with reduced visibility</p>
+            <svg viewBox="0 0 680 220" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <marker id="catArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                    </marker>
+                </defs>
+
+                <rect x="20" y="70" width="180" height="90" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="110" y="105" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15" fill="#f0f4ff">CAT-I</text>
+                <text x="110" y="124" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">RVR ≥ 550 m</text>
+                <text x="110" y="140" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Basic reliability</text>
+
+                <line x1="200" y1="115" x2="240" y2="115" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#catArrow)"/>
+
+                <rect x="250" y="60" width="180" height="110" rx="10" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1.5"/>
+                <text x="340" y="98" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15" fill="#00d4ff">CAT-II</text>
+                <text x="340" y="117" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">RVR ≥ 300 m</text>
+                <text x="340" y="133" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Enhanced monitoring</text>
+
+                <line x1="430" y1="115" x2="470" y2="115" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#catArrow)"/>
+
+                <rect x="480" y="45" width="180" height="140" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="570" y="88" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15" fill="#FFB400">CAT-III</text>
+                <text x="570" y="107" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">RVR &lt; 300 m</text>
+                <text x="570" y="123" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Full redundancy</text>
+                <text x="570" y="139" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Fail-safe design</text>
+            </svg>
+        </div>
+
+        <div class="conclusion-block">
+            <h3>Conclusion</h3>
+            <p>CAT-I, CAT-II, and CAT-III AGL systems represent increasing levels of precision, performance, and safety in modern aviation infrastructure. From basic runway guidance to highly dependent low-visibility operations, AGL systems play a critical role in safe aircraft movement and airport efficiency.</p>
+            <p>Designing and executing these systems requires a deep understanding of ICAO standards, FAA specifications, AGL photometry, system reliability engineering, electrical infrastructure, and installation and commissioning requirements.</p>
+            <p>In practical airport projects, these requirements directly influence lighting configuration, electrical architecture, photometric validation, commissioning, maintenance, and operational readiness.</p>
+        </div>
+
+        <div class="pull-quote">
+            <span class="quote-mark">"</span>
+            <p>Higher AGL category means <span>higher dependency on lighting, higher reliability requirements, and higher operational safety.</span></p>
+        </div>
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">09</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>How are CAT-I, CAT-II and CAT-III defined?</summary>
+                    <div class="faq-answer"><p>They are defined by Decision Height (DH) and Runway Visual Range (RVR). CAT-I is DH of 200 ft or more with RVR of 550 m or more, CAT-II is DH below 200 ft and at least 100 ft with RVR of at least 300 m, and CAT-III is DH below 100 ft or no DH with RVR below 300 m, further divided into IIIA, IIIB and IIIC. Actual minima also depend on the runway, aircraft, crew and operator approvals.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What AGL is typical for a CAT-I runway?</summary>
+                    <div class="faq-answer"><p>A typical CAT-I system includes runway edge lights, threshold and runway end lights, a precision approach CAT I lighting system where practicable and taxiway lighting. It generally provides standard intensity levels, ICAO photometric compliance for installed fittings and limited redundancy.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does CAT-II add to the lighting system?</summary>
+                    <div class="faq-answer"><p>CAT-II adds runway centreline lights, touchdown zone (TDZ) lights, a CAT II/III approach lighting system and tighter brightness control and monitoring through the CCR. It also brings tighter intensity matching and aiming and higher serviceability and monitoring expectations, making AGL a primary visual reference for pilots.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What is special about CAT-III AGL systems?</summary>
+                    <div class="faq-answer"><p>CAT-III systems support very low-visibility operations and include centreline and TDZ lighting, a CAT II/III approach lighting system, stop bars at runway-holding positions and taxiway centreline lights for low-RVR taxi guidance. They also use redundant CCRs and interleaved circuits, and secondary power meeting Annex 14 switch-over times, as short as 1 second for key CAT II/III elements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why does AGL photometry matter at every category?</summary>
+                    <div class="faq-answer"><p>Photometry ensures precise beam alignment, exact intensity as per ICAO Annex 14, uniform light distribution and glare control at high intensity levels. Photometric validation is normally required by the project specification and the regulator before commissioning, and correct intensity alone is not sufficient.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>How do reliability and redundancy requirements change with category?</summary>
+                    <div class="faq-answer"><p>They progress from basic circuit reliability at CAT-I, to improved monitoring and control at CAT-II, to full redundancy and fail-safe operation at CAT-III. Annex 14 Chapter 10 also sets minimum serviceability levels, for example 95% for key CAT II/III elements and 85% for CAT I elements with no adjacent lights out, which are the regulatory floor and not a design target.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Is AGL the only thing needed for CAT-II and CAT-III operations?</summary>
+                    <div class="faq-answer"><p>No. AGL is only one of the enablers. CAT II/III operations also depend on ILS performance, aircraft and crew approvals and the aerodrome's Low Visibility Procedures. A higher AGL category supports Low Visibility Operations, reduces delays and diversions and helps protect airport capacity during fog and adverse weather.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong></p>
+
+    <div class="topic-tags">
+        <span>CAT-I</span>
+        <span>CAT-II</span>
+        <span>CAT-III</span>
+        <span>Low Visibility Operations</span>
+        <span>ICAO Annex 14</span>
+        <span>AGL Photometry</span>
+        <span>Runway Centreline Lighting</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial | AGL Photometry Specialist | Airfield Ground Lighting (AGL) | ICAO &amp; FAA Compliance | Project Execution. Writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More Standards &amp; Photometry</h3>
+        <div class="related-grid">
+            <a href="standards-companion.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-scale-balanced"></i> AGL Standards Companion</div>
+                <div class="rc-sub">ICAO, FAA, IS &amp; IEC requirements explained</div>
+            </a>
+            <a href="testing-commissioning-manual.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-clipboard-check"></i> Testing &amp; Commissioning Manual</div>
+                <div class="rc-sub">How photometric and electrical compliance is verified</div>
+            </a>
+            <a href="article-why-agl-photometry-is-important.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-crosshairs"></i> Why AGL Photometry Is Important</div>
+                <div class="rc-sub">Intensity, beam alignment, and glare control explained</div>
+            </a>
+            <a href="component-library.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-layer-group"></i> AGL Component Library</div>
+                <div class="rc-sub">Understand the components behind the guidance</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="article-overview-indian-standards-agl.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> Previous: Overview of Indian Standards for AGL</a>
+        <a href="technical-articles.html" class="anav-btn gold">Back to All Articles <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> These pages explain, for understanding, how lighting interacts with air traffic control, pilots and vehicle drivers (stop bars, guard lights, follow-the-greens, A-SMGCS, NOTAMs and runway-incursion prevention). They are not operational procedures, phraseology, pilot or controller instructions or NOTAM-drafting guidance. Flight crews, controllers and vehicle drivers must follow the AIP, NOTAMs, aerodrome procedures and ATC instructions. Statements about what named airports, States or authorities (including AAI, AIP supplements and AIRAC editions) have published describe those sources as understood on the date shown. We have not independently verified them, they may have changed, and they are not a statement of any organisation&rsquo;s current practice, capability or compliance. A named organisation may ask for a correction.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Diagrams.</strong> Diagrams on this page are original schematic illustrations, are not to scale and are not engineering drawings. Do not use them to work on, connect, set or modify equipment.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

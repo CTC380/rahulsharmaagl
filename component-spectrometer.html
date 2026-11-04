@@ -1,0 +1,2298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spectrometer | AGL Component Library</title>
+    <meta name="description" content="Spectrometers for AGL fixture testing: spectral power distribution, chromaticity, CRI and CCT measurement, ICAO/FAA compliance, calibration and field technique." />
+    <meta name="keywords" content="spectrometer, AGL, spectral power distribution, chromaticity measurement, CRI, CCT, fixture photometric testing" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-spectrometer.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Spectrometer | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Spectrometers for AGL fixture testing: spectral power distribution, chromaticity, CRI and CCT measurement, ICAO/FAA compliance, calibration and field technique." />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-spectrometer.html" />
+    <meta property="og:image" content="https://www.xylemanalytics.com/productimages/CFD33A9A-4F7A-40AD-9D82-CAAF69784E0B/images/WTW-250204-photoLab_7600_UV_VIS-spectral_photometer-open.jpg" />
+    <meta property="og:image:alt" content="Spectrometer" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Spectrometer | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Spectrometers for AGL fixture testing: spectral power distribution, chromaticity, CRI and CCT measurement, ICAO/FAA compliance, calibration and field technique." />
+    <meta name="twitter:image" content="https://www.xylemanalytics.com/productimages/CFD33A9A-4F7A-40AD-9D82-CAAF69784E0B/images/WTW-250204-photoLab_7600_UV_VIS-spectral_photometer-open.jpg" />
+    <meta name="theme-color" content="#060d1a" />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-spectrometer.html#faq", "url": "https://rahulsharmaagl.in/component-spectrometer.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-spectrometer.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a spectrometer in AGL testing?", "acceptedAnswer": {"@type": "Answer", "text": "A spectrometer, specifically a spectroradiometer, measures the spectral power distribution of a light source, meaning the optical power emitted at each wavelength across the visible spectrum, typically 380-780 nm."}}, {"@type": "Question", "name": "How is a spectrometer different from a colorimeter?", "acceptedAnswer": {"@type": "Answer", "text": "A colorimeter reports a single colour coordinate, while a spectrometer reveals the full spectral fingerprint behind it. Two sources can register the same nominal colour yet have very different spectra, which matters for verifying colour compliance."}}, {"@type": "Question", "name": "Where are spectrometers used in AGL work?", "acceptedAnswer": {"@type": "Answer", "text": "In specialised scenarios needing detailed spectral data, such as independent laboratory type testing and certification of new fixture models against chromaticity and colour-quality requirements."}}, {"@type": "Question", "name": "How does a spectrometer work?", "acceptedAnswer": {"@type": "Answer", "text": "Entrance optics (a lens or fibre) collect light from the fixture, a diffraction grating disperses it by wavelength, and a linear array detector records the spectrum."}}, {"@type": "Question", "name": "What accuracy can be expected?", "acceptedAnswer": {"@type": "Answer", "text": "Spectral resolution is typically under 5 nm for laboratory grade and under 10 nm for field grade, wavelength accuracy ±0.5 nm and ±1 nm respectively, and chromaticity accuracy ±0.0005 (x, y) for laboratory grade or ±0.0015 for field grade."}}, {"@type": "Question", "name": "What are the operating conditions?", "acceptedAnswer": {"@type": "Answer", "text": "Typically +10°C to +40°C in a temperature-controlled environment, with IP20 for laboratory units and IP54 for field-hardened versions. Scans take under one second."}}, {"@type": "Question", "name": "How is a spectrometer powered?", "acceptedAnswer": {"@type": "Answer", "text": "By an internal rechargeable battery (typically Li-ion) or a mains AC adapter, with battery protection and low-battery and charging indication on the display."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "ICAO Annex 14 (spectral requirements for AGL colours), FAA AC 150/5345-46 (Specification for Runway, Taxiway, Heliport, and Vertiport Light Fixtures), IEC 61827 and CIE colorimetry methods (CIE 15 and CIE S014)."}}, {"@type": "Question", "name": "How often should a spectrometer be calibrated and checked?", "acceptedAnswer": {"@type": "Answer", "text": "Annually for calibration against a traceable reference source and for temperature stability, and semi-annually for stray light. Fibre optic connectors should also be inspected annually for contamination or misalignment."}}, {"@type": "Question", "name": "Why are readings drifting from a known reference?", "acceptedAnswer": {"@type": "Answer", "text": "Common causes are calibration drift from lamp ageing, detector sensitivity change or optical misalignment. Check the instrument against a portable reference source and review its calibration history."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hamburger span {
+                transition: transform .25s ease, opacity .25s ease;
+            }
+            .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+            .hamburger.open span:nth-child(2) { opacity: 0; }
+            .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+            nav.mobile-open .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                padding: 24px 40px;
+                gap: 20px;
+                background: rgba(6, 13, 26, 0.98);
+                backdrop-filter: blur(20px);
+                border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+            }
+            nav.mobile-open .nav-cta {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 40px 24px;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* DIAGRAM BLOCK */
+        .diagram-block {
+            margin-top: 24px;
+            padding: 34px 30px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .diagram-caption {
+            text-align: center;
+            font-size: 12.5px;
+            color: var(--text);
+            letter-spacing: .3px;
+            margin-bottom: 26px;
+        }
+        .dflow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .dnode {
+            background: var(--navy);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--gold);
+            border-radius: 8px;
+            padding: 14px 22px;
+            text-align: center;
+            width: 100%;
+            max-width: 460px;
+        }
+        .dnode.cyan { border-left-color: var(--cyan); }
+        .dnode.red { border-left-color: var(--red); }
+        .dnode.final {
+            border: 1px solid var(--gold);
+            border-left: 3px solid var(--gold);
+            background: rgba(255, 180, 0, 0.06);
+        }
+        .dnode h6 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 14.5px;
+            letter-spacing: .4px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+        .dnode p {
+            font-size: 12px;
+            line-height: 1.5;
+            color: var(--text);
+        }
+        .darrow {
+            color: var(--gold);
+            font-size: 20px;
+            line-height: 1;
+            margin: 6px 0;
+        }
+        .dfork {
+            display: flex;
+            gap: 22px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 4px 0;
+        }
+        .dbranch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 220px;
+            max-width: 340px;
+        }
+        .dbranch-tag {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .dbranch.cyan .dbranch-tag { color: var(--cyan); }
+        @media (max-width: 700px) {
+            .dfork { flex-direction: column; align-items: center; }
+        }
+
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-spectrometer.html#article",
+        "headline": "Spectrometer",
+        "description": "Spectrometers for AGL fixture testing: spectral power distribution, chromaticity, CRI and CCT measurement, ICAO/FAA compliance, calibration and field technique.",
+        "url": "https://rahulsharmaagl.in/component-spectrometer.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-spectrometer.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Spectrometer"
+        },
+        "articleSection": "Photometry Equipment",
+        "keywords": "spectrometer, AGL, spectral power distribution, chromaticity measurement, CRI, CCT, fixture photometric testing",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://www.xylemanalytics.com/productimages/CFD33A9A-4F7A-40AD-9D82-CAAF69784E0B/images/WTW-250204-photoLab_7600_UV_VIS-spectral_photometer-open.jpg"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-spectrometer.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-spectrometer.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-spectrometer.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Spectrometer",
+            "item": "https://rahulsharmaagl.in/component-spectrometer.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Spectrometer</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-wave-sine"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Spectro<span>meter</span></h1>
+            <p class="comp-sub">A high‑precision optical instrument that measures the spectral power distribution (SPD) of light emitted by AGL fixtures. Provides comprehensive colour and intensity data across the visible spectrum, enabling detailed analysis of colour quality, colour rendering, and compliance with ICAO/FAA chromaticity standards. Essential for type testing, research, and troubleshooting complex colour issues.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:450px;height:450px;">
+                <img src="https://www.xylemanalytics.com/productimages/CFD33A9A-4F7A-40AD-9D82-CAAF69784E0B/images/WTW-250204-photoLab_7600_UV_VIS-spectral_photometer-open.jpg" alt="Spectrometer" width="450" height="450" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Spectrometer</strong> (specifically a spectroradiometer) is an advanced optoelectronic instrument that measures the spectral power distribution (SPD) of a light source — the amount of optical power emitted at each wavelength across the visible spectrum (typically 380 nm to 780 nm). Unlike a colorimeter, which uses filters to mimic the human eye's response, a spectrometer captures the full spectral fingerprint of the light. This enables:</p>
+                <ul>
+                    <li><strong>Precise chromaticity calculation</strong> — deriving CIE (x,y) or (u',v') coordinates with high accuracy</li>
+                    <li><strong>Colour rendering index (CRI)</strong> — assessing how accurately colours appear under the light</li>
+                    <li><strong>Correlated colour temperature (CCT)</strong> — quantifying the warmth or coolness of white light</li>
+                    <li><strong>Spectral analysis</strong> — identifying unexpected spectral spikes or dips caused by LED binning, filter degradation, or optical contamination</li>
+                    <li><strong>Metamerism detection</strong> — understanding when two lights appear to match in colour but have different SPDs, which can cause visual discrepancies under different lighting conditions</li>
+                </ul>
+                <p style="margin-top:12px;">In AGL applications, spectrometers are primarily used in laboratory settings for type testing, research, and advanced troubleshooting, though portable field spectrometers are increasingly available for on‑site diagnostic work.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The spectrometer's purpose is to see past the single colour coordinate a colorimeter reports and reveal the full spectral "fingerprint" behind it, which matters because two light sources can register the same nominal colour while having very different underlying spectra — a distinction that becomes critical when diagnosing a colour that is marginally out of tolerance or verifying that the LEDs actually installed in a fixture are from the correct manufacturing bin. Its detailed spectral data is what allows engineers to trace a colour shift back to its physical cause, such as a filter that has faded in a specific wavelength band, rather than simply confirming that a problem exists. Because of this diagnostic depth, the spectrometer also serves as the primary reference used to calibrate simpler field-grade colorimeters and photometers, keeping the whole measurement chain traceable back to a single spectral truth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Spectrometers are deployed in specialised scenarios where detailed spectral data is required:</p>
+                <ul>
+                    <li><strong>Type Testing and Certification:</strong> Independent testing laboratories use spectrometers to verify that new AGL fixture models meet the full chromaticity and colour quality requirements specified in ICAO Annex 14 and FAA AC 150/5345‑46.</li>
+                    <li><strong>LED Bin Verification:</strong> Manufacturers use spectrometers to ensure that the LED chips used in AGL fixtures are from the correct chromaticity bin, as required by the design specification.</li>
+                    <li><strong>Research and Development:</strong> When developing new AGL lighting technologies (e.g., novel LED phosphor blends), spectrometers provide the detailed spectral feedback needed for optimisation.</li>
+                    <li><strong>Advanced Troubleshooting:</strong> When colourimeter readings show marginal compliance or indicate a colour shift, a spectrometer can reveal the underlying spectral cause — for example, a degraded filter that attenuates a specific wavelength range.</li>
+                    <li><strong>Calibration of Colorimeters and Photometers:</strong> Reference spectrometers are used as primary standards to calibrate field‑grade photometers and colorimeters, ensuring traceability to national metrology institutes.</li>
+                    <li><strong>Quality Assurance in Manufacturing:</strong> Some high‑end AGL manufacturers use spectrometers on production lines to perform 100% spectral inspection of critical components like optical filters and LED modules.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>The spectrometer has no fixed field location — it is a bench or portable instrument kept in a calibration or photometric laboratory and brought to the measurement point as needed. Laboratory measurements are made on an optical bench in a darkened room, with the fixture or sample under test mounted on a fixed stand and the instrument's fibre-optic probe or cosine-corrected input positioned at the specified distance and angle. For field or production-line use, a portable unit with a handheld probe is positioned directly against or in front of the light source being sampled. Like other photometric reference instruments, the spectrometer is periodically sent to an accredited calibration laboratory to maintain traceability, and is itself sometimes used in that role to calibrate field-grade photometers and colorimeters.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>A spectrometer typically consists of the following key components:</p>
+                <ul>
+                    <li><strong>Entrance Optics:</strong> A lens or fibre optic assembly that collects the light from the fixture under test and couples it into the instrument.</li>
+                    <li><strong>Wavelength Dispersion Element:</strong> A diffraction grating or prism that separates the incoming light into its constituent wavelengths (similar to a rainbow).</li>
+                    <li><strong>Linear Array Detector:</strong> A silicon photodiode array (e.g., CCD or CMOS) that captures the intensity of light at each wavelength simultaneously. The number of pixels determines the spectral resolution.</li>
+                    <li><strong>Signal Processing and ADC:</strong> The detector signals are amplified, digitised, and converted into spectral data (intensity vs. wavelength).</li>
+                    <li><strong>Microprocessor and Software:</strong> The instrument calibrates the raw data using a traceable reference source (e.g., a standard lamp with known SPD). It then calculates photometric and colorimetric quantities (luminous flux, CIE coordinates, CCT, CRI, etc.) from the SPD.</li>
+                </ul>
+                <p style="margin-top:12px;">For AGL measurements, the spectrometer is typically placed at a defined distance and angle relative to the fixture (matching the geometry used for intensity measurements). The fixture is operated at the required current step, and the spectrometer captures the SPD. The software then compares the chromaticity coordinates against the relevant standard's colour boundary table to determine pass/fail. The full SPD also allows detection of spectral artefacts (e.g., spikes due to reflected ambient light or artefacts from the fixture's optics).</p>
+            </div>
+
+            <div class="diagram-block">
+                <p class="diagram-caption">Dispersion path from fixture light to spectral data</p>
+                <div class="dflow">
+                    <div class="dnode"><h6 role="heading" aria-level="3">Fixture Under Test</h6><p>Operated at required current step, at defined distance and angle</p></div>
+                    <div class="darrow">&#8595;</div>
+                    <div class="dnode"><h6 role="heading" aria-level="3">Entrance Optics</h6><p>Lens or fibre-optic assembly collects and couples light into the instrument</p></div>
+                    <div class="darrow">&#8595;</div>
+                    <div class="dnode cyan"><h6 role="heading" aria-level="3">Dispersion Element</h6><p>Diffraction grating or prism spreads light into its constituent wavelengths</p></div>
+                    <div class="darrow">&#8595;</div>
+                    <div class="dnode"><h6 role="heading" aria-level="3">Linear Array Detector</h6><p>CCD/CMOS pixel array captures intensity at each wavelength simultaneously</p></div>
+                    <div class="darrow">&#8595;</div>
+                    <div class="dnode"><h6 role="heading" aria-level="3">Signal Processing &amp; ADC</h6><p>Converts detector output into spectral power distribution (intensity vs. wavelength)</p></div>
+                    <div class="darrow">&#8595;</div>
+                    <div class="dnode"><h6 role="heading" aria-level="3">Calibration Against Reference Lamp</h6><p>Raw SPD corrected using a traceable standard source of known SPD</p></div>
+                    <div class="darrow">&#8595;</div>
+                    <div class="dnode final"><h6 role="heading" aria-level="3">CIE Coordinates, CCT, CRI vs. Standard</h6><p>Chromaticity checked against colour boundary table &mdash; Pass / Fail</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>Like the photometer, a spectrometer used for airfield lighting or paint verification is a standalone measurement instrument rather than a networked control system, but its output flows through a defined signal chain. Light from the sample or fixture enters through the input optics, is dispersed by a grating or prism across the detector array, and the resulting per-wavelength intensity signal is digitized and processed against the instrument's stored wavelength and intensity calibration, traceable to certified reference sources, to produce a spectral output such as chromaticity coordinates or dominant wavelength. The result is compared against the applicable specification to generate a pass/fail determination, and as with any calibrated optical instrument, periodic recalibration against a certified reference source is essential since a drifted instrument corrupts every downstream pass/fail decision.</p>
+            </div>
+            <div class="diagram-block" style="margin-top:24px;">
+                <p class="diagram-sub">Input Optics &rarr; Dispersive Element &rarr; Detector Array &rarr; Calibration &rarr; Spectral Output</p>
+                <svg viewBox="0 0 680 520" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="SpectrometerArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" style="fill: var(--gold); opacity:0.7;" />
+                        </marker>
+                        <marker id="SpectrometerFbArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" style="fill: var(--cyan); opacity:0.8;" />
+                        </marker>
+                    </defs>
+
+                    <rect x="170" y="20" width="340" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="46" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:13.5px; fill: var(--white);">INPUT OPTICS / SLIT</text>
+                    <text x="340" y="63" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">Collects light from sample or fixture</text>
+
+                    <line x1="340" y1="76" x2="340" y2="100" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#SpectrometerArrow)"/>
+
+                    <rect x="170" y="104" width="340" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="130" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14.5px; fill: var(--white);">DISPERSIVE ELEMENT</text>
+                    <text x="340" y="147" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10.5px; fill: var(--text);">Grating or prism separates wavelengths</text>
+
+                    <line x1="340" y1="160" x2="340" y2="184" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#SpectrometerArrow)"/>
+
+                    <rect x="140" y="188" width="400" height="56" rx="10" style="fill: rgba(0,212,255,0.06); stroke: rgba(0,212,255,0.28); stroke-width:1.5;"/>
+                    <text x="340" y="214" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14.5px; fill: var(--white);">DETECTOR ARRAY</text>
+                    <text x="340" y="231" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">Converts per-wavelength intensity to signal</text>
+
+                    <line x1="340" y1="244" x2="340" y2="268" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#SpectrometerArrow)"/>
+
+                    <rect x="170" y="272" width="340" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="298" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14px; fill: var(--white);">CALIBRATION &amp; SIGNAL PROCESSING</text>
+                    <text x="340" y="315" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10.5px; fill: var(--text);">References certified wavelength/intensity standards</text>
+
+                    <line x1="340" y1="328" x2="340" y2="352" style="stroke: var(--gold); stroke-width:1.5; opacity:0.7;" marker-end="url(#SpectrometerArrow)"/>
+
+                    <rect x="190" y="356" width="300" height="56" rx="10" style="fill: var(--card); stroke: var(--border); stroke-width:1.5;"/>
+                    <text x="340" y="382" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:14.5px; fill: var(--white);">SPECTRAL OUTPUT vs. SPEC</text>
+                    <text x="340" y="399" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10.5px; fill: var(--text);">Chromaticity / dominant wavelength pass-fail</text>
+
+                    <line x1="340" y1="412" x2="340" y2="436" style="stroke: var(--gold); stroke-width:1.5; opacity:0.6;" marker-end="url(#SpectrometerArrow)"/>
+
+                    <rect x="170" y="440" width="340" height="64" rx="10" style="fill: rgba(255,180,0,0.08); stroke: var(--gold); stroke-width:1.5;"/>
+                    <text x="340" y="464" text-anchor="middle" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:13.5px; fill: var(--white);">CALIBRATION DRIFT CORRUPTS EVERY READING</text>
+                    <text x="340" y="483" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">Periodic recalibration against a certified</text>
+                    <text x="340" y="497" text-anchor="middle" style="font-family:'Barlow', sans-serif; font-size:10px; fill: var(--text);">reference source is essential</text>
+
+                    <path d="M 540 216 C 630 216, 630 48, 510 48" fill="none" style="stroke: var(--cyan); stroke-width:1.5; stroke-dasharray:5,4; opacity:0.75;" marker-end="url(#SpectrometerFbArrow)"/>
+                    <text x="547" y="105" text-anchor="start" style="font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:10.5px; letter-spacing:0.5px; fill: var(--cyan);">RECALIBRATION</text>
+                    <text x="547" y="120" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">Instrument is checked</text>
+                    <text x="547" y="132" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">against certified reference</text>
+                    <text x="547" y="144" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">sources on a periodic</text>
+                    <text x="547" y="156" text-anchor="start" style="font-family:'Barlow', sans-serif; font-size:9px; fill: var(--text);">maintenance cycle</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The instrument is built around a fixed or holographic diffraction grating that disperses incoming light onto a linear CCD or CMOS detector array, all mounted on a rigid optical bench inside a light-tight enclosure to prevent stray light and mechanical drift from affecting wavelength calibration. Light enters through a cosine-corrected diffuser or integrating sphere port, and where the instrument is used for luminaire testing rather than ambient light measurement, a fibre-optic input probe is used instead so the detector head can be kept away from the heat and electrical noise of the light source under test. Laboratory-grade units are housed in a benchtop enclosure suited to a temperature-controlled environment, while field-hardened versions add a sealed IP54 housing, shock-mounted optics, and a rechargeable battery pack so the instrument can be carried to a fixture under test and operated without a bench setup. Data and power connections use standard USB, Ethernet, or Wi-Fi interfaces rather than industrial connectors, reflecting the instrument's role as a portable or laboratory measurement tool rather than a permanently installed field device.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Measurement Principle</td><td class="val">Dispersive (grating) with linear array detector</td></tr>
+                <tr><td>Wavelength Range</td><td class="val">380 nm – 780 nm (visible spectrum)</td></tr>
+                <tr><td>Spectral Resolution (FWHM)</td><td class="val">&lt; 5 nm (laboratory grade), &lt; 10 nm (field grade)</td></tr>
+                <tr><td>Wavelength Accuracy</td><td class="val">±0.5 nm (laboratory grade), ±1 nm (field grade)</td></tr>
+                <tr><td>Chromaticity Accuracy</td><td class="val">±0.0005 (x,y) for laboratory grade; ±0.0015 for field grade</td></tr>
+                <tr><td>Dynamic Range</td><td class="val">> 10⁵ (adjustable integration time)</td></tr>
+                <tr><td>Data Interface</td><td class="val">USB, Ethernet, or Wi‑Fi</td></tr>
+                <tr><td>Measurement Speed</td><td class="val">&lt; 1 second per scan (full spectrum)</td></tr>
+                <tr><td>Power Supply</td><td class="val">Internal rechargeable battery or AC adapter</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">+10°C to +40°C (temperature‑controlled environment recommended)</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP20 (laboratory), IP54 (field‑hardened versions)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Supply Options</td><td class="val">Internal rechargeable battery (typically Li-ion) or mains-fed AC adapter</td></tr>
+                <tr><td>Charging</td><td class="val">Via AC adapter or USB, with over-charge/over-discharge protection built into the battery management circuit</td></tr>
+                <tr><td>Adapter Rating</td><td class="val">Matched to the instrument's DC input (manufacturer-specified voltage/current)</td></tr>
+                <tr><td>Circuit Protection</td><td class="val">Internal fusing/current limiting on the battery and adapter input</td></tr>
+                <tr><td>Surge Protection</td><td class="val">Basic transient protection on the AC adapter input; use of a mains SPD recommended in field cabinets</td></tr>
+                <tr><td>Earthing/Grounding</td><td class="val">AC adapter earthed per its class rating; no separate bonding required for battery-only operation</td></tr>
+                <tr><td>Fault Indication</td><td class="val">Low-battery and charging-status indication on the instrument display</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>Spectral requirements for AGL light colours</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑46</h5><p>Specification for Runway, Taxiway, Heliport, and Vertiport Light Fixtures (includes chromaticity requirements)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61827</h5><p>Characteristics of inset and elevated AGL luminaires (photometric/colour reference)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">CIE (International Commission on Illumination)</h5><p>Colorimetry calculation methods and standard observers (CIE 15, CIE S014)</p></div></div>
+            </div>
+        </div>
+    </section>
+
+        <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-briefcase"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Calibration Currency Check</h5><span class="test-stage">Preparation</span></div>
+                        <p>Confirm the instrument's calibration certificate is current and traceable before it is used for laboratory or field measurements.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optical Bench Setup</h5><span class="test-stage">Setup</span></div>
+                        <p>Mount the fixture or sample under test on a fixed stand in a darkened room, positioning the fibre-optic probe or cosine-corrected input at the specified distance and angle for laboratory measurements.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-compass-drafting"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Field Probe Positioning</h5><span class="test-stage">Setup</span></div>
+                        <p>For field or production-line use, position the handheld probe directly against or in front of the light source being sampled, per the manufacturer's measurement geometry.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Test Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record the measurement geometry, calibration status, and instrument serial number for each test session before readings are taken.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Wavelength Calibration Check</h5><span class="test-stage">Pre-Use</span></div>
+                        <p>Verify wavelength accuracy against a certified reference source (e.g., a mercury or neon calibration lamp) before first use.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Intensity Calibration Check</h5><span class="test-stage">Pre-Use</span></div>
+                        <p>Calibrate against a traceable standard lamp of known spectral power distribution to confirm intensity readings are correct.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Dark Current / Stray Light Check</h5><span class="test-stage">Pre-Use</span></div>
+                        <p>Confirm dark-current and stray-light levels are within spec, since either can distort the recorded spectral power distribution.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fixture Geometry Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm the instrument is positioned at the defined distance and angle relative to the fixture under test, matching the geometry used for intensity measurements.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Chromaticity Pass/Fail Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Measure a known-compliant fixture and confirm the resulting CIE coordinates plot correctly inside the applicable colour boundary table.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Repeatability Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Take repeated scans of the same source and confirm chromaticity and CCT readings stay within the instrument's stated repeatability tolerance.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; Certificate Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record calibration certificate references, wavelength/intensity check results, and measurement geometry in the commissioning dossier.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Calibration Verification</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check readings against a traceable reference source and recalibrate if drift exceeds the allowed tolerance.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Stray Light Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Inspect internal optics for contamination or degraded baffling that introduces stray light and flare into readings.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Temperature Stability Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Verify readings remain stable across the unit's rated operating temperature range, since sensitivity varies with heat.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Fibre Coupling Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check fibre optic connectors for contamination or misalignment causing signal loss and reduced signal-to-noise ratio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Calibration Drift and Traceability</h5><p>Spectrometers require rigorous calibration using a traceable standard lamp (e.g., a halogen lamp with known spectral irradiance). Calibration can drift due to lamp ageing, changes in detector sensitivity, or optical misalignment. Annual recalibration by an accredited laboratory is essential. Field‑grade instruments should be checked against a portable reference source before each use.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Stray Light and Flare</h5><p>Stray light within the spectrometer (light scattering inside the optical path) can cause spectral distortion, especially in the presence of strong spectral lines or when measuring low‑intensity signals. High‑quality instruments use baffles and order‑sorting filters to minimise stray light. In the field, ensure that the instrument is not exposed to direct sunlight or strong ambient light sources.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Temperature Sensitivity</h5><p>Both the spectrometer's optical components (grating, detector) and the fixture under test are temperature‑sensitive. Changes in temperature can shift the wavelength calibration and affect the detector's quantum efficiency. For accurate results, allow both the instrument and the fixture to stabilise at the operating temperature (typically 25°C) before measurements.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Fibre Optic Coupling Losses</h5><p>Many spectrometers use a fibre optic cable to collect light. Variations in fibre alignment, bending, or connector contamination can introduce losses that affect the measured spectral shape. Use a reference measurement to normalise the signal, and keep the fibre path clean and free from sharp bends.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Integration Time and Signal‑to‑Noise Ratio</h5><p>Selecting the correct integration time is critical — too short, and the signal is noisy; too long, and the detector saturates. The optimal setting depends on the fixture's intensity and the ambient light level. Many spectrometers offer auto‑integration, but manual verification is recommended for critical measurements.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Measured Values Drift from Known Reference</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Calibration drift from lamp ageing, detector sensitivity change, or optical misalignment.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the instrument against a portable reference source, review the calibration history and due date, and inspect optical alignment.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate against a traceable standard lamp at an accredited laboratory, or realign optics if the drift is mechanical.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Distorted Spectral Readings in Bright Conditions</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Stray light entering the optical path from direct sunlight or strong ambient sources.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the measurement conditions for ambient light exposure and compare readings taken shielded versus unshielded.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Shield the instrument from direct sunlight/ambient light, and use baffles or an order-sorting filter if available.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Wavelength Calibration Shift Between Measurements</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Temperature sensitivity of the optical components (grating, detector) or the fixture under test.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the instrument and fixture temperature against the specified operating point and compare readings taken before and after stabilisation.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Allow the instrument and fixture to stabilise at the specified operating temperature before measuring.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Inconsistent Spectral Shape Between Tests</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Fibre optic coupling losses from misalignment, bending, or connector contamination.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect the fibre for sharp bends or contamination, check connector cleanliness, and take a reference measurement to normalise the signal.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean or replace the fibre/connector, correct routing to avoid sharp bends, and re-normalise against a reference.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Noisy or Saturated Signal</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Integration time set incorrectly for the fixture's intensity or ambient light level.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review the current integration time setting against the signal level, check for detector saturation flags, and compare against the auto-integration recommendation.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Adjust the integration time manually, or verify and apply the auto-integration setting; re-measure to confirm signal-to-noise is acceptable.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Wavelength Calibration Drift</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Thermal expansion of the optical bench, mechanical shock, or grating/detector ageing shifting the wavelength-to-pixel mapping.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Measured values drift from the known reference, and repeat measurements of the same source show a wavelength calibration shift between sessions.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Wavelength calibration check against a certified reference source at the start of each measurement session.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Intensity / Radiometric Calibration Drift</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Detector sensitivity ageing or degradation of the calibration standard used to set the intensity scale.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Absolute intensity and derived photometric values read consistently high or low against a known-good source.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Intensity calibration check against a traceable calibration standard, tracked over time for drift.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Stray Light and Flare</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Internal reflections, a contaminated optical path, or ambient light entering through a compromised light seal.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Distorted spectral readings in bright conditions, and elevated dark-current baseline even with no source present.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Dark current/stray light check with the input blocked, and a repeat under bright ambient conditions to isolate the source.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Fibre Optic Coupling Degradation</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Fibre connector wear, misalignment, or contamination at the coupling interface between the input optics and the spectrometer.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Inconsistent spectral shape or reduced signal-to-noise ratio between otherwise identical test setups.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Fibre coupling inspection and a repeatability check comparing successive measurements of the same known source.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Temperature Sensitivity / Thermal Drift</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Detector dark-current and electronic gain both vary with ambient temperature if the unit lacks active thermal stabilisation.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Measurement results shift over the course of a session as the instrument warms up or as ambient conditions change.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Temperature stability check comparing readings at the start and after thermal equilibration.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Detector Saturation / Noisy Signal</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Integration time set too long for a bright source, or too short for a dim one, pushing the detector outside its optimal signal-to-noise range.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Noisy or saturated signal that produces unreliable spectral data regardless of the instrument's underlying calibration health.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Integration time and signal-to-noise ratio check against the manufacturer's recommended operating range for the source intensity.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-sun"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Bright Light / Eye Exposure During Measurement</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Avoid direct, close-range viewing into a high-intensity fixture while taking a spectral reading; use the instrument's input optics or diffuser at the manufacturer's specified stand-off distance rather than positioning your eyes in the beam path.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-battery-three-quarters"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Battery Charging Safety</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Charge the instrument's internal Li-ion battery only with the supplied AC adapter or USB source, and avoid charging or storing it in extreme heat, to prevent battery damage or thermal events.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-temperature-high"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Hot Fixture / Housing Contact</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Fixtures under test may be hot after a sustained operating period; allow adequate cooling time before positioning the instrument in close contact with the housing or lens.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Work Coordination</h5><span class="test-stage">Operational</span></div>
+                        <p>Taking spectral readings on runway, taxiway, or approach fixtures requires ATC/airside coordination where the measurement involves accessing an active fixture or keeping it illuminated outside normal traffic patterns.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Calibration Reference Integrity</h5><span class="test-stage">Operational</span></div>
+                        <p>Handle the certified reference light source or calibration standard carefully and keep its own calibration traceable, since a drifted reference undermines every reading taken with the instrument.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Confirm chromaticity and intensity readings fall within the applicable photometric standard before closing out the measurement task, and log the reference used for traceability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-temperature-half"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Let Both Instrument and Fixture Thermally Settle Before Trusting a Reading</h5><span class="expert-tag">Measurement Accuracy</span></div>
+                        <p>Taking a reading immediately after unpacking a cold spectrometer from a vehicle, or measuring a fixture that hasn't reached thermal equilibrium after being switched on, introduces a wavelength and intensity error that has nothing to do with either device's calibration. Build a stabilisation period into the field test procedure itself, not just into the lab calibration protocol.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-sun"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Ambient Light Contamination is Easy to Miss on a Bright Runway</h5><span class="expert-tag">Field Technique</span></div>
+                        <p>Daylight or nearby fixture spill entering the measurement path produces a spectral distortion that can look like a legitimate feature of the light source under test rather than an obvious error. Shield the measurement path and, where possible, take readings during low-ambient conditions, and always compare against a known reference to catch contamination that isn't visually obvious.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-ruler-vertical"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Fibre Bend Radius Affects Results, Not Just Cable Life</h5><span class="expert-tag">Calibration</span></div>
+                        <p>A collection fibre coiled tighter than its minimum bend radius during field use can introduce loss that shifts the measured spectral shape, not just the overall signal level, which is easy to mistake for a genuine change in the light source. Route and store the fibre to respect its bend radius during every measurement, and re-zero against a reference if the fibre routing has changed since the last calibration check.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Integration Time Needs Field Verification, Not Just Auto-Range Trust</h5><span class="expert-tag">Signal Quality</span></div>
+                        <p>Auto-integration algorithms are tuned for typical conditions and can under- or over-expose in edge cases, such as a very low-intensity LED fixture at end of life or a saturating close-range measurement. Manually verify the signal isn't clipped or excessively noisy for critical acceptance or dispute measurements rather than relying solely on the auto setting.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-certificate"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Portable Reference Check is Not a Substitute for Lab Recalibration</h5><span class="expert-tag">Calibration</span></div>
+                        <p>Checking a field instrument against a portable reference source before use is valuable for catching gross drift, but it doesn't have the traceability or precision of an accredited lab calibration and shouldn't be used to extend the recalibration interval. Keep the annual accredited calibration on schedule regardless of how well the field checks have been trending.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-flask-vial"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Log Environmental Conditions Alongside Every Compliance Measurement</h5><span class="expert-tag">Documentation</span></div>
+                        <p>A chromaticity or intensity measurement disputed later is far easier to defend or diagnose if the ambient temperature, warm-up time, and instrument calibration date were recorded alongside the reading itself. Build these fields into the standard test record rather than treating them as optional metadata.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about AGL spectrometers: spectral measurement, accuracy, standards, calibration and field technique.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a spectrometer in AGL testing?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A spectrometer, specifically a spectroradiometer, measures the spectral power distribution of a light source, meaning the optical power emitted at each wavelength across the visible spectrum, typically 380-780 nm.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">How is a spectrometer different from a colorimeter?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A colorimeter reports a single colour coordinate, while a spectrometer reveals the full spectral fingerprint behind it. Two sources can register the same nominal colour yet have very different spectra, which matters for verifying colour compliance.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Where are spectrometers used in AGL work?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>In specialised scenarios needing detailed spectral data, such as independent laboratory type testing and certification of new fixture models against chromaticity and colour-quality requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">How does a spectrometer work?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Entrance optics (a lens or fibre) collect light from the fixture, a diffraction grating disperses it by wavelength, and a linear array detector records the spectrum.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">What accuracy can be expected?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Spectral resolution is typically under 5 nm for laboratory grade and under 10 nm for field grade, wavelength accuracy ±0.5 nm and ±1 nm respectively, and chromaticity accuracy ±0.0005 (x, y) for laboratory grade or ±0.0015 for field grade.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">What are the operating conditions?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typically +10°C to +40°C in a temperature-controlled environment, with IP20 for laboratory units and IP54 for field-hardened versions. Scans take under one second.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">How is a spectrometer powered?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>By an internal rechargeable battery (typically Li-ion) or a mains AC adapter, with battery protection and low-battery and charging indication on the display.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">Which standards apply?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>ICAO Annex 14 (spectral requirements for AGL colours), FAA AC 150/5345-46 (Specification for Runway, Taxiway, Heliport, and Vertiport Light Fixtures), IEC 61827 and CIE colorimetry methods (CIE 15 and CIE S014).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How often should a spectrometer be calibrated and checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Annually for calibration against a traceable reference source and for temperature stability, and semi-annually for stray light. Fibre optic connectors should also be inspected annually for contamination or misalignment.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">Why are readings drifting from a known reference?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Common causes are calibration drift from lamp ageing, detector sensitivity change or optical misalignment. Check the instrument against a portable reference source and review its calibration history.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-photometer.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><h5 role="heading" aria-level="3">Photometer</h5></a>
+                <a href="component-colorimeter.html" class="related-card"><i class="fa-solid fa-palette"></i><h5 role="heading" aria-level="3">Colorimeter</h5></a>
+                <a href="component-goniophotometer.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><h5 role="heading" aria-level="3">Goniophotometer</h5></a>
+                <a href="component-calibration-standard.html" class="related-card"><i class="fa-solid fa-ruler"></i><h5 role="heading" aria-level="3">Calibration Standard</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on spectral measurement or spectrometer selection?</h4><p>Precision AGL Academy provides advice on spectrometer calibration, measurement protocols, and interpretation of spectral data for AGL colour and intensity compliance.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Test, measurement, photometric and maintenance equipment on this page is described for education. Using an instrument or method described here does not produce a calibration record, test certificate, photometric certificate or compliance finding. Use only calibrated, correctly rated instruments, operated by competent people under the aerodrome&rsquo;s procedures, and send instruments to an accredited laboratory for calibration. Test voltages and currents can be hazardous: isolate, lock out, prove dead and discharge first.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Spectrometer is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Spectrometer">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Spectrometer" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+    <!-- ─── MOBILE NAV CONTROLLER ─── -->
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

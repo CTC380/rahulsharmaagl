@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 4Cs of AGL Photometry: Colour, Candela, Coverage</title>
+    <meta name="description" content="A practical framework for AGL photometric performance: Colour, Candela, Coverage and Configuration, what each verifies and why all four matter for safety." />
+    <meta name="keywords" content="AGL photometry, 4Cs, colour chromaticity, candela intensity, beam coverage, airfield lighting configuration, ICAO Annex 14, FAA compliance, airfield ground lighting" />
+    <meta name="author" content="Rahul Sharma" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="language" content="English" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html" />
+    <link rel="alternate" hreflang="en-IN" href="https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html" />
+    <link rel="alternate" hreflang="x-default" href="https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Rahul Sharma | AGL Knowledge Hub" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html" />
+    <meta property="og:title" content="The 4Cs of AGL Photometry: Colour, Candela, Coverage" />
+    <meta property="og:description" content="A practical framework for AGL photometric performance: Colour, Candela, Coverage and Configuration, what each verifies and why all four matter for safety." />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="article:published_time" content="2026-03-16" />
+    <meta property="article:modified_time" content="2026-10-27" />
+    <meta property="article:author" content="Rahul Sharma" />
+    <meta property="article:section" content="AGL Photometry" />
+    <meta property="article:tag" content="AGL Photometry" />
+    <meta property="article:tag" content="ICAO Annex 14" />
+    <meta property="article:tag" content="Chromaticity" />
+    <meta property="article:tag" content="Beam Coverage" />
+
+    <meta property="og:image" content="https://rahulsharmaagl.in/og-image-4cs-of-agl-photometry.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:alt" content="The 4Cs of AGL Photometry — Colour, Candela, Coverage, Configuration | Rahul Sharma" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The 4Cs of AGL Photometry: Colour, Candela, Coverage" />
+    <meta name="twitter:description" content="A practical framework for AGL photometric performance: Colour, Candela, Coverage and Configuration, what each verifies and why all four matter for safety." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/og-image-4cs-of-agl-photometry.jpg" />
+
+    <!-- Theme -->
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            font-size: 13px;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span.sep {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        .article-hero {
+            max-width: 900px;
+            margin: auto;
+            padding: 34px 40px 46px;
+            position: relative;
+            z-index: 1;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 24px;
+        }
+        .article-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 54px;
+            letter-spacing: 1px;
+            line-height: 1.05;
+            margin-bottom: 22px;
+            color: var(--gold);
+        }
+        @media(max-width:768px) {
+            .article-title {
+                font-size: 38px;
+            }
+        }
+        .article-lede {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            margin-bottom: 26px;
+            max-width: 720px;
+        }
+        .author-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .author-info h4 {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .author-info p {
+            font-size: 12px;
+            color: var(--text);
+            margin-top: 2px;
+        }
+        .article-meta-strip {
+            display: flex;
+            gap: 22px;
+            flex-wrap: wrap;
+            margin-left: auto;
+            font-size: 12.5px;
+            color: var(--text);
+        }
+        .article-meta-strip span {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+        .article-meta-strip i {
+            color: var(--gold);
+            font-size: 12px;
+        }
+        @media(max-width:600px) {
+            .article-meta-strip {
+                margin-left: 0;
+            }
+        }
+
+        .article-body {
+            max-width: 760px;
+            margin: auto;
+            padding: 50px 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+        .article-body > p {
+            font-size: 16.5px;
+            line-height: 1.95;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+        .article-body > p:first-of-type {
+            font-size: 18px;
+            color: var(--white);
+        }
+
+        .art-section {
+            margin: 46px 0 42px;
+            scroll-margin-top: 92px;
+        }
+
+        /* ── Table of Contents ── */
+        .toc-block {
+            margin: 8px 0 40px;
+            padding: 26px 28px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+        }
+        .toc-block .toc-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .toc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px 24px;
+        }
+        @media(max-width:600px) {
+            .toc-list { grid-template-columns: 1fr; }
+        }
+        .toc-list a {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text);
+            text-decoration: none;
+            padding: 7px 0;
+            transition: color .2s;
+        }
+        .toc-list a:hover {
+            color: var(--gold);
+        }
+        .toc-list .toc-num {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--gold);
+            font-size: 14px;
+            flex-shrink: 0;
+            width: 22px;
+        }
+        .art-section-head {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+        .art-section-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 18px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .art-section h2 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 25px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: var(--white);
+            line-height: 1.3;
+        }
+        .art-section > p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+        .insight-list {
+            list-style: none;
+            margin: 4px 0 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+        }
+        .insight-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text);
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .insight-list li i {
+            color: var(--gold);
+            font-size: 12px;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        .closing-line {
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: var(--white);
+            padding: 16px 20px;
+            border-left: 3px solid var(--gold);
+            background: rgba(255, 180, 0, 0.04);
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+        }
+
+        .diagram-block {
+            margin: 50px 0 40px;
+            padding: 32px 28px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .diagram-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        .diagram-block .diagram-sub {
+            font-size: 13.5px;
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 22px;
+        }
+        .diagram-block svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .conclusion-block {
+            margin: 50px 0 40px;
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+        .conclusion-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .conclusion-block p {
+            font-size: 16px;
+            line-height: 1.9;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .conclusion-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pull-quote {
+            text-align: center;
+            margin: 50px auto;
+            padding: 40px 30px;
+            max-width: 640px;
+        }
+        .pull-quote p {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 1.35;
+            color: var(--white);
+            position: relative;
+        }
+        .pull-quote p span {
+            color: var(--gold);
+        }
+        .pull-quote .quote-mark {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 60px;
+            color: rgba(255, 180, 0, 0.25);
+            line-height: .5;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .signoff {
+            text-align: right;
+            font-size: 14.5px;
+            color: var(--text);
+            font-style: italic;
+            margin: -20px auto 50px;
+            max-width: 760px;
+            padding: 0 40px;
+        }
+        .signoff strong {
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        .topic-tags {
+            max-width: 760px;
+            margin: 0 auto 50px;
+            padding: 0 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .topic-tags span {
+            padding: 7px 16px;
+            background: rgba(0, 212, 255, 0.06);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .author-bio {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+        }
+        .author-bio-card {
+            display: flex;
+            gap: 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            align-items: flex-start;
+        }
+        .author-bio-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .author-bio-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+        .author-bio-card p {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .author-bio-card .abio-links {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+        .author-bio-card .abio-links a {
+            color: var(--gold);
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .author-bio-card .abio-links a:hover {
+            gap: 9px;
+        }
+
+        .article-nav-links {
+            max-width: 760px;
+            margin: 0 auto 60px;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .anav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 24px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 13.5px;
+            font-weight: 600;
+            transition: all .3s;
+        }
+        .anav-btn:hover {
+            border-color: rgba(255, 180, 0, 0.35);
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .anav-btn.gold {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #000;
+        }
+        .anav-btn.gold:hover {
+            background: #ffc933;
+            color: #000;
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-top:hover {
+            transform: translateY(-4px) scale(1.05);
+        }
+
+        @media(max-width:600px) {
+            nav {
+                padding: 0 20px;
+            }
+            .breadcrumb {
+                padding: 100px 20px 0;
+            }
+            .article-hero,
+            .article-body,
+            .topic-tags,
+            .author-bio,
+            .article-nav-links,
+            .signoff {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .pull-quote p {
+                font-size: 24px;
+            }
+            .author-bio-card {
+                flex-direction: column;
+            }
+            footer {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* ── Key Takeaway ── */
+        .key-takeaway {
+            margin: 8px 0 46px;
+            padding: 26px 28px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.09), rgba(0, 212, 255, 0.04));
+            border: 1px solid rgba(255, 180, 0, 0.28);
+            border-radius: 14px;
+        }
+        .key-takeaway .kt-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.12);
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .key-takeaway .kt-label {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .key-takeaway p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--white);
+        }
+
+        /* ── 4Cs overview grid ── */
+        .cs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 4px 0 6px;
+        }
+        @media(max-width:760px) {
+            .cs-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width:460px) {
+            .cs-grid { grid-template-columns: 1fr; }
+        }
+        .cs-card {
+            padding: 20px 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .cs-card .cs-letter {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 19px;
+            color: var(--gold);
+        }
+        .cs-card strong {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .cs-card span {
+            font-size: 12px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* ── Measure grid ── */
+        .measure-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 4px 0 18px;
+        }
+        @media(max-width:700px) {
+            .measure-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media(max-width:460px) {
+            .measure-grid { grid-template-columns: 1fr; }
+        }
+        .measure-card {
+            padding: 16px 15px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .measure-card i {
+            color: var(--cyan);
+            font-size: 15px;
+        }
+        .measure-card strong {
+            display: block;
+            color: var(--white);
+            font-size: 13.5px;
+            font-weight: 700;
+            line-height: 1.35;
+        }
+        .measure-card span {
+            font-size: 12.5px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* ── Colour swatch grid ── */
+        .colour-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 4px 0 18px;
+        }
+        .colour-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .colour-item .swatch {
+            width: 18px;
+            height: 18px;
+            border-radius: 5px;
+            flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .colour-item strong {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--white);
+            margin-right: 6px;
+        }
+        .colour-item span {
+            font-size: 14px;
+            color: var(--text);
+        }
+
+        /* ── Comparison table ── */
+        .compare-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 6px 0 20px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .compare-table th,
+        .compare-table td {
+            padding: 14px 18px;
+            font-size: 14.5px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .compare-table th {
+            background: rgba(255, 255, 255, 0.035);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .compare-table td {
+            color: var(--text);
+        }
+        .compare-table tr:last-child td {
+            border-bottom: none;
+        }
+        .compare-table td:first-child,
+        .compare-table th:first-child {
+            color: var(--white);
+            border-right: 1px solid var(--border);
+        }
+        @media(max-width:640px) {
+            .compare-table, .compare-table thead, .compare-table tbody,
+            .compare-table th, .compare-table td, .compare-table tr {
+                display: block;
+            }
+            .compare-table thead { display: none; }
+            .compare-table tr {
+                margin-bottom: 12px;
+                border: 1px solid var(--border);
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .compare-table tr:last-child { margin-bottom: 0; }
+            .compare-table td { border-right: none !important; }
+            .compare-table td:first-child {
+                background: rgba(255, 180, 0, 0.05);
+                font-weight: 700;
+            }
+            .compare-table td::before {
+                content: attr(data-label);
+                display: block;
+                font-size: 10.5px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                color: var(--gold);
+                margin-bottom: 4px;
+            }
+        }
+
+        /* ── Related articles ── */
+        .related-block {
+            max-width: 760px;
+            margin: 54px auto 10px;
+            padding: 0 40px;
+        }
+        .related-block h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 24px;
+            letter-spacing: 1px;
+            color: var(--white);
+            margin-bottom: 18px;
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        @media(max-width:600px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 18px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.35);
+            transform: translateY(-2px);
+        }
+        .related-card .rc-title {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .related-card .rc-title i {
+            color: var(--gold);
+            font-size: 13px;
+        }
+        .related-card .rc-sub {
+            font-size: 12.5px;
+            color: var(--text);
+            padding-left: 23px;
+        }
+    
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 6px; }
+        .faq-item { background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border); border-radius: 12px; transition: border-color .3s; }
+        .faq-item[open] { border-color: rgba(255, 180, 0, 0.3); }
+        .faq-item summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 19px; font-weight: 700; letter-spacing: .2px; color: var(--white); line-height: 1.35; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; flex-shrink: 0; width: 26px; height: 26px; border-radius: 8px; background: rgba(255, 180, 0, 0.08); border: 1px solid rgba(255, 180, 0, 0.22); display: flex; align-items: center; justify-content: center; font-size: 17px; color: var(--gold); }
+        .faq-item[open] summary::after { content: '\2212'; }
+        .faq-item summary:hover { color: var(--gold); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
+        .faq-item .faq-answer { padding: 0 22px 20px; }
+        .faq-item .faq-answer p { font-size: 15.5px; line-height: 1.85; color: var(--text); margin: 0; }
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#article",
+      "headline": "AGL Photometry's 4Cs: Colour, Candela, Coverage, Configuration",
+      "description": "A practical framework for AGL photometric performance: Colour, Candela, Coverage and Configuration, what each verifies and why all four matter for safety.",
+      "author": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "publisher": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      },
+      "datePublished": "2026-03-16",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/og-image-4cs-of-agl-photometry.jpg",
+        "width": 1200,
+        "height": 630
+      },
+      "inLanguage": "en-IN",
+      "dateModified": "2026-10-27",
+      "mainEntityOfPage": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html",
+      "articleSection": "AGL Photometry",
+      "keywords": "AGL Photometry, 4Cs, Colour, Candela, Coverage, Configuration, ICAO Annex 14",
+      "wordCount": 2618,
+      "timeRequired": "PT12M",
+      "isAccessibleForFree": true,
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/technical-articles.html#webpage"
+      },
+      "url": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html",
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#webpage",
+      "url": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html",
+      "name": "AGL Photometry's 4Cs: Colour, Candela, Coverage, Configuration",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Rahul Sharma | AGL Knowledge Hub",
+        "url": "https://rahulsharmaagl.in/"
+      },
+      "breadcrumb": {
+        "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#breadcrumb"
+      },
+      "inLanguage": "en-IN"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rahulsharmaagl.in/index.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Technical Articles",
+          "item": "https://rahulsharmaagl.in/technical-articles.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "The 4Cs of AGL Photometry",
+          "item": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#faq",
+      "url": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#faq",
+      "inLanguage": "en-IN",
+      "isPartOf": {
+        "@id": "https://rahulsharmaagl.in/article-4cs-of-agl-photometry.html#webpage"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the 4Cs of AGL photometry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 4Cs are Colour, Candela, Coverage and Configuration. They are a practical teaching framework, not a term defined by ICAO or the FAA, and together they evaluate whether an AGL fitting delivers the correct visual signal to pilots. The underlying requirements come from ICAO Annex 14 Volume I (Chapter 5, Appendix 1 for colours and Appendix 2 for light characteristics), the FAA AC 150/5345 equipment specifications and the national regulator's rules."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does colour matter in airfield lighting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Different colours convey specific information to pilots, such as white for runway edge and centreline lights, green for threshold, red for runway end and stop bars, blue for taxiway edge and yellow for caution zones. Photometric testing verifies that chromaticity falls inside the Annex 14 Appendix 1 colour boundaries, at every brightness step. If colour shifts through filter ageing, lamp or LED degradation or the wrong filter, pilots may misinterpret the signal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does candela measure in AGL?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Candela measures luminous intensity, the light emitted in a particular direction. It is not the same as total light output (lumens) or illuminance on a surface (lux). If intensity is too low the light may appear dim, and if it is too high it may cause glare, so standards define it mainly as isocandela diagrams with minimum intensities at defined angles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does coverage mean in AGL photometry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Coverage is the direction and spread of the light beam, which must reach the pilot's viewing position during aircraft operations. A laboratory test confirms the fitting's beam pattern is correct, and a field check confirms the installed fitting is aimed correctly. A compliant fitting that is rotated or tilted after installation or maintenance will still send the wrong signal."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does configuration cover and how is it verified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Configuration is how individual lights are arranged and installed across the airfield, including spacing, alignment, installation height and layout compliance. For example, runway edge lights are spaced at not more than 60 m on instrument runways. Unlike colour, candela and coverage, it is not measured in a photometric laboratory but verified by survey, inspection against the approved layout and flight inspection."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why can't AGL performance be judged by brightness alone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Effectiveness depends on whether the light performs exactly as required, not just whether it turns on. Each fitting must deliver the correct signal, in the correct direction, with the correct intensity and at the correct location, which is why the 4Cs must be satisfied together and not one at a time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a fitting stay compliant after it passes testing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not necessarily. Compliance at the time of testing is not the end of the story, because lamp or LED ageing, dirt, water ingress and lens damage all reduce in-service intensity. This is why routine measurement and maintenance limits matter."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style id="legal-notice-css">
+.legal-banner{max-width:1300px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:768px){.legal-box{padding:20px 16px;}.legal-wrap{margin:40px auto 30px;}}
+</style>
+<style>
+/* LEGAL-NOTICE align to page column */
+.legal-banner,.legal-wrap{max-width:900px;}
+</style>
+
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">RAHUL <span>SHARMA</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="technical-articles.html" class="active">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <div class="hamburger" aria-label="Menu" role="button"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span>
+        <a href="technical-articles.html">Technical Articles</a><span class="sep">/</span>
+        <span class="current">The 4Cs of AGL Photometry</span>
+    </div>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational guidance for qualified AGL and aerodrome personnel. It is not an approved procedure, design, specification or regulatory instruction and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures, the approved design or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+
+    <div class="article-hero">
+        <div class="page-tag"><i class="fa-solid fa-palette"></i> AGL Photometry · Technical Guide</div>
+        <h1 class="article-title">The 4Cs of AGL Photometry: Colour, Candela, Coverage, and Configuration</h1>
+        <p class="article-lede">The effectiveness of an airfield light is not determined by whether it turns on. It is determined by whether it delivers the correct visual signal, in the correct direction, with the correct intensity, at the correct location — the 4Cs.</p>
+        <div class="author-row">
+            <div class="author-avatar">RS</div>
+            <div class="author-info">
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial · AGL Photometry Specialist</p>
+            </div>
+            <div class="article-meta-strip">
+                <span><i class="fa-solid fa-calendar"></i> March 16, 2026</span>
+                <span><i class="fa-solid fa-rotate"></i> Updated October 27, 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <article class="article-body">
+        <p>Airfield Ground Lighting (AGL) systems are designed to provide precise visual guidance to pilots during taxiing, landing, and takeoff. However, the effectiveness of these lights is not determined simply by whether they turn on or off. What truly matters is whether the light performs exactly as required for safe aircraft operations.</p>
+        <p>This is where the concept of the 4Cs of AGL Photometry becomes important. These four parameters — Colour, Candela, Coverage, and Configuration — evaluate whether an AGL fitting delivers the correct visual signal to pilots, and together they determine whether a lighting system is compliant with aviation standards and effective in real operational conditions.</p>
+        <p>A note on terminology: the &ldquo;4Cs&rdquo; is a practical teaching framework used in this article, not a term defined by ICAO or the FAA. The underlying requirements come from ICAO Annex 14 Volume I (Chapter 5, with Appendix 1 for colours and Appendix 2 for light characteristics), the FAA AC 150/5345 equipment specifications, and the national regulator&rsquo;s rules (in India, the DGCA aerodrome requirements). Always check the current official edition.</p>
+
+        <div class="toc-block">
+            <div class="toc-label">In This Article</div>
+            <ul class="toc-list">
+                <li><a href="#colour"><span class="toc-num">01</span> Colour – Correct Visual Identification</a></li>
+                <li><a href="#candela"><span class="toc-num">02</span> Candela (Intensity) – Adequate Light Output</a></li>
+                <li><a href="#coverage"><span class="toc-num">03</span> Coverage – Correct Beam Orientation</a></li>
+                <li><a href="#configuration"><span class="toc-num">04</span> Configuration – Placement and Layout</a></li>
+                <li><a href="#faq"><span class="toc-num">05</span> Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <div class="key-takeaway">
+            <div class="kt-icon"><i class="fa-solid fa-star"></i></div>
+            <div>
+                <div class="kt-label">Key Takeaway</div>
+                <p>The 4Cs transform airfield lighting from simple illumination into precise visual guidance for pilots — Colour, Candela, Coverage, and Configuration together, not any single parameter alone.</p>
+            </div>
+        </div>
+
+        <div class="cs-grid">
+            <div class="cs-card"><div class="cs-letter">C1</div><strong>Colour</strong><span>Correct chromaticity for the signal being sent</span></div>
+            <div class="cs-card"><div class="cs-letter">C2</div><strong>Candela</strong><span>Adequate, controlled light intensity</span></div>
+            <div class="cs-card"><div class="cs-letter">C3</div><strong>Coverage</strong><span>Beam reaching the correct viewing angle</span></div>
+            <div class="cs-card"><div class="cs-letter">C4</div><strong>Configuration</strong><span>Correct placement and system layout</span></div>
+        </div>
+
+        <div class="art-section" id="colour">
+            <div class="art-section-head">
+                <div class="art-section-num">01</div>
+                <h2>Colour – Correct Visual Identification</h2>
+            </div>
+            <p>Colour is one of the most important visual signals in airfield lighting. Different colours are used to convey specific information to pilots:</p>
+            <div class="colour-grid">
+                <div class="colour-item"><span class="swatch" style="background:#f0f4ff;"></span><strong>White</strong><span>Runway edge lights, runway centreline and touchdown zone lights (with colour changes towards the runway end, see Red and Yellow)</span></div>
+                <div class="colour-item"><span class="swatch" style="background:#2ecc71;"></span><strong>Green</strong><span>Runway threshold and wing bars (approach side); taxiway centreline lights</span></div>
+                <div class="colour-item"><span class="swatch" style="background:#E63946;"></span><strong>Red</strong><span>Runway end lights, stop bars, and the final stretch of the runway centreline (alternating red and white before the red-only section)</span></div>
+                <div class="colour-item"><span class="swatch" style="background:#3aa0ff;"></span><strong>Blue</strong><span>Taxiway edge lights</span></div>
+                <div class="colour-item"><span class="swatch" style="background:#FFB400;"></span><strong>Yellow (often called amber)</strong><span>Caution zone: runway edge lights over the last 600 m or one-third of the runway, whichever is less (ICAO; the FAA uses a longer zone, on instrument runways); also runway guard lights and rapid exit taxiway indicator lights</span></div>
+            </div>
+            <p>Photometric testing verifies that each light produces chromaticity coordinates inside the colour boundaries defined in aviation standards (ICAO Annex 14 Appendix 1; FAA AC 150/5345-46 for fixtures). Colour is tested at every brightness step, because the filtered light from an incandescent or halogen lamp shifts towards red/yellow as the lamp is dimmed, whereas LED fittings are generally more stable but must still be verified.</p>
+            <p class="closing-line">If the colour shifts outside the allowed limits &mdash; through filter ageing, lamp or LED degradation, or the wrong filter being fitted &mdash; pilots may misinterpret the signal, especially during night or low-visibility operations.</p>
+        </div>
+
+        <div class="art-section" id="candela">
+            <div class="art-section-head">
+                <div class="art-section-num">02</div>
+                <h2>Candela (Intensity) – Adequate Light Output</h2>
+            </div>
+            <p>Candela measures luminous intensity: the light emitted in a particular direction. It is not the same as total light output (lumens) or the illuminance on a surface (lux). In AGL systems, the intensity in each direction must be carefully controlled.</p>
+            <ul class="insight-list">
+                <li><i class="fa-solid fa-circle-exclamation"></i> Too low: the light may appear dim or difficult to see</li>
+                <li><i class="fa-solid fa-circle-exclamation"></i> Too high: it may cause glare and reduce pilot visibility</li>
+            </ul>
+            <p>International standards such as ICAO Annex 14 (Appendix 2) and the FAA specifications define the required intensity for each type of airfield light, mainly as isocandela diagrams giving minimum intensities at defined angles and limits on how intensity varies across the main beam. Photometric measurements, taken with the fitting at its rated current and at each brightness step, confirm that it produces the required intensity at those angles.</p>
+            <p>Compliance at the time of testing is not the end of the story: lamp or LED ageing, dirt, water ingress and lens damage all reduce in-service intensity, which is why routine measurement and maintenance limits matter.</p>
+            <p class="closing-line">This ensures that pilots receive a clear and comfortable visual signal, even during challenging environmental conditions.</p>
+        </div>
+
+        <div class="art-section" id="coverage">
+            <div class="art-section-head">
+                <div class="art-section-num">03</div>
+                <h2>Coverage – Correct Beam Orientation</h2>
+            </div>
+            <p>Coverage refers to the direction and spread of the light beam emitted by the fitting. Airfield lights are designed to direct light toward specific viewing angles that correspond to a pilot's line of sight during aircraft operations:</p>
+            <table class="compare-table">
+                <thead>
+                    <tr><th>Fitting Type</th><th>Coverage Requirement</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td data-label="Fitting Type">Runway edge lights</td><td data-label="Coverage Requirement">Visible from approach and runway roll angles</td></tr>
+                    <tr><td data-label="Fitting Type">Taxiway lights</td><td data-label="Coverage Requirement">Guidance along the taxi route, with beam spread suited to the type (edge, centreline, curves)</td></tr>
+                    <tr><td data-label="Fitting Type">Approach lights</td><td data-label="Coverage Requirement">Aimed (vertical angle and alignment) so the beam is seen along the aircraft descent path</td></tr>
+                    <tr><td data-label="Fitting Type">In-pavement centreline and touchdown zone lights</td><td data-label="Coverage Requirement">Beam aligned along the runway direction, visible from the approach and roll-out</td></tr>
+                </tbody>
+            </table>
+            <p>Photometric testing verifies the horizontal and vertical beam distribution to ensure that the light reaches the pilot's viewing position without unnecessary light spill or loss of intensity.</p>
+            <p>Two checks are involved. The laboratory test confirms that the fitting&rsquo;s beam pattern is correct; the field check confirms that the installed fitting is aimed correctly. A fully compliant fitting that is rotated or tilted out of position after installation or maintenance will still send the wrong signal to the pilot.</p>
+            <p class="closing-line">Proper beam coverage ensures that the lighting system performs exactly as intended in real operational scenarios.</p>
+        </div>
+
+        <div class="art-section" id="configuration">
+            <div class="art-section-head">
+                <div class="art-section-num">04</div>
+                <h2>Configuration – Correct Placement and System Layout</h2>
+            </div>
+            <p>Configuration refers to how individual lights are arranged and installed across the airfield. Even if each fitting performs correctly on its own, improper placement or spacing can reduce the effectiveness of the entire lighting system. Configuration checks ensure:</p>
+            <div class="measure-grid">
+                <div class="measure-card"><i class="fa-solid fa-ruler-horizontal"></i><strong>Correct Spacing</strong><span>Uniform longitudinal and lateral spacing (for example, runway edge lights are spaced at not more than 60 m on instrument runways)</span></div>
+                <div class="measure-card"><i class="fa-solid fa-road"></i><strong>Proper Alignment</strong><span>Along runway or taxiway geometry</span></div>
+                <div class="measure-card"><i class="fa-solid fa-arrows-up-down"></i><strong>Installation Height</strong><span>Elevated lights within height limits and frangible; in-pavement lights flush within allowed projection</span></div>
+                <div class="measure-card"><i class="fa-solid fa-scale-balanced"></i><strong>Layout Compliance</strong><span>Meeting requirements set by aviation standards</span></div>
+            </div>
+            <p>Unlike colour, candela and beam coverage, configuration is not measured in a photometric laboratory. It is verified by survey, inspection against the approved layout, and flight inspection.</p>
+            <p class="closing-line">When the configuration is correct, the lighting system appears uniform and predictable to pilots.</p>
+        </div>
+
+        <div class="diagram-block">
+            <h3>The 4Cs Framework at a Glance</h3>
+            <p class="diagram-sub">Colour → Candela → Coverage → Configuration</p>
+            <svg viewBox="0 0 680 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: an AGL fitting is evaluated on Colour, Candela, Coverage and Configuration so the pilot receives the correct visual signal">
+                <defs>
+                    <marker id="fcArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                        <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                    </marker>
+                </defs>
+
+                <rect x="190" y="20" width="300" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="46" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="15" fill="#f0f4ff">AGL LIGHTING SYSTEM</text>
+                <text x="340" y="63" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">Every fitting evaluated against 4 criteria</text>
+
+                <line x1="340" y1="76" x2="340" y2="100" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#fcArrow)"/>
+
+                <rect x="70" y="104" width="540" height="118" rx="12" fill="rgba(255,255,255,0.02)" stroke="#24365a" stroke-width="1.5"/>
+                <text x="340" y="124" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="12" letter-spacing="1" fill="#FFB400">THE 4 PHOTOMETRIC CRITERIA</text>
+
+                <rect x="82" y="136" width="125" height="72" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="144.5" y="160" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="15" fill="#00d4ff">C1 · COLOUR</text>
+                <text x="144.5" y="178" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Correct chromaticity</text>
+                <text x="144.5" y="192" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">for the signal sent</text>
+
+                <rect x="219" y="136" width="125" height="72" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="281.5" y="160" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="15" fill="#00d4ff">C2 · CANDELA</text>
+                <text x="281.5" y="178" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Controlled, adequate</text>
+                <text x="281.5" y="192" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">light intensity</text>
+
+                <rect x="356" y="136" width="125" height="72" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="418.5" y="160" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="1" font-size="15" fill="#00d4ff">C3 · COVERAGE</text>
+                <text x="418.5" y="178" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Beam reaching the</text>
+                <text x="418.5" y="192" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">correct viewing angle</text>
+
+                <rect x="493" y="136" width="125" height="72" rx="8" fill="rgba(0,212,255,0.06)" stroke="rgba(0,212,255,0.28)" stroke-width="1"/>
+                <text x="555.5" y="155" text-anchor="middle" font-family="Bebas Neue, sans-serif" letter-spacing="0.5" font-size="13.5" fill="#00d4ff">C4 · CONFIGURATION</text>
+                <text x="555.5" y="176" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">Correct placement</text>
+                <text x="555.5" y="190" text-anchor="middle" font-family="Barlow, sans-serif" font-size="9.5" fill="#c8d8f0">and system layout</text>
+
+                <line x1="340" y1="222" x2="340" y2="246" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#fcArrow)"/>
+
+                <rect x="170" y="250" width="340" height="72" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+                <text x="340" y="277" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14.5" fill="#f0f4ff">PILOT RECEIVES THE CORRECT VISUAL SIGNAL</text>
+                <text x="340" y="296" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">Right colour, right intensity, right direction,</text>
+                <text x="340" y="310" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10.5" fill="#c8d8f0">right position — all four, together</text>
+            </svg>
+        </div>
+
+        <div class="conclusion-block">
+            <h3>Conclusion</h3>
+            <p>The performance of an Airfield Ground Lighting system cannot be evaluated by brightness alone. The true effectiveness of the system depends on the combined performance of the 4Cs: Colour, Candela, Coverage, and Configuration.</p>
+            <p>These parameters ensure that every AGL fitting delivers the correct visual signal, in the correct direction, with the correct intensity, and at the correct location. The 4Cs framework therefore provides a practical way to evaluate AGL photometric performance and understand why these parameters are essential for aviation safety and regulatory compliance.</p>
+        </div>
+
+        <div class="pull-quote">
+            <span class="quote-mark">"</span>
+            <p>The 4Cs transform airfield lighting from <span>simple illumination into precise visual guidance for pilots.</span></p>
+        </div>
+
+        <div class="art-section" id="faq">
+            <div class="art-section-head">
+                <div class="art-section-num">05</div>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary>What are the 4Cs of AGL photometry?</summary>
+                    <div class="faq-answer"><p>The 4Cs are Colour, Candela, Coverage and Configuration. They are a practical teaching framework, not a term defined by ICAO or the FAA, and together they evaluate whether an AGL fitting delivers the correct visual signal to pilots. The underlying requirements come from ICAO Annex 14 Volume I (Chapter 5, Appendix 1 for colours and Appendix 2 for light characteristics), the FAA AC 150/5345 equipment specifications and the national regulator's rules.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why does colour matter in airfield lighting?</summary>
+                    <div class="faq-answer"><p>Different colours convey specific information to pilots, such as white for runway edge and centreline lights, green for threshold, red for runway end and stop bars, blue for taxiway edge and yellow for caution zones. Photometric testing verifies that chromaticity falls inside the Annex 14 Appendix 1 colour boundaries, at every brightness step. If colour shifts through filter ageing, lamp or LED degradation or the wrong filter, pilots may misinterpret the signal.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does candela measure in AGL?</summary>
+                    <div class="faq-answer"><p>Candela measures luminous intensity, the light emitted in a particular direction. It is not the same as total light output (lumens) or illuminance on a surface (lux). If intensity is too low the light may appear dim, and if it is too high it may cause glare, so standards define it mainly as isocandela diagrams with minimum intensities at defined angles.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does coverage mean in AGL photometry?</summary>
+                    <div class="faq-answer"><p>Coverage is the direction and spread of the light beam, which must reach the pilot's viewing position during aircraft operations. A laboratory test confirms the fitting's beam pattern is correct, and a field check confirms the installed fitting is aimed correctly. A compliant fitting that is rotated or tilted after installation or maintenance will still send the wrong signal.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>What does configuration cover and how is it verified?</summary>
+                    <div class="faq-answer"><p>Configuration is how individual lights are arranged and installed across the airfield, including spacing, alignment, installation height and layout compliance. For example, runway edge lights are spaced at not more than 60 m on instrument runways. Unlike colour, candela and coverage, it is not measured in a photometric laboratory but verified by survey, inspection against the approved layout and flight inspection.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Why can't AGL performance be judged by brightness alone?</summary>
+                    <div class="faq-answer"><p>Effectiveness depends on whether the light performs exactly as required, not just whether it turns on. Each fitting must deliver the correct signal, in the correct direction, with the correct intensity and at the correct location, which is why the 4Cs must be satisfied together and not one at a time.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary>Does a fitting stay compliant after it passes testing?</summary>
+                    <div class="faq-answer"><p>Not necessarily. Compliance at the time of testing is not the end of the story, because lamp or LED ageing, dirt, water ingress and lens damage all reduce in-service intensity. This is why routine measurement and maintenance limits matter.</p></div>
+                </details>
+            </div>
+        </div>
+    </article>
+
+    <p class="signoff">— <strong>Rahul Sharma</strong></p>
+
+    <div class="topic-tags">
+        <span>AGL Photometry</span>
+        <span>Colour / Chromaticity</span>
+        <span>Candela</span>
+        <span>Beam Coverage</span>
+        <span>Configuration</span>
+        <span>ICAO Annex 14</span>
+    </div>
+
+    <div class="author-bio">
+        <div class="author-bio-card">
+            <div class="author-bio-avatar">RS</div>
+            <div>
+                <h4>Rahul Sharma</h4>
+                <p>Manager – Technical &amp; Commercial | AGL Photometry Specialist | Airfield Ground Lighting (AGL) | ICAO &amp; FAA Compliance | Project Execution. Writing practical, field-based technical references as part of the AGL Knowledge Hub.</p>
+                <div class="abio-links">
+                    <a href="index.html#about">About Rahul <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="technical-articles.html">More Articles <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-block">
+        <h3>Explore More AGL Photometry</h3>
+        <div class="related-grid">
+            <a href="article-why-agl-photometry-is-important.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-lightbulb"></i> Why AGL Photometry Is Important</div>
+                <div class="rc-sub">A definitive field reference on AGL photometry</div>
+            </a>
+            <a href="article-what-agl-photometry-measures.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-magnifying-glass-chart"></i> What AGL Photometry Actually Measures</div>
+                <div class="rc-sub">Beyond lux values: intensity, beam, and uniformity</div>
+            </a>
+            <a href="standards-companion.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-scale-balanced"></i> AGL Standards Companion</div>
+                <div class="rc-sub">ICAO, FAA, IS &amp; IEC requirements explained</div>
+            </a>
+            <a href="component-library.html" class="related-card">
+                <div class="rc-title"><i class="fa-solid fa-layer-group"></i> AGL Component Library</div>
+                <div class="rc-sub">Understand lighting components</div>
+            </a>
+        </div>
+    </div>
+
+    <div class="article-nav-links">
+        <a href="technical-articles.html" class="anav-btn"><i class="fa-solid fa-arrow-left"></i> All Technical Articles</a>
+        <a href="knowledge-hub.html" class="anav-btn gold">Explore Knowledge Hub <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE-CENTRE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or on any record downloaded from it.</p><div class="legal-addendum"><strong>Specific to this page:</strong> Photometric content on these pages is educational. Measurement methods, grids, spacings, equipment, uniformity and tolerance figures, lux and candela values and worked examples are generic and indicative. They are not a test procedure, calibration method or acceptance criteria for any fixture or aerodrome. A measurement made by following these pages is not a photometric certificate, calibration, type approval, flight inspection or finding of compliance with any standard. Results depend on calibrated, traceable instruments, the test set-up and the applicable specification, and interpretation and acceptance remain with the competent, authorised person, the aerodrome operator and the regulator. Verify required values in the current official standard or the approved design.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome personnel. It is not professional engineering, legal or regulatory advice, and using it creates no professional or client relationship. Learning-path and Academy references describe stages of learning only and are not a certification, accreditation or authorisation.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting fixtures can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises return to service, the installation, adjustment or modification of any aviation visual aid, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards, regulations and named sources.</strong> References to ICAO, FAA, EASA, DGCA, AAI, IEC, IEEE, ISO, BIS and other standards, regulations, AIP material and published sources, and statements about what a named airport, State or authority has published, are summaries for orientation as understood when the page was prepared. They are not official text, may be incomplete, amended or superseded, and have not been independently verified. Consult the current official editions, including the current AIP, AIRAC cycle and NOTAMs. Following this content does not guarantee compliance with any law, standard or approval, and official documents, regulations, the approved design and manufacturers&rsquo; instructions always prevail.</li><li><strong>Generic content; no warranty.</strong> Values, tolerances, intervals, sequences, examples, checklists and pass/fail or &ldquo;compliant&rdquo; wording are generic and indicative; real installations differ in design, make, model, age and condition. Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Diagrams.</strong> Diagrams on this page are original schematic illustrations, are not to scale and are not engineering drawings. Do not use them to work on, connect, set or modify equipment.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, EASA, the IEC, DGCA, AAI, any airport, regulator, employer or equipment manufacturer. Third-party names, standard designations and trademarks (including Megger&reg;) belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. The text, structure, diagrams and compilation of this page are protected by copyright. You may read it and use it for personal reference and internal training, keeping this notice attached; any other copying, republication, scraping or commercial use needs our prior written permission. Credited third-party photographs remain subject to their owners&rsquo; terms.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern, copyright, privacy or other rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms, privacy and governing law: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+<footer>
+        <p>© 2026 <strong>Rahul Sharma</strong> · AGL Specialist · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="technical-articles.html">Articles</a>
+            <a href="index.html#contact">Contact</a>
+        <a href="legal-notice.html">Legal &amp; Disclaimer</a> </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+</body>
+</html>

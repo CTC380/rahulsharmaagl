@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taxiway Centreline vs Runway Centreline Light: AGL Comparison</title>
+    <meta name="description" content="Taxiway Centreline vs Runway Centreline light compared: green lights guiding the taxi route versus white lights providing alignment reference during takeoff." />
+    <meta name="keywords" content="taxiway centreline light, runway centreline light, green centreline lighting, white centreline lighting, runway alignment lighting, centreline light colour comparison, difference between runway centerline and taxiway centerline lights" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html" />
+    <meta property="og:title" content="Taxiway Centreline vs Runway Centreline Light | Precision AGL Academy" />
+    <meta property="og:description" content="Taxiway Centreline vs Runway Centreline light compared: green lights guiding the taxi route versus white lights providing alignment reference during takeoff." />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html" />
+    <meta name="twitter:title" content="Taxiway Centreline vs Runway Centreline Light | Precision AGL Academy" />
+    <meta name="twitter:description" content="Taxiway Centreline vs Runway Centreline light compared: green lights guiding the taxi route versus white lights providing alignment reference during takeoff." />
+    <meta property="og:image" content="https://rahulsharmaagl.in/assets/og/comparison-taxiway-centreline-vs-runway-centreline.jpg" />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og/comparison-taxiway-centreline-vs-runway-centreline.jpg" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── HERO ── */
+        .page-hero {
+            padding: 40px 0 30px;
+        }
+        .page-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .vs-title {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+        h1.vs-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 58px;
+            letter-spacing: 1.5px;
+            line-height: 1;
+        }
+        .vs-title .side-a { color: #2ecc71; }
+        .vs-title .side-b { color: #eef2fb; }
+        .vs-badge-lg {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: var(--dark);
+            background: var(--white);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .page-sub {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 800px;
+            margin-top: 18px;
+        }
+        @media(max-width:700px) {
+            h1.vs-title { font-size: 36px; }
+        }
+
+        /* ── SECTION ── */
+        .section {
+            padding: 46px 0;
+            border-top: 1px solid var(--border);
+        }
+        .section:first-of-type { border-top: none; }
+        .section-tag {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            opacity: .7;
+            margin-bottom: 8px;
+        }
+        .section h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+        .section h3 {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            color: var(--gold);
+            margin: 22px 0 10px;
+        }
+        .section p {
+            font-size: 15px;
+            line-height: 1.85;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+        .section ul {
+            margin: 10px 0 16px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+        .section ul li {
+            font-size: 14.5px;
+            line-height: 1.7;
+            color: var(--text);
+            padding-left: 24px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .section ul li::before {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 9px;
+            color: var(--gold);
+            position: absolute;
+            left: 4px;
+            top: 5px;
+        }
+
+        /* ── SNAPSHOT TABLE ── */
+        .compare-table-wrap {
+            overflow-x: auto;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+        table.compare-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+            min-width: 640px;
+        }
+        table.compare-table th, table.compare-table td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+        table.compare-table thead th {
+            background: rgba(255, 255, 255, 0.04);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+        table.compare-table thead th.col-param { color: var(--text); }
+        table.compare-table thead th.col-a { color: #2ecc71; }
+        table.compare-table thead th.col-b { color: #eef2fb; }
+        table.compare-table td.param-cell {
+            font-weight: 600;
+            color: var(--white);
+            font-size: 13px;
+            white-space: nowrap;
+        }
+        table.compare-table td { color: var(--text); }
+        table.compare-table tbody tr:last-child td { border-bottom: none; }
+        table.compare-table tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+        /* ── TWO-COL INFO CARDS ── */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        @media(max-width:700px) {
+            .info-grid { grid-template-columns: 1fr; }
+        }
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+        }
+        .info-card.side-a-card { border-top: 3px solid #2ecc71; }
+        .info-card.side-b-card { border-top: 3px solid #eef2fb; }
+        .info-card h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 22px;
+            letter-spacing: .5px;
+            margin-bottom: 12px;
+        }
+        .info-card.side-a-card h4 { color: #2ecc71; }
+        .info-card.side-b-card h4 { color: #eef2fb; }
+        .info-card p { font-size: 14px; }
+        .info-card ul li { font-size: 13.5px; }
+
+        /* ── CALLOUT ── */
+        .callout {
+            display: flex;
+            gap: 16px;
+            padding: 22px 24px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.05);
+        }
+        .callout i {
+            color: var(--gold);
+            font-size: 22px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .callout p { margin-bottom: 0; color: var(--text); font-size: 14.5px; }
+        .callout strong { color: var(--white); }
+
+        /* ── MYTH GRID ── */
+        .myth-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+        .myth-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+        }
+        .myth-card .myth-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--red);
+            margin-bottom: 6px;
+        }
+        .myth-card .fact-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin: 10px 0 4px;
+        }
+        .myth-card p { margin-bottom: 0; font-size: 14px; }
+
+        /* ── VERDICT ── */
+        .verdict-box {
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            background: linear-gradient(135deg, rgba(255, 180, 0, 0.08), rgba(0, 212, 255, 0.04));
+            border-radius: 16px;
+            padding: 32px;
+        }
+        .verdict-box .verdict-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .verdict-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        .verdict-line {
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+            font-size: 14.5px;
+            color: var(--text);
+        }
+        .verdict-line .vl-tag {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 15px;
+            letter-spacing: .5px;
+            flex-shrink: 0;
+            width: 90px;
+        }
+        .verdict-line.a .vl-tag { color: #2ecc71; }
+        .verdict-line.b .vl-tag { color: #eef2fb; }
+
+        /* ── FAQ ── */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 18px 0;
+            cursor: pointer;
+        }
+        .faq-item:first-child { padding-top: 0; }
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .faq-q i {
+            color: var(--gold);
+            transition: transform .3s;
+            flex-shrink: 0;
+        }
+        .faq-item.open .faq-q i { transform: rotate(45deg); }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .3s ease;
+        }
+        .faq-item.open .faq-a { max-height: 300px; }
+        .faq-a p {
+            padding-top: 12px;
+            font-size: 14px;
+            color: var(--text);
+            margin-bottom: 0;
+        }
+
+        /* ── STANDARDS ── */
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .standards-grid { grid-template-columns: 1fr; }
+        }
+        .standard-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            display: flex;
+            gap: 14px;
+        }
+        .standard-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-top: 2px;
+        }
+        .standard-card h5 {
+            font-size: 13.5px;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .standard-card p {
+            font-size: 12.5px;
+            margin-bottom: 0;
+            opacity: .8;
+        }
+
+        /* ── RELATED ── */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .related-card .rc-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 6px;
+        }
+        .related-card h5 {
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        /* ── DIAGRAM ── */
+        .diagram-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .taxi-diagram {
+            display: flex;
+            align-items: stretch;
+            gap: 28px;
+            width: 100%;
+            max-width: 420px;
+        }
+        .taxi-rail {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .taxi-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .taxi-rail.edge .taxi-dot { background: #eef2fb; box-shadow: 0 0 10px rgba(238,242,251,0.5); }
+        .taxi-rail.centre .taxi-dot { width: 11px; height: 11px; background: #2ecc71; box-shadow: 0 0 10px rgba(46,204,113,0.6); }
+        .taxi-rail.edge:nth-child(1) { border-right: 1px dashed var(--border); padding-right: 20px; }
+        .taxi-rail.edge:nth-child(3) { border-left: 1px dashed var(--border); padding-left: 20px; }
+        .taxi-labels {
+            display: flex;
+            justify-content: space-between;
+            max-width: 420px;
+            margin: 14px auto 0;
+        }
+        .taxi-labels span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+        }
+        .taxi-labels .lbl-edge { color: #eef2fb; }
+        .taxi-labels .lbl-centre { color: #2ecc71; }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong { color: var(--gold); }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+
+        .final-note {
+            font-size: 13.5px;
+            color: var(--text);
+            opacity: .8;
+            font-style: italic;
+            border-left: 3px solid var(--gold);
+            padding-left: 16px;
+        }
+
+        /* ── COLOUR STRIP ── */
+        .colour-strip {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+        @media(max-width:700px) {
+            .colour-strip { grid-template-columns: 1fr; }
+        }
+        .colour-card {
+            border-radius: 14px;
+            padding: 22px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+        }
+        .colour-card.green-c { border-bottom: 3px solid #2ecc71; }
+        .colour-card.white-c { border-bottom: 3px solid #eef2fb; }
+        .colour-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .colour-card.green-c .colour-dot { background: #2ecc71; }
+        .colour-card.white-c .colour-dot { background: #eef2fb; }
+        .colour-card .colour-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .colour-card .colour-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-top: 6px;
+        }
+
+        .qmap-table td:first-child { color: var(--white); font-weight: 500; }
+
+        @media(max-width:600px) {
+            nav { padding: 0 20px; }
+            .breadcrumb { padding: 100px 20px 0; }
+            .container { padding: 0 20px; }
+            footer { padding: 20px; flex-direction: column; text-align: center; }
+        }
+    
+
+        .academy-cta {
+            position: relative;
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(160deg, rgba(255, 180, 0, 0.08), var(--card) 55%);
+            padding: 48px 44px;
+            overflow: hidden;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+            pointer-events: none;
+        }
+        .academy-cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .academy-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .academy-cta h4 {
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+        .academy-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .academy-path span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .academy-path i {
+            color: var(--gold);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .academy-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .academy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .academy-btn-primary {
+            background: var(--gold);
+            color: #060d1a;
+            border: 1px solid var(--gold);
+        }
+        .academy-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .academy-btn-outline {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+        .academy-btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .academy-cta-tagline {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        @media(max-width:600px) {
+            .academy-cta { padding: 32px 22px; }
+            .academy-cta h2 { font-size: 26px; }
+        }
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1100px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html#faq",
+        "url": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html",
+        "inLanguage": "en",
+        "isPartOf": {
+          "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html#article"
+        },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the main difference between a taxiway centreline and a runway centreline light?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Colour, function and phase of flight — the taxiway centreline is green and guides taxi route navigation, while the runway centreline is white and provides runway alignment during takeoff and landing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the taxiway centreline green while the runway centreline is white?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The colour distinction lets a pilot instantly identify which system — and which phase of operation — the centreline belongs to, even at night or in reduced visibility."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the runway centreline ever change colour?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Runway centreline lighting may incorporate other colours in specific portions of the runway, depending on the applicable standard and runway configuration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are both types of centreline light usually inset rather than elevated?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because aircraft can pass directly over the centreline in both cases — an inset fixture avoids interfering with wheel contact along the tracked path."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the taxiway centreline help at curves and intersections?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Taxiway centreline lighting is particularly important on curves and can guide an aircraft through complex taxiway intersections, showing the aircraft's intended path."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the runway centreline used for intersection navigation the way the taxiway centreline is?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Runway centrelines are generally straight along the runway's longitudinal axis, and runway centreline lighting is not primarily intended to function as an intersection-navigation system."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between runway centerline and taxiway centerline lights?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Runway centerline lights are white along most of the runway and change colour near the runway end, and they guide the aircraft during take-off and landing. Taxiway centerline lights are normally green and guide the aircraft along the taxi route at lower speed. They differ in colour, intensity, spacing and function."
+            }
+          }
+        ]
+      }
+    </script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23060d1a%27/%3E%3Cpath d=%27M16 5l2.2 8.8L27 16l-8.8 2.2L16 27l-2.2-8.8L5 16l8.8-2.2z%27 fill=%27%23FFB400%27/%3E%3C/svg%3E" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <meta name="theme-color" content="#060d1a" />
+<style id="agl-shared-fixes">
+/* shared responsive, accessibility & mobile-nav hardening */
+html{-webkit-text-size-adjust:100%}
+img,svg,video{max-width:100%;height:auto}
+.container,.info-card,.callout,.verdict-box,.myth-card,.faq-item,.related-card,.standards-grid>*,.info-grid>*,.vs-title>*{min-width:0}
+.info-card,.callout,.verdict-box,.page-hero p,.vs-title,.vs-title>*,.related-card h3,.related-card h5,.final-note,.diagram-block{overflow-wrap:anywhere}
+.diagram-block{white-space:pre-wrap;max-width:100%}
+.compare-table-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+a:focus-visible,button:focus-visible,.faq-q:focus-visible,.hamburger:focus-visible{outline:2px solid var(--gold,#FFB400);outline-offset:3px;border-radius:4px}
+.hamburger{background:none;border:0;cursor:pointer}
+@media(max-width:900px){
+ .nav-links.mobile-open,.nav-links.open{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:#060d1a;border-bottom:1px solid rgba(255,180,0,.3);padding:10px 0;z-index:1001}
+ .nav-links.mobile-open a,.nav-links.open a{display:block;padding:14px 24px}
+}
+@media(max-width:700px){
+ .vs-title{flex-wrap:wrap}
+ .info-grid,.myth-grid,.standards-grid{grid-template-columns:1fr!important}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html#article",
+    "headline": "Taxiway Centreline vs Runway Centreline Light: AGL Comparison",
+    "description": "Taxiway Centreline vs Runway Centreline light compared: green lights guiding the taxi route versus white lights providing alignment reference during takeoff.",
+    "url": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html"
+    },
+    "inLanguage": "en",
+    "keywords": "taxiway centreline light, runway centreline light, green centreline lighting, white centreline lighting, runway alignment lighting, centreline light colour comparison, difference between runway centerline and taxiway centerline lights",
+    "articleSection": "Taxiway Lighting",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://rahulsharmaagl.in/assets/og/comparison-taxiway-centreline-vs-runway-centreline.jpg"
+    },
+    "isAccessibleForFree": true,
+    "author": {
+      "@type": "Organization",
+      "@id": "https://rahulsharmaagl.in/#organization",
+      "name": "Precision AGL Academy",
+      "url": "https://rahulsharmaagl.in/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://rahulsharmaagl.in/#organization",
+      "name": "Precision AGL Academy",
+      "url": "https://rahulsharmaagl.in/"
+    },
+    "isPartOf": {
+      "@type": "CollectionPage",
+      "@id": "https://rahulsharmaagl.in/agl-comparisons.html#collection",
+      "name": "AGL Comparison Library",
+      "url": "https://rahulsharmaagl.in/agl-comparisons.html"
+    },
+    "breadcrumb": {
+      "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html#breadcrumb"
+    },
+    "hasPart": {
+      "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html#faq"
+    }
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html#breadcrumb",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://rahulsharmaagl.in/index.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Knowledge Hub",
+        "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Comparison Library",
+        "item": "https://rahulsharmaagl.in/agl-comparisons.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "name": "Taxiway Centreline vs Runway Centreline",
+        "item": "https://rahulsharmaagl.in/comparison-taxiway-centreline-vs-runway-centreline.html"
+      }
+    ]
+  }
+</script>
+"<style>
+/* LEGAL-NOTICE v1.0 */
+.legal-banner{max-width:1100px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1100px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+.container .legal-banner{max-width:none;padding:0;margin:14px 0 22px;}
+</style>
+<style id="expert-notes-css">
+.expert-byline{display:flex;align-items:center;gap:14px;margin:-4px 0 22px;}
+.expert-avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#ffd36b);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--dark);flex-shrink:0;}
+.expert-byline-text .name{font-size:14.5px;font-weight:700;color:var(--white);}
+.expert-byline-text .role{font-size:12px;color:var(--text);}
+.expert-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.expert-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;gap:14px;min-width:0;}
+.expert-item>i{color:var(--cyan);font-size:18px;margin-top:2px;flex-shrink:0;}
+.expert-item-head{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;margin-bottom:6px;}
+.expert-item h5{font-size:13.5px;color:var(--white);margin:0;}
+.expert-tag{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--cyan);background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);border-radius:20px;padding:2px 10px;white-space:nowrap;}
+.section .expert-item p{font-size:13.5px;line-height:1.65;margin:0;color:var(--text);}
+@media(max-width:700px){.expert-grid{grid-template-columns:minmax(0,1fr);}}
+</style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html">Components</a></li>
+            <li><a href="agl-comparisons.html" class="active">Comparisons</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+        <button class="hamburger" id="hamburgerBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="knowledge-hub.html">Knowledge Hub</a><span>/</span>
+        <a href="agl-comparisons.html">Comparison Library</a><span>/</span>
+        <span class="current">Taxiway Centreline vs Runway Centreline</span>
+    </div>
+
+    <div class="container" role="main" id="main">
+
+        <!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>General comparison &mdash; not a requirement, specification or recommendation &mdash; read before relying.</strong> This page is an independent educational summary for qualified personnel. It paraphrases standards and practice that are revised from time to time and may be incomplete or out of date; it is not official text of any standard or regulation, not an approved procedure or design, and not operational guidance for pilots or air traffic control. Verify against the current official documents and your project requirements. Series-circuit AGL equipment can carry lethal voltages. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+            <div class="page-tag"><i class="fa-solid fa-route"></i> Centreline Lighting Comparison</div>
+            <h1 class="vs-title">
+                <span class="side-a">Taxiway Centreline</span>
+                <span class="vs-badge-lg">VS</span>
+                <span class="side-b">Runway Centreline</span>
+            </h1>
+            <p class="page-sub">Taxi Route vs Runway Alignment — the green taxiway centreline light guides an aircraft along its intended taxi path, while the white runway centreline light provides the alignment and directional reference during takeoff and landing. Both sit along a centreline, both are commonly inset, but they operate in different phases of flight and answer different pilot questions.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">01 · Snapshot</div>
+            <h2>At a Glance</h2>
+            <div class="compare-table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="col-param">Feature</th>
+                            <th class="col-a">Taxiway Centreline</th>
+                            <th class="col-b">Runway Centreline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="param-cell">Main purpose</td><td>Taxi route guidance</td><td>Runway alignment</td></tr>
+                        <tr><td class="param-cell">Location</td><td>Along taxiway</td><td>Along runway</td></tr>
+                        <tr><td class="param-cell">Primary function</td><td>Directs taxiing aircraft</td><td>Aligns aircraft with runway</td></tr>
+                        <tr><td class="param-cell">Typical light colour</td><td>Green</td><td>White; colour changes may occur toward the runway end</td></tr>
+                        <tr><td class="param-cell">Typical fixture</td><td>Inset</td><td>Inset</td></tr>
+                        <tr><td class="param-cell">Used during</td><td>Taxiing</td><td>Takeoff and landing</td></tr>
+                        <tr><td class="param-cell">Main pilot message</td><td>"Follow this taxi route"</td><td>"This is the runway centre"</td></tr>
+                        <tr><td class="param-cell">Primary concern</td><td>Taxiway navigation</td><td>Runway alignment and position</td></tr>
+                        <tr><td class="param-cell">Relationship to edge lights</td><td>Complements blue edge lights</td><td>Complements runway edge lights</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">02 · Definitions</div>
+            <h2>What Is a Taxiway Centreline &amp; Runway Centreline Light?</h2>
+            <div class="info-grid">
+                <div class="info-card side-a-card">
+                    <h4>Taxiway Centreline Light</h4>
+                    <p>Provides a <strong style="color:var(--white)">continuous visual reference along the intended taxi path</strong>. The pilot uses it to answer: "Where should I taxi?"</p>
+                    <h3 style="margin-top:16px;">Provides a reference for</h3>
+                    <ul>
+                        <li>The designated taxi route</li>
+                        <li>Steering guidance while taxiing</li>
+                        <li>Tracking through curves and intersections</li>
+                        <li>Route guidance at night and in reduced visibility</li>
+                    </ul>
+                </div>
+                <div class="info-card side-b-card">
+                    <h4>Runway Centreline Light</h4>
+                    <p>Provides a visual reference along the <strong style="color:var(--white)">longitudinal centre of the runway</strong>. The pilot uses it to answer: "Am I aligned with the runway?"</p>
+                    <h3 style="margin-top:16px;">Provides a reference for</h3>
+                    <ul>
+                        <li>Runway alignment and positional guidance</li>
+                        <li>Precise tracking during takeoff roll</li>
+                        <li>Precise tracking during landing rollout</li>
+                        <li>Runway reference in low-visibility operations</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">03 · Biggest Difference: Colour &amp; Phase</div>
+            <h2>Green + Taxi vs White + Runway</h2>
+            <p>The fastest way to tell them apart, day or night, is colour combined with the phase of flight they belong to: <strong style="color:var(--white)">green centreline → taxi, white centreline → takeoff/landing</strong>.</p>
+            <div class="colour-strip">
+                <div class="colour-card green-c">
+                    <div class="colour-dot"></div>
+                    <div class="colour-value">Green</div>
+                    <div class="colour-label">Taxiway Centreline</div>
+                </div>
+                <div class="colour-card white-c">
+                    <div class="colour-dot"></div>
+                    <div class="colour-value">White</div>
+                    <div class="colour-label">Runway Centreline</div>
+                </div>
+            </div>
+            <p style="margin-top:20px;margin-bottom:0;">Runway centreline lighting may incorporate other colours in specific portions of the runway, depending on the applicable standard and runway configuration — the green taxiway centreline does not carry that same colour transition.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">04 · Side by Side</div>
+            <h2>How They Sit Between the Edges</h2>
+            <div class="diagram-box">
+                <div>
+                    <div class="taxi-diagram">
+                        <div class="taxi-rail edge"><div class="taxi-dot"></div><div class="taxi-dot"></div><div class="taxi-dot"></div></div>
+                        <div class="taxi-rail centre"><div class="taxi-dot"></div><div class="taxi-dot"></div><div class="taxi-dot"></div></div>
+                        <div class="taxi-rail edge"><div class="taxi-dot"></div><div class="taxi-dot"></div><div class="taxi-dot"></div></div>
+                    </div>
+                    <div class="taxi-labels">
+                        <span class="lbl-edge">Edge</span>
+                        <span class="lbl-centre">Centreline</span>
+                        <span class="lbl-edge">Edge</span>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top:20px;margin-bottom:0;">On a taxiway, the centreline lies between blue edge lights and glows green. On a runway, the centreline lies between the runway edge lights and glows white — in both cases the centreline is the single line the pilot tracks, while the edge lights bound it on either side.</p>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">05 · Pilot Perspective</div>
+            <h2>What the Pilot Sees, Phase by Phase</h2>
+            <div class="info-grid">
+                <div class="info-card side-a-card">
+                    <h4 style="font-size:16px;">While Taxiing</h4>
+                    <p style="margin-bottom:0;">The green centreline tells the pilot where the aircraft should track along the taxi route — the working instruction is simply "follow the green centreline."</p>
+                </div>
+                <div class="info-card side-b-card">
+                    <h4 style="font-size:16px;">During Takeoff / Landing</h4>
+                    <p style="margin-bottom:0;">The white centreline provides a runway alignment reference — the working instruction is "stay on the runway centre" through the takeoff roll or landing rollout.</p>
+                </div>
+            </div>
+            <div class="callout" style="margin-top:20px;">
+                <i class="fa-solid fa-arrows-left-right-to-line"></i>
+                <p><strong>The simplest way to remember it:</strong> the taxiway centreline answers "where do I go next?" while the runway centreline answers "am I straight?" One is a route to follow; the other is a precise alignment reference.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">06 · Installation</div>
+            <h2>Both Are Commonly Inset</h2>
+            <p>Both systems commonly use inset fixtures because aircraft can pass directly over the centreline. The physical installation is similar in principle, but the function and operating environment differ — one guides ground movement, the other guides a high-speed, precision-critical phase of flight.</p>
+            <div class="compare-table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="col-param">Installation</th>
+                            <th class="col-a">Taxiway Centreline</th>
+                            <th class="col-b">Runway Centreline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="param-cell">Typical fixture</td><td>Inset</td><td>Inset</td></tr>
+                        <tr><td class="param-cell">Why inset</td><td>Aircraft may pass directly over the centreline while taxiing</td><td>Aircraft may pass directly over the centreline during takeoff/landing roll</td></tr>
+                        <tr><td class="param-cell">Colour</td><td>Green throughout</td><td>White, with colour changes possible toward the runway end</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">07 · Curves &amp; Intersections</div>
+            <h2>Where Each System Provides Guidance</h2>
+            <div class="info-grid">
+                <div class="info-card side-a-card">
+                    <h4 style="font-size:16px;">On Curves &amp; at Intersections</h4>
+                    <p style="margin-bottom:0;">Taxiway centreline lighting is particularly important on curves and can guide an aircraft through complex taxiway intersections, helping the pilot identify the intended taxi route.</p>
+                </div>
+                <div class="info-card side-b-card">
+                    <h4 style="font-size:16px;">Straight-Line Reference</h4>
+                    <p style="margin-bottom:0;">Runway centrelines are generally straight along the runway's longitudinal axis. Runway centreline lighting is not primarily intended to function as an intersection-navigation system.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">08 · Low-Visibility Operations</div>
+            <h2>Which Matters More When Visibility Drops?</h2>
+            <p>Both systems become especially valuable when visual references are reduced, but for different reasons. The taxiway centreline provides visual guidance while taxiing, especially on curves and at intersections. The runway centreline provides an important runway reference during takeoff and landing, when precise alignment matters most.</p>
+            <div class="callout">
+                <i class="fa-solid fa-cloud"></i>
+                <p><strong>Easy memory:</strong> green centreline = taxi route in low visibility; white centreline = runway alignment in low visibility. Neither substitutes for the other — a pilot moves from one system to the other as the aircraft transitions between taxiway and runway.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">09 · Relationship With Edge Lights</div>
+            <h2>Centreline + Edge, Together</h2>
+            <div class="info-grid">
+                <div class="info-card side-a-card">
+                    <h4 style="font-size:16px;">Taxiway</h4>
+                    <p style="margin-bottom:0;">Blue lights mark the taxiway edge; green lights mark the centreline — edge defines the limit, centreline defines the path within it.</p>
+                </div>
+                <div class="info-card side-b-card">
+                    <h4 style="font-size:16px;">Runway</h4>
+                    <p style="margin-bottom:0;">Runway edge lights mark the runway limit; the runway centreline marks runway alignment — edge defines the boundary, centreline defines the tracking reference.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">10 · Question Map</div>
+            <h2>What Each Centreline Answers</h2>
+            <div class="compare-table-wrap">
+                <table class="compare-table qmap-table">
+                    <thead>
+                        <tr>
+                            <th class="col-param">Question</th>
+                            <th style="color:var(--gold);">Light</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Where am I?</td><td style="color:#2ecc71;">On the taxi route (Taxiway Centreline)</td></tr>
+                        <tr><td>Where should I steer while taxiing?</td><td style="color:#2ecc71;">Taxiway Centreline</td></tr>
+                        <tr><td>Am I aligned with the runway?</td><td style="color:#eef2fb;">Runway Centreline</td></tr>
+                        <tr><td>What guides me through a curved taxi route?</td><td style="color:#2ecc71;">Taxiway Centreline</td></tr>
+                        <tr><td>What guides me during takeoff roll?</td><td style="color:#eef2fb;">Runway Centreline</td></tr>
+                        <tr><td>What guides me during landing rollout?</td><td style="color:#eef2fb;">Runway Centreline</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">11 · Full Comparison</div>
+            <h2>Taxiway Centreline vs Runway Centreline</h2>
+            <div class="compare-table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th class="col-param">Parameter</th>
+                            <th class="col-a">Taxiway Centreline</th>
+                            <th class="col-b">Runway Centreline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="param-cell">Where am I?</td><td>On the taxi route</td><td>On the runway</td></tr>
+                        <tr><td class="param-cell">Where should I steer?</td><td>Along taxi route</td><td>Along runway axis</td></tr>
+                        <tr><td class="param-cell">Primary operation</td><td>Taxi</td><td>Takeoff / Landing</td></tr>
+                        <tr><td class="param-cell">Typical colour</td><td>Green</td><td>White</td></tr>
+                        <tr><td class="param-cell">Curved-path guidance</td><td>Yes</td><td>Normally not the primary purpose</td></tr>
+                        <tr><td class="param-cell">Intersection guidance</td><td>Yes</td><td>Not primary</td></tr>
+                        <tr><td class="param-cell">Alignment function</td><td>Taxiway alignment</td><td>Runway alignment</td></tr>
+                        <tr><td class="param-cell">Typical fixture</td><td>Inset</td><td>Inset</td></tr>
+                        <tr><td class="param-cell">Low visibility role</td><td>Taxi route guidance</td><td>Runway alignment reference</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">12 · Myth vs Fact</div>
+            <h2>Common Colour Confusion</h2>
+            <div class="myth-grid">
+                <div class="myth-card">
+                    <div class="myth-label">Myth: Both centrelines do the same job because they're both "centreline lights"</div>
+                    <div class="fact-label">Fact</div>
+                    <p>They serve different purposes tied to different phases of flight — the taxiway centreline is a route reference for ground movement, while the runway centreline is a precision alignment reference for takeoff and landing.</p>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-label">Myth: The colour change never matters once you're past the threshold</div>
+                    <div class="fact-label">Fact</div>
+                    <p>Runway centreline lighting may incorporate other colours in specific portions of the runway depending on the applicable standard and runway configuration — the colour scheme itself can carry positional meaning.</p>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-label">Myth: A green light near a runway is always a runway light</div>
+                    <div class="fact-label">Fact</div>
+                    <p>Green is characteristic of taxiway centreline lighting, not runway centreline lighting. Runway centreline is normally white, so a green centreline line indicates a taxiway reference, not a runway one.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">13 · Engineering Verdict</div>
+            <h2>Taxiway Centreline vs Runway Centreline</h2>
+            <div class="verdict-box">
+                <div class="verdict-tag"><i class="fa-solid fa-gavel"></i> Engineering Verdict</div>
+                <p><strong>Taxiway and runway centreline lights are complementary systems tied to different phases of flight, not interchangeable variants of the same fixture.</strong> One tells the pilot where to taxi; the other tells the pilot whether the aircraft is aligned with the runway.</p>
+                <p style="margin-bottom:0;">Together with their respective edge lighting, each centreline system gives the pilot a continuous longitudinal reference — green for the taxi route, white for the runway — so the aircraft is never without a clear line to follow, on the ground or during takeoff and landing.</p>
+                <div class="verdict-lines">
+                    <div class="verdict-line a"><span class="vl-tag">Taxiway CL</span><span>Route guidance + taxi phase + "follow this path."</span></div>
+                    <div class="verdict-line b"><span class="vl-tag">Runway CL</span><span>Alignment reference + takeoff/landing phase + "stay on the centre."</span></div>
+                </div>
+            </div>
+            <p class="final-note" style="margin-top:22px;">Easy memory: Green + centreline → taxi. White + centreline → runway.</p>
+        </div>
+
+        <div class="section" id="expert-notes">
+            <div class="section-tag">Field Insight</div>
+            <h2>Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item"><i class="fa-solid fa-palette" aria-hidden="true"></i><div><div class="expert-item-head"><h5 role="heading" aria-level="3">Verify Colour and Pattern</h5><span class="expert-tag">Colour</span></div><p>Check chromaticity and sequence.</p></div></div>
+                <div class="expert-item"><i class="fa-solid fa-bullseye" aria-hidden="true"></i><div><div class="expert-item-head"><h5 role="heading" aria-level="3">Check Alignment</h5><span class="expert-tag">Alignment</span></div><p>Verify level and aim.</p></div></div>
+                <div class="expert-item"><i class="fa-solid fa-water" aria-hidden="true"></i><div><div class="expert-item-head"><h5 role="heading" aria-level="3">Inspect Seals and Drainage</h5><span class="expert-tag">Water</span></div><p>Inset units are vulnerable.</p></div></div>
+                <div class="expert-item"><i class="fa-solid fa-eye" aria-hidden="true"></i><div><div class="expert-item-head"><h5 role="heading" aria-level="3">Inspect at Night</h5><span class="expert-tag">Inspection</span></div><p>Check for gaps.</p></div></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">14 · FAQ</div>
+            <h2>Frequently Asked Questions</h2>
+            <div id="faqList">
+                <div class="faq-item">
+                    <div class="faq-q">What is the main difference between a taxiway centreline and a runway centreline light? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>Colour, function and phase of flight — the taxiway centreline is green and guides taxi route navigation, while the runway centreline is white and provides runway alignment during takeoff and landing.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Why is the taxiway centreline green while the runway centreline is white? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>The colour distinction lets a pilot instantly identify which system — and which phase of operation — the centreline belongs to, even at night or in reduced visibility.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Does the runway centreline ever change colour? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>Runway centreline lighting may incorporate other colours in specific portions of the runway, depending on the applicable standard and runway configuration.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Why are both types of centreline light usually inset rather than elevated? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>Because aircraft can pass directly over the centreline in both cases — an inset fixture avoids interfering with wheel contact along the tracked path.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Does the taxiway centreline help at curves and intersections? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>Yes. Taxiway centreline lighting is particularly important on curves and can guide an aircraft through complex taxiway intersections, showing the aircraft's intended path.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Is the runway centreline used for intersection navigation the way the taxiway centreline is? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>No. Runway centrelines are generally straight along the runway's longitudinal axis, and runway centreline lighting is not primarily intended to function as an intersection-navigation system.</p></div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">What is the difference between runway centerline and taxiway centerline lights? <i class="fa-solid fa-plus"></i></div>
+                    <div class="faq-a"><p>Runway centerline lights are white along most of the runway and change colour near the runway end, and they guide the aircraft during take-off and landing. Taxiway centerline lights are normally green and guide the aircraft along the taxi route at lower speed. They differ in colour, intensity, spacing and function.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">15 · Standards &amp; Reference Basis</div>
+            <h2>Governing Documents</h2>
+            <p style="margin-bottom:20px;">For an actual project design, always verify the current edition of the applicable documents.</p>
+            <div class="standards-grid">
+                <div class="standard-card">
+                    <i class="fa-solid fa-globe"></i>
+                    <div>
+                        <h5>ICAO Annex 14, Volume I</h5>
+                        <p>Aerodrome Design and Operations — taxiway centreline and runway centreline lighting colour, siting, intensity and operational requirements.</p>
+                    </div>
+                </div>
+                <div class="standard-card">
+                    <i class="fa-solid fa-file-shield"></i>
+                    <div>
+                        <h5>FAA AC 150/5340-30</h5>
+                        <p>Design and Installation Details for Airport Visual Aids — taxiway and runway centreline lighting configuration, installation, photometric requirements and electrical systems.</p>
+                    </div>
+                </div>
+                <div class="standard-card">
+                    <i class="fa-solid fa-building-columns"></i>
+                    <div>
+                        <h5>DGCA / AAI Requirements</h5>
+                        <p>For Indian airport projects, also verify applicable DGCA requirements, AAI requirements, airport-specific technical specifications, project drawings and contract specifications.</p>
+                    </div>
+                </div>
+                <div class="standard-card">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <h5>Final Engineering Note</h5>
+                        <p>Do not design a centreline lighting arrangement from a generic web diagram. The final installation drawing should always be developed from the current governing standard, approved airport design and project-specific requirements.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="final-note" style="margin-top:22px;">Taxiway centreline tells you where to taxi. Runway centreline helps you stay aligned with the runway.</p>
+        </div>
+
+        <div class="section">
+            <div class="academy-cta">
+                <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
+                <h2>Compare the Systems. Then Learn How to Engineer Them.</h2>
+                <p>Understanding the difference between AGL systems is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
+                <h4>Build Practical AGL Engineering Skills</h4>
+                <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
+                <div class="academy-path">
+                    <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Design &amp; Electrical Engineering</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Approach Lighting</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Photometry</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Installation &amp; Commissioning</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Maintenance &amp; Troubleshooting</span>
+                </div>
+                <p>Learn how AGL systems work as part of a complete airport lighting system, not just as individual components or configurations.</p>
+                <div class="academy-cta-actions">
+                    <a href="academy.html" class="academy-btn academy-btn-primary"><i class="fa-solid fa-book-open"></i> Explore AGL Courses</a>
+                    <a href="index.html#contact" class="academy-btn academy-btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Your AGL Learning Journey</a>
+                </div>
+                <div class="academy-cta-tagline">Compare. Understand. Apply. Engineer.</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-tag">Related Comparisons</div>
+            <h2>Continue Exploring</h2>
+            <div class="related-grid">
+                <a class="related-card" href="comparison-taxiway-edge-light-vs-taxiway-centreline-light.html">
+                    <div class="rc-tag">Taxiway Lighting</div>
+                    <h5>Taxiway Edge vs Taxiway Centreline</h5>
+                </a>
+                <a class="related-card" href="comparison-blue-edge-light-vs-green-centreline-light.html">
+                    <div class="rc-tag">Taxiway Lighting</div>
+                    <h5>Blue Edge vs Green Centreline</h5>
+                </a>
+                <a class="related-card" href="comparison-runway-edge-light-vs-runway-centreline-light.html">
+                    <div class="rc-tag">Runway &amp; Taxiway Lighting</div>
+                    <h5>Runway Edge vs Centreline</h5>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this page &mdash; Visual aids, approach, runway and taxiway lighting comparisons.</strong> Descriptions of what lights mean, how they are used and what pilots, vehicle operators or air traffic control do are explanations for understanding, not operational procedures, phraseology or instructions, and practice differs between states, aerodromes and systems. Siting, spacing, colour, intensity and category requirements must be taken from the current official standard and the aerodrome&rsquo;s approved design. Nothing here authorises a change of operating category (CAT I/II/III), a NOTAM, return to service or any certification decision.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL), aerodrome electrical and project personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>A comparison is not a requirement or a recommendation.</strong> Tables, &ldquo;at a glance&rdquo; summaries, pros and cons, and statements of which option is typical, preferred or better are simplified and general. They are not specifications, designs, approved procedures or instructions, and the right choice depends on your project specification, the aerodrome&rsquo;s category and approved design, and the competent regulator. Nothing here is an endorsement of any technology, product, supplier or method.</li><li><strong>Standards and regulations.</strong> References to ICAO Annex 14 and other ICAO documents, FAA advisory circulars and orders, IEC, IEEE, ISO, BIS, DGCA, AAI and other standards are paraphrased summaries for orientation, not official text. They may be incomplete or out of date, and editions and amendments are revised from time to time. Consult the current official documents. Following this content does not guarantee compliance with any law, standard, contract or regulatory approval. Contract, specification and official requirements always prevail.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and control equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Explanations of how lights, signs and systems are used by pilots, vehicle operators or air traffic control are for understanding only and are not operational procedures or instructions. Nothing here authorises return to service, a change of operating category (CAT I/II/III), a NOTAM, a flight-inspection outcome or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Values and figures.</strong> Power, current, voltage, photometric, dimensional and time values, categories and tolerances are generic and indicative. Real installations differ by design, make, model, age and condition. Do not use them as design, sizing, test or acceptance criteria without checking the current official source and the manufacturer&rsquo;s data.</li><li><strong>Costs, energy and lifecycle.</strong> Statements about cost, energy saving, lifetime, reliability or maintenance effort are illustrative tendencies, not measured results, forecasts or guarantees, and are not financial, investment or procurement advice.</li><li><strong>Generic content; no warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty, contractual dispute or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, the IEC, IEEE, ISO, BIS, DGCA, AAI, any airport, regulator, certification body or equipment manufacturer. Third-party names, document numbers, standard designations and trademarks belong to their respective owners and are used for identification only.</li><li><strong>Copyright and use.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. You may view this page for personal reference and internal training, keeping this notice attached. You may not copy, republish, redistribute, scrape or commercially use the Comparison Library without our prior written permission.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, outdated reference, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+
+<footer>
+        <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="agl-comparisons.html">Comparisons</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.querySelector('.faq-q').addEventListener('click', () => {
+                const wasOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+                if (!wasOpen) item.classList.add('open');
+            });
+        });
+
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 400);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+
+<script id="agl-nav-fix">
+(function(){var b=document.getElementById('hamburgerBtn'),n=document.getElementById('navLinks');if(!b||!n||b.dataset.bound)return;b.dataset.bound='1';
+function s(o){n.classList.toggle('mobile-open',o);b.classList.toggle('open',o);b.setAttribute('aria-expanded',o?'true':'false');b.setAttribute('aria-label',o?'Close menu':'Open menu')}
+b.addEventListener('click',function(){s(!n.classList.contains('mobile-open'))});
+n.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){s(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')s(false)});})();
+</script>
+</body>
+</html>

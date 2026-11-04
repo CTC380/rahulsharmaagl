@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCR Protection | Precision AGL Academy</title>
+    <meta name="description" content="An interactive guide to constant current regulator (CCR) protection: input breaker, supply monitoring, output overcurrent and open-circuit protection." />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rahulsharmaagl.in/ccr-protection.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/ccr-protection.html" />
+    <meta property="og:title" content="CCR Protection | Precision AGL Academy" />
+    <meta property="og:description" content="An interactive guide to constant current regulator (CCR) protection: input breaker, supply monitoring, output overcurrent and open-circuit protection." />
+    <meta property="og:site_name" content="Precision AGL Academy" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://rahulsharmaagl.in/assets/og-ccr-protection.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://rahulsharmaagl.in/ccr-protection.html" />
+    <meta name="twitter:title" content="CCR Protection | Precision AGL Academy" />
+    <meta name="twitter:description" content="An interactive guide to constant current regulator (CCR) protection: input breaker, supply monitoring, output overcurrent and open-circuit protection." />
+    <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-ccr-protection.jpg" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "@id": "https://rahulsharmaagl.in/ccr-protection.html#article",
+  "headline": "CCR Protection",
+  "description": "An interactive guide to constant current regulator (CCR) protection: input breaker, supply monitoring, output overcurrent and open-circuit protection.",
+  "url": "https://rahulsharmaagl.in/ccr-protection.html",
+  "mainEntityOfPage": "https://rahulsharmaagl.in/ccr-protection.html",
+  "isPartOf": {
+    "@type": "CollectionPage",
+    "@id": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html#webpage",
+    "name": "AGL Visual Encyclopedia",
+    "url": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Precision AGL Academy"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://rahulsharmaagl.in/academy.html#org",
+    "name": "Precision AGL Academy",
+    "url": "https://rahulsharmaagl.in/academy.html"
+  },
+  "inLanguage": "en-IN",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-ccr-protection.jpg"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/ccr-protection.html#breadcrumb"
+  }
+}
+</script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://rahulsharmaagl.in/ccr-protection.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Knowledge Hub",
+      "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "AGL Visual Encyclopedia",
+      "item": "https://rahulsharmaagl.in/agl-visual-encyclopedia.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "CCR Protection",
+      "item": "https://rahulsharmaagl.in/ccr-protection.html"
+    }
+  ]
+}
+</script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/ccr-protection.html#faq",
+  "url": "https://rahulsharmaagl.in/ccr-protection.html",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is CCR protection for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To protect people, the series circuit and the CCR itself. Monitors watch the supply, the output and the temperature, and the CCR either raises an alarm or shuts down its output."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which faults shut the CCR down and which only warn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Critical faults such as an open circuit, overcurrent, over-temperature or a supply far outside its limits shut the output down. Conditions such as current slightly out of tolerance or low insulation raise a warning and let the lights keep running while the cause is found."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does an open circuit shut the output down?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The CCR keeps trying to push the set current into a loop that is no longer complete, so the output voltage would rise far above normal. Shutting down removes that hazard to people and insulation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does an earth fault only warn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The series loop is isolated from earth, so one earth fault does not normally stop the lights. It is still serious: a second fault can cause a hard short and a shock hazard, so it should be found and repaired early."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should a tripped CCR be reset straight away?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Record the code and readings, isolate and lock out, find and correct the cause, then reset. Repeated resets can hide a short, an open circuit or an earth fault on a high-voltage circuit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How are protection functions checked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "During testing and maintenance, under the manufacturer's procedure and a permit to work, with the CCR disconnected from the airfield circuit, for example to confirm the open-circuit trip. A live series circuit is never opened to test protection. See CCR Testing."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/ccr-protection.html#article"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://rahulsharmaagl.in/ccr-protection.html#related",
+  "name": "Related entries: CCR Protection",
+  "about": {
+    "@id": "https://rahulsharmaagl.in/ccr-protection.html#article"
+  },
+  "numberOfItems": 12,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "CCR Cooling System",
+      "url": "https://rahulsharmaagl.in/ccr-cooling-system.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "CCR Transformer",
+      "url": "https://rahulsharmaagl.in/ccr-transformer.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "CCR Internal Architecture",
+      "url": "https://rahulsharmaagl.in/ccr-internal-architecture.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "CCR Testing",
+      "url": "https://rahulsharmaagl.in/ccr-testing.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "CCR Maintenance",
+      "url": "https://rahulsharmaagl.in/ccr-maintenance.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Earth Fault",
+      "url": "https://rahulsharmaagl.in/earth-fault.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Lightning/Surge Interface",
+      "url": "https://rahulsharmaagl.in/lightning-surge-interface.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Surge Protection Devices for CCR and Circuits",
+      "url": "https://rahulsharmaagl.in/surge-protection-devices-for-ccr-and-circuits.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Different CCR Technologies",
+      "url": "https://rahulsharmaagl.in/different-ccr-technologies.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "CCR Troubleshooting",
+      "url": "https://rahulsharmaagl.in/ccr-troubleshooting.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "CCR Communication",
+      "url": "https://rahulsharmaagl.in/ccr-communication.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "CCR-to-Series-Circuit Interface",
+      "url": "https://rahulsharmaagl.in/ccr-to-series-circuit-interface.html"
+    }
+  ]
+}
+</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        /* ─── reset & base ─── */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --gold-dim: rgba(255, 180, 0, 0.7);
+            --gold-glow: rgba(255, 180, 0, 0.25);
+            --red: #E63946;
+            --red-glow: rgba(230, 57, 70, 0.3);
+            --cyan: #00d4ff;
+            --green: #35d07f;
+            --green-glow: rgba(53, 208, 127, 0.35);
+            --text: #c8d8f0;
+            --grey-dim: rgba(200, 216, 240, 0.45);
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            min-height: 100vh;
+            background: var(--dark);
+            font-family: 'Barlow', Arial, Helvetica, sans-serif;
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* ── runway lines background, matching site ── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── nav ── */
+
+        main { position: relative; z-index: 1; padding-top: 70px; }
+
+        .container { width: 100%; max-width: 1120px; margin: auto; padding: 70px 40px 90px; }
+
+        /* ── section label / eyebrow ── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+        }
+        .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+        .section-label .entry-tag {
+            margin-left: 14px;
+            padding: 3px 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            color: var(--grey-dim);
+            font-size: 11px; letter-spacing: 1.5px; font-weight: 600;
+        }
+
+        /* ── heading ── */
+        .heading-group h1 {
+            font-family: 'Bebas Neue', Impact, sans-serif;
+            font-size: 72px;
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: 1px;
+            max-width: 860px;
+        }
+        .heading-group h1 .accent {
+            color: var(--white);
+            text-shadow: 0 0 40px rgba(240, 244, 255, 0.35);
+        }
+        .heading-group .sub {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 400;
+            max-width: 680px;
+            line-height: 1.8;
+            margin-top: 18px;
+        }
+
+        /* ── diagram card ── */
+        .diagram-card {
+            margin-top: 50px;
+            display: flex; flex-direction: column; align-items: center;
+            background: linear-gradient(160deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 36px 32px 30px;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .diagram-card:hover {
+            border-color: rgba(255, 180, 0, 0.2);
+            box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        .diagram-card svg {
+            width: 100%;
+            height: auto;
+            max-width: 940px;
+        }
+
+        .caption-row {
+            margin-top: 26px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 36px;
+        }
+        .legend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Barlow', sans-serif;
+            font-size: 12.5px;
+            letter-spacing: 1.5px;
+            color: var(--text);
+            text-transform: uppercase;
+            font-weight: 700;
+            cursor: default;
+            transition: color var(--transition);
+        }
+        .legend:hover { color: var(--white); }
+        .legend .dot {
+            width: 13px; height: 13px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            transition: transform var(--transition);
+        }
+        .legend:hover .dot { transform: scale(1.2); }
+        .dot.green { background: var(--green); box-shadow: 0 0 14px var(--green-glow); }
+        .dot.white { background: #fff; box-shadow: 0 0 12px rgba(255, 255, 255, 0.5); }
+        .dot.red { background: var(--red); box-shadow: 0 0 14px var(--red-glow); }
+        .dot.mark {
+            width: 15px; height: 8px; border-radius: 2px;
+            background: #f5f7fb; box-shadow: 0 0 8px rgba(245, 247, 251, 0.4);
+        }
+
+        /* ── fact card ── */
+        .fact-card {
+            margin-top: 34px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 34px 40px 30px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color var(--transition), box-shadow var(--transition);
+        }
+        .fact-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+            transform: scaleX(0); transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .fact-card:hover { border-color: rgba(255, 180, 0, 0.2); }
+        .fact-card:hover::before { transform: scaleX(1); }
+        .fact-card .label {
+            display: flex; align-items: center;
+            font-size: 12px; letter-spacing: 2.5px; color: var(--gold);
+            text-transform: uppercase; margin-bottom: 16px; font-weight: 700;
+        }
+        .fact-card .label .badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.16);
+            color: var(--cyan);
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 11px; letter-spacing: 1px; font-weight: 700;
+            margin-left: 12px;
+        }
+        .fact-card p {
+            font-size: 16.5px;
+            line-height: 1.9;
+            color: var(--text);
+            font-weight: 400;
+        }
+        .fact-card p + p { margin-top: 16px; }
+        .fact-card b { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-green { color: var(--green); font-weight: 600; }
+        .fact-card .highlight-red { color: var(--red); font-weight: 600; }
+        .fact-card .highlight-white { color: var(--white); font-weight: 700; }
+        .fact-card .highlight-yellow { color: var(--gold); font-weight: 600; }
+        .fact-card .note {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px dashed var(--border);
+            font-size: 12.5px;
+            letter-spacing: 0.3px;
+            color: var(--grey-dim);
+            display: flex; align-items: center; gap: 10px;
+        }
+        .fact-card .note .icon { font-size: 15px; color: var(--gold-dim); }
+
+        /* ── prev/next nav ── */
+        .entry-nav {
+            margin-top: 18px;
+            display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+        }
+        .entry-nav a {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 12.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+            color: var(--grey-dim); text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .entry-nav a:hover { color: var(--gold); }
+
+        /* ── specs mini-grid ── */
+        .specs-grid {
+            margin-top: 22px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 14px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+        .spec-item {
+            display: flex; flex-direction: column; gap: 6px;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+        }
+        .spec-item .spec-label {
+            font-size: 11px; letter-spacing: 1.5px;
+            color: var(--grey-dim); text-transform: uppercase; font-weight: 600;
+        }
+        .spec-item .spec-value {
+            font-size: 17px; font-weight: 700; color: var(--white); letter-spacing: 0.2px;
+        }
+        .spec-item .spec-value .unit {
+            font-size: 12px; font-weight: 400; color: var(--grey-dim); margin-left: 4px;
+        }
+
+        /* ── footer ── */
+
+        /* ── responsive ── */
+        @media (max-width: 860px) {
+            .container { padding: 50px 24px 60px; }
+            .heading-group h1 { font-size: 46px; }
+            .heading-group .sub { font-size: 16px; }
+            .fact-card { padding: 26px 22px; }
+            .fact-card p { font-size: 15.5px; }
+            .diagram-card { padding: 24px 18px 22px; }
+            .caption-row { gap: 18px; }
+        }
+
+        @media (max-width: 480px) {
+            .heading-group h1 { font-size: 34px; }
+            .specs-grid { grid-template-columns: 1fr 1fr; }
+            .legend { font-size: 11px; gap: 6px; }
+        }
+
+        /* ── utilities ── */
+        .glow-pulse { animation: pulseGlow 2.8s ease-in-out infinite; }
+        @keyframes pulseGlow { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1100px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── RELATED ── */
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:700px) {
+            .related-grid { grid-template-columns: 1fr; }
+        }
+        .related-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-decoration: none;
+            display: block;
+            transition: all .3s;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.3);
+            transform: translateY(-3px);
+        }
+        .related-card .rc-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 6px;
+        }
+        .related-card h5 {
+            font-size: 14px;
+            color: var(--white);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong { color: var(--gold); }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover { color: var(--gold); }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: none;
+            color: #000;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all .3s;
+            box-shadow: 0 8px 24px rgba(255, 180, 0, 0.25);
+        }
+        .scroll-top.visible { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { transform: translateY(-4px) scale(1.05); }
+        .academy-cta {
+            position: relative;
+            border: 1px solid rgba(255, 180, 0, 0.35);
+            border-radius: 14px;
+            background: linear-gradient(160deg, rgba(255, 180, 0, 0.08), var(--card) 55%);
+            padding: 48px 44px;
+            overflow: hidden;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(255, 180, 0, 0.16), transparent 70%);
+            pointer-events: none;
+        }
+        .academy-cta-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            font-size: 12.5px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        .academy-cta h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 34px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+            margin-bottom: 16px;
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            max-width: 720px;
+            margin-bottom: 10px;
+        }
+        .academy-cta h4 {
+            color: var(--white);
+            font-size: 17px;
+            font-weight: 700;
+            margin: 26px 0 12px;
+        }
+        .academy-path {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .academy-path span {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 7px 14px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            color: var(--text);
+            white-space: nowrap;
+        }
+        .academy-path i {
+            color: var(--gold);
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        .academy-cta-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 26px;
+        }
+        .academy-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .academy-btn-primary {
+            background: var(--gold);
+            color: #060d1a;
+            border: 1px solid var(--gold);
+        }
+        .academy-btn-primary:hover {
+            background: transparent;
+            color: var(--gold);
+        }
+        .academy-btn-outline {
+            border: 1px solid var(--border);
+            color: var(--white);
+        }
+        .academy-btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .academy-cta-tagline {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.85;
+        }
+        @media(max-width:600px) {
+            .academy-cta { padding: 32px 22px; }
+            .academy-cta h2 { font-size: 26px; }
+        }
+
+        /* ── shell sections (Academy template) ── */
+        .shell-section { padding: 46px 0 10px; border-top: 1px solid var(--border); margin-top: 40px; }
+        .shell-section .section-tag { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 2px; color: var(--gold); opacity: .7; margin-bottom: 8px; }
+        .shell-section > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 1px; margin-bottom: 18px; font-weight: 400; }
+        .shell-section.cta-wrap { border-top: none; padding-top: 10px; }
+        .breadcrumb { max-width: 1120px; }
+        .breadcrumb .current { opacity: 1; }
+        main { padding-top: 0; }
+        .container { padding-top: 30px; }
+        .nav-links.open { display: flex; position: absolute; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; background: rgba(6,13,26,.98); border-bottom: 1px solid rgba(255,180,0,.3); padding: 10px 20px 16px; }
+        .nav-links.open li a { display: block; padding: 12px 0; }
+        .hamburger { background: none; border: none; padding: 6px; }
+        @media(max-width:600px) { .breadcrumb { padding: 100px 20px 0; } .container { padding-left: 20px; padding-right: 20px; } footer { padding: 20px; flex-direction: column; text-align: center; } }
+
+
+        .faq-list{display:flex;flex-direction:column;gap:10px;max-width:900px;margin-top:6px;}
+        .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+        .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+        .faq-item summary::-webkit-details-marker{display:none;}
+        .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+        .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+        .faq-item .faq-q{flex-grow:1;}
+        .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+        .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+        .faq-item[open] .chev{transform:rotate(180deg);}
+        .faq-item[open] summary{border-bottom:1px solid var(--border);}
+        .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+
+        /* ── entry-specific ── */
+        .entry-nav .is-soon { display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--grey-dim); opacity:.45; cursor:default; }
+        .dot.gold { background: var(--gold); box-shadow: 0 0 14px var(--gold-glow); }
+        .dot.cyan { background: var(--cyan); box-shadow: 0 0 14px rgba(0,212,255,.35); }
+        .compare-row { margin-top: 22px; display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+        .compare-box { padding:16px 18px; background:rgba(255,255,255,.03); border:1px solid var(--border); border-radius:10px; }
+        .compare-box .cb-tag { font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:var(--gold); margin-bottom:6px; }
+        .compare-box.dim .cb-tag { color:var(--grey-dim); }
+        .compare-box p { font-size:14px !important; line-height:1.7 !important; }
+        @media (max-width:600px){ .compare-row{ grid-template-columns:1fr; } }
+        
+        /* ── entry-specific ── */
+        .steps { margin: 20px 0 6px; padding: 0; list-style: none; counter-reset: st; display: grid; gap: 8px; }
+        .steps li { counter-increment: st; position: relative; padding: 10px 14px 10px 46px; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; font-size: 14.5px; line-height: 1.55; color: var(--text); }
+        .steps li::before { content: counter(st); position: absolute; left: 12px; top: 9px; width: 24px; height: 24px; border-radius: 50%; background: var(--gold); color: #060d1a; font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center; }
+        .steps li b { color: var(--white); }
+            /* ── CCR display ── */
+        .ccr-wrap{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px}
+        @media(max-width:860px){.ccr-wrap{grid-template-columns:1fr}}
+        .ccr-face{background:#07101f;border:2px solid #1b3357;border-radius:12px;padding:20px;box-shadow:inset 0 0 40px rgba(0,0,0,.6)}
+        .ccr-head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1.5px;font-size:13px;color:var(--grey-dim);margin-bottom:14px}
+        .ccr-lcd{background:#031018;border:1px solid #0b3a4d;border-radius:8px;padding:18px 20px;display:grid;grid-template-columns:1fr auto;gap:8px 14px;align-items:end;font-family:'Barlow Condensed',sans-serif}
+        .ccr-big{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,12vw,100px);line-height:.9;color:var(--cyan);text-shadow:0 0 22px rgba(0,212,255,.45);letter-spacing:2px}
+        .ccr-unit{font-size:26px;color:var(--cyan);font-weight:700}
+        .ccr-row{grid-column:1/-1;display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;color:var(--text);font-size:16px;letter-spacing:1px;border-top:1px solid #0b3a4d;padding-top:10px}
+        .ccr-row b{color:var(--white)}
+        .ccr-leds{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0}
+        .ccr-led{display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;color:var(--grey-dim)}
+        .ccr-led i{width:12px;height:12px;border-radius:50%;background:#26324a;display:block}
+        .ccr-led.on{color:var(--white)}
+        .ccr-led.on.g i{background:var(--green);box-shadow:0 0 10px var(--green)}
+        .ccr-led.on.r i{background:var(--red);box-shadow:0 0 10px var(--red)}
+        .ccr-led.on.y i{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+        .ccr-steps{display:flex;gap:8px}
+        .ccr-steps button{flex:1;min-height:56px;border-radius:8px;border:1px solid #27446d;background:#0c1d36;color:var(--text);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:18px;cursor:pointer;transition:.2s}
+        .ccr-steps button small{display:block;font-size:11px;font-weight:500;color:var(--grey-dim)}
+        .ccr-steps button:hover{border-color:var(--gold)}
+        .ccr-steps button.sel{background:var(--gold);color:#1a1200;border-color:var(--gold);box-shadow:0 0 18px var(--gold-glow)}
+        .ccr-steps button.sel small{color:#4a3600}
+        .ccr-btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+        .ccr-btn{flex:1;min-width:120px;padding:13px;border-radius:8px;border:1px solid #27446d;background:#0c1d36;color:var(--white);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer}
+        .ccr-btn:hover{border-color:var(--cyan)}
+        .ccr-btn.on{border-color:var(--green);color:var(--green)}
+        .ccr-btn.off{border-color:var(--red);color:var(--red)}
+        .ccr-btn.sel{background:#12345c;border-color:var(--cyan)}
+        .ccr-side label{display:block;font-size:12px;letter-spacing:1.5px;color:var(--grey-dim);margin-bottom:8px;text-transform:uppercase;font-weight:700}
+        .ccr-seg{display:flex;gap:6px;margin-bottom:20px}
+        .ccr-seg button{flex:1;padding:10px;border-radius:8px;border:1px solid var(--border);background:#0c1d36;color:var(--text);font:600 14px 'Barlow',sans-serif;cursor:pointer}
+        .ccr-seg button.sel{border-color:var(--gold);color:var(--gold);background:rgba(255,180,0,.08)}
+        .ccr-side input[type=range]{width:100%;accent-color:var(--gold);margin-bottom:6px}
+        .ccr-val{font-family:'Barlow Condensed',sans-serif;font-size:20px;margin-bottom:14px}
+        .ccr-lamps{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+        .ccr-lamp{width:24px;height:24px;border-radius:50%;background:#1a2438;border:1px solid #2c3d5c;transition:.25s}
+        .ccr-alarm{margin-top:16px;padding:12px 14px;border-radius:8px;border:1px solid rgba(53,208,127,.3);font-size:14px;line-height:1.5;background:rgba(53,208,127,.07);color:var(--green)}
+        .ccr-alarm.warn{background:rgba(255,180,0,.09);color:var(--gold);border-color:rgba(255,180,0,.35)}
+        .ccr-alarm.bad{background:rgba(230,57,70,.1);color:#ff8a93;border-color:rgba(230,57,70,.4)}
+        .ccr-table-wrap{overflow-x:auto;margin-top:22px}
+        .ccr-table{width:100%;border-collapse:collapse;font-size:15px}
+        .ccr-table th,.ccr-table td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border)}
+        .ccr-table th{font-family:'Barlow Condensed',sans-serif;letter-spacing:1.5px;font-size:12px;color:var(--grey-dim);text-transform:uppercase}
+        .ccr-table tr.sel td{color:var(--gold);background:rgba(255,180,0,.06)}
+        /* ── CCR cooling ── */
+        .cl-wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px}
+        @media(max-width:860px){.cl-wrap{grid-template-columns:1fr}}
+        .cl-cab{background:#07101f;border:1px solid #1b3357;border-radius:10px;padding:14px}
+        .cl-cab svg{width:100%;height:auto;display:block}
+        .cl-flow{stroke-dasharray:6 6;animation:clflow 1s linear infinite}
+        @keyframes clflow{to{stroke-dashoffset:-12}}
+        .cl-spin{transform-origin:center;transform-box:fill-box;animation:clspin .6s linear infinite}
+        @keyframes clspin{to{transform:rotate(360deg)}}
+        .cl-read{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:10px;background:#031018;border:1px solid #0b3a4d;border-radius:8px;padding:14px 18px;font-family:'Barlow Condensed',sans-serif;margin-bottom:14px}
+        .cl-temp{font-family:'Bebas Neue',sans-serif;font-size:64px;line-height:.9;color:var(--cyan);letter-spacing:2px}
+        .cl-temp.warn{color:var(--gold)}.cl-temp.bad{color:var(--red)}
+        .cl-gauge{position:relative;height:16px;border-radius:8px;background:linear-gradient(90deg,var(--green) 0 64.3%,var(--gold) 64.3% 78.6%,var(--red) 78.6%);margin:6px 0 22px;opacity:.9}
+        .cl-gauge i{position:absolute;top:-5px;width:4px;height:26px;background:var(--white);border-radius:2px;box-shadow:0 0 8px #fff;transition:left .3s}
+        .cl-gauge span{position:absolute;top:22px;font-size:11px;letter-spacing:1px;color:var(--grey-dim);transform:translateX(-50%)}
+        .cl-side label{display:block;font-size:12px;letter-spacing:1.5px;color:var(--grey-dim);margin-bottom:8px;text-transform:uppercase;font-weight:700}
+        .cl-side input[type=range]{width:100%;accent-color:var(--gold);margin-bottom:4px}
+        .cl-side .ccr-val{margin-bottom:16px}
+        /* ── CCR thyristor ── */
+        .th-blocks{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:18px;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px}
+        .th-blocks span.b{padding:10px 14px;border:1px solid #27446d;border-radius:8px;background:#0c1d36;font-size:14px;color:var(--text)}
+        .th-blocks span.b.hl{border-color:var(--gold);color:var(--gold);background:rgba(255,180,0,.08)}
+        .th-blocks i{color:var(--grey-dim)}
+        .th-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px}
+        @media(max-width:860px){.th-grid{grid-template-columns:1fr}}
+        .th-scope{background:#031018;border:1px solid #0b3a4d;border-radius:10px;padding:10px}
+        .th-scope svg{width:100%;height:auto;display:block}
+        .th-read{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:16px}
+        .th-read div{background:#07101f;border:1px solid #1b3357;border-radius:8px;padding:10px 12px;font-family:'Barlow Condensed',sans-serif}
+        .th-read small{display:block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey-dim)}
+        .th-read b{font-family:'Bebas Neue',sans-serif;font-size:32px;font-weight:400;letter-spacing:1px;color:var(--cyan)}
+        /* ── CCR power output ── */
+        .po-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:22px}
+        @media(max-width:860px){.po-grid{grid-template-columns:1fr}}
+        .po-bar{display:flex;height:34px;border-radius:8px;overflow:hidden;border:1px solid #1b3357;margin:6px 0 8px;background:#07101f}
+        .po-bar div{height:100%;transition:width .3s}
+        .po-key{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;letter-spacing:1px;color:var(--grey-dim);margin-bottom:18px;font-family:'Barlow Condensed',sans-serif;text-transform:uppercase}
+        .po-key i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+        .po-sizes{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 4px}
+        .po-sizes span{padding:8px 12px;border-radius:8px;border:1px solid #27446d;background:#0c1d36;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;color:var(--grey-dim)}
+        .po-sizes span.rec{background:var(--gold);color:#1a1200;border-color:var(--gold);box-shadow:0 0 16px var(--gold-glow)}
+        .po-sizes span.low{opacity:.35}
+        .po-load{position:relative;height:14px;border-radius:7px;background:linear-gradient(90deg,var(--green) 0 80%,var(--gold) 80% 100%);margin:10px 0 6px}
+        .po-load i{position:absolute;top:-5px;width:4px;height:24px;background:var(--white);border-radius:2px;box-shadow:0 0 8px #fff;transition:left .3s}
+
+            .th-read b.warn{color:var(--gold)} .th-read b.bad{color:var(--red)}
+        .pr-faults{width:100%;margin-top:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+        .pr-faults button{padding:11px 10px;border-radius:8px;border:1px solid var(--border);background:#0c1d36;color:var(--text);font:600 13.5px 'Barlow',sans-serif;cursor:pointer;line-height:1.3;transition:.2s}
+        .pr-faults button:hover{border-color:var(--cyan)}
+        .pr-faults button.sel{border-color:var(--gold);color:var(--gold);background:rgba(255,180,0,.08)}
+        .pr-badge{display:inline-block;margin-left:10px;padding:5px 14px;border-radius:100px;font:700 12px 'Barlow Condensed',sans-serif;letter-spacing:2px;vertical-align:middle}
+        .pr-badge.ok{background:rgba(53,208,127,.12);color:var(--green);border:1px solid rgba(53,208,127,.35)}
+        .pr-badge.warn{background:rgba(255,180,0,.12);color:var(--gold);border:1px solid rgba(255,180,0,.4)}
+        .pr-badge.bad{background:rgba(230,57,70,.14);color:#ff8a93;border:1px solid rgba(230,57,70,.45)}
+        #seq,#chk{margin-top:10px}
+            /* dz-feature:start — full diagram viewer with zoom and pan */
+        .dz-btn{margin-top:18px;display:inline-flex;align-items:center;gap:8px;background:rgba(255,180,0,0.1);border:1px solid rgba(255,180,0,0.35);color:var(--gold);font:700 12.5px 'Barlow',sans-serif;letter-spacing:1.2px;text-transform:uppercase;padding:10px 18px;border-radius:100px;cursor:pointer;transition:background .3s;}
+        .dz-btn:hover{background:rgba(255,180,0,0.2);}
+        .diagram-card > svg{cursor:zoom-in;}
+        .dz-overlay{position:fixed;inset:0;z-index:1000;background:#060d1a;display:none;flex-direction:column;}
+        .dz-overlay.open{display:flex;}
+        .dz-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text);font-size:12.5px;letter-spacing:1px;text-transform:uppercase;font-weight:700;flex-wrap:wrap;}
+        .dz-title{flex:1 1 220px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+        .dz-tools{display:flex;align-items:center;gap:6px;}
+        .dz-tools button{background:rgba(255,255,255,0.06);color:var(--text);border:1px solid var(--border);border-radius:100px;min-width:38px;height:38px;padding:0 12px;font:800 15px 'Barlow',sans-serif;cursor:pointer;line-height:1;}
+        .dz-tools button:hover{background:rgba(255,180,0,0.18);}
+        .dz-tools button.dz-fit{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;}
+        .dz-tools button.dz-close{background:var(--gold);color:#060d1a;border:0;font-size:12.5px;letter-spacing:.5px;padding:0 18px;margin-left:6px;}
+        .dz-tools button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+        .dz-zoom{min-width:52px;text-align:center;font-size:12.5px;font-weight:700;letter-spacing:.5px;}
+        .dz-stage{flex:1;position:relative;overflow:hidden;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}
+        .dz-stage.drag{cursor:grabbing;}
+        .dz-stage svg{position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;will-change:transform;}
+        .dz-hint{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:rgba(6,13,26,0.85);border:1px solid var(--border);color:var(--grey,#9fb0c8);font-size:11.5px;letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;border-radius:100px;pointer-events:none;white-space:nowrap;transition:opacity .6s;}
+        .dz-hint.hide{opacity:0;}
+        @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
+        /* dz-feature:end */
+    </style>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+<link rel="icon" type="image/png" href="/favicon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+</head>
+<body>
+
+        <nav id="navbar">
+        <a href="../index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="../knowledge-hub.html" class="active">Knowledge Hub</a></li>
+            <li><a href="../component-library.html">Components</a></li>
+            <li><a href="../agl-comparisons.html">Comparisons</a></li>
+            <li><a href="../standards-companion.html">Standards</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+        <a href="../index.html#contact" class="nav-cta">Get in Touch</a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="../index.html">Home</a><span>/</span>
+        <a href="../knowledge-hub.html">Knowledge Hub</a><span>/</span>
+        <a href="../agl-visual-encyclopedia.html">AGL Visual Encyclopedia</a><span>/</span>
+        <span class="current">CCR Protection</span>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="section-label">
+                AGL Visual Encyclopedia
+                <span class="entry-tag">ENTRY 24 &middot; CCR &amp; POWER SUPPLY SYSTEMS</span>
+            </div>
+
+            <div class="heading-group">
+                <h1>The <span class="accent">CCR protection</span></h1>
+                <p class="sub">The monitors and trips that guard a constant current regulator and its series circuit. Pick a fault, move the slider and see which device sees it, whether the CCR warns or shuts down, and what to check before any reset.</p>
+            </div>
+
+            <div class="diagram-card" style="padding:24px;">
+                <div style="width:100%;max-width:940px;"><svg viewBox="0 0 940 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CCR protection layers along the power path: surge protection, input breaker, supply monitor, contactor, thyristor stage with temperature sensor, transformer, output current sensing, series circuit and an insulation and earth monitor, all reporting to the control board">
+<g stroke="#3a5a8a" stroke-width="1.5" fill="none"><line x1="115" y1="80" x2="115" y2="165"/><line x1="250" y1="80" x2="250" y2="165"/><line x1="455" y1="80" x2="455" y2="130"/><line x1="785" y1="235" x2="785" y2="165"/></g>
+<path d="M725 80 V105 H317 V130" fill="none" stroke="#E63946" stroke-width="1.8" stroke-dasharray="6 5"/>
+<text x="560" y="98" text-anchor="middle" fill="#ff8a93" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing="2">TRIP SIGNAL</text>
+<line id="w0" x1="100" y1="165" x2="130" y2="165" stroke="#35d07f" stroke-width="3.5"/><line id="w1" x1="235" y1="165" x2="265" y2="165" stroke="#35d07f" stroke-width="3.5"/><line id="w2" x1="370" y1="165" x2="400" y2="165" stroke="#35d07f" stroke-width="3.5"/><line id="w3" x1="510" y1="165" x2="540" y2="165" stroke="#35d07f" stroke-width="3.5"/><line id="w4" x1="640" y1="165" x2="670" y2="165" stroke="#35d07f" stroke-width="3.5"/><line id="w5" x1="770" y1="165" x2="800" y2="165" stroke="#35d07f" stroke-width="3.5"/>
+<rect x="10" y="130" width="90" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/>
+<text x="55" y="170" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="13" font-weight="700" letter-spacing=".3">AC SUPPLY</text>
+<g id="z_brk"><rect x="130" y="130" width="105" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/><text x="182" y="160" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="12.5" font-weight="700" letter-spacing=".3">INPUT BREAKER</text><text x="182" y="180" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing=".5" id="brkTxt">overload / short</text></g><g id="z_con"><rect x="265" y="130" width="105" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/><text x="317" y="160" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="12.5" font-weight="700" letter-spacing=".3">CONTACTOR</text><text x="317" y="180" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing=".5" id="conTxt">CLOSED</text></g><g id="z_scr"><rect x="400" y="130" width="110" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/><text x="455" y="160" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="12.5" font-weight="700" letter-spacing=".3">THYRISTOR STAGE</text><text x="455" y="180" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing=".5" >power control</text></g><g id="z_tr"><rect x="540" y="130" width="100" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/><text x="590" y="160" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="12.5" font-weight="700" letter-spacing=".3">TRANSFORMER</text><text x="590" y="180" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing=".5" >isolation</text></g><g id="z_sen"><rect x="670" y="130" width="100" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/><text x="720" y="160" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="12.5" font-weight="700" letter-spacing=".3">OUTPUT SENSING</text><text x="720" y="180" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing=".5" >current (CT)</text></g><g id="z_cir"><rect x="800" y="130" width="130" height="70" rx="9" fill="#0c1d36" stroke="#27446d" stroke-width="2.5"/><text x="865" y="160" text-anchor="middle" fill="#f0f4ff" font-family="Barlow Condensed,sans-serif" font-size="12.5" font-weight="700" letter-spacing=".3">SERIES CIRCUIT</text><text x="865" y="180" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="12" letter-spacing=".5" >floating loop</text></g>
+<g id="z_spd"><rect x="45" y="30" width="140" height="50" rx="9" fill="#07101f" stroke="#27446d" stroke-width="2.5" stroke-dasharray="6 4"/><text x="115" y="51" text-anchor="middle" fill="#c8d8f0" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="700" letter-spacing=".4">SURGE PROTECTION</text><text x="115" y="68" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="11.5">diverts surges to earth</text></g><g id="z_mon"><rect x="215" y="30" width="150" height="50" rx="9" fill="#07101f" stroke="#27446d" stroke-width="2.5" stroke-dasharray="6 4"/><text x="290" y="51" text-anchor="middle" fill="#c8d8f0" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="700" letter-spacing=".4">SUPPLY MONITOR</text><text x="290" y="68" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="11.5">over / under-voltage</text></g><g id="z_tmp"><rect x="395" y="30" width="140" height="50" rx="9" fill="#07101f" stroke="#27446d" stroke-width="2.5" stroke-dasharray="6 4"/><text x="465" y="51" text-anchor="middle" fill="#c8d8f0" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="700" letter-spacing=".4">TEMPERATURE SENSOR</text><text x="465" y="68" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="11.5">warn, then trip</text></g><g id="z_ctl"><rect x="640" y="30" width="170" height="50" rx="9" fill="#07101f" stroke="#27446d" stroke-width="2.5" stroke-dasharray="6 4"/><text x="725" y="51" text-anchor="middle" fill="#c8d8f0" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="700" letter-spacing=".4">CONTROL BOARD</text><text x="725" y="68" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="11.5">opens contactor on trip</text></g><g id="z_ear"><rect x="690" y="235" width="200" height="50" rx="9" fill="#07101f" stroke="#27446d" stroke-width="2.5" stroke-dasharray="6 4"/><text x="790" y="256" text-anchor="middle" fill="#c8d8f0" font-family="Barlow Condensed,sans-serif" font-size="12" font-weight="700" letter-spacing=".4">INSULATION / EARTH MONITOR</text><text x="790" y="273" text-anchor="middle" fill="#8aa0c4" font-family="Barlow Condensed,sans-serif" font-size="11.5">warning only</text></g>
+</svg>
+                <button type="button" class="dz-btn dz-open"><i class="fa-solid fa-up-right-and-down-left-from-center"></i> View full diagram</button></div>
+                <div class="pr-faults" id="faults" role="group" aria-label="Choose a fault to simulate"></div>
+                <div class="po-grid" style="width:100%;margin-top:22px;">
+                    <div class="cl-side">
+                        <label id="qLabel">Quantity</label>
+                        <input type="range" id="sl" min="0" max="100" value="0" aria-label="Fault severity" />
+                        <div class="ccr-val"><span id="qVal">0</span> <span id="qUnit"></span> <span class="pr-badge ok" id="badge">NORMAL</span></div>
+                        <div class="th-read">
+                            <div><small>Measured</small><b id="rM">0</b></div>
+                            <div><small>Warning at</small><b id="rW">0</b></div>
+                            <div><small>Trip at</small><b id="rT">0</b></div>
+                            <div><small>Output current</small><b id="rI">0.0</b> A</div>
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display:block;font-size:12px;letter-spacing:1.5px;color:var(--grey-dim);text-transform:uppercase;font-weight:700">What happens</label>
+                        <ol class="steps" id="seq"></ol>
+                        <label style="display:block;margin-top:14px;font-size:12px;letter-spacing:1.5px;color:var(--grey-dim);text-transform:uppercase;font-weight:700">Before any reset</label>
+                        <ol class="steps" id="chk"></ol>
+                    </div>
+                </div>
+                <div class="ccr-alarm" id="alarm" style="margin-top:18px" role="status" aria-live="polite">Normal.</div>
+                <div class="caption-row">
+                    <div class="legend"><span class="dot green"></span>energised path</div>
+                    <div class="legend"><span class="dot gold"></span>warning</div>
+                    <div class="legend"><span class="dot red"></span>trip / shut down</div>
+                    <div class="legend"><span class="dot cyan"></span>selected monitor</div>
+                </div>
+            </div>
+
+            <div class="fact-card">
+                <div class="label">
+                    The Fact
+                    <span class="badge"><i class="fa-solid fa-check"></i> Protection</span>
+                </div>
+                <p>CCR protection works in <b class="highlight-yellow">layers</b>: a <b>breaker</b> and <b>surge protection</b> at the input, a <b class="highlight-white">supply monitor</b>, <b>output current sensing</b>, a <b>temperature sensor</b> and an <b>insulation monitor</b>. They report to the control board, which can <b class="highlight-red">open the contactor</b> and shut the output down.</p>
+                <p><b class="highlight-red">Critical</b> faults, such as an open circuit, overcurrent or over-temperature, shut the output down. <b class="highlight-yellow">Warnings</b>, such as low insulation, let the lights keep running while the cause is found. After a trip, <b class="highlight-white">find and correct the cause before resetting</b>; repeated resets can hide a hard fault on a high-voltage circuit.</p>
+
+                <div class="specs-grid">
+                    <div class="spec-item"><span class="spec-label">Input side</span><span class="spec-value" style="font-size:14px;font-weight:500;color:var(--text);">Breaker, surge protection, supply monitor</span></div>
+                    <div class="spec-item"><span class="spec-label">Output side</span><span class="spec-value" style="font-size:14px;font-weight:500;color:var(--text);">Overcurrent, open circuit, insulation / earth fault</span></div>
+                    <div class="spec-item"><span class="spec-label">Self-protection</span><span class="spec-value" style="font-size:14px;font-weight:500;color:var(--text);">Temperature warning, then over-temperature trip</span></div>
+                    <div class="spec-item"><span class="spec-label">Reference</span><span class="spec-value" style="font-size:14px;font-weight:500;color:var(--text);">IEC 61822 &middot; FAA AC 150/5345-10 &middot; ICAO Annex 14 Vol I Ch 8</span></div>
+                </div>
+
+                <div class="note">
+                    <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+                    Teaching simulation &mdash; thresholds, trip behaviour and reset rules are illustrative and differ between CCR models. Real settings come from the manufacturer's manual and the project specification. Isolate and lock out before touching a series circuit or opening the cabinet.
+                </div>
+            </div>
+
+            <div class="entry-nav">
+                <a href="ccr-to-series-circuit-interface.html"><i class="fa-solid fa-arrow-left"></i> Entry 23 &middot; CCR-to-series-circuit interface</a>
+                <a href="ccr-alarm-system.html">Entry 25 &middot; CCR alarm system <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="shell-section" id="faq">
+                <div class="section-tag">FAQ</div>
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is CCR protection for?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>To protect people, the series circuit and the CCR itself. Monitors watch the supply, the output and the temperature, and the CCR either raises an alarm or shuts down its output.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Which faults shut the CCR down and which only warn?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Critical faults such as an open circuit, overcurrent, over-temperature or a supply far outside its limits shut the output down. Conditions such as current slightly out of tolerance or low insulation raise a warning and let the lights keep running while the cause is found.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Why does an open circuit shut the output down?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The CCR keeps trying to push the set current into a loop that is no longer complete, so the output voltage would rise far above normal. Shutting down removes that hazard to people and insulation.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">Why does an earth fault only warn?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The series loop is isolated from earth, so one earth fault does not normally stop the lights. It is still serious: a second fault can cause a hard short and a shock hazard, so it should be found and repaired early.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">Should a tripped CCR be reset straight away?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>No. Record the code and readings, isolate and lock out, find and correct the cause, then reset. Repeated resets can hide a short, an open circuit or an earth fault on a high-voltage circuit.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How are protection functions checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>During testing and maintenance, under the manufacturer's procedure and a permit to work, with the CCR disconnected from the airfield circuit, for example to confirm the open-circuit trip. A live series circuit is never opened to test protection. See CCR Testing.</p></div>
+                </details>
+                </div>
+            </div>
+
+<div class="shell-section cta-wrap">
+            <div class="academy-cta">
+                <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
+                <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
+                <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
+                <h4>Build Practical AGL Engineering Skills</h4>
+                <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
+                <div class="academy-path">
+                    <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Design &amp; Electrical Engineering</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Approach Lighting</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Photometry</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Installation &amp; Commissioning</span><i class="fa-solid fa-arrow-right-long"></i>
+                    <span>Maintenance &amp; Troubleshooting</span>
+                </div>
+                <p>Learn how each light, sign and circuit works as part of a complete airport lighting system, not just as an isolated diagram.</p>
+                <div class="academy-cta-actions">
+                    <a href="../academy.html" class="academy-btn academy-btn-primary"><i class="fa-solid fa-book-open"></i> Explore AGL Courses</a>
+                    <a href="../index.html#contact" class="academy-btn academy-btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Your AGL Learning Journey</a>
+                </div>
+                <div class="academy-cta-tagline">See. Understand. Apply. Engineer.</div>
+            </div>
+            </div>
+
+            
+<div class="shell-section">
+                <div class="section-tag">Related Entries</div>
+                <h2>Continue Exploring</h2>
+                <div class="related-grid">
+                <a class="related-card" href="ccr-cooling-system.html">
+                    <div class="rc-tag">CCR &amp; Power Supply</div>
+                    <h5>CCR Cooling System</h5>
+                </a>
+<a class="related-card" href="ccr-transformer.html">
+                    <div class="rc-tag">CCR &amp; Power Supply</div>
+                    <h5>CCR Transformer</h5>
+                </a>
+<a class="related-card" href="ccr-internal-architecture.html">
+                    <div class="rc-tag">CCR &amp; Power Supply</div>
+                    <h5>CCR Internal Architecture</h5>
+                </a>
+<a class="related-card" href="ccr-testing.html">
+                    <div class="rc-tag">CCR &amp; Power Supply</div>
+                    <h5>CCR Testing</h5>
+                </a>
+<a class="related-card" href="ccr-maintenance.html">
+                    <div class="rc-tag">Maintenance &amp; Servicing</div>
+                    <h5>CCR Maintenance</h5>
+                </a>
+<a class="related-card" href="../series-circuit/earth-fault.html">
+                    <div class="rc-tag">Series Circuits</div>
+                    <h5>Earth Fault</h5>
+                </a>
+<a class="related-card" href="../series-circuit/lightning-surge-interface.html">
+                    <div class="rc-tag">Series Circuits</div>
+                    <h5>Lightning &amp; Surge Interface</h5>
+                </a>
+<a class="related-card" href="surge-protection-devices-for-ccr-and-circuits.html"><div class="rc-tag">CCR &amp; Power Supply</div><h5>Surge Protection Devices for CCR and Circuits</h5></a>
+<a class="related-card" href="../comparison-selection/different-ccr-technologies.html"><div class="rc-tag">Comparisons</div><h5>Different CCR Technologies</h5></a>
+<a class="related-card" href="../failure-troubleshooting/ccr-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>CCR Troubleshooting</h5></a>
+<a class="related-card" href="ccr-communication.html"><div class="rc-tag">CCR &amp; Power Supply</div><h5>CCR Communication</h5></a>
+<a class="related-card" href="ccr-to-series-circuit-interface.html"><div class="rc-tag">CCR &amp; Power Supply</div><h5>CCR-to-Series-Circuit Interface</h5></a>
+</div>
+            </div>
+
+        
+        
+</div>
+    </main>
+
+    <footer>
+        <p>© 2026 <strong>Precision AGL Academy</strong> · All rights reserved</p>
+        <div class="footer-links">
+            <a href="../index.html#about">About</a>
+            <a href="../component-library.html">Components</a>
+            <a href="../agl-comparisons.html">Comparisons</a>
+            <a href="../standards-companion.html">Standards</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <script>
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => { scrollBtn.classList.toggle('visible', window.scrollY > 400); });
+        scrollBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        const hb = document.getElementById('hamburger'), nl = document.getElementById('navLinks');
+        hb.addEventListener('click', () => { const o = nl.classList.toggle('open'); hb.setAttribute('aria-expanded', o); });
+    </script>
+
+    <script>
+        const $=id=>document.getElementById(id);
+        const SET=6.6;
+        const F=[
+         {k:'brk',n:'Input overload / short',z:'z_brk',q:'Input current',u:'% of rated',min:100,max:600,step:5,def:100,warn:110,trip:125,dir:'up',
+          det:'Input breaker or fuse. It trips on a sustained overload (with a delay) or instantly on a short circuit.',
+          act:v=>v>=300?'The breaker opens instantly on the short-circuit current. The CCR loses its supply and the output goes dark.':'The breaker opens after a delay that shortens as the overload grows. The CCR loses its supply and the output goes dark.',
+          ind:'Supply failure at the CCR panel and, where wired, an input-supply alarm to the remote system.',
+          rst:'Manual, at the breaker, after the cause is found.',
+          chk:['Look for a short or damaged cable on the CCR input side','Check the breaker rating and curve against the CCR nameplate','Do not fit a larger breaker to stop trips; find the cause']},
+         {k:'ov',n:'Input over-voltage',z:'z_mon',q:'Supply voltage',u:'% of nominal',min:90,max:130,step:1,def:100,warn:110,trip:115,dir:'up',
+          det:'Supply monitor on the control board, comparing the incoming voltage with its limits.',
+          act:v=>'The control board opens the contactor and the output shuts down to protect the power stage and transformer.',
+          ind:'Supply / over-voltage fault on the display and a common-fault signal to the remote system.',
+          rst:'Usually after the supply is back within limits; manual or automatic depending on the design.',
+          chk:['Measure the incoming voltage on all phases','Ask the power supplier or check the upstream tap and regulation','Confirm the CCR rating plate voltage matches the supply']},
+         {k:'uv',n:'Input under-voltage / phase loss',z:'z_mon',q:'Supply voltage',u:'% of nominal',min:50,max:110,step:1,def:100,warn:90,trip:80,dir:'down',
+          det:'Supply monitor on the control board. Loss of a phase on a three-phase supply is seen as a very low reading on that phase.',
+          act:v=>'The CCR may no longer reach the set current, so the control board opens the contactor and the output shuts down.',
+          ind:'Supply fault on the display and a common-fault signal to the remote system.',
+          rst:'Manual or automatic once the supply recovers, depending on the design.',
+          chk:['Check the incoming breaker, fuses and all phases','Look for loose input terminals or a failed upstream device','Check the standby supply and changeover, if fitted']},
+         {k:'oc',n:'Output overcurrent',z:'z_sen',q:'Output current',u:'% of set',min:100,max:150,step:1,def:100,warn:105,trip:110,dir:'up',
+          det:'Output current transformer feeding the control board. It reads the real loop current.',
+          act:v=>'The output trips fast on overcurrent protection and the contactor opens. This is a critical alarm.',
+          ind:'Overcurrent trip on the display, fault lamp lit, common-fault signal to the remote system.',
+          rst:'Manual, only after the circuit has been inspected and insulation tested.',
+          chk:['Isolate and lock out','Inspect the series circuit and the CCR output for a short or damage','Test cable insulation before re-energising']},
+         {k:'open',n:'Open circuit',z:'z_sen',q:'Output current',u:'% of set',min:0,max:100,step:1,def:100,warn:95,trip:10,dir:'down',
+          det:'Output current sensing: the current collapses while the CCR is calling for full output.',
+          act:v=>'The CCR keeps driving into an incomplete loop, so the voltage would climb. The control board opens the contactor and shuts the output down. This is a critical alarm.',
+          ind:'Open circuit on the display, fault lamp lit, common-fault signal to the remote system.',
+          rst:'Manual, only after the break has been located and repaired.',
+          chk:['Isolate and lock out','Locate the break by section testing: cable, joint, connector or open isolating-transformer primary winding','Do not reset repeatedly to see if it clears']},
+         {k:'ear',n:'Earth fault / low insulation',z:'z_ear',q:'Insulation resistance',u:'MΩ',min:0.1,max:100,log:true,def:100,warn:10,trip:null,dir:'down',
+          det:'Insulation or earth-leakage monitor on the isolated series loop. It reads the resistance from the loop to earth.',
+          act:v=>v<1?'Alarm only. The loop is still running, but the insulation is very low and a second fault would be a hard short and a shock hazard. Treat as urgent.':'Alarm only. The loop keeps running because one earth fault does not stop the current, but the insulation is falling.',
+          ind:'Earth fault or low-insulation warning on the display and to the remote system; the CCR stays on.',
+          rst:'The alarm clears when the insulation is repaired and retested.',
+          chk:['Isolate, then insulation-resistance test the circuit in sections','Look for moisture in pits, connectors and transformers','Repair and retest before returning to service']},
+         {k:'tmp',n:'Over-temperature',z:'z_tmp',q:'Internal temperature',u:'°C',min:20,max:90,step:1,def:40,warn:65,trip:75,dir:'up',
+          det:'Temperature sensor on the heatsink and transformer. See CCR Cooling System.',
+          act:v=>'The output shuts down to protect the thyristors and transformer. It should only be restarted after it has cooled.',
+          ind:'Over-temperature trip on the display and a common-fault signal to the remote system.',
+          rst:'After cooling and after the cause is corrected.',
+          chk:['Let the cabinet cool','Check filters, vents, fan and ambient temperature','Check whether the circuit load exceeds the CCR rating']}
+        ];
+        let cur=0,sv=null;
+        const isLog=f=>!!f.log;
+        function val(f,x){return isLog(f)?+(0.1*Math.pow(10,x/100*3)).toFixed(2):x}
+        function stat(f,v){const up=f.dir==='up';
+            if(f.trip!=null&&(up?v>f.trip:v<f.trip))return 2;
+            if(up?v>f.warn:v<f.warn)return 1;return 0}
+        function fmt(f,v){return isLog(f)?(v>=10?v.toFixed(0):v.toFixed(1)):String(Math.round(v))}
+        function pick(i){cur=i;const f=F[i];const sl=$('sl');
+            if(isLog(f)){sl.min=0;sl.max=100;sl.step=1;sl.value=100}else{sl.min=f.min;sl.max=f.max;sl.step=f.step;sl.value=f.def}
+            render()}
+        function render(){
+            const f=F[cur],v=val(f,+$('sl').value),st=stat(f,v);
+            const cmp=f.dir==='up'?'> ':'< ';
+            $('qLabel').textContent=f.q;$('qVal').textContent=fmt(f,v);$('qUnit').textContent=f.u;
+            const bd=$('badge');bd.className='pr-badge '+['ok','warn','bad'][st];bd.textContent=['NORMAL','WARNING','TRIP'][st];
+            let I=SET;
+            if(f.k==='oc'||f.k==='open')I=v/100*SET;
+            if(st===2)I=0;
+            $('rM').textContent=fmt(f,v);
+            $('rW').textContent=cmp+f.warn;
+            $('rT').textContent=f.trip==null?'alarm only':cmp+f.trip;
+            const ri=$('rI');ri.textContent=I.toFixed(1);ri.className=st===2?'bad':(f.k==='oc'||f.k==='open')&&st===1?'warn':'';
+            $('rM').className=['','warn','bad'][st];
+            let seq,msg;
+            if(st===0){seq=['<b>Detect.</b> '+f.det,'<b>Act.</b> No action: the reading is within limits.','<b>Indicate.</b> No fault shown; the CCR runs normally.'];msg='Normal. '+f.q+' is within limits and the CCR holds '+SET.toFixed(1)+' A.'}
+            else if(st===1){seq=['<b>Detect.</b> '+f.det,'<b>Act.</b> '+(f.k==='ear'?f.act(v):'Warning only: the circuit keeps running while the cause is investigated.'),'<b>Indicate.</b> '+f.ind];
+                msg=f.k==='ear'?(v<1?'Very low insulation. Circuit still on, but treat as urgent.':'Warning: insulation is low. The circuit keeps running; find the cause early.'):'Warning: '+f.q.toLowerCase()+' is outside its normal band. The CCR keeps running; find the cause before it trips.'}
+            else{seq=['<b>Detect.</b> '+f.det,'<b>Act.</b> '+f.act(v),'<b>Indicate.</b> '+f.ind+' <b>Reset:</b> '+f.rst];msg='TRIP: '+f.n+'. The output is shut down. Find and correct the cause before any reset.'}
+            $('seq').innerHTML=seq.map(x=>'<li>'+x+'</li>').join('');
+            $('chk').innerHTML=f.chk.map(x=>'<li>'+x+'</li>').join('');
+            const a=$('alarm');a.className='ccr-alarm'+(st===2?' bad':st===1?' warn':'');a.textContent=msg;
+            // diagram
+            const G='#35d07f',R='#E63946',Y='#FFB400',C='#00d4ff',N='#27446d',D='#3a4a66';
+            ['z_brk','z_con','z_scr','z_tr','z_sen','z_cir','z_spd','z_mon','z_tmp','z_ctl','z_ear'].forEach(id=>{const r=$(id).querySelector('rect');r.setAttribute('stroke',N)});
+            const sel=$(f.z).querySelector('rect');sel.setAttribute('stroke',st===2?R:st===1?Y:C);
+            const brkTrip=st===2&&f.k==='brk',trip=st===2&&f.k!=='brk';
+            const dead=brkTrip?[1,2,3,4,5]:trip?[2,3,4,5]:[];
+            for(let i=0;i<6;i++){const w=$('w'+i);const d=dead.includes(i);w.setAttribute('stroke',d?D:G);w.setAttribute('stroke-dasharray',d?'6 5':'')}
+            $('conTxt').textContent=trip?'OPEN':'CLOSED';$('conTxt').setAttribute('fill',trip?'#ff8a93':'#8aa0c4');
+            if(trip)$('z_con').querySelector('rect').setAttribute('stroke',R);
+            $('brkTxt').textContent=brkTrip?'TRIPPED':'overload / short';$('brkTxt').setAttribute('fill',brkTrip?'#ff8a93':'#8aa0c4');
+            if(brkTrip)$('z_brk').querySelector('rect').setAttribute('stroke',R);
+            if(st===2&&f.k!=='brk')$('z_ctl').querySelector('rect').setAttribute('stroke',R);
+            document.querySelectorAll('#faults button').forEach((b,i)=>b.classList.toggle('sel',i===cur));
+        }
+        $('faults').innerHTML=F.map((f,i)=>'<button data-i="'+i+'">'+f.n+'</button>').join('');
+        document.querySelectorAll('#faults button').forEach(b=>b.onclick=()=>pick(+b.dataset.i));
+        $('sl').oninput=render;
+        pick(3);
+    </script>
+
+    <!-- dz-feature:start -->
+    <div class="dz-overlay" id="dzOverlay" role="dialog" aria-modal="true" aria-label="Full diagram viewer">
+        <div class="dz-bar">
+            <span class="dz-title" id="dzTitle">Diagram</span>
+            <div class="dz-tools">
+                <button type="button" id="dzOut" aria-label="Zoom out" title="Zoom out (-)">&minus;</button>
+                <span class="dz-zoom" id="dzPct" aria-live="polite">100%</span>
+                <button type="button" id="dzIn" aria-label="Zoom in" title="Zoom in (+)">+</button>
+                <button type="button" id="dzFit" class="dz-fit" aria-label="Fit diagram to screen" title="Fit to screen (0)">Fit</button>
+                <button type="button" id="dzClose" class="dz-close" title="Close (Esc)">Close</button>
+            </div>
+        </div>
+        <div class="dz-stage" id="dzStage">
+            <div class="dz-hint" id="dzHint">Drag to pan &middot; scroll or pinch to zoom &middot; double-click to zoom in</div>
+        </div>
+    </div>
+    <script>
+    (function(){
+        var ov=document.getElementById('dzOverlay'), stage=document.getElementById('dzStage');
+        var pct=document.getElementById('dzPct'), hint=document.getElementById('dzHint'), ttl=document.getElementById('dzTitle');
+        var svg=null, vw=0, vh=0, fit=1, s=1, tx=0, ty=0, opener=null, hintTimer=null;
+        var MIN=0.5, MAX=10; /* relative to fit */
+        var ptrs={}, last=null;
+
+        function clamp(v,a,b){ return Math.max(a,Math.min(b,v)); }
+        function apply(){
+            var W=stage.clientWidth, H=stage.clientHeight, m=80;
+            var w=vw*s, h=vh*s;
+            tx=clamp(tx, m-w, W-m); ty=clamp(ty, m-h, H-m);
+            svg.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';
+            pct.textContent=Math.round(s/fit*100)+'%';
+        }
+        function fitView(){
+            var W=stage.clientWidth, H=stage.clientHeight, pad=24;
+            fit=Math.min((W-pad*2)/vw,(H-pad*2)/vh); if(!(fit>0)) fit=1;
+            s=fit; tx=(W-vw*s)/2; ty=(H-vh*s)/2; apply();
+        }
+        function zoomAt(f,cx,cy){
+            var ns=clamp(s*f, fit*MIN, fit*MAX); f=ns/s;
+            tx=cx-(cx-tx)*f; ty=cy-(cy-ty)*f; s=ns; apply();
+        }
+        function center(){ return [stage.clientWidth/2, stage.clientHeight/2]; }
+        function stagePt(e){ var r=stage.getBoundingClientRect(); return [e.clientX-r.left, e.clientY-r.top]; }
+
+        function open(src, trigger){
+            opener=trigger||null;
+            if(svg) stage.removeChild(svg);
+            svg=src.cloneNode(true); svg.removeAttribute('style'); svg.removeAttribute('class');
+            var vb=src.viewBox&&src.viewBox.baseVal;
+            if(vb&&vb.width){ vw=vb.width; vh=vb.height; }
+            else { var bb=src.getBoundingClientRect(); vw=bb.width||940; vh=bb.height||520; }
+            svg.setAttribute('width',vw); svg.setAttribute('height',vh);
+            svg.style.width=vw+'px'; svg.style.height=vh+'px';
+            stage.insertBefore(svg, hint);
+            var label=src.getAttribute('aria-label')||'';
+            var h1=document.querySelector('h1');
+            ttl.textContent=(h1?h1.textContent.trim():'Diagram');
+            svg.setAttribute('aria-label', label);
+            ov.classList.add('open'); document.body.style.overflow='hidden';
+            fitView();
+            hint.classList.remove('hide'); clearTimeout(hintTimer);
+            hintTimer=setTimeout(function(){ hint.classList.add('hide'); },4500);
+            document.getElementById('dzClose').focus();
+        }
+        function close(){
+            ov.classList.remove('open'); document.body.style.overflow='';
+            if(opener&&opener.focus) opener.focus();
+        }
+
+        document.querySelectorAll('.diagram-card').forEach(function(card){
+            var src=card.querySelector('svg'), btn=card.querySelector('.dz-open');
+            if(!src) return;
+            if(btn) btn.addEventListener('click',function(){ open(src,btn); });
+            src.addEventListener('click',function(){ open(src,btn); });
+        });
+
+        document.getElementById('dzClose').addEventListener('click',close);
+        document.getElementById('dzIn').addEventListener('click',function(){ var c=center(); zoomAt(1.4,c[0],c[1]); });
+        document.getElementById('dzOut').addEventListener('click',function(){ var c=center(); zoomAt(1/1.4,c[0],c[1]); });
+        document.getElementById('dzFit').addEventListener('click',fitView);
+
+        stage.addEventListener('wheel',function(e){
+            e.preventDefault(); var p=stagePt(e);
+            var dy=e.deltaMode===1?e.deltaY*16:e.deltaY;
+            zoomAt(Math.exp(-dy*(e.ctrlKey?0.01:0.0018)),p[0],p[1]);
+        },{passive:false});
+
+        stage.addEventListener('pointerdown',function(e){
+            stage.setPointerCapture(e.pointerId); ptrs[e.pointerId]=stagePt(e); last=null;
+            stage.classList.add('drag'); hint.classList.add('hide');
+        });
+        stage.addEventListener('pointermove',function(e){
+            if(!ptrs[e.pointerId]) return;
+            var p=stagePt(e), ids=Object.keys(ptrs);
+            if(ids.length===1){
+                tx+=p[0]-ptrs[e.pointerId][0]; ty+=p[1]-ptrs[e.pointerId][1]; ptrs[e.pointerId]=p; apply();
+            } else if(ids.length>=2){
+                ptrs[e.pointerId]=p;
+                var a=ptrs[ids[0]], b=ptrs[ids[1]];
+                var d=Math.hypot(a[0]-b[0],a[1]-b[1]), cx=(a[0]+b[0])/2, cy=(a[1]+b[1])/2;
+                if(last){
+                    tx+=cx-last.cx; ty+=cy-last.cy;
+                    if(last.d>0) zoomAt(d/last.d,cx,cy); else apply();
+                }
+                last={d:d,cx:cx,cy:cy};
+            }
+        });
+        function up(e){
+            delete ptrs[e.pointerId]; last=null;
+            if(!Object.keys(ptrs).length) stage.classList.remove('drag');
+        }
+        stage.addEventListener('pointerup',up); stage.addEventListener('pointercancel',up);
+
+        stage.addEventListener('dblclick',function(e){
+            var p=stagePt(e);
+            if(s>fit*1.05) fitView(); else zoomAt(2.5,p[0],p[1]);
+        });
+
+        window.addEventListener('resize',function(){ if(ov.classList.contains('open')) fitView(); });
+
+        document.addEventListener('keydown',function(e){
+            if(!ov.classList.contains('open')) return;
+            var c=center(), k=e.key, step=60;
+            if(k==='Escape') close();
+            else if(k==='+'||k==='=') zoomAt(1.25,c[0],c[1]);
+            else if(k==='-'||k==='_') zoomAt(1/1.25,c[0],c[1]);
+            else if(k==='0') fitView();
+            else if(k==='ArrowLeft'){ tx+=step; apply(); }
+            else if(k==='ArrowRight'){ tx-=step; apply(); }
+            else if(k==='ArrowUp'){ ty+=step; apply(); }
+            else if(k==='ArrowDown'){ ty-=step; apply(); }
+            else if(k==='Tab'){
+                var f=ov.querySelectorAll('button'), first=f[0], lastB=f[f.length-1];
+                if(e.shiftKey&&document.activeElement===first){ e.preventDefault(); lastB.focus(); }
+                else if(!e.shiftKey&&document.activeElement===lastB){ e.preventDefault(); first.focus(); }
+            }
+            else return;
+            if(k!=='Tab') e.preventDefault();
+        });
+    })();
+    </script>
+    <!-- dz-feature:end -->
+
+<script>window.m3SkipYellow=true;</script>
+<!-- motion-feature:start -->
+<style>
+/* AGL Visual Encyclopedia: live diagram motion v3 (light, glow, current) */
+@keyframes m3Power{0%{opacity:.25}10%{opacity:1}13%{opacity:.8}16%{opacity:1}85%{opacity:1}95%{opacity:.25}100%{opacity:.25}}
+@keyframes m3Breath{0%,100%{opacity:.55;transform:scale(.9)}50%{opacity:1;transform:scale(1.12)}}
+@keyframes m3Face{0%{filter:brightness(.55) saturate(.8)}10%{filter:brightness(1.25) saturate(1.15)}13%{filter:brightness(.9)}16%,85%{filter:brightness(1.12) saturate(1.1)}95%,100%{filter:brightness(.55) saturate(.8)}}
+@keyframes m3Bloom{0%{opacity:0}10%{opacity:.55}13%{opacity:.3}16%{opacity:.6}50%{opacity:.45}85%{opacity:.6}95%,100%{opacity:0}}
+@keyframes m3Ring{0%{transform:scale(1);opacity:.5}100%{transform:scale(3);opacity:0}}
+@keyframes m3Travel{from{stroke-dashoffset:var(--m3-a,6)}to{stroke-dashoffset:var(--m3-b,-94)}}
+@keyframes m3March{to{stroke-dashoffset:var(--m3-d,-12)}}
+@keyframes m3Grow{from{transform:scaleX(0)}}
+@keyframes m3Draw{to{stroke-dashoffset:0}}
+@keyframes m3Sweep{0%{opacity:0;transform:translateX(0)}6%,94%{opacity:.9}100%{opacity:0;transform:translateX(var(--m3-w,200px))}}
+@keyframes m3Float{0%,100%{transform:translateY(-6px)}50%{transform:translateY(6px)}}
+@keyframes m3Shimmer{0%,100%{opacity:.25}50%{opacity:.85}}
+.m3-on{animation:m3Power 9s ease-in-out infinite}
+.m3-face{animation:m3Face 9s ease-in-out infinite}
+.m3-bloomg{animation:m3Bloom 9s ease-in-out infinite;pointer-events:none}
+.m3-halo{transform-box:fill-box;transform-origin:center;animation:m3Breath 2.4s ease-in-out infinite}
+.m3-ring{fill:none;stroke-width:1.5;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center;animation:m3Ring 3s ease-out infinite}
+.m3-spark{fill:#fff;transform-box:fill-box;transform-origin:center;animation:m3Shimmer 1.8s ease-in-out infinite}
+.m3-src{animation:m3Power 9s ease-in-out infinite}
+.m3-filon{animation:m3Power 9s ease-in-out infinite,m3Fil 1.5s ease-in-out infinite}
+@keyframes m3Fil{0%,100%{filter:drop-shadow(0 0 3px #FFD400)}50%{filter:drop-shadow(0 0 9px #FFD400) drop-shadow(0 0 16px #ff9d00)}}
+.m3-pk{fill:none;stroke-linecap:round;pointer-events:none;stroke-dasharray:var(--m3-len,9) 400;animation:m3Travel var(--m3-t,2.4s) linear infinite;animation-delay:var(--m3-pd,0s);filter:drop-shadow(0 0 3px currentColor) drop-shadow(0 0 7px currentColor)}
+.m3-march{animation:m3March var(--m3-dur,.8s) linear infinite}
+.m3-ready:not(.m3-play) .m3-bar{transform:scaleX(0)}
+.m3-bar{transform-box:fill-box;transform-origin:left center}
+.m3-play .m3-bar{animation:m3Grow 1.2s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:var(--m3-bd,.3s)}
+.m3-ready .m3-draw{stroke-dasharray:1;stroke-dashoffset:1}
+.m3-play .m3-draw{animation:m3Draw 2.4s cubic-bezier(.4,0,.2,1) forwards;animation-delay:var(--m3-dd,.4s)}
+.m3-cursor{stroke:var(--gold,#FFB400);stroke-width:1.6;opacity:0;pointer-events:none;animation:m3Sweep 4.2s linear infinite;animation-delay:2.6s}
+.xv-part{animation:m3Float 4s ease-in-out infinite;animation-delay:calc(var(--m3-i,0) * -.5s)}
+.m3-toggle{margin-left:10px}
+.m3-off *,.m3-off *::before,.m3-off *::after{animation:none!important}
+.m3-off .m3-ready .m3-bar{transform:none!important}
+.m3-off .m3-ready .m3-draw{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+.m3-off .m3-fx{display:none}
+@media (prefers-reduced-motion:reduce){.m3-on,.m3-face,.m3-bloomg,.m3-halo,.m3-ring,.m3-spark,.m3-src,.m3-filon,.m3-pk,.m3-march,.xv-part{animation-duration:0s}}
+</style>
+<script>
+(function(){
+  var root=document.documentElement, NS='http://www.w3.org/2000/svg';
+  var rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pref=null; try{pref=localStorage.getItem('aglMotion');}catch(e){}
+  var off=rm?(pref!=='on'):(pref==='off');
+  function setOff(v){off=v;root.classList.toggle('m3-off',v);try{localStorage.setItem('aglMotion',v?'off':'on');}catch(e){}
+    document.querySelectorAll('.m3-toggle').forEach(function(b){b.setAttribute('aria-pressed',String(!v));b.querySelector('span').textContent=v?'Motion off':'Motion on';});}
+  root.classList.toggle('m3-off',off);
+  function el(n,a){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);return e;}
+  function rgb(s){var m=(s||'').match(/rgba?\(([^)]+)\)/);if(!m)return null;var p=m[1].split(/[ ,\/]+/).map(parseFloat);return {r:p[0],g:p[1],b:p[2],a:p.length>3?p[3]:1};}
+  function sat(c){return c&&c.a>=.6&&Math.max(c.r,c.g,c.b)-Math.min(c.r,c.g,c.b)>60&&Math.max(c.r,c.g,c.b)>150;}
+  function lum(c){return c.r*.3+c.g*.59+c.b*.11;}
+  function css(c){return 'rgb('+Math.round(c.r)+','+Math.round(c.g)+','+Math.round(c.b)+')';}
+
+  function prep(svg){
+    var defs=svg.querySelector('defs')||svg.insertBefore(el('defs',{}),svg.firstChild), uid=Math.random().toString(36).slice(2,6), n=0;
+    var blur=el('filter',{id:'m3b'+uid,x:'-80%',y:'-80%',width:'260%',height:'260%'});blur.appendChild(el('feGaussianBlur',{stdDeviation:'7'}));defs.appendChild(blur);
+    function grad(c){var id='m3g'+uid+(n++),g=el('radialGradient',{id:id});
+      [[0,.9],[.4,.4],[1,0]].forEach(function(s){g.appendChild(el('stop',{offset:s[0],'stop-color':css(c),'stop-opacity':s[1]}));});defs.appendChild(g);return id;}
+    function fillOf(e){var c=rgb(getComputedStyle(e).fill);return c&&c.a>.4?c:null;}
+    function strokeOf(e){var c=rgb(getComputedStyle(e).stroke);return c&&c.a>.4?c:null;}
+    function inFx(e){return e.closest('.m3-fx,.m3-src,.m3-face,.m3-pk,.diagram-legend');}
+
+    /* 1 -- LEDs and lamps: glow cluster behind, warm-up, breathing halo, rings, sparkle */
+    var src=[],panels=[];
+    svg.querySelectorAll('[filter^="url(#gw"] > *,[filter^="url(#glow"] > *,[filter="url(#gl)"] > *,circle[filter^="url(#gw"],circle[filter^="url(#glow"],circle[filter="url(#gl)"]').forEach(function(e){if(/^(rect|circle|ellipse|path)$/.test(e.tagName))src.push(e);});
+    svg.querySelectorAll('circle').forEach(function(c){var r=+c.getAttribute('r');if(r<3.5||r>14||c.closest('[filter]'))return;
+      var f=fillOf(c);if(!(f&&f.a>=.8&&f.r>220&&f.g>150&&f.b<90))return;
+      var cx=+c.getAttribute('cx'),cy=+c.getAttribute('cy');
+      var badge=[].some.call(c.parentNode.querySelectorAll('text'),function(t){return Math.abs(+t.getAttribute('x')-cx)<r+1&&Math.abs(+t.getAttribute('y')-cy)<r+3;});
+      if(!badge)src.push(c);});
+    svg.querySelectorAll('path').forEach(function(q){var d=q.getAttribute('d')||'';if(d.length>120||!/ t/.test(d))return;
+      var c=strokeOf(q);if(c&&c.r>220&&c.g>150&&c.b<90){q.classList.add('m3-fil');src.push(q);}});
+    if(!src.length){svg.querySelectorAll('rect').forEach(function(r){var w=+r.getAttribute('width'),h=+r.getAttribute('height');
+      if(w<5||w>64||h<5||h>26||r.closest('defs'))return;var f=fillOf(r);if(f&&f.a>=.9&&f.r>238&&f.g>238&&f.b>238)src.push(r);});}
+    src.forEach(function(e){
+      var b;try{b=e.getBBox();}catch(x){return;} if(!b.width)return;
+      if(b.width>40||b.height>40){panels.push(e);return;}
+      var c=fillOf(e)||strokeOf(e)||{r:255,g:230,b:150}; if(lum(c)<90)return; if(Math.min(c.r,c.g,c.b)>235)c={r:255,g:238,b:180};
+      var cx=b.x+b.width/2,cy=b.y+b.height/2,m=Math.max(b.width,b.height),R=Math.min(80,Math.max(26,m*2.6));
+      var g=el('g',{'class':'m3-fx m3-bloomg'});
+      g.appendChild(el('circle',{cx:cx,cy:cy,r:R,fill:'url(#'+grad(c)+')','class':'m3-halo'}));
+      var rg=el('circle',{cx:cx,cy:cy,r:Math.max(5,m/2),stroke:css(c),'class':'m3-ring'});g.appendChild(rg);
+      var rg2=rg.cloneNode(false);rg2.style.animationDelay='1.5s';g.appendChild(rg2);
+      var ref=(e.parentNode.getAttribute&&e.parentNode.getAttribute('filter'))?e.parentNode:e;ref.parentNode.insertBefore(g,ref);
+      e.classList.add(e.classList.contains('m3-fil')?'m3-filon':'m3-src');
+    });
+
+    /* 2 -- self-luminous panels (drawn with the glow filter): light up and bloom */
+    panels.forEach(function(r){
+      if(r.tagName!=='rect')return;
+      var f=fillOf(r);if(!f)return;
+      var w=+r.getAttribute('width'),h=+r.getAttribute('height'),x=+r.getAttribute('x'),y=+r.getAttribute('y');
+      var bl=el('rect',{x:x,y:y,width:w,height:h,rx:+r.getAttribute('rx')||0,fill:css(f),filter:'url(#m3b'+uid+')','class':'m3-fx m3-bloomg'});
+      if(r.getAttribute('transform'))bl.setAttribute('transform',r.getAttribute('transform'));
+      var ref=(r.parentNode.getAttribute&&r.parentNode.getAttribute('filter'))?r.parentNode:r;
+      ref.parentNode.insertBefore(bl,ref);
+      r.classList.add('m3-face');
+    });
+
+    /* 3 -- light rays and current: bright pulses travelling along strokes */
+    var seen=0;
+    function packet(s,len,col,speed){
+      var t=Math.min(3.6,Math.max(1.2,len/(speed||95))),k=len>170?2:1;
+      for(var i=0;i<k;i++){var p=s.cloneNode(false);
+        ['id','class','stroke-dasharray','marker-end','marker-start','filter','opacity','style','stroke-opacity','transform'].forEach(function(a){p.removeAttribute(a);});
+        if(s.getAttribute('transform'))p.setAttribute('transform',s.getAttribute('transform'));
+        p.setAttribute('class','m3-fx m3-pk');p.setAttribute('pathLength','100');p.setAttribute('stroke',col);p.setAttribute('stroke-width','3.4');p.style.color=col;
+        p.style.setProperty('--m3-t',t.toFixed(2)+'s');p.style.setProperty('--m3-len','7');p.style.setProperty('--m3-a','7');p.style.setProperty('--m3-b','-100');
+        p.style.setProperty('--m3-pd',((seen%4)*.3+i*t/2).toFixed(2)+'s');
+        s.parentNode.insertBefore(p,s.nextSibling);}
+      seen++;}
+    svg.querySelectorAll('line,path,polyline').forEach(function(s){
+      if(window.m3NoLines||inFx(s)||s.closest('defs'))return;if(window.m3SkipYellow&&/cl-yellow|rgb\(255, ?212, ?0\)/i.test((s.getAttribute('stroke')||'')+' '+getComputedStyle(s).stroke))return;if(s.getAttribute('marker-start')&&s.getAttribute('marker-end'))return;
+      if(s.tagName==='path'&&/z\s*$/i.test((s.getAttribute('d')||'').trim()))return;
+      var cs=getComputedStyle(s);if(cs.fill!=='none'&&s.tagName!=='line'&&!/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(s.getAttribute('d')||''))return;
+      var c=rgb(cs.stroke),sw=parseFloat(cs.strokeWidth);
+      var dd=(s.getAttribute('d')||''),shaft=s.tagName==='path'&&/^M\s*[\d.]+[ ,]+[\d.]+\s*[HV]\s*[\d.]+\s*$/.test(dd)&&s.nextElementSibling&&s.nextElementSibling.tagName==='path'&&s.nextElementSibling.getAttribute('fill')&&s.nextElementSibling.getAttribute('fill')!=='none';
+      if(shaft){var L;try{L=s.getTotalLength();}catch(x){return;} if(L>=18){packet(s,L,'rgb(255,180,0)',34);}return;}
+      if(!sat(c)||sw<1.3)return;
+      var len;try{len=s.getTotalLength();}catch(x){return;} if(len<34)return;
+      var d=(s.getAttribute('d')||'');if(d.length>500)return;
+      var dashed=cs.strokeDasharray&&cs.strokeDasharray!=='none';
+      var isRay=s.tagName==='path'&&/^[ML\d\s.,-]+$/i.test(d)&&(d.match(/L/gi)||[]).length>=2; /* zig-zag light path */
+      if(dashed&&!isRay){var nums=cs.strokeDasharray.split(/[ ,]+/).map(parseFloat).filter(function(q){return q>0;});
+        var sum=nums.reduce(function(a,b){return a+b;},0);if(nums.length%2)sum*=2;
+        s.classList.add('m3-march');s.style.setProperty('--m3-d',String(-sum));s.style.setProperty('--m3-dur',(sum/14).toFixed(2)+'s');return;}
+      packet(s,len,css(c),isRay?120:95);
+    });
+
+    /* 4 -- waveforms trace; cursor sweeps */
+    var waves=[].slice.call(svg.querySelectorAll('path[d]')).filter(function(p){return (p.getAttribute('d')||'').length>600;});
+    waves.forEach(function(p,i){p.setAttribute('pathLength','1');p.classList.add('m3-draw');p.style.setProperty('--m3-dd',(.4+(i%2)*.25)+'s');});
+    if(waves.length){[].slice.call(svg.querySelectorAll('rect[stroke-opacity]')).filter(function(r){return +r.getAttribute('width')>200&&+r.getAttribute('height')>200;}).forEach(function(r){
+      var x0=+r.getAttribute('x'),x1=x0+ +r.getAttribute('width'),mine=waves.filter(function(w){var b=w.getBBox();return b.x>=x0-2&&b.x+b.width<=x1+2;});if(!mine.length)return;
+      var a=1e9,z=-1e9,u=1e9,v=-1e9;mine.forEach(function(w){var b=w.getBBox();a=Math.min(a,b.x);z=Math.max(z,b.x+b.width);u=Math.min(u,b.y);v=Math.max(v,b.y+b.height);});
+      var c=el('line',{x1:a,x2:a,y1:u-8,y2:v+8,'class':'m3-fx m3-cursor'});c.style.setProperty('--m3-w',(z-a)+'px');svg.appendChild(c);});}
+
+    /* 5 -- bars fill; exploded parts hover */
+    var tracks={};svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(f.indexOf('rgba(255,255,255')===0)tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')]=+r.getAttribute('width');});
+    var bi=0;svg.querySelectorAll('rect').forEach(function(r){var f=r.getAttribute('fill')||'';if(!/^var\(--(gold|cyan|green|red|taxi-blue)\)$/.test(f))return;
+      var w=tracks[r.getAttribute('x')+'|'+r.getAttribute('y')+'|'+r.getAttribute('height')];if(w&&w>=+r.getAttribute('width')){r.classList.add('m3-bar');r.style.setProperty('--m3-bd',(.3+(bi++%6)*.12)+'s');}});
+    svg.querySelectorAll('.xv-part').forEach(function(p,i){p.style.setProperty('--m3-i',i);});
+
+    svg.classList.add('m3-ready');
+    function play(){svg.classList.add('m3-play');}
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.disconnect();play();}});},{threshold:.2});io.observe(svg);}else play();
+  }
+  function toggle(){
+    var card=document.querySelector('.diagram-card'),open=card&&card.querySelector('.dz-open'); if(!card)return;
+    var b=document.createElement('button');b.type='button';b.className='dz-btn m3-toggle';b.setAttribute('aria-pressed',String(!off));
+    b.innerHTML='<i class="fa-solid fa-wand-magic-sparkles"></i> <span>'+(off?'Motion off':'Motion on')+'</span>';
+    b.addEventListener('click',function(){setOff(!off);});
+    if(open)open.insertAdjacentElement('afterend',b);else card.appendChild(b);
+  }
+  function init(){document.querySelectorAll('.diagram-card > svg,.diagram-card > .diagram-scroll > svg').forEach(prep);toggle();}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+<!-- motion-feature:end -->
+
+</body>
+</html>

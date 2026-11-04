@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>CIE Colour Orientation Tool: AGL Signal-Colour Chromaticity</title>
+<meta name="description" content="Plot a CIE 1931 chromaticity coordinate (x, y) against illustrative aviation signal-colour zones: an educational orientation tool for AGL photometry."/>
+<meta name="keywords" content="CIE 1931 chromaticity diagram, CIE colour tool, AGL photometry, aviation signal colour, airfield lighting colour zones, chromaticity coordinates, red yellow green blue white aviation signal, airfield ground lighting colour"/>
+<meta name="author" content="Precision AGL Academy"/>
+<meta name="robots" content="index, follow"/>
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/cie-colour-tool.html"/>
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="CIE Colour Orientation Tool: AGL Signal-Colour Chromaticity"/>
+<meta property="og:description" content="Interactive CIE 1931 chromaticity diagram for exploring aviation signal-colour zones (red, yellow, green, blue, white) used in Airfield Ground Lighting."/>
+<meta property="og:url" content="https://rahulsharmaagl.in/cie-colour-tool.html"/>
+<meta property="og:site_name" content="Precision AGL Academy | AGL Knowledge Hub"/>
+<meta property="og:image" content="https://rahulsharmaagl.in/assets/og-cie-colour-tool.jpg"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="en_US"/>
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="CIE Colour Orientation Tool: AGL Signal-Colour Chromaticity"/>
+<meta name="twitter:description" content="Interactive CIE 1931 chromaticity diagram for exploring aviation signal-colour zones (red, yellow, green, blue, white) used in Airfield Ground Lighting."/>
+<meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-cie-colour-tool.jpg"/>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@type": "WebApplication",
+  "@id": "https://rahulsharmaagl.in/cie-colour-tool.html#webapplication",
+  "@context": "https://schema.org",
+  "name": "CIE Colour Orientation Tool",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Any (web browser)",
+  "description": "Plot a CIE 1931 chromaticity coordinate (x, y) against illustrative aviation signal-colour zones: an educational orientation tool for AGL photometry.",
+  "author": {
+    "@type": "Person",
+    "name": "Precision AGL Academy",
+    "jobTitle": "AGL Specialist"
+  },
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Precision AGL Academy | AGL Knowledge Hub",
+    "url": "https://rahulsharmaagl.in/"
+  },
+  "url": "https://rahulsharmaagl.in/cie-colour-tool.html",
+  "publisher": {
+    "@id": "https://rahulsharmaagl.in/academy.html#org"
+  },
+  "breadcrumb": {
+    "@id": "https://rahulsharmaagl.in/cie-colour-tool.html#breadcrumb"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://rahulsharmaagl.in/assets/og-cie-colour-tool.jpg"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://rahulsharmaagl.in/cie-colour-tool.html#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://rahulsharmaagl.in/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "AGL Fundamentals",
+      "item": "https://rahulsharmaagl.in/fundamentals.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "CIE Colour Tool",
+      "item": "https://rahulsharmaagl.in/cie-colour-tool.html"
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data: FAQPage -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://rahulsharmaagl.in/cie-colour-tool.html#faq",
+  "url": "https://rahulsharmaagl.in/cie-colour-tool.html",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What does the CIE Colour Orientation Tool do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It plots a CIE 1931 chromaticity coordinate (x, y) on the chromaticity diagram and shows which general aviation signal-colour family it sits nearest to: red, yellow, green, blue or white. It is an educational learning aid for AGL colour concepts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this tool for compliance or certification?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. It is an orientation tool. The colour zones are an illustrative approximation and do not reproduce the current ICAO Annex 14 Attachment 1 or FAA AC 150/5345-53 chromaticity tables, which are periodically revised. Compliance testing needs calibrated photometric equipment and the exact boundary tables in the current applicable standard."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the CIE 1931 chromaticity diagram?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is a two-dimensional map of colour using x and y coordinates. The outer curve is the spectral locus, plotted here from the CIE 1931 2° standard observer chromaticity coordinates, and colours are located inside it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I plot a point?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enter x and y coordinates and select Plot Point, choose a quick preset for a typical red, yellow, green, blue or white, or click or tap directly on the diagram. Reset clears the point."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are the colour zones based on?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are positioned using published reference boundary equations in the style of FAR §25.1397 and SAE J578 signal-colour definitions. This is a closer approximation than a simple grid, but it is still not the current ICAO or FAA table."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the nearest colour family result mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It tells you which illustrative zone your coordinate falls in, with a short description of where that colour is used in airfield lighting. It gives a sense of orientation, not a pass or fail result."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does chromaticity matter for airfield lighting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Colour is an important part of airport visual communication, and different systems use specified colours for different operational purposes. Evaluating colour covers chromaticity coordinates, colour boundaries, luminous intensity and colour consistency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can chromaticity change over time?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Lens ageing and contamination can shift a fixture's chromaticity over time, which is why colour is checked as part of photometric testing and maintenance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where can I find the exact colour boundaries?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the current applicable standard, such as ICAO Annex 14 or FAA AC 150/5345-53. Use the exact tables in the latest edition for any compliance work."
+      }
+    }
+  ],
+  "isPartOf": {
+    "@id": "https://rahulsharmaagl.in/cie-colour-tool.html#webapplication"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "@id": "https://rahulsharmaagl.in/academy.html#org",
+      "name": "Precision AGL Academy",
+      "url": "https://rahulsharmaagl.in/academy.html",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rahulsharmaagl.in/favicon.svg"
+      },
+      "description": "Specialized Airfield Ground Lighting (AGL) training platform in India offering design, photometry, maintenance and diploma-level engineering programs.",
+      "email": "precisionaglsolutions@gmail.com",
+      "telephone": "+91-9821496412",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "New Delhi",
+        "addressCountry": "IN"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "India"
+      },
+      "founder": {
+        "@id": "https://rahulsharmaagl.in/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rahulsharmaagl.in/#person",
+      "name": "Rahul Sharma",
+      "url": "https://rahulsharmaagl.in/index.html#about",
+      "jobTitle": "Manager – Technical & Commercial",
+      "description": "AGL Photometry Specialist | Airfield Ground Lighting | ICAO & FAA Compliance | Project Execution",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Creative Trading Co."
+      },
+      "sameAs": [
+        "https://www.youtube.com/@rahulsharmaagl",
+        "https://www.instagram.com/aglrahulsharma/"
+      ]
+    }
+  ]
+}
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  :root{--dark:#060d1a;--navy:#0a1628;--card:#0d1e38;--gold:#FFB400;--red:#E63946;--cyan:#00d4ff;--green:#3ddc97;--text:#c8d8f0;--white:#f0f4ff;--border:rgba(255,255,255,0.07);}
+  body{font-family:'Barlow',sans-serif;background:var(--dark);color:var(--white);overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:repeating-linear-gradient(90deg, rgba(255,180,0,0.03) 0px, rgba(255,180,0,0.03) 1px, transparent 1px, transparent 80px),repeating-linear-gradient(0deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 1px, transparent 1px, transparent 80px);pointer-events:none;z-index:0;}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 40px;height:70px;display:flex;align-items:center;justify-content:space-between;background:rgba(6,13,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,180,0,0.3);}
+  .nav-logo{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;color:var(--white);text-decoration:none;}
+  .nav-logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:color .3s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+  .nav-cta{padding:10px 24px;border:1px solid var(--gold);color:var(--gold);border-radius:6px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+  .nav-cta:hover{background:var(--gold);color:#000;}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
+  .hamburger span{width:24px;height:2px;background:var(--white);transition:all .25s;}
+  @media(max-width:900px){
+    .nav-links,.nav-cta{display:none;}
+    .hamburger{display:flex;}
+    nav.menu-open .nav-links{display:flex;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:rgba(6,13,26,0.98);border-bottom:1px solid rgba(255,180,0,0.3);padding:10px 0;}
+    nav.menu-open .nav-links a{padding:14px 24px;width:100%;}
+    nav.menu-open .nav-cta{display:block;position:absolute;top:calc(70px + 1px);right:24px;margin-top:12px;}
+    nav.menu-open .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    nav.menu-open .hamburger span:nth-child(2){opacity:0;}
+    nav.menu-open .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  }
+
+  .breadcrumb{padding:110px 40px 0;max-width:1200px;margin:auto;position:relative;z-index:1;}
+  .breadcrumb a{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;letter-spacing:.5px;}
+  .breadcrumb a:hover{color:var(--gold);}
+  .breadcrumb span{color:var(--text);opacity:.4;margin:0 8px;}
+  .breadcrumb .current{color:var(--gold);}
+
+  .page-hero{padding:40px 40px 40px;max-width:1200px;margin:auto;position:relative;z-index:1;}
+  .page-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border:1px solid rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:22px;}
+  .page-title{font-family:'Bebas Neue',sans-serif;font-size:56px;letter-spacing:2px;line-height:1;margin-bottom:16px;}
+  .page-title span{color:var(--gold);}
+  .page-sub{font-size:16px;line-height:1.8;color:var(--text);max-width:760px;}
+  @media(max-width:768px){.page-title{font-size:38px;}}
+
+  section{padding:0 0 70px;position:relative;z-index:1;}
+  .container{width:100%;max-width:1200px;margin:auto;padding:0 40px;}
+
+  .tool-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:24px;align-items:start;}
+  @media(max-width:950px){.tool-grid{grid-template-columns:1fr;}}
+
+  .tool-panel{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:32px;}
+  .tool-panel h3{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;margin-bottom:20px;color:var(--gold);}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:12px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text);margin-bottom:8px;}
+  .field input, .field select{width:100%;padding:12px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:8px;color:var(--white);font-size:14px;font-family:'Barlow',sans-serif;}
+  .field input:focus, .field select:focus{outline:none;border-color:rgba(255,180,0,0.4);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .calc-btn{font-family:inherit;width:100%;padding:14px;border-radius:8px;background:var(--gold);color:#000;border:none;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .25s;}
+  .calc-btn:hover{background:#ffc933;}
+
+  .diagram-wrap{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:16px;padding:24px;}
+  .diagram-wrap svg{width:100%;height:auto;display:block;}
+
+  .zone-readout{margin-top:18px;padding:18px 20px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid var(--border);}
+  .zone-readout .zr-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;}
+  .zone-readout .zr-value{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:1px;}
+  .zone-readout .zr-desc{font-size:12.5px;color:var(--text);margin-top:6px;line-height:1.7;}
+
+  .presets{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .preset-chip{font-family:inherit;padding:8px 14px;border:1px solid var(--border);border-radius:100px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;background:rgba(255,255,255,0.02);transition:all .2s;}
+  .preset-chip:hover{border-color:rgba(255,180,0,0.35);color:var(--white);}
+
+  .note-box{display:flex;gap:12px;align-items:flex-start;margin-top:24px;padding:16px 20px;background:rgba(230,57,70,0.05);border:1px solid rgba(230,57,70,0.2);border-radius:10px;font-size:12.5px;color:var(--text);line-height:1.7;}
+  .note-box i{color:var(--red);margin-top:2px;flex-shrink:0;}
+  .continue-learning a:hover{border-color:rgba(255,180,0,0.35) !important;}
+
+  /* academy cta (matches component-page academy-cta design) */
+  .block-label{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+  .block-label::before{content:'';width:30px;height:1px;background:var(--gold);}
+  .block-title{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1px;line-height:1;margin-bottom:20px;}
+  .academy-cta{position:relative;background:linear-gradient(160deg,#0d1e38,#0a1628 60%,#0d1e38);border:1px solid rgba(255,180,0,0.25);border-radius:20px;padding:50px;overflow:hidden;margin:50px 0;}
+  .academy-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--cyan));}
+  .academy-cta-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;}
+  @media(max-width:900px){.academy-cta-grid{grid-template-columns:1fr;}}
+  .academy-cta p{color:var(--text);font-size:15px;line-height:1.7;margin-bottom:14px;max-width:560px;}
+  .academy-cta-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:24px;}
+  .academy-pathway{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:22px 20px;}
+  .academy-pathway-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+  .academy-pathway-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px 4px;}
+  .academy-pathway-flow span{font-family:'Barlow Condensed',sans-serif;font-size:13.5px;font-weight:600;color:var(--white);background:rgba(255,180,0,0.08);border:1px solid rgba(255,180,0,0.2);padding:5px 10px;border-radius:20px;white-space:nowrap;}
+  .academy-pathway-flow i{color:var(--gold);font-size:10px;opacity:.6;}
+  .btn{padding:13px 26px;border-radius:6px;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border:none;cursor:pointer;}
+  .btn-gold{background:var(--gold);color:#000;}
+  .btn-gold:hover{background:#ffc933;transform:translateY(-3px);}
+  .btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.2);}
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
+  footer p{font-size:13px;color:var(--text);}
+  footer p strong{color:var(--gold);}
+  .footer-links{display:flex;gap:25px;flex-wrap:wrap;}
+  .footer-links a{font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);text-decoration:none;}
+  .footer-links a:hover{color:var(--gold);}
+
+  /* FAQ */
+  .faq-wrap .faq-intro{font-size:14px;color:var(--text);margin-bottom:22px;line-height:1.7;}
+  .faq-list{display:flex;flex-direction:column;gap:10px;max-width:980px;}
+  .faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+  .faq-item summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:var(--white);line-height:1.5;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary:hover{background:rgba(255,255,255,0.02);}
+  .faq-item summary:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px;}
+  .faq-item .faq-q{flex-grow:1;}
+  .faq-item .faq-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:1.5px;color:#000;background:var(--gold);padding:4px 10px;border-radius:6px;flex-shrink:0;}
+  .faq-item .chev{color:var(--text);font-size:12px;transition:transform .25s;}
+  .faq-item[open] .chev{transform:rotate(180deg);}
+  .faq-item[open] summary{border-bottom:1px solid var(--border);}
+  .faq-a{padding:16px 24px 20px;font-size:14px;line-height:1.85;color:var(--text);}
+
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+/* LEGAL-NOTICE v1.0 */
+.legal-banner{max-width:1200px;margin:14px auto 0;padding:0 40px;position:relative;z-index:1;}
+.legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+.legal-banner-inner strong{color:var(--gold,#FFB400);}
+.legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+.legal-wrap{max-width:1200px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+.legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+.legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+.legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+.legal-addendum strong{color:var(--gold,#FFB400);}
+.legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+.legal-list li{margin-bottom:9px;}
+.legal-list strong{color:var(--white,#f0f4ff);}
+.legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+.legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+@media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+  /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1200px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="fundamentals.html" class="active">Fundamentals</a></li>
+    <li><a href="component-library.html">Components</a></li>
+    <li><a href="standards-companion.html">Standards</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <a href="index.html#contact" class="nav-cta">Get in Touch</a>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+
+    <main id="main-content">
+
+<div class="breadcrumb">
+  <a href="index.html">Home</a><span>/</span>
+  <a href="fundamentals.html">AGL Fundamentals</a><span>/</span>
+  <span class="current">CIE Colour Tool</span>
+</div>
+
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Learning aid &mdash; not a compliance or certification tool.</strong> The colour zones are an illustrative approximation, not the current ICAO or FAA chromaticity tables. A result here is not a colour measurement, photometric certificate or finding of compliance. Always use calibrated equipment and the current official standard for any real decision. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+<div class="page-hero">
+  <div class="page-tag"><i class="fa-solid fa-palette"></i> AGL Photometry &amp; Colour</div>
+  <h1 class="page-title">CIE Colour <span>Orientation Tool</span></h1>
+  <p class="page-sub">Plot a chromaticity coordinate (x, y) to get an oriented sense of which general aviation signal-colour family it sits nearest to — a learning aid for colour concepts, not a certification tool.</p>
+</div>
+
+<section>
+  <div class="container">
+    <div class="tool-grid">
+      <div class="tool-panel">
+        <h3 role="heading" aria-level="2">Chromaticity Coordinates</h3>
+        <div class="row2">
+          <div class="field">
+            <label for="xCoord">x</label>
+            <input type="number" id="xCoord" step="0.001" min="0" max="0.85" placeholder="e.g. 0.500" inputmode="decimal"/>
+          </div>
+          <div class="field">
+            <label for="yCoord">y</label>
+            <input type="number" id="yCoord" step="0.001" min="0" max="0.85" placeholder="e.g. 0.320" inputmode="decimal"/>
+          </div>
+        </div>
+        <div id="inputError" style="display:none;color:var(--red);font-size:12px;margin:-10px 0 16px;"></div>
+        <div style="display:flex;gap:10px;">
+          <button class="calc-btn" id="plotBtn" type="button"><i class="fa-solid fa-location-crosshairs"></i> Plot Point</button>
+          <button class="calc-btn" id="resetBtn" type="button" style="background:transparent;border:1px solid var(--border);color:var(--text);"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        </div>
+
+        <div class="field" style="margin-top:24px;">
+          <label>Quick Presets</label>
+          <div class="presets">
+            <button type="button" class="preset-chip" data-x="0.680" data-y="0.310">Aviation Red (typical)</button>
+            <button type="button" class="preset-chip" data-x="0.550" data-y="0.400">Aviation Yellow (typical)</button>
+            <button type="button" class="preset-chip" data-x="0.230" data-y="0.700">Aviation Green (typical)</button>
+            <button type="button" class="preset-chip" data-x="0.150" data-y="0.080">Aviation Blue (typical)</button>
+            <button type="button" class="preset-chip" data-x="0.330" data-y="0.330">Aviation White (typical)</button>
+          </div>
+        </div>
+
+        <div class="zone-readout" id="zoneReadout" aria-live="polite">
+          <div class="zr-label">Nearest Colour Family</div>
+          <div class="zr-value" id="zoneValue">—</div>
+          <div class="zr-desc" id="zoneDesc">Enter coordinates or pick a preset to see an orientation reading. You can also click or tap directly on the diagram.</div>
+        </div>
+      </div>
+
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 480 420" id="cieSvg" role="img" aria-label="CIE 1931 chromaticity diagram with aviation signal-colour zones; click or tap to plot a point" style="cursor:crosshair;">
+          <defs>
+            <clipPath id="locusClip">
+              <polygon points="136.0,367.9 135.9,367.9 135.6,368.0 135.3,368.0 134.7,367.9 133.5,367.2 131.2,365.5 127.4,362.7 121.2,357.8 111.3,346.2 95.1,315.4 72.4,248.5 54.1,148.3 56.9,61.1 86.7,26.7 126.4,38.2 163.4,59.4 199.0,84.9 234.4,112.9 269.4,141.7 303.2,169.6 334.2,195.3 359.8,216.6 379.0,233.1 391.7,243.1 399.8,249.8 405.3,254.3 408.7,257.2 410.7,258.8 411.2,259.3 411.7,259.6 412.0,259.9 413.0,260.8"/>
+            </clipPath>
+            <radialGradient id="locusGlow" cx="35%" cy="55%" r="85%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.55"/>
+              <stop offset="35%" stop-color="#ffffff" stop-opacity="0.12"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- gridlines every 0.1 -->
+          <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
+            <line x1="99.4" y1="20" x2="99.4" y2="370"/><line x1="148.8" y1="20" x2="148.8" y2="370"/>
+            <line x1="198.2" y1="20" x2="198.2" y2="370"/><line x1="247.6" y1="20" x2="247.6" y2="370"/>
+            <line x1="297.1" y1="20" x2="297.1" y2="370"/><line x1="346.5" y1="20" x2="346.5" y2="370"/>
+            <line x1="395.9" y1="20" x2="395.9" y2="370"/><line x1="445.3" y1="20" x2="445.3" y2="370"/>
+            <line x1="50" y1="328.8" x2="470" y2="328.8"/><line x1="50" y1="287.6" x2="470" y2="287.6"/>
+            <line x1="50" y1="246.5" x2="470" y2="246.5"/><line x1="50" y1="205.3" x2="470" y2="205.3"/>
+            <line x1="50" y1="164.1" x2="470" y2="164.1"/><line x1="50" y1="122.9" x2="470" y2="122.9"/>
+            <line x1="50" y1="81.8" x2="470" y2="81.8"/><line x1="50" y1="40.6" x2="470" y2="40.6"/>
+          </g>
+
+          <!-- spectral locus (CIE 1931 horseshoe), conic-gradient hue fill clipped to real locus shape -->
+          <foreignObject x="0" y="0" width="480" height="420" clip-path="url(#locusClip)">
+            <div xmlns="http://www.w3.org/1999/xhtml" style="width:480px;height:420px;
+              background: conic-gradient(from 200deg at 32% 58%,
+                #8b2fb8, #3355ff, #00c2ff, #00d9b0, #3ddc97, #8fd400, #d9e000,
+                #ffb400, #ff7a1a, #e63946, #c2185b, #8b2fb8);
+              opacity:0.55;"></div>
+          </foreignObject>
+          <polygon points="136.0,367.9 135.9,367.9 135.6,368.0 135.3,368.0 134.7,367.9 133.5,367.2 131.2,365.5 127.4,362.7 121.2,357.8 111.3,346.2 95.1,315.4 72.4,248.5 54.1,148.3 56.9,61.1 86.7,26.7 126.4,38.2 163.4,59.4 199.0,84.9 234.4,112.9 269.4,141.7 303.2,169.6 334.2,195.3 359.8,216.6 379.0,233.1 391.7,243.1 399.8,249.8 405.3,254.3 408.7,257.2 410.7,258.8 411.2,259.3 411.7,259.6 412.0,259.9 413.0,260.8" fill="url(#locusGlow)" stroke="rgba(240,244,255,0.55)" stroke-width="1.5"/>
+
+          <!-- axes -->
+          <line x1="50" y1="370" x2="470" y2="370" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+          <line x1="50" y1="370" x2="50" y2="20" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+          <text x="255" y="405" fill="#c8d8f0" font-size="13" text-anchor="middle" font-family="Barlow">CIE x</text>
+          <text x="20" y="15" fill="#c8d8f0" font-size="13" text-anchor="middle" font-family="Barlow">CIE y</text>
+          <g fill="rgba(200,216,240,0.55)" font-size="9" font-family="Barlow" text-anchor="middle">
+            <text x="99.4" y="382">0.1</text><text x="148.8" y="382">0.2</text><text x="198.2" y="382">0.3</text>
+            <text x="247.6" y="382">0.4</text><text x="297.1" y="382">0.5</text><text x="346.5" y="382">0.6</text>
+            <text x="395.9" y="382">0.7</text><text x="445.3" y="382">0.8</text>
+          </g>
+          <g fill="rgba(200,216,240,0.55)" font-size="9" font-family="Barlow" text-anchor="end">
+            <text x="44" y="332">0.1</text><text x="44" y="291">0.2</text><text x="44" y="250">0.3</text>
+            <text x="44" y="209">0.4</text><text x="44" y="168">0.5</text><text x="44" y="127">0.6</text>
+            <text x="44" y="86">0.7</text><text x="44" y="45">0.8</text>
+          </g>
+
+          <!-- signal-colour boundary regions, positioned from published FAR 25.1397 / SAE J578-style
+               boundary line equations (illustrative approximation, see note below) -->
+          <polygon points="406.3,263.4 368.7,232.1 377.8,232.1 379.0,233.1 391.7,243.1 399.8,249.8 405.3,254.3 408.7,257.2 410.7,258.8 411.2,259.3 411.7,259.6 412.0,259.9 413.0,260.8" fill="rgba(230,57,70,0.45)" stroke="#E63946" stroke-width="1.5"/>
+          <text x="392" y="243" fill="#ffb3b9" font-size="9" font-weight="700" text-anchor="middle" font-family="Barlow">RED</text>
+
+          <polygon points="319.2,195.0 345.0,209.4 302.0,209.4" fill="rgba(255,180,0,0.5)" stroke="#FFB400" stroke-width="1.5"/>
+          <text x="322" y="187" fill="#FFB400" font-size="9" font-weight="700" text-anchor="middle" font-family="Barlow">YEL</text>
+
+          <polygon points="192.1,155.9 56.5,73.3 56.9,61.1 86.7,26.7 126.4,38.2 163.4,59.4 199.0,84.9 228.3,108.0" fill="rgba(61,220,151,0.30)" stroke="#3ddc97" stroke-width="1.5"/>
+          <text x="139" y="76" fill="#3ddc97" font-size="11" font-weight="700" text-anchor="middle" font-family="Barlow">GREEN</text>
+
+          <polygon points="164.3,300.5 122.4,358.7 121.2,357.8 111.3,346.2 95.1,315.4 93.8,311.6 140.1,280.4" fill="rgba(0,212,255,0.38)" stroke="#00d4ff" stroke-width="1.5"/>
+          <text x="121" y="324" fill="#00d4ff" font-size="9" font-weight="700" text-anchor="middle" font-family="Barlow">BLUE</text>
+
+          <polygon points="193.3,262.9 267.4,254.7 272.4,205.3 213.1,188.8 183.4,230.0" fill="rgba(240,244,255,0.30)" stroke="#f0f4ff" stroke-width="1.5"/>
+          <text x="230" y="230" fill="#f0f4ff" font-size="10" font-weight="700" text-anchor="middle" font-family="Barlow">WHITE</text>
+
+          <!-- illustrative correlated colour temperature (Planckian locus) curve through the white region -->
+          <polyline points="372.7,228.4 336.6,208.2 310.4,199.9 288.2,200.4 270.9,203.6 253.6,208.6 237.8,214.8 222.9,221.4 209.1,228.8 198.2,236.2 188.4,243.6 178.5,251.4 170.1,258.8" fill="none" stroke="#FFB400" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.8"/>
+
+          <!-- plotted marker -->
+          <circle id="marker" cx="-50" cy="-50" r="4" fill="#fff" stroke="#060d1a" stroke-width="1.5" style="display:none;"/>
+        </svg>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;font-size:11px;color:var(--text);">
+          <span><span style="display:inline-block;width:9px;height:9px;background:#E63946;border-radius:2px;margin-right:5px;"></span>Red</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:#FFB400;border-radius:2px;margin-right:5px;"></span>Yellow</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:#3ddc97;border-radius:2px;margin-right:5px;"></span>Green</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:#00d4ff;border-radius:2px;margin-right:5px;"></span>Blue</span>
+          <span><span style="display:inline-block;width:9px;height:9px;background:#f0f4ff;border-radius:2px;margin-right:5px;"></span>White</span>
+          <span><span style="display:inline-block;width:12px;height:2px;background:#FFB400;margin-right:5px;transform:translateY(-3px);display:inline-block;"></span>Illustrative CCT locus</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <div>This is an <strong>educational orientation tool</strong>. The spectral locus (outer curve) is plotted from the precise CIE 1931 2° standard observer chromaticity coordinates (the same values published in the CIE 1931 colour space reference), and the coloured zones are positioned using published reference boundary equations in the style of FAR §25.1397 / SAE J578 signal-colour definitions — a closer, line-by-line approximation than a simple grid, but still <strong>not</strong> a reproduction of the current ICAO Annex 14 Attachment 1 or FAA AC 150/5345-53 chromaticity tables, which are periodically revised. For compliance testing and certification, always use calibrated photometric equipment and the exact boundary tables in the current applicable standard.</div>
+    </div>
+
+    <div class="continue-learning" style="margin-top:60px;">
+      <h3 style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:1px;color:var(--gold);margin-bottom:18px;" role="heading" aria-level="2">Continue Your AGL Learning</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+        <a href="fundamentals.html" style="display:block;padding:18px 20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--white);transition:border-color .2s;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">Fundamentals</div>
+          <div style="font-size:14px;color:var(--text);">Back to AGL Fundamentals overview</div>
+        </a>
+        <a href="component-library.html" style="display:block;padding:18px 20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--white);transition:border-color .2s;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">Component Library</div>
+          <div style="font-size:14px;color:var(--text);">Explore PAPI, taxiway, and runway fixture components</div>
+        </a>
+        <a href="standards-companion.html" style="display:block;padding:18px 20px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;color:var(--white);transition:border-color .2s;">
+          <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;">Standards</div>
+          <div style="font-size:14px;color:var(--text);">ICAO Annex 14 and FAA chromaticity references</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-wrap" id="faq">
+  <div class="container">
+    <div class="block-label">FAQ</div>
+    <h2 class="block-title">Frequently Asked Questions</h2>
+    <p class="faq-intro">Quick answers about the CIE Colour Orientation Tool and aviation signal-colour chromaticity.</p>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary><span class="faq-num">Q1</span><span class="faq-q">What does the CIE Colour Orientation Tool do?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>It plots a CIE 1931 chromaticity coordinate (x, y) on the chromaticity diagram and shows which general aviation signal-colour family it sits nearest to: red, yellow, green, blue or white. It is an educational learning aid for AGL colour concepts.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q2</span><span class="faq-q">Can I use this tool for compliance or certification?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>No. It is an orientation tool. The colour zones are an illustrative approximation and do not reproduce the current ICAO Annex 14 Attachment 1 or FAA AC 150/5345-53 chromaticity tables, which are periodically revised. Compliance testing needs calibrated photometric equipment and the exact boundary tables in the current applicable standard.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q3</span><span class="faq-q">What is the CIE 1931 chromaticity diagram?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>It is a two-dimensional map of colour using x and y coordinates. The outer curve is the spectral locus, plotted here from the CIE 1931 2° standard observer chromaticity coordinates, and colours are located inside it.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q4</span><span class="faq-q">How do I plot a point?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>Enter x and y coordinates and select Plot Point, choose a quick preset for a typical red, yellow, green, blue or white, or click or tap directly on the diagram. Reset clears the point.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q5</span><span class="faq-q">What are the colour zones based on?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>They are positioned using published reference boundary equations in the style of FAR §25.1397 and SAE J578 signal-colour definitions. This is a closer approximation than a simple grid, but it is still not the current ICAO or FAA table.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q6</span><span class="faq-q">What does the nearest colour family result mean?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>It tells you which illustrative zone your coordinate falls in, with a short description of where that colour is used in airfield lighting. It gives a sense of orientation, not a pass or fail result.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q7</span><span class="faq-q">Why does chromaticity matter for airfield lighting?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>Colour is an important part of airport visual communication, and different systems use specified colours for different operational purposes. Evaluating colour covers chromaticity coordinates, colour boundaries, luminous intensity and colour consistency.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q8</span><span class="faq-q">Can chromaticity change over time?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>Yes. Lens ageing and contamination can shift a fixture's chromaticity over time, which is why colour is checked as part of photometric testing and maintenance.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary><span class="faq-num">Q9</span><span class="faq-q">Where can I find the exact colour boundaries?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+        <div class="faq-a"><p>In the current applicable standard, such as ICAO Annex 14 or FAA AC 150/5345-53. Use the exact tables in the latest edition for any compliance work.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="academy-cta">
+      <div class="block-label">Go Further</div>
+      <div class="academy-cta-grid">
+        <div>
+          <h2 class="block-title">Don't Just Check the Chromaticity. Understand the Colour Science.</h2>
+          <p>This tool plots a coordinate against the signal-colour chromaticity zones.</p>
+          <p>Build the technical knowledge behind it — how the CIE 1931 colour space works, why red, white, yellow and blue boundaries are defined the way they are, how lens ageing and contamination shift chromaticity over time, and how colour compliance fits into the wider photometric system.</p>
+          <p><strong>Check the coordinate. Understand the science. Apply it with confidence.</strong></p>
+          <div class="academy-cta-actions">
+            <a href="fundamentals.html" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Continue to AGL Fundamentals</a>
+            <a href="component-library.html" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Explore the Component Library</a>
+          </div>
+        </div>
+        <div class="academy-pathway">
+          <div class="academy-pathway-label">Build Practical AGL Photometry Capability</div>
+          <div class="academy-pathway-flow">
+      <span>AGL Fundamentals</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Photometry</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Light Sources</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Colour &amp; Chromaticity</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Testing</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Compliance</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Troubleshooting</span><i class="fa-solid fa-chevron-right"></i>
+      <span>Maintenance</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<!-- LEGAL-NOTICE v1.0 -->
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page or any result produced by it.</p><div class="legal-addendum"><strong>Specific to this tool:</strong> The &ldquo;Nearest Colour Family&rdquo; reading shows where a point falls on a simplified diagram. It is not a pass or fail result and does not show that any fixture, lamp, filter or LED complies, or fails to comply, with any standard. The zone boundaries were prepared for teaching, are not reproduced from any official table and may differ from the current ICAO Annex 14 or FAA AC 150/5345-53 tables, which are revised from time to time. The descriptions of where each colour is used are general and are not operational instructions.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel, and for people learning the subject. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables and connectors can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing on this page authorises installation, energisation, return to service, a change of operating category, a NOTAM or any aerodrome certification decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Standards and regulations.</strong> References to ICAO Annex 14, FAA AC 150/5345-53, FAR &sect;25.1397, SAE documents and the CIE 1931 colour space are for orientation only. They are summarised, may be incomplete or superseded, and are not official text. Consult the current official editions. Using this tool does not demonstrate compliance with any law, standard or regulatory approval, and official documents and the competent regulator always prevail.</li><li><strong>Illustrative content; no warranty.</strong> The diagram, zones, presets (&ldquo;typical&rdquo; values) and descriptions are illustrative and may contain errors or simplifications. Content and the tool are provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy and its owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence and trademarks.</strong> This is an independent publication, not affiliated with or endorsed by ICAO, the FAA, the IEC, the CIE (International Commission on Illumination), SAE International, DGCA, any airport, regulator or equipment manufacturer. Third-party names, standard designations and trademarks belong to their respective owners and are used for identification only.</li><li><strong>Tool inputs.</strong> Coordinates you type, pick or click are processed in your browser. They are not sent to us or stored, and reset when you press Reset or reload the page. Please do not rely on a reading you have not checked against measured data.</li><li><strong>Copyright.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. You may view this page and use it for personal reference and internal training, keeping this notice attached. Any other copying, republication, scraping or commercial use requires prior written permission.</li><li><strong>Corrections.</strong> Content is reviewed periodically, with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+
+</main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+<script>
+  // Simple screen mapping: svg x in [50,470] maps to chromaticity x in [0, 0.85]; svg y in [370,20] maps to chromaticity y in [0, 0.85]
+  function toScreen(x, y){
+    const sx = 50 + (x / 0.85) * (470 - 50);
+    const sy = 370 - (y / 0.85) * (370 - 20);
+    return [sx, sy];
+  }
+
+  function classify(x, y){
+    // Boundary tests built from published reference line equations for aviation-style
+    // signal colours (FAR §25.1397 / SAE J578 family), used here as an illustrative
+    // approximation — not the exact current ICAO/FAA table (see note below diagram).
+
+    // RED: y <= 0.335, x >= 0.98 - y  (SAE AS8017-style broader red boundary)
+    if (y <= 0.335 && x >= (0.98 - y)) {
+      return {name:'Red', color:'#E63946', desc:'Falls in the red boundary zone (y ≤ 0.335, hugging the spectral locus) — the region used for aviation red signal lights such as obstruction and anti-collision lighting.'};
+    }
+
+    // YELLOW: y >= 0.390, y <= 0.790 - 0.670x, y <= x - 0.120  (closed triangle, bounded by 3 lines only)
+    if (y >= 0.390 && y <= (0.790 - 0.670 * x) && y <= (x - 0.120)) {
+      return {name:'Yellow', color:'#FFB400', desc:'Falls in the yellow/amber boundary zone — the region used for taxiway centreline caution markings and runway guard lights.'};
+    }
+
+    // GREEN: y >= 0.730 - 0.730x, x <= 0.630y - 0.040, y >= 0.500 - 0.500x
+    if (y >= (0.730 - 0.730 * x) && x <= (0.630 * y - 0.040) && y >= (0.500 - 0.500 * x)) {
+      return {name:'Green', color:'#3ddc97', desc:'Falls in the green boundary zone — the region used for threshold and taxiway centreline lighting.'};
+    }
+
+    // BLUE (restricted): y <= 0.070 + 0.810x, x <= 0.400 - y, x <= 0.130 + 0.600y
+    if (y <= (0.070 + 0.810 * x) && x <= (0.400 - y) && x <= (0.130 + 0.600 * y)) {
+      return {name:'Blue', color:'#00d4ff', desc:'Falls in the restricted-blue boundary zone — the region used for taxiway edge lighting.'};
+    }
+
+    // WHITE: bounded region around the Planckian locus, roughly 2000K–10000K
+    if (x >= 0.27 && x <= 0.45 && y >= 0.26 && y <= 0.44) {
+      return {name:'White', color:'#f0f4ff', desc:'Falls in the white boundary zone, spanning the illustrative correlated-colour-temperature range — used for runway edge and centreline lighting.'};
+    }
+
+    return {name:'Outside Defined Zones', color:'#c8d8f0', desc:'This point doesn\'t fall within any of the illustrative aviation signal-colour boundary zones shown here.'};
+  }
+
+  function showError(msg){
+    const errBox = document.getElementById('inputError');
+    errBox.textContent = msg;
+    errBox.style.display = msg ? 'block' : 'none';
+  }
+
+  function plot(x, y){
+    if (isNaN(x) || isNaN(y)) {
+      showError('Enter numeric values for both x and y.');
+      return false;
+    }
+    if (x < 0 || y < 0 || x > 0.85 || y > 0.85) {
+      showError('x and y must both be between 0 and 0.85.');
+      return false;
+    }
+    showError('');
+    const [sx, sy] = toScreen(x, y);
+    const marker = document.getElementById('marker');
+    marker.setAttribute('cx', sx);
+    marker.setAttribute('cy', sy);
+    marker.style.display = 'block';
+
+    const result = classify(x, y);
+    document.getElementById('zoneValue').textContent = result.name;
+    document.getElementById('zoneValue').style.color = result.color;
+    document.getElementById('zoneDesc').textContent = result.desc;
+    return true;
+  }
+
+  function plotFromInputs(){
+    const x = parseFloat(document.getElementById('xCoord').value);
+    const y = parseFloat(document.getElementById('yCoord').value);
+    plot(x, y);
+  }
+
+  document.getElementById('plotBtn').addEventListener('click', plotFromInputs);
+
+  document.getElementById('resetBtn').addEventListener('click', function(){
+    document.getElementById('xCoord').value = '';
+    document.getElementById('yCoord').value = '';
+    showError('');
+    document.getElementById('marker').style.display = 'none';
+    document.getElementById('zoneValue').textContent = '—';
+    document.getElementById('zoneValue').style.color = '';
+    document.getElementById('zoneDesc').textContent = 'Enter coordinates or pick a preset to see an orientation reading. You can also click or tap directly on the diagram.';
+  });
+
+  ['xCoord','yCoord'].forEach(function(id){
+    document.getElementById(id).addEventListener('keydown', function(e){
+      if (e.key === 'Enter') plotFromInputs();
+    });
+  });
+
+  document.querySelectorAll('.preset-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      const x = parseFloat(chip.dataset.x);
+      const y = parseFloat(chip.dataset.y);
+      document.getElementById('xCoord').value = x;
+      document.getElementById('yCoord').value = y;
+      plot(x, y);
+    });
+  });
+
+  // Click/tap directly on the diagram to plot a point
+  document.getElementById('cieSvg').addEventListener('click', function(e){
+    const svg = document.getElementById('cieSvg');
+    const pt = svg.createSVGPoint();
+    pt.x = e.clientX;
+    pt.y = e.clientY;
+    const screenCTM = svg.getScreenCTM();
+    if (!screenCTM) return;
+    const loc = pt.matrixTransform(screenCTM.inverse());
+    const x = ((loc.x - 50) / (470 - 50)) * 0.85;
+    const y = ((370 - loc.y) / (370 - 20)) * 0.85;
+    if (x < 0 || y < 0 || x > 0.85 || y > 0.85) return;
+    const xr = Math.round(x * 1000) / 1000;
+    const yr = Math.round(y * 1000) / 1000;
+    document.getElementById('xCoord').value = xr;
+    document.getElementById('yCoord').value = yr;
+    plot(xr, yr);
+  });
+
+  // Mobile nav toggle
+  document.getElementById('hamburgerBtn').addEventListener('click', function(){
+    const nav = document.getElementById('navbar');
+    const isOpen = nav.classList.toggle('menu-open');
+    this.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+</script>
+
+</body>
+</html>

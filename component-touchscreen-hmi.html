@@ -1,0 +1,2348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Touchscreen HMI | AGL Component Library</title>
+    <meta name="description" content="Touchscreen HMI guide: the local operator panel for CCR and ALCMS control and monitoring, control room installation and electrical requirements." />
+    <meta name="keywords" content="touchscreen HMI, human-machine interface, ALCMS, CCR control, AGL, airfield ground lighting, IEC 61131, IEC 61000, FAA AC 150/5345" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-touchscreen-hmi.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Touchscreen HMI | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="Touchscreen HMI guide: the local operator panel for CCR and ALCMS control and monitoring, control room installation and electrical requirements." />
+    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Lt_qfydmK_bIFseHnhFh_GhGmbsEpoMtmgQ-UpniILHP12gBPn7jCcWP&amp;s=10" />
+    <meta property="og:image:alt" content="Touchscreen HMI | AGL Component Library" />
+    <meta property="og:image:width" content="450" />
+    <meta property="og:image:height" content="450" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-touchscreen-hmi.html" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Touchscreen HMI | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="Touchscreen HMI guide: the local operator panel for CCR and ALCMS control and monitoring, control room installation and electrical requirements." />
+    <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Lt_qfydmK_bIFseHnhFh_GhGmbsEpoMtmgQ-UpniILHP12gBPn7jCcWP&amp;s=10" />
+    <meta name="twitter:image:alt" content="Touchscreen HMI | AGL Component Library" />
+    <meta name="theme-color" content="#060d1a" />
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html#faq", "url": "https://rahulsharmaagl.in/component-touchscreen-hmi.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a touchscreen HMI in an AGL system?", "acceptedAnswer": {"@type": "Answer", "text": "A touchscreen HMI (human-machine interface) is an industrial-grade operator panel that gives a graphical, touch-based interface for local control and monitoring of the Airfield Lighting Control and Monitoring System (ALCMS)."}}, {"@type": "Question", "name": "What can operators do with an AGL touchscreen HMI?", "acceptedAnswer": {"@type": "Answer", "text": "They can view a graphical overview of the airfield lighting with colour-coded status, switch circuits on and off, adjust brightness steps (typically 5-step control), set operating modes such as manual, automatic and standby, acknowledge and silence alarms, and review alarm history and diagnostics."}}, {"@type": "Question", "name": "Where are touchscreen HMIs installed?", "acceptedAnswer": {"@type": "Answer", "text": "In CCR control rooms, remote substations at satellite CCR locations, runway edge cabinets (compact units) and maintenance workshops, wherever local, real-time control and monitoring are needed."}}, {"@type": "Question", "name": "What display and touch specifications are typical?", "acceptedAnswer": {"@type": "Answer", "text": "Display size ranges from 7 inch to 21.5 inch TFT with LED backlight, resolution from 800 x 480 to 1920 x 1080, projected capacitive or resistive touch that is glove-compatible, and brightness of 400 to 1,000 cd/m² with sunlight-readable options."}}, {"@type": "Question", "name": "What communication protocols does an HMI support?", "acceptedAnswer": {"@type": "Answer", "text": "Typical support includes Modbus TCP and RTU, Ethernet/IP, Profinet, OPC UA, MQTT and SNMP, over 2 to 4 Ethernet ports, 2 to 4 serial ports (RS-232 or RS-485), USB and optional fieldbus, communicating with PLCs, remote I/O and the ALCMS server."}}, {"@type": "Question", "name": "How is a touchscreen HMI powered?", "acceptedAnswer": {"@type": "Answer", "text": "By 24 V DC (18-32 V) or 120/230 V AC panel mount, drawing about 10 W to 40 W depending on size and backlight. It is a standalone control-panel device powered separately from the airfield lighting circuit, and interfaces by data or relay only."}}, {"@type": "Question", "name": "Which standards apply to touchscreen HMIs?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEC 61131-2 (programmable controller equipment), ISO 9241-110 (ergonomics of interaction), FAA AC 150/5345-56 (L-890 ALCMS, covering the HMI as the operator interface) and IEC 61000-6-2 (EMC immunity). Always verify the current edition and your aerodrome's approved requirements."}}, {"@type": "Question", "name": "How often should a touchscreen HMI be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are semi-annual for touch calibration and communication link tests, and annual for display condition, firmware and application version audit and security patch review. Your airport's approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "What are the common problems with touchscreen HMIs?", "acceptedAnswer": {"@type": "Answer", "text": "Common problems are display burn-in or image retention, touch calibration drift, communication loss with the PLC or server, sunlight readability issues, firmware and application version mismatch, and security vulnerabilities from unpatched software. An unresponsive HMI that cannot control the system often points to loss of communication."}}]}</script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── RESET & BASE ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+            nav.nav-open .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(6, 13, 26, 0.98);
+                padding: 20px 40px;
+                gap: 20px;
+                border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+            }
+            nav.nav-open .nav-cta {
+                display: inline-flex;
+                margin: 0 40px 20px;
+            }
+        }
+
+        /* ── BREADCRUMB ── */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* ── COMPONENT HERO ── */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* ── SECTIONS ── */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            margin-top: 12px;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* ── DIAGRAM BLOCK ── */
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 34px 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+        }
+        .diagram-node {
+            background: rgba(255, 180, 0, 0.06);
+            border: 1.5px solid var(--gold);
+            border-radius: 10px;
+            padding: 16px 26px;
+            text-align: center;
+            min-width: 260px;
+            max-width: 460px;
+        }
+        .diagram-node h5 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .5px;
+            color: var(--white);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+        .diagram-node p {
+            font-size: 12.5px;
+            color: var(--text);
+            line-height: 1.55;
+        }
+        .diagram-node.cyan { border-color: var(--cyan); background: rgba(0, 212, 255, 0.06); }
+        .diagram-node.red { border-color: var(--red); background: rgba(230, 57, 70, 0.06); }
+        .diagram-node.outcome { border-width: 2px; }
+        .diagram-arrow {
+            width: 2px;
+            height: 30px;
+            background: var(--gold);
+            position: relative;
+        }
+        .diagram-arrow::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--gold);
+        }
+        .diagram-arrow.dashed {
+            background: repeating-linear-gradient(to bottom, var(--red) 0 6px, transparent 6px 12px);
+        }
+        .diagram-arrow.dashed::after { border-top-color: var(--red); }
+        .diagram-arrow.cyan-arrow { background: var(--cyan); }
+        .diagram-arrow.cyan-arrow::after { border-top-color: var(--cyan); }
+        .diagram-split {
+            display: flex;
+            gap: 36px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            width: 100%;
+            margin: 6px 0;
+        }
+        .diagram-branch {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 220px;
+            max-width: 320px;
+        }
+        .diagram-branch-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .diagram-branch-label.gold { color: var(--gold); }
+        .diagram-branch-label.red { color: var(--red); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-caption {
+            text-align: center;
+            font-size: 13px;
+            color: var(--text);
+            opacity: .75;
+            margin-top: 18px;
+            font-style: italic;
+        }
+        @media(max-width:768px) {
+            .diagram-split { flex-direction: column; align-items: center; }
+        }
+
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html#article",
+        "headline": "Touchscreen HMI — AGL Component Reference Guide",
+        "description": "Touchscreen HMI guide: the local operator panel for CCR and ALCMS control and monitoring, control room installation and electrical requirements.",
+        "url": "https://rahulsharmaagl.in/component-touchscreen-hmi.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "Touchscreen HMI"
+        },
+        "articleSection": "Control & Monitoring",
+        "keywords": "touchscreen HMI, human-machine interface, ALCMS, CCR control, AGL, airfield ground lighting, IEC 61131, IEC 61000, FAA AC 150/5345",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Lt_qfydmK_bIFseHnhFh_GhGmbsEpoMtmgQ-UpniILHP12gBPn7jCcWP&s=10"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-touchscreen-hmi.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Touchscreen HMI",
+            "item": "https://rahulsharmaagl.in/component-touchscreen-hmi.html"
+          }
+        ]
+      }
+    </script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <!-- ─── NAV ─── -->
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <!-- ─── BREADCRUMB ─── -->
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">Touchscreen HMI</span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-solid fa-hand-pointer"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">Touchscreen <span>HMI</span></h1>
+            <p class="comp-sub">The primary local operator interface for Airfield Ground Lighting systems. A rugged, industrial-grade touchscreen panel that provides intuitive visualisation, control, and monitoring of CCRs, lighting circuits, and system status, enabling rapid operator response and streamlined maintenance workflows.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:600px;height:420px;">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1Lt_qfydmK_bIFseHnhFh_GhGmbsEpoMtmgQ-UpniILHP12gBPn7jCcWP&amp;s=10" alt="Touchscreen HMI" width="600" height="420" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <!-- ─── OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>A <strong>Touchscreen HMI</strong> (Human-Machine Interface) is an industrial-grade operator panel that provides a graphical, touch‑based interface for local control and monitoring of the Airfield Lighting Control and Monitoring System (ALCMS). Typically installed in CCR control rooms, substations, or maintenance workshops, the HMI displays real‑time system status, circuit health, alarm conditions, and performance data in an intuitive visual format. Operators can change brightness steps, switch circuits on/off, acknowledge alarms, and perform diagnostics directly through the touchscreen. The HMI is designed for harsh industrial environments—featuring rugged enclosures, wide temperature tolerance, sunlight‑readable displays, and glove‑compatible touch technology. It communicates with the AGL control system (PLCs, Remote I/O, ALCMS server) via industrial Ethernet or serial protocols, providing a reliable and responsive local control point that complements the central ALCMS workstation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The touchscreen HMI exists to give an operator direct, local control over AGL circuits at the point where that control is most immediately needed &mdash; a CCR room or substation &mdash; without requiring a trip to the central ALCMS workstation or a phone call to relay a command. In situations where a fast local response matters, such as isolating a faulted circuit or adjusting brightness during changing visibility, having a rugged, responsive interface right at the equipment shortens the time between noticing a problem and acting on it.</p>
+                <p style="margin-top: 18px;">Its ruggedised, sunlight-readable, glove-compatible design exists because this interface has to work reliably in the same harsh conditions the equipment it controls operates in &mdash; a touchscreen that fails in cold weather or can't be read in direct sun would undermine the very purpose of giving operators a dependable local control point.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── APPLICATION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>Touchscreen HMIs are deployed in various locations across the airfield where local, real‑time AGL control and monitoring are required:</p>
+                <ul>
+                    <li><strong>CCR Control Rooms:</strong> Primary HMIs for operators to manage all lighting circuits, view system status, and respond to alarms.</li>
+                    <li><strong>Remote Substations:</strong> HMIs at satellite CCR locations for local control and troubleshooting during maintenance or emergency situations.</li>
+                    <li><strong>Runway Edge Cabinets:</strong> Compact HMIs for local circuit status and override control during installation or testing.</li>
+                    <li><strong>Maintenance Workshops:</strong> HMIs used for testing and diagnostics of lighting circuits and components.</li>
+                    <li><strong>ATC Towers (auxiliary):</strong> Secondary HMIs providing tower controllers with quick visibility of lighting status (e.g., brightness step, circuit availability).</li>
+                    <li><strong>Approach Lighting Control Shelters:</strong> HMIs for local control of sequencers, strobe power supplies, and flasher units.</li>
+                    <li><strong>RWSL (Runway Status Light) System:</strong> HMIs for local monitoring of stop bar and runway guard light status.</li>
+                    <li><strong>Training and Simulation:</strong> HMIs used for operator training and system familiarization.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FUNCTION ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>HMIs are panel-mounted into the CCR control room console, substation cabinet door, or a portable maintenance stand, positioned at a height and angle suited to standing or seated operator use at that specific location. Units in outdoor or unconditioned cabinets (runway edge cabinets, remote substations) use a sealed, temperature-rated panel-mount enclosure, while control room units can use a standard desk or console mount; network cabling back to the local PLC or ALCMS runs on structured Ethernet, with power fed from the same cabinet supply as the PLC it displays, so the HMI's local control and display capability survives a network interruption to the central server.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The Touchscreen HMI functions as a local operator interface, providing a rich set of features for controlling and monitoring the AGL system:</p>
+                <ul>
+                    <li><strong>System Visualization:</strong> Displays a graphical overview of the airfield layout, lighting circuits, CCRs, and field devices, with colour‑coded status indicators (green = OK, red = fault, amber = warning).</li>
+                    <li><strong>Circuit Control:</strong> Allows operators to turn individual circuits on/off, adjust brightness steps (typically 5‑step control), and set operational modes (e.g., manual, automatic, standby).</li>
+                    <li><strong>Alarm Management:</strong> Presents active alarms with priority, timestamp, and description. Operators can acknowledge, silence, or investigate alarms, and view historical alarm logs.</li>
+                    <li><strong>Data Monitoring:</strong> Displays real‑time electrical parameters (current, voltage, power, load) for each CCR and circuit, as well as lamp failure status and circuit continuity.</li>
+                    <li><strong>Event Logging:</strong> Records operator actions, system events, and alarm history for audit trails and post‑incident analysis.</li>
+                    <li><strong>Diagnostic Tools:</strong> Provides built‑in tools for loop testing, lamp test, and circuit continuity checks, facilitating rapid fault finding.</li>
+                    <li><strong>Security &amp; Access Control:</strong> Enforces user authentication (password or RFID) and role‑based permissions to prevent unauthorized control actions.</li>
+                    <li><strong>Communication:</strong> Interfaces with the PLC, ALCMS server, or Remote I/O via Ethernet (Modbus TCP, Profinet, Ethernet/IP) or serial (Modbus RTU, Profibus) to exchange data and commands.</li>
+                </ul>
+                <p style="margin-top:12px;">The HMI runs a dedicated runtime application that is configured using engineering software (e.g., Siemens WinCC, Schneider Vijeo Designer, Beckhoff TwinCAT HMI) to match the specific AGL system architecture and operator workflows.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>The Touchscreen HMI is typically a local operator interface mounted at or near the equipment it controls — a CCR cabinet or remote substation panel — rather than the central ALCMS workstation in the tower or ops room. It connects directly to the local PLC or CCR, most often over the same Ethernet or serial link the PLC uses to talk to the wider ALCMS, and gives maintenance or duty staff at that location the ability to view circuit status and issue commands without needing access to the central workstation. Depending on the installation, it either mirrors a subset of what the central ALCMS shows or operates semi-independently for local diagnostics, but commands it issues still pass through the same PLC validation and interlock logic as commands from the central workstation — it is an additional access point into the control chain, not a parallel one.</p>
+            </div>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">Touchscreen HMI</h5>
+                        <p>Local panel at the CCR cabinet or substation</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node outcome">
+                        <h5 role="heading" aria-level="3">Local PLC / CCR</h5>
+                        <p>Same validation &amp; interlock logic as commands from the central ALCMS</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">ALCMS Server (where networked)</h5>
+                        <p>Sees HMI-originated commands and status alongside central workstation activity</p>
+                    </div>
+                </div>
+                <div class="diagram-caption">An additional access point into the same control chain, not a parallel one — every command still passes through the PLC's own validation logic.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── OPERATOR INTERACTION OVERVIEW ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Mechanism</div>
+            <h2 class="block-title">How the Operator Interacts With the System</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node">
+                        <h5 role="heading" aria-level="3">Field &amp; System Data</h5>
+                        <p>Streamed from PLC, ALCMS server, or Remote I/O</p>
+                    </div>
+                    <div class="diagram-arrow cyan-arrow"></div>
+                    <div class="diagram-node cyan">
+                        <h5 role="heading" aria-level="3">HMI Visualization</h5>
+                        <p>Colour-coded airfield layout — green = OK, red = fault, amber = warning</p>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-split">
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label gold">Monitoring</div>
+                            <div class="diagram-node outcome">
+                                <h5 role="heading" aria-level="3">Operator Reviews Data</h5>
+                                <p>Alarms, electrical parameters, event &amp; historical logs</p>
+                            </div>
+                        </div>
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label cyan">Control</div>
+                            <div class="diagram-node cyan outcome">
+                                <h5 role="heading" aria-level="3">Operator Issues Command</h5>
+                                <p>Circuit on/off, brightness step, operational mode change</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="diagram-arrow"></div>
+                    <div class="diagram-node outcome">
+                        <h5 role="heading" aria-level="3">Command Sent &amp; Executed</h5>
+                        <p>Via Ethernet (Modbus TCP, Profinet) or serial to the PLC / ALCMS</p>
+                    </div>
+                </div>
+                <div class="diagram-caption">Every control action requires role-based authentication (password or RFID) before it is executed.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── TECHNICAL PARAMETERS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>The unit is built around a TFT display and touch sensor (projected capacitive or resistive) bonded to a front bezel that meets IP65/NEMA 4X sealing at the front face, gasketed against the surrounding panel cutout to keep the operator-facing surface protected from washdown, dust, and de-icing fluid even though the rear enclosure need only meet the lower IP20 rating typical of an equipment-room panel mount. Behind the display, the processor board, memory, and storage are mounted on standoffs inside a metal or high-impact plastic rear housing, with communication ports (Ethernet, serial, USB) brought out through the rear or bottom face away from the sealed front. The assembly mounts into a panel cutout using integrated mounting clips or a VESA bracket, and where deployed in a fully field-exposed location rather than a control-room panel, the entire enclosure is upgraded to a sealed IP65 rear housing with cable glands for each conductor entry. Sunlight-readable backlight options and glove-compatible touch sensitivity are built into the display stack itself rather than added as a separate module, keeping the front assembly a single sealed unit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Display Size</td><td class="val">7", 10", 12", 15", or 21.5" (TFT colour, LED backlight)</td></tr>
+                <tr><td>Resolution</td><td class="val">800×480 (WVGA) to 1920×1080 (Full HD)</td></tr>
+                <tr><td>Touch Technology</td><td class="val">Projected capacitive (PCAP) or resistive; glove‑compatible, multi‑touch support</td></tr>
+                <tr><td>Brightness</td><td class="val">400‑1000 cd/m² (sunlight‑readable options available)</td></tr>
+                <tr><td>Processor</td><td class="val">ARM Cortex‑A8/A9 or Intel Atom/Core i3/i5</td></tr>
+                <tr><td>Memory (RAM)</td><td class="val">1‑8 GB (depending on model)</td></tr>
+                <tr><td>Storage</td><td class="val">4‑64 GB eMMC or SSD</td></tr>
+                <tr><td>Operating System</td><td class="val">Windows Embedded, Linux, or RTOS (VxWorks, QNX)</td></tr>
+                <tr><td>Communication Ports</td><td class="val">2‑4 Ethernet (10/100/1000BASE‑T), 2‑4 serial (RS‑232/485), USB, optional fieldbus (Profibus, DeviceNet)</td></tr>
+                <tr><td>Protocol Support</td><td class="val">Modbus TCP/RTU, Ethernet/IP, Profinet, OPC UA, MQTT, SNMP</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (nominal, 18‑32 VDC) or 120/230 VAC (panel mount)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">10‑40 W (depending on size and backlight)</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-20°C to +60°C (industrial grade), -40°C to +70°C (extended)</td></tr>
+                <tr><td>Storage Temperature</td><td class="val">-40°C to +85°C</td></tr>
+                <tr><td>Protection Class (front)</td><td class="val">IP65 / NEMA 4X (water and dust resistant)</td></tr>
+                <tr><td>Protection Class (rear)</td><td class="val">IP20 (panel mount) or IP65 (field mount)</td></tr>
+                <tr><td>Mounting</td><td class="val">Panel mount (standard), VESA mount, or pedestal</td></tr>
+                <tr><td>Certifications</td><td class="val">CE, FCC, UL, IEC 61000‑6‑2 (EMC immunity), ATEX (optional for hazardous areas)</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- ─── STANDARDS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Power Supply</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Requirement</th><th>Typical Value</th></tr>
+                <tr><td>Circuit Position</td><td class="val">Standalone/control-panel powered device, not part of the series lighting loop</td></tr>
+                <tr><td>Power Supply</td><td class="val">24 VDC (18–32 VDC nominal) or 120/230 VAC (panel mount)</td></tr>
+                <tr><td>Power Consumption</td><td class="val">10 – 40 W (depending on size and backlight)</td></tr>
+                <tr><td>Isolation</td><td class="val">Powered separately from the airfield lighting circuit; interfaces via data/relay only</td></tr>
+                <tr><td>EMC Compliance</td><td class="val">IEC 61000‑6‑2 (EMC immunity)</td></tr>
+                <tr><td>Earthing</td><td class="val">Chassis/frame bonded to panel earth</td></tr>
+                <tr><td>Fault Protection</td><td class="val">Internal fusing/overcurrent protection matched to power supply rating</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61131‑2</h5><p>Programmable controllers — equipment requirements and tests (HMI as a control device)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ISO 9241‑110</h5><p>Ergonomics of human‑system interaction — dialogue/interaction principles for touchscreen interfaces</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑56</h5><p>Specification for L‑890 Airport Lighting Control and Monitoring System (ALCMS) — covers the touchscreen HMI as part of the ALCMS operator interface</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑2</h5><p>EMC immunity for industrial environments</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FIELD ISSUES ─── -->
+        <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-ruler-combined"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Panel Cutout Preparation</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Cut the panel to the unit's mounting dimensions and confirm the bezel gasket seats fully against the surrounding panel surface before the unit is fitted.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mounting Clip / VESA Bracket Fixing</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Secure the unit into the panel cutout using the integrated mounting clips or VESA bracket, torquing fasteners evenly so the front bezel seals uniformly.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply Installation</h5><span class="test-stage">Electrical</span></div>
+                        <p>Install and terminate the 24 VDC or AC supply to the unit, confirming polarity and voltage before the unit is powered up.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communication Cabling</h5><span class="test-stage">Electrical</span></div>
+                        <p>Run and terminate the Ethernet or serial link to the PLC or ALCMS server through the rear or bottom cable entries, keeping ports clear of the sealed front face.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-cable-car"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cable Gland Sealing (Field-Mounted Units)</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Where the unit is deployed in a fully field-exposed location, fit and seal cable glands for each conductor entry on the upgraded IP65 rear housing.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-download"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Application &amp; Firmware Loading</h5><span class="test-stage">Software</span></div>
+                        <p>Load the correct application software and firmware version onto the unit before configuring point mapping or running touch calibration.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record mounting details, cable terminations, and firmware/application version as-built before the unit is energised for commissioning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power &amp; Communication Check</h5><span class="test-stage">Energisation</span></div>
+                        <p>Confirm stable 24 VDC or AC supply and establish the Ethernet/serial link to the PLC or ALCMS server before loading the application.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Touch Calibration</h5><span class="test-stage">Energisation</span></div>
+                        <p>Run the touch-calibration routine across the full screen area and verify input accuracy at the corners and centre before handover.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Screen Tag &amp; Point Mapping Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Step through every screen and confirm each displayed tag reflects live field data, not a stale or mismapped point.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Role-Based Authentication Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Confirm control actions require the correct password or RFID credential and that permission levels are enforced per operator role.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Alarm &amp; Colour-Coding Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Force a fault condition on a test point and confirm it is displayed with the correct colour-coding and logged in the alarm history.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Command Execution Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Issue a representative circuit on/off and brightness-step command and confirm it executes correctly on the target PLC/ALCMS.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record firmware/application version, IP configuration, and point-mapping verification results in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Touch Calibration Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Verify touch response accuracy across the screen and recalibrate if drift is affecting input precision.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Display Condition Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check for burn-in, image retention, or brightness degradation, particularly on units left on static screens.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Communication Link Test</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Test the link to the connected PLC or server to catch intermittent communication loss early.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Firmware &amp; Application Version Audit</h5><span class="maint-freq">Annual</span></div>
+                        <p>Review firmware and application versions against baseline to catch unplanned mismatches.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Security Patch Review</h5><span class="maint-freq">Annual</span></div>
+                        <p>Apply relevant security patches to address known vulnerabilities on the HMI platform.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Display Burn-in / Image Retention</h5><p>Static screens (e.g., constant display of a circuit overview) can cause burn‑in or image retention on some display technologies. Use screen savers, dimming, or periodic screen rotation to mitigate.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Touch Calibration Drift</h5><p>Over time, the touchscreen can lose calibration, leading to inaccurate touch registration. Re‑calibrate periodically using the built‑in utility and ensure the touch technology is suitable for glove use (PCAP recommended).</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Communication Loss with PLC/Server</h5><p>Network interruptions or cable faults can cause the HMI to lose communication with the control system, rendering it useless. Implement redundant network connections and diagnostic alarms for communication loss.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Sunlight Readability Issues</h5><p>In locations with direct sunlight (e.g., ATC towers), standard HMIs may be difficult to read. Use high‑brightness (≥1000 cd/m²) displays or anti‑glare filters.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Firmware/Application Version Mismatch</h5><p>Updating the PLC firmware or ALCMS software without updating the HMI runtime can cause compatibility issues. Maintain version control and test updates in a staging environment.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Security Vulnerabilities</h5><p>HMIs with default passwords or exposed network services can be exploited. Change default credentials, disable unused services, and place HMIs in a secured network segment.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Ghost Image Persists on Static Screens</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Burn-in or image retention from prolonged static display content.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check how long the static screen has been displayed without a screensaver or rotation, and inspect the display technology type.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Enable a screen saver, dimming, or periodic screen rotation; replace the panel if retention is permanent.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Touch Input Registers in the Wrong Location</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Touch calibration drift over time.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Run the built-in touch calibration utility and test touch accuracy across the full screen area.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate the touchscreen, and confirm the touch technology (PCAP recommended) suits the operating environment (e.g., glove use).</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">HMI Unresponsive / Cannot Control the System</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Communication loss with the PLC/server from a network interruption or cable fault.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the HMI's communication status indicator, test network cabling and switch ports, and review the diagnostic alarm history.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the faulted network link and verify the redundant network path is active if fitted.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Screen Unreadable in Bright Conditions</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Insufficient display brightness or a lack of anti-glare treatment for direct sunlight exposure.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure ambient light levels at the installation and compare display brightness against specification (≥1000 cd/m² recommended).</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Upgrade to a high-brightness display or fit an anti-glare filter, and reposition or shade the HMI if practical.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">HMI Fails to Load Screens After a Software Update</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Firmware/application version mismatch following a PLC or ALCMS software update.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the HMI runtime version against the updated PLC/ALCMS compatibility matrix and review error logs at startup.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Update the HMI runtime/application to a verified-compatible version and restore from a staged, tested configuration.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ─── RELATED COMPONENTS ─── -->
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Touch Calibration Drift</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mechanical ageing of the touch layer or a software calibration reset lost after a firmware update.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Touch input registers in the wrong location, causing operators to select the wrong control or screen element.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Scheduled touch calibration check, repeated after any firmware or application update.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Display Burn-In / Image Retention</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Static screen elements left displayed for extended periods without a screensaver or periodic screen change.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">A ghost image persists on static screens, reducing readability and looking unprofessional even where function is unaffected.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Display condition inspection looking specifically for retained imagery on a blank or differently-coloured test screen.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Communication Loss with PLC / Server</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Network cable damage, switch failure, or a fault in the local PLC/CCR or ALCMS server the HMI depends on.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">The HMI becomes unresponsive and cannot control the system, removing the operator's local interface during the outage.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Communication link test between the HMI and its PLC/server, and review of the connection status log.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Firmware / Application Version Mismatch</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">An HMI application or firmware update applied without corresponding changes on the PLC/server side, or vice versa.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">The HMI fails to load screens after a software update, or displays data that no longer matches the underlying system state.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Firmware and application version audit comparing the HMI against the PLC/server it interfaces with.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sunlight Readability / Backlight Degradation</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Backlight ageing reducing peak brightness, or a display panel not suited to the installed location's ambient light levels.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">The screen becomes unreadable in bright conditions, forcing operators to shade the display or rely on a secondary station.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Display condition inspection under the worst-case ambient lighting the installed location actually experiences.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Security Vulnerability from Unpatched Software</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Missed security patches or default credentials left unchanged on an HMI that sits on the operational network.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">An avoidable exposure to unauthorised access or malware, given the HMI's ability to issue commands to connected AGL systems.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Security patch review and a role-based authentication test as part of scheduled maintenance.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Lock out the HMI's power supply and verify zero energy before opening the panel enclosure or servicing internal wiring; the front touch face can remain a live hazard indicator even when the airfield circuits it controls are de-energised.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Commanded State Before Acting</h5><span class="test-stage">Operational</span></div>
+                        <p>Confirm the actual circuit or brightness step change on the field side (or via a secondary status source) after issuing a command from the touchscreen, since a stuck or unresponsive touch input can leave the operator believing a change was made when it was not.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Coordinate Before Taking Offline</h5><span class="test-stage">Operational</span></div>
+                        <p>Notify other control points (central ALCMS workstation, other HMIs) before disconnecting or rebooting a unit, since it is one of potentially several local control points feeding the same system.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE &amp; ESD Precautions</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Use insulated tools for electrical work and anti-static precautions when handling internal circuit boards.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Access Control</h5><span class="test-stage">Compliance</span></div>
+                        <p>Restrict panel access to authorised, trained operators, since the HMI can directly switch runway and taxiway circuits on or off.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Verify the HMI reflects true field status and communicates correctly with the ALCMS before closing out the work and returning it to operator use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-hand-pointer"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Stuck Touch Input Can Look Like a Successful Command</h5><span class="expert-tag">Verification</span></div>
+                        <p>A touchscreen that registers a tap and updates its own on-screen state doesn't guarantee the underlying circuit actually changed; always confirm the field-side result through an independent status source (central ALCMS, a secondary indicator) before treating a command as executed, especially for a safety-relevant action like a runway circuit change.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Touch Calibration Drift Is Gradual and Position-Specific</h5><span class="expert-tag">Diagnostics</span></div>
+                        <p>A capacitive or resistive touch panel can drift so that taps near one edge of the screen register slightly offset from where the operator actually touched, without affecting the rest of the screen noticeably; a complaint that a specific button "sometimes doesn't respond" is worth checking as a localised calibration issue before assuming the whole unit needs replacement.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-sitemap"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Multiple Control Points Can Silently Fall Out of Sync</h5><span class="expert-tag">Reliability</span></div>
+                        <p>Where several HMIs or a central workstation share control of the same circuits, a communication fault on one unit can leave it displaying stale status while still accepting operator input; periodically cross-check that all control points agree on current field state, rather than assuming synchronisation is self-evidently maintained.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Firmware and Software Versions Need the Same Change Control as Hardware</h5><span class="expert-tag">Maintenance</span></div>
+                        <p>An HMI's software is as much a part of its safety function as its wiring, but version updates are often applied more casually than a hardware change would be; treat firmware and software updates with the same documented sign-off and rollback plan used for other safety-relevant AGL work.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Access Control Failures Are Often Procedural, Not Technical</h5><span class="expert-tag">Compliance</span></div>
+                        <p>An HMI with correctly configured access control can still be effectively open if operators share login credentials or leave a session logged in unattended; audit actual usage behaviour periodically, not just the configured permission settings, since the technical control and the operational reality can diverge over time.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-temperature-arrow-up"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Panel Heat Buildup Shortens Touchscreen Life in Enclosed Cabinets</h5><span class="expert-tag">Reliability</span></div>
+                        <p>An HMI mounted in a poorly ventilated control cabinet alongside other heat-generating equipment can run consistently hotter than its rated operating range without any single fault triggering an alarm; where touchscreen failures at a site seem to recur faster than the manufacturer's expected life, check cabinet thermal conditions before assuming a batch of defective units.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about the touchscreen hmi: what it is, how it works, specifications, standards, maintenance and common faults.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is a touchscreen HMI in an AGL system?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A touchscreen HMI (human-machine interface) is an industrial-grade operator panel that gives a graphical, touch-based interface for local control and monitoring of the Airfield Lighting Control and Monitoring System (ALCMS).</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">What can operators do with an AGL touchscreen HMI?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>They can view a graphical overview of the airfield lighting with colour-coded status, switch circuits on and off, adjust brightness steps (typically 5-step control), set operating modes such as manual, automatic and standby, acknowledge and silence alarms, and review alarm history and diagnostics.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Where are touchscreen HMIs installed?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>In CCR control rooms, remote substations at satellite CCR locations, runway edge cabinets (compact units) and maintenance workshops, wherever local, real-time control and monitoring are needed.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">What display and touch specifications are typical?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Display size ranges from 7 inch to 21.5 inch TFT with LED backlight, resolution from 800 x 480 to 1920 x 1080, projected capacitive or resistive touch that is glove-compatible, and brightness of 400 to 1,000 cd/m² with sunlight-readable options.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">What communication protocols does an HMI support?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical support includes Modbus TCP and RTU, Ethernet/IP, Profinet, OPC UA, MQTT and SNMP, over 2 to 4 Ethernet ports, 2 to 4 serial ports (RS-232 or RS-485), USB and optional fieldbus, communicating with PLCs, remote I/O and the ALCMS server.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How is a touchscreen HMI powered?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>By 24 V DC (18-32 V) or 120/230 V AC panel mount, drawing about 10 W to 40 W depending on size and backlight. It is a standalone control-panel device powered separately from the airfield lighting circuit, and interfaces by data or relay only.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">Which standards apply to touchscreen HMIs?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are IEC 61131-2 (programmable controller equipment), ISO 9241-110 (ergonomics of interaction), FAA AC 150/5345-56 (L-890 ALCMS, covering the HMI as the operator interface) and IEC 61000-6-2 (EMC immunity). Always verify the current edition and your aerodrome's approved requirements.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">How often should a touchscreen HMI be checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical intervals are semi-annual for touch calibration and communication link tests, and annual for display condition, firmware and application version audit and security patch review. Your airport's approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">What are the common problems with touchscreen HMIs?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Common problems are display burn-in or image retention, touch calibration drift, communication loss with the PLC or server, sunlight readability issues, firmware and application version mismatch, and security vulnerabilities from unpatched software. An unresponsive HMI that cannot control the system often points to loss of communication.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-plc.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">PLC</h5></a>
+                <a href="component-alcms-server.html" class="related-card"><i class="fa-solid fa-server"></i><h5 role="heading" aria-level="3">ALCMS Server</h5></a>
+                <a href="component-ethernet-switch.html" class="related-card"><i class="fa-solid fa-network-wired"></i><h5 role="heading" aria-level="3">Ethernet Switch</h5></a>
+                <a href="component-scada-interface.html" class="related-card"><i class="fa-solid fa-display"></i><h5 role="heading" aria-level="3">SCADA Interface</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── CTA ─── -->
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on Touchscreen HMI selection, configuration, or integration for your AGL system?</h4><p>Precision AGL Academy provides advice on display size, touch technology, communication protocols, and application design for optimal operator experience.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ─── FOOTER ─── -->
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Control, monitoring, sensor, data and smart-system content on this page is general and educational. Settings, alarm thresholds, interlocks, communication parameters and software configurations are not a configuration baseline. Do not connect to, alter or disable any operational control or monitoring system, or any network that serves it, without authorisation and a documented change process, and follow the aerodrome&rsquo;s cybersecurity rules. Sensor and weather information on this page is not an operational meteorological observation or aeronautical information, and analytics or AI outputs are decision support only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on Touchscreen HMI is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Touchscreen%20HMI">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20Touchscreen%20HMI" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+
+            const navEl = document.getElementById('navbar');
+            const hamburger = navEl.querySelector('.hamburger');
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    navEl.classList.toggle('nav-open');
+                });
+                navEl.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', () => navEl.classList.remove('nav-open'));
+                });
+            }
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>

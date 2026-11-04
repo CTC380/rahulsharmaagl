@@ -1,0 +1,2425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PAPI Intensity Control | AGL Component Library</title>
+    <meta name="description" content="PAPI Intensity Control explained: the subsystem adjusting PAPI light-unit brightness for day, twilight, and night conditions — CCR/LED-driver implementation." />
+    <meta name="keywords" content="PAPI intensity control, brightness step schedule, CCR, LED driver, FAA AC 150/5345-28, precision approach path indicator" />
+    <meta name="author" content="Precision AGL Academy" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+    <link rel="canonical" href="https://rahulsharmaagl.in/component-papi-intensity-control.html" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="PAPI Intensity Control | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:description" content="PAPI Intensity Control explained: the subsystem adjusting PAPI light-unit brightness for day, twilight, and night conditions — CCR/LED-driver implementation." />
+    <meta property="og:image" content="https://tiimg.tistatic.com/fp/1/007/462/weather-resistant-papi-lighting-100w-200w-or-300w-for-aviation-lighting-110.jpg" />
+    <meta property="og:image:alt" content="PAPI Intensity Control Panel | AGL Component Library" />
+    <meta property="og:image:width" content="450" />
+    <meta property="og:image:height" content="450" />
+    <meta property="og:url" content="https://rahulsharmaagl.in/component-papi-intensity-control.html" />
+    <meta property="og:site_name" content="AGL Component Library" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:author" content="Precision AGL Academy" />
+    <meta property="article:section" content="AGL Component Library" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PAPI Intensity Control | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:description" content="PAPI Intensity Control explained: the subsystem adjusting PAPI light-unit brightness for day, twilight, and night conditions — CCR/LED-driver implementation." />
+    <meta name="twitter:image" content="https://tiimg.tistatic.com/fp/1/007/462/weather-resistant-papi-lighting-100w-200w-or-300w-for-aviation-lighting-110.jpg" />
+    <meta name="twitter:image:alt" content="PAPI Intensity Control Panel | AGL Component Library" />
+    <meta name="theme-color" content="#060d1a" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+    <style>
+        /* ── base styles (identical to other component pages) ── */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --dark: #060d1a;
+            --navy: #0a1628;
+            --card: #0d1e38;
+            --gold: #FFB400;
+            --red: #E63946;
+            --cyan: #00d4ff;
+            --green: #2ecc71;
+            --text: #c8d8f0;
+            --white: #f0f4ff;
+            --border: rgba(255, 255, 255, 0.07);
+        }
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                repeating-linear-gradient(90deg, rgba(255, 180, 0, 0.03) 0px, rgba(255, 180, 0, 0.03) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 80px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* NAV */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 0 40px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(6, 13, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 180, 0, 0.3);
+        }
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-decoration: none;
+        }
+        .nav-logo span {
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold);
+        }
+        .nav-cta {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all .3s;
+            background: transparent;
+            cursor: pointer;
+        }
+        .nav-cta:hover {
+            background: var(--gold);
+            color: #000;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+        }
+        @media(max-width:900px) {
+            .nav-links,
+            .nav-cta {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 110px 40px 0;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+        .breadcrumb a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .5px;
+        }
+        .breadcrumb a:hover {
+            color: var(--gold);
+        }
+        .breadcrumb span {
+            color: var(--text);
+            opacity: .4;
+            margin: 0 8px;
+        }
+        .breadcrumb .current {
+            color: var(--gold);
+        }
+
+        /* COMPONENT HERO */
+        .comp-hero {
+            padding: 40px 40px 70px;
+            max-width: 1300px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 30px;
+        }
+        .comp-hero-text {
+            flex: 1;
+            min-width: 0;
+        }
+        .comp-img-wrap {
+            flex-shrink: 0;
+        }
+        .comp-img-box {
+            border: 3px solid var(--gold);
+            border-radius: 14px;
+            background: rgba(255, 180, 0, 0.04);
+            box-shadow: 0 0 0 1px rgba(255, 180, 0, 0.15), 0 10px 30px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+        }
+        .comp-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        @media(max-width:768px) {
+            .comp-hero {
+                flex-direction: column;
+            }
+            .comp-img-wrap {
+                align-self: flex-end;
+            }
+        }
+
+        .comp-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            background: rgba(0, 212, 255, 0.06);
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 22px;
+        }
+        .comp-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 64px;
+            letter-spacing: 2px;
+            line-height: 1;
+            margin-bottom: 18px;
+        }
+        .comp-title span {
+            color: var(--gold);
+        }
+        .comp-sub {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--text);
+            max-width: 760px;
+        }
+        @media(max-width:768px) {
+            .comp-title {
+                font-size: 42px;
+            }
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 0 0 90px;
+            position: relative;
+            z-index: 1;
+        }
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            margin: auto;
+            padding: 0 40px;
+        }
+        .block-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+        .block-label::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+        }
+        .block-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 36px;
+            letter-spacing: 1px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        .info-panel {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 34px;
+            margin-bottom: 24px;
+        }
+        .info-panel p {
+            font-size: 15.5px;
+            line-height: 1.9;
+            color: var(--text);
+        }
+        .info-panel p strong {
+            color: var(--white);
+        }
+        .info-panel ul {
+            color: var(--text);
+            font-size: 15.5px;
+            line-height: 1.9;
+            padding-left: 24px;
+        }
+        .info-panel ul li {
+            margin-bottom: 6px;
+        }
+
+        .param-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .param-table th {
+            text-align: left;
+            padding: 16px 22px;
+            background: rgba(255, 180, 0, 0.06);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table td {
+            padding: 16px 22px;
+            font-size: 14.5px;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+        }
+        .param-table tr:last-child td {
+            border-bottom: none;
+        }
+        .param-table td.val {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .std-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .std-chip {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 18px 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            flex: 1;
+            min-width: 260px;
+            transition: all .3s;
+        }
+        .std-chip:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .std-chip i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+        .std-chip h5 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+        .std-chip p {
+            font-size: 12.5px;
+            color: var(--text);
+        }
+
+        .maint-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .maint-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(0, 212, 255, 0.04);
+            border: 1px solid rgba(0, 212, 255, 0.18);
+            border-radius: 12px;
+        }
+        .maint-item i {
+            color: var(--cyan);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .maint-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .maint-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .maint-freq {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--cyan);
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .maint-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .maint-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .test-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(255, 180, 0, 0.04);
+            border: 1px solid rgba(255, 180, 0, 0.18);
+            border-radius: 12px;
+        }
+        .test-item i {
+            color: var(--gold);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .test-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .test-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .test-stage {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .test-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .test-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .expert-byline {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin: -6px 0 24px;
+        }
+        .expert-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--green), #58e08a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            flex-shrink: 0;
+        }
+        .expert-byline-text .name {
+            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .expert-byline-text .role {
+            font-size: 12px;
+            color: var(--text);
+        }
+        .expert-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .expert-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(46, 204, 113, 0.05);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+            border-radius: 12px;
+        }
+        .expert-item i {
+            color: var(--green);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .expert-item-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .expert-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+        .expert-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.12);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+        }
+        .expert-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:800px) {
+            .expert-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .issue-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .issue-item {
+            display: flex;
+            gap: 16px;
+            padding: 20px 24px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+            border-radius: 12px;
+        }
+        .issue-item i {
+            color: var(--red);
+            font-size: 16px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+        .issue-item h5 {
+            font-size: 14.5px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        .issue-item p {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        .ts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .ts-item {
+            padding: 22px 24px 20px;
+            background: rgba(46, 204, 113, 0.04);
+            border: 1px solid rgba(46, 204, 113, 0.18);
+            border-radius: 12px;
+        }
+        .ts-item-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+        .ts-item-head i {
+            color: var(--green);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .ts-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .ts-row {
+            display: grid;
+            grid-template-columns: 130px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .ts-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .ts-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--green);
+            padding-top: 1px;
+        }
+        .ts-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .ts-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+        }
+
+        .fm-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .fm-item {
+            padding: 22px 24px 20px;
+            background: rgba(230, 57, 70, 0.04);
+            border: 1px solid rgba(230, 57, 70, 0.18);
+            border-radius: 12px;
+        }
+        .fm-item-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px 14px;
+            margin-bottom: 14px;
+        }
+        .fm-item-head-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .fm-item-head i {
+            color: var(--red);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .fm-item-head h5 {
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .fm-sev {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            text-transform: uppercase;
+            border-radius: 20px;
+            padding: 2px 12px;
+            white-space: nowrap;
+            border: 1px solid;
+        }
+        .fm-sev-high {
+            color: var(--red);
+            background: rgba(230, 57, 70, 0.1);
+            border-color: rgba(230, 57, 70, 0.3);
+        }
+        .fm-sev-medium {
+            color: var(--gold);
+            background: rgba(255, 180, 0, 0.1);
+            border-color: rgba(255, 180, 0, 0.3);
+        }
+        .fm-sev-low {
+            color: var(--green);
+            background: rgba(46, 204, 113, 0.1);
+            border-color: rgba(46, 204, 113, 0.3);
+        }
+        .fm-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 4px 14px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border);
+        }
+        .fm-row:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+        .fm-row-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--red);
+            padding-top: 1px;
+        }
+        .fm-row-value {
+            font-size: 13.5px;
+            color: var(--text);
+            line-height: 1.7;
+        }
+        @media(max-width:700px) {
+            .fm-row {
+                grid-template-columns: 1fr;
+                gap: 4px;
+            }
+            .fm-item-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        @media(max-width:900px) {
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .related-card {
+            padding: 22px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all .3s;
+            display: block;
+        }
+        .related-card:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            transform: translateY(-4px);
+        }
+        .related-card i {
+            color: var(--gold);
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .related-card h5 {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .academy-cta {
+            position: relative;
+            background: linear-gradient(160deg, #0d1e38, #0a1628 60%, #0d1e38);
+            border: 1px solid rgba(255, 180, 0, 0.25);
+            border-radius: 20px;
+            padding: 50px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .academy-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--cyan));
+        }
+        .academy-cta-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        @media(max-width:900px) {
+            .academy-cta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .academy-cta p {
+            color: var(--text);
+            font-size: 15px;
+            line-height: 1.7;
+            margin-bottom: 14px;
+            max-width: 560px;
+        }
+        .academy-cta-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+        }
+        .academy-pathway {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 20px;
+        }
+        .academy-pathway-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+        .academy-pathway-flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px 4px;
+        }
+        .academy-pathway-flow span {
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--white);
+            background: rgba(255, 180, 0, 0.08);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        .academy-pathway-flow i {
+            color: var(--gold);
+            font-size: 10px;
+            opacity: .6;
+        }
+
+        .cta-strip {
+            background: linear-gradient(135deg, #0d1e38, #1a2f50);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 18px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .cta-strip h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 26px;
+            letter-spacing: 1px;
+        }
+        .cta-strip p {
+            font-size: 14px;
+            color: var(--text);
+            margin-top: 4px;
+        }
+        .btn {
+            padding: 13px 26px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all .3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+        }
+        .btn-gold:hover {
+            background: #ffc933;
+            transform: translateY(-3px);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        footer {
+            padding: 30px 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        footer p {
+            font-size: 13px;
+            color: var(--text);
+        }
+        footer p strong {
+            color: var(--gold);
+        }
+        .footer-links {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ── CONTACT MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(6, 13, 26, 0.85);
+            backdrop-filter: blur(12px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn .25s ease;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: var(--card);
+            border: 1px solid rgba(255, 180, 0, 0.2);
+            border-radius: 20px;
+            max-width: 540px;
+            width: 100%;
+            padding: 40px 40px 36px;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            animation: slideUp .3s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color .3s;
+            padding: 4px 8px;
+        }
+        .modal-close:hover {
+            color: var(--gold);
+        }
+        .modal-box .avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), #ffc933);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+        }
+        .modal-box h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 32px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+        .modal-box .modal-sub {
+            color: var(--text);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .modal-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .modal-contact-item:last-of-type {
+            border-bottom: none;
+        }
+        .modal-contact-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        .modal-contact-item .info {
+            flex: 1;
+        }
+        .modal-contact-item .info .label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text);
+            opacity: .6;
+        }
+        .modal-contact-item .info .value {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--white);
+        }
+        .modal-contact-item .info .value a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color .3s;
+        }
+        .modal-contact-item .info .value a:hover {
+            color: var(--gold);
+        }
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+            flex-wrap: wrap;
+        }
+        .modal-actions .btn {
+            flex: 1;
+            justify-content: center;
+            min-width: 140px;
+        }
+        .modal-social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .modal-soc-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 18px;
+            text-decoration: none;
+            transition: all .3s;
+        }
+        .modal-soc-btn:hover {
+            background: var(--gold);
+            color: #000;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media(max-width:600px) {
+            .modal-box {
+                padding: 30px 20px 28px;
+            }
+            .modal-box h3 {
+                font-size: 26px;
+            }
+        }
+
+        /* ── Intensity step grid ── */
+        .step-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin-top: 12px;
+        }
+        .step-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 18px 12px;
+            text-align: center;
+            transition: all .3s;
+        }
+        .step-item:hover {
+            border-color: rgba(255, 180, 0, 0.25);
+            background: rgba(255, 180, 0, 0.04);
+        }
+        .step-item .step-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .step-item .step-current {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            margin: 6px 0;
+        }
+        .step-item .step-desc {
+            font-size: 11px;
+            color: var(--text);
+            opacity: .8;
+        }
+        @media(max-width:768px) {
+            .step-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media(max-width:480px) {
+            .step-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .diagram-block {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 40px 34px;
+            margin-bottom: 24px;
+        }
+        .diagram-flow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-node {
+            width: 100%;
+            max-width: 460px;
+            padding: 14px 22px;
+            text-align: center;
+            background: rgba(255, 180, 0, 0.05);
+            border: 1px solid rgba(255, 180, 0, 0.3);
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        .diagram-node small {
+            display: block;
+            margin-top: 4px;
+            font-size: 11.5px;
+            font-weight: 400;
+            color: var(--text);
+            letter-spacing: 0.2px;
+        }
+        .diagram-node.start {
+            background: rgba(0, 212, 255, 0.06);
+            border-color: rgba(0, 212, 255, 0.35);
+        }
+        .diagram-node.end {
+            background: rgba(255, 180, 0, 0.1);
+            border-color: var(--gold);
+        }
+        .diagram-node.fault {
+            background: rgba(230, 57, 70, 0.06);
+            border-color: rgba(230, 57, 70, 0.35);
+        }
+        .diagram-arrow {
+            color: var(--gold);
+            font-size: 18px;
+            line-height: 1;
+            margin: 6px 0;
+        }
+        .diagram-fork {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            width: 100%;
+            margin: 6px 0;
+        }
+        .diagram-branch {
+            flex: 1;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-branch .diagram-arrow.red { color: var(--red); }
+        .diagram-branch .diagram-arrow.cyan { color: var(--cyan); }
+        .diagram-branch-label {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .diagram-branch-label.gold { color: var(--gold); }
+        .diagram-branch-label.cyan { color: var(--cyan); }
+        .diagram-branch-label.red { color: var(--red); }
+        @media(max-width: 700px) {
+            .diagram-fork { flex-direction: column; align-items: center; }
+            .diagram-branch { max-width: 460px; width: 100%; }
+        }
+        .diagram-loop {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--cyan);
+        }
+        .diagram-loop .loop-icon {
+            font-size: 17px;
+            line-height: 1;
+        }
+        /* FAQ */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-intro { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 760px; margin-bottom: 22px; }
+        .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+        .faq-item summary { list-style: none; cursor: pointer; padding: 16px 20px; display: flex; align-items: center; gap: 14px; font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.5; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary:hover { background: rgba(255, 255, 255, 0.02); }
+        .faq-item summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; }
+        .faq-q { flex-grow: 1; }
+        .faq-num { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 1.5px; color: #000; background: var(--gold); padding: 4px 10px; border-radius: 5px; white-space: nowrap; }
+        .faq-item .chev { color: var(--text); font-size: 12px; transition: transform .25s; }
+        .faq-item[open] .chev { transform: rotate(180deg); }
+        .faq-item[open] summary { border-bottom: 1px solid var(--border); }
+        .faq-a { padding: 16px 24px 20px; font-size: 15px; line-height: 1.85; color: var(--text); }
+        @media(max-width:700px) { .faq-item summary { padding: 14px 16px; font-size: 14px; } .faq-a { padding: 14px 16px 18px; } }
+    
+        /* --- site-wide fixes: mobile menu, skip link, small screens --- */
+        .skip-link { position: absolute; left: -9999px; top: 8px; z-index: 5000; background: #FFB400; color: #000; padding: 10px 16px; border-radius: 6px; font-weight: 700; text-decoration: none; }
+        .skip-link:focus { left: 8px; }
+        .hamburger { background: none; border: 0; padding: 8px; align-items: center; justify-content: center; }
+        .nav-links.open { display: flex; position: fixed; top: 70px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 0 14px; background: rgba(6, 13, 26, 0.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255, 180, 0, 0.3); }
+        .nav-links.open li { padding: 13px 40px; }
+        .hamburger span { transition: transform .25s, opacity .25s; }
+        .hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        @media (max-width: 768px) {
+            .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            .comp-hero-text { min-width: 0; max-width: 100%; }
+            .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }
+            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
+            :has(> svg[style*="min-width"]) { overflow-x: auto; }
+            .comp-img-wrap { width: 100%; max-width: 100%; }
+            .comp-img-box { width: 100% !important; max-width: 100%; height: auto !important; aspect-ratio: 4 / 3; }
+        }
+    
+        /* ── Legal banner and notice ── */
+        .legal-banner{max-width:1300px;margin:6px auto 0;padding:0 40px;position:relative;z-index:1;}
+        .legal-banner-inner{background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-left:4px solid var(--red,#E63946);border-radius:8px;padding:12px 16px;font-size:13px;line-height:1.65;color:var(--text,#c8d8f0);}
+        .legal-banner-inner strong{color:var(--gold,#FFB400);}
+        .legal-banner-inner a{color:var(--cyan,#00d4ff);font-weight:600;white-space:nowrap;}
+        .legal-wrap{max-width:1300px;margin:56px auto 40px;padding:0 40px;position:relative;z-index:1;scroll-margin-top:90px;}
+        .legal-box{background:var(--card,#0d1e38);border:1px solid var(--border,rgba(255,255,255,0.08));border-top:3px solid var(--gold,#FFB400);border-radius:12px;padding:26px 28px;}
+        .legal-title{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:1px;color:var(--white,#f0f4ff);font-weight:400;margin:0 0 4px;}
+        .legal-lead{font-size:13px;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum{background:rgba(255,180,0,0.06);border-left:3px solid var(--gold,#FFB400);border-radius:6px;padding:12px 14px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);margin:0 0 16px;}
+        .legal-addendum strong{color:var(--gold,#FFB400);}
+        .legal-list{margin:0;padding-left:20px;font-size:13.5px;line-height:1.7;color:var(--text,#c8d8f0);}
+        .legal-list li{margin-bottom:9px;}
+        .legal-list strong{color:var(--white,#f0f4ff);}
+        .legal-meta{font-size:12px;color:var(--text,#c8d8f0);opacity:.8;margin:14px 0 0;}
+        .legal-meta a,.legal-list a{color:var(--cyan,#00d4ff);}
+        @media(max-width:600px){.legal-banner,.legal-wrap{padding:0 18px;}.legal-box{padding:20px 16px;}}
+      /* CONNECT-BLOCK v2.1 */
+  .cx-wrap{max-width:1300px;margin:32px auto 0;padding:0 40px;position:relative;z-index:1;}
+  .cx-panel{background:var(--card);border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:12px;padding:22px 28px;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:32px;}
+  .cx-panel>div{min-width:0;}
+  .cx-h{font-family:'Bebas Neue',sans-serif;font-size:26px;font-weight:400;letter-spacing:1px;line-height:1.1;color:var(--white);margin:0 0 12px;}
+  .cx-row{display:flex;align-items:stretch;gap:8px;margin-bottom:8px;}
+  .cx-main{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:9px 14px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:rgba(255,255,255,0.02);color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-main:hover{border-color:var(--gold);background:rgba(255,180,0,0.06);}
+  .cx-ico{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;background:rgba(255,180,0,0.1);color:var(--gold);font-size:14px;}
+  .cx-text{display:flex;flex-direction:column;min-width:0;}
+  .cx-label{font-size:12px;font-weight:600;color:var(--text);line-height:1.2;}
+  .cx-phone{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;line-height:1.1;color:var(--gold);}
+  .cx-mail{font-size:14.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere;}
+  .cx-copy{flex:none;min-width:58px;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:0 10px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;background:transparent;color:var(--text);font:600 11.5px 'Barlow',sans-serif;cursor:pointer;transition:border-color .2s,color .2s;}
+  .cx-copy:hover{border-color:var(--cyan);color:var(--cyan);}
+  .cx-copy.done{border-color:var(--green,#2ecc71);color:var(--green,#2ecc71);}
+  .cx-social{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .cx-soc{display:flex;align-items:center;gap:10px;min-width:0;padding:9px 12px;border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--white);text-decoration:none;transition:border-color .2s,background-color .2s;}
+  .cx-soc i{flex:none;width:34px;height:34px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;background:rgba(255,255,255,0.06);color:var(--c);transition:background-color .2s,color .2s;}
+  .cx-soc:hover{border-color:var(--c);background:rgba(255,255,255,0.03);}
+  .cx-soc:hover i{background:var(--c);color:#06101f;}
+  .cx-soc span{display:flex;flex-direction:column;min-width:0;}
+  .cx-soc b{font-size:13.5px;font-weight:700;line-height:1.2;}
+  .cx-soc small{font-size:11.5px;color:var(--text);overflow-wrap:anywhere;line-height:1.25;}
+  .cx-yt{--c:#ff4e45;}.cx-in{--c:#4da3ff;}.cx-ig{--c:#ff6aa8;}.cx-fb{--c:#6ea0ff;}
+  .cx-main:focus-visible,.cx-copy:focus-visible,.cx-soc:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .cx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:860px){.cx-panel{grid-template-columns:minmax(0,1fr);gap:22px;}}
+  @media(max-width:600px){.cx-wrap{padding:0 18px;margin-top:24px;}.cx-panel{padding:18px 16px;}.cx-ico{display:none;}.cx-phone{font-size:23px;white-space:nowrap;}.cx-mail{font-size:13px;}.cx-copy{min-width:52px;padding:0 6px;}.cx-social{grid-template-columns:1fr;}}
+  @media(prefers-reduced-motion:reduce){.cx-main,.cx-soc,.cx-soc i,.cx-copy{transition:none;}}
+</style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html#article",
+        "headline": "PAPI Intensity Control — AGL Component Reference Guide",
+        "description": "PAPI Intensity Control explained: the subsystem adjusting PAPI light-unit brightness for day, twilight, and night conditions — CCR/LED-driver implementation.",
+        "url": "https://rahulsharmaagl.in/component-papi-intensity-control.html",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html"
+        },
+        "about": {
+          "@type": "Thing",
+          "name": "PAPI Intensity Control"
+        },
+        "articleSection": "Visual Glide Slope Systems",
+        "keywords": "PAPI intensity control, brightness step schedule, CCR, LED driver, FAA AC 150/5345-28, precision approach path indicator",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://tiimg.tistatic.com/fp/1/007/462/weather-resistant-papi-lighting-100w-200w-or-300w-for-aviation-lighting-110.jpg"
+        },
+        "isAccessibleForFree": true,
+        "author": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "publisher": {
+          "@type": "Organization",
+          "@id": "https://rahulsharmaagl.in/#organization",
+          "name": "Precision AGL Academy",
+          "url": "https://rahulsharmaagl.in/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://rahulsharmaagl.in/favicon.png"
+          },
+          "sameAs": [
+            "https://www.linkedin.com/in/rahulsharmaagl",
+            "https://youtube.com/@rahulsharmaagl",
+            "https://www.instagram.com/aglrahulsharma/"
+          ]
+        },
+        "isPartOf": {
+          "@type": "CollectionPage",
+          "@id": "https://rahulsharmaagl.in/component-library.html#collection",
+          "name": "AGL Component Library",
+          "url": "https://rahulsharmaagl.in/component-library.html"
+        },
+        "breadcrumb": {
+          "@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html#breadcrumb"
+        },
+        "hasPart": {
+          "@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html#faq"
+        }
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rahulsharmaagl.in/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Knowledge Hub",
+            "item": "https://rahulsharmaagl.in/knowledge-hub.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Component Library",
+            "item": "https://rahulsharmaagl.in/component-library.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "PAPI Intensity Control",
+            "item": "https://rahulsharmaagl.in/component-papi-intensity-control.html"
+          }
+        ]
+      }
+    </script>
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html#faq", "url": "https://rahulsharmaagl.in/component-papi-intensity-control.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-papi-intensity-control.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is PAPI intensity control?", "acceptedAnswer": {"@type": "Answer", "text": "It is the component or subsystem that manages the brightness of PAPI light units. It receives commands from the tower, the ALCMS or a local manual panel and converts them into electrical signals for the lamps or LED modules, typically with 3 or 5 intensity steps."}}, {"@type": "Question", "name": "Why does PAPI need intensity control?", "acceptedAnswer": {"@type": "Answer", "text": "The red/white indication must stay readable across a huge range of ambient brightness. In full daylight a dim beam disappears against the sky, while at night high output would glare and make the red/white contrast harder to judge. The aim is legibility rather than brightness for its own sake."}}, {"@type": "Question", "name": "Where is PAPI intensity control implemented?", "acceptedAnswer": {"@type": "Answer", "text": "It can be integrated into the PAPI control unit as relay or solid-state outputs that switch the CCR's current taps, part of the CCR itself with the control unit sending a selection signal, or a standalone module with its own interface, often used in smaller or portable installations."}}, {"@type": "Question", "name": "What are the standard PAPI intensity steps?", "acceptedAnswer": {"@type": "Answer", "text": "A 5-step system uses 2.8 A, 3.4 A, 4.1 A, 5.2 A and 6.6 A, and a 3-step system uses 2.8 A, 4.1 A and 6.6 A. Step accuracy is typically ±2% of set current, and a step change takes under 1 second."}}, {"@type": "Question", "name": "How does intensity control work with a CCR?", "acceptedAnswer": {"@type": "Answer", "text": "The intensity module converts the command into relay contacts selecting a tap on the CCR's multi-tap transformer, or a digital signal such as Modbus. The CCR sets the output current, and every PAPI unit on the series circuit receives the same current, which determines its brightness."}}, {"@type": "Question", "name": "How is intensity controlled in LED PAPI systems?", "acceptedAnswer": {"@type": "Answer", "text": "The CCR may still supply a constant current such as 6.6 A while the LED drivers in each unit use PWM to set brightness. The intensity control module then sends a PWM or 0-10 V signal to the drivers independent of series current, and some systems embed the command in a two-wire power and data interface."}}, {"@type": "Question", "name": "What command sources and control signals are used?", "acceptedAnswer": {"@type": "Answer", "text": "Commands come from the ALCMS, a manual panel, an ambient light sensor or a tower switch. Control signals include dry relay contacts, 4-20 mA, 0-10 V, Modbus or proprietary interfaces, with galvanic isolation between control and power circuits."}}, {"@type": "Question", "name": "Which standards apply to PAPI intensity control?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 14 (PAPI intensity requirements and step selection), FAA AC 150/5345-28, FAA AC 150/5345-56 (L-890 ALCMS) and IEC 61000-6-2 (EMC immunity). Always verify the current edition."}}, {"@type": "Question", "name": "How often should PAPI intensity control be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Typical practice is an annual intensity step verification, relay contact inspection and current sensor calibration check, and a semi-annual communication link test. Your airport's approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "What are the common PAPI intensity control problems?", "acceptedAnswer": {"@type": "Answer", "text": "Wrong manual step selection (too bright or too dim), relay contacts wearing or welding, communication failures that block automatic control (so keep manual override available), current sensor drift, LED PWM frequency set incorrectly causing flicker or interference, and unstable mains supply affecting CCR output."}}]}</script>
+<style>
+/* Image disclaimer caption */
+.comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
+.comp-img-note a{color:var(--gold);text-decoration:underline}
+</style>
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <nav id="navbar">
+        <a href="index.html" class="nav-logo">PRECISION AGL <span>ACADEMY</span></a>
+        <ul class="nav-links">
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="knowledge-hub.html">Knowledge Hub</a></li>
+            <li><a href="component-library.html" class="active">Components</a></li>
+            <li><a href="standards-companion.html">Standards</a></li>
+            <li><a href="index.html#articles">Articles</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <button class="nav-cta" id="navContactBtn"><i class="fa-regular fa-envelope"></i> Get in Touch</button>
+        <button class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </nav>
+
+    <main id="main-content">
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a><span>/</span>
+        <a href="component-library.html">Component Library</a><span>/</span>
+        <span class="current">PAPI Intensity Control</span>
+    </div>
+
+    <div class="legal-banner" role="note" aria-label="Safety and professional disclaimer"><div class="legal-banner-inner"><strong>Safety-critical technical reference &mdash; read before use.</strong> Independent educational information for qualified AGL personnel. It is not an approved procedure, product datasheet, design basis or regulatory instruction, and does not replace your aerodrome&rsquo;s permit-to-work, isolation/LOTO procedures or the manufacturer&rsquo;s instructions. Series-circuit AGL equipment can carry lethal voltages. Values shown are typical, not product-specific. <a href="#legal-disclaimer">Read the full disclaimer &darr;</a></div></div>
+    <div class="comp-hero">
+        <div class="comp-hero-text">
+            <div class="comp-tag"><i class="fa-regular fa-sun"></i> AGL Component Library By Precision AGL Academy</div>
+            <h1 class="comp-title">PAPI <span>Intensity Control</span></h1>
+            <p class="comp-sub">The subsystem responsible for adjusting the brightness of PAPI light units to match ambient light conditions—day, twilight, and night. Whether integrated into the Control Unit, the Constant Current Regulator (CCR), or a standalone module, intensity control ensures that the PAPI provides optimal visual contrast without blinding or being too dim for pilots.</p>
+        </div>
+        <div class="comp-img-wrap">
+            <div class="comp-img-box" style="width:480px;height:420px;">
+                <img src="https://tiimg.tistatic.com/fp/1/007/462/weather-resistant-papi-lighting-100w-200w-or-300w-for-aviation-lighting-110.jpg" alt="PAPI Intensity Control Panel" width="480" height="420" />
+            </div>
+            <p class="comp-img-note" role="note"><strong>Image disclaimer:</strong> For identification and illustration only. It may show a product by another manufacturer and may not depict the exact item described; it is not a statement of any product&rsquo;s quality, approval or performance. Third-party image and trademark rights belong to their owners. <a href="#legal-disclaimer">See full notice</a>.</p>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Overview</div>
+            <h2 class="block-title">What Is It?</h2>
+            <div class="info-panel">
+                <p>The <strong>PAPI Intensity Control</strong> is the component—or set of components—that manages the luminous intensity of the PAPI light units. It receives brightness commands from the air traffic control tower, the ALCMS, or a local manual panel, and translates these commands into appropriate electrical signals to the lamps or LED modules.</p>
+                <p style="margin-top:12px;">Intensity control is essential because the required brightness of PAPI varies dramatically with ambient light: during bright daylight, the system must be intensely bright to be visible against the sky; at night, lower intensities are needed to avoid glare. Typically, PAPI systems support 3 or 5 intensity steps, corresponding to day, twilight, night (and intermediate levels for 5‑step systems).</p>
+                <p>The intensity control function may be implemented as:</p>
+                <ul>
+                    <li><strong>Integrated into the PAPI Control Unit</strong> – as a set of relay or solid‑state outputs that switch the CCR’s current taps.</li>
+                    <li><strong>Part of the Constant Current Regulator (CCR)</strong> – where the CCR itself has selectable current levels, and the control unit merely sends a selection signal.</li>
+                    <li><strong>Standalone module</strong> – a separate device with its own user interface and communication, often used in smaller or portable installations.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Purpose</div>
+            <h2 class="block-title">Purpose &amp; Function</h2>
+            <div class="info-panel">
+                <p>The intensity control exists because PAPI's red/white indication has to remain equally readable at both ends of an enormous range of ambient brightness, and a fixed-output light source cannot do that. In full daylight, especially against a bright sky, a dim PAPI beam simply disappears from view before a pilot ever gets useful glide slope information from it; at night, that same high output would glare and could actually make the red/white contrast harder to judge rather than easier. Its function, then, isn't brightness for its own sake but legibility — keeping the pattern equally clear and unambiguous whether it's being read at midday or on a moonless night, which is what allows a single fixed installation to serve every hour of operation rather than only a narrow band of lighting conditions.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Brightness Steps</div>
+            <h2 class="block-title">Typical Intensity Levels</h2>
+            <div class="info-panel">
+                <p>PAPI systems are designed to provide the optimal intensity for each ambient light condition. The table below shows typical current settings for a 5‑step system (most common for precision runways):</p>
+                <div class="step-grid">
+                    <div class="step-item">
+                        <div class="step-label">Step 1</div>
+                        <div class="step-current">2.8 A</div>
+                        <div class="step-desc">Night / Very low visibility</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-label">Step 2</div>
+                        <div class="step-current">3.4 A</div>
+                        <div class="step-desc">Night / Twilight</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-label">Step 3</div>
+                        <div class="step-current">4.1 A</div>
+                        <div class="step-desc">Twilight / Overcast day</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-label">Step 4</div>
+                        <div class="step-current">5.2 A</div>
+                        <div class="step-desc">Daylight (overcast)</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-label">Step 5</div>
+                        <div class="step-current">6.6 A</div>
+                        <div class="step-desc">Bright daylight</div>
+                    </div>
+                </div>
+                <p style="margin-top:16px;">For 3‑step systems, typical currents are 2.8 A (night), 4.1 A (twilight), and 6.6 A (day). The actual current values may vary depending on the specific CCR and PAPI units. LED‑based PAPI systems may use PWM (pulse‑width modulation) or current‑controlled drivers, but the principle of stepped brightness remains the same.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Application</div>
+            <h2 class="block-title">Where Is It Used?</h2>
+            <div class="info-panel">
+                <p>PAPI intensity control is an essential feature of every PAPI system, regardless of the installation:</p>
+                <ul>
+                    <li><strong>Precision runways (CAT I, II, III)</strong> – integrated with the ALCMS for automatic brightness selection based on ambient light sensors or tower commands.</li>
+                    <li><strong>Non‑precision runways</strong> – often with manual step selection via a control panel in the tower or electrical room.</li>
+                    <li><strong>Heliports</strong> – with dedicated helicopter PAPI intensity control, possibly with different step values.</li>
+                    <li><strong>Military airfields</strong> – where rapid intensity changes may be needed for tactical operations.</li>
+                    <li><strong>Portable or temporary PAPI</strong> – using battery‑powered controllers with simple rotary switches for step selection.</li>
+                    <li><strong>Retrofit upgrades</strong> – where an existing PAPI with a manual switch is upgraded to an automatic system with ALCMS integration.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Placement</div>
+            <h2 class="block-title">Installation &amp; Location</h2>
+            <div class="info-panel">
+                <p>The intensity control electronics sit in the CCR room or equipment shelter alongside the PAPI's power supply, wired into the constant current loop (or DC distribution) feeding the wing bar and, where fitted, into the ALCMS network or ambient light sensor providing automatic brightness commands. A manual control panel, where used instead of or alongside automatic control, is typically located in the tower or a nearby electrical room so controllers can select a step directly without needing shelter access. On portable PAPI, the equivalent controller is built into the unit itself with a simple rotary switch, keeping intensity selection at the fixture rather than routed back to a fixed control room. Wherever it sits, the controller's position keeps its control wiring to the CCR or driver circuit short, since that link carries the step commands that ultimately set the wing bar's brightness.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Function</div>
+            <h2 class="block-title">How Does It Work?</h2>
+            <div class="info-panel">
+                <p>The intensity control process involves several steps, from command to light output:</p>
+                <ul>
+                    <li><strong>Command Generation:</strong> The desired brightness step is determined by the air traffic controller (based on weather, time of day, or pilot request) or automatically by an ambient light sensor feeding the ALCMS. The command is sent to the intensity control module.</li>
+                    <li><strong>Signal Translation:</strong> The intensity control module converts the command into a control signal. In a traditional system, this is typically a set of relay contacts that select the appropriate tap on the CCR’s multi‑tap transformer. In modern systems, it may be a digital signal (e.g., Modbus) to the CCR to set the output current.</li>
+                    <li><strong>CCR Output Adjustment:</strong> The CCR adjusts its output current to the selected value (e.g., 2.8A, 4.1A, 6.6A). This current is fed into the series circuit, and each PAPI unit receives the same current, which determines its brightness.</li>
+                    <li><strong>LED‑Specific Control:</strong> For LED‑based PAPI systems, the CCR may still supply a constant current (e.g., 6.6A) and the LED drivers inside each unit use PWM to adjust brightness. In this case, the intensity control module sends a PWM signal or a separate 0–10V control signal to the drivers, independent of the series current. Some LED systems use a two‑wire power and data interface, where the intensity command is embedded in the power signal.</li>
+                    <li><strong>Monitoring and Feedback:</strong> Advanced intensity control modules monitor the actual current or light output to verify that the correct intensity has been achieved. If there is a deviation, an alarm is generated.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Architecture</div>
+            <h2 class="block-title">System Architecture &amp; Control Logic</h2>
+            <div class="info-panel">
+                <p>Intensity control is the command layer that sits between a brightness decision and the light actually reaching the required step. An ATC instruction, an ALCMS schedule, or an ambient light sensor generates the desired brightness step, and the intensity control module translates that into whichever signal path the installation uses — a relay selecting a CCR tap for traditional series-current systems, or a PWM/0–10V signal to LED drivers for systems that hold the series current constant and vary duty cycle instead.</p>
+                <p style="margin-top:14px;">Because every PAPI unit on the loop receives the same current (or the same PWM command, on LED systems), intensity is inherently a loop-wide setting rather than a per-unit one — the module's monitoring and feedback function exists to confirm that the whole array actually reached the commanded step, not to adjust any single unit independently of the rest.</p>
+            </div>
+            <div class="diagram-block" style="margin-top:24px;">
+                <p class="diagram-sub">ATC/ALCMS/Sensor → Intensity Control Module → CCR Tap or LED PWM → PAPI Array (output feedback)</p>
+                <svg viewBox="0 0 680 435" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <marker id="sacIntensArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#FFB400" opacity="0.7" />
+                        </marker>
+                        <marker id="sacIntensFbArrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+                            <path d="M0,0 L8,4 L0,8 Z" fill="#00d4ff" opacity="0.8" />
+                        </marker>
+                    </defs>
+
+                    <rect x="170" y="20" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="42" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">COMMAND SOURCE</text>
+
+                    <text x="340" y="59" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">ATC, ALCMS, or an ambient</text>
+
+                    <text x="340" y="74" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">light sensor</text>
+
+                    <line x1="340" y1="76" x2="340" y2="100" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#sacIntensArrow)"/>
+
+                    <rect x="170" y="100" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="122" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">INTENSITY CONTROL MODULE</text>
+
+                    <text x="340" y="139" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Translates command into a</text>
+
+                    <text x="340" y="154" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">relay selection or digital signal</text>
+
+                    <line x1="340" y1="156" x2="340" y2="180" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#sacIntensArrow)"/>
+
+                    <rect x="170" y="180" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="202" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">CCR TAP SELECT / LED PWM SIGNAL</text>
+
+                    <text x="340" y="219" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Series current step (traditional) or</text>
+
+                    <text x="340" y="234" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">PWM/0–10V to drivers (LED)</text>
+
+                    <line x1="340" y1="236" x2="340" y2="260" stroke="#FFB400" stroke-width="1.5" opacity="0.7" marker-end="url(#sacIntensArrow)"/>
+
+                    <rect x="170" y="260" width="340" height="56" rx="10" fill="#0d1e38" stroke="#24365a" stroke-width="1.5"/>
+
+                    <text x="340" y="282" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="14" fill="#f0f4ff">PAPI UNITS AT COMMANDED BRIGHTNESS</text>
+
+                    <text x="340" y="299" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Every unit on the loop reflects</text>
+
+                    <text x="340" y="314" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">the same intensity step</text>
+
+                    <line x1="340" y1="316" x2="340" y2="340" stroke="#FFB400" stroke-width="1.5" opacity="0.6" marker-end="url(#sacIntensArrow)"/>
+
+                    <rect x="170" y="340" width="340" height="75" rx="10" fill="rgba(255,180,0,0.08)" stroke="#FFB400" stroke-width="1.5"/>
+
+                    <text x="340" y="362" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="13.5" fill="#f0f4ff">ONE COMMAND, TWO POSSIBLE SIGNAL PATHS</text>
+
+                    <text x="340" y="379" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">Traditional systems vary the series current itself;</text>
+
+                    <text x="340" y="396" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">LED systems hold current constant and vary duty</text>
+
+                    <text x="340" y="413" text-anchor="middle" font-family="Barlow, sans-serif" font-size="10" fill="#c8d8f0">cycle — both are driven from the same command</text>
+
+                    <path d="M 510 208 C 600 208, 600 128, 510 128" fill="none" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="5,4" opacity="0.75" marker-end="url(#sacIntensFbArrow)"/>
+                    <text x="517" y="125" text-anchor="start" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="10.5" letter-spacing="0.5" fill="#00d4ff">OUTPUT FEEDBACK</text>
+                    <text x="517" y="140" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">Actual current or light</text>
+                    <text x="517" y="155" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">output is monitored;</text>
+                    <text x="517" y="170" text-anchor="start" font-family="Barlow, sans-serif" font-size="9" fill="#c8d8f0">deviation raises an alarm</text>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+
+    <section>
+        <div class="container">
+            <div class="block-label">Signal Path</div>
+            <h2 class="block-title">From Command to Light Output</h2>
+            <div class="diagram-block">
+                <div class="diagram-flow">
+                    <div class="diagram-node start">Brightness Step Commanded<small>ATC, ALCMS, or ambient light sensor</small></div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-node">Intensity Control Module Translates Command</div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-fork">
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label gold">Traditional (Series Current)</div>
+                            <div class="diagram-node">Relay Selects CCR Tap<small>2.8A – 6.6A · same current to every PAPI unit</small></div>
+                        </div>
+                        <div class="diagram-branch">
+                            <div class="diagram-branch-label cyan">LED-Based (PWM)</div>
+                            <div class="diagram-node" style="background:rgba(0,212,255,0.06);border-color:rgba(0,212,255,0.35);">CCR Holds Constant Current<small>PWM / 0–10V signal sets each driver's brightness</small></div>
+                        </div>
+                    </div>
+                    <div class="diagram-arrow">▼</div>
+                    <div class="diagram-node end">Actual Output Monitored — Deviation Triggers Alarm</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Construction</div>
+            <h2 class="block-title">Physical Construction</h2>
+            <div class="info-panel">
+                <p>Where intensity control is integrated into the PAPI Control Unit, its physical form is a bank of relay or solid-state switching outputs mounted on the control unit's internal circuit board, wired to switch the CCR's current taps or a PWM driver stage in response to the selected step. Where it forms part of the CCR itself, the switching hardware sits inside the CCR's own enclosure, with the control unit reduced to sending a simple selection signal over a control cable. A standalone module takes the form of its own small sealed enclosure, housing a switching or PWM output stage, a local keypad or rotary selector for manual step selection, and a communications port for remote control, mounted either in an equipment room rack or a weatherproof field cabinet depending on the installation. In every configuration the switching components are rated for the full series-circuit current or LED driver load they carry, with heat-sinking or ventilation sized to the switching losses involved.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Technical Parameters</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Typical Value</th></tr>
+                <tr><td>Number of Steps</td><td class="val">3 or 5 (configurable)</td></tr>
+                <tr><td>Step Currents (5‑step)</td><td class="val">2.8 A, 3.4 A, 4.1 A, 5.2 A, 6.6 A (at 50/60 Hz)</td></tr>
+                <tr><td>Step Currents (3‑step)</td><td class="val">2.8 A, 4.1 A, 6.6 A</td></tr>
+                <tr><td>Control Signals</td><td class="val">Relay contacts (dry), 4‑20 mA, 0‑10 V, Modbus, or proprietary</td></tr>
+                <tr><td>Command Sources</td><td class="val">ALCMS, manual panel, ambient light sensor, tower switch</td></tr>
+                <tr><td>Response Time</td><td class="val">&lt; 1 second (step change)</td></tr>
+                <tr><td>Step Accuracy</td><td class="val">±2% of set current</td></tr>
+                <tr><td>Isolation</td><td class="val">Galvanic isolation between control and power circuits</td></tr>
+                <tr><td>Operating Temperature</td><td class="val">-20°C to +60°C (indoor), -40°C to +70°C (extended)</td></tr>
+                <tr><td>Protection Class</td><td class="val">IP20 (indoor) or IP65 (outdoor enclosure)</td></tr>
+                <tr><td>Power Supply</td><td class="val">115/230 VAC ±10%, 50/60 Hz, or 24 VDC</td></tr>
+                <tr><td>Mounting</td><td class="val">DIN rail, rack mount, or panel mount</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Specification</div>
+            <h2 class="block-title">Electrical Requirements</h2>
+            <table class="param-table">
+                <tr><th>Parameter</th><th>Requirement</th></tr>
+                <tr><td>Power Supply</td><td class="val">115/230 VAC &plusmn;10%, 50/60 Hz, or 24 VDC</td></tr>
+                <tr><td>Step Currents</td><td class="val">2.8&ndash;6.6A (5‑step) or 2.8/4.1/6.6A (3‑step), held to &plusmn;2% of set current</td></tr>
+                <tr><td>Isolation</td><td class="val">Galvanic isolation maintained between control and power circuits</td></tr>
+                <tr><td>Circuit Protection</td><td class="val">Overcurrent protection on the power input; short‑circuit protection on step outputs</td></tr>
+                <tr><td>Grounding</td><td class="val">Enclosure bonded to earth per mounting type (DIN rail, rack, or panel)</td></tr>
+                <tr><td>Control Signal Wiring</td><td class="val">Dry relay contacts, 4&ndash;20 mA, 0&ndash;10 V, or Modbus wiring kept isolated per command source</td></tr>
+                <tr><td>Response Verification</td><td class="val">Step change confirmed &lt; 1 second under load during commissioning</td></tr>
+            </table>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Compliance</div>
+            <h2 class="block-title">Applicable Standards</h2>
+            <div class="std-chip-row">
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>PAPI intensity requirements and step selection</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-28</h5><p>PAPI system – control and intensity provisions</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-56</h5><p>Specification for L‑890 Airport Lighting Control and Monitoring System (ALCMS)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000-6-2</h5><p>EMC immunity for industrial control interfaces</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Prerequisites</div>
+            <h2 class="block-title">Installation Requirements</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-server"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Enclosure/Rack Mounting</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Mount the switching module in its equipment room rack or weatherproof field cabinet, or confirm it is correctly integrated within the PAPI Control Unit or CCR enclosure as designed.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-fan"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Heat-Sinking &amp; Ventilation Check</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Confirm heat-sinking or ventilation is sized to the switching losses for the full series-circuit current or LED driver load the module carries.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plug"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Switching Output Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <p>Wire the relay or solid-state switching outputs to the CCR's current taps or PWM driver stage, confirming each output is rated for the load it switches.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Command Source Cabling</h5><span class="test-stage">Electrical</span></div>
+                        <p>Connect and terminate cabling for each command source (ALCMS, manual panel, ambient light sensor, tower switch) per the design before energisation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Galvanic Isolation Verification</h5><span class="test-stage">Electrical</span></div>
+                        <p>Confirm isolation resistance between the control circuit and power circuit meets the design minimum, protecting control electronics from series-circuit faults.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-keyboard"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Local Keypad/Selector Fitting (Standalone Variant)</h5><span class="test-stage">Mechanical</span></div>
+                        <p>Fit and confirm operation of the local keypad or rotary selector on a standalone module, along with the communications port for remote control.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <p>Record mounting details, switching output wiring, and command source connections as-built before the unit is energised for step current testing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Verification</div>
+            <h2 class="block-title">Testing &amp; Commissioning</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Step Current Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Command each of the 3 or 5 intensity steps and measure actual output current against the rated 2.8A–6.6A step values, confirming step accuracy within ±2%.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Response Time Check</h5><span class="test-stage">Energisation</span></div>
+                        <p>Command a step change and confirm the unit responds in under 1 second, catching a sluggish relay or control loop before handover.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Command Source Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>Test each command source in turn (ALCMS, manual panel, ambient light sensor, tower switch) and confirm each correctly drives the intensity step.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Galvanic Isolation Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <p>Verify isolation resistance between the control circuit and power circuit meets the design minimum, protecting control electronics from series-circuit faults.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communication Signal Verification</h5><span class="test-stage">Energisation</span></div>
+                        <p>For relay, 4-20 mA, 0-10 V, or Modbus control signals, confirm the received command matches the commanded step at the source with no signal degradation.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fail-Safe Behaviour Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Remove or fault the control signal and confirm the unit fails to a safe, defined intensity state rather than an unpredictable or unsafe output.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Ambient Light Sensor Calibration Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Where an ambient light sensor drives automatic step selection, verify its threshold settings trigger day/twilight/night transitions at the intended light levels.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <p>Record step current, response time, and isolation test results alongside the configured step count in the commissioning dossier for handover.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Upkeep</div>
+            <h2 class="block-title">Inspection &amp; Maintenance</h2>
+            <div class="maint-grid">
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Intensity Step Verification</h5><span class="maint-freq">Annual</span></div>
+                        <p>Confirm the correct intensity step is selected and being applied for current operating conditions.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Relay Contact Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <p>Check relay contacts for wear that could affect step switching reliability.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Communication Link Test</h5><span class="maint-freq">Semi-annual</span></div>
+                        <p>Test the communication link to catch intermittent faults affecting intensity control.</p>
+                    </div>
+                </div>
+                <div class="maint-item">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <div>
+                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Current Sensor Calibration Check</h5><span class="maint-freq">Annual</span></div>
+                        <p>Verify current sensor readings against a reference to catch calibration drift.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Notes</div>
+            <h2 class="block-title">Common Field Issues</h2>
+            <div class="issue-list">
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Step Selection</h5><p>Manual selection errors can result in PAPI being too bright (causing glare) or too dim (not visible). Use clear labeling and, where possible, integrate automatic ambient light sensors to reduce human error. Regular training for tower staff is essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Relay Contact Wear</h5><p>In systems that use relays to switch CCR taps, contacts can wear out or weld shut over time, leading to incorrect current levels. Regular inspection and replacement of relays is recommended, especially in high‑traffic airfields.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Communication Failures</h5><p>If the intensity control module communicates with the ALCMS via serial or Ethernet, a communication loss can prevent automatic control. Implement manual override and ensure redundant communication paths for critical systems.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Current Sensor Calibration</h5><p>If the control module monitors actual current to verify the step, the current sensor may drift over time, causing false alarms or incorrect feedback. Periodic calibration against a reference ammeter is necessary.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">LED PWM Interference</h5><p>In LED systems using PWM dimming, the PWM frequency can interfere with other equipment or cause visible flicker if not set correctly. Ensure that the PWM frequency is above 200 Hz (preferably 1 kHz) to avoid flicker and comply with standards.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Fluctuations in the AC supply voltage can affect the CCR output, especially in older thyristor‑based regulators. Use a stable mains supply or consider UPS protection for critical control electronics.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Diagnostics</div>
+            <h2 class="block-title">Troubleshooting Guide</h2>
+            <div class="ts-list">
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">PAPI Too Bright or Too Dim for Conditions</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Incorrect intensity step selected, manually or by a misconfigured ambient light sensor.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the currently selected step against the ambient light level and procedure, and verify the ambient light sensor's calibration if fitted.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Correct the step selection, recalibrate or repair the ambient light sensor, and retrain staff on the step-selection procedure.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Intensity Step Not Matching Selected Setting</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Relay contact wear or welding in systems that switch CCR taps via relays.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect relay contacts for wear, pitting, or welding, and verify the actual current against the selected step.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the worn or welded relay, and consider solid-state switching for high-traffic airfields.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Automatic Intensity Control Not Responding</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Communication loss between the intensity control module and the ALCMS.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the communication link status, test the serial/Ethernet connection, and verify the manual override function.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair the communication link, use manual override until restored, and verify redundant paths are functioning.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False Fault Alarms on Current Feedback</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Current sensor calibration drift.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare monitored current against a reference ammeter at each step and review the calibration history.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate the current sensor against the reference ammeter, and replace it if out of tolerance.</div></div>
+                </div>
+                <div class="ts-item">
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Visible Flicker on LED PAPI Units</h5></div>
+                    <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">LED PWM dimming frequency set too low, causing interference or visible flicker.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure the PWM frequency against the specification and check for correlation between flicker complaints and dimming level.</div></div>
+                    <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Adjust the PWM frequency to above 200 Hz (preferably 1 kHz) per standard, and retest for flicker at all dimming steps.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Reliability</div>
+            <h2 class="block-title">Failure Modes &amp; Root Causes</h2>
+            <div class="fm-list">
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Ambient Light Sensor Fault</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A dirty, fogged, or failed ambient light sensor that no longer accurately reports current visibility conditions.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">PAPI too bright or too dim for conditions, presenting pilots with a glide path indication that is harder to use than intended.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Sensor reading verification against a handheld light meter, and cleaning/inspection of the sensor lens during maintenance.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Step Selection Contactor Fault</h5></div>
+                        <span class="fm-sev fm-sev-high">High Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Contact wear or welding from repeated step-change cycling, or a control logic fault affecting the step-selection sequence.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Intensity step not matching selected setting, so the commanded brightness level and actual output diverge.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Command-versus-output verification test across the full step range during scheduled maintenance.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Automatic Intensity Control Logic Failure</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A control board component failure, or a corrupted configuration setting affecting the automatic brightness algorithm.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Automatic intensity control not responding to changing ambient conditions, leaving the unit fixed at a single step.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Functional test of the automatic control response under a controlled light-level change, and configuration verification.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Current Feedback Sensing Drift</h5></div>
+                        <span class="fm-sev fm-sev-medium">Medium Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ageing of the current sensing component, or a reference voltage drifting away from its factory calibration over years of service.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">False fault alarms on current feedback that do not correspond to an actual circuit condition.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Current sensing verification against a calibrated reference meter during scheduled maintenance.</div></div>
+                </div>
+                <div class="fm-item">
+                    <div class="fm-item-head">
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">LED Driver PWM Instability</h5></div>
+                        <span class="fm-sev fm-sev-low">Low Severity</span>
+                    </div>
+                    <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A degraded driver component, or PWM dimming frequency interacting poorly with a specific step setting.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Effect</div><div class="fm-row-value">Visible flicker on LED PAPI units, most noticeable at certain intensity steps or to pilots on approach.</div></div>
+                    <div class="fm-row"><div class="fm-row-label">Detection Method</div><div class="fm-row-value">Visual and instrumented flicker check across all intensity steps during scheduled maintenance.</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Precautions</div>
+            <h2 class="block-title">Safety &amp; Operational Notes</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Before Internal Work</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>De-energise and lock out the unit's incoming supply before opening the enclosure to access the step-selection contactors, control board, or sensor wiring, and verify zero energy before touching internal terminals.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-plane-arrival"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Glide Path Safety Impact</h5><span class="test-stage">Operational</span></div>
+                        <p>The PAPI intensity setting directly affects a pilot's visual glide path indication on approach; any adjustment, calibration, or fault that could change intensity or step response requires airside coordination and, where the unit will be off-tolerance, a NOTAM.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-gauge-high"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sensor Calibration Conditions</h5><span class="test-stage">Verification</span></div>
+                        <p>Verify the ambient light sensor reading against a calibrated reference meter under representative daylight/low-light conditions before accepting an automatic intensity control setting, since a miscalibrated sensor can leave the PAPI too bright or too dim without triggering a fault.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Contactor Arc Hazard</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>Step-selection contactors can arc on load; do not manually operate or inspect them while energised, and allow for a de-energised state before checking for contact wear or welding.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-vial-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Command-to-Output Verification</h5><span class="test-stage">Electrical Safety</span></div>
+                        <p>After any control logic, configuration, or contactor work, verify commanded step against actual output across the full intensity range before returning the unit to automatic service, since a mismatch here directly changes what the pilot sees.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE &amp; Grounding</h5><span class="test-stage">Personnel Safety</span></div>
+                        <p>Use insulated tools and appropriate PPE when working on live circuits or discharging capacitive components, and confirm the enclosure is bonded/grounded per the electrical design before closing it up.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-tarp"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">FOD &amp; Enclosure Integrity</h5><span class="test-stage">Operational</span></div>
+                        <p>Account for all tools and fasteners before closing the enclosure, and confirm the door/lid seal is properly reinstated to keep moisture and debris out of the control electronics.</p>
+                    </div>
+                </div>
+                <div class="test-item">
+                    <i class="fa-solid fa-circle-check"></i>
+                    <div>
+                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <p>Do not leave the PAPI at an incorrect or unverified intensity step after maintenance; confirm command-to-output conformance and automatic control response before closing out the work and cancelling any associated NOTAM.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Field Insight</div>
+            <h2 class="block-title">Engineering &amp; Expert Notes</h2>
+            <div class="expert-byline">
+                <div class="expert-avatar">RS</div>
+                <div class="expert-byline-text">
+                    <div class="name">By Rahul Sharma</div>
+                    <div class="role">Airfield Ground Lighting Specialist</div>
+                </div>
+            </div>
+            <div class="expert-grid">
+                <div class="expert-item">
+                    <i class="fa-solid fa-sun"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Sensor Placement Bias Skews Every Step It Controls</h5><span class="expert-tag">Design</span></div>
+                        <p>An ambient light sensor mounted where it sees partial shading from a nearby structure, or reflected glare off pavement, will bias every automatic intensity decision it makes, not just an occasional reading. Check the sensor's actual field of view against its surroundings, not only its calibration accuracy, when intensity complaints don't match expected daylight conditions.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Command-to-Output Mismatch Hides at the Boundary Steps</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <p>A contactor or driver stage that's starting to fail often still works correctly at the extreme steps (lowest and highest) while silently misbehaving at intermediate ones. Verify the full step range during commissioning and after any repair, not just the top and bottom steps that are easiest to check visually.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Flicker at One Step Points to That Step's Circuit, Not the Fixture</h5><span class="expert-tag">Diagnostics</span></div>
+                        <p>When flicker is reported only at a particular intensity step, the fault is usually in that step's specific switching or driver stage rather than the LED module itself. Isolate testing to the reported step first before assuming the whole light unit needs replacement.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Contactor Wear Is Uneven Across Steps</h5><span class="expert-tag">Reliability</span></div>
+                        <p>The step used most often under typical daylight conditions accumulates far more switching cycles than a rarely-used extreme step, so contactor wear across an array is rarely uniform. Track cycle counts per step where the control system supports it, rather than replacing contactors on a blanket time-based schedule.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Automatic Control Needs Testing Across Real Conditions, Not Just Bench Values</h5><span class="expert-tag">Verification</span></div>
+                        <p>A sensor and control loop that responds correctly to a bench-simulated light level can still behave differently under actual dawn/dusk transitions, fog, or heavy rain, which change ambient light in ways a static test doesn't capture. Where possible, verify automatic response during a genuine low-visibility or transition period rather than relying solely on simulated calibration checks.</p>
+                    </div>
+                </div>
+                <div class="expert-item">
+                    <i class="fa-solid fa-people-arrows"></i>
+                    <div>
+                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Manual Override Left Engaged Is an Easy Miss</h5><span class="expert-tag">Operational</span></div>
+                        <p>A unit left in manual override after a maintenance visit or ATC-requested intensity change can sit at a fixed step for weeks without automatic response, unnoticed until conditions change enough that it becomes visibly wrong. Confirm the control mode is back to automatic as a standard close-out check, not only the intensity value itself.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="block-label">Explore Further</div>
+            <h2 class="block-title">Related Components</h2>
+            <div class="related-grid">
+                <a href="component-papi-control-unit.html" class="related-card"><i class="fa-solid fa-sliders"></i><h5 role="heading" aria-level="3">PAPI Control Unit</h5></a>
+                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">Constant Current Regulator</h5></a>
+                <a href="component-papi-light-unit.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><h5 role="heading" aria-level="3">PAPI Light Unit</h5></a>
+                <a href="component-alcms-server.html" class="related-card"><i class="fa-solid fa-display"></i><h5 role="heading" aria-level="3">ALCMS</h5></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <div class="block-label">Quick Answers</div>
+            <h2 class="block-title">Frequently Asked Questions</h2>
+            <p class="faq-intro">Short answers about PAPI intensity control: brightness steps, CCR and LED control, signals, standards and maintenance.</p>
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q1</span><span class="faq-q">What is PAPI intensity control?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It is the component or subsystem that manages the brightness of PAPI light units. It receives commands from the tower, the ALCMS or a local manual panel and converts them into electrical signals for the lamps or LED modules, typically with 3 or 5 intensity steps.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q2</span><span class="faq-q">Why does PAPI need intensity control?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The red/white indication must stay readable across a huge range of ambient brightness. In full daylight a dim beam disappears against the sky, while at night high output would glare and make the red/white contrast harder to judge. The aim is legibility rather than brightness for its own sake.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q3</span><span class="faq-q">Where is PAPI intensity control implemented?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>It can be integrated into the PAPI control unit as relay or solid-state outputs that switch the CCR's current taps, part of the CCR itself with the control unit sending a selection signal, or a standalone module with its own interface, often used in smaller or portable installations.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q4</span><span class="faq-q">What are the standard PAPI intensity steps?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>A 5-step system uses 2.8 A, 3.4 A, 4.1 A, 5.2 A and 6.6 A, and a 3-step system uses 2.8 A, 4.1 A and 6.6 A. Step accuracy is typically ±2% of set current, and a step change takes under 1 second.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q5</span><span class="faq-q">How does intensity control work with a CCR?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The intensity module converts the command into relay contacts selecting a tap on the CCR's multi-tap transformer, or a digital signal such as Modbus. The CCR sets the output current, and every PAPI unit on the series circuit receives the same current, which determines its brightness.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q6</span><span class="faq-q">How is intensity controlled in LED PAPI systems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The CCR may still supply a constant current such as 6.6 A while the LED drivers in each unit use PWM to set brightness. The intensity control module then sends a PWM or 0-10 V signal to the drivers independent of series current, and some systems embed the command in a two-wire power and data interface.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q7</span><span class="faq-q">What command sources and control signals are used?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Commands come from the ALCMS, a manual panel, an ambient light sensor or a tower switch. Control signals include dry relay contacts, 4-20 mA, 0-10 V, Modbus or proprietary interfaces, with galvanic isolation between control and power circuits.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q8</span><span class="faq-q">Which standards apply to PAPI intensity control?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>The main references are ICAO Annex 14 (PAPI intensity requirements and step selection), FAA AC 150/5345-28, FAA AC 150/5345-56 (L-890 ALCMS) and IEC 61000-6-2 (EMC immunity). Always verify the current edition.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q9</span><span class="faq-q">How often should PAPI intensity control be checked?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Typical practice is an annual intensity step verification, relay contact inspection and current sensor calibration check, and a semi-annual communication link test. Your airport's approved maintenance programme takes precedence.</p></div>
+                </details>
+                <details class="faq-item">
+                    <summary><span class="faq-num">Q10</span><span class="faq-q">What are the common PAPI intensity control problems?</span><i class="fa-solid fa-chevron-down chev"></i></summary>
+                    <div class="faq-a"><p>Wrong manual step selection (too bright or too dim), relay contacts wearing or welding, communication failures that block automatic control (so keep manual override available), current sensor drift, LED PWM frequency set incorrectly causing flicker or interference, and unstable mains supply affecting CCR output.</p></div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="academy-cta">
+                <div class="block-label">Go Further</div>
+                <div class="academy-cta-grid">
+                    <div>
+                        <h2 class="block-title">Go Beyond the Component. Understand the Complete AGL System.</h2>
+                        <p>You have explored the component. Now understand how it works within the complete Airfield Ground Lighting system.</p>
+                        <p>Learn AGL from fundamentals to design, installation, testing, photometry, commissioning, maintenance and troubleshooting through structured technical training at Precision AGL Academy.</p>
+                        <p>Build practical knowledge. Understand the circuit. Read the standards. Troubleshoot with confidence.</p>
+                        <p><strong>Your next step in AGL starts here.</strong></p>
+                        <div class="academy-cta-actions">
+                            <a href="academy.html#flagship" class="btn btn-gold"><i class="fa-solid fa-graduation-cap"></i> Explore AGL Courses</a>
+                            <a href="academy.html#pathway" class="btn btn-outline"><i class="fa-solid fa-arrow-right"></i> Start Learning</a>
+                        </div>
+                    </div>
+                    <div class="academy-pathway">
+                        <div class="academy-pathway-label">The Learning Pathway</div>
+                        <div class="academy-pathway-flow">
+                            <span>Learn</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Understand</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Design</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Test</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Maintain</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Document</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Apply</span><i class="fa-solid fa-chevron-right"></i>
+                            <span>Certify</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-strip">
+                <div><h4 role="heading" aria-level="3">Need expert guidance on PAPI Intensity Control design, integration, or troubleshooting?</h4><p>Precision AGL Academy provides advice on brightness step configuration, CCR interfacing, and automatic intensity systems for precision approach runways.</p></div>
+                <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONNECT-BLOCK v2.1 -->
+<section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">
+  <div>
+    <h2 class="cx-h" id="cx-h">Talk to Precision AGL Academy</h2>
+    <div class="cx-row">
+      <a class="cx-main" href="tel:+919821496412"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-phone"></i></span><span class="cx-text"><span class="cx-label">Call</span><span class="cx-phone">+91 98214 96412</span></span></a>
+      <button type="button" class="cx-copy" data-copy="+919821496412" data-what="phone number" aria-label="Copy phone number"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <div class="cx-row">
+      <a class="cx-main" href="mailto:precisionaglacademy@gmail.com"><span class="cx-ico"><i aria-hidden="true" class="fa-solid fa-envelope"></i></span><span class="cx-text"><span class="cx-label">Email</span><span class="cx-mail">precisionaglacademy@gmail.com</span></span></a>
+      <button type="button" class="cx-copy" data-copy="precisionaglacademy@gmail.com" data-what="email address" aria-label="Copy email address"><i aria-hidden="true" class="fa-regular fa-copy"></i><span class="cx-copy-t">Copy</span></button>
+    </div>
+    <p class="cx-sr" id="cx-live" role="status" aria-live="polite"></p>
+  </div>
+  <div>
+    <h2 class="cx-h cx-h2">Follow the Academy</h2>
+    <div class="cx-social">
+      <a class="cx-soc cx-yt" href="https://youtube.com/@precisionaglacademy" target="_blank" rel="noopener noreferrer" aria-label="YouTube: @precisionaglacademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-youtube"></i><span><b>YouTube</b><small>@precisionaglacademy</small></span></a>
+      <a class="cx-soc cx-in" href="https://www.linkedin.com/company/precision-agl-academy" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn: Precision AGL Academy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-linkedin-in"></i><span><b>LinkedIn</b><small>Precision AGL Academy</small></span></a>
+      <a class="cx-soc cx-ig" href="https://www.instagram.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Instagram: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-instagram"></i><span><b>Instagram</b><small>@PrecisionAGLAcademy</small></span></a>
+      <a class="cx-soc cx-fb" href="https://www.facebook.com/PrecisionAGLAcademy" target="_blank" rel="noopener noreferrer" aria-label="Facebook: @PrecisionAGLAcademy (opens in a new tab)"><i aria-hidden="true" class="fa-brands fa-facebook-f"></i><span><b>Facebook</b><small>@PrecisionAGLAcademy</small></span></a>
+    </div>
+  </div>
+</div></section>
+<script>
+(function(){var live=document.getElementById("cx-live");document.querySelectorAll(".cx-copy").forEach(function(b){b.addEventListener("click",function(){var v=b.getAttribute("data-copy"),t=b.querySelector(".cx-copy-t");function ok(){b.classList.add("done");t.textContent="Copied";if(live)live.textContent="Copied "+b.getAttribute("data-what");setTimeout(function(){b.classList.remove("done");t.textContent="Copy";},2000);}function fb(){var a=document.createElement("textarea");a.value=v;a.style.position="fixed";a.style.opacity="0";document.body.appendChild(a);a.select();try{document.execCommand("copy");ok();}catch(e){}document.body.removeChild(a);}if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(v).then(ok,fb);}else{fb();}});});})();
+</script>
+<div class="legal-wrap" id="legal-disclaimer" role="note" aria-labelledby="legal-h"><div class="legal-box"><h2 id="legal-h" class="legal-title">Important Notice, Disclaimer &amp; Limitation of Liability</h2><p class="legal-lead">Please read before relying on any content on this page.</p><div class="legal-addendum"><strong>Specific to this type of equipment:</strong> Visual glide slope, approach-path and navigation-aid equipment directly affects how pilots judge height, slope and position. Aiming, alignment, setting angles, obstacle-clearance and flight-inspection requirements are set by the approved design, the air navigation service provider and the competent regulator. This page is not an alignment, calibration or setting procedure and must not be used to adjust, commission or return such equipment to service. Navigation-aid content is general and educational only.</div><ol class="legal-list"><li><strong>Purpose and intended users.</strong> This page on PAPI Intensity Control is an independent educational and informational reference for competent, suitably trained and authorised airfield ground lighting (AGL) and aerodrome electrical personnel. It is not professional engineering, legal or regulatory advice, and using it does not create any professional or client relationship.</li><li><strong>Safety.</strong> Work on series circuits, constant current regulators (CCRs), isolating transformers, cables, connectors and lighting equipment can be fatal. Always apply the aerodrome&rsquo;s permit-to-work and isolation/LOTO procedures, prove dead, use correctly rated instruments and PPE, and follow the manufacturer&rsquo;s instructions. Nothing here authorises work on live equipment or the bypassing of any safety device or interlock.</li><li><strong>Aviation operations.</strong> Nothing here authorises installation, modification, energisation, adjustment, return to service, a change of operating category (CAT I/II/III), a NOTAM or any aerodrome certification or approval decision. These rest with the aerodrome operator, the air navigation service provider and the competent regulator.</li><li><strong>Specifications, ratings and typical values.</strong> Descriptions, parameters, ratings, dimensions, photometric values, wattages, service lives, maintenance tasks and intervals, failure modes, certifications (for example CE, FCC, UL or IEC marks) and part or type designations are general, typical and indicative. They may not match any particular product, make, model or version, and they are not a datasheet, design, specification, selection, sizing, procurement or acceptance criterion. The manufacturer&rsquo;s current documents, the approved design and the project specification prevail.</li><li><strong>Standards and regulations.</strong> References to ICAO, FAA, IEC, IEEE, ISO, BIS, DGCA and other standards are paraphrased summaries for orientation only. They may be incomplete or out of date, and standards are revised from time to time. Consult the current official editions. Following this content does not guarantee compliance with any law, standard or regulatory approval, and the regulator&rsquo;s requirements always prevail.</li><li><strong>No warranty.</strong> Content is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;, without warranty of any kind, express or implied, including accuracy, completeness, currency or fitness for a particular purpose. Real installations differ in design, equipment make and model, age and condition.</li><li><strong>Limitation of liability.</strong> To the fullest extent permitted by applicable law, Precision AGL Academy, Precision AGL Solutions and their owners, authors and contributors are not liable for any injury, death, loss, damage, downtime, penalty or regulatory consequence, whether direct or indirect, arising from the use of, reliance on, or inability to use this content. Nothing in this notice excludes or limits any liability that cannot lawfully be excluded or limited.</li><li><strong>Independence, brands and no endorsement.</strong> This is an independent publication. It is not affiliated with, sponsored by or endorsed by ICAO, the FAA, the IEC, DGCA, AAI, any airport, regulator, supplier or equipment manufacturer. Third-party names, product designations, standard designations and trademarks (including Megger&reg;, Siemens, Eaton, Crouse-Hinds, ADB SAFEGATE, Fluke, ABB and Honeywell) belong to their respective owners and are used only for identification and description. Mention of a brand, product or supplier is not a recommendation, and we do not sell, supply or quote for any component described.</li><li><strong>Images and third-party content.</strong> Images and illustrations are shown to help identify the type of component. They may show products of various manufacturers, may not depict the exact item described, and are not a statement about any product&rsquo;s quality, approval or performance. Copyright and trademarks in third-party images, logos and photographs belong to their respective owners and are not claimed as ours. If you are a rights holder and want an image removed, replaced or credited, email <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a> with the page address and we will act promptly.</li><li><strong>Training and services.</strong> Mentions of training, courses, consultation, advice, selection, installation, calibration or other support, including the &ldquo;Learn&hellip;Certify&rdquo; pathway, describe learning stages and are not an offer, quotation, tender or promise of any result. Contacting us or our replying creates no engagement or duty of care; an engagement exists only under a written agreement. We are not a regulator or certification body, and completing any course or reading this content is not a certification, accreditation or authorisation to work on any aerodrome.</li><li><strong>Copyright, privacy and corrections.</strong> &copy; 2026 Precision AGL Academy. All rights reserved. Text, structure, compilations and diagrams may be viewed for personal reference and internal training only; any other copying, republication or commercial use needs our written permission. If you email, telephone or message us, we use your details only to respond and handle your matter, in line with applicable Indian law including the Digital Personal Data Protection Act, 2023; please do not send confidential or security-sensitive information. To display this page your browser requests fonts, icons and images from third-party servers, which receive your IP address and browser details under their own policies. Content is reviewed periodically with no obligation to update. To report an error, safety concern or rights issue, write to <a href="mailto:precisionaglsolutions@gmail.com">precisionaglsolutions@gmail.com</a>.</li></ol><p class="legal-meta">Notice v1.0 &middot; 20 October 2026 &middot; Full terms: <a href="legal-notice.html">Legal &amp; Disclaimer</a></p></div></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 <strong>Precision AGL Academy</strong> &middot; All rights reserved</p>
+        <div class="footer-links">
+            <a href="index.html#about">About</a>
+            <a href="component-library.html">Components</a>
+            <a href="standards-companion.html">Standards</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="sitemap.xml" target="_blank" rel="noopener">Sitemap</a>
+            <a href="legal-notice.html">Legal &amp; Disclaimer</a>
+        </div>
+    </footer>
+
+    <!-- ─── CONTACT MODAL ─── -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-box">
+            <button class="modal-close" id="modalCloseBtn" aria-label="Close">&times;</button>
+            <div class="avatar">PA</div>
+            <h3>Precision AGL Academy</h3>
+            <p class="modal-sub">Airfield Ground Lighting Training &amp; Technical Education</p>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-envelope"></i>
+                <div class="info">
+                    <div class="label">Email</div>
+                    <div class="value"><a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20PAPI%20Intensity%20Control">precisionaglsolutions@gmail.com</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-phone"></i>
+                <div class="info">
+                    <div class="label">Phone</div>
+                    <div class="value"><a href="tel:+919821496412">+91 98214 96412</a></div>
+                </div>
+            </div>
+
+            <div class="modal-contact-item">
+                <i class="fa-regular fa-building"></i>
+                <div class="info">
+                    <div class="label">Based in</div>
+                    <div class="value">New Delhi, India</div>
+                </div>
+            </div>
+
+            <div class="modal-social-row">
+                <a href="https://www.linkedin.com/in/rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919821496412" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://youtube.com/@rahulsharmaagl" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://www.instagram.com/aglrahulsharma/" target="_blank" class="modal-soc-btn" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <div class="modal-actions">
+                <a href="mailto:precisionaglsolutions@gmail.com?subject=AGL%20Inquiry%20-%20PAPI%20Intensity%20Control" class="btn btn-gold"><i class="fa-regular fa-envelope"></i> Send Email</a>
+                <button class="btn btn-outline" id="modalCloseBtn2">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── MODAL CONTROLLER ─── -->
+    <script>
+        (function() {
+            const modal = document.getElementById('contactModal');
+            const openBtns = [
+                document.getElementById('contactCtaBtn'),
+                document.getElementById('navContactBtn')
+            ];
+            const closeBtns = [
+                document.getElementById('modalCloseBtn'),
+                document.getElementById('modalCloseBtn2')
+            ];
+
+            function openModal(e) {
+                if (e) e.preventDefault();
+                modal.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModal() {
+                modal.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+
+            openBtns.forEach(btn => { if (btn) btn.addEventListener('click', openModal); });
+            closeBtns.forEach(btn => { if (btn) btn.addEventListener('click', closeModal); });
+
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeModal();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+            });
+        })();
+    </script>
+
+
+    <script>
+        (function() {
+            var burger = document.querySelector('.hamburger');
+            var links = document.querySelector('.nav-links');
+            if (!burger || !links) return;
+            burger.addEventListener('click', function() {
+                var open = links.classList.toggle('open');
+                burger.classList.toggle('active', open);
+                burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+            });
+            links.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A') {
+                    links.classList.remove('open');
+                    burger.classList.remove('active');
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+
+</body>
+</html>
