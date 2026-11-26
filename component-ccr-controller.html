@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCR Controller | AGL Component Library</title>
+    <title>CCR Controller for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="CCR controller guide: local/remote step and monitoring interface for constant current regulators. IEC/FAA/ICAO standards, installation, maintenance." />
     <meta name="keywords" content="CCR controller, constant current regulator controller, local remote step control, AGL monitoring interface, FAA AC 150/5345-10, IEC 61822, ALCMS" />
     <meta name="author" content="Precision AGL Academy" />
@@ -14,7 +14,7 @@
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="canonical" href="https://rahulsharmaagl.in/component-ccr-controller.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="CCR Controller | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="CCR Controller for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="CCR controller guide: local/remote step and monitoring interface for constant current regulators. IEC/FAA/ICAO standards, installation, maintenance." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-ccr-controller.html" />
     <meta property="og:site_name" content="AGL Component Library" />
@@ -27,7 +27,7 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="CCR Controller" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="CCR Controller | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="CCR Controller for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="CCR controller guide: local/remote step and monitoring interface for constant current regulators. IEC/FAA/ICAO standards, installation, maintenance." />
     <meta name="twitter:image" content="https://solutions4ga.com/wp-content/uploads/2024/03/S4GA-UR-4-Wireless-CCR-controller.jpg" />
     <meta name="twitter:image:alt" content="CCR Controller" />
@@ -141,7 +141,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-ccr-controller.html#faq", "url": "https://rahulsharmaagl.in/component-ccr-controller.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-ccr-controller.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a CCR controller?", "acceptedAnswer": {"@type": "Answer", "text": "A CCR controller is a dedicated microprocessor-based unit that provides local or remote control and monitoring of constant current regulators. It lets operators select brightness steps, monitor output current and voltage and receive fault alarms, and it often interfaces with the Airfield Lighting Control and Monitoring System (ALCMS)."}}, {"@type": "Question", "name": "What does a CCR controller do?", "acceptedAnswer": {"@type": "Answer", "text": "It sends commands to each CCR to set the brightness step and receives status data such as actual current, voltage, alarm flags and internal temperature. It shows this on a push-button and LCD panel or a touchscreen, logs events and raises alarms for faults like overcurrent, loss of regulation or communication failure."}}, {"@type": "Question", "name": "What brightness steps does a CCR controller select?", "acceptedAnswer": {"@type": "Answer", "text": "Five steps, corresponding to CCR output currents of 2.8 A, 3.4 A, 4.1 A, 5.2 A and 6.6 A. Control modes are manual, automatic from a light sensor, or scheduled."}}, {"@type": "Question", "name": "How does a CCR controller communicate with CCRs?", "acceptedAnswer": {"@type": "Answer", "text": "Over a serial or network link such as RS-485 Modbus RTU, Modbus TCP, Ethernet/IP or fibre, depending on the model. A single RS-485 segment can run up to about 1,200 m, and shielded twisted pair or structured Ethernet cabling should be routed separately from power cabling."}}, {"@type": "Question", "name": "How many CCRs can one controller manage?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 1 to 32, expandable, so a single point can consolidate control of several regulators instead of operating each unit at its own location."}}, {"@type": "Question", "name": "Where is a CCR controller installed?", "acceptedAnswer": {"@type": "Answer", "text": "Usually in a 19-inch rack or wall-mounted enclosure in the electrical equipment room next to the CCR bank. Duplicate or supervisory units may sit in the tower cab or central control room, and remote substations may have a local controller for on-site adjustment."}}, {"@type": "Question", "name": "What power supply does a CCR controller need?", "acceptedAnswer": {"@type": "Answer", "text": "Typically 24 V DC or 230 V AC depending on the model, ideally from a UPS-backed equipment-room supply. A battery keeps the real-time clock and settings, and surge-protected terminal blocks protect the communication and control lines."}}, {"@type": "Question", "name": "Which standards apply to CCR controllers?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEC 61822 and its European equivalent EN 61822, FAA AC 150/5345-10 (constant current regulators and regulator monitors, including control interfaces) and ICAO Annex 14. Always verify the current edition and your approved requirements."}}, {"@type": "Question", "name": "How often should a CCR controller be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are quarterly for event log backup, semi-annual for ambient environment checks, and annual for communication cable checks, backup power tests and user interface checks. Firmware updates should be tested against connected CCR versions first. Your approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "Why has my CCR controller lost communication with a CCR?", "acceptedAnswer": {"@type": "Answer", "text": "Common causes are damaged or poorly terminated RS-485 or Ethernet cabling, connector corrosion, or a configuration mismatch such as baud rate, parity or IP addressing. Check cable continuity and shielding, confirm termination resistors are correctly placed and verify matching settings at both ends."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -372,6 +373,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -522,8 +524,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -557,8 +558,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -609,8 +609,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -689,8 +688,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -734,8 +732,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -767,8 +764,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -831,8 +827,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -924,8 +919,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1020,8 +1014,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1298,8 +1291,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1359,6 +1351,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1389,7 +1387,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-sliders"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">CCR <span>Controller</span></h1>
+            <h1 class="comp-title">CCR <span>Controller</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A dedicated control unit that manages the operation of one or more constant current regulators. Provides local or remote control of brightness steps, monitors system status, and interfaces with the ALCMS for centralised airfield lighting management.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1403,7 +1401,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a CCR Controller?</h2>
             <div class="info-panel">
                 <p>A <strong>CCR Controller</strong> is a dedicated microprocessor‑based unit that provides local or remote control and monitoring of constant current regulators (CCRs). It typically interfaces with one or multiple CCRs, allowing operators to select brightness steps (intensity levels), monitor output current and voltage, and receive fault alarms. The controller can be a standalone panel with physical push‑buttons, indicators, and a small display, or a more advanced unit with a touchscreen HMI. It communicates with the CCRs via a serial link (RS‑485) or Ethernet and often interfaces with the Airfield Lighting Control and Monitoring System (ALCMS) for centralised operation. The CCR Controller is an essential component for systems where the CCRs themselves do not have an integrated operator interface or where remote control from a central location is required.</p>
             </div>
@@ -1574,10 +1572,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61822</h5><p>Electrical installation and performance requirements for AGL constant current regulators and associated controllers</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-10</h5><p>Specification for Constant Current Regulators and Regulator Monitors (includes control interfaces)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>General requirements for AGL control and monitoring systems</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EN 61822</h5><p>European harmonised standard for AGL CCRs and control equipment</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61822</h3><p>Electrical installation and performance requirements for AGL constant current regulators and associated controllers</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5345-10</h3><p>Specification for Constant Current Regulators and Regulator Monitors (includes control interfaces)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 14</h3><p>General requirements for AGL control and monitoring systems</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>EN 61822</h3><p>European harmonised standard for AGL CCRs and control equipment</p></div></div>
             </div>
         </div>
     </section>
@@ -1590,49 +1588,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Enclosure Mounting</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Enclosure Mounting</h3><span class="test-stage">Mechanical</span></div>
                         <p>Fit the rack-mount chassis or wall enclosure in the equipment room within cable reach of the CCRs it serves, allowing clearance for door opening and rear cable access.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">RS-485/Ethernet Cabling to CCRs</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>RS-485/Ethernet Cabling to CCRs</h3><span class="test-stage">Electrical</span></div>
                         <p>Run and terminate the communication cabling to each CCR at the surge-protected terminal blocks, keeping runs within the cable length and topology limits of the protocol.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply Connection</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Power Supply Connection</h3><span class="test-stage">Electrical</span></div>
                         <p>Terminate the 24V DC or 230V AC supply feeding the low-voltage power supply module, confirming the battery-backed section for settings retention is fitted and charged.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">I/O &amp; Alarm Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>I/O &amp; Alarm Wiring</h3><span class="test-stage">Electrical</span></div>
                         <p>Wire the isolated I/O modules and alarm relay outputs through to the monitoring system, confirming each channel maps to the correct CCR or fault condition.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-network-wired"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">CCR Address &amp; Network Configuration</h5><span class="test-stage">Systems</span></div>
+                        <div class="test-item-head"><h3>CCR Address &amp; Network Configuration</h3><span class="test-stage">Systems</span></div>
                         <p>Assign a unique communication address to each connected CCR and configure the controller's network parameters before the link is tested end to end.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-fan"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cable Entry Sealing</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Cable Entry Sealing</h3><span class="test-stage">Mechanical</span></div>
                         <p>Seal the gland plate or cable glands at the control and communication cable entry points, keeping the enclosure rated to its intended environment.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record cabling terminations, CCR addresses, and configuration settings as-built before the controller is first energised.</p>
                     </div>
                 </div>
@@ -1648,49 +1646,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Control Wiring &amp; Addressing Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Control Wiring &amp; Addressing Check</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Verify wiring and communication addressing between the controller and each CCR it manages, confirming no cross-wired or duplicate addresses before energisation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communication Link Verification</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Communication Link Verification</h3><span class="test-stage">Energisation</span></div>
                         <p>Establish the communication link (serial, Modbus, or Ethernet) to every connected CCR and confirm live data exchange before relying on the controller for control.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Step Command &amp; Response Test</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Step Command &amp; Response Test</h3><span class="test-stage">Energisation</span></div>
                         <p>Command each brightness step through the controller and confirm every connected CCR responds at the correct current, ruling out addressing or protocol errors.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Monitoring &amp; Alarm Accuracy</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Monitoring &amp; Alarm Accuracy</h3><span class="test-stage">Energisation</span></div>
                         <p>Cross-check the controller's displayed current, voltage, and fault status against direct CCR readings, confirming no discrepancy in the monitored values.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Local/Remote Handover Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Local/Remote Handover Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Verify switchover between the controller's local panel and remote/ALCMS control produces no conflicting commands to the CCRs.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Comms Loss Fail-Safe Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Comms Loss Fail-Safe Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Disconnect the communication link and confirm each CCR holds its last commanded state safely rather than reverting unpredictably.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record link verification, step-response, and fail-safe test results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1706,42 +1704,42 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Communication Cable Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Communication Cable Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect RS-485 or Ethernet cabling, connectors, and termination for damage or corrosion, a common cause of lost communication with CCRs.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Backup Power Test</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Backup Power Test</h3><span class="maint-freq">Annual</span></div>
                         <p>Test the UPS or dedicated battery backup supplying the controller so power dips don't cause reboots that lose unsaved settings or event logs.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Firmware Compatibility Review</h5><span class="maint-freq">As needed</span></div>
+                        <div class="maint-item-head"><h3>Firmware Compatibility Review</h3><span class="maint-freq">As needed</span></div>
                         <p>Coordinate and test any firmware update against connected CCR versions before deployment to prevent register-mapping mismatches.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">User Interface Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>User Interface Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect push-buttons, membrane keypad, or touchscreen for wear, scratches, or delamination, and keep spare parts on hand.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Ambient Environment Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Ambient Environment Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Verify the equipment shelter's climate control keeps the controller within its rated operating temperature range for reliable operation and display readability.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Event Log Backup</h5><span class="maint-freq">Quarterly</span></div>
+                        <div class="maint-item-head"><h3>Event Log Backup</h3><span class="maint-freq">Quarterly</span></div>
                         <p>Export and archive event logs and configuration settings so a fault or reboot doesn't result in lost operational history.</p>
                     </div>
                 </div>
@@ -1754,11 +1752,11 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Communication Cable Faults</h5><p>RS‑485 or Ethernet cable damage, loose connections, or incorrect termination are common causes of loss of communication between the controller and CCRs. Regular cable inspection and use of proper shielded cables with correct grounding are essential.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Failure</h5><p>The controller may be powered from the same source as the CCRs. Power dips or interruptions can cause the controller to reboot, losing unsaved settings or event logs. A UPS or dedicated power supply with battery backup is recommended.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Firmware Incompatibility</h5><p>Updates to the CCR firmware may change the communication protocol or register mapping, causing the controller to misinterpret data. Coordinated firmware updates and thorough testing are necessary.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">User Interface Wear</h5><p>Physical push‑buttons and membrane keypads can wear out over time due to frequent use. Touchscreens can suffer from scratches or delamination. Spare parts and regular maintenance are recommended.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Ambient Temperature Effects</h5><p>Controllers installed in unheated equipment shelters may experience extreme temperatures that affect LCD readability or electronic reliability. Climate control or selecting controllers with wide operating temperature ranges is advisable.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Communication Cable Faults</h3><p>RS‑485 or Ethernet cable damage, loose connections, or incorrect termination are common causes of loss of communication between the controller and CCRs. Regular cable inspection and use of proper shielded cables with correct grounding are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Power Supply Failure</h3><p>The controller may be powered from the same source as the CCRs. Power dips or interruptions can cause the controller to reboot, losing unsaved settings or event logs. A UPS or dedicated power supply with battery backup is recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Firmware Incompatibility</h3><p>Updates to the CCR firmware may change the communication protocol or register mapping, causing the controller to misinterpret data. Coordinated firmware updates and thorough testing are necessary.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>User Interface Wear</h3><p>Physical push‑buttons and membrane keypads can wear out over time due to frequent use. Touchscreens can suffer from scratches or delamination. Spare parts and regular maintenance are recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Ambient Temperature Effects</h3><p>Controllers installed in unheated equipment shelters may experience extreme temperatures that affect LCD readability or electronic reliability. Climate control or selecting controllers with wide operating temperature ranges is advisable.</p></div></div>
             </div>
         </div>
     </section>
@@ -1769,31 +1767,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Loss of Communication with One or More CCRs</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Loss of Communication with One or More CCRs</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Damaged or poorly terminated RS-485/Ethernet cabling, connector corrosion, or a network configuration mismatch (baud rate, parity, IP addressing) between the two devices.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check cable continuity and shielding/grounding along the run; verify termination resistors are correctly placed; confirm both ends are configured with matching communication settings.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the damaged cable section, correct the termination or configuration mismatch, and confirm stable communication over a sustained test period before returning to service.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Device Reboots or Loses Settings on Power Dip</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Device Reboots or Loses Settings on Power Dip</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The unit shares an unconditioned power source with other control equipment, and a brief voltage dip or interruption is enough to trigger a reboot.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Monitor supply voltage at the unit's input during normal operation to catch dips; check whether a UPS or dedicated regulated supply is present and functioning.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Install or repair a dedicated, regulated power supply with battery backup for the control equipment, and reload/verify settings after the fix is in place.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Controller Misreads or Misdisplays CCR Data</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Controller Misreads or Misdisplays CCR Data</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">A CCR firmware update has changed the communication protocol or register mapping without a corresponding update to the controller.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Compare the controller's expected register map/protocol version against the CCR's current firmware release notes; check for garbled or clearly wrong values on the display.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Coordinate a matching firmware update on the controller (or CCR) and re-verify readings against a known-good reference before returning to service.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Unresponsive Push-Buttons, Keypad, or Touchscreen</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Unresponsive Push-Buttons, Keypad, or Touchscreen</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Physical wear on push-buttons/membrane keypads from frequent use, or scratching/delamination on a touchscreen interface.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Test each button or touch zone individually for response; inspect the keypad membrane and touchscreen surface for visible wear or damage.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the worn keypad, membrane, or touchscreen assembly with the manufacturer's spare part, and confirm full interface function afterward.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Display Unreadable or Controller Unreliable in Extreme Temperature</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Display Unreadable or Controller Unreliable in Extreme Temperature</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The controller is installed in an unheated equipment shelter where ambient temperature swings exceed the LCD or electronics' rated operating range.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Log ambient temperature at the controller location over a full day/night cycle; compare against the manufacturer's rated operating range.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Add climate control to the shelter, or relocate/replace with a controller rated for the site's temperature extremes.</div></div>
@@ -1809,7 +1807,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Communication Interface Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Communication Interface Failure</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Damaged or corroded RS-485/Ethernet cabling, a failed communication port, or electrical noise coupling onto a shared cable run.</div></div>
@@ -1818,7 +1816,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Backup Battery / Memory Retention Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Backup Battery / Memory Retention Failure</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ordinary battery ageing beyond its service life, or a failed charging circuit that leaves the backup battery undercharged.</div></div>
@@ -1827,7 +1825,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Display Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Display Degradation</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">LCD or LED display ageing, backlight failure, or condensation forming behind the display window.</div></div>
@@ -1836,7 +1834,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Keypad / Touchscreen Wear</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Keypad / Touchscreen Wear</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Repeated daily use wearing membrane contacts or the touchscreen digitizer, or moisture ingress behind the front panel.</div></div>
@@ -1845,7 +1843,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Surge Damage to I/O Ports</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Surge Damage to I/O Ports</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A lightning-induced transient or switching surge on the power or communication lines that exceeds the port's protection rating.</div></div>
@@ -1854,7 +1852,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Firmware Corruption</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Firmware Corruption</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A firmware update interrupted mid-write, an electrical transient during operation, or a latent software fault.</div></div>
@@ -1863,7 +1861,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Enclosure Thermal Extremes</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Enclosure Thermal Extremes</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Enclosure heater or cooling fan failure, or installation in an unconditioned space exposed to seasonal temperature extremes.</div></div>
@@ -1882,42 +1880,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate the CCR Before Internal Work</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Isolate the CCR Before Internal Work</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>The controller's own electronics are low-voltage, but they interface directly with the CCR's high-voltage output stage; isolate and lock out the associated CCR and verify zero energy before opening the controller enclosure or working on interconnecting wiring.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-microchip"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">ESD-Sensitive Electronics</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>ESD-Sensitive Electronics</h3><span class="test-stage">Operational</span></div>
                         <p>Use anti-static precautions when handling the controller's microprocessor board, display module, or communication interface cards.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-lock"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Physical Lockout Over Software Disable</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Physical Lockout Over Software Disable</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Where the controller is networked or ALCMS-integrated, use a physical lockout on the CCR during hands-on work rather than relying on a software-disabled or local-only mode, which a remote command could still override.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Coordinate Step and Fault Overrides with ATC</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Coordinate Step and Fault Overrides with ATC</h3><span class="test-stage">Operational</span></div>
                         <p>Manual brightness overrides or fault-acknowledgement actions at the controller directly affect live circuit behaviour; coordinate significant changes with ATC rather than treating them as routine local adjustments.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Readback Against Actual Circuit State</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Verify Readback Against Actual Circuit State</h3><span class="test-stage">Operational</span></div>
                         <p>Treat controller readouts as an aid, not proof, of circuit status; confirm output current, voltage, and fault status at the CCR itself before relying on the controller display alone for a safety-relevant decision.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Confirm all brightness steps, alarms, and communication links are correctly functioning before closing out the work and returning the controller to unattended operation.</p>
                     </div>
                 </div>
@@ -1940,42 +1938,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-network-wired"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Comms Fault Can Look Exactly Like a CCR Fault</h5><span class="expert-tag">Diagnostics</span></div>
+                        <div class="expert-item-head"><h3>A Comms Fault Can Look Exactly Like a CCR Fault</h3><span class="expert-tag">Diagnostics</span></div>
                         <p>When the controller loses its RS-485/Ethernet link to a CCR, the operator often sees the same "no response" symptom as an actual CCR failure, and chasing the wrong end first wastes a dispatch. Verify the communication link itself, cable and address configuration included, before assuming the CCR being polled has actually failed.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Test the Fail-Safe, Not Just the Normal Path</h5><span class="expert-tag">Testing</span></div>
+                        <div class="expert-item-head"><h3>Test the Fail-Safe, Not Just the Normal Path</h3><span class="expert-tag">Testing</span></div>
                         <p>A controller that switches steps correctly under normal operation can still fail to fall back safely if it loses comms with the ALCMS mid-command. Run an actual comms-loss fail-safe test as part of commissioning and periodic checks, rather than inferring safe behaviour from normal-mode function alone.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-code-compare"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Firmware Compatibility Deserves a Check Before Any CCR Swap</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Firmware Compatibility Deserves a Check Before Any CCR Swap</h3><span class="expert-tag">Maintenance</span></div>
                         <p>Replacing one CCR in a mixed-age fleet with a newer unit can silently break the controller's addressing or command set if firmware versions have drifted apart over years of piecemeal replacement. Confirm firmware compatibility across the fleet before swapping in a new or refurbished CCR rather than assuming plug-and-play compatibility.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-arrows-turn-to-dots"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Local/Remote Handover Needs Re-Testing After Any Panel Change</h5><span class="expert-tag">Commissioning</span></div>
+                        <div class="expert-item-head"><h3>Local/Remote Handover Needs Re-Testing After Any Panel Change</h3><span class="expert-tag">Commissioning</span></div>
                         <p>A local/remote handover that worked correctly at original commissioning can be quietly broken by a later HMI firmware update or ALCMS integration change, and the fault often only surfaces the next time an operator actually needs to take local control during an incident. Re-verify the handover function after any related system update, not only at initial installation.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-clock-rotate-left"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Back Up the Event Log Before Troubleshooting, Not After</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Back Up the Event Log Before Troubleshooting, Not After</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>An intermittent fault's only real evidence is often buried in the controller's own event log, and a power cycle or reset performed as a first troubleshooting step can overwrite or clear exactly the history needed to diagnose it. Pull and archive the event log before any reset when chasing an intermittent issue.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-temperature-half"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Ambient Environment Affects Controller Life More Than Its Datasheet Suggests</h5><span class="expert-tag">Reliability</span></div>
+                        <div class="expert-item-head"><h3>Ambient Environment Affects Controller Life More Than Its Datasheet Suggests</h3><span class="expert-tag">Reliability</span></div>
                         <p>A controller rated for a wide operating temperature range can still see accelerated display or touchscreen degradation in a poorly ventilated equipment room that runs hotter than the room's design intent. Include an ambient environment check in routine maintenance, not just the controller's own internal diagnostics.</p>
                     </div>
                 </div>
@@ -2038,10 +2036,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">Constant Current Regulator</h5></a>
-                <a href="component-ccr-monitoring-panel.html" class="related-card"><i class="fa-solid fa-display"></i><h5 role="heading" aria-level="3">CCR Monitoring Panel</h5></a>
-                <a href="component-smart-ccr.html" class="related-card"><i class="fa-regular fa-microchip"></i><h5 role="heading" aria-level="3">Smart CCR</h5></a>
-                <a href="component-alcms-workstation.html" class="related-card"><i class="fa-solid fa-display"></i><h5 role="heading" aria-level="3">ALCMS Workstation</h5></a>
+                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">Constant Current Regulator</div></a>
+                <a href="component-ccr-monitoring-panel.html" class="related-card"><i class="fa-solid fa-display"></i><div class="hl5">CCR Monitoring Panel</div></a>
+                <a href="component-smart-ccr.html" class="related-card"><i class="fa-regular fa-microchip"></i><div class="hl5">Smart CCR</div></a>
+                <a href="component-alcms-workstation.html" class="related-card"><i class="fa-solid fa-display"></i><div class="hl5">ALCMS Workstation</div></a>
             </div>
         </div>
     </section>
@@ -2078,7 +2076,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on CCR controller selection, integration, or troubleshooting?</h4><p>Precision AGL Academy provides advice on control system architecture, communication protocols, and integration with ALCMS for reliable AGL management.</p></div>
+                <div><div class="hl4">Need expert guidance on CCR controller selection, integration, or troubleshooting?</div><p>Precision AGL Academy provides advice on control system architecture, communication protocols, and integration with ALCMS for reliable AGL management.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

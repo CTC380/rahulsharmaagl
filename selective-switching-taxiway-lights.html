@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Selective Switching of Taxiway Lights | Precision AGL Academy</title>
+    <title>Selective Switching of Taxiway Lights: Control Logic &amp; Monitoring</title>
     <meta name="description" content="What is selective switching of taxiway lights? How centreline sections and stop bars are switched independently so only the route a pilot should follow is lit." />
     <meta name="author" content="Precision AGL Academy" />
     <meta name="robots" content="index, follow" />
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://rahulsharmaagl.in/selective-switching-taxiway-lights.html" />
-    <meta property="og:title" content="Selective Switching of Taxiway Lights | Precision AGL Academy" />
+    <meta property="og:title" content="Selective Switching of Taxiway Lights: Control Logic &amp; Monitoring" />
     <meta property="og:description" content="What is selective switching of taxiway lights? How centreline sections and stop bars are switched independently so only the route a pilot should follow is lit." />
     <meta property="og:site_name" content="Precision AGL Academy" />
     <meta property="og:locale" content="en_US" />
@@ -23,7 +23,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:url" content="https://rahulsharmaagl.in/selective-switching-taxiway-lights.html" />
-    <meta name="twitter:title" content="Selective Switching of Taxiway Lights | Precision AGL Academy" />
+    <meta name="twitter:title" content="Selective Switching of Taxiway Lights: Control Logic &amp; Monitoring" />
     <meta name="twitter:description" content="What is selective switching of taxiway lights? How centreline sections and stop bars are switched independently so only the route a pilot should follow is lit." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-selective-switching-taxiway-lights.jpg" />
     <script type="application/ld+json">
@@ -31,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/selective-switching-taxiway-lights.html#article",
-  "headline": "Selective Switching of Taxiway Lights",
+  "headline": "Selective Switching of Taxiway Lights: Control Logic & Monitoring",
   "description": "What is selective switching of taxiway lights? How centreline sections and stop bars are switched independently so only the route a pilot should follow is lit.",
   "url": "https://rahulsharmaagl.in/selective-switching-taxiway-lights.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/selective-switching-taxiway-lights.html",
@@ -253,7 +253,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -440,6 +441,8 @@
             font-size: 11px; letter-spacing: 1px; font-weight: 700;
             margin-left: 12px;
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -703,7 +706,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -802,7 +805,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -944,11 +947,46 @@
         .dz-hint.hide{opacity:0;}
         @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
         /* dz-feature:end */
-    </style>
+    
+/* sec-h2: numbered sections promoted from h3 to h2 */
+/* ── sub-heading inside fact card ── */
+        .fact-card h2.sec-h2 {
+            margin-top: 26px;
+            margin-bottom: 10px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+        }
+.fact-card h2.sec-h2 .num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 22px; height: 22px; border-radius: 50%;
+            font-size: 12px; font-weight: 800;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+.fact-card h2.sec-h2.green-h { color: var(--green); }
+.fact-card h2.sec-h2.green-h .num { color: var(--green); border-color: rgba(53, 208, 127, 0.35); }
+.fact-card h2.sec-h2.blue-h { color: var(--taxi-blue); }
+.fact-card h2.sec-h2.blue-h .num { color: var(--taxi-blue); border-color: rgba(47, 143, 255, 0.35); }
+.fact-card h2.sec-h2.cyan-h { color: var(--cyan); }
+.fact-card h2.sec-h2.cyan-h .num { color: var(--cyan); border-color: rgba(0, 212, 255, 0.35); }
+.fact-card h2.sec-h2.red-h { color: var(--red); }
+.fact-card h2.sec-h2.red-h .num { color: var(--red); border-color: rgba(230, 57, 70, 0.4); }
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -1056,18 +1094,19 @@
 
             <div class="fact-card">
                 <div class="label">The Fact <span class="badge"><i class="fa-solid fa-check"></i> ICAO Annex 14 &middot; Doc 9830</span></div>
+                <h2>Selective Switching of Taxiway Lights: Definition and Key Facts</h2>
                 <p>Selective switching means that individual <b class="highlight-white">sections</b> of taxiway lights, and individual stop bars, can be switched on and off separately rather than as one whole taxiway. It is what turns a taxiway lighting system from a map of lit lines into a way of showing one aircraft its own route.</p>
 
-                <h3 class="green-h"><span class="num">1</span>Light the route, not the network</h3>
+                <h2 class="sec-h2 green-h"><span class="num">1</span>Light the route, not the network</h2>
                 <p>At a busy junction, many lit green lines can hide which one an aircraft is meant to follow. With selective switching, only the <b class="highlight-green">cleared route</b> is lit, so the pilot follows one visible line. This is the idea behind the "follow the greens" method used with surface movement guidance and control systems.</p>
 
-                <h3 class="red-h"><span class="num">2</span>Lit up to the stop bar</h3>
+                <h2 class="sec-h2 red-h"><span class="num">2</span>Lit up to the stop bar</h2>
                 <p>The route is lit ahead of the aircraft, up to the next <b class="highlight-red">stop bar</b> or holding position. The sections behind it can go dark. The section beyond a lit stop bar stays off until the controller switches the bar off, then it lights. This is the interlock covered in the Stop bar control entry, applied along the whole route.</p>
 
-                <h3 class="blue-h"><span class="num">3</span>Each section needs its own switch</h3>
+                <h2 class="sec-h2 blue-h"><span class="num">3</span>Each section needs its own switch</h2>
                 <p>For a section to switch on its own, it must be separately controllable. In the field that can mean a <b class="highlight-cyan">separate circuit and regulator</b> per section, a <b class="highlight-cyan">switching unit</b> that isolates a section of a circuit, or individually addressable lights. More independent sections give finer guidance but more circuits, equipment and control to maintain, so the split is a design decision.</p>
 
-                <h3 class="cyan-h"><span class="num">4</span>One system holds the logic</h3>
+                <h2 class="sec-h2 cyan-h"><span class="num">4</span>One system holds the logic</h2>
                 <p>The airfield lighting control and monitoring system turns a route into a set of section commands, switches them in step with the aircraft, and reports each section's state back to the controller. The aerodrome decides the <b class="highlight-white">default state</b> if control is lost, for example all sections lit.</p>
 
                 <div class="config-table-wrap"><table class="config-table"><thead><tr><th>Section</th><th>State</th><th>Why</th></tr></thead><tbody>
@@ -1122,7 +1161,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -1145,19 +1184,19 @@
                 <div class="section-tag">Related Entries</div>
                 <h2>Continue Exploring</h2>
                 <div class="related-grid">
-                <a class="related-card" href="taxiway-centreline-lights.html"><div class="rc-tag">Taxiway Lighting</div><h5>Taxiway Centreline Lights</h5></a>
-<a class="related-card" href="stop-bar-control.html"><div class="rc-tag">Taxiway Lighting</div><h5>Stop Bar Control</h5></a>
-<a class="related-card" href="complete-taxiway-lighting-system.html"><div class="rc-tag">Taxiway Lighting</div><h5>Complete Taxiway Lighting System</h5></a>
-<a class="related-card" href="closed-taxiway-and-unserviceability-lighting.html"><div class="rc-tag">Taxiway Lighting</div><h5>Closed Taxiway and Unserviceability Lighting</h5></a>
-<a class="related-card" href="alternate-circuit-centreline-arrangement.html"><div class="rc-tag">TAXIWAY LIGHTING</div><h5>Alternate-Circuit Centreline Arrangement</h5></a>
-<a class="related-card" href="taxiway-edge-lights.html"><div class="rc-tag">Taxiway Lighting</div><h5>Taxiway Edge Lights</h5></a>
-<a class="related-card" href="straight-taxiway-arrangement.html"><div class="rc-tag">Taxiway Lighting</div><h5>Straight Taxiway Arrangement</h5></a>
-<a class="related-card" href="taxiway-fixture-orientation.html"><div class="rc-tag">Testing &amp; Inspection</div><h5>Taxiway Fixture Orientation</h5></a>
-<a class="related-card" href="taxiway-optical-beam.html"><div class="rc-tag">Taxiway Lighting</div><h5>Taxiway Optical Beam</h5></a>
-<a class="related-card" href="rapid-exit-taxiway-lighting.html"><div class="rc-tag">Taxiway Lighting</div><h5>Rapid-Exit Taxiway Lighting</h5></a>
-<a class="related-card" href="taxiway-centreline-configuration.html"><div class="rc-tag">Taxiway Lighting</div><h5>Taxiway Centreline Configuration</h5></a>
-<a class="related-card" href="taxiway-circuit-arrangement.html"><div class="rc-tag">Taxiway Lighting</div><h5>Taxiway Circuit Arrangement</h5></a>
-<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+                <a class="related-card" href="taxiway-centreline-lights.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Taxiway Centreline Lights</div></a>
+<a class="related-card" href="stop-bar-control.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Stop Bar Control</div></a>
+<a class="related-card" href="complete-taxiway-lighting-system.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Complete Taxiway Lighting System</div></a>
+<a class="related-card" href="closed-taxiway-and-unserviceability-lighting.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Closed Taxiway and Unserviceability Lighting</div></a>
+<a class="related-card" href="alternate-circuit-centreline-arrangement.html"><div class="rc-tag">TAXIWAY LIGHTING</div><div class="hl5">Alternate-Circuit Centreline Arrangement</div></a>
+<a class="related-card" href="taxiway-edge-lights.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Taxiway Edge Lights</div></a>
+<a class="related-card" href="straight-taxiway-arrangement.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Straight Taxiway Arrangement</div></a>
+<a class="related-card" href="taxiway-fixture-orientation.html"><div class="rc-tag">Testing &amp; Inspection</div><div class="hl5">Taxiway Fixture Orientation</div></a>
+<a class="related-card" href="taxiway-optical-beam.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Taxiway Optical Beam</div></a>
+<a class="related-card" href="rapid-exit-taxiway-lighting.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Rapid-Exit Taxiway Lighting</div></a>
+<a class="related-card" href="taxiway-centreline-configuration.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Taxiway Centreline Configuration</div></a>
+<a class="related-card" href="taxiway-circuit-arrangement.html"><div class="rc-tag">Taxiway Lighting</div><div class="hl5">Taxiway Circuit Arrangement</div></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><div class="hl5">AGL Visual Encyclopedia</div></a>
 </div>
             </div>
 

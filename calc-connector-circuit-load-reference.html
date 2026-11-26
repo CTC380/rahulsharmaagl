@@ -96,8 +96,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -166,9 +165,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -183,8 +180,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h3,.tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h3,.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -502,6 +498,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -547,7 +549,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Circuit &amp; Connector</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Circuit &amp; Connector</h2><div class="sub-line"></div></div>
   <div class="calc-grid single"><div>
     <div class="field-group"><label for="cType">Connector type</label>
       <select id="cType"><option value="I">Type I — 1 conductor, 25 A, 5000 V</option><option value="II">Type II — 2 conductor, 20 A, 600 V</option></select>
@@ -561,7 +563,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Field Contact Measurement <span class="tag-mini">(optional)</span></h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Field Contact Measurement <span class="tag-mini">(optional)</span></h2><div class="sub-line"></div></div>
   <div class="calc-grid single"><div>
     <div class="field-group"><label for="mV">Measured drop across one contact pair <span class="u">(mV)</span></label><input type="number" id="mV" value="1.5" min="0" step="0.01"/></div>
     <div class="field-group"><label for="testI">Current during the measurement <span class="u">(A)</span></label><input type="number" id="testI" value="6.6" min="0" step="0.1"/>
@@ -587,7 +589,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method &amp; ratings</button>
 </aside></div></div></section>
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-<div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
 <div class="meta-row">
   <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
   <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Circuit <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. Circuit R1 / CCR-01"/></div>
@@ -596,12 +598,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button>
 <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p></div>
 
-<div class="subsection-head"><h3>Connector type comparison</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Connector type comparison</h2><div class="sub-line"></div></div>
 <div class="scroll-table-wrap" style="max-height:none;margin-top:0;">
   <table id="cmp"><thead><tr><th>Type</th><th>Rated current (A)</th><th>Current loading (%)</th><th>Rated voltage (V)</th><th>Voltage loading (%)</th><th>Status</th></tr></thead><tbody></tbody></table>
 </div>
 
-<div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
 <div class="calc-breakdown" id="breakdownGrid">
   <div class="bd-card"><div class="bd-label">Rated current / voltage</div><div class="bd-val" id="bdRate">—</div><div class="bd-sub" id="bdRateSub">—</div></div>
   <div class="bd-card"><div class="bd-label">Max contact resistance</div><div class="bd-val" id="bdRmax">—</div><div class="bd-sub" id="bdRmaxSub">Limit ÷ rated current</div></div>
@@ -642,22 +644,22 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <p class="block-note">Every step is shown so the result can be checked by hand.</p>
     <div class="ref-cols">
       <div>
-        <div class="method-card"><h4><i class="fa-solid fa-gauge"></i> 1. Loading</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-gauge"></i> 1. Loading</h3>
           <div class="formula">Current loading = I ÷ I_rated &nbsp;&nbsp; Voltage loading = V ÷ V_rated</div>
           <p>Both must be at or below 100 % for the connector to be suitable. Type II is checked against its 600 V rating between contacts, and it is also rated 1500 V to ground.</p></div>
-        <div class="method-card"><h4><i class="fa-solid fa-ruler"></i> 2. Allowed contact resistance</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-ruler"></i> 2. Allowed contact resistance</h3>
           <p>The specification limits the drop across a mated contact pair while it carries rated current, so the largest acceptable resistance follows from that.</p>
           <div class="formula">R_max = ΔV_limit ÷ I_rated</div>
           <p>Type I allows 7.5 mV at 25 A, and Type II allows 6.0 mV at 20 A, which is 0.30 mΩ for both.</p></div>
-        <div class="method-card"><h4><i class="fa-solid fa-fire"></i> 3. Drop and loss on the circuit</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-fire"></i> 3. Drop and loss on the circuit</h3>
           <div class="formula">ΔV = n × k × I × R_max &nbsp;&nbsp; P = n × k × I² × R_max</div>
           <p>Here n is the number of mated connectors, and k is the contact pairs in the current path: 1 for Type I, and 2 for a Type II connector because current passes through both pins. This is the worst case a compliant connector may produce, not what a good one will.</p></div>
-        <div class="method-card"><h4><i class="fa-solid fa-vial-circle-check"></i> 4. Field reading</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-vial-circle-check"></i> 4. Field reading</h3>
           <div class="formula">R_measured = ΔV_measured ÷ I_test</div>
           <p>The reading passes if the resistance is at or below R_max.</p></div>
       </div>
       <div>
-        <div class="method-card"><h4><i class="fa-solid fa-table"></i> L-823 ratings used</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-table"></i> L-823 ratings used</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Type I</th><th>Type II</th></tr>
             <tr><td>Conductors</td><td class="val">1</td><td class="val">2</td></tr>
@@ -666,7 +668,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
             <tr><td>Contact drop limit</td><td class="val">7.5 mV</td><td class="val">6.0 mV</td></tr>
           </table>
           <p style="margin-top:10px;">Class A connectors are factory moulded to the cable and Class B are field attached. A connector must not be moulded to a cable with a higher voltage rating than the connector.</p></div>
-        <div class="method-card"><h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>Type I, 6.6 A, 840 V</td><td class="val">26.4 % / 16.8 %</td></tr>
@@ -675,9 +677,9 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
             <tr><td>200 connectors</td><td class="val">0.40 V, 2.61 W</td></tr>
             <tr><td>Reading 1.5 mV at 6.6 A</td><td class="val">0.227 mΩ, passes</td></tr>
           </table></div>
-        <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not model ageing, corrosion, thermal rise or connector fit, and it holds no ICAO or IEC connector data. A manufacturer's data sheet may state stricter limits than the specification, so use it where it does. Contact resistance in service also rises with ageing and contamination, so a connector that passes today is not guaranteed to pass later.</p></div>
-        <div class="method-card"><h4><i class="fa-solid fa-book"></i> Standards for further reading</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-book"></i> Standards for further reading</h3>
           <p>FAA AC 150/5345-26 (L-823 plug and receptacle, cable connectors), AC 150/5345-7 (L-824 cable) and AC 150/5345-47 (series isolation transformers, whose leads use these connectors). ICAO Aerodrome Design Manual, Doc 9157, Part 5. Use the current edition of each.</p></div>
       </div>
     </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Runway Status Lights (RWSL) | Precision AGL Academy</title>
+    <title>Runway Status Lights: Automated Runway Conflict Warnings</title>
     <meta name="description" content="What are runway status lights (RWSL)? Automatic red lights, driven by surface surveillance, that warn pilots a runway is unsafe to enter, cross or take off." />
     <meta name="author" content="Precision AGL Academy" />
     <meta name="robots" content="index, follow" />
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://rahulsharmaagl.in/runway-status-lights.html" />
-    <meta property="og:title" content="Runway Status Lights (RWSL) | Precision AGL Academy" />
+    <meta property="og:title" content="Runway Status Lights: Automated Runway Conflict Warnings" />
     <meta property="og:description" content="What are runway status lights (RWSL)? Automatic red lights, driven by surface surveillance, that warn pilots a runway is unsafe to enter, cross or take off." />
     <meta property="og:site_name" content="Precision AGL Academy" />
     <meta property="og:locale" content="en_US" />
@@ -23,7 +23,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://rahulsharmaagl.in/runway-status-lights.html" />
-    <meta name="twitter:title" content="Runway Status Lights (RWSL) | Precision AGL Academy" />
+    <meta name="twitter:title" content="Runway Status Lights: Automated Runway Conflict Warnings" />
     <meta name="twitter:description" content="What are runway status lights (RWSL)? Automatic red lights, driven by surface surveillance, that warn pilots a runway is unsafe to enter, cross or take off." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-runway-status-lights.jpg" />
     <script type="application/ld+json">
@@ -31,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/runway-status-lights.html#article",
-  "headline": "Runway Status Lights (RWSL)",
+  "headline": "Runway Status Lights: Automated Runway Conflict Warnings",
   "description": "What are runway status lights (RWSL)? Automatic red lights, driven by surface surveillance, that warn pilots a runway is unsafe to enter, cross or take off.",
   "url": "https://rahulsharmaagl.in/runway-status-lights.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/runway-status-lights.html",
@@ -253,7 +253,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -440,6 +441,8 @@
             font-size: 11px; letter-spacing: 1px; font-weight: 700;
             margin-left: 12px;
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -703,7 +706,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -802,7 +805,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -944,11 +947,46 @@
         .dz-hint.hide{opacity:0;}
         @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
         /* dz-feature:end */
-    </style>
+    
+/* sec-h2: numbered sections promoted from h3 to h2 */
+/* ── sub-heading inside fact card ── */
+        .fact-card h2.sec-h2 {
+            margin-top: 26px;
+            margin-bottom: 10px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+        }
+.fact-card h2.sec-h2 .num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 22px; height: 22px; border-radius: 50%;
+            font-size: 12px; font-weight: 800;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+.fact-card h2.sec-h2.green-h { color: var(--green); }
+.fact-card h2.sec-h2.green-h .num { color: var(--green); border-color: rgba(53, 208, 127, 0.35); }
+.fact-card h2.sec-h2.blue-h { color: var(--taxi-blue); }
+.fact-card h2.sec-h2.blue-h .num { color: var(--taxi-blue); border-color: rgba(47, 143, 255, 0.35); }
+.fact-card h2.sec-h2.cyan-h { color: var(--cyan); }
+.fact-card h2.sec-h2.cyan-h .num { color: var(--cyan); border-color: rgba(0, 212, 255, 0.35); }
+.fact-card h2.sec-h2.red-h { color: var(--red); }
+.fact-card h2.sec-h2.red-h .num { color: var(--red); border-color: rgba(230, 57, 70, 0.4); }
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -1027,18 +1065,19 @@
 
             <div class="fact-card">
                 <div class="label">The Fact <span class="badge"><i class="fa-solid fa-check"></i> FAA RWSL &middot; ICAO Annex 14 context</span></div>
+                <h2>Runway Status Lights (RWSL): Definition and Key Facts</h2>
                 <p>Runway incursions often involve two people believing different things about where traffic is. Runway status lights remove the guesswork with a signal the pilot cannot misread: if the lights in front of the aircraft are <b class="highlight-red">red</b>, the runway is not safe.</p>
 
-                <h3 class="cyan-h"><span class="num">1</span>Driven by surveillance, not by the controller</h3>
+                <h2 class="sec-h2 cyan-h"><span class="num">1</span>Driven by surveillance, not by the controller</h2>
                 <p>The system takes position data from <b class="highlight-cyan">surface surveillance</b>, such as radar, multilateration or ADS-B, tracks aircraft and vehicles, and works out whether the runway is clear. No controller has to switch the lights, and the controller can supervise the system and turn it off.</p>
 
-                <h3 class="red-h"><span class="num">2</span>Red lights where the danger is</h3>
+                <h2 class="sec-h2 red-h"><span class="num">2</span>Red lights where the danger is</h2>
                 <p><b class="highlight-white">Runway entrance lights</b> on the taxiway show that the runway ahead is not safe to enter or cross. <b class="highlight-white">Take-off hold lights</b> on the runway at the departure position show that it is not safe to take off. <b class="highlight-white">Runway intersection lights</b> do the same ahead of an intersecting runway. The next entries cover runway entrance lights and take-off hold lights.</p>
 
-                <h3 class="green-h"><span class="num">3</span>A second layer, not a replacement</h3>
+                <h2 class="sec-h2 green-h"><span class="num">3</span>A second layer, not a replacement</h2>
                 <p>RWSL does not give clearances. It works alongside <b class="highlight-green">stop bars</b>, runway guard lights and the controller's instructions. If the red lights are lit, the pilot stops or does not proceed, even with a clearance, and tells air traffic control. Lights that are off carry no meaning: they do not show the runway is clear, and the clearance still comes from air traffic control.</p>
 
-                <h3 class="blue-h"><span class="num">4</span>What sits behind the lights</h3>
+                <h2 class="sec-h2 blue-h"><span class="num">4</span>What sits behind the lights</h2>
                 <p>The chain is <b class="highlight-cyan">surveillance, then logic, then light control, then the lights</b>. The in-pavement lights are red LED fixtures on circuits switched by the logic, so the same selective-switching ideas from the taxiway entries apply, with the control coming from the RWSL system rather than the tower panel.</p>
 
                 <div class="config-table-wrap"><table class="config-table"><thead><tr><th>Light</th><th>Where</th><th>Lit when</th></tr></thead><tbody>
@@ -1091,7 +1130,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -1114,19 +1153,19 @@
                 <div class="section-tag">Related Entries</div>
                 <h2>Continue Exploring</h2>
                 <div class="related-grid">
-                <a class="related-card" href="runway-end-identifier-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway End Identifier Lights (REIL)</h5></a>
-<a class="related-card" href="stop-bar-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Stop Bar Lights</h5></a>
-<a class="related-card" href="runway-guard-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Guard Lights</h5></a>
-<a class="related-card" href="runway-entrance-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Entrance Lights (REL)</h5></a>
-<a class="related-card" href="runway-end-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway End Lights</h5></a>
-<a class="related-card" href="take-off-hold-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Take-off Hold Lights (THL)</h5></a>
-<a class="related-card" href="closed-runway-marking-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Closed Runway Marking Lights (Unserviceability)</h5></a>
-<a class="related-card" href="faros.html"><div class="rc-tag">Runway Lighting</div><h5>FAROS</h5></a>
-<a class="related-card" href="runway-centreline-beam.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Centreline Beam</h5></a>
-<a class="related-card" href="runway-centreline-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Centreline Lights</h5></a>
-<a class="related-card" href="runway-edge-caution-zone.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Edge Light Caution Zone</h5></a>
-<a class="related-card" href="runway-edge-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Edge Lights</h5></a>
-<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+                <a class="related-card" href="runway-end-identifier-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway End Identifier Lights (REIL)</div></a>
+<a class="related-card" href="stop-bar-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Stop Bar Lights</div></a>
+<a class="related-card" href="runway-guard-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Guard Lights</div></a>
+<a class="related-card" href="runway-entrance-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Entrance Lights (REL)</div></a>
+<a class="related-card" href="runway-end-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway End Lights</div></a>
+<a class="related-card" href="take-off-hold-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Take-off Hold Lights (THL)</div></a>
+<a class="related-card" href="closed-runway-marking-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Closed Runway Marking Lights (Unserviceability)</div></a>
+<a class="related-card" href="faros.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">FAROS</div></a>
+<a class="related-card" href="runway-centreline-beam.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Centreline Beam</div></a>
+<a class="related-card" href="runway-centreline-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Centreline Lights</div></a>
+<a class="related-card" href="runway-edge-caution-zone.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Edge Light Caution Zone</div></a>
+<a class="related-card" href="runway-edge-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Edge Lights</div></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><div class="hl5">AGL Visual Encyclopedia</div></a>
 </div>
             </div>
 

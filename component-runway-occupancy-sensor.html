@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Runway Occupancy Sensor | AGL Component Library</title>
+    <title>Runway Occupancy Sensor for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="Runway occupancy sensor reference guide covering radar, infrared and inductive-loop detection feeding RWSL and A-SMGCS surveillance." />
     <meta name="keywords" content="runway occupancy sensor, RWSL, A-SMGCS, runway surveillance, airfield ground lighting, runway safety" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,13 +13,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-runway-occupancy-sensor.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Runway Occupancy Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="Runway Occupancy Sensor for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="Runway occupancy sensor reference guide covering radar, infrared and inductive-loop detection feeding RWSL and A-SMGCS surveillance." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-runway-occupancy-sensor.html" />
     <meta property="og:site_name" content="AGL Component Library" />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Runway Occupancy Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="Runway Occupancy Sensor for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="Runway occupancy sensor reference guide covering radar, infrared and inductive-loop detection feeding RWSL and A-SMGCS surveillance." />
     <meta name="theme-color" content="#060d1a" />
     <meta property="og:image" content="https://skybrary.aero/sites/default/files/Op-concept-lrg.jpg" />
@@ -32,7 +32,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "@id": "https://rahulsharmaagl.in/component-runway-occupancy-sensor.html#article",
-        "headline": "Runway Occupancy Sensor",
+        "headline": "Runway Occupancy Sensor for AGL: Function, Construction & Testing",
         "description": "Runway occupancy sensor reference guide covering radar, infrared and inductive-loop detection feeding RWSL and A-SMGCS surveillance.",
         "url": "https://rahulsharmaagl.in/component-runway-occupancy-sensor.html",
         "inLanguage": "en",
@@ -132,7 +132,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-runway-occupancy-sensor.html#faq", "url": "https://rahulsharmaagl.in/component-runway-occupancy-sensor.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-runway-occupancy-sensor.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a runway occupancy sensor?", "acceptedAnswer": {"@type": "Answer", "text": "A runway occupancy sensor continuously monitors a designated runway zone to determine whether an aircraft or vehicle is on it. It is a core component of the Runway Status Light (RWSL) system, supplying the real-time occupancy data needed to activate runway entrance lights, take-off hold lights and runway guard lights."}}, {"@type": "Question", "name": "How is it different from a stop bar sensor?", "acceptedAnswer": {"@type": "Answer", "text": "A stop bar sensor detects crossing at a specific point. A runway occupancy sensor monitors an entire runway segment, typically several hundred metres, to determine whether any target is present."}}, {"@type": "Question", "name": "What detection technologies are used?", "acceptedAnswer": {"@type": "Answer", "text": "Typically FMCW radar (24 GHz or 77 GHz), infrared (thermal or active), or inductive loop arrays, used singly or in combination. Radar detects moving and stationary targets regardless of weather and lighting, infrared works in darkness, fog and smoke, and buried loops detect metallic targets with precise position and direction."}}, {"@type": "Question", "name": "What coverage range does a sensor have?", "acceptedAnswer": {"@type": "Answer", "text": "Typical coverage is 300 m to 900 m for radar, 100 m to 300 m for infrared and 5 m to 50 m per zone for inductive loops. Radar range resolution is 1 m to 5 m."}}, {"@type": "Question", "name": "How fast does the sensor respond?", "acceptedAnswer": {"@type": "Answer", "text": "Response time from detection to output change is typically 200 ms or less, and targets can be detected from parked up to about 100 km/h."}}, {"@type": "Question", "name": "How reliable is detection?", "acceptedAnswer": {"@type": "Answer", "text": "A typical false alarm rate is no more than one per 24 hours with proper calibration. Typical minimum target size is 1 m² for radar and 2 m² for infrared."}}, {"@type": "Question", "name": "Where are runway occupancy sensors used?", "acceptedAnswer": {"@type": "Answer", "text": "At airports needing enhanced runway safety surveillance: as the primary detection input for RWSL systems, integrated with A-SMGCS for surface surveillance and conflict detection, and providing information to ATC towers."}}, {"@type": "Question", "name": "How does the sensor connect to the control system?", "acceptedAnswer": {"@type": "Answer", "text": "It is a standalone powered sensor (24 V DC or 120/230 V AC) with outputs by dry contact relay, opto-isolated transistor, Ethernet (Modbus TCP) or serial RS-485. Output isolation keeps the sensor circuit separate from controlled loads, and built-in surge protection is typically up to 6 kV."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "Relevant references are ICAO Annex 14 (the runway safety context), FAA AC 150/5340-30 (visual aid design and installation, including RWSL provisions) and EUROCAE ED-87 (MASPS for A-SMGCS). Always verify the current edition and your aerodrome's approved requirements."}}, {"@type": "Question", "name": "How often should a runway occupancy sensor be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are quarterly for sensor window cleaning and false-alarm log review, semi-annual for range gate and field-of-view calibration, alignment and power supply and UPS tests, and annual for clutter map update, heater, wiper and air-purge checks and mount inspection. Your airport's approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "What are the common problems with runway occupancy sensors?", "acceptedAnswer": {"@type": "Answer", "text": "Common problems are false alarms from adjacent taxiways, sensor obscuration in adverse weather, clutter from the runway surface, multipath interference, power supply instability and alignment drift. Persistent detections on a clear runway usually point to clutter, and missed or delayed detection to obscuration."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         /* ── RESET & BASE ── */
         * {
             margin: 0;
@@ -347,6 +348,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -478,8 +480,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -513,8 +514,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -565,8 +565,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -645,8 +644,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -691,8 +689,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -724,8 +721,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -788,8 +784,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -881,8 +876,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -977,8 +971,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1249,8 +1242,7 @@
             text-align: center;
             min-width: 260px;
             max-width: 460px;
-        }
-        .diagram-node h5 {
+        }.diagram-node .hl5 {
             font-size: 14px;
             font-weight: 700;
             letter-spacing: .5px;
@@ -1357,8 +1349,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1419,6 +1410,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1452,7 +1449,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-sensor"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Runway <span>Occupancy Sensor</span></h1>
+            <h1 class="comp-title">Runway <span>Occupancy Sensor</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A high‑reliability detection system that monitors runway occupancy status in real time. Providing critical input to Runway Status Light (RWSL) systems, A‑SMGCS, and ATC surveillance, these sensors enable automated conflict detection, runway incursion prevention, and enhanced safety in all visibility conditions.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1467,7 +1464,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Runway Occupancy Sensor?</h2>
             <div class="info-panel">
                 <p>A <strong>Runway Occupancy Sensor</strong> is a sophisticated detection device that continuously monitors a designated runway zone to determine whether the runway is occupied by an aircraft or vehicle. It is a core component of the Runway Status Light (RWSL) system, providing the real‑time occupancy data required to activate runway entrance lights (RELs), take‑off hold lights (THLs), and runway guard lights. The sensor uses advanced technologies—typically radar, infrared, or inductive loop—to detect targets with high accuracy and reliability, even in adverse weather conditions (fog, rain, snow) and low visibility. Unlike stop bar sensors that detect crossing at a specific point, runway occupancy sensors monitor an entire runway segment (typically several hundred metres) to determine if any target is present on the runway. The sensor's output is fed to the RWSL processing unit, which uses it to determine runway status and control the associated warning lights. By providing precise, continuous occupancy detection, these sensors play a vital role in preventing runway incursions, reducing the risk of runway collisions, and supporting safe, efficient airfield operations.</p>
             </div>
@@ -1617,12 +1614,12 @@
             <div class="diagram-block">
                 <div class="diagram-flow">
                     <div class="diagram-node">
-                        <h5 role="heading" aria-level="3">Sensor Monitors Runway Zone</h5>
+                        <div class="hl5">Sensor Monitors Runway Zone</div>
                         <p>300‑900 m coverage, calibrated to runway geometry</p>
                     </div>
                     <div class="diagram-arrow"></div>
                     <div class="diagram-node cyan">
-                        <h5 role="heading" aria-level="3">Target Tracking</h5>
+                        <div class="hl5">Target Tracking</div>
                         <p>Position, speed &amp; heading maintained for multiple targets</p>
                     </div>
                     <div class="diagram-arrow"></div>
@@ -1630,21 +1627,21 @@
                         <div class="diagram-branch">
                             <div class="diagram-branch-label gold">Target Within Zone</div>
                             <div class="diagram-node outcome">
-                                <h5 role="heading" aria-level="3">Occupancy Confirmed</h5>
+                                <div class="hl5">Occupancy Confirmed</div>
                                 <p>Dwell time &amp; hysteresis applied before status changes</p>
                             </div>
                         </div>
                         <div class="diagram-branch">
                             <div class="diagram-branch-label red">Transient / Clearing</div>
                             <div class="diagram-node red outcome">
-                                <h5 role="heading" aria-level="3">Hysteresis Prevents False Trigger</h5>
+                                <div class="hl5">Hysteresis Prevents False Trigger</div>
                                 <p>Brief or borderline detections don't flip the status</p>
                             </div>
                         </div>
                     </div>
                     <div class="diagram-arrow"></div>
                     <div class="diagram-node outcome">
-                        <h5 role="heading" aria-level="3">Status Sent to RWSL Logic Processor</h5>
+                        <div class="hl5">Status Sent to RWSL Logic Processor</div>
                         <p>Occupied / clear — clean isolated output (dry contact, transistor, or Ethernet/Modbus)</p>
                     </div>
                 </div>
@@ -1713,9 +1710,9 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>General aerodrome design and runway safety standards forming the operational context for surface safety systems</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5340‑30</h5><p>Design &amp; installation details for airport visual aids, including RWSL (Runway Status Lights) provisions</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED‑87</h5><p>Minimum Aviation System Performance Specification (MASPS) for A‑SMGCS, including surveillance and interoperability requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 14</h3><p>General aerodrome design and runway safety standards forming the operational context for surface safety systems</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5340‑30</h3><p>Design &amp; installation details for airport visual aids, including RWSL (Runway Status Lights) provisions</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>EUROCAE ED‑87</h3><p>Minimum Aviation System Performance Specification (MASPS) for A‑SMGCS, including surveillance and interoperability requirements</p></div></div>
             </div>
         </div>
     </section>
@@ -1729,42 +1726,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-combined"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pole Foundation &amp; Aiming Bracket</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Pole Foundation &amp; Aiming Bracket</h3><span class="test-stage">Civil</span></div>
                         <p>Set the pole foundation and adjustable aiming bracket so azimuth and elevation can be set and locked during commissioning to give the required detection zone coverage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-water"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">In-Pavement Loop Installation</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>In-Pavement Loop Installation</h3><span class="test-stage">Civil</span></div>
                         <p>For in-pavement variants, embed inductive loops or magnetometers beneath the surface at the detection points, wired back to a roadside pull box in the same way as other in-ground sensors.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Duct &amp; Cable Route to Equipment Hut</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Duct &amp; Cable Route to Equipment Hut</h3><span class="test-stage">Electrical</span></div>
                         <p>Run power and data cabling from each sensor or loop in duct to a local equipment hut, from which a fibre or copper backbone carries occupancy status onward.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Grounding &amp; Surge Protection</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Grounding &amp; Surge Protection</h3><span class="test-stage">Electrical</span></div>
                         <p>Bond the enclosure to the site's lightning protection system and confirm built-in transient voltage suppression is connected before the sensor is energised.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-compass-drafting"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Frangibility &amp; Obstacle Clearance Check</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Frangibility &amp; Obstacle Clearance Check</h3><span class="test-stage">Mechanical</span></div>
                         <p>Confirm the sensor's pole and mounting base meet the runway strip's frangibility and obstacle-clearance requirements for its location.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Commissioning Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record sensor position, aiming angle, cable route, and grounding as-built before commissioning testing begins.</p>
                     </div>
                 </div>
@@ -1780,49 +1777,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Alignment &amp; Aim Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Alignment &amp; Aim Verification</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Set and lock azimuth/elevation on the mounting bracket so the coverage zone matches the runway geometry it is calibrated to.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power &amp; Output Signal Check</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Power &amp; Output Signal Check</h3><span class="test-stage">Energisation</span></div>
                         <p>Confirm supply voltage at the sensor and verify the dry contact, transistor, or Ethernet output changes state correctly on a test target.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Multi-Target Tracking Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Multi-Target Tracking Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Run multiple simultaneous targets through the coverage zone to confirm position, speed, and heading are tracked independently for each.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Dwell Time &amp; Hysteresis Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Dwell Time &amp; Hysteresis Verification</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm brief or borderline detections do not flip the occupancy status, while a genuine occupancy event is confirmed within spec.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">False Alarm Rate Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>False Alarm Rate Verification</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Monitor the sensor over a settling period to confirm the false alarm rate is within spec before it feeds the RWSL logic processor.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">A-SMGCS / RWSL Interface Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>A-SMGCS / RWSL Interface Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm occupied/clear status reaches the RWSL logic processor and A-SMGCS/ATC displays correctly over the configured interface.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record sensor position, aim settings, and occupancy detection test results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1838,56 +1835,56 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Sensor Window Cleaning</h5><span class="maint-freq">Quarterly</span></div>
+                        <div class="maint-item-head"><h3>Sensor Window Cleaning</h3><span class="maint-freq">Quarterly</span></div>
                         <p>Clean the sensor window of snow, ice, dirt, or rain residue that reduces radar/IR detection performance; increase frequency during winter.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Range Gate &amp; Field-of-View Calibration</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Range Gate &amp; Field-of-View Calibration</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Recheck range gating and field-of-view settings to prevent false alarms from adjacent taxiways or apron areas.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Alignment Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Alignment Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Verify sensor mount alignment against calibration targets, since vibration and thermal expansion can shift the detection zone over time.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Clutter Map Update</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Clutter Map Update</h3><span class="maint-freq">Annual</span></div>
                         <p>Refresh clutter mapping and adaptive thresholds to account for seasonal changes in runway surface conditions.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; UPS Test</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Power Supply &amp; UPS Test</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Test the regulated power supply and UPS backup to guard against voltage-related resets or damage.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Heater / Wiper / Air-Purge Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Heater / Wiper / Air-Purge Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Verify heated housings, wipers, or air purge systems are functioning correctly before the winter season.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Mount &amp; Bracket Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Mount &amp; Bracket Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Check mounting hardware and brackets for looseness or corrosion that could affect long-term alignment.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">False-Alarm Log Review</h5><span class="maint-freq">Quarterly</span></div>
+                        <div class="maint-item-head"><h3>False-Alarm Log Review</h3><span class="maint-freq">Quarterly</span></div>
                         <p>Review detection logs for recurring false alarms or missed detections that point to obscuration, clutter, or multipath issues.</p>
                     </div>
                 </div>
@@ -1900,12 +1897,12 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">False Alarms from Adjacent Taxiways</h5><p>Radar and IR sensors may detect aircraft on adjacent taxiways or apron areas if the field of view is too wide or the range gate is not properly configured. Careful alignment and the use of advanced filtering (range‑gating, Doppler filtering) are essential to prevent false alarms.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Sensor Obscuration (Radar/IR)</h5><p>Snow, ice, heavy rain, or dirt accumulation on the sensor window can significantly reduce detection performance. Regular cleaning and the use of heated housings, wipers, or air purges can prevent obscuration.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Clutter from Runway Surface</h5><p>Wet or snow‑covered runways can create clutter returns that interfere with target detection. Advanced clutter mapping and adaptive thresholding are required to maintain reliable detection in varying surface conditions.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Multi‑Path Interference</h5><p>Reflections from large aircraft, buildings, or terrain can cause ghost targets or shadowing. Proper sensor siting and the use of multi‑path mitigation techniques (e.g., frequency diversity) are recommended.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Voltage fluctuations or spikes can cause sensor resets or damage. Use a regulated power supply with surge protection and UPS backup to ensure reliable operation.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Alignment Drift</h5><p>Over time, sensor mounts can shift due to vibration, thermal expansion, or ground movement, altering the detection zone. Regular site surveys and alignment checks using calibration targets are recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>False Alarms from Adjacent Taxiways</h3><p>Radar and IR sensors may detect aircraft on adjacent taxiways or apron areas if the field of view is too wide or the range gate is not properly configured. Careful alignment and the use of advanced filtering (range‑gating, Doppler filtering) are essential to prevent false alarms.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Sensor Obscuration (Radar/IR)</h3><p>Snow, ice, heavy rain, or dirt accumulation on the sensor window can significantly reduce detection performance. Regular cleaning and the use of heated housings, wipers, or air purges can prevent obscuration.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Clutter from Runway Surface</h3><p>Wet or snow‑covered runways can create clutter returns that interfere with target detection. Advanced clutter mapping and adaptive thresholding are required to maintain reliable detection in varying surface conditions.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Multi‑Path Interference</h3><p>Reflections from large aircraft, buildings, or terrain can cause ghost targets or shadowing. Proper sensor siting and the use of multi‑path mitigation techniques (e.g., frequency diversity) are recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Power Supply Instability</h3><p>Voltage fluctuations or spikes can cause sensor resets or damage. Use a regulated power supply with surge protection and UPS backup to ensure reliable operation.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Alignment Drift</h3><p>Over time, sensor mounts can shift due to vibration, thermal expansion, or ground movement, altering the detection zone. Regular site surveys and alignment checks using calibration targets are recommended.</p></div></div>
             </div>
         </div>
     </section>
@@ -1916,31 +1913,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False Alarms from Adjacent Taxiway or Apron Traffic</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>False Alarms from Adjacent Taxiway or Apron Traffic</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Field of view too wide or the range gate not configured for the intended runway/taxiway segment.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review alarm logs against known adjacent traffic movements, check the current range-gate and field-of-view settings, and run a test target through the defined boundaries.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-align the sensor and tighten the range-gate/field-of-view configuration, applying Doppler or range filtering as needed.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Missed or Delayed Detection (Sensor Obscuration)</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Missed or Delayed Detection (Sensor Obscuration)</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Snow, ice, heavy rain, or dirt accumulation on the sensor window.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect the sensor window/radome, check heater/wiper/air-purge operation, and compare detection performance before and after cleaning.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the sensor window, repair or activate the heated housing/wiper/air purge, and schedule more frequent cleaning in adverse weather periods.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Persistent Detections on a Clear Runway (Clutter)</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Persistent Detections on a Clear Runway (Clutter)</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Clutter returns from a wet or snow-covered runway surface not adequately filtered.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review clutter map settings against current surface conditions, check adaptive thresholding configuration, and correlate false detections with weather reports.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Update the clutter map for current conditions, adjust thresholding parameters, and re-test after the configuration change.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Ghost Targets or Shadowed Detection Zones</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Ghost Targets or Shadowed Detection Zones</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Multi-path reflections from large aircraft, buildings, or terrain.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Map reported ghost-target positions against known reflective structures and review sensor siting relative to large reflective surfaces.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Apply multi-path mitigation (frequency diversity) if available, and re-site or re-aim the sensor where practical.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Sensor Reset or Data Loss During Voltage Events</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Sensor Reset or Data Loss During Voltage Events</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Power supply instability — voltage fluctuations or spikes.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Log supply voltage over time, inspect surge protection device status, and correlate resets with known power events.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Install or replace a regulated power supply with surge protection, and add UPS backup.</div></div>
@@ -1956,7 +1953,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Window Contamination</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Sensor Window Contamination</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, insects, ice, or condensation accumulating on the sensor's optical or radar window between cleaning cycles.</div></div>
@@ -1965,7 +1962,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Obscuration in Adverse Weather</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Sensor Obscuration in Adverse Weather</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Heavy rain, snow, or fog attenuating the radar or infrared signal path across the monitored zone.</div></div>
@@ -1974,7 +1971,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Alignment / Aim Drift</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Alignment / Aim Drift</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mounting bracket loosening from vibration, thermal cycling, or incidental contact shifting the sensor's field of view.</div></div>
@@ -1983,7 +1980,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Clutter Map Drift / Outdated Baseline</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Clutter Map Drift / Outdated Baseline</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Physical changes near the sensor — new signage, parked equipment, or vegetation growth — that the stored clutter map no longer accounts for.</div></div>
@@ -1992,7 +1989,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Heater / Wiper / Air-Purge Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Heater / Wiper / Air-Purge Failure</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Failed heating element, wiper motor, or air-purge system meant to keep the sensor window clear in icing or heavy-precipitation conditions.</div></div>
@@ -2001,7 +1998,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Supply / UPS Instability</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Power Supply / UPS Instability</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ageing UPS batteries or a marginal power feed causing brief interruptions that the sensor doesn't ride through cleanly.</div></div>
@@ -2020,35 +2017,35 @@
                 <div class="test-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Do Not Take Offline Without a Procedural Fallback</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Do Not Take Offline Without a Procedural Fallback</h3><span class="test-stage">Operational</span></div>
                         <p>Never take a runway occupancy sensor out of service without first agreeing a procedural fallback with ATC, since the RWSL system depends on its data to control runway entrance and take-off hold lights.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tower-broadcast"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">RF/Radar Exposure Precaution</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>RF/Radar Exposure Precaution</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>For radar-based sensors, avoid standing directly in front of the antenna aperture while the unit is transmitting, and follow the manufacturer's minimum safe distance for RF exposure during servicing.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Work Coordination &amp; NOTAM</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Airside Work Coordination &amp; NOTAM</h3><span class="test-stage">Operational</span></div>
                         <p>Any work on or near the sensor requires ATC/airside coordination and a NOTAM reflecting the RWSL system's degraded status for the duration of the work.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Alignment Verification After Servicing</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Alignment Verification After Servicing</h3><span class="test-stage">Operational</span></div>
                         <p>Re-verify the sensor's aim and detection zone against the as-commissioned baseline after any servicing that disturbs its mounting, since a small alignment shift can create a gap in runway coverage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation Before Servicing</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Electrical Isolation Before Servicing</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise and lock out the sensor's power supply before opening the housing, and verify zero energy before touching any internal wiring.</p>
                     </div>
                 </div>
@@ -2071,42 +2068,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-draw-polygon"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Verify Detection Zone Boundaries in the Field, Not Just on the Drawing</h5><span class="expert-tag">Commissioning</span></div>
+                        <div class="expert-item-head"><h3>Verify Detection Zone Boundaries in the Field, Not Just on the Drawing</h3><span class="expert-tag">Commissioning</span></div>
                         <p>A detection zone that looks correct on the design drawing can end up offset in practice due to as-built survey error or a mounting position adjusted during installation. Walk and mark the actual zone boundary against a test target before sign-off, rather than relying on the design coordinates alone.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-cloud-rain"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Radar and Infrared Sensors Fail Differently in Weather</h5><span class="expert-tag">Reliability</span></div>
+                        <div class="expert-item-head"><h3>Radar and Infrared Sensors Fail Differently in Weather</h3><span class="expert-tag">Reliability</span></div>
                         <p>Heavy rain and fog degrade infrared and radar sensing in different ways and to different degrees, so a site using a mix of technologies for redundancy needs its alarm and health monitoring logic to distinguish a genuine target-detection failure from a known weather-related sensitivity reduction rather than treating both the same way.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-crow"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Nuisance Triggers Cluster at the Zone Edge</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Nuisance Triggers Cluster at the Zone Edge</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>False detections from wildlife, service vehicles, or blowing debris tend to concentrate near the boundary of the detection zone rather than being evenly distributed through it; reviewing logged nuisance events by location, not just by count, usually points straight to a boundary or sensitivity setting that needs adjustment.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-compass-drafting"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Mounting Vibration Shifts Alignment Over Time</h5><span class="expert-tag">Mechanical</span></div>
+                        <div class="expert-item-head"><h3>Mounting Vibration Shifts Alignment Over Time</h3><span class="expert-tag">Mechanical</span></div>
                         <p>Sensors mounted on masts or structures near the movement area experience continuous low-level vibration from aircraft and ground vehicle traffic, which can gradually shift aim on a sensor that isn't mechanically over-specified for the application. Include an alignment check, not just a functional check, in the periodic maintenance routine.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Know the Full Latency Budget, Not Just the Sensor's Own Response Time</h5><span class="expert-tag">Performance</span></div>
+                        <div class="expert-item-head"><h3>Know the Full Latency Budget, Not Just the Sensor's Own Response Time</h3><span class="expert-tag">Performance</span></div>
                         <p>The sensor's datasheet response time is only one part of the total delay between an aircraft entering the zone and a runway status light actually illuminating; processing, communication, and light drive latency all add to that figure, and the end-to-end number is what matters for the safety case, not the sensor spec alone.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-satellite-dish"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Cross-Check Against Surface Surveillance Data During Acceptance Testing</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>Cross-Check Against Surface Surveillance Data During Acceptance Testing</h3><span class="expert-tag">Verification</span></div>
                         <p>Where the airfield has ASDE-X or another surface surveillance system, correlating occupancy sensor detections against it during acceptance testing catches disagreements between the two systems' pictures of the runway that a stand-alone functional test of the sensor wouldn't surface.</p>
                     </div>
                 </div>
@@ -2173,10 +2170,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-runway-status-light-rwsl.html" class="related-card"><i class="fa-solid fa-traffic-light"></i><h5 role="heading" aria-level="3">Runway Status Light (RWSL)</h5></a>
-                <a href="component-stop-bar-sensor.html" class="related-card"><i class="fa-solid fa-sensor"></i><h5 role="heading" aria-level="3">Stop Bar Sensor</h5></a>
-                <a href="component-surface-movement-radar.html" class="related-card"><i class="fa-solid fa-radar"></i><h5 role="heading" aria-level="3">Surface Movement Radar</h5></a>
-                <a href="component-runway-guard-light.html" class="related-card"><i class="fa-solid fa-shield"></i><h5 role="heading" aria-level="3">Runway Guard Light</h5></a>
+                <a href="component-runway-status-light-rwsl.html" class="related-card"><i class="fa-solid fa-traffic-light"></i><div class="hl5">Runway Status Light (RWSL)</div></a>
+                <a href="component-stop-bar-sensor.html" class="related-card"><i class="fa-solid fa-sensor"></i><div class="hl5">Stop Bar Sensor</div></a>
+                <a href="component-surface-movement-radar.html" class="related-card"><i class="fa-solid fa-radar"></i><div class="hl5">Surface Movement Radar</div></a>
+                <a href="component-runway-guard-light.html" class="related-card"><i class="fa-solid fa-shield"></i><div class="hl5">Runway Guard Light</div></a>
             </div>
         </div>
     </section>
@@ -2214,7 +2211,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on Runway Occupancy Sensor selection, installation, or integration for your RWSL system?</h4><p>Precision AGL Academy provides advice on sensor technology selection, coverage planning, alignment, and field commissioning for optimal performance.</p></div>
+                <div><div class="hl4">Need expert guidance on Runway Occupancy Sensor selection, installation, or integration for your RWSL system?</div><p>Precision AGL Academy provides advice on sensor technology selection, coverage planning, alignment, and field commissioning for optimal performance.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

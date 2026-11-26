@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCB: Trip Curves, Ratings &amp; Standards</title>
+    <title>Miniature Circuit Breaker (MCB): Function, Construction &amp; Testing</title>
     <meta name="description" content="MCB guide for AGL distribution: B/C/D trip curves, ratings, IEC 60898 standards, installation, testing, maintenance and failure modes." />
     <meta name="keywords" content="MCB, miniature circuit breaker, trip curve B C D, AGL distribution protection, IEC 60898, NFPA 70" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,7 +13,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="MCB: Trip Curves, Ratings &amp; Standards | Precision AGL Academy" />
+    <meta property="og:title" content="Miniature Circuit Breaker (MCB): Function, Construction &amp; Testing" />
     <meta property="og:description" content="MCB guide for AGL distribution: B/C/D trip curves, ratings, IEC 60898 standards, installation, testing, maintenance and failure modes." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-mcb.html" />
     <meta property="og:site_name" content="AGL Component Library" />
@@ -27,7 +27,7 @@
     <meta property="article:author" content="https://www.linkedin.com/in/rahulsharmaagl" />
     <meta property="article:section" content="AGL Component Library" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MCB: Trip Curves, Ratings &amp; Standards | Precision AGL Academy" />
+    <meta name="twitter:title" content="Miniature Circuit Breaker (MCB): Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="MCB guide for AGL distribution: B/C/D trip curves, ratings, IEC 60898 standards, installation, testing, maintenance and failure modes." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/images/og/component-mcb.png" />
     <meta name="twitter:image:alt" content="Miniature Circuit Breaker (MCB) – AGL Component Library by Precision AGL Academy" />
@@ -39,7 +39,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-mcb.html#faq", "url": "https://rahulsharmaagl.in/component-mcb.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-mcb.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is an MCB?", "acceptedAnswer": {"@type": "Answer", "text": "A Miniature Circuit Breaker is a small automatic switch giving overcurrent protection for low-voltage circuits up to 125 A, used in AGL final sub-circuits."}}, {"@type": "Question", "name": "What does an MCB protect in an AGL system?", "acceptedAnswer": {"@type": "Answer", "text": "It automatically removes power from a faulted circuit before overload or a short circuit can damage cable or equipment or start a fire, and it resets quickly so a transient fault is not a long outage."}}, {"@type": "Question", "name": "Where are MCBs used?", "acceptedAnswer": {"@type": "Answer", "text": "In CCR rooms protecting control power supplies, cooling fans and auxiliary circuits, and in ALCMS racks protecting PLC power supplies and network switches."}}, {"@type": "Question", "name": "How does an MCB trip?", "acceptedAnswer": {"@type": "Answer", "text": "With a bimetallic thermal element for sustained overload and a magnetic element for instant short-circuit tripping."}}, {"@type": "Question", "name": "What is the difference between B, C and D curves?", "acceptedAnswer": {"@type": "Answer", "text": "B-curve trips at 3-5 times rated current (In), C-curve at 5-10 In and D-curve at 10-20 In. Choose the curve to suit the load's inrush, for example D for transformers and motors."}}, {"@type": "Question", "name": "What ratings are typical?", "acceptedAnswer": {"@type": "Answer", "text": "1-125 A rated current, 230/400 V AC, breaking capacity (Icu) of 6, 10 or 15 kA, 1- to 4-pole, on 35 mm DIN rail. Icu must exceed the prospective fault current at the point of installation."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "IEC 60898 (MCBs), IEC 60947-2 (some industrial-duty products are dual-rated), UL 1077 and IS/IEC 60898-1."}}, {"@type": "Question", "name": "How often should MCBs be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Annually: re-torque terminals, test trip function where facilities allow, review load and breaking capacity, and inspect the body for discolouration or heat damage."}}, {"@type": "Question", "name": "Why does an MCB trip on normal switching?", "acceptedAnswer": {"@type": "Answer", "text": "The trip curve, for example B, may be too sensitive to the inrush of a transformer or motor load. Identify the load's inrush and consider a C or D curve."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -253,6 +254,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -399,8 +401,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -434,8 +435,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -486,8 +486,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -566,8 +565,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -612,8 +610,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -645,8 +642,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -709,8 +705,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -802,8 +797,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -898,8 +892,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1241,8 +1234,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1404,6 +1396,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1434,7 +1432,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-toggle-on"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Miniature <span>Circuit Breaker (MCB)</span></h1>
+            <h1 class="comp-title">Miniature <span>Circuit Breaker (MCB)</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A compact, automatic electrical switch designed to protect low‑current circuits (typically up to 125A) from damage caused by overload and short circuits. MCBs are the most common overcurrent protection devices in AGL control panels, distribution boards, and secondary circuits, offering reliable, reusable protection with standardised trip characteristics.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1448,7 +1446,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Miniature Circuit Breaker (MCB)?</h2>
             <div class="info-panel">
                 <p>A <strong>Miniature Circuit Breaker (MCB)</strong> is a small, automatic electrical switch that provides overcurrent protection for low‑voltage circuits up to 125A. MCBs are designed for use in final sub‑circuits and are widely used in Airfield Ground Lighting (AGL) systems for protecting:</p>
                 <ul>
@@ -1619,10 +1617,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 60898</h5><p>Circuit‑breakers for overcurrent protection for household and similar installations (MCBs)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 60947‑2</h5><p>Low‑voltage switchgear – Circuit breakers for industrial applications; some industrial-duty DIN-rail MCB-type products are dual-rated to this alongside IEC 60898</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">UL 1077</h5><p>Supplementary Protectors for use in Electrical Equipment – MCBs</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IS/IEC 60898‑1</h5><p>Bureau of Indian Standards adoption of IEC 60898 for MCBs (harmonised revision of IS 8828)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 60898</h3><p>Circuit‑breakers for overcurrent protection for household and similar installations (MCBs)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 60947‑2</h3><p>Low‑voltage switchgear – Circuit breakers for industrial applications; some industrial-duty DIN-rail MCB-type products are dual-rated to this alongside IEC 60898</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>UL 1077</h3><p>Supplementary Protectors for use in Electrical Equipment – MCBs</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IS/IEC 60898‑1</h3><p>Bureau of Indian Standards adoption of IEC 60898 for MCBs (harmonised revision of IS 8828)</p></div></div>
             </div>
         </div>
     </section>
@@ -1635,49 +1633,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">DIN-Rail Panel Positioning</h5><span class="test-stage">Site</span></div>
+                        <div class="test-item-head"><h3>DIN-Rail Panel Positioning</h3><span class="test-stage">Site</span></div>
                         <p>Mount the breaker close to the circuit it protects, keeping the run of unprotected cable ahead of it as short as possible.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tags"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Functional Grouping &amp; Labelling</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Functional Grouping &amp; Labelling</h3><span class="test-stage">Documentation</span></div>
                         <p>Group MCBs by function — control power, auxiliary circuits, individual lighting sections — with clear labelling so a tripped breaker can be identified and reset quickly.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-horizontal"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Thermal Derating Spacing</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Thermal Derating Spacing</h3><span class="test-stage">Mechanical</span></div>
                         <p>Space adjacent breakers per the manufacturer's thermal derating guidance to avoid premature tripping in a sealed, poorly ventilated cabinet.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cable Termination &amp; Torque</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Cable Termination &amp; Torque</h3><span class="test-stage">Electrical</span></div>
                         <p>Terminate incoming and outgoing conductors to the specified torque, matching cable gauge to the breaker's rated current.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-chart-line"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Trip Curve Selection Verification</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Trip Curve Selection Verification</h3><span class="test-stage">Documentation</span></div>
                         <p>Confirm the fitted breaker's trip characteristic (B, C, or D curve) matches the circuit's inrush behaviour and protection requirement.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-door-open"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Access for Fault-Finding</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Access for Fault-Finding</h3><span class="test-stage">Mechanical</span></div>
                         <p>Position the panel for safe access to reset or isolate the breaker without exposing the technician to other live sections of the board.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record breaker position, rating, and termination torque values as-built before the panel is closed up.</p>
                     </div>
                 </div>
@@ -1693,49 +1691,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insulation Resistance Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Insulation Resistance Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Megger-test the MCB and its downstream wiring before energisation, confirming insulation resistance clears the acceptable minimum.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Contact Resistance &amp; Continuity Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Contact Resistance &amp; Continuity Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Measure contact resistance across the closed MCB to rule out high-resistance contacts before the circuit is loaded.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Trip Curve Verification</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Trip Curve Verification</h3><span class="test-stage">Commissioning</span></div>
                         <p>Inject test current to confirm the thermal-magnetic trip characteristics (B, C, or D curve) operate within tolerance of the rated multiple of In.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mechanical Operation &amp; Indicator Check</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Mechanical Operation &amp; Indicator Check</h3><span class="test-stage">Commissioning</span></div>
                         <p>Cycle the toggle through on/off/trip to confirm a positive snap action and correct on/off/tripped indication.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Terminal Torque Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Terminal Torque Verification</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Torque the shrouded box terminals to the manufacturer's specified value before the circuit is energised.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">DIN Rail Retention Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>DIN Rail Retention Check</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Confirm the spring-loaded rear catch has fully engaged the DIN rail and the MCB cannot be dislodged by cable tension or vibration.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record insulation, contact resistance, and trip test results alongside the MCB's rating and position in the commissioning dossier.</p>
                     </div>
                 </div>
@@ -1751,28 +1749,28 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Terminal Torque Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Terminal Torque Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Re-torque terminal connections to spec, since loose terminals are a common cause of localized heating.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Trip Function Test</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Trip Function Test</h3><span class="maint-freq">Annual</span></div>
                         <p>Where test facilities allow, verify tripping behaviour matches the breaker's rated curve.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Load &amp; Rating Review</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Load &amp; Rating Review</h3><span class="maint-freq">Annual</span></div>
                         <p>Confirm breaking capacity and any daisy-chain derating remain appropriate for the connected load.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Visual Condition Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Visual Condition Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Check the breaker body for discolouration or heat damage indicating an underlying fault.</p>
                     </div>
                 </div>
@@ -1785,10 +1783,10 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Trip Curve Selection</h5><p>Using a B‑curve MCB on a circuit with high inrush current (e.g., transformers, motor loads) can cause nuisance tripping. Select the appropriate trip curve (C or D) based on the load type to avoid unnecessary interruptions.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Loose Terminal Connections</h5><p>MCB terminals must be tightened to the correct torque. Loose connections cause heating, arcing, and eventual failure. Always use a torque screwdriver and follow the manufacturer's specifications.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Inadequate Breaking Capacity</h5><p>If the available fault current exceeds the MCB's breaking capacity (Icu), the breaker may fail to interrupt safely. Always verify the fault current level and select an MCB with adequate Icu.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Daisy‑Chaining and Grouping Derating</h5><p>Multiple MCBs mounted adjacent to each other on a DIN rail may require derating due to heat build‑up. Consult the manufacturer's derating tables when grouping many breakers in a panel.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Incorrect Trip Curve Selection</h3><p>Using a B‑curve MCB on a circuit with high inrush current (e.g., transformers, motor loads) can cause nuisance tripping. Select the appropriate trip curve (C or D) based on the load type to avoid unnecessary interruptions.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Loose Terminal Connections</h3><p>MCB terminals must be tightened to the correct torque. Loose connections cause heating, arcing, and eventual failure. Always use a torque screwdriver and follow the manufacturer's specifications.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Inadequate Breaking Capacity</h3><p>If the available fault current exceeds the MCB's breaking capacity (Icu), the breaker may fail to interrupt safely. Always verify the fault current level and select an MCB with adequate Icu.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Daisy‑Chaining and Grouping Derating</h3><p>Multiple MCBs mounted adjacent to each other on a DIN rail may require derating due to heat build‑up. Consult the manufacturer's derating tables when grouping many breakers in a panel.</p></div></div>
             </div>
         </div>
     </section>
@@ -1799,25 +1797,25 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Nuisance Tripping on Normal Load Switching</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Nuisance Tripping on Normal Load Switching</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The installed trip curve (e.g., B-curve) is too sensitive to the inrush current of the connected load, such as a transformer or motor.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Identify the load type and its typical inrush current profile; check the MCB's trip curve rating against the manufacturer's selection guidance for that load type.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace with an MCB rated for the correct trip curve (typically C or D for high-inrush loads), and re-verify normal operation without nuisance tripping.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Warm or Discoloured Breaker Body or Terminals</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Warm or Discoloured Breaker Body or Terminals</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Loose terminal connections causing resistive heating, arcing, or the early stages of a connection failure.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">De-energise and inspect terminal torque against the manufacturer's specification using a calibrated torque screwdriver; check for discolouration, pitting, or arc marks at the terminals.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-terminate to the correct torque, and replace the breaker if terminal damage (melting, pitting) is found; schedule a follow-up thermal check after re-energising.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Breaker Fails to Clear a Fault Cleanly</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Breaker Fails to Clear a Fault Cleanly</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The available fault current at the installation point exceeds the MCB's rated breaking capacity (Icu).</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Calculate or verify the prospective fault current at the installation point; compare against the installed MCB's Icu rating on its nameplate.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace with an MCB (or upstream device) rated for the actual fault current level, and re-verify discrimination/coordination with adjacent protective devices.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Breaker Runs Hotter Than Expected in a Panel</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Breaker Runs Hotter Than Expected in a Panel</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Multiple MCBs mounted closely together on a DIN rail are generating cumulative heat that the manufacturer's derating tables account for but the installation didn't apply.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the panel layout and breaker density against the manufacturer's grouping/derating tables; measure ambient temperature inside the enclosure under normal load.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-rate or space out breakers per the derating tables, improve enclosure ventilation, or reduce load on affected circuits to bring operating temperature back within limits.</div></div>
@@ -1833,7 +1831,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Mismatched Trip Curve for Load Type</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Mismatched Trip Curve for Load Type</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">An installed trip curve (e.g., B-curve) too sensitive to the inrush current of the connected load, such as a transformer or motor.</div></div>
@@ -1842,7 +1840,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Loose Terminal Connection</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Loose Terminal Connection</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Loose terminal connections causing resistive heating, arcing, or the early stages of a connection failure.</div></div>
@@ -1851,7 +1849,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Breaking Capacity Exceeded</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Breaking Capacity Exceeded</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The available fault current at the installation point exceeding the MCB's rated breaking capacity (Icu).</div></div>
@@ -1860,7 +1858,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Thermal Derating Not Applied</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Thermal Derating Not Applied</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Multiple MCBs mounted closely together on a DIN rail generating cumulative heat that the manufacturer's derating tables account for but the installation didn't apply.</div></div>
@@ -1879,56 +1877,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Upstream Isolation Before Removal</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Upstream Isolation Before Removal</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise and lock out the upstream supply before removing or replacing an MCB, and verify zero energy at its terminals before disconnecting wiring, even though the breaker's own contacts are open.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-scale-balanced"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Correct Rating on Replacement</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Correct Rating on Replacement</h3><span class="test-stage">Compliance</span></div>
                         <p>Fit a replacement MCB with the same rated current and breaking capacity as the original, verified against the protected circuit's design load and prospective fault current; an undersized breaking capacity can fail to safely interrupt a fault.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-hand-pointer"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Operate, Don't Force, a Tripped Breaker</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Operate, Don't Force, a Tripped Breaker</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Investigate the cause of a trip before resetting an MCB; repeatedly forcing a breaker closed against a persistent fault can damage the breaker and leave the circuit inadequately protected.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Test Before Re-Energisation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Test Before Re-Energisation</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>After any work downstream of an MCB, verify insulation resistance and correct load connection before closing the breaker, since a residual fault at re-energisation can cause a nuisance trip or equipment damage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE for Panel Work</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>PPE for Panel Work</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Use insulated tools and appropriate PPE when working inside a distribution board or control panel, and be aware of adjacent live circuits on other breakers in the same enclosure.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tarp"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">FOD Control at the Panel</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>FOD Control at the Panel</h3><span class="test-stage">Operational</span></div>
                         <p>Keep tools, fasteners, and breaker blanks accounted for at all times when a panel is open, and secure or remove any loose material before closing it, particularly in panels serving critical control or lighting circuits.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-temperature-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Check for Thermal Damage on Replacement</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Check for Thermal Damage on Replacement</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Inspect the busbar and adjacent breakers for discolouration or heat damage when replacing an MCB that tripped repeatedly or showed signs of overheating, since a hot connection can damage neighbouring equipment.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Do not leave a panel with an incorrectly rated breaker, an unlabelled circuit, or a loose termination after maintenance; verify correct labelling and torque before closing out the work order.</p>
                     </div>
                 </div>
@@ -1951,42 +1949,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Match the Trip Curve to the Load, Not Just the Current Rating</h5><span class="expert-tag">Selection</span></div>
+                        <div class="expert-item-head"><h3>Match the Trip Curve to the Load, Not Just the Current Rating</h3><span class="expert-tag">Selection</span></div>
                         <p>Two MCBs with the same amperage rating but different trip curves (B, C, D) behave very differently on inrush-heavy loads like PLC power supplies or transformer primaries; nuisance tripping on control circuits is often a curve mismatch, not an undersized breaker.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-diagram-project"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Verify Discrimination With the Upstream MCCB, Not Just Datasheet Ratings</h5><span class="expert-tag">Coordination</span></div>
+                        <div class="expert-item-head"><h3>Verify Discrimination With the Upstream MCCB, Not Just Datasheet Ratings</h3><span class="expert-tag">Coordination</span></div>
                         <p>A downstream MCB and an upstream MCCB can both be correctly rated individually and still fail to discriminate under fault conditions, tripping the upstream device and taking out more of the distribution board than necessary; check the manufacturer's discrimination tables for the specific pairing in use.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Repeated Tripping Without an Obvious Fault Warrants a Load Study</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Repeated Tripping Without an Obvious Fault Warrants a Load Study</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>An MCB that trips intermittently with no fault found on inspection is often responding to a marginal, cumulative load condition — several control loads switching simultaneously, for example — rather than a fault on the breaker or wiring; a brief load logging exercise usually finds it faster than repeated fault-finding.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-temperature-half"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Panel Ambient Temperature Shifts the Effective Trip Rating</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>Panel Ambient Temperature Shifts the Effective Trip Rating</h3><span class="expert-tag">Design</span></div>
                         <p>MCB trip characteristics are rated at a reference ambient temperature; a densely packed panel running hot in service can cause thermal-element tripping below the nameplate current. Where panels run warm, derate selection accordingly rather than assuming the nameplate figure always applies.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-rotate"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Exercise Breakers That Rarely Operate</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Exercise Breakers That Rarely Operate</h3><span class="expert-tag">Maintenance</span></div>
                         <p>MCBs protecting standby or rarely-used circuits can develop stiff or sluggish mechanisms from years without operation; periodically operating them manually during planned maintenance windows catches a mechanism that won't trip cleanly before it's needed in a real fault.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-file-signature"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Record Replacement Curve and Rating, Not Just "Like for Like"</h5><span class="expert-tag">Documentation</span></div>
+                        <div class="expert-item-head"><h3>Record Replacement Curve and Rating, Not Just "Like for Like"</h3><span class="expert-tag">Documentation</span></div>
                         <p>When replacing a failed MCB, confirm and record the exact curve type and breaking capacity fitted, not just the current rating; a superficially "equivalent" spare with a different curve or lower breaking capacity can silently undermine the panel's fault coordination.</p>
                     </div>
                 </div>
@@ -2045,10 +2043,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-mccb.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><h5 role="heading" aria-level="3">MCCB</h5></a>
-                <a href="component-circuit-breaker.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><h5 role="heading" aria-level="3">Circuit Breaker (General)</h5></a>
-                <a href="component-isolation-switch.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><h5 role="heading" aria-level="3">Isolation Switch</h5></a>
-                <a href="component-junction-box.html" class="related-card"><i class="fa-solid fa-box"></i><h5 role="heading" aria-level="3">Junction Box</h5></a>
+                <a href="component-mccb.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><div class="hl5">MCCB</div></a>
+                <a href="component-circuit-breaker.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><div class="hl5">Circuit Breaker (General)</div></a>
+                <a href="component-isolation-switch.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><div class="hl5">Isolation Switch</div></a>
+                <a href="component-junction-box.html" class="related-card"><i class="fa-solid fa-box"></i><div class="hl5">Junction Box</div></a>
             </div>
         </div>
     </section>
@@ -2085,7 +2083,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on MCB selection, coordination, or troubleshooting?</h4><p>Precision AGL Academy provides advice on proper MCB ratings, trip curve selection, and coordination for AGL control and distribution circuits.</p></div>
+                <div><div class="hl4">Need expert guidance on MCB selection, coordination, or troubleshooting?</div><p>Precision AGL Academy provides advice on proper MCB ratings, trip curve selection, and coordination for AGL control and distribution circuits.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
             </div>
         </div>

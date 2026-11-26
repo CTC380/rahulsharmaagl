@@ -289,9 +289,7 @@
 
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -305,8 +303,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -455,6 +452,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -619,28 +622,28 @@
   <div class="ref-cols">
     <div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-lightbulb"></i> 1. Load per transformer</h4>
+        <h3><i class="fa-solid fa-lightbulb"></i> 1. Load per transformer</h3>
         <p>Multiply the fixtures per transformer by the watts each, then divide by the power factor to get apparent power. The design margin is added on top.</p>
         <div class="formula">S = n × W ÷ PF &nbsp;&nbsp; S_design = S × (1 + margin)</div>
       </div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-gauge"></i> 2. Selected size</h4>
+        <h3><i class="fa-solid fa-gauge"></i> 2. Selected size</h3>
         <p>The selected size is the smallest standard size where the design load is at or below your maximum loading. Loading is then reported for the actual load, without the margin.</p>
         <div class="formula">S_design ÷ size ≤ max loading</div>
         <p>If the loading falls below your preferred minimum, the row is flagged as lightly loaded.</p>
       </div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-bullseye"></i> 3. Nearest size</h4>
+        <h3><i class="fa-solid fa-bullseye"></i> 3. Nearest size</h3>
         <p>The nearest standard size to the actual load is shown beside the selected one. When it is smaller than the load, the row says so, because the nearest size alone would be overloaded.</p>
       </div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-list-check"></i> 4. Order count</h4>
+        <h3><i class="fa-solid fa-list-check"></i> 4. Order count</h3>
         <p>Transformers are counted per selected size and type across all rows. The secondary voltage is S ÷ the secondary current (6.6 A).</p>
       </div>
     </div>
     <div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+        <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
         <table class="std-table">
           <tr><th>Item</th><th>Value</th></tr>
           <tr><td>1 × 45 W, PF 1.00</td><td class="val">S = 45 VA</td></tr>
@@ -653,7 +656,7 @@
         </table>
       </div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
         <p>The standard sizes follow the series isolating transformer ratings in FAA AC 150/5345-47 (L-830 and L-831). Confirm them against your project specification and the manufacturer's range. It does not model efficiency curves, magnetising current, secondary open-circuit voltage or lamp-out behaviour. The sizes are nominal, and the margin and loading window are your own rules. For primary-side load and losses, use Calculator #17.</p>
       </div>
     </div>
@@ -683,10 +686,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #17</h5><p>Isolating transformer load &amp; losses.</p></a>
-      <a href="calc-series-circuit-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><h5>Calculator #13</h5><p>Series circuit load, kW &amp; kVA.</p></a>
-      <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><h5>Calculator #16</h5><p>Required CCR capacity.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Calculator #17</div><p>Isolating transformer load &amp; losses.</p></a>
+      <a href="calc-series-circuit-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><div class="tool-link-title">Calculator #13</div><p>Series circuit load, kW &amp; kVA.</p></a>
+      <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><div class="tool-link-title">Calculator #16</div><p>Required CCR capacity.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

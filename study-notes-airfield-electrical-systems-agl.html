@@ -250,8 +250,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:30
 .prose h3.sh2{font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--gold);margin:26px 0 10px}
 .prose ul{margin:0 0 14px 4px;list-style:none;columns:2;column-gap:30px}@media(max-width:600px){.prose ul{columns:1}}
 .prose li{font-size:14px;color:var(--text);padding:3px 0 3px 18px;position:relative;break-inside:avoid}.prose li::before{content:'›';color:var(--gold);position:absolute;left:3px;font-weight:700}
-.kp{padding:20px 24px;border:1px solid rgba(255,180,0,.3);background:rgba(255,180,0,.06);border-radius:12px;margin:22px 0}
-.kp h5{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.kp li{list-style:none;font-size:14px;line-height:1.7;color:var(--white);padding:2px 0}
+.kp{padding:20px 24px;border:1px solid rgba(255,180,0,.3);background:rgba(255,180,0,.06);border-radius:12px;margin:22px 0}.kp h5,.kp .kp-title{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}.kp li{list-style:none;font-size:14px;line-height:1.7;color:var(--white);padding:2px 0}
 table{width:100%;border-collapse:collapse;font-size:13.5px}th{text-align:left;padding:10px 14px;background:rgba(255,180,0,.1);color:var(--gold);font-size:12px;letter-spacing:1px;text-transform:uppercase}td{padding:10px 14px;border-top:1px solid var(--border);color:var(--text)}
 .tw{overflow-x:auto;border:1px solid var(--border);border-radius:12px;margin:14px 0 22px}
 .dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:middle}
@@ -369,7 +368,15 @@ footer .legal-links a{color:var(--text);text-decoration:underline;margin:0 8px}
 .xn-tag{font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--cyan);background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.3);border-radius:20px;padding:2px 10px;white-space:nowrap;}
 .xn-item p{font-size:13.5px;color:var(--text);line-height:1.7;margin:0;}
 @media(max-width:700px){.xn-grid{grid-template-columns:minmax(0,1fr);}.xn-item{padding:16px 18px;}}
+
+  .kp .kp-title{font-weight:700}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 <nav>
@@ -416,7 +423,7 @@ footer .legal-links a{color:var(--text);text-decoration:underline;margin:0 8px}
     <p><strong>CCR = Constant Current Regulator.</strong> It supplies controlled current to the AGL series circuit. FAA currently lists <strong>AC 150/5345-10H</strong> as the specification for constant-current regulators and regulator monitors used with airport lighting circuits.</p>
     <h3 class="sh2">Basic function</h3>
     <ul><li>Supplies the series circuit</li><li>Controls circuit current</li><li>Provides different lighting intensity levels in applicable systems (typically 3 or 5 brightness steps)</li><li>Interfaces with airport lighting control arrangements</li></ul>
-    <div class="kp"><h5>Typical FAA values (check the applicable specification)</h5><ul><li>Class 1 = 6.6 A output; Class 2 = 20 A output (for specific applications)</li><li>Style 1 (3 brightness steps), Class 1: 4.8 / 5.5 / 6.6 A</li><li>Style 2 (5 brightness steps), Class 1: 2.8 / 3.4 / 4.1 / 5.2 / 6.6 A</li><li>Designation: L-828 = regulator without monitoring; L-829 = regulator with monitoring</li></ul></div>
+    <div class="kp"><div class="kp-title">Typical FAA values (check the applicable specification)</div><ul><li>Class 1 = 6.6 A output; Class 2 = 20 A output (for specific applications)</li><li>Style 1 (3 brightness steps), Class 1: 4.8 / 5.5 / 6.6 A</li><li>Style 2 (5 brightness steps), Class 1: 2.8 / 3.4 / 4.1 / 5.2 / 6.6 A</li><li>Designation: L-828 = regulator without monitoring; L-829 = regulator with monitoring</li></ul></div>
     <p>More detail: <a href="study-notes-constant-current-regulators.html" style="color:var(--gold)">Study Note 07: Constant Current Regulators</a>.</p>
     <div class="qlist"><details><summary>Why is a CCR used in AGL?</summary><p>Because the series-circuit lighting system is designed to operate with controlled constant current, so every light in the circuit receives the same current.</p></details>
     <details><summary>What are the typical FAA CCR output currents?</summary><p>Maximum 6.6 A. A 3-step CCR gives 4.8, 5.5 and 6.6 A; a 5-step CCR gives 2.8, 3.4, 4.1, 5.2 and 6.6 A.</p></details></div></section>
@@ -439,7 +446,7 @@ footer .legal-links a{color:var(--text);text-decoration:underline;margin:0 8px}
     <p>An AGL isolating transformer provides <strong>electrical isolation between the primary series circuit and the individual light fixture</strong>. FAA <strong>AC 150/5345-47C</strong> specifically covers series-to-series isolation transformers for airport lighting systems.</p>
     <h3 class="sh2">Why is it important?</h3>
     <ul><li>Electrically isolates the fixture from the primary series circuit</li><li>Transfers power to the secondary side</li><li>Allows individual fixtures to connect to the series circuit</li><li>Forms a key interface between the primary circuit and light fixture</li><li>Keeps the primary loop closed if a lamp fails, so one dead lamp does not put out the whole circuit</li></ul>
-    <div class="kp"><h5>Designations and ratings</h5><ul><li>L-830 = 60 Hz series; <strong>L-831 = 50 Hz series</strong> (check which applies to your supply frequency)</li><li>Typical series-circuit rating: 6.6 A primary, with different wattage sizes for different fixtures</li></ul></div>
+    <div class="kp"><div class="kp-title">Designations and ratings</div><ul><li>L-830 = 60 Hz series; <strong>L-831 = 50 Hz series</strong> (check which applies to your supply frequency)</li><li>Typical series-circuit rating: 6.6 A primary, with different wattage sizes for different fixtures</li></ul></div>
     <p>More detail: <a href="study-notes-agl-isolating-transformers.html" style="color:var(--gold)">Study Note 08: AGL Isolating Transformers</a>.</p>
     <div class="qlist"><details><summary>Which FAA isolating transformer designation is for 50 Hz systems?</summary><p>L-831 is the 50 Hz series; L-830 is the 60 Hz series. Check the project specification for the applicable frequency.</p></details></div></section>
 
@@ -454,7 +461,7 @@ footer .legal-links a{color:var(--text);text-decoration:underline;margin:0 8px}
 
   <section id="l823"><div class="nn">6</div><h2>L-823 PLUG &amp; RECEPTACLE</h2>
     <p>L-823 connectors are used in airport lighting systems for connections involving <strong>underground power cables, isolation transformer leads and light fixture leads</strong>. <strong>AC 150/5345-26E</strong> is the current FAA specification for L-823 plug and receptacle cable connectors. L-823 covers <strong>both</strong> the primary (series-circuit) connectors and the secondary (fixture-lead) connectors.</p>
-    <div class="kp"><h5>Exam point</h5><ul><li>L-823 = Airport Lighting Cable Connector</li></ul></div>
+    <div class="kp"><div class="kp-title">Exam point</div><ul><li>L-823 = Airport Lighting Cable Connector</li></ul></div>
     <p>More detail: <a href="study-notes-agl-l823-connectors.html" style="color:var(--gold)">Study Note 10: L-823 Connectors</a>.</p></section>
 
   <section id="secondary"><div class="nn">7</div><h2>SECONDARY CONNECTION</h2>
@@ -493,7 +500,7 @@ CCR ───── Primary Cable ───── Transformer
       <div class="card"><h3>Example fault: one runway light not operating</h3><p><strong style="color:var(--white)">Possible causes</strong></p><ul><li>Fixture fault</li><li>Secondary connector problem</li><li>Transformer fault</li><li>Primary connector problem</li><li>Local cable issue</li></ul><p style="margin-top:10px">Do not assume the lamp or LED module is automatically the fault.</p></div>
       <div class="card"><h3>Example fault: several lights in a series circuit not operating</h3><p><strong style="color:var(--white)">Consider</strong></p><ul><li>CCR output</li><li>Primary circuit</li><li>Cable continuity</li><li>Connector condition</li><li>Multiple component failures</li></ul><p style="margin-top:10px">The more fixtures affected, the more important it becomes to investigate the common part of the system.</p></div>
     </div>
-    <div class="kp"><h5>Whole circuit or part of it?</h5><ul><li>Whole circuit dark: suspect the CCR (including its protection) or an open primary loop</li><li>Only some lights out: the loop is intact, so the fault is local to those fixtures, transformers or connectors</li></ul></div>
+    <div class="kp"><div class="kp-title">Whole circuit or part of it?</div><ul><li>Whole circuit dark: suspect the CCR (including its protection) or an open primary loop</li><li>Only some lights out: the loop is intact, so the fault is local to those fixtures, transformers or connectors</li></ul></div>
     <div class="qlist"><details><summary>If the whole circuit is dark, where should you look first?</summary><p>At the CCR (including its protection) and the primary loop for an open circuit. If only some lights are out, the loop is intact and the fault is local to those fixtures.</p></details></div></section>
 
   <section id="revision"><div class="label alt">Quick Revision</div><h2>AGL ELECTRICAL REVISION TABLE</h2>
@@ -501,7 +508,7 @@ CCR ───── Primary Cable ───── Transformer
     <p>FAA's current airport-lighting advisory-circular catalogue separately identifies specifications for CCRs, L-823 connectors, isolation transformers and L-824 airport-lighting cable.</p>
     <div class="tw"><table><tr><th>FAA advisory circular</th><th>Covers</th></tr><tr><td>AC 150/5345-10H</td><td>Constant-current regulators and regulator monitors</td></tr><tr><td>AC 150/5345-47C</td><td>Series-to-series isolation transformers</td></tr><tr><td>AC 150/5345-7F</td><td>L-824 underground electrical cable</td></tr><tr><td>AC 150/5345-26E</td><td>L-823 plug and receptacle cable connectors</td></tr></table></div></section>
 
-  <section id="keypoints"><div class="kp"><h5>Key points for exams</h5><ul><li>CCR = Constant Current Regulator</li><li>AGL commonly uses series circuits</li><li>Transformer = isolation between primary series circuit and fixture</li><li>L-823 = Airport lighting connector specification</li><li>L-824 = Airport lighting underground cable specification in the FAA framework</li><li>L-831 = 50 Hz isolating transformer series (L-830 = 60 Hz)</li><li>CAT I switch-over 15 s; CAT II/III key lights 1 s</li><li>Never open an energised series circuit</li><li>Always understand the complete circuit before troubleshooting</li></ul></div></section>
+  <section id="keypoints"><div class="kp"><div class="kp-title">Key points for exams</div><ul><li>CCR = Constant Current Regulator</li><li>AGL commonly uses series circuits</li><li>Transformer = isolation between primary series circuit and fixture</li><li>L-823 = Airport lighting connector specification</li><li>L-824 = Airport lighting underground cable specification in the FAA framework</li><li>L-831 = 50 Hz isolating transformer series (L-830 = 60 Hz)</li><li>CAT I switch-over 15 s; CAT II/III key lights 1 s</li><li>Never open an energised series circuit</li><li>Always understand the complete circuit before troubleshooting</li></ul></div></section>
 
   <section id="expert-notes">
 <div class="label alt">Field Insight</div><h2>ENGINEERING &amp; EXPERT NOTES</h2>

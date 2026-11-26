@@ -93,8 +93,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -163,9 +162,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -180,8 +177,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -523,6 +519,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -560,7 +562,7 @@
 <section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout">
 <div class="inputs">
 <div class="step">
-<div class="subsection-head"><h3>CCR &amp; Input Readings</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">CCR &amp; Input Readings</h2><div class="sub-line"></div></div>
   <div class="calc-grid"><div>
     <div class="field-group"><label>Rated size</label><select id="rated"><option value="4">4 kW</option><option value="7.5">7.5 kW</option><option value="10" selected>10 kW</option><option value="15">15 kW</option><option value="20">20 kW</option><option value="25">25 kW</option><option value="30">30 kW</option><option value="50">50 kW</option></select><div class="field-hint">Nameplate rating, kW treated as kVA.</div></div>
     <div class="field-group"><label>Input supply</label><select id="phase"><option value="1">Single-phase</option><option value="3">Three-phase</option></select></div>
@@ -572,7 +574,7 @@
   
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Output Readings</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Output Readings</h2><div class="sub-line"></div></div>
   <div class="calc-grid"><div>
     <div class="field-group"><label>Output voltage (V)</label><input type="number" id="vout" value="1400" min="1" step="1"/><div class="field-hint">Across the load or the series circuit.</div></div>
     <div class="field-group"><label>Output current (A)</label><input type="number" id="iout" value="6.6" min="0.01" step="0.01"/></div>
@@ -583,7 +585,7 @@
   
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Acceptance Limits <span class="tag-mini">from your specification</span></h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Acceptance Limits <span class="tag-mini">from your specification</span></h2><div class="sub-line"></div></div>
   <div class="calc-grid"><div>
     <div class="field-group"><label>Minimum efficiency (%)</label><input type="number" id="minEff" value="90" min="1" max="100" step="0.1"/><div class="field-hint">Placeholder. Use the specification or data sheet figure.</div></div>
     <div class="field-group"><label>Minimum input power factor</label><input type="number" id="minPF" value="0.9" min="0.3" max="1" step="0.01"/><div class="field-hint">Placeholder. Use the specification or data sheet figure.</div></div>
@@ -593,13 +595,13 @@
   
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Load Regulation <span class="tag-mini">optional</span></h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Load Regulation <span class="tag-mini">optional</span></h2><div class="sub-line"></div></div>
   <p class="block-note" style="margin-bottom:12px;">Measured output current at different loads on the CCR. Clear a row to leave it out.</p>
   <div class="grp-scroll"><table class="grp-table" style="min-width:460px;"><thead><tr><th>Load (% of rated)</th><th>Output current (A)</th><th>Deviation</th><th>Result</th></tr></thead><tbody><tr><td><input type="number" id="lp1" value="100" min="1" max="120" step="1"/></td><td><input type="number" id="li1" value="6.6" min="0" step="0.01"/></td><td class="sub" id="ld1">—</td><td class="sub" id="lr1">—</td></tr><tr><td><input type="number" id="lp2" value="75" min="1" max="120" step="1"/></td><td><input type="number" id="li2" value="6.59" min="0" step="0.01"/></td><td class="sub" id="ld2">—</td><td class="sub" id="lr2">—</td></tr><tr><td><input type="number" id="lp3" value="50" min="1" max="120" step="1"/></td><td><input type="number" id="li3" value="6.61" min="0" step="0.01"/></td><td class="sub" id="ld3">—</td><td class="sub" id="lr3">—</td></tr><tr><td><input type="number" id="lp4" value="25" min="1" max="120" step="1"/></td><td><input type="number" id="li4" value="6.62" min="0" step="0.01"/></td><td class="sub" id="ld4">—</td><td class="sub" id="lr4">—</td></tr></tbody></table></div>
   
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Brightness-Step Currents <span class="tag-mini">optional</span></h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Brightness-Step Currents <span class="tag-mini">optional</span></h2><div class="sub-line"></div></div>
   <div class="field-group" style="max-width:420px;"><label>CCR class and steps</label><select id="stepSet"><option value="c1s5" selected>Class 1 (6.6 A) · 5-step</option><option value="c1s3">Class 1 (6.6 A) · 3-step</option><option value="c2s5">Class 2 (20 A) · 5-step</option></select><div class="field-hint">Choosing a set loads its nominal currents, the rated output current and the usual tolerance (±0.1 A for 6.6 A, ±0.3 A for 20 A). Edit them afterwards if your specification differs.</div></div>
   <div class="grp-scroll"><table class="grp-table" style="min-width:520px;"><thead><tr><th>Step</th><th>Nominal</th><th>Measured (A)</th><th>Deviation</th><th>Result</th></tr></thead><tbody><tr id="sRow1"><td class="sub" style="text-align:left;" id="sl1">B1</td><td id="sn1">2.8 A</td><td><input type="number" id="si1" value="2.8" min="0" step="0.01"/></td><td class="sub" id="sd1">—</td><td class="sub" id="sr1">—</td></tr><tr id="sRow2"><td class="sub" style="text-align:left;" id="sl2">B2</td><td id="sn2">3.4 A</td><td><input type="number" id="si2" value="3.41" min="0" step="0.01"/></td><td class="sub" id="sd2">—</td><td class="sub" id="sr2">—</td></tr><tr id="sRow3"><td class="sub" style="text-align:left;" id="sl3">B3</td><td id="sn3">4.1 A</td><td><input type="number" id="si3" value="4.1" min="0" step="0.01"/></td><td class="sub" id="sd3">—</td><td class="sub" id="sr3">—</td></tr><tr id="sRow4"><td class="sub" style="text-align:left;" id="sl4">B4</td><td id="sn4">5.2 A</td><td><input type="number" id="si4" value="5.19" min="0" step="0.01"/></td><td class="sub" id="sd4">—</td><td class="sub" id="sr4">—</td></tr><tr id="sRow5"><td class="sub" style="text-align:left;" id="sl5">B5</td><td id="sn5">6.6 A</td><td><input type="number" id="si5" value="6.6" min="0" step="0.01"/></td><td class="sub" id="sd5">—</td><td class="sub" id="sr5">—</td></tr></tbody></table></div>
   
@@ -631,13 +633,13 @@
 <section class="tab-panel" id="tab-report" role="tabpanel" aria-labelledby="t-report" hidden><div class="container">
 <div class="calc-card">
       <div class="step">
-<div class="subsection-head"><h3>Report Details</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Report Details</h2><div class="sub-line"></div></div>
 <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label>Project / Test Site <span style="text-transform:none;color:var(--text);font-weight:500;">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 CCR room, SAT"/></div>
     <div class="field-group" style="margin-bottom:0;"><label>CCR Tag / Serial <span style="text-transform:none;color:var(--text);font-weight:500;">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. CCR-R1, S/N 12345"/></div>
   </div>
 </div>
-      <div class="subsection-head"><h3>Acceptance Summary</h3><div class="sub-line"></div></div>
+      <div class="subsection-head"><h2 class="subsection-title">Acceptance Summary</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap" style="max-height:none;"><table id="sumTable"><thead><tr><th>Check</th><th>Measured</th><th>Limit</th><th>Result</th></tr></thead><tbody></tbody></table></div>
   
       <div class="actions"><button type="button" class="report-btn" onclick="generateReport()"><i class="fa-solid fa-file-pdf"></i> Generate Test Report (PDF)</button>
@@ -648,12 +650,12 @@
 <section class="tab-panel" id="tab-method" role="tabpanel" aria-labelledby="t-method" hidden><div class="container">
 <div class="block-label">Method &amp; Reference</div><h2 class="block-title">How the test readings are worked up</h2><p class="block-note">Every step is shown so the result can be checked by hand.</p>
   <div class="ref-cols"><div>
-    <div class="method-card"><h4><i class="fa-solid fa-arrow-right-to-bracket"></i> 1. Input side</h4><p>Apparent power comes from voltage and current, with a √3 factor on a three-phase supply. The power factor is real power over apparent power.</p><div class="formula">S_in = V × I (×√3) ÷ 1000 &nbsp;&nbsp; PF_in = P_in ÷ S_in</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-arrow-right-from-bracket"></i> 2. Output side</h4><div class="formula">S_out = V_out × I_out ÷ 1000 &nbsp;&nbsp; P_out = S_out × PF_load</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-gauge-high"></i> 3. Efficiency and loss</h4><div class="formula">η = P_out ÷ P_in &nbsp;&nbsp; Loss = P_in − P_out</div><p>The loss all becomes heat in the CCR room. One kilowatt is about 3,412 BTU per hour, which is useful when sizing cooling.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-sliders"></i> 4. Regulation and steps</h4><p>Each measured current is compared with its nominal value. Pass or fail uses the tolerance in amperes, since the limit is an absolute current rather than a percentage. The spread is the gap between the highest and lowest load-point current, as a percentage of the rated current.</p><div class="formula">Deviation = (I_meas − I_nom) ÷ I_nom × 100</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-arrow-right-to-bracket"></i> 1. Input side</h3><p>Apparent power comes from voltage and current, with a √3 factor on a three-phase supply. The power factor is real power over apparent power.</p><div class="formula">S_in = V × I (×√3) ÷ 1000 &nbsp;&nbsp; PF_in = P_in ÷ S_in</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-arrow-right-from-bracket"></i> 2. Output side</h3><div class="formula">S_out = V_out × I_out ÷ 1000 &nbsp;&nbsp; P_out = S_out × PF_load</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-gauge-high"></i> 3. Efficiency and loss</h3><div class="formula">η = P_out ÷ P_in &nbsp;&nbsp; Loss = P_in − P_out</div><p>The loss all becomes heat in the CCR room. One kilowatt is about 3,412 BTU per hour, which is useful when sizing cooling.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-sliders"></i> 4. Regulation and steps</h3><p>Each measured current is compared with its nominal value. Pass or fail uses the tolerance in amperes, since the limit is an absolute current rather than a percentage. The spread is the gap between the highest and lowest load-point current, as a percentage of the rated current.</p><div class="formula">Deviation = (I_meas − I_nom) ÷ I_nom × 100</div></div>
   </div><div>
-    <div class="method-card"><h4><i class="fa-solid fa-vial"></i> Worked example</h4><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
+    <div class="method-card"><h3><i class="fa-solid fa-vial"></i> Worked example</h3><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
       <tr><td>230 V × 45 A, single-phase</td><td class="val">10.35 kVA</td></tr>
       <tr><td>Input power 9.85 kW</td><td class="val">PF 0.952</td></tr>
       <tr><td>1,400 V × 6.6 A, PF 1.00</td><td class="val">9.24 kW</td></tr>
@@ -662,7 +664,7 @@
       <tr><td>Heat at 3,412 BTU per kW</td><td class="val">2,081 BTU/h</td></tr>
       <tr><td>Loading on 10 kW CCR</td><td class="val">92.4 %</td></tr>
       <tr><td>Currents 6.59 to 6.62 A</td><td class="val">0.45 % spread</td></tr></table></div>
-    <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4><p>It does not measure harmonics, ripple or waveform shape, and it assumes the readings are true RMS. The limits are placeholders until you enter your specification values, and a CCR's rated size, step currents and test conditions come from its data sheet and the applicable standard.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3><p>It does not measure harmonics, ripple or waveform shape, and it assumes the readings are true RMS. The limits are placeholders until you enter your specification values, and a CCR's rated size, step currents and test conditions come from its data sheet and the applicable standard.</p></div>
   </div></div>
 </div></section>
 </main>
@@ -686,10 +688,10 @@
 </section>
 
 <section><div class="container"><div class="block-label">More Tools</div><h2 class="block-title">Related Knowledge Hub Resources</h2><div class="link-grid">
-  <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><h5>Calculator #16</h5><p>Required CCR capacity.</p></a>
-  <a href="calc-ccr-step-brightness-reference.html" class="tool-link"><i class="fa-solid fa-layer-group"></i><h5>CCR Step Reference</h5><p>Nominal step currents by brightness.</p></a>
-  <a href="calc-series-circuit-energy-operating-cost.html" class="tool-link"><i class="fa-solid fa-coins"></i><h5>Calculator #20</h5><p>Series circuit energy and cost.</p></a>
-  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+  <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><div class="tool-link-title">Calculator #16</div><p>Required CCR capacity.</p></a>
+  <a href="calc-ccr-step-brightness-reference.html" class="tool-link"><i class="fa-solid fa-layer-group"></i><div class="tool-link-title">CCR Step Reference</div><p>Nominal step currents by brightness.</p></a>
+  <a href="calc-series-circuit-energy-operating-cost.html" class="tool-link"><i class="fa-solid fa-coins"></i><div class="tool-link-title">Calculator #20</div><p>Series circuit energy and cost.</p></a>
+  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
 </div></div></section>
 
 <!-- CONNECT-BLOCK v2.1 -->

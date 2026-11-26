@@ -84,8 +84,7 @@
   .req-badge.na{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
   .req-badge .req-sub{font-size:12px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;line-height:1.6;}
 
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
 
   .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
@@ -119,9 +118,7 @@
 
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -136,8 +133,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:1fr;}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -442,6 +438,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -490,7 +492,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
 <div class="step">
-  <div class="subsection-head"><h3>1 · Circuit data</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">1 · Circuit data</h2><div class="sub-line"></div></div>
   <div class="fields">
     <div class="field-group"><label for="L">Circuit cable length L <span class="u">(m)</span></label><input type="number" id="L" min="1" step="any" value="1200"/><details class="why"><summary>Rule note</summary><p class="field-hint">One-way route length of the cable under test.</p></details></div>
     <div class="field-group"><label for="sp">Fixture / transformer spacing <span class="u">(m)</span></label><input type="number" id="sp" min="0" step="any" value="30"/><details class="why"><summary>Rule note</summary><p class="field-hint">Used to name the nearest fixture and set the half-split resolution.</p></details></div>
@@ -499,7 +501,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>2 · Classify the fault</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">2 · Classify the fault</h2><div class="sub-line"></div></div>
   <div class="fields">
     <div class="field-group"><label for="ir">Insulation resistance to earth <span class="u">(M&Omega;)</span></label><input type="number" id="ir" min="0" step="any"/></div>
     <div class="field-group"><label for="mi">Minimum acceptable IR <span class="u">(M&Omega;)</span></label><input type="number" id="mi" value="50" min="0" step="any"/><details class="why"><summary>Rule note</summary><p class="field-hint">Placeholder. Use your specification.</p></details></div>
@@ -511,7 +513,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>3 · Distance methods</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">3 · Distance methods</h2><div class="sub-line"></div></div>
 
   <div class="msub">A · Murray loop <span class="u">(earth fault on one conductor, healthy conductor of the same length)</span></div>
   <div class="fields">
@@ -543,7 +545,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>4 · Half-split tracker</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">4 · Half-split tracker</h2><div class="sub-line"></div></div>
   <details class="why"><summary>How it works</summary><p class="field-hint">Open the circuit at a test point and test the section from the source to that point. If it is healthy, the fault is further out. If it is faulty, the fault is nearer the source. The tracker narrows the bracket and gives the next test point.</p></details>
   <div class="fields" style="margin-top:14px">
     <div class="field-group"><label for="hp">Test point distance from source <span class="u">(m)</span></label><input type="number" id="hp" min="0" step="any"/></div>
@@ -575,7 +577,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 
 <!-- ══════════ TAB 2 — SCHEDULE & REPORT ══════════ -->
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head" style="margin-top:0;padding-top:0;border:0"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border:0"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Rehabilitation"/></div>
     <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Circuit / Feeder <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. RWY 09/27 edge circuit 2"/></div>
@@ -584,9 +586,9 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button></div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
 
-  <div class="subsection-head"><h3>Estimate schedule</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Estimate schedule</h2><div class="sub-line"></div></div>
   <div class="method-card" style="margin-top:16px;margin-bottom:0;">
-    <h4><i class="fa-solid fa-list-check"></i> Fault location estimates by method</h4>
+    <h3><i class="fa-solid fa-list-check"></i> Fault location estimates by method</h3>
     <div class="tw"><table class="std-table qty-table" id="estTable">
       <thead><tr><th>Method</th><th style="text-align:right;">Estimate (m)</th><th style="text-align:right;">Nearest fixture</th><th>Basis</th></tr></thead>
       <tbody id="estBody"></tbody>
@@ -594,7 +596,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <p class="field-hint" style="margin-top:12px;">Estimates only. Measure every distance from the same end of the circuit and confirm the fault with a retest before digging.</p>
   </div>
 
-  <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown" id="breakdownGrid">
     <div class="bd-card"><div class="bd-label">Probable location</div><div class="bd-val" id="bdLoc">—</div><div class="bd-sub" id="bdLocSub"></div></div>
     <div class="bd-card"><div class="bd-label">Search window</div><div class="bd-val" id="bdWin">—</div></div>
@@ -605,12 +607,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   </div>
 
   <div class="method-card" style="margin-top:22px;margin-bottom:0;">
-    <h4><i class="fa-solid fa-code-branch"></i> Half-split history</h4>
+    <h3><i class="fa-solid fa-code-branch"></i> Half-split history</h3>
     <div class="tw"><table class="std-table" id="histTable"><thead><tr><th>Step</th><th>Test point (m)</th><th>Section source &rarr; test point</th></tr></thead><tbody id="histBody"></tbody></table></div>
   </div>
 
   <div class="method-card" style="margin-top:16px;margin-bottom:0;">
-    <h4><i class="fa-solid fa-ruler-horizontal"></i> Combined search window along the circuit</h4>
+    <h3><i class="fa-solid fa-ruler-horizontal"></i> Combined search window along the circuit</h3>
     <div class="bar" aria-hidden="true"><i id="cbS"></i></div>
     <div class="bar-ends"><span>0 m</span><span id="barEndS">—</span></div>
   </div>
@@ -630,7 +632,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-calculator"></i> Distance formulas</h4>
+          <h3><i class="fa-solid fa-calculator"></i> Distance formulas</h3>
           <div class="formula">Murray: x = 2L &times; P / (P + Q)</div><br/>
           <div class="formula">Resistance: x = R<sub>20</sub> / (&Omega;/km &divide; 1000)</div><br/>
           <div class="formula">R<sub>20</sub> = R / (1 + 0.00393 &times; (t &minus; 20))</div><br/>
@@ -639,7 +641,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           <p>x is the distance from the test end. L is the cable length, P and Q are the Murray ratio arms, V<sub>p</sub> is the velocity of propagation and t is the round-trip echo time.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> Which method for which fault</h4>
+          <h3><i class="fa-solid fa-table"></i> Which method for which fault</h3>
           <div class="tw"><table class="std-table">
             <tr><th>Fault type</th><th>Methods</th></tr>
             <tr><td>Earth (insulation) fault</td><td class="val">Murray loop with a healthy conductor of the same length, TDR, or conductor resistance for a solid fault. Then half-split.</td></tr>
@@ -649,7 +651,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table></div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <p><strong>Murray:</strong> L = 1200 m, P = 300, Q = 700 &rarr; x = 2 &times; 1200 &times; 300 / 1000 = <strong>720 m</strong>, about fixture 24 at 30 m spacing.</p>
           <p><strong>Resistance:</strong> 2.53 &Omega; at 20 &deg;C on 3.51 &Omega;/km &rarr; x = 2.53 / 0.00351 = <strong>720.8 m</strong>.</p>
           <p><strong>TDR:</strong> 8.2 &micro;s at 170 m/&micro;s &rarr; x = 170 &times; 8.2 / 2 = <strong>697 m</strong>.</p>
@@ -658,7 +660,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-badge-check"></i> Agreement between methods</h4>
+          <h3><i class="fa-solid fa-badge-check"></i> Agreement between methods</h3>
           <table class="std-table">
             <tr><td>🟢 High</td><td class="val">Spread of estimates up to 5% of the circuit length</td></tr>
             <tr><td>🟠 Medium</td><td class="val">Spread above 5% and up to 15%</td></tr>
@@ -667,15 +669,15 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-code-branch"></i> Half-split procedure</h4>
+          <h3><i class="fa-solid fa-code-branch"></i> Half-split procedure</h3>
           <p>Open the circuit at the suggested test point and test the section from the source to that point. A healthy result moves the lower end of the bracket out to the test point. A faulty result moves the upper end in. Repeat until the bracket is about one fixture spacing.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-magnifying-glass-location"></i> Search window</h4>
+          <h3><i class="fa-solid fa-magnifying-glass-location"></i> Search window</h3>
           <p>The window runs from the lowest to the highest estimate, padded by one fixture spacing or 1% of the circuit length, whichever is larger. The probable location is the average of all estimates, including the half-split mid-point once a result is recorded.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> Engineering note</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> Engineering note</h3>
           <p>Cable route length, joints, bends and temperature all add error, so use the search window to dig or open the circuit at the marked fixture, and confirm with a retest. Measure every distance from the same end of the circuit.</p>
           <p>Murray and conductor resistance read along the conductor. Each isolating transformer primary adds winding resistance that can equal tens of metres of cable, so use them on a disconnected cable section. Always isolate and discharge the circuit before any work.</p>
         </div>
@@ -707,9 +709,9 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Ohm's Law &amp; Power</h5><p>Solve V, I, R and P for series circuits.</p></a>
-      <a href="calc-earth-resistance.html" class="tool-link"><i class="fa-solid fa-plug-circle-bolt"></i><h5>Earth Resistance</h5><p>Earth electrode and grounding calculations.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>All AGL engineering calculators.</p></a>
+      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Ohm's Law &amp; Power</div><p>Solve V, I, R and P for series circuits.</p></a>
+      <a href="calc-earth-resistance.html" class="tool-link"><i class="fa-solid fa-plug-circle-bolt"></i><div class="tool-link-title">Earth Resistance</div><p>Earth electrode and grounding calculations.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>All AGL engineering calculators.</p></a>
     </div>
   </div>
 </section>

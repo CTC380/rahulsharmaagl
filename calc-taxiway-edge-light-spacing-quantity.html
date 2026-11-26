@@ -86,8 +86,7 @@
   .calc-warn i{color:var(--cyan);margin-top:2px;}
 
   /* DASHBOARD CHIPS */
-  .dash-group{margin-top:18px;}
-  .dash-group h5{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+  .dash-group{margin-top:18px;}.dash-group h5,.dash-group .dash-group-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
   .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
   @media(max-width:800px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:480px){.dash-grid{grid-template-columns:1fr;}}
@@ -106,8 +105,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -184,9 +182,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -201,8 +197,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -511,6 +506,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -769,14 +770,14 @@ straight,215</textarea>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
   <div class="subsection-head"><h2>Segment schedule</h2><div class="sub-line"></div></div>
   <div class="method-card" style="margin-top:22px;">
-        <h4><i class="fa-solid fa-list-check"></i> Segment Schedule</h4>
+        <h3><i class="fa-solid fa-list-check"></i> Segment Schedule</h3>
         <div id="segmentScheduleWrap"></div>
         <p class="field-hint" style="margin-top:12px;">Segment-level quantity, not a single-length division — Q<sub>total</sub> = ΣQ<sub>i</sub> − Q<sub>duplicates</sub>. Curve segments report inner-edge and outer-edge positions separately since they follow different radii and arc lengths.</p>
       </div>
 
   <div class="subsection-head"><h2>Quantity summary</h2><div class="sub-line"></div></div>
   <div class="method-card">
-        <h4><i class="fa-solid fa-calculator"></i> Quantity Summary</h4>
+        <h3><i class="fa-solid fa-calculator"></i> Quantity Summary</h3>
         <table class="std-table qty-table">
           <tr><th>Component</th><th>Basis</th><th style="text-align:right;">Quantity</th></tr>
           <tr><td>Side A (edge 1)</td><td class="qty-basis">Straight-side + inner-curve positions</td><td class="val" id="qtySideA" style="text-align:right;">—</td></tr>
@@ -873,39 +874,40 @@ straight,215</textarea>
     <div class="block-label">Methodology</div>
     <h2 class="block-title">How This Calculator Works</h2>
     <p class="block-note">Taxiway geometry is broken into a sequence of straight and curve segments plus exclusion zones (intersections, holding positions, stop bars) rather than calculated as one overall length — each segment gets its own rule, and the results are summed.</p>
+<p><b>Related engineering topics:</b> <a style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;" href="calc-taxiway-lighting-layout-generator.html">Taxiway Lighting Layout Generator</a>; <a style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;" href="calc-taxiway-intersection-lighting-calculator.html">Taxiway Intersection Lighting Calculator</a>.</p>
 
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ruler-horizontal"></i> Straight-section rule</h4>
+          <h3><i class="fa-solid fa-ruler-horizontal"></i> Straight-section rule</h3>
           <div class="formula">N = ⌈ L / S<sub>design</sub> ⌉ &nbsp;→&nbsp; S<sub>actual</sub> = L / N &nbsp;→&nbsp; S<sub>actual</sub> ≤ 60 m (ICAO)</div>
           <p>ICAO taxiway-edge-light spacing on straight sections is taken as not exceeding 60 m per ICAO Annex 14, Volume I, Chapter 5 (taxiway edge lights, straight sections). The FAA equivalent (200 ft per AC 150/5340-30J) is held as a separate editable value so the two standards are never silently merged into one value.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-circle-notch"></i> Curve geometry — arc length</h4>
+          <h3><i class="fa-solid fa-circle-notch"></i> Curve geometry — arc length</h3>
           <div class="formula">L<sub>arc</sub> = R·θ (θ in radians) &nbsp;=&nbsp; 2πR × (θ° / 360)</div>
           <p>Worked example: R = 100 m, θ = 90° → L<sub>arc</sub> = 2π(100) × (90/360) = <strong>157.08 m</strong>. The calculator applies the curve-specific spacing rule to this arc length rather than treating it as a 157 m straight section.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-shapes"></i> Inner and outer curve radius</h4>
+          <h3><i class="fa-solid fa-shapes"></i> Inner and outer curve radius</h3>
           <div class="formula">R<sub>inner</sub> = R<sub>CL</sub> − (W/2 + D) &nbsp;&nbsp;&nbsp; R<sub>outer</sub> = R<sub>CL</sub> + (W/2 + D)</div>
           <p>Worked example: R<sub>CL</sub> = 100 m, W = 23 m, D = 0 → R<sub>inner</sub> = 88.5 m, R<sub>outer</sub> = 111.5 m (with D = 0.6 m: 87.9 m and 112.1 m, because the lights sit outside the pavement edge). Each edge follows its own radius and therefore its own arc length and light count — a curve segment is calculated as two related but distinct edges, not one shared count halved.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-diagram-project"></i> Intersection, holding-position &amp; stop-bar handling</h4>
+          <h3><i class="fa-solid fa-diagram-project"></i> Intersection, holding-position &amp; stop-bar handling</h3>
           <p>These are not taxiway edge lights. Segments tagged as an intersection, holding position, stop bar, or other exclusion consume chainage but are excluded from the edge-light count entirely and generate a review flag rather than being silently skipped — "Taxiway edge-light calculation terminates/interacts with this configuration — detailed layout review required."</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-copy"></i> Duplicate-fixture control</h4>
+          <h3><i class="fa-solid fa-copy"></i> Duplicate-fixture control</h3>
           <p>Where two generated positions from crossing taxiways would occupy the same physical location, this calculator does not attempt automatic 2D collision detection — that requires a full site coordinate model outside a segment-based engine. Instead it exposes a manual "duplicate positions removed" figure so Q<sub>total</sub> = ΣQ<sub>i</sub> − Q<sub>duplicates</sub> is never silently double-counted, and flags the assumption openly rather than hiding it.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-magnifying-glass-chart"></i> Existing-installation inspection</h4>
+          <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Existing-installation inspection</h3>
           <div class="formula">D<sub>i</sub> = √[(x<sub>i+1</sub>−x<sub>i</sub>)² + (y<sub>i+1</sub>−y<sub>i</sub>)²]</div>
           <p>Straight-line Euclidean distance between consecutive measured fixtures, checked against the selected S<sub>max</sub> (straight or curve). This formula works identically on straight or curved runs — only the applicable criterion differs, which is why the calculator asks which one applies to each entered coordinate set.</p>
         </div>
@@ -913,7 +915,7 @@ straight,215</textarea>
 
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> Standard-specific spacing database</h4>
+          <h3><i class="fa-solid fa-table"></i> Standard-specific spacing database</h3>
           <table class="std-table">
             <tr><th>Standard</th><th>Straight</th><th>Curve</th></tr>
             <tr><td>ICAO Annex 14</td><td class="val">60 m</td><td class="val">Project-entered</td></tr>
@@ -923,7 +925,7 @@ straight,215</textarea>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Straight-section worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Straight-section worked example</h3>
           <table class="std-table">
             <tr><th>L</th><th>S</th><th>N</th><th>Positions/side</th><th>Total (both sides)</th></tr>
             <tr><td>600 m</td><td>60 m</td><td class="val">10</td><td class="val">11</td><td class="val">22</td></tr>
@@ -932,13 +934,13 @@ straight,215</textarea>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-sitemap"></i> Segment-level quantity</h4>
+          <h3><i class="fa-solid fa-sitemap"></i> Segment-level quantity</h3>
           <div class="formula">Q<sub>i</sub> = f(L<sub>i</sub>, geometry<sub>i</sub>, standard, spacing<sub>i</sub>) &nbsp;→&nbsp; Q<sub>total</sub> = ΣQ<sub>i</sub> − Q<sub>duplicates</sub></div>
           <p>Calculating each segment independently and summing is more reliable than treating the entire taxiway as one length, since straight and curve sections — and exclusion zones — follow different rules.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this calculator does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this calculator does not do</h3>
           <p>It does not perform true 2D intersection geometry between two taxiways, does not maintain the radius-based ICAO/FAA curve-spacing tables, and does not generate fixture x,y coordinates (no taxiway bearing/orientation input is collected). Arc length, inner/outer radius, and segment-level quantity are calculated; exact figure-level geometry at intersections must be confirmed against the approved layout.</p>
         </div>
       </div>
@@ -968,11 +970,11 @@ straight,215</textarea>
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-runway-edge-light-spacing.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><h5>Calculator #01</h5><p>Runway edge-light longitudinal spacing.</p></a>
-      <a href="calc-runway-light-quantity.html" class="tool-link"><i class="fa-solid fa-calculator"></i><h5>Calculator #02</h5><p>Runway edge, threshold &amp; runway-end quantity.</p></a>
-      <a href="calc-runway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-ruler-horizontal"></i><h5>Calculator #07</h5><p>Runway edge-light station generation &amp; quantity.</p></a>
-      <a href="calc-taxiway-centreline-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-diagram-project"></i><h5>Calculator #09</h5><p>Taxiway centreline light spacing &amp; quantity.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-runway-edge-light-spacing.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><div class="tool-link-title">Calculator #01</div><p>Runway edge-light longitudinal spacing.</p></a>
+      <a href="calc-runway-light-quantity.html" class="tool-link"><i class="fa-solid fa-calculator"></i><div class="tool-link-title">Calculator #02</div><p>Runway edge, threshold &amp; runway-end quantity.</p></a>
+      <a href="calc-runway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-link-title">Calculator #07</div><p>Runway edge-light station generation &amp; quantity.</p></a>
+      <a href="calc-taxiway-centreline-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-diagram-project"></i><div class="tool-link-title">Calculator #09</div><p>Taxiway centreline light spacing &amp; quantity.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>
@@ -1351,8 +1353,8 @@ straight,215</textarea>
       chip(dup > 0 ? 'review' : 'na', 'Duplicate fixtures'),
     ].join('');
     document.getElementById('complianceDashboard').innerHTML = `
-      <div class="dash-group"><h5>Geometry</h5><div class="dash-grid">${geometryChips}</div></div>
-      <div class="dash-group"><h5>Layout</h5><div class="dash-grid">${layoutChips}</div></div>`;
+      <div class="dash-group"><div class="dash-group-title">Geometry</div><div class="dash-grid">${geometryChips}</div></div>
+      <div class="dash-group"><div class="dash-group-title">Layout</div><div class="dash-grid">${layoutChips}</div></div>`;
 
     const anyFail = straightChip === 'fail' || curveChip === 'fail' || offsetStatus === 'fail';
     const anyReview = straightChip === 'review' || curveChip === 'review' || hasIntersection || hasHolding || hasStopbar || dup > 0 || curveAdvisory;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PAPI Azimuth Adjustment | AGL Component Library</title>
+    <title>PAPI Azimuth Adjustment for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="PAPI Azimuth Adjustment explained: the precision horizontal-orientation mechanism aligning PAPI light units with the runway centreline." />
     <meta name="keywords" content="PAPI azimuth adjustment, runway centreline alignment, azimuth tolerance, FAA AC 150/5345-28, precision approach path indicator" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-papi-azimuth-adjustment.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="PAPI Azimuth Adjustment | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="PAPI Azimuth Adjustment for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="PAPI Azimuth Adjustment explained: the precision horizontal-orientation mechanism aligning PAPI light units with the runway centreline." />
     <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTD3nZohxguXf4pYuObNdnFLQ0XE3Addh11E7HQXMfsAOyAw-e58etvXVP&amp;s=10" />
     <meta property="og:image:alt" content="PAPI Azimuth Adjustment | AGL Component Library" />
@@ -25,14 +25,15 @@
     <meta property="article:author" content="Precision AGL Academy" />
     <meta property="article:section" content="AGL Component Library" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PAPI Azimuth Adjustment | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="PAPI Azimuth Adjustment for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="PAPI Azimuth Adjustment explained: the precision horizontal-orientation mechanism aligning PAPI light units with the runway centreline." />
     <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTD3nZohxguXf4pYuObNdnFLQ0XE3Addh11E7HQXMfsAOyAw-e58etvXVP&amp;s=10" />
     <meta name="twitter:image:alt" content="PAPI Azimuth Adjustment | AGL Component Library" />
     <meta name="theme-color" content="#060d1a" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         /* ── base styles (identical to other component pages) ── */
         * {
             margin: 0;
@@ -247,6 +248,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -363,8 +365,7 @@
         .diagram-node i {
             font-size: 20px;
             color: var(--gold);
-        }
-        .diagram-node h6 {
+        }.diagram-node .hl6 {
             font-family: 'Barlow Condensed', sans-serif;
             font-size: 13.5px;
             font-weight: 700;
@@ -518,8 +519,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -553,8 +553,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -605,8 +604,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -675,8 +673,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -732,8 +729,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -765,8 +761,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -829,8 +824,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -922,8 +916,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1018,8 +1011,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1291,8 +1283,7 @@
             color: var(--gold);
             margin-bottom: 10px;
             display: block;
-        }
-        .mech-item h5 {
+        }.mech-item h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -1343,8 +1334,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1507,6 +1497,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1537,7 +1533,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-arrows-left-right"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">PAPI <span>Azimuth Adjustment</span></h1>
+            <h1 class="comp-title">PAPI <span>Azimuth Adjustment</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">The precision horizontal orientation mechanism that aligns each PAPI light unit with the runway centreline. This adjustment ensures that the glide slope beam is directed along the correct approach azimuth, preventing lateral displacement that could mislead pilots during final approach.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1551,7 +1547,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a PAPI Azimuth Adjustment?</h2>
             <div class="info-panel">
                 <p>The <strong>PAPI Azimuth Adjustment</strong> is the mechanical system that allows the horizontal (left/right) orientation of a PAPI light unit to be set precisely. It is typically integrated into the mounting base or the frangible pole interface and provides a controlled means of rotating the entire PAPI unit around its vertical axis.</p>
                 <p style="margin-top:12px;">Proper azimuth alignment is essential because the PAPI beam must be directed exactly along the runway centreline. If a unit is misaligned horizontally, the pilot may see the glide slope indication incorrectly offset to one side, leading to a lateral deviation on approach. The azimuth adjustment mechanism allows fine‑tuning, typically with a range of ±5° and a resolution of a few arc‑minutes.</p>
@@ -1585,32 +1581,32 @@
                 <div class="mech-grid">
                     <div class="mech-item">
                         <i class="fa-solid fa-arrows-spin"></i>
-                        <h5 role="heading" aria-level="3">Pivot Bearing</h5>
+                        <h3>Pivot Bearing</h3>
                         <p>A robust bearing or bushing that allows the PAPI unit to rotate smoothly around its vertical axis. Often a large-diameter bolt or a precision ground pin.</p>
                     </div>
                     <div class="mech-item">
                         <i class="fa-solid fa-screwdriver-wrench"></i>
-                        <h5 role="heading" aria-level="3">Adjustment Screws</h5>
+                        <h3>Adjustment Screws</h3>
                         <p>Threaded rods (often with fine pitch) that push against the unit’s base or a slide plate. Turning the screw rotates the unit left or right.</p>
                     </div>
                     <div class="mech-item">
                         <i class="fa-solid fa-sliders"></i>
-                        <h5 role="heading" aria-level="3">Slotted Plates</h5>
+                        <h3>Slotted Plates</h3>
                         <p>An alternative to screws, using slotted holes and eccentric cams to provide coarse and fine adjustment in a compact package.</p>
                     </div>
                     <div class="mech-item">
                         <i class="fa-solid fa-lock"></i>
-                        <h5 role="heading" aria-level="3">Locking Mechanism</h5>
+                        <h3>Locking Mechanism</h3>
                         <p>Clamping bolts or locknuts that secure the adjustment after alignment, preventing drift due to vibration or wind loading.</p>
                     </div>
                     <div class="mech-item">
                         <i class="fa-solid fa-ruler"></i>
-                        <h5 role="heading" aria-level="3">Index Scale</h5>
+                        <h3>Index Scale</h3>
                         <p>Engraved or printed markings (often in degrees or arc‑minutes) that indicate the current azimuth angle, aiding in setting and recording.</p>
                     </div>
                     <div class="mech-item">
                         <i class="fa-solid fa-shield"></i>
-                        <h5 role="heading" aria-level="3">Corrosion Protection</h5>
+                        <h3>Corrosion Protection</h3>
                         <p>Stainless steel or plated components, with anti‑seize lubricants, to ensure the mechanism remains adjustable throughout its service life.</p>
                     </div>
                 </div>
@@ -1753,13 +1749,13 @@
                 <div class="diagram-flow">
                     <div class="diagram-node node-gold">
                         <i class="fa-regular fa-eye"></i>
-                        <h6 role="heading" aria-level="3">Theodolite Sighted</h6>
+                        <div class="hl6">Theodolite Sighted</div>
                         <p>On runway centreline reference mark</p>
                     </div>
                     <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     <div class="diagram-node">
                         <i class="fa-solid fa-ruler-combined"></i>
-                        <h6 role="heading" aria-level="3">Deviation Measured</h6>
+                        <div class="hl6">Deviation Measured</div>
                         <p>Horizontal angle vs. desired bearing</p>
                     </div>
                     <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
@@ -1767,13 +1763,13 @@
                         <div class="diagram-loop-pair">
                             <div class="diagram-node node-cyan">
                                 <i class="fa-solid fa-arrows-spin"></i>
-                                <h6 role="heading" aria-level="3">Turn Screw</h6>
+                                <div class="hl6">Turn Screw</div>
                                 <p>CW / CCW around pivot bearing</p>
                             </div>
                             <div class="diagram-loop-icon"><i class="fa-solid fa-rotate"></i></div>
                             <div class="diagram-node node-cyan">
                                 <i class="fa-regular fa-eye"></i>
-                                <h6 role="heading" aria-level="3">Re‑Sight</h6>
+                                <div class="hl6">Re‑Sight</div>
                                 <p>Theodolite re‑checked</p>
                             </div>
                         </div>
@@ -1782,13 +1778,13 @@
                     <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     <div class="diagram-node node-gold">
                         <i class="fa-solid fa-lock"></i>
-                        <h6 role="heading" aria-level="3">Locking Bolts Tightened</h6>
+                        <div class="hl6">Locking Bolts Tightened</div>
                         <p>Confirmed with a final sighting</p>
                     </div>
                     <div class="diagram-arrow"><i class="fa-solid fa-arrow-right"></i></div>
                     <div class="diagram-node">
                         <i class="fa-solid fa-clipboard-check"></i>
-                        <h6 role="heading" aria-level="3">Azimuth Documented</h6>
+                        <div class="hl6">Azimuth Documented</div>
                         <p>Relative to runway bearing</p>
                     </div>
                 </div>
@@ -1834,11 +1830,11 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>PAPI azimuth alignment tolerances (±0.5° maximum deviation)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-28</h5><p>PAPI installation and alignment procedures</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345-46</h5><p>Photometric performance – alignment verification</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ISO 9001</h5><p>Manufacturing quality for precision mechanical components</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ASTM B117</h5><p>Corrosion resistance testing (salt spray)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 14</h3><p>PAPI azimuth alignment tolerances (±0.5° maximum deviation)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5345-28</h3><p>PAPI installation and alignment procedures</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5345-46</h3><p>Photometric performance – alignment verification</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ISO 9001</h3><p>Manufacturing quality for precision mechanical components</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ASTM B117</h3><p>Corrosion resistance testing (salt spray)</p></div></div>
             </div>
         </div>
     </section>
@@ -1851,42 +1847,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mechanism Inspection</h5><span class="test-stage">Pre-Installation</span></div>
+                        <div class="test-item-head"><h3>Mechanism Inspection</h3><span class="test-stage">Pre-Installation</span></div>
                         <p>Inspect the pivot bearing, adjustment screws, and index scale for shipping or handling damage before the unit is mounted on its base or frangible pole interface.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-arrows-left-right"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Full-Range Travel Check</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Full-Range Travel Check</h3><span class="test-stage">Mechanical</span></div>
                         <p>Run the mechanism through its full ±5°/±10° range before final siting to confirm smooth travel with no binding, and that it can reach the design azimuth without running out of adjustment.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-location-crosshairs"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Survey Benchmark Reference</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Survey Benchmark Reference</h3><span class="test-stage">Civil</span></div>
                         <p>Establish the runway centreline extended survey bearing before adjustment, since the azimuth setting is referenced against this benchmark rather than an arbitrary heading.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-compass-drafting"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Azimuth Angle Setting</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Azimuth Angle Setting</h3><span class="test-stage">Mechanical</span></div>
                         <p>Turn the threaded adjustment screws to dial in the design azimuth against the survey bearing, using a theodolite or calibration tool for the precise setting.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-lock"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Locking Bolt Torquing</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Locking Bolt Torquing</h3><span class="test-stage">Mechanical</span></div>
                         <p>Torque the locking bolts or clamping plates to the specified 20–40 Nm to clamp the base plate rigidly against the mounting surface, removing play that could let wind or vibration walk the setting off angle.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Verification Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Verification Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record the as-set azimuth, survey reference used, and locking torque applied before proceeding to azimuth verification testing.</p>
                     </div>
                 </div>
@@ -1902,56 +1898,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Locking Torque Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Locking Torque Verification</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Torque clamping bolts or eccentric cams to the specified 20–40 Nm and confirm the mechanism holds position under manual load before final sign-off.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Azimuth Setting vs. Survey Benchmark</h5><span class="test-stage">Field Verification</span></div>
+                        <div class="test-item-head"><h3>Azimuth Setting vs. Survey Benchmark</h3><span class="test-stage">Field Verification</span></div>
                         <p>Set the unit's azimuth against the runway centreline extended survey bearing, confirming the reading matches the design azimuth within tolerance.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Index Scale Reading Check</h5><span class="test-stage">Field Verification</span></div>
+                        <div class="test-item-head"><h3>Index Scale Reading Check</h3><span class="test-stage">Field Verification</span></div>
                         <p>Confirm the engraved index scale aligns with the true mechanical position by cross-checking against an independent theodolite or calibration tool reading.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Adjustment Range Confirmation</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Adjustment Range Confirmation</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Run the mechanism through its full ±5°/±10° range to confirm smooth travel with no binding, and that it can reach the design azimuth without running out of adjustment.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Load Capacity Check</h5><span class="test-stage">Field Verification</span></div>
+                        <div class="test-item-head"><h3>Load Capacity Check</h3><span class="test-stage">Field Verification</span></div>
                         <p>Confirm the mechanism holds its set position under the rated 50 kg vertical / 30 kg horizontal wind load without creeping, simulating in-service wind loading where practical.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Corrosion Protection Inspection</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Corrosion Protection Inspection</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Inspect passivation, anodising, or galvanising on all fasteners and the adjustment body for coating damage before the unit is exposed to the elements.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Re-Verification After Final Lock-Down</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Re-Verification After Final Lock-Down</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Re-check the azimuth reading immediately after final torque is applied, since clamping can shift the setting slightly on some mechanisms.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record the as-set azimuth, locking torque applied, and survey reference used in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1967,28 +1963,28 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Adjustment Screw Corrosion Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Adjustment Screw Corrosion Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect adjustment screws for corrosion that could seize the mechanism or cause slipping under load.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Locking Bolt Torque Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Locking Bolt Torque Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Verify locking bolts remain torqued to spec, since relaxation over time can allow azimuth drift.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Azimuth Verification</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Azimuth Verification</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Re-sight the unit against its reference to confirm the azimuth setting hasn't drifted.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Maintenance Record Update</h5><span class="maint-freq">At each adjustment</span></div>
+                        <div class="maint-item-head"><h3>Maintenance Record Update</h3><span class="maint-freq">At each adjustment</span></div>
                         <p>Log the setting and date of any adjustment to maintain a clear record for future reference.</p>
                     </div>
                 </div>
@@ -2001,12 +1997,12 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Corrosion of Adjustment Screws</h5><p>Threaded rods can seize due to rust or galling, making adjustment impossible. Use stainless steel screws and apply anti‑seize lubricant during installation. Periodic exercise of the screws helps prevent seizing.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Locking Bolt Relaxation</h5><p>Vibration can cause locking bolts to loosen over time, allowing the unit to drift out of azimuth. Always use locking washers or thread‑locker (medium strength). Re‑torque bolts during routine maintenance.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Reference Sighting</h5><p>If the theodolite is not set up precisely on the runway centreline, the alignment will be incorrect. Always verify the survey reference points and use a properly calibrated instrument.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Scale Misreading</h5><p>If the index scale is worn, dirty, or misaligned, it can lead to errors. Clean the scale and use a magnifying glass if necessary. For critical alignments, rely on the theodolite reading rather than the scale.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Over‑tightening</h5><p>Tightening the locking bolts excessively can distort the mounting base or damage the pivot bearing, affecting future adjustment. Use a torque wrench to specified values.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Lack of Maintenance Records</h5><p>Without proper documentation of azimuth settings, it's difficult to detect drift over time. Keep a log of all alignment checks and adjustments, including the date, measured angle, and any corrective action taken.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Corrosion of Adjustment Screws</h3><p>Threaded rods can seize due to rust or galling, making adjustment impossible. Use stainless steel screws and apply anti‑seize lubricant during installation. Periodic exercise of the screws helps prevent seizing.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Locking Bolt Relaxation</h3><p>Vibration can cause locking bolts to loosen over time, allowing the unit to drift out of azimuth. Always use locking washers or thread‑locker (medium strength). Re‑torque bolts during routine maintenance.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Incorrect Reference Sighting</h3><p>If the theodolite is not set up precisely on the runway centreline, the alignment will be incorrect. Always verify the survey reference points and use a properly calibrated instrument.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Scale Misreading</h3><p>If the index scale is worn, dirty, or misaligned, it can lead to errors. Clean the scale and use a magnifying glass if necessary. For critical alignments, rely on the theodolite reading rather than the scale.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Over‑tightening</h3><p>Tightening the locking bolts excessively can distort the mounting base or damage the pivot bearing, affecting future adjustment. Use a torque wrench to specified values.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Lack of Maintenance Records</h3><p>Without proper documentation of azimuth settings, it's difficult to detect drift over time. Keep a log of all alignment checks and adjustments, including the date, measured angle, and any corrective action taken.</p></div></div>
             </div>
         </div>
     </section>
@@ -2017,31 +2013,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Adjustment Screw Won't Turn</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Adjustment Screw Won't Turn</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Corrosion or galling of the threaded adjustment rod.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect the screw and threads for rust or seizing, and check whether anti-seize lubricant was applied at installation.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Apply penetrating lubricant and carefully free the screw, or replace with a stainless steel screw and anti-seize compound; exercise it periodically to prevent recurrence.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Unit Found Drifted Out of Azimuth Between Checks</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Unit Found Drifted Out of Azimuth Between Checks</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Locking bolts have relaxed under vibration.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check locking bolt torque against specification and inspect for the absence of locking washers or thread-locker.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-torque the locking bolts to specification and fit locking washers or medium-strength thread-locker.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Azimuth Setting Doesn't Match the Runway Centreline</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Azimuth Setting Doesn't Match the Runway Centreline</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Incorrect reference sighting — the theodolite not precisely set up on the centreline, or an uncalibrated instrument used.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Verify the survey reference points and confirm the theodolite's calibration status.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-set up the theodolite on verified reference points, recalibrate or replace the instrument if out of tolerance, and repeat the sighting.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Index Scale Reading Doesn't Match Instrument Reading</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Index Scale Reading Doesn't Match Instrument Reading</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">A worn, dirty, or misaligned index scale.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect the scale for dirt, wear, or misalignment, and compare it against a fresh theodolite reading.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the scale, and for critical alignments rely on the theodolite reading rather than the scale; replace the scale if worn.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Mounting Base Shows Distortion After Adjustment</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Mounting Base Shows Distortion After Adjustment</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Over-tightening of the locking bolts distorting the mounting base or damaging the pivot bearing.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect the base and pivot bearing for distortion or damage, and check whether a torque wrench was used at the specified value.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the damaged base/bearing, and re-tighten using a torque wrench to the specified value going forward.</div></div>
@@ -2057,7 +2053,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Adjustment Mechanism Seizure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Adjustment Mechanism Seizure</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Corrosion binding the screw or gear threads, or dried-out lubricant allowing dirt ingress into the adjustment mechanism.</div></div>
@@ -2066,7 +2062,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Locking Mechanism Creep</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Locking Mechanism Creep</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A locking mechanism that does not fully re-engage after adjustment, or gradual loosening under wind and thermal cycling loads.</div></div>
@@ -2075,7 +2071,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Reference Survey Mismatch</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Reference Survey Mismatch</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The runway centreline reference point shifted due to pavement work or resurfacing since the PAPI's last formal alignment.</div></div>
@@ -2084,7 +2080,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Index Scale Wear or Misreading</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Index Scale Wear or Misreading</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Wear or fading of the index scale markings, or an index pointer that has shifted relative to the scale over time.</div></div>
@@ -2093,7 +2089,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Mounting Base Distortion</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Mounting Base Distortion</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Over-torquing during a prior adjustment, or metal fatigue in the base accumulated over repeated adjustment cycles.</div></div>
@@ -2112,56 +2108,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Glide Path Safety Impact</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Glide Path Safety Impact</h3><span class="test-stage">Operational</span></div>
                         <p>Azimuth alignment keeps the PAPI beam oriented parallel to the runway centreline; an uncorrected drift changes the visual guidance a pilot sees on approach, so treat a confirmed mismatch as a priority correction.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Fixture State Before Adjustment</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Confirm Fixture State Before Adjustment</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Follow the aerodrome's electrical safety procedure for the associated PAPI unit and base can before working at the mounting interface, since the adjustment mechanism is integrated into or near the fixture's mounting base.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Frangibility Not to Be Defeated</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Frangibility Not to Be Defeated</h3><span class="test-stage">Mechanical</span></div>
                         <p>Do not over-torque or rigidly fix the adjustment mechanism in a way that compromises the frangible mounting interface; the coupling must still shear cleanly on aircraft impact per the frangibility requirement.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-lock"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Full Lock Engagement</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Verify Full Lock Engagement</h3><span class="test-stage">Mechanical</span></div>
                         <p>Confirm the locking mechanism has fully re-engaged after every adjustment; partial engagement is a recurring cause of the unit drifting out of azimuth between scheduled checks under wind and thermal cycling loads.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ruler"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Reference Survey Is Current</h5><span class="test-stage">Verification</span></div>
+                        <div class="test-item-head"><h3>Confirm Reference Survey Is Current</h3><span class="test-stage">Verification</span></div>
                         <p>Before adjusting, verify the runway centreline reference point used for the setting is still valid, particularly after any pavement work or resurfacing that could have shifted it independently of the PAPI unit itself.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Work Coordination</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Airside Work Coordination</h3><span class="test-stage">Operational</span></div>
                         <p>Adjustment work on an in-service PAPI unit requires ATC/airside coordination and a NOTAM where the unit will be off-aim or out of service during the correction.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tarp"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mechanism Care</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Mechanism Care</h3><span class="test-stage">Mechanical</span></div>
                         <p>Re-lubricate the adjustment mechanism per the maintenance schedule and keep it protected from dirt ingress, since corrosion and dried-out lubricant are the leading causes of the mechanism seizing when correction is needed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Verify the corrected azimuth against the runway centreline survey and confirm the lock is fully engaged before closing out the work and cancelling any associated NOTAM.</p>
                     </div>
                 </div>
@@ -2184,42 +2180,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-lock"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Partial Lock Engagement Feels Identical to Full Engagement by Hand</h5><span class="expert-tag">Mechanical</span></div>
+                        <div class="expert-item-head"><h3>Partial Lock Engagement Feels Identical to Full Engagement by Hand</h3><span class="expert-tag">Mechanical</span></div>
                         <p>A locking mechanism that hasn't fully seated can feel secure when checked by hand immediately after adjustment, only to work loose under wind and thermal cycling over subsequent days; verify full engagement by the manufacturer's specified method, such as a witness mark or torque check, not by feel alone.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-map-pin"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Shifted Centreline Reference Can Make a Correctly-Adjusted Unit Look Wrong</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>A Shifted Centreline Reference Can Make a Correctly-Adjusted Unit Look Wrong</h3><span class="expert-tag">Verification</span></div>
                         <p>Pavement work or resurfacing can move the physical reference point used for azimuth setting without moving the PAPI unit itself; a unit reported as "out of azimuth" is sometimes actually correctly aligned to a reference that has since shifted, so verify the reference survey's currency before adjusting the unit.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-compass-drafting"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Frangibility and Adjustment Range Can Work Against Each Other</h5><span class="expert-tag">Mechanical</span></div>
+                        <div class="expert-item-head"><h3>Frangibility and Adjustment Range Can Work Against Each Other</h3><span class="expert-tag">Mechanical</span></div>
                         <p>A mechanism over-tightened to prevent azimuth drift can compromise the frangible mounting's ability to shear cleanly on impact; treat the two requirements as a design trade-off to verify together, not lock engagement alone.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-droplet"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Dried-Out Lubricant Seizes at the Worst Possible Time</h5><span class="expert-tag">Durability</span></div>
+                        <div class="expert-item-head"><h3>Dried-Out Lubricant Seizes at the Worst Possible Time</h3><span class="expert-tag">Durability</span></div>
                         <p>An adjustment mechanism that hasn't been re-lubricated on schedule tends to seize gradually and often isn't discovered until a correction is actually needed, turning a routine adjustment into an emergency mechanical intervention; keep re-lubrication on a fixed schedule regardless of whether a correction has been needed recently.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-wind"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Wind and Thermal Cycling Cause Slow Drift, Not Sudden Failure</h5><span class="expert-tag">Environmental</span></div>
+                        <div class="expert-item-head"><h3>Wind and Thermal Cycling Cause Slow Drift, Not Sudden Failure</h3><span class="expert-tag">Environmental</span></div>
                         <p>Repeated micro-movement from wind loading and daily thermal expansion and contraction gradually walks a marginally-engaged lock out of position over weeks or months; a unit found off-azimuth without any obvious cause is often explained by this cumulative effect rather than a single event.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Record the As-Left Azimuth Value, Not Just 'Corrected'</h5><span class="expert-tag">Compliance</span></div>
+                        <div class="expert-item-head"><h3>Record the As-Left Azimuth Value, Not Just 'Corrected'</h3><span class="expert-tag">Compliance</span></div>
                         <p>Logging the actual measured azimuth value after correction, rather than simply noting the unit was adjusted, gives the next technician a baseline to compare against and helps distinguish a genuinely new drift from a measurement that was always at the edge of tolerance.</p>
                     </div>
                 </div>
@@ -2232,10 +2228,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-papi-mounting-base.html" class="related-card"><i class="fa-solid fa-anchor"></i><h5 role="heading" aria-level="3">PAPI Mounting Base</h5></a>
-                <a href="component-papi-alignment-calibration-tool.html" class="related-card"><i class="fa-solid fa-compass"></i><h5 role="heading" aria-level="3">PAPI Alignment Tool</h5></a>
-                <a href="component-papi-elevation-adjustment.html" class="related-card"><i class="fa-solid fa-arrows-up-down"></i><h5 role="heading" aria-level="3">Elevation Adjustment</h5></a>
-                <a href="component-papi-light-unit.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><h5 role="heading" aria-level="3">PAPI Light Unit</h5></a>
+                <a href="component-papi-mounting-base.html" class="related-card"><i class="fa-solid fa-anchor"></i><div class="hl5">PAPI Mounting Base</div></a>
+                <a href="component-papi-alignment-calibration-tool.html" class="related-card"><i class="fa-solid fa-compass"></i><div class="hl5">PAPI Alignment Tool</div></a>
+                <a href="component-papi-elevation-adjustment.html" class="related-card"><i class="fa-solid fa-arrows-up-down"></i><div class="hl5">Elevation Adjustment</div></a>
+                <a href="component-papi-light-unit.html" class="related-card"><i class="fa-regular fa-lightbulb"></i><div class="hl5">PAPI Light Unit</div></a>
             </div>
         </div>
     </section>
@@ -2326,7 +2322,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on PAPI azimuth alignment procedures, tools, or troubleshooting?</h4><p>Precision AGL Academy provides advice on precision alignment, surveying techniques, and maintaining PAPI system accuracy.</p></div>
+                <div><div class="hl4">Need expert guidance on PAPI azimuth alignment procedures, tools, or troubleshooting?</div><p>Precision AGL Academy provides advice on precision alignment, surveying techniques, and maintaining PAPI system accuracy.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
             </div>
         </div>

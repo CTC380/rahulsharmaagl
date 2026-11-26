@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PAPI Remote Monitoring | AGL Visual Encyclopedia | Precision AGL Academy</title>
+    <title>PAPI Remote Monitoring: Control Logic &amp; Monitoring</title>
     <meta name="description" content="How is a PAPI monitored remotely? A visual guide to the status a PAPI reports, how it reaches the ALCMS and why a reading is a warning, not proof." />
     <meta name="author" content="Precision AGL Academy" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://rahulsharmaagl.in/papi-remote-monitoring.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://rahulsharmaagl.in/papi-remote-monitoring.html" />
-    <meta property="og:title" content="PAPI Remote Monitoring | AGL Visual Encyclopedia | Precision AGL Academy" />
+    <meta property="og:title" content="PAPI Remote Monitoring: Control Logic &amp; Monitoring" />
     <meta property="og:description" content="How is a PAPI monitored remotely? A visual guide to the status a PAPI reports, how it reaches the ALCMS and why a reading is a warning, not proof." />
     <meta property="og:site_name" content="Precision AGL Academy" />
     <meta property="og:locale" content="en_IN" />
@@ -18,7 +18,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="PAPI Remote Monitoring | AGL Visual Encyclopedia | Precision AGL Academy" />
+    <meta name="twitter:title" content="PAPI Remote Monitoring: Control Logic &amp; Monitoring" />
     <meta name="twitter:description" content="How is a PAPI monitored remotely? A visual guide to the status a PAPI reports, how it reaches the ALCMS and why a reading is a warning, not proof." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-papi-remote-monitoring.jpg" />
     <script type="application/ld+json">
@@ -26,7 +26,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/papi-remote-monitoring.html#article",
-  "headline": "PAPI Remote Monitoring",
+  "headline": "PAPI Remote Monitoring: Control Logic & Monitoring",
   "description": "How is a PAPI monitored remotely? A visual guide to the status a PAPI reports, how it reaches the ALCMS and why a reading is a warning, not proof.",
   "url": "https://rahulsharmaagl.in/papi-remote-monitoring.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/papi-remote-monitoring.html",
@@ -214,7 +214,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -401,6 +402,8 @@
             font-size: 11px; letter-spacing: 1px; font-weight: 700;
             margin-left: 12px;
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -665,7 +668,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -764,7 +767,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -896,11 +899,44 @@
         .dz-hint.hide{opacity:0;}
         @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
         /* dz-feature:end */
-    </style>
+    
+/* sec-h2: numbered sections promoted from h3 to h2 */
+/* ── sub-heading inside fact card ── */
+        .fact-card h2.sec-h2 {
+            margin-top: 26px;
+            margin-bottom: 10px;
+            font-family: 'Barlow Condensed', sans-serif;
+            font-size: 15px;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: flex; align-items: center; gap: 10px;
+        }
+.fact-card h2.sec-h2 .num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 22px; height: 22px; border-radius: 50%;
+            font-size: 12px; font-weight: 800;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+.fact-card h2.sec-h2.green-h { color: var(--green); }
+.fact-card h2.sec-h2.green-h .num { color: var(--green); border-color: rgba(53, 208, 127, 0.35); }
+.fact-card h2.sec-h2.blue-h { color: var(--taxi-blue); }
+.fact-card h2.sec-h2.blue-h .num { color: var(--taxi-blue); border-color: rgba(47, 143, 255, 0.35); }
+.fact-card h2.sec-h2.cyan-h { color: var(--cyan); }
+.fact-card h2.sec-h2.cyan-h .num { color: var(--cyan); border-color: rgba(0, 212, 255, 0.35); }
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -984,12 +1020,13 @@
             </div>
             <div class="fact-card">
                 <div class="label">The Fact <span class="badge"><i class="fa-solid fa-check"></i> ICAO Annex 14</span></div>
+                <h2>PAPI Remote Monitoring: How It Works and Key Facts</h2>
                 <p>A PAPI stands at the edge of the runway, often far from anyone. <b class="highlight-white">Remote monitoring</b> brings its state to the control room, so a failed unit shows up as an alarm instead of waiting for the next inspection. It is a view of the PAPI, not a proof of its signal.</p>
-                <h3 class="blue-h"><span class="num">1</span>The PAPI reports its own state</h3>
+                <h2 class="sec-h2 blue-h"><span class="num">1</span>The PAPI reports its own state</h2>
                 <p>The <b class="highlight-white">control unit</b> gathers the state of the wing bar: whether it is on, the <b class="highlight-blue">intensity step</b>, the <b class="highlight-white">lamp or LED of each unit</b> with its identity, the supply or CCR, and on some types a <b class="highlight-white">drift in aim</b>. What can be seen depends on the PAPI type, the sensors fitted and the control system.</p>
-                <h3 class="cyan-h"><span class="num">2</span>It travels to the ALCMS and is shown by state</h3>
+                <h2 class="sec-h2 cyan-h"><span class="num">2</span>It travels to the ALCMS and is shown by state</h2>
                 <p>The status crosses a <b class="highlight-cyan">communication link</b> chosen by the design to the <b class="highlight-cyan">ALCMS</b>, which shows it, raises an alarm and logs it. Each state is shown clearly: <b class="highlight-green">healthy</b>, <b class="highlight-white">warning</b>, <b class="highlight-red">fault</b> or <b class="highlight-white">unknown</b>. A lost link is <b class="highlight-white">unknown</b>, never healthy, because the PAPI may still be working. The link needs <b class="highlight-white">cyber-security</b>.</p>
-                <h3 class="green-h"><span class="num">3</span>Treat a reading as a warning, then prove it</h3>
+                <h2 class="sec-h2 green-h"><span class="num">3</span>Treat a reading as a warning, then prove it</h2>
                 <p>An alarm sends an engineer to check the unit, and a clean screen is not a reason to skip rounds. Check that <b class="highlight-white">each status matches the real unit</b>, that a <b class="highlight-white">lost link is shown as unknown</b>, that alarms raise and clear, and that the log is kept. The colour change and aiming are still verified by <b class="highlight-red">inspection, testing and flight checks</b> where required.</p>
                 <div class="config-table-wrap"><table class="config-table"><thead><tr><th>Element</th><th>Role</th><th>What to check</th></tr></thead><tbody><tr><td>Sensing</td><td>Lamp or LED, supply and, on some types, aim</td><td>Each status matches the real unit</td></tr><tr><td>Control unit</td><td>Gathers status and adds the unit identity</td><td>Correct unit shown for each fault</td></tr><tr><td>Link</td><td>Carries status to the ALCMS, securely</td><td>Lost link shown as unknown, not healthy</td></tr><tr><td>Display and alarm</td><td>Shows state, raises alarms, clears them</td><td>Alarms raise and clear correctly</td></tr><tr><td>Log</td><td>Records events and states over time</td><td>Entries kept and time-stamped</td></tr></tbody></table></div>
                 <div class="note"><span class="icon"><i class="fa-solid fa-circle-info"></i></span>Schematic: what is monitored, the link and the alarm logic depend on the PAPI type, the manufacturer and the project control philosophy. Confirm against ICAO Annex 14, FAA AC 150/5340-30 and the manufacturer&rsquo;s manuals.</div>
@@ -1012,7 +1049,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -1035,18 +1072,18 @@
                 <div class="section-tag">Related Entries</div>
                 <h2>Continue Exploring</h2>
                 <div class="related-grid">
-                <a class="related-card" href="alcms-to-papi.html"><div class="rc-tag">Airfield Lighting Control &amp; ALCMS</div><h5>ALCMS-to-PAPI</h5></a>
-<a class="related-card" href="smart-papi.html"><div class="rc-tag">Future AGL Technology &amp; Innovation</div><h5>Smart PAPI</h5></a>
-<a class="related-card" href="remote-diagnostics.html"><div class="rc-tag">Airfield Lighting Control &amp; ALCMS</div><h5>Remote Diagnostics</h5></a>
-<a class="related-card" href="papi-control-unit.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Control Unit</h5></a>
-<a class="related-card" href="papi-glide-path.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Glide Path</h5></a>
-<a class="related-card" href="papi-optical-principle.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Optical Principle</h5></a>
-<a class="related-card" href="papi-transformer-arrangement.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Transformer Arrangement</h5></a>
-<a class="related-card" href="helicopter-papi.html"><div class="rc-tag">Visual Guidance</div><h5>Helicopter PAPI (HAPI)</h5></a>
-<a class="related-card" href="papi-azimuth-alignment.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Azimuth Alignment</h5></a>
-<a class="related-card" href="papi-beam.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Beam</h5></a>
-<a class="related-card" href="papi-cable-connection.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Cable Connection</h5></a>
-<a class="related-card" href="papi-elevation-angle.html"><div class="rc-tag">Visual Guidance Systems</div><h5>PAPI Elevation Angle</h5></a>
+                <a class="related-card" href="alcms-to-papi.html"><div class="rc-tag">Airfield Lighting Control &amp; ALCMS</div><div class="hl5">ALCMS-to-PAPI</div></a>
+<a class="related-card" href="smart-papi.html"><div class="rc-tag">Future AGL Technology &amp; Innovation</div><div class="hl5">Smart PAPI</div></a>
+<a class="related-card" href="remote-diagnostics.html"><div class="rc-tag">Airfield Lighting Control &amp; ALCMS</div><div class="hl5">Remote Diagnostics</div></a>
+<a class="related-card" href="papi-control-unit.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Control Unit</div></a>
+<a class="related-card" href="papi-glide-path.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Glide Path</div></a>
+<a class="related-card" href="papi-optical-principle.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Optical Principle</div></a>
+<a class="related-card" href="papi-transformer-arrangement.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Transformer Arrangement</div></a>
+<a class="related-card" href="helicopter-papi.html"><div class="rc-tag">Visual Guidance</div><div class="hl5">Helicopter PAPI (HAPI)</div></a>
+<a class="related-card" href="papi-azimuth-alignment.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Azimuth Alignment</div></a>
+<a class="related-card" href="papi-beam.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Beam</div></a>
+<a class="related-card" href="papi-cable-connection.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Cable Connection</div></a>
+<a class="related-card" href="papi-elevation-angle.html"><div class="rc-tag">Visual Guidance Systems</div><div class="hl5">PAPI Elevation Angle</div></a>
 </div>
             </div>
         </div>

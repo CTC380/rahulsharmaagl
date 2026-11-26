@@ -84,8 +84,7 @@
   .calc-warn{margin-top:14px;font-size:11.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;}
   .calc-warn i{color:var(--cyan);margin-top:2px;}
 
-  .dash-group{margin-top:18px;}
-  .dash-group h5{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+  .dash-group{margin-top:18px;}.dash-group h5,.dash-group .dash-group-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
   .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
   @media(max-width:800px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:480px){.dash-grid{grid-template-columns:1fr;}}
@@ -102,8 +101,7 @@
   .req-badge.review{background:rgba(255,140,66,0.1);border:1px solid rgba(255,140,66,0.35);color:var(--orange);}
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -173,9 +171,7 @@
 
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -189,8 +185,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -499,6 +494,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -783,18 +784,18 @@ straight,400</textarea>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
   <div class="subsection-head"><h2>Segment schedule</h2><div class="sub-line"></div></div>
   <div class="method-card" style="margin-top:22px;">
-        <h4><i class="fa-solid fa-list-check"></i> Segment Schedule</h4>
+        <h3><i class="fa-solid fa-list-check"></i> Segment Schedule</h3>
         <div id="segmentScheduleWrap"></div>
         <p class="field-hint" style="margin-top:12px;">Q<sub>physical</sub> = Q<sub>straight</sub> + Q<sub>curve</sub> + Q<sub>intersection</sub> + Q<sub>enhanced</sub> − Q<sub>duplicate</sub>, not a single length ÷ spacing shortcut.</p>
       </div>
 
   <div class="subsection-head"><h2>Light schedule &amp; BOQ</h2><div class="sub-line"></div></div>
   <div class="method-card">
-        <h4><i class="fa-solid fa-map-location-dot"></i> Full Light Schedule (Coordinates)</h4>
+        <h3><i class="fa-solid fa-map-location-dot"></i> Full Light Schedule (Coordinates)</h3>
         <div id="lightScheduleWrap"></div>
       </div>
 <div class="method-card">
-        <h4><i class="fa-solid fa-calculator"></i> BOQ Summary</h4>
+        <h3><i class="fa-solid fa-calculator"></i> BOQ Summary</h3>
         <table class="std-table qty-table">
           <tr><th>Component</th><th>Basis</th><th style="text-align:right;">Quantity</th></tr>
           <tr><td>Normal centreline lights</td><td class="qty-basis">Straight and curve positions outside the enhanced zone</td><td class="val" id="qtyNormal" style="text-align:right;">—</td></tr>
@@ -898,41 +899,41 @@ straight,400</textarea>
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ruler-horizontal"></i> Straight-section rule</h4>
+          <h3><i class="fa-solid fa-ruler-horizontal"></i> Straight-section rule</h3>
           <div class="formula">N = ⌈ L / S<sub>design</sub> ⌉ &nbsp;→&nbsp; S<sub>actual</sub> = L / N &nbsp;→&nbsp; S<sub>actual</sub> ≤ S<sub>max</sub></div>
           <p>Worked example: L = 487 m, S<sub>design</sub> = 30 m → N = ⌈487/30⌉ = 17 intervals (18 lights) → S<sub>actual</sub> = 487/17 = <strong>28.65 m</strong>, uniformly redistributed rather than leaving an irregular final gap.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-location-dot"></i> Centreline coordinates — straight</h4>
+          <h3><i class="fa-solid fa-location-dot"></i> Centreline coordinates — straight</h3>
           <div class="formula">P<sub>i</sub> = P<sub>0</sub> + i·u·S</div>
           <p>P<sub>0</sub> is the segment start point, u is the centreline unit vector (heading), S is the actual spacing. This calculator generates the full light schedule (chainage, X, Y) from this formula rather than reporting a count alone.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-circle-notch"></i> Curve geometry &amp; angular position</h4>
+          <h3><i class="fa-solid fa-circle-notch"></i> Curve geometry &amp; angular position</h3>
           <div class="formula">L<sub>arc</sub> = 2πR × (θ°/360) &nbsp;&nbsp; Δθ = θ/N &nbsp;&nbsp; x<sub>i</sub> = x<sub>c</sub> + R·cos θ<sub>i</sub>, y<sub>i</sub> = y<sub>c</sub> + R·sin θ<sub>i</sub></div>
           <p>Each light's angular position θ<sub>i</sub> = θ<sub>0</sub> + iΔθ is calculated from the curve centre, so generated lights follow the actual centreline arc — never approximated by straight chord segments.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-arrows-left-right"></i> Chord vs. arc distance</h4>
+          <h3><i class="fa-solid fa-arrows-left-right"></i> Chord vs. arc distance</h3>
           <div class="formula">D<sub>arc</sub> = R·Δθ &nbsp;&nbsp;&nbsp; D<sub>chord</sub> = 2R·sin(Δθ/2)</div>
           <p>These are not the same value and this calculator does not confuse them: design spacing along a curve is generated and checked on the arc-length basis (D<sub>arc</sub>), consistent with how the curve is walked to generate positions.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-palette"></i> Colour / function logic</h4>
+          <h3><i class="fa-solid fa-palette"></i> Colour / function logic</h3>
           <p>Function is classified automatically from the segment type — taxiway centreline, intersection, runway lead-on/lead-off, or enhanced centreline — rather than left as an arbitrary user-selected colour. The applicable colour is reported against the selected standard; the exact ICAO/FAA configuration table for every function is not hard-coded and should be confirmed against the project standard.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-copy"></i> Duplicate-fixture control</h4>
+          <h3><i class="fa-solid fa-copy"></i> Duplicate-fixture control</h3>
           <p>Every generated position on this alignment is automatically checked pairwise against tolerance T — where D<sub>AB</sub> &lt; T, the calculator flags a potential duplicate rather than silently counting two fixtures. True duplicates arising from a second, separately-run taxiway alignment crossing this one are outside a single-run engine's scope and are captured via the manual entry field instead.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-magnifying-glass-chart"></i> Existing-installation &amp; centreline alignment</h4>
+          <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Existing-installation &amp; centreline alignment</h3>
           <div class="formula">D<sub>i</sub> = √[(x<sub>i+1</sub>−x<sub>i</sub>)² + (y<sub>i+1</sub>−y<sub>i</sub>)²] &nbsp;&nbsp;&nbsp; D<sub>⊥</sub> ≤ T</div>
           <p>Measured spacing is checked against the applicable S<sub>max</sub>; each measured point's perpendicular deviation from the nearest design segment (straight or curve) is checked against the positional tolerance T, reported as centreline alignment PASS/FAIL.</p>
         </div>
@@ -940,7 +941,7 @@ straight,400</textarea>
 
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> Standard-specific spacing database</h4>
+          <h3><i class="fa-solid fa-table"></i> Standard-specific spacing database</h3>
           <table class="std-table">
             <tr><th>Standard</th><th>Straight</th><th>Curve</th></tr>
             <tr><td>ICAO Annex 14</td><td class="val">30 m (15 m below 350 m RVR)</td><td class="val">Radius table: ≤ 400 m 7.5 m · 401–899 m 15 m · ≥ 900 m 30 m (never above 15 m below 350 m RVR)</td></tr>
@@ -951,18 +952,18 @@ straight,400</textarea>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-sitemap"></i> Engineering quantity formula</h4>
+          <h3><i class="fa-solid fa-sitemap"></i> Engineering quantity formula</h3>
           <div class="formula">Q<sub>physical</sub> = Q<sub>straight</sub> + Q<sub>curve</sub> + Q<sub>intersection</sub> + Q<sub>enhanced</sub> − Q<sub>duplicate</sub></div>
           <p>Preferable to Q = L/S because a real taxiway is rarely one simple straight line — each segment and special zone follows its own rule.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-road-circle-exclamation"></i> Runway interface</h4>
+          <h3><i class="fa-solid fa-road-circle-exclamation"></i> Runway interface</h3>
           <p>A centreline approaching a runway is treated as a distinct segment type (<code>runwayentry</code>) rather than continuing the normal taxiway-centreline spacing through the interface. Its exact configuration (lead-on/lead-off spacing, colour transition point) is project/standard-specific and flagged for review rather than assumed.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this calculator does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this calculator does not do</h3>
           <p>It applies the radius-based ICAO/FAA curve-spacing limits but does not maintain the figure-level configuration database, does not add the curve lead-in / lead-out spacing automatically (use the optional segment spacing), does not resolve the detailed runway-entry/exit configuration, and does not perform true 2D matching between two independently-run taxiway alignments (only this alignment's self-duplicates are automatic). Straight/curve geometry, coordinate generation, and segment-level quantity are fully calculated; exact figure-level configuration must be confirmed against the approved layout.</p>
         </div>
       </div>
@@ -992,10 +993,10 @@ straight,400</textarea>
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-taxiway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-route"></i><h5>Calculator #08</h5><p>Taxiway edge-light spacing &amp; quantity.</p></a>
-      <a href="calc-runway-centreline-spacing.html" class="tool-link"><i class="fa-solid fa-road"></i><h5>Calculator #03</h5><p>Runway centreline requirement, spacing &amp; colour zones.</p></a>
-      <a href="calc-runway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-ruler-horizontal"></i><h5>Calculator #07</h5><p>Runway edge-light station generation &amp; quantity.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-taxiway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-route"></i><div class="tool-link-title">Calculator #08</div><p>Taxiway edge-light spacing &amp; quantity.</p></a>
+      <a href="calc-runway-centreline-spacing.html" class="tool-link"><i class="fa-solid fa-road"></i><div class="tool-link-title">Calculator #03</div><p>Runway centreline requirement, spacing &amp; colour zones.</p></a>
+      <a href="calc-runway-edge-light-spacing-quantity.html" class="tool-link"><i class="fa-solid fa-ruler-horizontal"></i><div class="tool-link-title">Calculator #07</div><p>Runway edge-light station generation &amp; quantity.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>
@@ -1486,8 +1487,8 @@ straight,400</textarea>
       chip(sawRunwayEntry ? 'review' : (val('runwayIntersection') === 'yes' ? 'review' : 'na'), 'Runway interface'),
     ].join('');
     document.getElementById('complianceDashboard').innerHTML = `
-      <div class="dash-group"><h5>Geometry</h5><div class="dash-grid">${geometryChips}</div></div>
-      <div class="dash-group"><h5>Configuration</h5><div class="dash-grid">${configChips}</div></div>`;
+      <div class="dash-group"><div class="dash-group-title">Geometry</div><div class="dash-grid">${geometryChips}</div></div>
+      <div class="dash-group"><div class="dash-group-title">Configuration</div><div class="dash-grid">${configChips}</div></div>`;
 
     const anyFail = straightChip === 'fail' || curveChip === 'fail' || alignmentChip === 'fail';
     const anyReview = straightChip === 'review' || curveChip === 'review' || sawIntersection || sawRunwayEntry || (enhancedMode !== 'na' && enhancedZoneLen <= 0) || enhOdd || dupTotal > 0 || anyUnknown || curveAdvisory;

@@ -95,8 +95,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -165,9 +164,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -182,8 +179,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -498,6 +494,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -657,29 +659,29 @@
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ruler"></i> 1. Section resistance</h4>
+          <h3><i class="fa-solid fa-ruler"></i> 1. Section resistance</h3>
           <p>Each section's resistance comes from the conductor's nominal resistance per km at 20 °C, corrected for temperature and scaled by length.</p>
           <div class="formula">R = R₂₀ × [1 + 0.00393 × (T − 20)] × L ÷ 1000</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-arrow-trend-down"></i> 2. Drop and loss</h4>
+          <h3><i class="fa-solid fa-arrow-trend-down"></i> 2. Drop and loss</h3>
           <p>The series current is the same in every section, so the section values add directly.</p>
           <div class="formula">V_drop = I × ΣR &nbsp;&nbsp; P_loss = I² × ΣR</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-percent"></i> 3. Share of load voltage</h4>
+          <h3><i class="fa-solid fa-percent"></i> 3. Share of load voltage</h3>
           <div class="formula">Drop % = V_drop ÷ V_load × 100</div>
           <p>Compared with your design limit. If a load voltage is not entered, only the volts and watts are reported.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> 4. Maximum length at the limit</h4>
+          <h3><i class="fa-solid fa-table"></i> 4. Maximum length at the limit</h3>
           <div class="formula">L_max = (limit × V_load ÷ I) ÷ (R₂₀ × k_T ÷ 1000)</div>
           <p>Here k_T is the temperature factor 1 + 0.00393 × (T − 20). This assumes one conductor size over the whole loop.</p>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>#8 AWG, 3,000 m loop, 20 °C</td><td class="val">R = 6.306 Ω</td></tr>
@@ -692,11 +694,11 @@
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-gauge-high"></i> What the drop means in a series circuit</h4>
+          <h3><i class="fa-solid fa-gauge-high"></i> What the drop means in a series circuit</h3>
           <p>The CCR holds the current constant, so a larger cable drop does not dim the lamps. It raises the output voltage the CCR must supply (load voltage plus drop, before any margin) and so the kVA it must deliver, and it adds heat in the cable. Compare the sum with the rated output voltage and kVA of the CCR.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not include cable reactance, secondary cable tails, connectors or the effect of brightness steps. Resistance values are nominal DC figures, so confirm them against your cable data sheet. AWG sizes use nominal stranded-copper values at 20 °C (ASTM B3/B8 basis, about 2 % above the ideal-copper figures); metric sizes use the IEC 60228 Class 2 maximum.</p>
         </div>
       </div>
@@ -727,10 +729,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-series-circuit-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><h5>Calculator #13</h5><p>Series circuit load, kW &amp; kVA.</p></a>
-      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><h5>Calculator #14</h5><p>Estimated CCR output voltage.</p></a>
-      <a href="calc-cable-power-loss.html" class="tool-link"><i class="fa-solid fa-fire"></i><h5>Calculator #22</h5><p>Cable power loss and yearly energy.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-series-circuit-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><div class="tool-link-title">Calculator #13</div><p>Series circuit load, kW &amp; kVA.</p></a>
+      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><div class="tool-link-title">Calculator #14</div><p>Estimated CCR output voltage.</p></a>
+      <a href="calc-cable-power-loss.html" class="tool-link"><i class="fa-solid fa-fire"></i><div class="tool-link-title">Calculator #22</div><p>Cable power loss and yearly energy.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

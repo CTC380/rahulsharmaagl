@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LED Power Draw and CCR Re-sizing | Precision AGL Academy</title>
+    <title>LED Power Draw and CCR Re-sizing: Formula &amp; Design Checks</title>
     <meta name="description" content="How does an LED retrofit change the load on an airfield series circuit, and when must the CCR be re-sized? A worked before-and-after example." />
     <meta name="author" content="Precision AGL Academy" />
     <meta name="robots" content="index, follow" />
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://rahulsharmaagl.in/led-power-draw-and-ccr-resizing-after-retrofit.html" />
-    <meta property="og:title" content="LED Power Draw and CCR Re-sizing | Precision AGL Academy" />
+    <meta property="og:title" content="LED Power Draw and CCR Re-sizing: Formula &amp; Design Checks" />
     <meta property="og:description" content="How does an LED retrofit change the load on an airfield series circuit, and when must the CCR be re-sized? A worked before-and-after example." />
     <meta property="og:site_name" content="Precision AGL Academy" />
     <meta property="og:locale" content="en_US" />
@@ -23,7 +23,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://rahulsharmaagl.in/led-power-draw-and-ccr-resizing-after-retrofit.html" />
-    <meta name="twitter:title" content="LED Power Draw and CCR Re-sizing | Precision AGL Academy" />
+    <meta name="twitter:title" content="LED Power Draw and CCR Re-sizing: Formula &amp; Design Checks" />
     <meta name="twitter:description" content="How does an LED retrofit change the load on an airfield series circuit, and when must the CCR be re-sized? A worked before-and-after example." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-led-power-draw-and-ccr-resizing-after-retrofit.jpg" />
     <script type="application/ld+json">
@@ -31,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/led-power-draw-and-ccr-resizing-after-retrofit.html#article",
-  "headline": "LED Power Draw and CCR Re-sizing",
+  "headline": "LED Power Draw and CCR Re-sizing: Formula & Design Checks",
   "description": "How does an LED retrofit change the load on an airfield series circuit, and when must the CCR be re-sized? A worked before-and-after example.",
   "url": "https://rahulsharmaagl.in/led-power-draw-and-ccr-resizing-after-retrofit.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/led-power-draw-and-ccr-resizing-after-retrofit.html",
@@ -253,7 +253,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -440,6 +441,8 @@
             font-size: 11px; letter-spacing: 1px; font-weight: 700;
             margin-left: 12px;
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -662,7 +665,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -761,7 +764,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -897,8 +900,8 @@
         .cmp-table .win { color: var(--green); font-weight: 600; }
         .check-list { margin-top: 6px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; }
         .check-item { padding: 16px 18px; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; }
-        .check-item h5 { font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--white); margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }
-        .check-item h5 i { color: var(--gold); font-size: 12px; }
+        .check-item h3 { font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--white); margin-bottom: 6px; display: flex; gap: 8px; align-items: center; }
+        .check-item h3 i { color: var(--gold); font-size: 12px; }
         .check-item p { font-size: 13.5px; line-height: 1.7; color: var(--text); }
         @media (max-width: 600px) { .compare-row { grid-template-columns: 1fr; } }
 
@@ -951,11 +954,27 @@
         .dz-hint.hide{opacity:0;}
         @media(max-width:600px){.dz-hint{white-space:normal;text-align:center;width:max-content;max-width:90%;}.dz-tools button.dz-fit{display:none;}}
         /* dz-feature:end */
-    </style>
+    
+/* sec-h2: numbered sections promoted from h3 to h2 */
+.fact-card h2.sec-h2 { margin-top: 26px; margin-bottom: 10px; font-family: 'Barlow Condensed', sans-serif; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.fact-card h2.sec-h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; font-weight: 800; background: rgba(255,255,255,0.06); border: 1px solid var(--border); flex-shrink: 0; }
+.fact-card h2.sec-h2.gold-h { color: var(--gold); }
+.fact-card h2.sec-h2.gold-h .num { color: var(--gold); border-color: rgba(255,180,0,0.4); }
+.fact-card h2.sec-h2.cyan-h { color: var(--cyan); }
+.fact-card h2.sec-h2.cyan-h .num { color: var(--cyan); border-color: rgba(0,212,255,0.35); }
+.fact-card h2.sec-h2.red-h { color: var(--red); }
+.fact-card h2.sec-h2.red-h .num { color: var(--red); border-color: rgba(230,57,70,0.4); }
+</style>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -1075,12 +1094,13 @@
 
             <div class="fact-card">
                 <div class="label">The Fact <span class="badge"><i class="fa-solid fa-check"></i> IEC 61820-3-2 &middot; FAA AC 150/5345-10 &middot; ICAO Doc 9157 Part 5</span></div>
+                <h2>LED Power Draw and CCR Re-sizing: Key Facts and Role in AGL</h2>
                 <p>Fitting LEDs cuts the fixture power sharply, but it does <b class="highlight-white">not</b> cut the circuit load by the same share. The loop current is unchanged, so the <b class="highlight-yellow">cable loss stays</b>, and each transformer still has its own losses. Re-sizing means <b class="highlight-white">adding up the load again with the new figures</b>, then deciding whether the CCR still fits.</p>
 
-                <h3 class="gold-h"><span class="num">1</span>What changes, and what does not</h3>
+                <h2 class="sec-h2 gold-h"><span class="num">1</span>What changes, and what does not</h2>
                 <p>The <b class="highlight-white">fixture power</b> falls from tens of watts to about 10 W per light in this example. The <b class="highlight-white">transformer loss</b> falls in watts, but a transformer carrying a fraction of its rating is less efficient. The <b class="highlight-yellow">cable loss</b> is the loop current squared times the loop resistance, and the CCR still drives the same current at the top step, so it does not change. The <b class="highlight-white">output voltage</b>, which is the load divided by the current, falls with the load. In the example the fixture load falls by about 78% and the circuit load by about 61%.</p>
 
-                <h3 class="cyan-h"><span class="num">2</span>Re-add the load, do not scale it</h3>
+                <h2 class="sec-h2 cyan-h"><span class="num">2</span>Re-add the load, do not scale it</h2>
                 <div class="cmp-wrap">
                     <table class="cmp-table cmp-2">
                         <thead><tr><th>Item</th><th class="h-hal">Halogen (before)</th><th class="h-led">LED (after)</th></tr></thead>
@@ -1095,7 +1115,7 @@
                     </table>
                 </div>
 
-                <h3 class="red-h"><span class="num">3</span>When the CCR is now too large</h3>
+                <h2 class="sec-h2 red-h"><span class="num">3</span>When the CCR is now too large</h2>
                 <p>A CCR works between a minimum and a maximum load. At 19% of its rating the circuit may sit below the manufacturer&rsquo;s minimum loading, with a lower power factor and less accurate regulation. There are four ways to deal with it, and the choice is a design decision made with the CCR and fixture manufacturers.</p>
 
                 <div class="cmp-wrap">
@@ -1117,12 +1137,12 @@
                 <div class="section-tag">Checks</div>
                 <h2>What to check when re-sizing</h2>
                 <div class="check-list">
-                    <div class="check-item"><h5><i class="fa-solid fa-lightbulb"></i> The real fixture draw</h5><p>Use the manufacturer&rsquo;s data for the installed fixture, driver included, at the loop current, not the label wattage of the old lamp.</p></div>
-                    <div class="check-item"><h5><i class="fa-solid fa-bolt"></i> Transformer loading</h5><p>Compare each transformer rating with the new fixture load, and decide whether to keep it or fit a smaller one.</p></div>
-                    <div class="check-item"><h5><i class="fa-solid fa-ruler"></i> Cable loss</h5><p>Recalculate it from the loop resistance at operating temperature and the top-step current. It is now a much larger share of the load.</p></div>
-                    <div class="check-item"><h5><i class="fa-solid fa-gauge-high"></i> CCR limits</h5><p>Compare the load with the rating and the manufacturer&rsquo;s minimum loading, and see how far it falls as fixtures fail.</p></div>
-                    <div class="check-item"><h5><i class="fa-solid fa-sliders"></i> Every step</h5><p>After any change, measure the series current and the light output at every brightness step.</p></div>
-                    <div class="check-item"><h5><i class="fa-solid fa-file-circle-check"></i> Supply and records</h5><p>Recheck input kVA and any generator or UPS loading, then update the circuit schedule with the new load and the CCR rating.</p></div>
+                    <div class="check-item"><h3><i class="fa-solid fa-lightbulb"></i> The real fixture draw</h3><p>Use the manufacturer&rsquo;s data for the installed fixture, driver included, at the loop current, not the label wattage of the old lamp.</p></div>
+                    <div class="check-item"><h3><i class="fa-solid fa-bolt"></i> Transformer loading</h3><p>Compare each transformer rating with the new fixture load, and decide whether to keep it or fit a smaller one.</p></div>
+                    <div class="check-item"><h3><i class="fa-solid fa-ruler"></i> Cable loss</h3><p>Recalculate it from the loop resistance at operating temperature and the top-step current. It is now a much larger share of the load.</p></div>
+                    <div class="check-item"><h3><i class="fa-solid fa-gauge-high"></i> CCR limits</h3><p>Compare the load with the rating and the manufacturer&rsquo;s minimum loading, and see how far it falls as fixtures fail.</p></div>
+                    <div class="check-item"><h3><i class="fa-solid fa-sliders"></i> Every step</h3><p>After any change, measure the series current and the light output at every brightness step.</p></div>
+                    <div class="check-item"><h3><i class="fa-solid fa-file-circle-check"></i> Supply and records</h3><p>Recheck input kVA and any generator or UPS loading, then update the circuit schedule with the new load and the CCR rating.</p></div>
                 </div>
             </div>
 
@@ -1167,7 +1187,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -1191,19 +1211,19 @@
                 <div class="section-tag">Related Entries</div>
                 <h2>Continue Exploring</h2>
                 <div class="related-grid">
-                <a class="related-card" href="led-retrofit-halogen-series-circuit.html"><div class="rc-tag">AGL Fixtures</div><h5>LED Retrofit in a Halogen Series Circuit</h5></a>
-<a class="related-card" href="load-calculation.html"><div class="rc-tag">Engineering</div><h5>How Is the Load on a Circuit Calculated?</h5></a>
-<a class="related-card" href="ccr-loading-limits-and-minimum-load-issues.html"><div class="rc-tag">CCR &amp; Power Supply</div><h5>CCR Loading Limits and Minimum-Load Issues</h5></a>
-<a class="related-card" href="transformer-sizing.html"><div class="rc-tag">Engineering</div><h5>Isolating Transformer Sizing</h5></a>
-<a class="related-card" href="ccr-selection.html"><div class="rc-tag">Selection</div><h5>CCR Selection</h5></a>
-<a class="related-card" href="led-driver-thyristor-ccr-flicker.html"><div class="rc-tag">Fixtures &amp; Product Engineering</div><h5>LED Driver and Thyristor CCR Flicker</h5></a>
-<a class="related-card" href="halogen-to-led-migration-sequence.html"><div class="rc-tag">AGL Fixtures</div><h5>Halogen-to-LED Migration Sequence</h5></a>
-<a class="related-card" href="mixed-halogen-led-circuits.html"><div class="rc-tag">AGL Fixtures</div><h5>Mixed Halogen and LED Circuits</h5></a>
-<a class="related-card" href="harmonics-and-power-factor-on-ccr-input.html"><div class="rc-tag">CCR &amp; Power Supply</div><h5>Harmonics and Power Factor on CCR Input</h5></a>
-<a class="related-card" href="ccr-intensity-steps.html"><div class="rc-tag">CCR &amp; Power Supply</div><h5>CCR Intensity Steps</h5></a>
-<a class="related-card" href="different-mounting-arrangements.html"><div class="rc-tag">Runway Lighting</div><h5>Different Mounting Arrangements</h5></a>
-<a class="related-card" href="different-optical-configurations.html"><div class="rc-tag">Runway Lighting</div><h5>Different Optical Configurations</h5></a>
-<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+                <a class="related-card" href="led-retrofit-halogen-series-circuit.html"><div class="rc-tag">AGL Fixtures</div><div class="hl5">LED Retrofit in a Halogen Series Circuit</div></a>
+<a class="related-card" href="load-calculation.html"><div class="rc-tag">Engineering</div><div class="hl5">How Is the Load on a Circuit Calculated?</div></a>
+<a class="related-card" href="ccr-loading-limits-and-minimum-load-issues.html"><div class="rc-tag">CCR &amp; Power Supply</div><div class="hl5">CCR Loading Limits and Minimum-Load Issues</div></a>
+<a class="related-card" href="transformer-sizing.html"><div class="rc-tag">Engineering</div><div class="hl5">Isolating Transformer Sizing</div></a>
+<a class="related-card" href="ccr-selection.html"><div class="rc-tag">Selection</div><div class="hl5">CCR Selection</div></a>
+<a class="related-card" href="led-driver-thyristor-ccr-flicker.html"><div class="rc-tag">Fixtures &amp; Product Engineering</div><div class="hl5">LED Driver and Thyristor CCR Flicker</div></a>
+<a class="related-card" href="halogen-to-led-migration-sequence.html"><div class="rc-tag">AGL Fixtures</div><div class="hl5">Halogen-to-LED Migration Sequence</div></a>
+<a class="related-card" href="mixed-halogen-led-circuits.html"><div class="rc-tag">AGL Fixtures</div><div class="hl5">Mixed Halogen and LED Circuits</div></a>
+<a class="related-card" href="harmonics-and-power-factor-on-ccr-input.html"><div class="rc-tag">CCR &amp; Power Supply</div><div class="hl5">Harmonics and Power Factor on CCR Input</div></a>
+<a class="related-card" href="ccr-intensity-steps.html"><div class="rc-tag">CCR &amp; Power Supply</div><div class="hl5">CCR Intensity Steps</div></a>
+<a class="related-card" href="different-mounting-arrangements.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Different Mounting Arrangements</div></a>
+<a class="related-card" href="different-optical-configurations.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Different Optical Configurations</div></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><div class="hl5">AGL Visual Encyclopedia</div></a>
 </div>
             </div>
 

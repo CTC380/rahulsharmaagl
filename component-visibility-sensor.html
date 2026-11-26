@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Visibility Sensor | AGL Component Library</title>
+    <title>Visibility Sensor for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="Visibility Sensor: forward-scatter instrumentation for airport visibility and RVR reporting — measurement principles, specifications, standards and testing." />
     <meta name="keywords" content="visibility sensor, forward-scatter sensor, airport visibility reporting, RVR reporting, aviation meteorological instrumentation" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,13 +13,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-visibility-sensor.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Visibility Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="Visibility Sensor for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="Visibility Sensor: forward-scatter instrumentation for airport visibility and RVR reporting — measurement principles, specifications, standards and testing." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-visibility-sensor.html" />
     <meta property="og:site_name" content="AGL Component Library" />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Visibility Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="Visibility Sensor for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="Visibility Sensor: forward-scatter instrumentation for airport visibility and RVR reporting — measurement principles, specifications, standards and testing." />
     <meta name="theme-color" content="#060d1a" />
     <meta property="og:image" content="https://res.cloudinary.com/campbellsci/image/upload/w_400,h_400,c_limit,f_auto/1573.png" />
@@ -32,7 +32,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "@id": "https://rahulsharmaagl.in/component-visibility-sensor.html#article",
-        "headline": "Visibility Sensor",
+        "headline": "Visibility Sensor for AGL: Function, Construction & Testing",
         "description": "Visibility Sensor: forward-scatter instrumentation for airport visibility and RVR reporting — measurement principles, specifications, standards and testing.",
         "url": "https://rahulsharmaagl.in/component-visibility-sensor.html",
         "inLanguage": "en",
@@ -132,7 +132,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-visibility-sensor.html#faq", "url": "https://rahulsharmaagl.in/component-visibility-sensor.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-visibility-sensor.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a visibility sensor?", "acceptedAnswer": {"@type": "Answer", "text": "A visibility sensor is a meteorological instrument that measures atmospheric visibility, specifically the Meteorological Optical Range (MOR), and supports Runway Visual Range (RVR) reporting as part of an airfield weather system."}}, {"@type": "Question", "name": "How does a forward-scatter visibility sensor work?", "acceptedAnswer": {"@type": "Answer", "text": "It emits a pulse of infrared or visible light into a small sampling volume of air. A receiver at a set scatter angle, typically 35° to 42°, measures the scattered light, which is converted into an extinction coefficient and then MOR."}}, {"@type": "Question", "name": "What is the measurement range of a visibility sensor?", "acceptedAnswer": {"@type": "Answer", "text": "Typically MOR from 10 m to 20,000 m, at an 880 nm infrared or 550 nm visible wavelength. Transmissometer baselines of 30 m, 75 m or 150 m are also used."}}, {"@type": "Question", "name": "Where is a visibility sensor mounted?", "acceptedAnswer": {"@type": "Answer", "text": "At airfields as part of the meteorological observation system, near the runway. The page gives a mounting height of 2.5 m above the runway surface (ICAO)."}}, {"@type": "Question", "name": "What is the difference between a visibility sensor and an RVR sensor?", "acceptedAnswer": {"@type": "Answer", "text": "A visibility sensor measures MOR. An RVR system combines that with an ambient light sensor and the runway light intensity setting to report what a pilot can see of the runway lights."}}, {"@type": "Question", "name": "Which standards apply to visibility sensors?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 3, ICAO Doc 9328, FAA AC 150/5220-16 and WMO No. 8 (Guide to Instruments)."}}, {"@type": "Question", "name": "How often should a visibility sensor be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Monthly optical window cleaning, and annual calibration verification against a certified reference and alignment checks."}}, {"@type": "Question", "name": "What are the common problems with visibility sensors?", "acceptedAnswer": {"@type": "Answer", "text": "Window fouling from dirt, insects and de-icing fluids, calibration drift and misalignment, ice and snow accumulation in cold climates, and lightning or power surges on masts."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -346,6 +347,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -467,8 +469,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -502,8 +503,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -554,8 +554,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -634,8 +633,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -680,8 +678,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -713,8 +710,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -777,8 +773,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -937,8 +932,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1033,8 +1027,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1311,8 +1304,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1372,6 +1364,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1402,7 +1400,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-regular fa-eye"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title"><span>Visibility Sensor</span></h1>
+            <h1 class="comp-title"><span>Visibility Sensor</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A precision optical instrument that measures atmospheric visibility and Runway Visual Range (RVR), providing critical data for low-visibility operations and airfield safety. Available in forward scatter, transmissometer, and backscatter configurations.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1416,7 +1414,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Visibility Sensor?</h2>
             <div class="info-panel">
                 <p>A <strong>Visibility Sensor</strong> is a meteorological instrument used to measure atmospheric visibility, specifically the Meteorological Optical Range (MOR) and Runway Visual Range (RVR). It is a critical component of airfield weather systems, providing data that determines the operational status of the aerodrome, especially for low-visibility procedures (CAT I, II, III). Visibility sensors operate on the principle of light extinction or scattering: either measuring the attenuation of a light beam over a known distance (transmissometer) or measuring the scattering of light from a small volume of air (forward scatter sensor). The sensor outputs a visibility value in metres or kilometres, which is used by ATC, pilots, and automated systems for safe operations.</p>
             </div>
@@ -1640,10 +1638,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 3</h5><p>Meteorological service requirements for RVR and visibility reporting</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5220-16</h5><p>Airport weather observation systems (AWOS) requirements</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">WMO No. 8 (Guide to Instruments)</h5><p>Visibility measurement instrument specifications</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Doc 9328</h5><p>Manual of Runway Visual Range Observing and Reporting Practices</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 3</h3><p>Meteorological service requirements for RVR and visibility reporting</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5220-16</h3><p>Airport weather observation systems (AWOS) requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>WMO No. 8 (Guide to Instruments)</h3><p>Visibility measurement instrument specifications</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Doc 9328</h3><p>Manual of Runway Visual Range Observing and Reporting Practices</p></div></div>
             </div>
         </div>
     </section>
@@ -1656,56 +1654,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-combined"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mast Foundation &amp; Lateral Clearance</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Mast Foundation &amp; Lateral Clearance</h3><span class="test-stage">Civil</span></div>
                         <p>Set the mast foundation clear of the obstacle-free zone at the mandated lateral offset from the runway edge.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-map-pin"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Measurement Point Positioning</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Measurement Point Positioning</h3><span class="test-stage">Civil</span></div>
                         <p>Site sensors at each required measurement point — typically the touchdown zone, with additional units at mid-point and stop end on precision-approach runways.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cable Route to Processing Cabinet</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Cable Route to Processing Cabinet</h3><span class="test-stage">Electrical</span></div>
                         <p>Run power and data cabling underground in duct back to the AWOS/RVR processing cabinet.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-compass-drafting"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optical Alignment</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Optical Alignment</h3><span class="test-stage">Mechanical</span></div>
                         <p>Set the sensor at approximately 2.5 m above the runway surface with the transmitter/receiver or sample volume aligned along the anticipated line of sight.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-arrows-left-right"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Baseline Distance Setting</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Baseline Distance Setting</h3><span class="test-stage">Mechanical</span></div>
                         <p>For transmissometer configurations, confirm the transmitter and receiver units are set at the fixed, calibrated baseline distance the design requires.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-sun"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sun-Angle Orientation Check</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Sun-Angle Orientation Check</h3><span class="test-stage">Mechanical</span></div>
                         <p>Orientate the optical heads to minimise direct low-sun glare, which can otherwise skew scatter-based readings.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Heated Lens Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Heated Lens Wiring</h3><span class="test-stage">Electrical</span></div>
                         <p>Terminate the heated lens hood/window circuit so condensation, frost, or precipitation cannot degrade the optical path.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record mast position, cable route, and optical alignment as-built for each measurement point before commissioning.</p>
                     </div>
                 </div>
@@ -1721,56 +1719,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insulation Resistance &amp; Continuity Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Insulation Resistance &amp; Continuity Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Megger-test power cabling and verify signal cable continuity before the sensor is energised, ruling out faults introduced during installation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power-Up &amp; Self-Diagnostics</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Power-Up &amp; Self-Diagnostics</h3><span class="test-stage">Energisation</span></div>
                         <p>Energise the sensor and confirm it passes its internal self-diagnostic routine with no fault codes before proceeding to calibration.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Forward-Scatter Calibration Check</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Forward-Scatter Calibration Check</h3><span class="test-stage">Functional Test</span></div>
                         <p>Verify the scatter measurement against a certified reference scatter plate or calibration standard at the specified scatter angle.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Transmissometer Baseline Alignment</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Transmissometer Baseline Alignment</h3><span class="test-stage">Functional Test</span></div>
                         <p>For transmissometer types, confirm the transmitter and receiver baseline is correctly aligned and the beam path is free of obstruction.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">MOR Accuracy Verification</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>MOR Accuracy Verification</h3><span class="test-stage">Functional Test</span></div>
                         <p>Compare the calculated Meteorological Optical Range against a reference instrument reading across the operating range.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optics Cleanliness Check</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Optics Cleanliness Check</h3><span class="test-stage">Functional Test</span></div>
                         <p>Inspect and clean sampling volume optics, confirming contamination-compensation readings are within normal range after cleaning.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communications &amp; Output Interface Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Communications &amp; Output Interface Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm visibility values report correctly to the weather processing system at the specified reporting interval before handover.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record calibration, alignment, and communications test results alongside as-built position in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1786,56 +1784,56 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Calibration Verification</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Calibration Verification</h3><span class="maint-freq">Annual</span></div>
                         <p>Check sensor output against a certified reference instrument across the measurement range to confirm the ±10%/±15% MOR accuracy specification is still being met.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Optical Window Cleaning</h5><span class="maint-freq">Monthly</span></div>
+                        <div class="maint-item-head"><h3>Optical Window Cleaning</h3><span class="maint-freq">Monthly</span></div>
                         <p>Clean the forward-scatter or transmissometer optical windows, since dust, insects, or condensation on the optics directly skews visibility readings feeding low-visibility operations.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Sensor Alignment Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Sensor Alignment Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Confirm the forward-scatter angle or transmissometer baseline alignment remains within tolerance, since drift here degrades measurement accuracy without an obvious fault indication.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Output Signal &amp; Communication Link Test</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Output Signal &amp; Communication Link Test</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Confirm the sensor's 4-20mA/0-10V/RS-485/SDI-12/Ethernet output reaches the AWOS or ALCMS correctly and without signal noise.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Heater / De-icing Function Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Heater / De-icing Function Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Test any heating elements on the optical housing ahead of the icing season, since frost or ice on the sensor optics can cause false low-visibility readings.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Seal &amp; Weatherproofing Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Seal &amp; Weatherproofing Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Check housing seals and gaskets for cracking or degradation and confirm the IP66/IP67 rating is still intact.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Mounting Height &amp; Alignment Verification</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Mounting Height &amp; Alignment Verification</h3><span class="maint-freq">Annual</span></div>
                         <p>Confirm the sensor remains at the ICAO-specified 2.5m mounting height above the runway surface, since ground settlement or resurfacing can shift this over time.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Cable &amp; Connector Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Cable &amp; Connector Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Examine signal and power wiring for corrosion or loose terminations, a common source of erratic or dropped-out readings.</p>
                     </div>
                 </div>
@@ -1848,10 +1846,10 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Lens Contamination and Window Fouling</h5><p>Dust, dirt, bird droppings, and de-icing fluids can accumulate on the optical windows, reducing signal strength and causing underestimation of visibility. Regular cleaning with lens-safe solutions and soft cloths is essential, especially during winter and high‑pollution periods.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Calibration Drift and Alignment</h5><p>Electronic drift and mechanical misalignment (especially for transmissometers) can lead to measurement errors. Annual calibration using certified reference standards and optical alignment checks are required to maintain accuracy within ICAO tolerances.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Icing and Snow Accumulation</h5><p>In cold climates, ice can form on the optical windows or the sensor housing, blocking the light path. Heated window options are available, but regular visual inspection and de-icing procedures are recommended to ensure uninterrupted operation.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Lightning and Power Surges</h5><p>Sensors mounted on masts are susceptible to lightning strikes and voltage surges. Proper surge protection, grounding, and uninterruptible power supplies (UPS) are critical to prevent damage and data loss.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Lens Contamination and Window Fouling</h3><p>Dust, dirt, bird droppings, and de-icing fluids can accumulate on the optical windows, reducing signal strength and causing underestimation of visibility. Regular cleaning with lens-safe solutions and soft cloths is essential, especially during winter and high‑pollution periods.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Calibration Drift and Alignment</h3><p>Electronic drift and mechanical misalignment (especially for transmissometers) can lead to measurement errors. Annual calibration using certified reference standards and optical alignment checks are required to maintain accuracy within ICAO tolerances.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Icing and Snow Accumulation</h3><p>In cold climates, ice can form on the optical windows or the sensor housing, blocking the light path. Heated window options are available, but regular visual inspection and de-icing procedures are recommended to ensure uninterrupted operation.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Lightning and Power Surges</h3><p>Sensors mounted on masts are susceptible to lightning strikes and voltage surges. Proper surge protection, grounding, and uninterruptible power supplies (UPS) are critical to prevent damage and data loss.</p></div></div>
             </div>
         </div>
     </section>
@@ -1862,37 +1860,37 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">One Sensor Excluded from the Controlling MOR/RVR Value</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>One Sensor Excluded from the Controlling MOR/RVR Value</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The sensor's self-monitoring has flagged window contamination, condensation, or heater failure, causing the AWOS processor to down-weight or exclude it from the controlling-value calculation.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the flagged sensor's reported optical health status alongside its raw measurement; inspect the optical windows for contamination; verify the heated optics/hood is functioning if condensation or frost is suspected.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the affected optical windows and re-check; repair or replace the heater element if the heated optics have failed; confirm the sensor is re-included in the controlling-value calculation once healthy.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reported Visibility Lower Than Actual Conditions</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Reported Visibility Lower Than Actual Conditions</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Dust, dirt, bird droppings, or de-icing fluid on the optical windows attenuating the light path and causing the sensor to underestimate visibility.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect optical windows for contamination; compare the sensor's reading against a nearby reference sensor or observed conditions to confirm the discrepancy is optical rather than a genuine local visibility difference.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the optical windows with lens-safe solutions and soft cloths; re-verify the reading matches expected conditions after cleaning.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Transmissometer Reading Drifting Over Time</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Transmissometer Reading Drifting Over Time</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Mechanical misalignment between the transmitter and receiver towers, caused by wind loading, vibration, or foundation settlement affecting the fixed calibrated baseline distance.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Perform an optical alignment check on the transmitter/receiver baseline; inspect the mounting towers and foundations for movement or settlement; compare readings against a certified reference standard.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-align the transmitter and receiver to restore baseline calibration; address foundation settlement or mounting instability if that is the underlying cause of the drift.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Optical Path Blocked by Ice or Snow</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Optical Path Blocked by Ice or Snow</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Ice or frost formation on the optical windows or sensor housing, especially where heated window hoods are not fitted or have failed to prevent condensation and precipitation buildup.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect windows and housing for ice/snow buildup during cold-weather conditions; check heated window/hood power and operation if fitted; correlate a sudden drop in reported visibility with weather conditions.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Manually clear ice/snow following approved de-icing procedure; repair heated window power supply if fitted; consider retrofitting heated windows if icing faults recur at this site.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Sensor Offline or No Output After Storm Activity</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Sensor Offline or No Output After Storm Activity</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Lightning strike or voltage surge damage to the sensor electronics, particularly likely given the sensor's typically exposed mast-mounted siting close to the runway.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check surge protection devices for tripped or blown indicators; inspect grounding continuity; test the UPS backup if the site loses grid power along with the surge event; check sensor output signal for any response.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace blown surge protection devices and restore grounding; replace damaged sensor electronics; verify UPS is holding charge and switching over correctly to prevent recurrence of data loss during future events.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Controlling Value Selection Appears Wrong at AWOS/ALCMS Level</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Controlling Value Selection Appears Wrong at AWOS/ALCMS Level</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Where more than one sensor is fitted along the runway, the AWOS processor selects the lowest MOR/RVR among relevant positions as the controlling value — an apparent mismatch usually means one position's data isn't being correctly weighted, not that any single sensor is wrong.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check each sensor position's individual reading and health status at the AWOS processor; confirm the controlling-value selection logic is correctly configured to use the lowest relevant reading.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Resolve the fault at the individual sensor position that is being incorrectly excluded or weighted; escalate a processor-level configuration fault to AWOS system administration if the selection logic itself is misconfigured.</div></div>
@@ -1908,7 +1906,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Optical Window Contamination</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Optical Window Contamination</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, dirt, bird droppings, or de-icing fluid accumulating on the optical windows during normal outdoor exposure.</div></div>
@@ -1917,7 +1915,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Transmissometer Baseline Misalignment</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Transmissometer Baseline Misalignment</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Wind loading, vibration, or foundation settlement gradually shifting the transmitter and receiver towers out of their calibrated baseline.</div></div>
@@ -1926,7 +1924,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Heated Optics / Hood Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Heated Optics / Hood Failure</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Failed heater element or power supply on the heated window or hood assembly.</div></div>
@@ -1935,7 +1933,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Calibration Drift</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Calibration Drift</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Electronic drift accumulating over time in the sensor's optical or signal-processing components.</div></div>
@@ -1944,7 +1942,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Lightning / Surge Damage</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Lightning / Surge Damage</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A direct or induced lightning strike on the sensor's typically exposed mast-mounted siting near the runway.</div></div>
@@ -1963,49 +1961,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation Before Servicing</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Electrical Isolation Before Servicing</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise the sensor's mains supply and the separate optics/window heater circuit before opening the transmitter or receiver housing, and verify zero energy before handling connectors.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-temperature-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Hot Surfaces from Heater Elements</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Hot Surfaces from Heater Elements</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Allow the integrated anti-icing/anti-condensation heaters on the lens/window and transmitter or receiver housing to cool before handling after active operation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Airside Work Coordination</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Airside Work Coordination</h3><span class="test-stage">Operational</span></div>
                         <p>Visibility sensor sites are within or near the movement area for AWOS/ASOS integration; coordinate with ATC and raise a NOTAM where visibility reporting will be degraded or unavailable during the outage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bullseye"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optical Alignment Precision</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Optical Alignment Precision</h3><span class="test-stage">Operational</span></div>
                         <p>Whichever measurement principle the unit uses, confirm alignment and signal strength against the manufacturer's procedure rather than by eye alone, since a subtly misaligned unit can still report plausible but inaccurate values.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-broom"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optics Cleanliness and Protection</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Optics Cleanliness and Protection</h3><span class="test-stage">Operational</span></div>
                         <p>Cap or shield the optics from direct sunlight and dust ingress whenever the housing is open, since a contaminated or scratched window directly degrades reading accuracy.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE and Grounding</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>PPE and Grounding</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Use insulated tools on mains-powered connections and confirm the sensor housing bonding and grounding are intact before reconnecting supply.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Verify sensor output against a reference or cross-check with an adjacent sensor before closing out the work, and cancel the associated NOTAM once reporting is confirmed within tolerance.</p>
                     </div>
                 </div>
@@ -2028,42 +2026,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-window-maximize"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Window Fouling Biases Visibility Gradually, Not Suddenly</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Window Fouling Biases Visibility Gradually, Not Suddenly</h3><span class="expert-tag">Maintenance</span></div>
                         <p>Optical window contamination degrades reported visibility gradually enough that it's easy to miss on a quick visual glance; schedule window cleaning to a defined interval rather than reacting only when a complaint comes in.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-scale-balanced"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Persistent Disagreement Between Technologies Is Diagnostic</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>A Persistent Disagreement Between Technologies Is Diagnostic</h3><span class="expert-tag">Verification</span></div>
                         <p>Where both a transmissometer and a forward-scatter sensor exist at the same location, a consistent disagreement between the two technologies points to a real calibration issue rather than simple sensor noise; treat cross-technology comparison as a diagnostic tool, not just a redundancy nicety.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-lightbulb"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Re-Verify Siting Against Nearby Lighting Changes</h5><span class="expert-tag">Siting</span></div>
+                        <div class="expert-item-head"><h3>Re-Verify Siting Against Nearby Lighting Changes</h3><span class="expert-tag">Siting</span></div>
                         <p>New lighting installed near the sensor after commissioning can bias the co-located ambient light measurement; re-check siting against nearby light sources periodically rather than assuming the original commissioning survey still holds.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-temperature-half"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Check Heater Cycling Behaviour, Not Just That It Turns On</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Check Heater Cycling Behaviour, Not Just That It Turns On</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>A defogging heater stuck in the on position can itself introduce a slight bias through localised heat shimmer in extreme cases, while simply confirming the heater powers up doesn't catch a cycling fault; verify the heater's on/off cycling behaviour specifically.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-code-compare"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Validate Firmware Updates Against a Known Reference</h5><span class="expert-tag">Configuration</span></div>
+                        <div class="expert-item-head"><h3>Validate Firmware Updates Against a Known Reference</h3><span class="expert-tag">Configuration</span></div>
                         <p>An algorithm update that recalculates visibility from raw scatter counts can shift reported values without any physical change at the sensor; validate readings against a known reference immediately after any firmware update rather than assuming continuity.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-spider"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Tighten the Cleaning Cadence for Seasonal Insect Activity</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Tighten the Cleaning Cadence for Seasonal Insect Activity</h3><span class="expert-tag">Maintenance</span></div>
                         <p>Bird and insect activity around sensor optics in certain seasons fouls the optics faster than the general maintenance calendar assumes; adjust the cleaning schedule seasonally rather than applying one fixed interval year-round.</p>
                     </div>
                 </div>
@@ -2118,10 +2116,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-rvr-sensor.html" class="related-card"><i class="fa-regular fa-eye"></i><h5 role="heading" aria-level="3">RVR Sensor</h5></a>
-                <a href="component-weather-station.html" class="related-card"><i class="fa-solid fa-cloud-sun"></i><h5 role="heading" aria-level="3">Weather Station</h5></a>
-                <a href="component-ceilometer.html" class="related-card"><i class="fa-solid fa-cloud-sun"></i><h5 role="heading" aria-level="3">Ceilometer</h5></a>
-                <a href="component-wind-sensor.html" class="related-card"><i class="fa-solid fa-wind"></i><h5 role="heading" aria-level="3">Wind Sensor</h5></a>
+                <a href="component-rvr-sensor.html" class="related-card"><i class="fa-regular fa-eye"></i><div class="hl5">RVR Sensor</div></a>
+                <a href="component-weather-station.html" class="related-card"><i class="fa-solid fa-cloud-sun"></i><div class="hl5">Weather Station</div></a>
+                <a href="component-ceilometer.html" class="related-card"><i class="fa-solid fa-cloud-sun"></i><div class="hl5">Ceilometer</div></a>
+                <a href="component-wind-sensor.html" class="related-card"><i class="fa-solid fa-wind"></i><div class="hl5">Wind Sensor</div></a>
             </div>
         </div>
     </section>
@@ -2158,7 +2156,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on visibility sensor selection, installation, or calibration?</h4><p>Precision AGL Academy provides advice on RVR system design, sensor placement, and compliance with ICAO and FAA requirements.</p></div>
+                <div><div class="hl4">Need expert guidance on visibility sensor selection, installation, or calibration?</div><p>Precision AGL Academy provides advice on RVR system design, sensor placement, and compliance with ICAO and FAA requirements.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

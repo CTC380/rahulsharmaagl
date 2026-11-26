@@ -81,8 +81,7 @@
   .calc-warn{margin-top:14px;font-size:11.5px;color:var(--text);display:flex;gap:8px;align-items:flex-start;line-height:1.5;}
   .calc-warn i{color:var(--cyan);margin-top:2px;}
 
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
 
   .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
@@ -121,9 +120,7 @@
 
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -138,8 +135,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -421,6 +417,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -470,7 +472,7 @@
   <p class="field-hint" style="margin-top:-8px">One tap fills in a typical airfield case. The two CCR examples treat kVA as an equivalent resistive load.</p>
 
   <div class="step">
-    <div class="subsection-head"><h3>Known Values</h3><div class="sub-line"></div></div>
+    <div class="subsection-head"><h2 class="subsection-title">Known Values</h2><div class="sub-line"></div></div>
     <div class="field-group">
       <label for="pairSel">I know</label>
       <select id="pairSel">
@@ -525,7 +527,7 @@
 
 <!-- ══════════ TAB 2 — CCR STEPS & REPORT ══════════ -->
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;">
       <label for="projectName">Label / Reference <span class="u">(for report)</span></label>
@@ -542,7 +544,7 @@
   </div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
 
-  <div class="subsection-head"><h3>Same Resistance at Each CCR Step</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Same Resistance at Each CCR Step</h2><div class="sub-line"></div></div>
   <div class="field-group" style="max-width:420px;margin-bottom:0;">
     <label for="sweepSel">Circuit class and steps</label>
     <select id="sweepSel">
@@ -574,7 +576,7 @@
   <div class="ref-cols">
     <div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-table-cells"></i> Formula table</h4>
+        <h3><i class="fa-solid fa-table-cells"></i> Formula table</h3>
         <div class="table-x"><table class="std-table">
           <tr><th>To find</th><th>From V and I</th><th>From V and R</th><th>From I and R</th></tr>
           <tr><td class="val">Voltage V</td><td>—</td><td>—</td><td class="val">I × R</td></tr>
@@ -590,14 +592,14 @@
         </table></div>
       </div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-plane-up"></i> Why it matters on an airfield</h4>
+        <h3><i class="fa-solid fa-plane-up"></i> Why it matters on an airfield</h3>
         <p>A series circuit carries the same current through every fixture, set by the CCR step. The voltage the CCR must supply is that current times the total resistance, and the heat lost in the cable is I² × R. Because loss follows the square of current, it falls to about 18 % of the full-brightness value at 2.8 A on a 6.6 A circuit.</p>
         <div class="formula">V = I × R &nbsp;&nbsp; P_loss = I² × R</div>
       </div>
     </div>
     <div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+        <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
         <p>A 4 km primary loop of #8 AWG has about 8.24 Ω of resistance at 20 °C. It carries 6.6 A at full brightness.</p>
         <table class="std-table">
           <tr><th>Item</th><th>Value</th></tr>
@@ -609,7 +611,7 @@
         </table>
       </div>
       <div class="method-card">
-        <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
         <p>It treats the circuit as purely resistive. It does not handle reactive loads, power factor or temperature change of resistance. For those, use the <a href="calc-series-circuit-impedance.html" style="color:var(--gold);">Series Circuit Impedance</a> and <a href="calc-circuit-power-factor.html" style="color:var(--gold);">Circuit Power Factor</a> calculators.</p>
       </div>
     </div>
@@ -639,10 +641,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-primary-cable-resistance.html" class="tool-link"><i class="fa-solid fa-bezier-curve"></i><h5>Primary Cable Resistance</h5><p>Loop resistance from length and conductor.</p></a>
-      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><h5>Cable Voltage Drop</h5><p>Voltage drop &amp; loss by section.</p></a>
-      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><h5>Circuit Voltage</h5><p>Estimated CCR output voltage.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-primary-cable-resistance.html" class="tool-link"><i class="fa-solid fa-bezier-curve"></i><div class="tool-link-title">Primary Cable Resistance</div><p>Loop resistance from length and conductor.</p></a>
+      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><div class="tool-link-title">Cable Voltage Drop</div><p>Voltage drop &amp; loss by section.</p></a>
+      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><div class="tool-link-title">Circuit Voltage</div><p>Estimated CCR output voltage.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

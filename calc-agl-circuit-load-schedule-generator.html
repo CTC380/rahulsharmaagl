@@ -97,8 +97,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -155,9 +154,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -172,8 +169,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -497,6 +493,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -538,7 +540,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip" data-preset="empty">Clear circuits</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 <div class="step">
-  <div class="subsection-head"><h3>Design Basis</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Design Basis</h2><div class="sub-line"></div></div>
   <div class="two">
     <div class="field-group"><label for="circuitI">Series circuit current <span class="u">(A)</span></label><input type="number" id="circuitI" value="6.6" min="0.1" step="0.1" inputmode="decimal"/><details class="why"><summary>Rule note</summary><p class="field-hint">Applied to every circuit.</p></details></div>
     <div class="field-group"><label for="pf">Circuit power factor</label><input type="number" id="pf" value="0.95" min="0.3" max="1" step="0.01" inputmode="decimal"/><details class="why"><summary>Rule note</summary><p class="field-hint">Power factor of the transformer and lamp load. Cable loss is treated as resistive.</p></details></div>
@@ -550,7 +552,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   </div>
 </div>
 <div class="step">
-  <div class="subsection-head"><h3>Circuits</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Circuits</h2><div class="sub-line"></div></div>
   <p class="block-note" style="margin-bottom:12px;">One row per series circuit. Cable length is the total primary cable laid for the loop, out and back. The example circuits are placeholders to overwrite.</p>
   <div class="grp-scroll"><table class="grp-table"><thead><tr><th>Circuit</th><th>Description</th><th>Fixtures</th><th>W each</th><th>Transf. per fixture</th><th>Cable loop (m)</th><th>Conductor</th><th></th></tr></thead><tbody id="rowBody"></tbody></table></div>
   <button type="button" class="add-row" onclick="addRow()"><i class="fa-solid fa-plus"></i> Add circuit</button>
@@ -576,7 +578,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </aside></div></div></section>
 
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 and Taxiway A lighting"/></div>
     <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Schedule Reference <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. Load schedule Rev. A"/></div>
@@ -585,13 +587,13 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <button type="button" class="btn" onclick="downloadCSV()"><i class="fa-solid fa-file-csv"></i> Download CSV</button>
     <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button>
     <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p></div>
-  <div class="subsection-head"><h3>Circuit Load Schedule</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Circuit Load Schedule</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap" style="margin-top:0"><table id="schedTable"><thead><tr><th>Circuit</th><th>Description</th><th>Fixtures</th><th>Transf.</th><th>Size (W)</th><th>Fixture load (kW)</th><th>Transf. loss (kW)</th><th>Cable loss (kW)</th><th>Load (kW)</th><th>kVA</th><th>Output (V)</th><th>Required (kVA)</th><th>CCR</th><th>Loading (%)</th></tr></thead><tbody></tbody></table></div>
   <div class="calc-grid" style="margin-top:18px;"><div>
-    <div class="subsection-head" style="margin-top:0;"><h3>Transformers by Size</h3><div class="sub-line"></div></div>
+    <div class="subsection-head" style="margin-top:0;"><h2 class="subsection-title">Transformers by Size</h2><div class="sub-line"></div></div>
     <div class="scroll-table-wrap"><table id="trTable"><thead><tr><th>Size (W)</th><th>Quantity</th></tr></thead><tbody></tbody></table></div>
   </div><div>
-    <div class="subsection-head" style="margin-top:0;"><h3>Cable by Conductor</h3><div class="sub-line"></div></div>
+    <div class="subsection-head" style="margin-top:0;"><h2 class="subsection-title">Cable by Conductor</h2><div class="sub-line"></div></div>
     <div class="scroll-table-wrap"><table id="cabTable"><thead><tr><th>Conductor</th><th>Length (m)</th></tr></thead><tbody></tbody></table></div>
   </div></div>
   <div class="revision-bar"><div class="rev-tag">Calculator #53 &nbsp;|&nbsp; Rev. <strong>1.2</strong> &nbsp;|&nbsp; 24 Oct 2026</div><div class="rev-disclaimer">Engineering reference tool. The schedule shall be checked against the approved layout, cable schedule and manufacturers' data before issue.</div></div>
@@ -601,12 +603,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <div class="container">
   <div class="block-label">Method &amp; Reference</div><h2 class="block-title">How each schedule line is worked out</h2><p class="block-note">Every step is shown so a line can be checked by hand. It follows the same method as the CCR Capacity calculator.</p>
   <div class="ref-cols"><div>
-    <div class="method-card"><h4><i class="fa-solid fa-boxes-stacked"></i> 1. Transformers</h4><p>Quantity is fixtures times transformers per fixture. The size is the smallest standard size whose rating, at your loading limit, covers one fixture's watts.</p><div class="formula">Size ≥ W_fixture ÷ loading limit</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-lightbulb"></i> 2. Load</h4><p>Fixture watts are divided by the transformer efficiency, then the cable loss is added. Cable resistance comes from the conductor value corrected for temperature.</p><div class="formula">P = n × W ÷ η + I² × R_cable</div><div class="formula">R = r₂₀ × (1 + 0.00393 × (T − 20)) × length ÷ 1000</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-wave-square"></i> 3. kVA and output voltage</h4><div class="formula">S = √(P² + Q²), Q = (n × W ÷ η) × tan(cos⁻¹ PF) &nbsp;&nbsp; V = S ÷ I</div><p>Cable loss is resistive, so only the transformer and lamp load carries a reactive part.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-server"></i> 4. CCR size</h4><p>Growth is added and the result is divided by the maximum loading. The CCR is the smallest standard size at or above that figure. Above 30 kVA the circuit is shown as a split. Standard CCR sizes are treated as kVA capacity.</p><div class="formula">Required = S × (1 + growth) ÷ max loading</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-boxes-stacked"></i> 1. Transformers</h3><p>Quantity is fixtures times transformers per fixture. The size is the smallest standard size whose rating, at your loading limit, covers one fixture's watts.</p><div class="formula">Size ≥ W_fixture ÷ loading limit</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-lightbulb"></i> 2. Load</h3><p>Fixture watts are divided by the transformer efficiency, then the cable loss is added. Cable resistance comes from the conductor value corrected for temperature.</p><div class="formula">P = n × W ÷ η + I² × R_cable</div><div class="formula">R = r₂₀ × (1 + 0.00393 × (T − 20)) × length ÷ 1000</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-wave-square"></i> 3. kVA and output voltage</h3><div class="formula">S = √(P² + Q²), Q = (n × W ÷ η) × tan(cos⁻¹ PF) &nbsp;&nbsp; V = S ÷ I</div><p>Cable loss is resistive, so only the transformer and lamp load carries a reactive part.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-server"></i> 4. CCR size</h3><p>Growth is added and the result is divided by the maximum loading. The CCR is the smallest standard size at or above that figure. Above 30 kVA the circuit is shown as a split. Standard CCR sizes are treated as kVA capacity.</p><div class="formula">Required = S × (1 + growth) ÷ max loading</div></div>
   </div><div>
-    <div class="method-card"><h4><i class="fa-solid fa-vial"></i> Worked example, circuit R1</h4><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
+    <div class="method-card"><h3><i class="fa-solid fa-vial"></i> Worked example, circuit R1</h3><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
       <tr><td>120 × 45 W, 90 % transformers</td><td class="val">6.00 kW</td></tr>
       <tr><td>6,000 m of 6 mm² at 20 °C</td><td class="val">18.48 Ω</td></tr>
       <tr><td>Cable loss, 6.6 A</td><td class="val">0.805 kW</td></tr>
@@ -616,14 +618,14 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
       <tr><td>× 1.10 ÷ 0.90</td><td class="val">8.659 kVA</td></tr>
       <tr><td>CCR</td><td class="val">10 kVA, 70.8 % loaded</td></tr>
       <tr><td>Transformers</td><td class="val">120 × 45 W</td></tr></table></div>
-    <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4><p>It does not check voltage drop on the secondary cables, split a circuit across CCRs for you, or account for different conductor sizes within one circuit. Fixture watts, transformer efficiency and the allowances are inputs, and the example circuits shown at the start are placeholders to overwrite.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3><p>It does not check voltage drop on the secondary cables, split a circuit across CCRs for you, or account for different conductor sizes within one circuit. Fixture watts, transformer efficiency and the allowances are inputs, and the example circuits shown at the start are placeholders to overwrite.</p></div>
   </div></div>
 
   <div class="block-label" style="margin-top:50px">More Tools</div><h2 class="block-title">Related Knowledge Hub Resources</h2><div class="link-grid">
-  <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><h5>Calculator #16</h5><p>Required CCR capacity.</p></a>
-  <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #17</h5><p>Isolating transformer load.</p></a>
-  <a href="calc-agl-cable-drum-calculator.html" class="tool-link"><i class="fa-solid fa-circle-notch"></i><h5>Calculator #48</h5><p>Cable drums and joints.</p></a>
-  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+  <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><div class="tool-link-title">Calculator #16</div><p>Required CCR capacity.</p></a>
+  <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Calculator #17</div><p>Isolating transformer load.</p></a>
+  <a href="calc-agl-cable-drum-calculator.html" class="tool-link"><i class="fa-solid fa-circle-notch"></i><div class="tool-link-title">Calculator #48</div><p>Cable drums and joints.</p></a>
+  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
 </div>
   </div>
 </section>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ALCMS-to-Runway | Precision AGL Academy</title>
+<title>ALCMS-to-Runway: AGL System Interfaces &amp; Integrated Operation</title>
 <meta name="description" content="How does an ALCMS control runway lighting? A visual guide to one operator action driving the separate runway lighting circuits through their CCRs." />
 <meta name="author" content="Precision AGL Academy" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://rahulsharmaagl.in/alcms-to-runway.html" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://rahulsharmaagl.in/alcms-to-runway.html" />
-<meta property="og:title" content="ALCMS-to-Runway | Precision AGL Academy" />
+<meta property="og:title" content="ALCMS-to-Runway: AGL System Interfaces &amp; Integrated Operation" />
 <meta property="og:description" content="How does an ALCMS control runway lighting? A visual guide to one operator action driving the separate runway lighting circuits through their CCRs." />
 <meta property="og:site_name" content="Precision AGL Academy" />
 <meta property="og:locale" content="en_GB" />
@@ -19,7 +19,7 @@
     <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:url" content="https://rahulsharmaagl.in/alcms-to-runway.html" />
-<meta name="twitter:title" content="ALCMS-to-Runway | Precision AGL Academy" />
+<meta name="twitter:title" content="ALCMS-to-Runway: AGL System Interfaces &amp; Integrated Operation" />
 <meta name="twitter:description" content="How does an ALCMS control runway lighting? A visual guide to one operator action driving the separate runway lighting circuits through their CCRs." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-alcms-to-runway.jpg" />
 <script type="application/ld+json">
@@ -27,7 +27,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/alcms-to-runway.html#article",
-  "headline": "ALCMS-to-Runway",
+  "headline": "ALCMS-to-Runway: AGL System Interfaces & Integrated Operation",
   "description": "How does an ALCMS control runway lighting? A visual guide to one operator action driving the separate runway lighting circuits through their CCRs.",
   "url": "https://rahulsharmaagl.in/alcms-to-runway.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/alcms-to-runway.html",
@@ -247,7 +247,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -433,6 +434,8 @@
             font-size: 11px; letter-spacing: 1px; font-weight: 700;
             margin-left: 12px;
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -655,7 +658,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -754,7 +757,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -905,6 +908,12 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -1050,6 +1059,7 @@
 </div>
 <div class="fact-card">
 <div class="label">The Fact <span class="badge"><i class="fa-solid fa-network-wired"></i> Control integration</span></div>
+                <h2>ALCMS-to-Runway: How It Works and Key Facts</h2>
 <p>A runway is lit by several <b class="highlight-white">separate circuits</b> &mdash; typically approach, threshold, edge, touchdown zone, centreline and runway end &mdash; each fed by its own <b class="highlight-white">CCR</b>. The <b>ALCMS-to-runway</b> link lets the operator treat the runway as one object: select the <span class="highlight-yellow">runway in use</span>, set the <span class="highlight-yellow">brightness</span> for the conditions, and the ALCMS sends the matching commands to every relevant CCR.</p>
 <p>What comes back is <span class="highlight-yellow">status for each circuit</span>: state, step, current and faults. That keeps a single failed circuit visible instead of hidden inside a runway-wide indication, and the other circuits keep their own status. Which circuits are used and at what brightness is set by <span class="highlight-red">airport procedure</span>, not by the ALCMS alone.</p>
 <ol class="steps"><li><b>Select.</b> The operator chooses the runway and its lighting configuration.</li><li><b>Command.</b> The ALCMS sends on/off and step commands to each circuit&rsquo;s CCR.</li><li><b>Light.</b> Each CCR sets its current and the runway lights respond.</li><li><b>Verify.</b> Each circuit reports back and any fault is shown against that circuit.</li></ol>
@@ -1073,7 +1083,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -1092,19 +1102,19 @@
             </div>
             </div>
 
-            <div class="shell-section"><div class="section-tag">Related Entries</div><h2>Continue Exploring</h2><div class="related-grid"><a class="related-card" href="runway-lighting-pattern.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Lighting Pattern</h5></a>
-<a class="related-card" href="runway-edge-lights.html"><div class="rc-tag">Runway Lighting</div><h5>Runway Edge Lights</h5></a>
-<a class="related-card" href="alcms-to-ccr.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS-to-CCR</h5></a>
-<a class="related-card" href="alcms-communication-architecture.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Communication Architecture</h5></a>
-<a class="related-card" href="alcms-failure-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Failure Flow</h5></a>
-<a class="related-card" href="alcms-troubleshooting-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Troubleshooting Flow</h5></a>
-<a class="related-card" href="tower-control.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Tower Control</h5></a>
-<a class="related-card" href="alcms-overview.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Overview</h5></a>
-<a class="related-card" href="alcms-to-papi.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS-to-PAPI</h5></a>
-<a class="related-card" href="alcms-to-signage.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS-to-Signage</h5></a>
-<a class="related-card" href="alcms-to-taxiway.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS-to-Taxiway</h5></a>
-<a class="related-card" href="runway-occupancy-sensing.html"><div class="rc-tag">Airfield Sensors</div><h5>Runway Occupancy Sensing</h5></a>
-<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+            <div class="shell-section"><div class="section-tag">Related Entries</div><h2>Continue Exploring</h2><div class="related-grid"><a class="related-card" href="runway-lighting-pattern.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Lighting Pattern</div></a>
+<a class="related-card" href="runway-edge-lights.html"><div class="rc-tag">Runway Lighting</div><div class="hl5">Runway Edge Lights</div></a>
+<a class="related-card" href="alcms-to-ccr.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS-to-CCR</div></a>
+<a class="related-card" href="alcms-communication-architecture.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Communication Architecture</div></a>
+<a class="related-card" href="alcms-failure-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Failure Flow</div></a>
+<a class="related-card" href="alcms-troubleshooting-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Troubleshooting Flow</div></a>
+<a class="related-card" href="tower-control.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">Tower Control</div></a>
+<a class="related-card" href="alcms-overview.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Overview</div></a>
+<a class="related-card" href="alcms-to-papi.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS-to-PAPI</div></a>
+<a class="related-card" href="alcms-to-signage.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS-to-Signage</div></a>
+<a class="related-card" href="alcms-to-taxiway.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS-to-Taxiway</div></a>
+<a class="related-card" href="runway-occupancy-sensing.html"><div class="rc-tag">Airfield Sensors</div><div class="hl5">Runway Occupancy Sensing</div></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><div class="hl5">AGL Visual Encyclopedia</div></a>
 </div></div>
 </div>
     </main>

@@ -95,8 +95,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -153,9 +152,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -170,8 +167,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -503,6 +499,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -538,7 +540,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip" data-preset="hot">Same cable at 40 °C</button>
 <button type="button" class="chip" data-preset="field">With field reading</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
-<div class="step"><div class="subsection-head"><h3>Cable Sections</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Cable Sections</h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="lenBasis">Length entered as</label><select id="lenBasis"><option value="loop" selected>Total loop length (out and back)</option><option value="oneway">One-way route length (doubled for the loop)</option></select><details class="why"><summary>Rule note</summary><p class="field-hint">A series circuit runs out to the last fixture and back, so the conductor length is the loop.</p></details></div><div class="field-group"><label for="lenUnit">Length unit</label><select id="lenUnit"><option value="m" selected>Metres (m)</option><option value="ft">Feet (ft)</option></select></div>
 </div></div>
@@ -547,11 +549,11 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <tbody id="segBody"></tbody></table></div>
 <button type="button" class="add-row" onclick="addSeg()"><i class="fa-solid fa-plus"></i> Add cable section</button>
 </div>
-<div class="step"><div class="subsection-head"><h3>Conditions</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Conditions</h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="cableTemp">Conductor temperature <span class="u">(°C)</span></label><input type="number" id="cableTemp" value="20" min="-40" max="90" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Copper resistance rises about 0.393 % per °C above 20 °C. Use the expected conductor temperature.</p></details></div><div class="field-group"><label for="customR">Custom conductor <span class="u">(Ω/km at 20 °C)</span></label><input type="number" id="customR" value="2.5" min="0.01" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">Used by any section set to "Custom". Take it from your cable data sheet.</p></details></div><div class="field-group"><label for="targetR">Target loop resistance <span class="u">(Ω, optional)</span></label><input type="number" id="targetR" value="0" min="0" step="0.1"/><details class="why"><summary>Rule note</summary><p class="field-hint">If entered, the comparison shows the longest loop each conductor can be for that resistance at your temperature. Leave 0 to skip.</p></details></div>
 </div></div></div>
-<div class="step"><div class="subsection-head"><h3>Field Test Check <span class="u">(optional)</span></h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Field Test Check <span class="u">(optional)</span></h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="measR">Measured loop resistance <span class="u">(Ω)</span></label><input type="number" id="measR" value="0" min="0" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">Leave 0 to skip. The reading is corrected to 20 °C and compared with the calculated value.</p></details></div><div class="field-group"><label for="measT">Temperature at test <span class="u">(°C)</span></label><input type="number" id="measT" value="20" min="-40" max="90" step="1"/></div><div class="field-group"><label for="measTol">Tolerance <span class="u">(±%)</span></label><input type="number" id="measTol" value="5" min="0.1" max="50" step="0.1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Your own acceptance rule.</p></details></div>
 </div></div></div>
@@ -569,7 +571,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method &amp; worked example</button>
 </aside></div></div></section>
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
     <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Circuit ID <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. Circuit R1 / CCR-01"/></div>
@@ -577,7 +579,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <div class="actions"><button type="button" class="report-btn" onclick="generateReport()"><i class="fa-solid fa-file-pdf"></i> Generate Calculation Report (PDF)</button>
   <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button></div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
-  <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown" id="breakdownGrid">
     <div class="bd-card"><div class="bd-label">Total loop length</div><div class="bd-val" id="bdLen">—</div><div class="bd-sub" id="bdLenSub">Sum of sections</div></div>
     <div class="bd-card"><div class="bd-label">Resistance at 20 °C</div><div class="bd-val" id="bd20">—</div><div class="bd-sub">Reference value</div></div>
@@ -586,9 +588,9 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="bd-card"><div class="bd-label">Average per km</div><div class="bd-val" id="bdKm">—</div><div class="bd-sub">Whole loop at temperature</div></div>
     <div class="bd-card"><div class="bd-label">Change from 20 °C</div><div class="bd-val" id="bdD">—</div><div class="bd-sub">Effect of temperature</div></div>
   </div>
-  <div class="subsection-head"><h3>Resistance vs temperature</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Resistance vs temperature</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap" style="max-height:none;overflow-x:auto;"><table id="tmpTable" style="min-width:480px;"><thead><tr><th>Temperature (°C)</th><th>Factor</th><th>Resistance (Ω)</th><th>Change from 20 °C</th></tr></thead><tbody></tbody></table></div>
-  <div class="subsection-head"><h3>Conductor comparison</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Conductor comparison</h2><div class="sub-line"></div></div>
   <details class="why" style="margin-bottom:10px"><summary>About this table</summary><p class="field-hint">The whole loop length re-run in a single conductor size at your temperature.</p></details>
   <div class="scroll-table-wrap" style="max-height:none;overflow-x:auto;"><table id="cmpTable" style="min-width:620px;"><thead><tr><th>Conductor</th><th>Ω/km at 20 °C</th><th>Ω/km at temp.</th><th>Loop resistance (Ω)</th><th>Longest loop for target (<span class="uLab">m</span>)</th></tr></thead><tbody></tbody></table></div>
 
@@ -603,29 +605,29 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ruler"></i> 1. Section resistance at 20 °C</h4>
+          <h3><i class="fa-solid fa-ruler"></i> 1. Section resistance at 20 °C</h3>
           <p>Each conductor has a nominal resistance per km at 20 °C. It is scaled by the loop length of the section, then the sections are added.</p>
           <div class="formula">R₂₀ = ρ₂₀ × L ÷ 1000</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-temperature-half"></i> 2. Temperature correction</h4>
+          <h3><i class="fa-solid fa-temperature-half"></i> 2. Temperature correction</h3>
           <div class="formula">R_T = R₂₀ × [1 + 0.00393 × (T − 20)]</div>
           <p>The coefficient is the usual figure for copper. A warm cable in summer or a buried cable in winter can differ noticeably from the 20 °C value.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> 3. Length for a target resistance</h4>
+          <h3><i class="fa-solid fa-table"></i> 3. Length for a target resistance</h3>
           <div class="formula">L = R_target ÷ (ρ₂₀ × k_T ÷ 1000)</div>
           <p>Here k_T is the temperature factor from step 2. It gives the longest loop of one conductor size that stays at or below the target.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-magnifying-glass-chart"></i> 4. Field test comparison</h4>
+          <h3><i class="fa-solid fa-magnifying-glass-chart"></i> 4. Field test comparison</h3>
           <div class="formula">R₂₀,meas = R_meas ÷ [1 + 0.00393 × (T_test − 20)]</div>
           <p>The corrected reading is compared with the calculated R₂₀ and shown as a percentage difference against your tolerance. A reading well above expected can point to a poor joint or a longer route than assumed. A reading below expected can point to a larger conductor or a shorter route. Both need checking on site.</p>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>#8 AWG, 3,000 m loop</td><td class="val">2.061 Ω/km</td></tr>
@@ -637,7 +639,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not calculate voltage drop or loss (see Calculator #15), include connectors, splices or cable reactance, or cover aluminium conductors. Resistance values are nominal DC figures, so confirm them against your cable data sheet.</p>
         </div>
       </div>
@@ -667,10 +669,10 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><h5>Calculator #15</h5><p>Voltage drop and I²R loss.</p></a>
-      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><h5>Calculator #14</h5><p>Estimated CCR output voltage.</p></a>
-      <a href="calc-agl-unit-converter.html" class="tool-link"><i class="fa-solid fa-right-left"></i><h5>Calculator #47</h5><p>AWG and cable resistance conversions.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><div class="tool-link-title">Calculator #15</div><p>Voltage drop and I²R loss.</p></a>
+      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><div class="tool-link-title">Calculator #14</div><p>Estimated CCR output voltage.</p></a>
+      <a href="calc-agl-unit-converter.html" class="tool-link"><i class="fa-solid fa-right-left"></i><div class="tool-link-title">Calculator #47</div><p>AWG and cable resistance conversions.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

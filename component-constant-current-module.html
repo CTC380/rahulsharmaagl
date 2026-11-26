@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Constant Current Module | AGL Component Library</title>
+    <title>Constant Current Module for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="Constant current module guide: feedback-controlled current regulation for LED-based AGL fixtures, modular replaceable design, and electrical standards." />
     <meta name="keywords" content="constant current module, LED driver module, AGL, airfield ground lighting, LED fixture" />
     <meta name="author" content="Precision AGL Academy" />
@@ -15,7 +15,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Constant Current Module | AGL Component Library" />
+    <meta property="og:title" content="Constant Current Module for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="Constant current module guide: feedback-controlled current regulation for LED-based AGL fixtures, modular replaceable design, and electrical standards." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-constant-current-module.html" />
     <meta property="og:site_name" content="AGL Component Library" />
@@ -32,7 +32,7 @@
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Constant Current Module | AGL Component Library" />
+    <meta name="twitter:title" content="Constant Current Module for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="Constant current module guide: feedback-controlled current regulation for LED-based AGL fixtures, modular replaceable design, and electrical standards." />
     <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRycgidppWyYkjeockOQHyOfv0pIiuJ7X02TH-WobgVPSKQOzniJemTRnA&amp;s=10" />
     <meta name="twitter:image:alt" content="Constant Current Module — airfield ground lighting component" />
@@ -45,7 +45,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "@id": "https://rahulsharmaagl.in/component-constant-current-module.html#article",
-        "headline": "Constant Current Module",
+        "headline": "Constant Current Module for AGL: Function, Construction & Testing",
         "description": "Constant current module guide: feedback-controlled current regulation for LED-based AGL fixtures, modular replaceable design, and electrical standards.",
         "url": "https://rahulsharmaagl.in/component-constant-current-module.html",
         "inLanguage": "en",
@@ -144,7 +144,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-constant-current-module.html#faq", "url": "https://rahulsharmaagl.in/component-constant-current-module.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-constant-current-module.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a constant current module in airfield ground lighting?", "acceptedAnswer": {"@type": "Answer", "text": "A constant current module is a compact electronic circuit that regulates the current flowing through an LED load to a set, stable value, regardless of variations in input voltage or temperature-induced changes in the load. Unlike a full LED driver, it usually does not include AC-DC conversion, and it is often integrated into a larger driver or onto the LED PCB of an AGL fixture."}}, {"@type": "Question", "name": "What is the difference between a constant current module and a CCR?", "acceptedAnswer": {"@type": "Answer", "text": "A Constant Current Regulator (CCR) regulates the current of the whole series circuit (loop), and on a conventional series-circuit fixture the module has no role at all. The module appears in LED fixtures fed from a DC bus or a local AC/DC supply, where it turns a commanded intensity step into a precise, regulated current at the LED array. It sits one level below the CCR rather than in place of it."}}, {"@type": "Question", "name": "How does a constant current module work?", "acceptedAnswer": {"@type": "Answer", "text": "It operates through a feedback control loop. A low-value sense (shunt) resistor in series with the LED load produces a voltage drop proportional to the load current, and a control IC monitors that voltage and adjusts a switching (buck, boost or buck-boost) or linear regulator to hold the current constant. Switching types are typically 85% efficient or better and run cooler, while linear types dissipate excess power as heat (typically 70% or better) but can offer lower noise. Built-in over-current, over-voltage and thermal-shutdown protection act locally."}}, {"@type": "Question", "name": "Where are constant current modules used in AGL?", "acceptedAnswer": {"@type": "Answer", "text": "They are used in LED-based AGL fixtures where space is limited or a modular design is preferred: runway and taxiway lights, approach lighting, obstruction lights, PAPI and VASI units, apron floodlights, and stop bars and guard lights. They also appear in retrofit LED kits, custom LED arrays and multi-channel fixtures where each channel has its own module."}}, {"@type": "Question", "name": "What are the typical specifications of a constant current module?", "acceptedAnswer": {"@type": "Answer", "text": "Typical values are an input of 12-48 V DC (or wider, such as 10-60 V DC), a regulated output current of 350 mA, 700 mA, 1 A or 1.5 A, and regulation accuracy of about ±2% to ±5% depending on design. Efficiency is 85% or better for switching types and 70% or better for linear types, with an ambient operating range of -40°C to +85°C. Dimming is by PWM (100 Hz to 1 kHz) or 0-10 V, and the board is conformally coated or potted."}}, {"@type": "Question", "name": "How is a constant current module dimmed, and does it talk to the ALCMS?", "acceptedAnswer": {"@type": "Answer", "text": "Many modules have a dimming input, either PWM or 0-10 V analogue, which receives the ALCMS intensity step once an upstream driver stage or the fixture's own controller has translated it into a local signal. The module itself has no direct ALCMS link: it only sees a dimming command and a current it must hold constant, and protection events such as OCP, OVP or thermal shutdown are handled locally. PWM and 0-10 V interfaces are not interchangeable."}}, {"@type": "Question", "name": "Which standards apply to constant current modules?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEC 61347 (lamp controlgear, general and safety requirements), IEC 62384 (performance of DC or AC supplied electronic control gear for LED modules) and IPC-6012 (rigid PCB qualification, for modules built on PCBs). Always follow the manufacturer's isolation rating and wiring diagram, and verify the current edition of each standard."}}, {"@type": "Question", "name": "How should a constant current module be tested at commissioning?", "acceptedAnswer": {"@type": "Answer", "text": "Confirm correct regulation across the full rated DC input range, then measure output current against the sense-resistor design value and check the protection circuits (OCP, OVP and thermal shutdown) by simulating fault conditions. Verify the PWM or 0-10 V dimming response against the ALCMS intensity steps, measure output ripple and noise with an oscilloscope, run a thermal burn-in at rated load, and inspect the potting or conformal coating for voids or cracks. Check regulation at a low dimming step as well as full brightness, and record the results in the commissioning dossier."}}, {"@type": "Question", "name": "How often should a constant current module be inspected and maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are annual for output current verification, dimming signal verification, surge protection checks and enclosure and seal inspection, and semi-annual for thermal performance checks. Your airport's approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "Why is the light output of an LED fixture slowly changing over time?", "acceptedAnswer": {"@type": "Answer", "text": "The usual cause is current regulation drift from ageing of the sense resistor or control IC. Measure the output current against the module's rated setpoint and compare the photometric output with the baseline commissioning data. Recalibrate the module if the drift is still within tolerance, or replace it if regulation accuracy has moved outside the acceptable band."}}, {"@type": "Question", "name": "Why does a constant current module run hot or shut down under load?", "acceptedAnswer": {"@type": "Answer", "text": "The most common cause is inadequate heat sinking or poor thermal contact between the module and the fixture body. Check the condition of the thermal interface material and the mounting torque, and measure the case temperature under normal load against the rated maximum. Re-apply the thermal interface material, correct the mounting, and improve fixture-side cooling if temperatures remain high. Also confirm whether the module is a linear type, which runs warm by design."}}, {"@type": "Question", "name": "Is it safe to work on a constant current module if its own leads are isolated?", "acceptedAnswer": {"@type": "Answer", "text": "No. Where the module sits inside a fixture fed from a CCR-derived DC bus, lock out and verify zero energy on the parent series circuit first, because the fixture body and upstream wiring can still be at several kV relative to ground. Cabinet-mounted modules can retain charge in their input and output capacitors, and potting does not prevent that. Confirm whether the module is isolated or non-isolated before connecting test equipment, use ESD precautions, and never bypass the over-current, over-voltage or thermal-shutdown protection."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -358,6 +359,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -572,8 +574,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -607,8 +608,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -659,8 +659,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -740,8 +739,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -785,8 +783,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -818,8 +815,7 @@
             color: #2ecc71;
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -882,8 +878,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -975,8 +970,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1071,8 +1065,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1350,8 +1343,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1411,6 +1403,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1441,7 +1439,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-microchip"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Constant Current <span>Module</span></h1>
+            <h1 class="comp-title">Constant Current <span>Module</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A precision electronic module that provides a stable, regulated current to LED arrays or other current‑sensitive loads in AGL fixtures. Designed to maintain consistent light output despite variations in input voltage or temperature, ensuring reliable performance in demanding airfield environments.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1455,7 +1453,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Constant Current Module?</h2>
             <div class="info-panel">
                 <p>A <strong>Constant Current Module</strong> is a dedicated electronic circuit that regulates the current flowing through an LED load to a predetermined, stable value, regardless of variations in the input voltage or changes in the load's characteristics (such as temperature‑induced resistance changes). Unlike a full LED driver which may include AC‑DC conversion and other functions, a constant current module is often a more compact, specialised sub‑circuit that can be integrated into a larger driver or LED PCB.</p>
                 <p style="margin-top:12px;">Key functions of a constant current module include:</p>
@@ -1676,9 +1674,9 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61347</h5><p>Lamp controlgear – general and safety requirements</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 62384</h5><p>Performance of DC or AC supplied electronic control gear for LED modules</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IPC-6012</h5><p>Rigid PCB qualification – for modules on PCBs</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61347</h3><p>Lamp controlgear – general and safety requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 62384</h3><p>Performance of DC or AC supplied electronic control gear for LED modules</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IPC-6012</h3><p>Rigid PCB qualification – for modules on PCBs</p></div></div>
             </div>
         </div>
     </section>
@@ -1691,49 +1689,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-microchip"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fixture / Cabinet Mounting Position</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Fixture / Cabinet Mounting Position</h3><span class="test-stage">Mechanical</span></div>
                         <p>Mount the module as a PCB or potted assembly inside the fixture housing, or DIN-rail/panel-mounted inside the CCR/driver cabinet, positioned close to the LED array or lamp it feeds.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-temperature-half"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Heat Sink Contact</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Heat Sink Contact</h3><span class="test-stage">Mechanical</span></div>
                         <p>Where used inside a sealed fixture, mount the module on or near the fixture's heat sink so its heat dissipation is managed alongside the LED's.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Terminal Separation</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Terminal Separation</h3><span class="test-stage">Electrical</span></div>
                         <p>Keep input and output terminals clearly separated to avoid confusing the regulated LED-side current with the incoming supply.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Lead Length Minimisation</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Lead Length Minimisation</h3><span class="test-stage">Electrical</span></div>
                         <p>Keep current-carrying leads short between the module and the LED array or lamp it feeds.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-sliders"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Dimming Interface Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Dimming Interface Wiring</h3><span class="test-stage">Electrical</span></div>
                         <p>Wire the PWM or 0-10V dimming interface to the ALCMS/CCR intensity control per the module's interface specification.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Potting / Conformal Coating Verification</h5><span class="test-stage">Quality</span></div>
+                        <div class="test-item-head"><h3>Potting / Conformal Coating Verification</h3><span class="test-stage">Quality</span></div>
                         <p>Confirm the potting or conformal coating is free of voids, cracks, or incomplete coverage before the module is closed into the fixture.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record module position, terminal wiring, and potting inspection before the fixture or cabinet is energised.</p>
                     </div>
                 </div>
@@ -1749,56 +1747,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Input Voltage Range Verification</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Input Voltage Range Verification</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Confirm the module accepts and regulates correctly across its full rated DC input range before it is connected to the LED load.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Output Current Accuracy Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Output Current Accuracy Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Measure output current against the sense-resistor design value across the operating range, confirming it stays within tolerance.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Protection Circuit Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Protection Circuit Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Simulate over-current, over-voltage, and over-temperature conditions and confirm OCP, OVP, and thermal shutdown activate correctly.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Dimming Interface Response Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Dimming Interface Response Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Verify the PWM or 0-10V dimming input correctly adjusts output current to match the ALCMS intensity steps.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Ripple &amp; Noise Measurement</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Ripple &amp; Noise Measurement</h3><span class="test-stage">Functional Test</span></div>
                         <p>Measure output ripple and switching noise with an oscilloscope, confirming levels stay within the LED manufacturer's tolerance.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Thermal Performance/Burn-in Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Thermal Performance/Burn-in Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Run the module at rated load for an extended period, confirming case temperature stabilises within the design limit.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Potting/Conformal Coating Inspection</h5><span class="test-stage">Pre-Acceptance</span></div>
+                        <div class="test-item-head"><h3>Potting/Conformal Coating Inspection</h3><span class="test-stage">Pre-Acceptance</span></div>
                         <p>Inspect the potting or conformal coating for voids, cracks, or incomplete coverage that could allow moisture or vibration damage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record current accuracy, protection, and thermal test results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1814,35 +1812,35 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Output Current Verification</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Output Current Verification</h3><span class="maint-freq">Annual</span></div>
                         <p>Verify output current against the rated setpoint, since drift and regulation error build gradually over service life.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Thermal Performance Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Thermal Performance Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Confirm the module is operating within its rated temperature range to catch developing thermal management issues.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Surge Protection Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Surge Protection Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect surge protection components for damage from repeated transient events.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Dimming Signal Verification</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Dimming Signal Verification</h3><span class="maint-freq">Annual</span></div>
                         <p>Confirm the module responds correctly to the dimming control signal across its full range.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Enclosure &amp; Seal Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Enclosure &amp; Seal Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Check the enclosure and seals for mechanical damage or degradation that could allow moisture ingress.</p>
                     </div>
                 </div>
@@ -1855,11 +1853,11 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Current Drift and Regulation Errors</h5><p>Over time, the current regulation accuracy can drift due to ageing of components (e.g., sense resistor, control IC). This can cause light output to change, affecting system performance. Regular photometric checks and, if necessary, recalibration or replacement of the module are recommended.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Thermal Management Failure</h5><p>Constant current modules generate heat, especially linear types. Inadequate heat sinking or poor thermal contact can cause overheating, leading to reduced efficiency or shutdown. Ensure the module is properly mounted with thermal interface material and that the fixture provides adequate cooling.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Voltage Spike Damage</h5><p>Input voltage transients from the power supply (e.g., from a CCR or switching power supply) can damage the module's input stage. Installing a transient voltage suppressor (TVS) or surge protection diode at the module's input can help protect against these spikes.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Dimming Signal</h5><p>If the module supports dimming, applying an incorrect PWM frequency or voltage level can cause flicker or unstable light output. Ensure the dimming signal matches the module's specifications and that the wiring is properly shielded to prevent noise pickup.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Mechanical Damage and Moisture Ingress</h5><p>The module is vulnerable to physical damage during handling or installation. Additionally, moisture can ingress through the potting or coating, causing corrosion. Handle with care and inspect for signs of damage or corrosion regularly.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Current Drift and Regulation Errors</h3><p>Over time, the current regulation accuracy can drift due to ageing of components (e.g., sense resistor, control IC). This can cause light output to change, affecting system performance. Regular photometric checks and, if necessary, recalibration or replacement of the module are recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Thermal Management Failure</h3><p>Constant current modules generate heat, especially linear types. Inadequate heat sinking or poor thermal contact can cause overheating, leading to reduced efficiency or shutdown. Ensure the module is properly mounted with thermal interface material and that the fixture provides adequate cooling.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Voltage Spike Damage</h3><p>Input voltage transients from the power supply (e.g., from a CCR or switching power supply) can damage the module's input stage. Installing a transient voltage suppressor (TVS) or surge protection diode at the module's input can help protect against these spikes.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Incorrect Dimming Signal</h3><p>If the module supports dimming, applying an incorrect PWM frequency or voltage level can cause flicker or unstable light output. Ensure the dimming signal matches the module's specifications and that the wiring is properly shielded to prevent noise pickup.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Mechanical Damage and Moisture Ingress</h3><p>The module is vulnerable to physical damage during handling or installation. Additionally, moisture can ingress through the potting or coating, causing corrosion. Handle with care and inspect for signs of damage or corrosion regularly.</p></div></div>
             </div>
         </div>
     </section>
@@ -1870,31 +1868,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Light Output Gradually Changing Over Time</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Light Output Gradually Changing Over Time</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Current regulation drift from ageing of the sense resistor or control IC.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure output current against the module's rated setpoint; compare current photometric output to baseline commissioning data.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate the module if drift is within tolerance, or replace it if regulation accuracy has moved outside the acceptable band.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Module Runs Hot or Shuts Down Under Load</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Module Runs Hot or Shuts Down Under Load</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Inadequate heat sinking or poor thermal contact between the module and the fixture body.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check thermal interface material condition and mounting torque; measure module case temperature under normal operating load against its rated maximum.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-apply thermal interface material, correct mounting to restore full thermal contact, and improve fixture-side cooling if temperatures remain excessive.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Module Fails Shortly After a Power Event</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Module Fails Shortly After a Power Event</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">An input voltage transient from the CCR or upstream supply has damaged the module's input stage.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for recent switching events, lightning activity, or supply anomalies logged by the CCR; inspect for visible damage on the module's input components.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the damaged module and install a transient voltage suppressor or surge protection diode at its input to prevent recurrence.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Flicker or Unstable Output When Dimming</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Flicker or Unstable Output When Dimming</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Incorrect PWM frequency or dimming voltage level applied, or unshielded dimming wiring picking up noise.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Verify the dimming signal's frequency and voltage against the module's specification; inspect dimming wiring for shielding and routing near noise sources.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Correct the dimming signal source to match module specifications and re-route or shield the dimming wiring away from noise sources.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Module Shows Signs of Corrosion or Physical Damage</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Module Shows Signs of Corrosion or Physical Damage</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Mechanical damage during handling/installation, or moisture ingress through compromised potting or coating.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect the module casing and potting for cracks or impact damage; check for corrosion on exposed leads or terminals.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace a physically damaged or corroded module; handle replacements with care during installation and inspect potting integrity before fitting.</div></div>
@@ -1910,7 +1908,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sense Resistor / Control IC Drift</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Sense Resistor / Control IC Drift</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Current regulation drift from ageing of the sense resistor or control IC.</div></div>
@@ -1919,7 +1917,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Thermal Contact Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Thermal Contact Degradation</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Inadequate heat sinking or poor thermal contact between the module and the fixture body.</div></div>
@@ -1928,7 +1926,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Surge-Damaged Input Stage</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Surge-Damaged Input Stage</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">An input voltage transient from the CCR or upstream supply damaging the module's input stage.</div></div>
@@ -1937,7 +1935,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Dimming Signal Mismatch</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Dimming Signal Mismatch</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Incorrect PWM frequency or dimming voltage level applied, or unshielded dimming wiring picking up noise.</div></div>
@@ -1946,7 +1944,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Potting / Enclosure Damage</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Potting / Enclosure Damage</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mechanical damage during handling/installation, or moisture ingress through compromised potting or coating.</div></div>
@@ -1965,49 +1963,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Treat the Fixture as Live Until the Series Loop Is Confirmed Dead</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Treat the Fixture as Live Until the Series Loop Is Confirmed Dead</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Where the module sits inside a fixture fed from a CCR-derived DC bus, isolating the module's own low-voltage leads is not enough; lock out and verify zero energy on the parent series circuit first, since the fixture body and upstream wiring can still be at several kV relative to ground.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug-circle-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cabinet Capacitor Discharge</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Cabinet Capacitor Discharge</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Where the module is panel-mounted inside a CCR or driver cabinet, input and output capacitors can retain charge after the cabinet supply is switched off; follow the manufacturer's discharge procedure and confirm terminals are de-energised before handling.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-microchip"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">ESD Precautions</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>ESD Precautions</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>The module is a compact PCB or potted assembly sensitive to electrostatic discharge; use standard ESD handling precautions (grounded wrist strap, antistatic mat) when removing or replacing it, particularly in dry conditions.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-temperature-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Heat Sink Contact</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Heat Sink Contact</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Allow the module and its heat sink to cool before handling after an active period; the module is mounted to share heat dissipation with the LED array or driver, and both can remain hot well after power is removed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolation Topology Awareness</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Isolation Topology Awareness</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Confirm whether the module is a non-isolated (buck) or isolated (flyback) design before connecting test equipment; a non-isolated module can share a common reference with the incoming supply, creating a shock or equipment-damage risk if test leads are grounded assuming isolation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ban"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Protection Circuits Not to Be Bypassed</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Protection Circuits Not to Be Bypassed</h3><span class="test-stage">Compliance</span></div>
                         <p>Never bypass or defeat the module's over-current, over-voltage, or thermal-shutdown protection to work around a fault; doing so risks overdriving the LED array and can create a fire or component-failure hazard.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Output Current Before Closing Out</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Verify Output Current Before Closing Out</h3><span class="test-stage">Compliance</span></div>
                         <p>After replacement or repair, measure output current against the sense-resistor design value before returning the fixture to service; an incorrectly set current under-drives photometric output or over-drives and shortens LED life.</p>
                     </div>
                 </div>
@@ -2030,42 +2028,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Loop-Level Monitoring Can't See Inside This Module</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Loop-Level Monitoring Can't See Inside This Module</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>Because the module's feedback loop is entirely local, the ALCMS and CCR have no visibility into what it's actually doing — a fixture the loop reports as healthy can still have its module quietly current-limiting or thermally throttling. Verify actual LED output at the fixture rather than trusting loop-level status alone when brightness looks inconsistent between otherwise identical fixtures.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Repeated Protection-Circuit Trips Are Data, Not Just an Inconvenience</h5><span class="expert-tag">Reliability</span></div>
+                        <div class="expert-item-head"><h3>Repeated Protection-Circuit Trips Are Data, Not Just an Inconvenience</h3><span class="expert-tag">Reliability</span></div>
                         <p>If a module's OCP, OVP, or thermal shutdown keeps triggering, treat it as a symptom of an upstream problem — a marginal supply, poor heat sinking, a degrading LED array — rather than simply resetting it and moving on. The protection circuit is telling you something before it fails hard.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-temperature-high"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Know the Regulation Topology Before Judging Housing Temperature</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>Know the Regulation Topology Before Judging Housing Temperature</h3><span class="expert-tag">Design</span></div>
                         <p>A linear-regulation module dissipates excess power as heat by design, while a switching (buck/boost) module runs cooler at the same output. Confirm which topology you're dealing with before treating a warm housing as evidence of a fault.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-plug-circle-bolt"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Confirm the Dimming Signal Type Matches What the Fixture Expects</h5><span class="expert-tag">Compatibility</span></div>
+                        <div class="expert-item-head"><h3>Confirm the Dimming Signal Type Matches What the Fixture Expects</h3><span class="expert-tag">Compatibility</span></div>
                         <p>PWM and 0–10V analogue dimming interfaces aren't interchangeable. A module swapped in with the wrong interface can appear to power the LED array fine at full brightness while failing to respond correctly at intermediate ALCMS steps.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Potting Protects Against Moisture, Not Against Stored Charge</h5><span class="expert-tag">Electrical Safety</span></div>
+                        <div class="expert-item-head"><h3>Potting Protects Against Moisture, Not Against Stored Charge</h3><span class="expert-tag">Electrical Safety</span></div>
                         <p>A potted or conformally coated module can still hold input or output capacitance after power is removed. Treat it as live until confirmed otherwise, regardless of how sealed the housing looks.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Verify Output Current at More Than One Dimming Step</h5><span class="expert-tag">Commissioning</span></div>
+                        <div class="expert-item-head"><h3>Verify Output Current at More Than One Dimming Step</h3><span class="expert-tag">Commissioning</span></div>
                         <p>Because the module's job is to hold current constant across a dimming range, confirm regulation at a low intensity step as well as full brightness after replacement — a module that regulates well at 100% can still misbehave at the bottom of its range.</p>
                     </div>
                 </div>
@@ -2136,10 +2134,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-led-driver.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">LED Driver</h5></a>
-                <a href="component-led-pcb.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">LED PCB</h5></a>
-                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">Constant Current Regulator</h5></a>
-                <a href="component-surge-module.html" class="related-card"><i class="fa-solid fa-bolt"></i><h5 role="heading" aria-level="3">Surge Module</h5></a>
+                <a href="component-led-driver.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">LED Driver</div></a>
+                <a href="component-led-pcb.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">LED PCB</div></a>
+                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">Constant Current Regulator</div></a>
+                <a href="component-surge-module.html" class="related-card"><i class="fa-solid fa-bolt"></i><div class="hl5">Surge Module</div></a>
             </div>
         </div>
     </section>
@@ -2176,7 +2174,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on constant current module selection or troubleshooting?</h4><p>Precision AGL Academy provides advice on current regulation, thermal management, dimming integration, and module reliability for AGL systems.</p></div>
+                <div><div class="hl4">Need expert guidance on constant current module selection or troubleshooting?</div><p>Precision AGL Academy provides advice on current regulation, thermal management, dimming integration, and module reliability for AGL systems.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

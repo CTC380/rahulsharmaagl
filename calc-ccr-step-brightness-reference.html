@@ -91,8 +91,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -161,9 +160,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -178,8 +175,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -526,6 +522,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -566,7 +568,7 @@
 <section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout">
 <div class="inputs">
 <div class="step">
-<div class="subsection-head"><h3>CCR Class, Steps &amp; Cable</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">CCR Class, Steps &amp; Cable</h2><div class="sub-line"></div></div>
 <div class="cfg-row">
         <div class="field-group"><label for="cls">CCR output class</label>
           <select id="cls"><option value="1">Class 1 — 6.6 A</option><option value="2">Class 2 — 20 A</option></select></div>
@@ -578,14 +580,14 @@
       <div class="info-banner" id="cfgNote" style="margin-top:0;margin-bottom:18px;"></div>
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Step Currents</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Step Currents</h2><div class="sub-line"></div></div>
       <div class="scroll-table-wrap ref-wrap"><table id="stepTbl"></table></div>
       <p class="field-hint" style="margin-top:10px;" id="tblNote"></p>
 
       
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Check a Measured Current</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Check a Measured Current</h2><div class="sub-line"></div></div>
 <div class="field-group">
             <label for="meas">Measured output current (A rms)</label>
             <input type="number" id="meas" min="0" step="any" placeholder="e.g. 5.42"/>
@@ -608,23 +610,23 @@
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-percent"></i> Percent of full current</h4>
+          <h3><i class="fa-solid fa-percent"></i> Percent of full current</h3>
           <div class="formula">% of full = I_step ÷ I_max × 100</div>
           <p>This is a share of current, not of light. Light output falls much faster than current, and the relationship depends on the lamp or LED driver, so use the fixture photometric data for actual intensity.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-arrow-trend-down"></i> Cable drop and loss by step</h4>
+          <h3><i class="fa-solid fa-arrow-trend-down"></i> Cable drop and loss by step</h3>
           <div class="formula">V = I × R &nbsp;&nbsp; P = I² × R</div>
           <p>Cable loss follows the square of the current, so it is about 18% of the full-brightness value at 2.8 A (6.6 A class). This applies to the cable only; lamp and transformer loads change with current.</p>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-gauge"></i> Step names</h4>
+          <h3><i class="fa-solid fa-gauge"></i> Step names</h3>
           <p>Five-step CCRs label the steps B1 to B5. Three-step units are commonly labelled B10, B30 and B100 on the control side; the name for each step can differ between makers.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> Power factor at low steps</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> Power factor at low steps</h3>
           <p>Input power factor and efficiency fall at low brightness, by an amount that depends on the CCR design and loading. Use the data sheet for your model, at the loading you expect, when sizing the supply.</p>
         </div>
       </div>
@@ -661,10 +663,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><h5>Calculator #16</h5><p>Required CCR kVA rating.</p></a>
-      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><h5>Calculator #14</h5><p>Estimated CCR output voltage.</p></a>
-      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><h5>Calculator #15</h5><p>Cable voltage drop and I²R loss.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><div class="tool-link-title">Calculator #16</div><p>Required CCR kVA rating.</p></a>
+      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><div class="tool-link-title">Calculator #14</div><p>Estimated CCR output voltage.</p></a>
+      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><div class="tool-link-title">Calculator #15</div><p>Cable voltage drop and I²R loss.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

@@ -97,8 +97,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -167,9 +166,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -184,8 +181,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -530,6 +526,12 @@ textarea#data{min-height:170px}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -575,7 +577,7 @@ textarea#data{min-height:170px}
 <button type="button" class="chip" data-preset="tight">Tighter thresholds</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
-<div class="step"><div class="subsection-head"><h3>Test Dates &amp; Requirement</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Test Dates &amp; Requirement</h2><div class="sub-line"></div></div>
       <div class="calc-grid">
         <div>
           <div class="sub-field-row">
@@ -594,7 +596,7 @@ textarea#data{min-height:170px}
       </div>
 </div>
 
-<div class="step"><div class="subsection-head"><h3>Priority Thresholds</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Priority Thresholds</h2><div class="sub-line"></div></div>
       <div class="tri-grid">
         <div class="field-group"><label for="hiDeg">High if degradation ≥ (%)</label><input type="number" id="hiDeg" value="20" min="0" step="1"/></div>
         <div class="field-group"><label for="meDeg">Medium if degradation ≥ (%)</label><input type="number" id="meDeg" value="10" min="0" step="1"/></div>
@@ -609,7 +611,7 @@ textarea#data{min-height:170px}
       <div style="margin-top:-6px;"><details class="why"><summary>Rule note</summary><p class="field-hint">A fixture already below the required minimum is always Critical. All thresholds are placeholders for your own maintenance procedure. The month limits apply only when a required minimum and both dates are entered.</p></details></div>
 </div>
 
-<div class="step"><div class="subsection-head"><h3>Readings</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Readings</h2><div class="sub-line"></div></div>
       <div class="field-group">
         <label for="data">Paste readings <span class="u">(ID, previous, current)</span></label>
         <textarea id="data" rows="9" spellcheck="false">ID, previous, current
@@ -645,7 +647,7 @@ EL-08, 11800, 9700</textarea>
 <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method &amp; worked example</button>
 </aside></div></div></section>
 
-<section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card"><div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div><div class="meta-row">
+<section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card"><div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div><div class="meta-row">
         <div class="field-group" style="margin-bottom:0;">
           <label for="projectName">Project Name <span class="u">(for report)</span></label>
           <input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lights, annual photometric trend"/>
@@ -660,7 +662,7 @@ EL-08, 11800, 9700</textarea>
       <p class="field-hint" id="reportStatus" style="margin-top:8px;flex-basis:100%;"></p>
       </div>
 
-      <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+      <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
       <div class="calc-breakdown" id="breakdownGrid">
         <div class="bd-card"><div class="bd-label">Fixtures</div><div class="bd-val" id="bdN">—</div><div class="bd-sub" id="bdNsub">Valid pairs</div></div>
         <div class="bd-card"><div class="bd-label">Critical / High / Medium / Low</div><div class="bd-val" id="bdCnt">—</div><div class="bd-sub">Fixtures in each priority</div></div>
@@ -670,7 +672,7 @@ EL-08, 11800, 9700</textarea>
         <div class="bd-card"><div class="bd-label">Below required now</div><div class="bd-val" id="bdBelow">—</div><div class="bd-sub" id="bdBelowSub">—</div></div>
       </div>
 
-      <div class="subsection-head"><h3>Fixtures Ranked by Priority</h3><div class="sub-line"></div></div>
+      <div class="subsection-head"><h2 class="subsection-title">Fixtures Ranked by Priority</h2><div class="sub-line"></div></div>
       <div class="scroll-table-wrap tall">
         <table id="resTable"><thead><tr><th>Fixture</th><th>Previous</th><th>Current</th><th>Change</th><th>Degradation</th><th>Per year</th><th>% of required</th><th>Months to limit</th><th>Priority</th></tr></thead><tbody></tbody></table>
       </div>
@@ -688,28 +690,28 @@ EL-08, 11800, 9700</textarea>
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-arrow-trend-down"></i> 1. Degradation</h4>
+          <h3><i class="fa-solid fa-arrow-trend-down"></i> 1. Degradation</h3>
           <p>The loss between the two tests as a percent of the previous reading. A negative value means the fixture read higher this time.</p>
           <div class="formula">degradation % = (previous − current) ÷ previous × 100</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-calendar-days"></i> 2. Rate per year</h4>
+          <h3><i class="fa-solid fa-calendar-days"></i> 2. Rate per year</h3>
           <p>The interval between the test dates is converted to years (days ÷ 365.25). The yearly rate is the degradation divided by that interval, and the yearly loss in intensity is the drop divided by the interval.</p>
           <div class="formula">rate %/yr = degradation % ÷ years</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-hourglass-half"></i> 3. Months to the limit</h4>
+          <h3><i class="fa-solid fa-hourglass-half"></i> 3. Months to the limit</h3>
           <p>If the required minimum is entered, the fixture's yearly loss is projected in a straight line from its current reading down to that minimum. A fixture with no loss never reaches it on this projection.</p>
           <div class="formula">months = (current − required) ÷ (yearly loss) × 12</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ranking-star"></i> 4. Priority</h4>
+          <h3><i class="fa-solid fa-ranking-star"></i> 4. Priority</h3>
           <p>Critical when the current reading is below the required minimum. Otherwise High if degradation reaches your high level or the limit is within your high months, Medium on the medium levels, and Low for the rest. The degradation tested is either the total change or the annualised rate, as you choose.</p>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <p style="font-size:11.5px;">Example values only, not a standard.</p>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
@@ -722,7 +724,7 @@ EL-08, 11800, 9700</textarea>
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not hold standard values, correct for supply current or temperature, or fit a curve to more than two tests. The projection is linear and uses only the last interval. Lamps often degrade unevenly, so use the months figure to plan inspections, not to schedule a replacement date.</p>
         </div>
       </div>
@@ -754,10 +756,10 @@ EL-08, 11800, 9700</textarea>
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-photometric-test-data-analyzer.html" class="tool-link"><i class="fa-solid fa-chart-line"></i><h5>Calculator #31</h5><p>Photometric Test Data Analyzer.</p></a>
-      <a href="calc-photometric-grid-compliance-analyzer.html" class="tool-link"><i class="fa-solid fa-border-all"></i><h5>Calculator #44</h5><p>Photometric Grid Compliance Analyzer.</p></a>
-      <a href="calc-agl-photometric-uniformity-calculator.html" class="tool-link"><i class="fa-solid fa-chart-simple"></i><h5>Photometric Uniformity</h5><p>Uniformity ratios across fixtures.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-photometric-test-data-analyzer.html" class="tool-link"><i class="fa-solid fa-chart-line"></i><div class="tool-link-title">Calculator #31</div><p>Photometric Test Data Analyzer.</p></a>
+      <a href="calc-photometric-grid-compliance-analyzer.html" class="tool-link"><i class="fa-solid fa-border-all"></i><div class="tool-link-title">Calculator #44</div><p>Photometric Grid Compliance Analyzer.</p></a>
+      <a href="calc-agl-photometric-uniformity-calculator.html" class="tool-link"><i class="fa-solid fa-chart-simple"></i><div class="tool-link-title">Photometric Uniformity</div><p>Uniformity ratios across fixtures.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

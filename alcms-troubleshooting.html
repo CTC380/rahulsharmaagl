@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ALCMS Troubleshooting | Precision AGL Academy</title>
+    <title>ALCMS Troubleshooting: Fault Diagnosis &amp; Checks</title>
     <meta name="description" content="How is an ALCMS problem troubleshot? A visual guide to matching the symptom, such as a communication alarm, to the failed layer and the first check." />
     <meta name="author" content="Precision AGL Academy" />
     <meta name="robots" content="index, follow" />
@@ -12,7 +12,7 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://rahulsharmaagl.in/alcms-troubleshooting.html" />
-    <meta property="og:title" content="ALCMS Troubleshooting | Precision AGL Academy" />
+    <meta property="og:title" content="ALCMS Troubleshooting: Fault Diagnosis &amp; Checks" />
     <meta property="og:description" content="How is an ALCMS problem troubleshot? A visual guide to matching the symptom, such as a communication alarm, to the failed layer and the first check." />
     <meta property="og:site_name" content="Precision AGL Academy" />
     <meta property="og:locale" content="en_GB" />
@@ -23,7 +23,7 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://rahulsharmaagl.in/alcms-troubleshooting.html" />
-    <meta name="twitter:title" content="ALCMS Troubleshooting | Precision AGL Academy" />
+    <meta name="twitter:title" content="ALCMS Troubleshooting: Fault Diagnosis &amp; Checks" />
     <meta name="twitter:description" content="How is an ALCMS problem troubleshot? A visual guide to matching the symptom, such as a communication alarm, to the failed layer and the first check." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-alcms-troubleshooting.jpg" />
 <script type="application/ld+json">
@@ -31,7 +31,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/alcms-troubleshooting.html#article",
-  "headline": "ALCMS Troubleshooting",
+  "headline": "ALCMS Troubleshooting: Fault Diagnosis & Checks",
   "description": "How is an ALCMS problem troubleshot? A visual guide to matching the symptom, such as a communication alarm, to the failed layer and the first check.",
   "url": "https://rahulsharmaagl.in/alcms-troubleshooting.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/alcms-troubleshooting.html",
@@ -253,7 +253,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -439,6 +440,8 @@
             font-size: 11px; letter-spacing: 1px; font-weight: 700;
             margin-left: 12px;
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -659,7 +662,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -758,7 +761,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -895,6 +898,12 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 <nav id="navbar">
@@ -930,6 +939,7 @@
 </div>
 <div class="fact-card">
 <div class="label">The Fact <span class="badge"><i class="fa-solid fa-bolt"></i> ALCMS fault tracing</span></div>
+                <h2>ALCMS Troubleshooting: How It Works and Key Facts</h2>
 <p>The ALCMS is built in <b>layers</b>: control positions, <b>duplicated servers</b>, <b>two network paths</b>, <b>field controllers</b>, the <b>CCRs</b> and the circuits they feed. Commands travel down and status and alarms travel back up, so the symptom points to a layer. A <b>communication alarm or stale status</b> points to the server, network or field controller. A <b>command ignored</b> may only mean the <b>CCR selector is in Local or Off</b>, which is not a fault. A <b>CCR alarm or no output current</b> points to the CCR or its circuit, and <b>CCR normal but lights wrong</b> moves the search to the circuit and fixtures.</p>
 <p>A failed link can leave the screen <b>blank or out of date</b>, so <b>a quiet screen is not proof of a healthy airfield</b> and status is checked <b>at the CCR or in the field</b>. <b>ATC is told first</b>, only <b>authorised engineers</b> work on the equipment, and after repair and test the selector is <b>returned to Remote</b> and status confirmed before ATC is told control is restored. The <b>failure flow</b> entry shows what the system does when something fails, and the <b>troubleshooting flow</b> entry traces it layer by layer. This entry starts from <b>what the operator sees</b>. Alarm codes and exact checks come from the manufacturer and project documents.</p>
 <div class="specs-grid">
@@ -966,7 +976,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -989,19 +999,19 @@
 <div class="section-tag">Related Entries</div>
 <h2>Continue Exploring</h2>
 <div class="related-grid">
-<a class="related-card" href="alcms-troubleshooting-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Troubleshooting Flow</h5></a>
-<a class="related-card" href="alcms-failure-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Failure Flow</h5></a>
-<a class="related-card" href="alcms-communication-architecture.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Communication Architecture</h5></a>
-<a class="related-card" href="alarm-monitoring.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>Alarm Monitoring</h5></a>
-<a class="related-card" href="ccr-communication.html"><div class="rc-tag">CCR &amp; Power</div><h5>CCR Communication</h5></a>
-<a class="related-card" href="ccr-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>CCR Troubleshooting</h5></a>
-<a class="related-card" href="series-circuit-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>Series-Circuit Troubleshooting</h5></a>
-<a class="related-card" href="sign-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>Sign Troubleshooting</h5></a>
-<a class="related-card" href="papi-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>PAPI Troubleshooting</h5></a>
-<a class="related-card" href="connector-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>Connector Troubleshooting</h5></a>
-<a class="related-card" href="fixture-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>Fixture Troubleshooting</h5></a>
-<a class="related-card" href="intermittent-fault-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><h5>Intermittent-Fault Troubleshooting</h5></a>
-<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+<a class="related-card" href="alcms-troubleshooting-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Troubleshooting Flow</div></a>
+<a class="related-card" href="alcms-failure-flow.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Failure Flow</div></a>
+<a class="related-card" href="alcms-communication-architecture.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Communication Architecture</div></a>
+<a class="related-card" href="alarm-monitoring.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">Alarm Monitoring</div></a>
+<a class="related-card" href="ccr-communication.html"><div class="rc-tag">CCR &amp; Power</div><div class="hl5">CCR Communication</div></a>
+<a class="related-card" href="ccr-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">CCR Troubleshooting</div></a>
+<a class="related-card" href="series-circuit-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">Series-Circuit Troubleshooting</div></a>
+<a class="related-card" href="sign-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">Sign Troubleshooting</div></a>
+<a class="related-card" href="papi-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">PAPI Troubleshooting</div></a>
+<a class="related-card" href="connector-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">Connector Troubleshooting</div></a>
+<a class="related-card" href="fixture-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">Fixture Troubleshooting</div></a>
+<a class="related-card" href="intermittent-fault-troubleshooting.html"><div class="rc-tag">Failure &amp; Troubleshooting</div><div class="hl5">Intermittent-Fault Troubleshooting</div></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><div class="hl5">AGL Visual Encyclopedia</div></a>
 </div>
 </div>
 </div>

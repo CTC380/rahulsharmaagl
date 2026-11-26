@@ -95,8 +95,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -165,9 +164,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -182,8 +179,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -507,6 +503,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -551,7 +553,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip" data-preset="long">Long loop, 8 km</button>
 <button type="button" class="chip" data-preset="big">250 × 45 W</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
-<div class="step"><div class="subsection-head"><h3>Fixtures &amp; Transformers</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Fixtures &amp; Transformers</h2><div class="sub-line"></div></div>
       <div class="calc-grid single">
         <div>
           <div class="field-group"><label for="I">Series circuit current (A)</label><input type="number" id="I" value="6.6" min="0.1" step="0.1"/></div>
@@ -563,7 +565,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           <div class="field-group"><label for="pf">Power factor of transformer and fixture</label><input type="number" id="pf" value="0.95" min="0.5" max="1" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">Your own assumption. The reactive part is assigned to the transformers.</p></details></div>
         </div>
       </div></div>
-<div class="step"><div class="subsection-head"><h3>Primary Cable</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Primary Cable</h2><div class="sub-line"></div></div>
       <div class="calc-grid single">
         <div>
           <div class="field-group"><label for="cond">Conductor</label>
@@ -578,7 +580,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           <div class="field-group"><label for="xkm">Cable reactance (Ω/km)</label><input type="number" id="xkm" value="0.10" min="0" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">Placeholder. Use the cable data sheet value for your construction and frequency.</p></details></div>
         </div>
       </div></div>
-<div class="step"><div class="subsection-head"><h3>CCR Selection</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">CCR Selection</h2><div class="sub-line"></div></div>
       <div>
         <div class="field-group"><label for="maxLoad">Maximum CCR loading (%)</label><input type="number" id="maxLoad" value="90" min="50" max="100" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Your own rule, not a standard value.</p></details></div>
         <details class="why"><summary>Rule note</summary><p class="field-hint">Standard sizes 1, 2, 2.5, 4, 5, 7.5, 10, 15, 20, 25, 30, 50 and 70 kVA, treated as nominal kVA as in Calculator #16 (FAA AC 150/5345-10H lists 1 to 30 kW, with 50 and 70 kW as replacement-only; 2.5 and 5 are IEC and manufacturer sizes). Only sizes whose rated voltage (kVA ÷ current) stays within 5 kV are offered, so at 6.6 A the choice stops at 30 kVA.</p></details>
@@ -605,7 +607,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method &amp; worked example</button>
 </aside></div></div></section>
 <section class="tab-panel" id="tab-report" role="tabpanel" aria-labelledby="t-report" hidden><div class="container"><div class="calc-card">
-<div class="subsection-head first"><h3>Report details</h3><div class="sub-line"></div></div>
+<div class="subsection-head first"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
 <div class="meta-row">
   <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
   <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Circuit <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. Circuit R1 / CCR-01"/></div>
@@ -613,9 +615,9 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <div class="actions"><button type="button" class="report-btn" onclick="generateReport()"><i class="fa-solid fa-file-pdf"></i> Generate Calculation Report (PDF)</button>
 <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button></div>
 <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
-<div class="subsection-head"><h3>Contribution by Element</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Contribution by Element</h2><div class="sub-line"></div></div>
 <div class="scroll-table-wrap flat"><table id="tbl"><thead><tr><th>Element</th><th>R (Ω)</th><th>X (Ω)</th><th>Share of R (%)</th><th>Share of X (%)</th></tr></thead><tbody></tbody></table></div>
-<div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
 <div class="calc-breakdown" id="breakdownGrid" style="border-top:0;margin-top:0;padding-top:0;">
         <div class="bd-card"><div class="bd-label">Total resistance R</div><div class="bd-val" id="bdR">—</div><div class="bd-sub">Fixtures + transformer loss + cable</div></div>
         <div class="bd-card"><div class="bd-label">Total reactance X</div><div class="bd-val" id="bdX">—</div><div class="bd-sub">Transformers + cable</div></div>
@@ -654,18 +656,18 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <p class="block-note">Every step is shown so the result can be checked by hand.</p>
     <div class="ref-cols">
       <div>
-        <div class="method-card"><h4><i class="fa-solid fa-lightbulb"></i> 1. Fixtures and transformers</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-lightbulb"></i> 1. Fixtures and transformers</h3>
           <p>With a 1:1 current ratio, a load on the secondary appears on the primary as a resistance equal to its power divided by the current squared. The transformer loss is treated the same way, and the reactive power sets the transformer reactance.</p>
           <div class="formula">R_fix = P_fix ÷ I² &nbsp;&nbsp; R_tr = (P_fix ÷ η − P_fix) ÷ I²</div>
           <div class="formula">X_tr = P_pri × tan(arccos PF) ÷ I²</div></div>
-        <div class="method-card"><h4><i class="fa-solid fa-ruler"></i> 2. Primary cable</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-ruler"></i> 2. Primary cable</h3>
           <div class="formula">R_cab = r₂₀ × [1 + 0.00393 × (T − 20)] × L ÷ 1000 &nbsp;&nbsp; X_cab = x × L ÷ 1000</div></div>
-        <div class="method-card"><h4><i class="fa-solid fa-wave-square"></i> 3. Total and regulator duty</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-wave-square"></i> 3. Total and regulator duty</h3>
           <div class="formula">Z = √(R² + X²) &nbsp;&nbsp; V = I × Z &nbsp;&nbsp; S = V × I &nbsp;&nbsp; PF = R ÷ Z</div>
           <p>The smallest standard CCR is the first size where S is within your maximum loading.</p></div>
       </div>
       <div>
-        <div class="method-card"><h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>100 × 45 W, 6.6 A, 90 %, PF 0.95</td><td class="val">P_fix 4.5 kW, P_pri 5.0 kW</td></tr>
@@ -678,17 +680,17 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
             <tr><td>V, S</td><td class="val">836.9 V, 5.52 kVA</td></tr>
             <tr><td>CCR at 90 % max</td><td class="val">7.5 kVA, 74 %</td></tr>
           </table></div>
-        <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+        <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It models the circuit at full brightness with constant impedance. Lamp resistance changes with brightness step, and transformer reactance changes with loading, so the lower steps need manufacturer data. It ignores capacitance, secondary lamp-out behaviour and fault conditions.</p></div>
       </div>
     </div>
     <div class="block-label" style="margin-top:44px;">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-series-circuit-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><h5>Calculator #13</h5><p>Series circuit load, kW &amp; kVA.</p></a>
-      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><h5>Calculator #14</h5><p>Estimated CCR output voltage.</p></a>
-      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><h5>Calculator #15</h5><p>Cable voltage drop by section.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-series-circuit-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><div class="tool-link-title">Calculator #13</div><p>Series circuit load, kW &amp; kVA.</p></a>
+      <a href="calc-circuit-voltage.html" class="tool-link"><i class="fa-solid fa-wave-square"></i><div class="tool-link-title">Calculator #14</div><p>Estimated CCR output voltage.</p></a>
+      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><div class="tool-link-title">Calculator #15</div><p>Cable voltage drop by section.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

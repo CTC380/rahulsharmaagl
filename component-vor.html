@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VOR | AGL Component Library</title>
+    <title>VHF Omnidirectional Range (VOR): Function, Construction &amp; Testing</title>
     <meta name="description" content="VOR explained: the ground-based radio navigation aid providing azimuth bearing information for en-route and approach navigation — principle of operation." />
     <meta name="keywords" content="VOR, VHF omnidirectional range, azimuth bearing navigation, en route navaid, ICAO Annex 10, ground based radio navigation" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-vor.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="VOR | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="VHF Omnidirectional Range (VOR): Function, Construction &amp; Testing" />
     <meta property="og:description" content="VOR explained: the ground-based radio navigation aid providing azimuth bearing information for en-route and approach navigation — principle of operation." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-vor.html" />
     <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/f/fe/D-VOR_PEK.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original" />
@@ -23,7 +23,7 @@
     <meta property="article:author" content="Precision AGL Academy" />
     <meta property="article:section" content="AGL Component Library" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="VOR | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="VHF Omnidirectional Range (VOR): Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="VOR explained: the ground-based radio navigation aid providing azimuth bearing information for en-route and approach navigation — principle of operation." />
     <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/f/fe/D-VOR_PEK.JPG?utm_source=en.wikipedia.org&amp;utm_campaign=index&amp;utm_content=original" />
     <meta name="theme-color" content="#060d1a" />
@@ -31,7 +31,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-vor.html#faq", "url": "https://rahulsharmaagl.in/component-vor.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-vor.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a VOR?", "acceptedAnswer": {"@type": "Answer", "text": "A VHF Omnidirectional Range is a ground-based radio navigation aid that transmits a signal from which an aircraft can determine its bearing (radial) from the station. It operates in the 108.0-117.975 MHz VHF band."}}, {"@type": "Question", "name": "How does a VOR work?", "acceptedAnswer": {"@type": "Answer", "text": "By phase comparison of two signals: a 30 Hz reference signal frequency-modulated onto a 9960 Hz subcarrier and transmitted omnidirectionally, and a 30 Hz variable signal, amplitude-modulated, whose phase depends on bearing."}}, {"@type": "Question", "name": "Where is VOR used?", "acceptedAnswer": {"@type": "Answer", "text": "Across all phases of flight, especially en route, where VORs define the airway structure (Victor Airways in the US), and in approach navigation."}}, {"@type": "Question", "name": "What are the typical VOR specifications?", "acceptedAnswer": {"@type": "Answer", "text": "Channel spacing of 50 kHz, bearing accuracy of ±1 to ±2 degrees, transmitter power of 10-200 W, and coverage classes Terminal (25 NM), Low (40 NM) and High (up to 130 NM). A three-letter Morse identifier is transmitted regularly."}}, {"@type": "Question", "name": "How is VOR kept reliable?", "acceptedAnswer": {"@type": "Answer", "text": "Critical installations use dual redundant hot-standby transmitters, continuous self-monitoring with alarms, and mains power backed by UPS and generator."}}, {"@type": "Question", "name": "Which standards apply to VOR?", "acceptedAnswer": {"@type": "Answer", "text": "ICAO Annex 10 (frequency, modulation and performance), FAA AC 00-31A (US National Aviation Standard for VOR/DME/TACAN), ICAO Doc 8071 Volume I (ground and flight testing) and RTCA DO-196 (VOR airborne receivers)."}}, {"@type": "Question", "name": "How often is a VOR checked?", "acceptedAnswer": {"@type": "Answer", "text": "Annually for flight-check radial accuracy, antenna pattern inspection and power amplifier performance, and semi-annually for modulation depth and phase relationships."}}, {"@type": "Question", "name": "Why do some sectors show bearing errors or scalloping?", "acceptedAnswer": {"@type": "Answer", "text": "Multipath from terrain, buildings or large metallic structures reflecting the VOR signal. Correlate reported errors with aircraft position and sector, and review the surrounding site for reflectors."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -245,6 +246,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -483,8 +485,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -518,8 +519,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -570,8 +570,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -650,8 +649,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -696,8 +694,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -729,8 +726,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -793,8 +789,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -886,8 +881,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -982,8 +976,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1245,8 +1238,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1407,6 +1399,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1437,7 +1435,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-compass"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">VHF Omnidirectional <span>Range (VOR)</span></h1>
+            <h1 class="comp-title">VHF Omnidirectional <span>Range (VOR)</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A ground‑based radio navigation system that provides azimuth (bearing) information to aircraft equipped with VOR receivers. VOR is the primary en‑route navigation aid, enabling pilots to determine their position relative to a fixed ground station and to navigate along defined airways.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1451,7 +1449,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a VHF Omnidirectional Range (VOR)?</h2>
             <div class="info-panel">
                 <p>The <strong>VHF Omnidirectional Range (VOR)</strong> is a ground‑based radio navigation aid that transmits a signal from which an aircraft can determine its bearing (radial) relative to the station. The system operates in the VHF band (108.0 MHz to 117.975 MHz) and provides 360 distinct radials (each 1° apart) that extend outward from the station like spokes on a wheel. By tuning to a VOR frequency and interpreting the received signal, a pilot can determine which radial they are on, and by combining this with distance information (from DME), can fix their position. VOR is the cornerstone of the airway system, used for en‑route navigation, terminal area procedures, and non‑precision approaches.</p>
             </div>
@@ -1635,10 +1633,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 10</h5><p>VOR frequency, modulation, and performance requirements</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 00-31A</h5><p>US National Aviation Standard for VOR/DME/TACAN systems</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Doc 8071, Vol. I</h5><p>Manual on ground and flight testing of VOR and other ground‑based navigation aids</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">RTCA DO-196</h5><p>VOR airborne receiver standards</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 10</h3><p>VOR frequency, modulation, and performance requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 00-31A</h3><p>US National Aviation Standard for VOR/DME/TACAN systems</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Doc 8071, Vol. I</h3><p>Manual on ground and flight testing of VOR and other ground‑based navigation aids</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>RTCA DO-196</h3><p>VOR airborne receiver standards</p></div></div>
             </div>
         </div>
     </section>
@@ -1651,49 +1649,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-combined"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Site Selection &amp; Obstruction Clearance</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Site Selection &amp; Obstruction Clearance</h3><span class="test-stage">Civil</span></div>
                         <p>Confirm the station centre sits on a low, obstruction-free mound before construction, since surrounding terrain and structures would otherwise distort the radiated signal.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-disc"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Counterpoise &amp; Antenna Erection</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Counterpoise &amp; Antenna Erection</h3><span class="test-stage">Mechanical</span></div>
                         <p>Erect the ground-plane counterpoise structure and mount the Alford loop or similar antenna array atop it per the design radiation-pattern requirements.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-warehouse"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Equipment Shelter Installation</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Equipment Shelter Installation</h3><span class="test-stage">Civil</span></div>
                         <p>Install the weatherproof, temperature-controlled equipment shelter beside or beneath the antenna structure, confirming HVAC and environmental control are functional before equipment installation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-satellite-dish"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Dual Transmitter &amp; Monitor Installation</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Dual Transmitter &amp; Monitor Installation</h3><span class="test-stage">Electrical</span></div>
                         <p>Install the hot-standby transmitter pair, monitoring receivers, and battery/UPS backup in the shelter, wiring both transmitters for automatic switchover.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Low-Loss Feed Line Installation</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Low-Loss Feed Line Installation</h3><span class="test-stage">Electrical</span></div>
                         <p>Run the short, low-loss coaxial feed between the shelter equipment and the radiating element, minimising transmission loss over the run.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Lightning Protection &amp; Earthing</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Lightning Protection &amp; Earthing</h3><span class="test-stage">Electrical</span></div>
                         <p>Install lightning protection and earthing into the counterpoise and shelter grounding system, appropriate to the station's isolated, elevated siting.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Flight-Check Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Flight-Check Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record antenna and counterpoise geometry, feed line details, and earthing test results as-built before ground radial testing and the flight check.</p>
                     </div>
                 </div>
@@ -1709,49 +1707,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Ground Radial Accuracy Test</h5><span class="test-stage">Pre-Flight Check</span></div>
+                        <div class="test-item-head"><h3>Ground Radial Accuracy Test</h3><span class="test-stage">Pre-Flight Check</span></div>
                         <p>Verify radial accuracy on the ground using a calibrated test receiver before committing to a flight check.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Modulation &amp; Phase Verification</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Modulation &amp; Phase Verification</h3><span class="test-stage">Energisation</span></div>
                         <p>Confirm the 30 Hz reference and variable signal modulation depth and phase relationship fall within tolerance across the frequency channel.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Monitor System Trip Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Monitor System Trip Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Inject an out-of-tolerance condition and confirm the monitor correctly forces a standby transmitter switch or automatic shutdown.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Identification Signal Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Identification Signal Check</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm the Morse-coded station identifier transmits correctly and at the required interval.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Flight Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Flight Check</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Fly a calibrated flight-inspection aircraft along defined radials to verify bearing accuracy and coverage against the regulatory tolerance.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Standby Transmitter Switchover Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Standby Transmitter Switchover Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Force a switchover to the hot-standby transmitter and confirm seamless continuity of the broadcast signal.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record flight-check results, modulation readings, and monitor trip thresholds in the commissioning dossier for regulatory handover.</p>
                     </div>
                 </div>
@@ -1767,28 +1765,28 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Radial Accuracy Flight Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Radial Accuracy Flight Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Conduct a flight check to verify radial accuracy against the required tolerance, per the applicable regulatory schedule.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Antenna Pattern Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Antenna Pattern Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect the antenna array for damage or obstruction that could degrade the radiated pattern.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Modulation &amp; Phase Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Modulation &amp; Phase Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Verify modulation depth and phase relationships remain within tolerance to prevent bearing errors.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Amplifier Performance Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Power Amplifier Performance Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Test power amplifier output against baseline to catch degradation before it causes a service interruption.</p>
                     </div>
                 </div>
@@ -1801,10 +1799,10 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Site Interference (Multipath)</h5><p>Reflections from terrain, buildings, or large metallic structures can distort the VOR signal, causing bearing errors (scalloping). Proper site selection and the use of Doppler VOR (DVOR) mitigate this issue.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Antenna Pattern Degradation</h5><p>Damage to the counterpoise or antenna elements can alter the radiation pattern, affecting accuracy. Regular inspection and maintenance of the antenna system are essential.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Phase Modulation Drift</h5><p>The phase relationship between the reference and variable signals can drift with temperature or component ageing, leading to bearing errors. Periodic calibration using flight inspection is required.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Amplifier Failure</h5><p>The transmitter amplifiers are subject to thermal stress and ageing. Regular maintenance and the use of hot‑standby systems are critical to ensure service continuity.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Site Interference (Multipath)</h3><p>Reflections from terrain, buildings, or large metallic structures can distort the VOR signal, causing bearing errors (scalloping). Proper site selection and the use of Doppler VOR (DVOR) mitigate this issue.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Antenna Pattern Degradation</h3><p>Damage to the counterpoise or antenna elements can alter the radiation pattern, affecting accuracy. Regular inspection and maintenance of the antenna system are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Phase Modulation Drift</h3><p>The phase relationship between the reference and variable signals can drift with temperature or component ageing, leading to bearing errors. Periodic calibration using flight inspection is required.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Power Amplifier Failure</h3><p>The transmitter amplifiers are subject to thermal stress and ageing. Regular maintenance and the use of hot‑standby systems are critical to ensure service continuity.</p></div></div>
             </div>
         </div>
     </section>
@@ -1815,31 +1813,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Bearing Errors / Scalloping in Certain Sectors</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Bearing Errors / Scalloping in Certain Sectors</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Multipath from terrain, buildings, or large metallic structures reflecting the VOR signal.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Correlate reported bearing errors with aircraft position/sector and review site survey and flight inspection history for known problem radials.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Address site obstructions where possible, or upgrade to Doppler VOR (DVOR) for improved multipath immunity.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reduced Accuracy or Coverage</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Reduced Accuracy or Coverage</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Damage to the counterpoise or antenna elements altering the radiation pattern.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect the antenna system and counterpoise for physical damage and check the monitor system for radiation pattern alarms.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace damaged antenna elements/counterpoise and re-verify with flight inspection.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Gradual Bearing Drift Detected During Flight Inspection</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Gradual Bearing Drift Detected During Flight Inspection</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Phase modulation drift between the reference and variable signals from temperature or component ageing.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review flight inspection trend data, check internal monitor phase readings, and inspect for component ageing indicators.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate the phase relationship, replace ageing components as needed, and schedule a follow-up flight inspection.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Loss of Service or Reduced Range</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Loss of Service or Reduced Range</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Power amplifier failure or degradation from thermal stress and ageing.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check transmitter output power against specification, review amplifier alarm/monitor status, and confirm the hot-standby changeover function.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace or service the faulted amplifier, verify the hot-standby system engages correctly, and restore normal power output.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Monitor System Trips VOR Off-Air</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Monitor System Trips VOR Off-Air</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The integral monitor has detected an out-of-tolerance parameter (bearing, modulation, or power) and shut down or transferred to standby per its safety function.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review monitor alarm logs to identify which parameter tripped and check the corresponding subsystem for the underlying fault.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Rectify the underlying fault identified by the monitor and verify parameters are within tolerance before restoring to service.</div></div>
@@ -1854,7 +1852,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Antenna Pattern Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Antenna Pattern Degradation</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Physical damage, icing, or corrosion changing the counterpoise or antenna elements' electrical characteristics from their calibrated pattern.</div></div>
@@ -1863,7 +1861,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Phase Modulation Drift</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Phase Modulation Drift</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Component ageing in the modulation circuitry gradually shifting the phase relationship the VOR signal depends on for bearing accuracy.</div></div>
@@ -1872,7 +1870,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Amplifier Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Power Amplifier Failure</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Component ageing, thermal stress, or a fault in the RF power amplifier stage feeding the antenna system.</div></div>
@@ -1881,7 +1879,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Site Interference from Multipath</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Site Interference from Multipath</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">New construction, vegetation growth, or terrain changes near the site introducing reflections that weren't present at commissioning.</div></div>
@@ -1890,7 +1888,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Monitor System False Trip</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Monitor System False Trip</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A monitor system that has drifted out of calibration, or a genuine marginal signal parameter sitting right at the trip threshold.</div></div>
@@ -1899,7 +1897,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Standby Transmitter Switchover Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Standby Transmitter Switchover Failure</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A fault in the automatic switching relay or logic that's meant to bring the standby transmitter online when the primary fails or trips.</div></div>
@@ -1918,49 +1916,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-tower-broadcast"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">RF Exposure</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>RF Exposure</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Confirm the transmitter is powered down or reduced to a safe level before working near the antenna array; VHF transmission at close range can exceed RF exposure limits, and standby/monitor equipment should never be assumed inactive without verification.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Electrical Isolation</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Lock out the equipment supply and verify zero energy before opening the transmitter cabinet or servicing internal electronics.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Aviation Authority Coordination</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Aviation Authority Coordination</h3><span class="test-stage">Operational</span></div>
                         <p>Notify ATC and the relevant aviation authority before any planned outage and raise a NOTAM; VOR is a primary en-route and approach navigation aid, and its loss affects aircraft relying on it for position fixing.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-crosshairs"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Flight Inspection After Work</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Flight Inspection After Work</h3><span class="test-stage">Compliance</span></div>
                         <p>Any work affecting the antenna array, counterpoise, or signal-generating equipment requires flight inspection or equivalent ground calibration verification before the station is returned to operational status.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-person-falling-burst"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Antenna Structure Access</h5><span class="test-stage">Fall Protection</span></div>
+                        <div class="test-item-head"><h3>Antenna Structure Access</h3><span class="test-stage">Fall Protection</span></div>
                         <p>Use fall-protection equipment appropriate to the antenna structure when accessing elevated components of the array.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>PPE</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Use insulated tools for electrical work and RF-exposure monitoring where required by the facility's procedure.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Confirm signal accuracy is verified and the NOTAM is cancelled only after flight inspection or ground calibration confirms the station is within tolerance.</p>
                     </div>
                 </div>
@@ -1983,42 +1981,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-signal"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Siting Errors Show Up as Scalloping, Not Obvious Failure</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>Siting Errors Show Up as Scalloping, Not Obvious Failure</h3><span class="expert-tag">Design</span></div>
                         <p>A VOR sited too close to reflective terrain, buildings, or metal structures can produce radial errors — often called scalloping or bends — that vary with aircraft position rather than a clean pass/fail signal. Siting studies need to account for multipath reflection sources across the full service volume, not just line-of-sight to the antenna.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-mound"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Counterpoise and Ground Plane Condition Affects Signal Quality Long Before Visible Damage</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Counterpoise and Ground Plane Condition Affects Signal Quality Long Before Visible Damage</h3><span class="expert-tag">Maintenance</span></div>
                         <p>The counterpoise or ground plane beneath a VOR antenna maintains the radiation pattern the system depends on; corrosion, vegetation encroachment, or ground settlement beneath it can degrade signal accuracy gradually well before any visible structural damage appears. Inspect ground plane condition as a distinct maintenance item, not just the antenna itself.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-plane"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Flight Inspection Findings Should Be Cross-Checked Against Ground Monitor Trends</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>Flight Inspection Findings Should Be Cross-Checked Against Ground Monitor Trends</h3><span class="expert-tag">Verification</span></div>
                         <p>A flight inspection captures a snapshot of system performance at the time of the check; trending the ground monitor's continuous parameters between flight inspections can catch a slow drift developing well before the next scheduled flight check flags it as out of tolerance.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-tower-broadcast"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Nearby Construction Can Degrade a Previously Compliant Site</h5><span class="expert-tag">Operational</span></div>
+                        <div class="expert-item-head"><h3>Nearby Construction Can Degrade a Previously Compliant Site</h3><span class="expert-tag">Operational</span></div>
                         <p>A VOR site that passed its original siting survey can be affected by later construction, new buildings, or even seasonal vegetation growth within its protected area; changes near the site should trigger a re-evaluation of siting criteria rather than being assumed clear because the original survey passed.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Standby Transmitter Switchover Should Be Verified as Seamless, Not Just Functional</h5><span class="expert-tag">Reliability</span></div>
+                        <div class="expert-item-head"><h3>Standby Transmitter Switchover Should Be Verified as Seamless, Not Just Functional</h3><span class="expert-tag">Reliability</span></div>
                         <p>Confirming the standby transmitter comes on when tested is different from confirming the switchover happens without a service-affecting glitch that could disrupt navigation during the transition; verify switchover behaviour under representative conditions, not just that the standby unit itself works.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">RF Exposure Zones Change With Any Power or Antenna Modification</h5><span class="expert-tag">Safety</span></div>
+                        <div class="expert-item-head"><h3>RF Exposure Zones Change With Any Power or Antenna Modification</h3><span class="expert-tag">Safety</span></div>
                         <p>Any change to transmitter power output or antenna configuration shifts the calculated RF exposure boundary around the site; re-verify and, if needed, re-mark the exposure zone after such changes rather than relying on boundaries established for a previous configuration.</p>
                     </div>
                 </div>
@@ -2073,10 +2071,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-dme.html" class="related-card"><i class="fa-solid fa-location-dot"></i><h5 role="heading" aria-level="3">DME</h5></a>
-                <a href="component-ils-localizer.html" class="related-card"><i class="fa-solid fa-radio"></i><h5 role="heading" aria-level="3">ILS Localizer</h5></a>
-                <a href="component-glide-slope.html" class="related-card"><i class="fa-solid fa-chart-line"></i><h5 role="heading" aria-level="3">Glide Slope</h5></a>
-                <a href="component-ndb.html" class="related-card"><i class="fa-solid fa-broadcast-tower"></i><h5 role="heading" aria-level="3">NDB</h5></a>
+                <a href="component-dme.html" class="related-card"><i class="fa-solid fa-location-dot"></i><div class="hl5">DME</div></a>
+                <a href="component-ils-localizer.html" class="related-card"><i class="fa-solid fa-radio"></i><div class="hl5">ILS Localizer</div></a>
+                <a href="component-glide-slope.html" class="related-card"><i class="fa-solid fa-chart-line"></i><div class="hl5">Glide Slope</div></a>
+                <a href="component-ndb.html" class="related-card"><i class="fa-solid fa-broadcast-tower"></i><div class="hl5">NDB</div></a>
             </div>
         </div>
     </section>
@@ -2113,7 +2111,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on VOR selection, installation, or troubleshooting?</h4><p>Precision AGL Academy provides advice on site planning, signal optimisation, and flight inspection preparation for VOR systems.</p></div>
+                <div><div class="hl4">Need expert guidance on VOR selection, installation, or troubleshooting?</div><p>Precision AGL Academy provides advice on site planning, signal optimisation, and flight inspection preparation for VOR systems.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Input Module: DIN-Rail PLC/ALCMS Guide</title>
+    <title>Digital Input Module for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="Digital input module guide: DIN-rail I/O capturing switch, relay and alarm contact states for PLC/ALCMS with galvanic isolation. Specs, IEC 61131-2, testing." />
     <meta name="keywords" content="digital input module, DI module, PLC input module, ALCMS I/O, DIN rail, galvanic isolation, airfield lighting control, IEC 61131-2" />
     <meta name="author" content="Precision AGL Academy" />
@@ -15,7 +15,7 @@
     
         <!-- Open Graph -->
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="Digital Input Module: DIN-Rail PLC/ALCMS Guide" />
+        <meta property="og:title" content="Digital Input Module for AGL: Function, Construction &amp; Testing" />
         <meta property="og:description" content="Digital input module guide: DIN-rail I/O capturing switch, relay and alarm contact states for PLC/ALCMS with galvanic isolation. Specs, IEC 61131-2, testing." />
         <meta property="og:url" content="https://rahulsharmaagl.in/component-digital-input-module.html" />
         <meta property="og:site_name" content="AGL Component Library" />
@@ -34,7 +34,7 @@
     
         <!-- Twitter / X -->
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Digital Input Module: DIN-Rail PLC/ALCMS Guide" />
+        <meta name="twitter:title" content="Digital Input Module for AGL: Function, Construction &amp; Testing" />
         <meta name="twitter:description" content="Digital input module guide: DIN-rail I/O capturing switch, relay and alarm contact states for PLC/ALCMS with galvanic isolation. Specs, IEC 61131-2, testing." />
         <meta name="twitter:image" content="https://www.masibus.com/wp-content/uploads/2019/05/16-Channel-Digital-Input-Module-MAS-DI-16-D.jpg" />
         <meta name="twitter:image:alt" content="DIN-rail digital input module for PLC and ALCMS signal capture" />
@@ -172,7 +172,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-digital-input-module.html#faq", "url": "https://rahulsharmaagl.in/component-digital-input-module.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-digital-input-module.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a digital input module?", "acceptedAnswer": {"@type": "Answer", "text": "A digital input module (DI module) captures and conditions binary on/off signals from field devices. In AGL it monitors switches, relays, contactors, circuit breakers and alarm contacts, giving the PLC or ALCMS real-time status for control logic, alarm annunciation and system visualisation."}}, {"@type": "Question", "name": "Why does the control system need input status as well as output commands?", "acceptedAnswer": {"@type": "Answer", "text": "The module gives the controller a picture of what actually happened rather than what was commanded. A contactor's auxiliary contact confirms it actually closed, and a breaker's status confirms power was actually lost, which matters directly for safety and reliability."}}, {"@type": "Question", "name": "What does a DI module monitor in an AGL system?", "acceptedAnswer": {"@type": "Answer", "text": "CCR ON/OFF, fault and ready/run contacts, circuit breaker status (MCCBs and MCBs in lighting distribution panels), contactor auxiliary feedback contacts and alarm inputs."}}, {"@type": "Question", "name": "How does a DI module read a signal?", "acceptedAnswer": {"@type": "Answer", "text": "When a field contact closes, a voltage (typically 24 VDC) reaches the input terminal. A current-limiting resistor and an opto-coupler condition the signal and isolate the field side from the controller logic before it reaches the backplane."}}, {"@type": "Question", "name": "What are the typical specifications?", "acceptedAnswer": {"@type": "Answer", "text": "8, 16 or 32 channels, input range 24 VDC (10–30 VDC) or 120/230 VAC, 3–10 mA per channel, sourcing (PNP) or sinking (NPN) inputs, 2.5–4 kV galvanic isolation and a 1–10 ms debounce filter. Diagnostics include open-wire, short-circuit and blown-fuse detection with channel status LEDs."}}, {"@type": "Question", "name": "Where is a DI module installed?", "acceptedAnswer": {"@type": "Answer", "text": "In the PLC or remote I/O rack backplane inside the CCR control room cabinet or remote substation enclosure, close to the contacts it reads. Dry-contact inputs are wired on their own terminals, separate from powered inputs, to avoid cross-feeding voltage."}}, {"@type": "Question", "name": "Which communication interfaces does a DI module use?", "acceptedAnswer": {"@type": "Answer", "text": "A backplane bus such as Profinet, EtherNet/IP, Modbus TCP or Profibus, or a direct I/O bus, powered at 24 VDC (18–32 VDC) from the backplane or an external supply."}}, {"@type": "Question", "name": "Which standards apply to digital input modules?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEC 61131-2 (programmable controllers, equipment requirements and tests), IEC 61000-6-2 (EMC immunity for industrial environments), UL 508 and EN 61131. Always verify the current edition and your approved requirements."}}, {"@type": "Question", "name": "How often should a DI module be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typical intervals are semi-annual for terminal torque checks and ambient temperature and ventilation checks, and annual for channel functional tests, surge suppression device checks and ground continuity and isolation checks. Your approved maintenance programme takes precedence."}}, {"@type": "Question", "name": "Why does an input read the wrong state or no state?", "acceptedAnswer": {"@type": "Answer", "text": "Usually incorrect polarity or a PNP/NPN sourcing-sinking mismatch between the field device and the module. Check the input type and polarity against the datasheet and the voltage at the terminal, then rewire and re-label the termination."}}, {"@type": "Question", "name": "Why is an input circuit damaged or erratic?", "acceptedAnswer": {"@type": "Answer", "text": "A voltage spike from a nearby inductive load such as a relay or contactor has exceeded the input's overvoltage protection. Look for inductive loads sharing the wiring run and fit varistors or RC snubbers across the field contacts."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         /* ── RESET & BASE ── */
         * {
             margin: 0;
@@ -389,6 +390,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -520,8 +522,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -555,8 +556,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -607,8 +607,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -687,8 +686,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -733,8 +731,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -766,8 +763,7 @@
             color: #2ecc71;
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -830,8 +826,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -923,8 +918,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1019,8 +1013,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1408,8 +1401,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1469,6 +1461,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1502,7 +1500,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-arrow-right-to-bracket"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Digital <span>Input Module</span></h1>
+            <h1 class="comp-title">Digital <span>Input Module</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A high‑density, DIN‑rail mounted module that interfaces binary field signals — such as switch states, alarm contacts, and status indicators — to a PLC, remote I/O, or ALCMS. The Digital Input Module provides galvanic isolation, signal conditioning, and diagnostic feedback, enabling reliable monitoring of airfield lighting equipment and control system status.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1517,7 +1515,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Digital Input Module?</h2>
             <div class="info-panel">
                 <p>A <strong>Digital Input Module</strong> (DI Module) is a fundamental building block of industrial control systems, designed to capture and condition binary (on/off) signals from field devices. In AGL applications, DI modules are used to monitor the state of switches, relays, contactors, circuit breakers, and alarm contacts, providing the PLC or ALCMS with real‑time status information for control logic, alarm annunciation, and system visualisation.</p>
                 <p style="margin-top:12px;">Key characteristics of the Digital Input Module include:</p>
@@ -1695,10 +1693,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61131‑2</h5><p>Programmable controllers — equipment requirements and tests (I/O module standards)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑2</h5><p>EMC immunity for industrial environments</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">UL 508</h5><p>Industrial control equipment (I/O modules)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EN 61131</h5><p>Programmable controllers — general requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61131‑2</h3><p>Programmable controllers — equipment requirements and tests (I/O module standards)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61000‑6‑2</h3><p>EMC immunity for industrial environments</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>UL 508</h3><p>Industrial control equipment (I/O modules)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>EN 61131</h3><p>Programmable controllers — general requirements</p></div></div>
             </div>
         </div>
     </section>
@@ -1712,49 +1710,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-server"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Rack Slot &amp; Backplane Positioning</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Rack Slot &amp; Backplane Positioning</h3><span class="test-stage">Mechanical</span></div>
                         <p>Seat the module into the PLC or Remote I/O rack's backplane close to the CCR status contacts, breaker auxiliary contacts, and alarm inputs it reads, keeping low-level status wiring away from adjacent output modules switching inductive loads.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Input Wiring Termination</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Input Wiring Termination</h3><span class="test-stage">Electrical</span></div>
                         <p>Terminate field wiring on the module's own terminal block, keeping dry-contact inputs on separate terminals from any powered/wetted inputs to avoid cross-feeding voltage between circuits.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-toggle-on"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sourcing/Sinking Configuration</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Sourcing/Sinking Configuration</h3><span class="test-stage">Electrical</span></div>
                         <p>Set or confirm each channel's sourcing (PNP) or sinking (NPN) configuration to match the connected field device before wiring is energised.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Input Voltage Range Matching</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Input Voltage Range Matching</h3><span class="test-stage">Electrical</span></div>
                         <p>Confirm each channel's input voltage range (24 VDC or 120/230 VAC) matches the field signal it will read before connection.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-microchip"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Debounce Filter Setting</h5><span class="test-stage">Software</span></div>
+                        <div class="test-item-head"><h3>Debounce Filter Setting</h3><span class="test-stage">Software</span></div>
                         <p>Set the debounce/filter time per channel appropriate to the connected contact type, avoiding false state changes from contact bounce or electrical noise.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-diagram-project"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PLC/ALCMS Channel Mapping</h5><span class="test-stage">Software</span></div>
+                        <div class="test-item-head"><h3>PLC/ALCMS Channel Mapping</h3><span class="test-stage">Software</span></div>
                         <p>Map each physical channel to its corresponding point in the PLC or ALCMS point list before commissioning, so a reported status maps back to the correct field contact.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record rack position, terminal assignments, and channel configuration as-built before the module is energised.</p>
                     </div>
                 </div>
@@ -1770,49 +1768,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power &amp; Backplane Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Power &amp; Backplane Check</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Confirm the module registers correctly on the backplane bus and receives stable supply voltage before wiring field contacts.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Point-to-Point I/O Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Point-to-Point I/O Verification</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Force each input individually and confirm it registers correctly at the controller, mapped to the intended field device or contact.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Sourcing/Sinking Configuration Check</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Sourcing/Sinking Configuration Check</h3><span class="test-stage">Energisation</span></div>
                         <p>Confirm each channel's PNP/NPN configuration matches the connected field device's wiring convention.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Debounce Filter Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Debounce Filter Verification</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm the filter/debounce time is correctly set for the connected contact type, avoiding chatter from mechanical relay contacts.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Open-Wire / Short-Circuit Diagnostic Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Open-Wire / Short-Circuit Diagnostic Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Simulate an open or shorted input and confirm the module correctly flags the diagnostic alarm for that channel.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolation Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Isolation Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Verify galvanic isolation between the field side and backplane meets the module's rated isolation voltage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record channel configuration and point mapping verification results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1828,35 +1826,35 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Terminal Torque Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Terminal Torque Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Re-torque screw terminals loosened by cabinet vibration, and verify spring-clamp terminals remain fully seated.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Channel Functional Test</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Channel Functional Test</h3><span class="maint-freq">Annual</span></div>
                         <p>Test each input channel against a known field state to catch opto-coupler failure or drift before it causes missed signals.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Surge Suppression Device Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Surge Suppression Device Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect varistors or RC snubbers across field contacts for degradation from repeated inductive load switching.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Ground Continuity &amp; Isolation Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Ground Continuity &amp; Isolation Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Verify field wiring is grounded at a single point and that galvanic isolation is intact to prevent ground-loop noise.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Ambient Temperature &amp; Ventilation Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Ambient Temperature &amp; Ventilation Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Check cabinet ventilation and ambient temperature against the module's derating curve, especially for high-density modules.</p>
                     </div>
                 </div>
@@ -1869,13 +1867,13 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Input Wiring Errors</h5><p>Incorrect polarity or wiring of field devices (e.g., PNP vs NPN mismatch) can cause the module to read an incorrect state or not read at all. Always verify the input type (sourcing/sinking) and polarity against the module's datasheet. Use colour‑coded wiring and label all terminations.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Transient Overvoltage</h5><p>Inductive loads (relays, contactors) can generate voltage spikes that may damage the input circuits. Use surge suppression devices (varistors, RC snubbers) across the field contacts, and ensure the module has adequate overvoltage protection.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Contact Bounce</h5><p>Mechanical switches and relays produce contact bounce that can cause multiple transitions, leading to false readings or excessive PLC processing. Use the module's built‑in debounce filter (if available) or add external debounce circuits. Set the filter time to match the contact characteristics.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Channel Failure (Opto‑Coupler)</h5><p>Opto‑couplers can fail due to aging or overvoltage. If a channel stops responding, check the input voltage and wiring. Some modules allow replacement of individual channels; otherwise, the entire module may need replacement. Use quality modules with proven reliability.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Ground Loops</h5><p>Multiple grounding points in the field wiring can create ground loops, causing false readings or noise. Ensure that the field wiring is grounded at a single point and use isolated inputs (galvanic isolation) to break ground loops.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Loose Terminals</h5><p>Vibration in control cabinets can loosen screw or spring terminals, leading to intermittent connections. Periodically check and re‑torque screw terminals. For spring‑clamp terminals, ensure that wires are fully inserted and properly stripped.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Temperature Derating</h5><p>High‑density modules can overheat if installed in poorly ventilated cabinets. Reduce the ambient temperature or derate the current per channel to prevent thermal overload and premature failure.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Input Wiring Errors</h3><p>Incorrect polarity or wiring of field devices (e.g., PNP vs NPN mismatch) can cause the module to read an incorrect state or not read at all. Always verify the input type (sourcing/sinking) and polarity against the module's datasheet. Use colour‑coded wiring and label all terminations.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Transient Overvoltage</h3><p>Inductive loads (relays, contactors) can generate voltage spikes that may damage the input circuits. Use surge suppression devices (varistors, RC snubbers) across the field contacts, and ensure the module has adequate overvoltage protection.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Contact Bounce</h3><p>Mechanical switches and relays produce contact bounce that can cause multiple transitions, leading to false readings or excessive PLC processing. Use the module's built‑in debounce filter (if available) or add external debounce circuits. Set the filter time to match the contact characteristics.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Channel Failure (Opto‑Coupler)</h3><p>Opto‑couplers can fail due to aging or overvoltage. If a channel stops responding, check the input voltage and wiring. Some modules allow replacement of individual channels; otherwise, the entire module may need replacement. Use quality modules with proven reliability.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Ground Loops</h3><p>Multiple grounding points in the field wiring can create ground loops, causing false readings or noise. Ensure that the field wiring is grounded at a single point and use isolated inputs (galvanic isolation) to break ground loops.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Loose Terminals</h3><p>Vibration in control cabinets can loosen screw or spring terminals, leading to intermittent connections. Periodically check and re‑torque screw terminals. For spring‑clamp terminals, ensure that wires are fully inserted and properly stripped.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Temperature Derating</h3><p>High‑density modules can overheat if installed in poorly ventilated cabinets. Reduce the ambient temperature or derate the current per channel to prevent thermal overload and premature failure.</p></div></div>
             </div>
         </div>
     </section>
@@ -1886,43 +1884,43 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Input Reads Incorrect State or No State at All</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Input Reads Incorrect State or No State at All</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Incorrect polarity or a PNP/NPN sourcing-sinking mismatch between the field device and the module.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Verify the input type (sourcing/sinking) and wiring polarity against the module's datasheet; check actual voltage present at the input terminal against the expected logic level.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Rewire to match the correct polarity/sourcing-sinking configuration and re-label the termination clearly for future reference.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Input Circuit Damaged or Behaving Erratically</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Input Circuit Damaged or Behaving Erratically</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">A voltage spike from a nearby inductive load (relay, contactor) exceeding the input's overvoltage protection.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for inductive loads sharing the same field wiring run; inspect for existing surge suppression across the field contacts.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Fit surge suppression (varistors or RC snubbers) across the inductive load's contacts and confirm the module's overvoltage protection is adequate for the application.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False or Multiple Transitions From a Single Switch Operation</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>False or Multiple Transitions From a Single Switch Operation</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Mechanical contact bounce from a switch or relay not being filtered.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check whether the module's built-in debounce filter is enabled and correctly timed; observe the raw input signal if diagnostic tools are available.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Enable or add the debounce filter and set its time constant to match the contact's bounce characteristics, or add an external debounce circuit.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">A Specific Channel Stops Responding</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>A Specific Channel Stops Responding</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Opto-coupler failure on that channel from ageing or an overvoltage event.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check input voltage and wiring at the affected channel; test with a known-good signal source to isolate the module channel as the fault.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the individual channel module if field-replaceable, or replace the entire module if channels are not separately serviceable.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Noisy or False Readings Across Multiple Inputs</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Noisy or False Readings Across Multiple Inputs</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Ground loops created by multiple grounding points in the field wiring.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the field wiring's grounding scheme for multiple ground references; verify whether the module's inputs are galvanically isolated.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Correct the grounding scheme to a single point and use galvanically isolated inputs to break any remaining ground loop.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Intermittent Signal Loss Correlating With Vibration</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Intermittent Signal Loss Correlating With Vibration</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Loose screw or spring terminals shaken loose by cabinet or equipment vibration.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect and gently test terminal tightness on the affected circuit; check spring-clamp terminals for full wire insertion and correct stripping length.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-torque screw terminals to specification and correct any improperly inserted spring-clamp terminations.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Module Overheats or Shows Premature Failures</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Module Overheats or Shows Premature Failures</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">High channel density combined with poor cabinet ventilation causing thermal overload.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure module and cabinet ambient temperature under full load; compare against the module's rated operating temperature and per-channel current derating.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Improve cabinet ventilation and/or derate the per-channel current to bring the module within its thermal operating envelope.</div></div>
@@ -1938,7 +1936,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Opto-Isolator Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Opto-Isolator Degradation</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">LED-side ageing inside the opto-isolator from sustained current over years of service, gradually reducing its switching sensitivity.</div></div>
@@ -1947,7 +1945,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Surge Damage to the Input Circuit</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Surge Damage to the Input Circuit</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A lightning-induced transient or switching surge on the field wiring that exceeds the channel's surge protection rating.</div></div>
@@ -1956,7 +1954,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Contact Bounce on a Field Switch</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Contact Bounce on a Field Switch</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mechanical contact bounce on the connected field switch or relay, not filtered by the module's debounce setting.</div></div>
@@ -1965,7 +1963,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Individual Channel Failure</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Individual Channel Failure</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">A component failure isolated to one channel's input circuitry, distinct from a module-wide power or communication fault.</div></div>
@@ -1974,7 +1972,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Electrical Noise on Shared Wiring</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Electrical Noise on Shared Wiring</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Field wiring routed alongside a high-current or high-frequency source, or a missing/broken shield on the input cable run.</div></div>
@@ -1983,7 +1981,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Vibration-Induced Terminal Loosening</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Vibration-Induced Terminal Loosening</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Screw terminals gradually loosening under sustained vibration from nearby equipment or ground traffic.</div></div>
@@ -1992,7 +1990,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Overtemperature Operation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Overtemperature Operation</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Enclosure ventilation inadequate for the ambient conditions, or the module installed adjacent to another heat-generating device.</div></div>
@@ -2011,42 +2009,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Field Wiring Before Servicing</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Isolate Field Wiring Before Servicing</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise and lock out the associated field circuit before disconnecting or rewiring terminals; externally-powered field contacts and shared power buses can remain live even when the module itself is unpowered.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-microchip"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">ESD Precautions</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>ESD Precautions</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Handle modules by the housing, not the terminals or pins, and use a grounding strap or ESD mat when removing or inserting a module, since the input circuitry is sensitive to static discharge.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-arrows-rotate"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Hot-Swap With Care</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Hot-Swap With Care</h3><span class="test-stage">Operational</span></div>
                         <p>Only hot-swap a module if the platform explicitly supports it; otherwise power down the affected bus first to avoid spurious state changes reaching the controller.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug-circle-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Do Not Defeat Surge Protection</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Do Not Defeat Surge Protection</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Do not bypass or remove input surge suppression to work around a nuisance trip; replace damaged protection components to the original specification.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Terminal Torque</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Verify Terminal Torque</h3><span class="test-stage">Operational</span></div>
                         <p>Confirm field wiring terminals are torqued to specification after any rework; a loose terminal can present as an intermittent field-device fault that is difficult to diagnose.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Channel Status Before Handover</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Confirm Channel Status Before Handover</h3><span class="test-stage">Compliance</span></div>
                         <p>After replacing a module, verify each channel reflects the correct field state at the ALCMS or controller before closing out the work.</p>
                     </div>
                 </div>
@@ -2069,42 +2067,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-microchip"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A "Stuck" Channel Is Often a Debounce Setting, Not a Fault</h5><span class="expert-tag">Diagnostics</span></div>
+                        <div class="expert-item-head"><h3>A "Stuck" Channel Is Often a Debounce Setting, Not a Fault</h3><span class="expert-tag">Diagnostics</span></div>
                         <p>An input channel that seems slow to register a field state change is frequently a debounce or filter time constant doing its job on a noisy contact, not a failing module. Check the configured debounce interval before swapping hardware over a channel that "lags."</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Wetting Current Matters More Than Voltage on Dry Contacts</h5><span class="expert-tag">Electrical</span></div>
+                        <div class="expert-item-head"><h3>Wetting Current Matters More Than Voltage on Dry Contacts</h3><span class="expert-tag">Electrical</span></div>
                         <p>A field contact wired to a low-current digital input can develop a thin oxide film that a low wetting current can't reliably break through, producing an intermittent "false open" reading even though the switch itself is mechanically fine. Confirm the input's wetting current is adequate for the contact type in use.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-wave-square"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Common-Mode Noise Shows Up as Random Channel Chatter</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Common-Mode Noise Shows Up as Random Channel Chatter</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>Random, low-frequency state chatter spread across several unrelated channels on the same module points toward common-mode electrical noise or a grounding issue on the field wiring, not several independent field faults. Check cable routing and shielding before replacing the module.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-plug-circle-exclamation"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Field-Side Voltage Drop Masquerades as a Module Fault</h5><span class="expert-tag">Diagnostics</span></div>
+                        <div class="expert-item-head"><h3>Field-Side Voltage Drop Masquerades as a Module Fault</h3><span class="expert-tag">Diagnostics</span></div>
                         <p>A long field wiring run with marginal conductor sizing can drop enough voltage that a nominally "on" state reads inconsistently at the module. Verify field-side voltage at the module terminals under actual load conditions before concluding the input circuitry itself has failed.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-code-branch"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Confirm Channel Mapping After Any Configuration Change</h5><span class="expert-tag">Process</span></div>
+                        <div class="expert-item-head"><h3>Confirm Channel Mapping After Any Configuration Change</h3><span class="expert-tag">Process</span></div>
                         <p>A channel mapping change made in the controller configuration but not reflected in the physical field wiring label is a common source of confusion during later troubleshooting. Verify the as-built channel mapping matches documentation whenever the module or its configuration is touched.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Log Intermittent Faults by Channel, Not Just by Module</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Log Intermittent Faults by Channel, Not Just by Module</h3><span class="expert-tag">Maintenance</span></div>
                         <p>Tracking an intermittent fault against the specific channel and field device, rather than only the module serial number, makes it possible to see whether the problem follows the field wiring or the module hardware when a swap is eventually tried.</p>
                     </div>
                 </div>
@@ -2171,10 +2169,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-digital-output-module.html" class="related-card"><i class="fa-solid fa-arrow-left-from-bracket"></i><h5 role="heading" aria-level="3">Digital Output Module</h5></a>
-                <a href="component-plc.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">PLC</h5></a>
-                <a href="component-remote-i-o.html" class="related-card"><i class="fa-solid fa-plug"></i><h5 role="heading" aria-level="3">Remote I/O</h5></a>
-                <a href="component-relay-interface-module.html" class="related-card"><i class="fa-solid fa-arrows-split-up-and-left"></i><h5 role="heading" aria-level="3">Relay Interface Module</h5></a>
+                <a href="component-digital-output-module.html" class="related-card"><i class="fa-solid fa-arrow-left-from-bracket"></i><div class="hl5">Digital Output Module</div></a>
+                <a href="component-plc.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">PLC</div></a>
+                <a href="component-remote-i-o.html" class="related-card"><i class="fa-solid fa-plug"></i><div class="hl5">Remote I/O</div></a>
+                <a href="component-relay-interface-module.html" class="related-card"><i class="fa-solid fa-arrows-split-up-and-left"></i><div class="hl5">Relay Interface Module</div></a>
             </div>
         </div>
     </section>
@@ -2212,7 +2210,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on Digital Input Module selection, wiring, or integration for your AGL system?</h4><p>Precision AGL Academy provides advice on module sizing, input type selection, filtering, and best practices for reliable status monitoring.</p></div>
+                <div><div class="hl4">Need expert guidance on Digital Input Module selection, wiring, or integration for your AGL system?</div><p>Precision AGL Academy provides advice on module sizing, input type selection, filtering, and best practices for reliable status monitoring.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
             </div>
         </div>

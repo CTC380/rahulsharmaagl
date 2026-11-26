@@ -89,8 +89,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* DASHBOARD CHIPS */
-  .dash-group{margin-top:18px;}
-  .dash-group h5{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+  .dash-group{margin-top:18px;}.dash-group h5,.dash-group .dash-group-title{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
   .dash-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px;}
   @media(max-width:800px){.dash-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:480px){.dash-grid{grid-template-columns:1fr;}}
@@ -101,8 +100,7 @@
   .dash-chip.na{background:rgba(255,255,255,0.03);border:1px solid var(--border);color:var(--text);}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -169,9 +167,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -186,8 +182,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -565,6 +560,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -610,7 +611,7 @@
   <button type="button" class="chip ghost" onclick="clearRows()">Clear schedule</button>
 </div>
 <div class="step">
-<div class="subsection-head"><h3>PAPI Installations</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">PAPI Installations</h2><div class="sub-line"></div></div>
       <p class="block-note" style="margin-bottom:14px;">One row per runway end. Units per installation = boxes per bar × sides. Choose "Both" sides for a bar on each side of the runway; the cable and duct crossing the runway are added automatically. "Existing" CCR excludes a CCR from the BOQ (PAPI added to a circuit that already has capacity).</p>
 
       <div class="sched-wrap">
@@ -635,7 +636,7 @@
       
 </div>
 <div class="step">
-<div class="subsection-head"><h3>Construction Assumptions</h3><div class="sub-line"></div></div>
+<div class="subsection-head"><h2 class="subsection-title">Construction Assumptions</h2><div class="sub-line"></div></div>
       <p class="block-note" style="margin-bottom:14px;">Defaults are typical starting values, not manufacturer data. Replace them with your PAPI unit datasheet, project specification and cable data.</p>
 
       <div class="calc-grid" style="margin-bottom:8px;">
@@ -711,18 +712,18 @@
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-lightbulb"></i> Units and bar length</h4>
+          <h3><i class="fa-solid fa-lightbulb"></i> Units and bar length</h3>
           <div class="formula">N<sub>units</sub> = boxes × sides &nbsp;&nbsp; L<sub>bar</sub> = (boxes − 1) × S</div>
           <p>S is the spacing between adjacent units. The default is a typical value only; take the spacing from the applicable standard and your layout drawing. Each unit gets one isolating transformer, primary and secondary connector sets, frangible legs, a base and a foundation pad.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-route"></i> Primary cable, trench and duct</h4>
+          <h3><i class="fa-solid fa-route"></i> Primary cable, trench and duct</h3>
           <div class="formula">L<sub>cable</sub> = 2 (L<sub>lead-in</sub> + L<sub>bar</sub>) + 2 (L<sub>cross</sub> + L<sub>bar</sub>) [both sides] + N<sub>units</sub> × tail</div>
           <div class="formula">L<sub>cross</sub> = runway width + 2 × distance of inner unit from runway edge</div>
           <p>The inner-unit distance defaults to 15 m for a 4-box PAPI and 10 m for a 2-box APAPI (typical ICAO values; confirm against the applicable standard). A series circuit is a loop, so cable runs out and back (factor 2). The slack allowance is applied on top. The trench follows the single route; for both-sided installations a duct is added across the runway, plus any extra duct you enter per row.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-plug-circle-bolt"></i> Transformer selection</h4>
+          <h3><i class="fa-solid fa-plug-circle-bolt"></i> Transformer selection</h3>
           <div class="formula">W<sub>unit</sub> = lamps per unit × W per lamp &nbsp;&nbsp; VA<sub>req</sub> = W<sub>unit</sub> × (1 + margin)</div>
           <p>The transformer is the smallest standard size (45 / 65 / 100 / 150 / 200 / 300 / 500 W) not below the required VA.</p>
         </div>
@@ -730,17 +731,17 @@
 
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-microchip"></i> CCR sizing</h4>
+          <h3><i class="fa-solid fa-microchip"></i> CCR sizing</h3>
           <div class="formula">P<sub>circuit</sub> = N<sub>units</sub> × W<sub>unit</sub> / η<sub>tr</sub> + I² × R′ × L<sub>cable</sub></div>
           <div class="formula">kW<sub>CCR</sub> ≥ P<sub>circuit</sub> × (1 + margin)</div>
           <p>One dedicated CCR per runway-end row marked "New", selected from the standard sizes 4 / 7.5 / 10 / 15 / 20 / 25 / 30 / 50 / 70 / 100 kW. The check includes cable I²R loss. For a shared circuit, size the CCR with the CCR Selection &amp; Loading calculator.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-layer-group"></i> Foundation and structure</h4>
+          <h3><i class="fa-solid fa-layer-group"></i> Foundation and structure</h3>
           <p>One concrete pad per unit (length × width × depth), reinforcement per m³, and legs, couplings, base plates and anchor bolts per unit. Excavation covers the trench (length × width × depth) and each foundation pit (pad volume, net); the sand bed comes from trench length × width × bed thickness.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-badge-check"></i> What this calculator does not do</h4>
+          <h3><i class="fa-solid fa-badge-check"></i> What this calculator does not do</h3>
           <p>It does not locate the units, set the aiming angles or check obstacle clearance, and it does not price the BOQ. It does not size a shared circuit's CCR or check voltage drop on the series loop. Frangibility, wind loading and foundation design must be verified against the manufacturer's design.</p>
         </div>
       </div>
@@ -771,10 +772,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-papi-installation-glide-path-geometry.html" class="tool-link"><i class="fa-solid fa-plane-arrival"></i><h5>PAPI Installation Geometry</h5><p>PAPI installation &amp; glide-path geometry.</p></a>
-      <a href="calc-papi-indication-reference.html" class="tool-link"><i class="fa-solid fa-circle-half-stroke"></i><h5>PAPI Indication Reference</h5><p>PAPI indication reference.</p></a>
-      <a href="calc-ccr-selection-loading.html" class="tool-link"><i class="fa-solid fa-microchip"></i><h5>CCR Selection &amp; Loading</h5><p>CCR selection &amp; loading.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-papi-installation-glide-path-geometry.html" class="tool-link"><i class="fa-solid fa-plane-arrival"></i><div class="tool-link-title">PAPI Installation Geometry</div><p>PAPI installation &amp; glide-path geometry.</p></a>
+      <a href="calc-papi-indication-reference.html" class="tool-link"><i class="fa-solid fa-circle-half-stroke"></i><div class="tool-link-title">PAPI Indication Reference</div><p>PAPI indication reference.</p></a>
+      <a href="calc-ccr-selection-loading.html" class="tool-link"><i class="fa-solid fa-microchip"></i><div class="tool-link-title">CCR Selection &amp; Loading</div><p>CCR selection &amp; loading.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

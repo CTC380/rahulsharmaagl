@@ -96,8 +96,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -167,9 +166,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -184,8 +181,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -483,6 +479,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -732,7 +734,7 @@
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
   <div class="subsection-head"><h2>Colour &amp; quantity schedule</h2><div class="sub-line"></div></div>
   <div class="method-card" style="margin-top:0;margin-bottom:0;">
-        <h4><i class="fa-solid fa-arrows-left-right"></i> Directional Colour Breakdown</h4>
+        <h3><i class="fa-solid fa-arrows-left-right"></i> Directional Colour Breakdown</h3>
         <p style="font-size:12.5px;color:var(--text);margin-bottom:14px;">Same physical fixtures, reclassified by landing direction. Totals match the physical fixture count in both columns — only the colour interpretation changes.</p>
         <table class="std-table qty-table">
           <tr><th>Colour</th><th style="text-align:right;">Viewed from Threshold A <span style="text-transform:none;color:var(--text);">(landing A→B)</span></th><th style="text-align:right;">Viewed from Threshold B <span style="text-transform:none;color:var(--text);">(landing B→A)</span></th></tr>
@@ -745,7 +747,7 @@
 
       <!-- ══════════ QUANTITY SUMMARY ══════════ -->
       <div class="method-card" style="margin-top:16px;margin-bottom:0;">
-        <h4><i class="fa-solid fa-list-check"></i> Centreline Light Quantity Summary</h4>
+        <h3><i class="fa-solid fa-list-check"></i> Centreline Light Quantity Summary</h3>
         <table class="std-table qty-table">
           <tr><th>Item</th><th style="text-align:right;">Quantity</th></tr>
           <tr><td>Physical centreline fixtures (total)</td><td class="val qty-total-val" id="qtyTotal" style="text-align:right;">—</td></tr>
@@ -790,30 +792,31 @@
     <div class="block-label">Method &amp; Reference</div>
     <h2 class="block-title">How This Calculator Works</h2>
     <p class="block-note">Centreline colour zones are assigned from a single continuous position sequence, not calculated as three independent block counts — and colour is directional, so the same installed fixture is interpreted differently depending on which threshold a pilot is landing over.</p>
+<p><b>Related engineering topic:</b> <a style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;" href="calc-taxiway-centreline-light-spacing-quantity.html">Taxiway Centreline Light Spacing &amp; Quantity</a>.</p>
 
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ruler-horizontal"></i> Position generation before colour</h4>
+          <h3><i class="fa-solid fa-ruler-horizontal"></i> Position generation before colour</h3>
           <p>Positions are generated first, at uniform spacing from the starting reference:</p>
           <div class="formula">x<sub>i</sub> = x<sub>0</sub> + i·S &nbsp;&nbsp;(S = 15.24 m / 50 ft)</div>
           <p>Only after the full position sequence exists is each position classified by colour. Calculating 3,000/2,000/1,000 ft zones independently and adding the counts can duplicate or omit a fixture at a zone boundary — this calculator avoids that by construction.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-palette"></i> Colour-zone assignment (general form)</h4>
+          <h3><i class="fa-solid fa-palette"></i> Colour-zone assignment (general form)</h3>
           <p>Measuring distance from the runway's stop end, general zone lengths (valid for any runway length, including short runways where the full 6,000 ft scheme cannot exist):</p>
           <div class="formula">Z<sub>red</sub> = min(1000 ft, L) &nbsp;→&nbsp; Z<sub>alt</sub> = min(2000 ft, L − Z<sub>red</sub>) &nbsp;→&nbsp; Z<sub>white</sub> = L − Z<sub>red</sub> − Z<sub>alt</sub></div>
           <p>For L &gt; 3,000 ft this is equivalent to: white until the last 3,000 ft, alternating for the next 2,000 ft, red for the final 1,000 ft — white is <em>not</em> capped at a fixed 3,000 ft on longer runways; it occupies the remainder.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-arrows-left-right"></i> Direction changes colour, not fixture count</h4>
+          <h3><i class="fa-solid fa-arrows-left-right"></i> Direction changes colour, not fixture count</h3>
           <p>Because the colour scheme is measured from the stop end in the landing direction, the same physical position is red when a small distance from Threshold B (landing A→B) but may be white when the same position is a large distance from Threshold A (landing B→A). This calculator keeps <strong>physical fixture count</strong> and <strong>optical colour interpretation</strong> as two separate outputs rather than conflating them.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-magnifying-glass"></i> Existing-installation inspection — two checks, not one</h4>
+          <h3><i class="fa-solid fa-magnifying-glass"></i> Existing-installation inspection — two checks, not one</h3>
           <p>Individual interval spacing can each pass tolerance while the whole sequence still drifts from the intended layout. Both checks are run independently:</p>
           <div class="formula">Check A: |S<sub>i</sub> − S| ≤ tol &nbsp;&nbsp;|&nbsp;&nbsp; Check B: |x<sub>i</sub> − x<sub>i,design</sub>| ≤ tol</div>
         </div>
@@ -821,7 +824,7 @@
 
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> FAA AC 150/5340-30J §3.3.1.1 basis</h4>
+          <h3><i class="fa-solid fa-table"></i> FAA AC 150/5340-30J §3.3.1.1 basis</h3>
           <table class="std-table">
             <tr><th>Parameter</th><th>Value</th></tr>
             <tr><td>Longitudinal spacing</td><td class="val">50 ft (15.24 m)</td></tr>
@@ -836,7 +839,7 @@
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Zone-length validation examples</h4>
+          <h3><i class="fa-solid fa-vial"></i> Zone-length validation examples</h3>
           <table class="std-table">
             <tr><th>Runway L</th><th>Red</th><th>Alt.</th><th>White</th></tr>
             <tr><td>1,000 ft</td><td class="val">1,000 ft</td><td class="val">0</td><td class="val">0</td></tr>
@@ -847,7 +850,7 @@
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-circle-check"></i> Requirement basis</h4>
+          <h3><i class="fa-solid fa-circle-check"></i> Requirement basis</h3>
           <table class="std-table">
             <tr><td>🟢 Required</td><td class="val">CAT II, CAT III; CAT I with landing RVR &lt; 2,400 ft (750 m); takeoff RVR &lt; 1,600 ft (480 m) (unless FAA exception)</td></tr>
             <tr><td>🟡 Recommended</td><td class="val">CAT I with runway width &gt; 170 ft (the AC quotes “50 m”; exact conversion ≈ 51.8 m), or approach speed &gt; 140 kt</td></tr>
@@ -856,7 +859,7 @@
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-layer-group"></i> Quantity vs. serviceability</h4>
+          <h3><i class="fa-solid fa-layer-group"></i> Quantity vs. serviceability</h3>
           <p>This calculator reports an installed fixture quantity, not a serviceability-adjusted count. Serviceability percentages by category belong in a separate AGL Serviceability Calculator, not multiplied into the quantity here.</p>
         </div>
       </div>
@@ -887,10 +890,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-runway-edge-light-spacing.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><h5>Calculator #01</h5><p>Runway edge-light longitudinal spacing.</p></a>
-      <a href="calc-runway-light-quantity.html" class="tool-link"><i class="fa-solid fa-calculator"></i><h5>Calculator #02</h5><p>Runway edge, threshold &amp; runway-end quantity.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
-      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><h5>Standards Companion</h5><p>ICAO/FAA/IEC requirements explained.</p></a>
+      <a href="calc-runway-edge-light-spacing.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><div class="tool-link-title">Calculator #01</div><p>Runway edge-light longitudinal spacing.</p></a>
+      <a href="calc-runway-light-quantity.html" class="tool-link"><i class="fa-solid fa-calculator"></i><div class="tool-link-title">Calculator #02</div><p>Runway edge, threshold &amp; runway-end quantity.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><div class="tool-link-title">Standards Companion</div><p>ICAO/FAA/IEC requirements explained.</p></a>
     </div>
   </div>
 </section>
