@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MCCB: LSI Trip Settings &amp; Standards</title>
+    <title>Moulded Case Circuit Breaker (MCCB): Function &amp; Testing</title>
     <meta name="description" content="MCCB guide for AGL: ratings, LSI trip coordination, IEC 60947-2 standards, installation, commissioning, maintenance and troubleshooting." />
     <meta name="keywords" content="MCCB, moulded case circuit breaker, LSI trip coordination, AGL distribution protection, IEC 60947-2, NFPA 70" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,7 +13,7 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="MCCB: LSI Trip Settings &amp; Standards | Precision AGL Academy" />
+    <meta property="og:title" content="Moulded Case Circuit Breaker (MCCB): Function &amp; Testing" />
     <meta property="og:description" content="MCCB guide for AGL: ratings, LSI trip coordination, IEC 60947-2 standards, installation, commissioning, maintenance and troubleshooting." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-mccb.html" />
     <meta property="og:site_name" content="AGL Component Library" />
@@ -27,7 +27,7 @@
     <meta property="article:author" content="https://www.linkedin.com/in/rahulsharmaagl" />
     <meta property="article:section" content="AGL Component Library" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="MCCB: LSI Trip Settings &amp; Standards | Precision AGL Academy" />
+    <meta name="twitter:title" content="Moulded Case Circuit Breaker (MCCB): Function &amp; Testing" />
     <meta name="twitter:description" content="MCCB guide for AGL: ratings, LSI trip coordination, IEC 60947-2 standards, installation, commissioning, maintenance and troubleshooting." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/images/og/component-mccb.png" />
     <meta name="twitter:image:alt" content="Moulded Case Circuit Breaker (MCCB) – AGL Component Library by Precision AGL Academy" />
@@ -39,7 +39,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-mccb.html#faq", "url": "https://rahulsharmaagl.in/component-mccb.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-mccb.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is an MCCB?", "acceptedAnswer": {"@type": "Answer", "text": "A Moulded Case Circuit Breaker gives overcurrent protection for higher-current circuits, typically 16 A up to 1600 A or more, above the range of MCBs."}}, {"@type": "Question", "name": "How is an MCCB different from an MCB?", "acceptedAnswer": {"@type": "Answer", "text": "An MCCB handles higher currents and fault levels, with breaking capacities of 10-100 kA, adjustable trip settings in many models and optional communication, whereas MCBs are limited to lower ratings (up to 125 A)."}}, {"@type": "Question", "name": "Where are MCCBs used in AGL systems?", "acceptedAnswer": {"@type": "Answer", "text": "In higher-power sections such as incoming main distribution and CCR input protection."}}, {"@type": "Question", "name": "How does an MCCB trip?", "acceptedAnswer": {"@type": "Answer", "text": "Using thermal and magnetic mechanisms, or in electronic versions a microprocessor-based trip unit."}}, {"@type": "Question", "name": "What do LSI settings mean?", "acceptedAnswer": {"@type": "Answer", "text": "Long-time (Ir) covers sustained overload, short-time (Isd) covers short-circuit with a delay for coordination, and instantaneous (Ii) covers severe faults. Some units add ground-fault (Ig)."}}, {"@type": "Question", "name": "What ratings are typical?", "acceptedAnswer": {"@type": "Answer", "text": "16-1600 A, 400/690/1000 V AC (up to 1500 V DC), breaking capacity of 10-100 kA, 3- or 4-pole, mounted on DIN rail, panel or draw-out."}}, {"@type": "Question", "name": "Can an MCCB connect to ALCMS?", "acceptedAnswer": {"@type": "Answer", "text": "Optional Modbus, Profibus or Ethernet communication provides remote status and trip alarms to ALCMS."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "IEC 60947-2, UL 489, IS/IEC 60947-2 and NFPA 70 (NEC)."}}, {"@type": "Question", "name": "How often should an MCCB be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Annually: verify trip settings, re-torque terminals, test and replace the trip unit backup battery, and review that breaking capacity still exceeds system fault levels."}}, {"@type": "Question", "name": "Why is there nuisance tripping or lost coordination?", "acceptedAnswer": {"@type": "Answer", "text": "Electronic LSI settings, particularly the instantaneous threshold, may be too low or set without a coordination study. Review the settings against the protection study."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -253,6 +254,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -399,8 +401,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -434,8 +435,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -486,8 +486,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -566,8 +565,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -612,8 +610,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -645,8 +642,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -709,8 +705,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -802,8 +797,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -898,8 +892,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1241,8 +1234,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1404,6 +1396,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1434,7 +1432,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-toggle-on"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Moulded Case <span>Circuit Breaker (MCCB)</span></h1>
+            <h1 class="comp-title">Moulded Case <span>Circuit Breaker (MCCB)</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A high‑performance, adjustable circuit breaker designed for protection of AGL distribution circuits and feeder cables. MCCBs offer higher current ratings, adjustable trip settings, and greater breaking capacity than MCBs, making them ideal for protecting the main power distribution panels, CCR inputs, and large‑capacity series circuits in Airfield Ground Lighting infrastructure.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1448,7 +1446,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Moulded Case Circuit Breaker (MCCB)?</h2>
             <div class="info-panel">
                 <p>A <strong>Moulded Case Circuit Breaker (MCCB)</strong> is a type of circuit breaker that provides overcurrent protection for higher‑current circuits, typically from 16A up to 1600A or more. Unlike MCBs (Miniature Circuit Breakers), which are limited to lower ratings (up to 125A) and have fixed trip characteristics, MCCBs offer:</p>
                 <ul>
@@ -1622,10 +1620,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 60947‑2</h5><p>Low‑voltage switchgear – Circuit breakers (MCCB requirements)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">UL 489</h5><p>Molded‑Case Circuit Breakers (MCCBs) and Circuit Breaker Enclosures</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IS/IEC 60947‑2</h5><p>Bureau of Indian Standards adoption of IEC 60947-2 for circuit breakers (supersedes IS 13947 Part 2)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">NFPA 70 (NEC)</h5><p>National Electrical Code – MCCB installation and selection requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 60947‑2</h3><p>Low‑voltage switchgear – Circuit breakers (MCCB requirements)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>UL 489</h3><p>Molded‑Case Circuit Breakers (MCCBs) and Circuit Breaker Enclosures</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IS/IEC 60947‑2</h3><p>Bureau of Indian Standards adoption of IEC 60947-2 for circuit breakers (supersedes IS 13947 Part 2)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>NFPA 70 (NEC)</h3><p>National Electrical Code – MCCB installation and selection requirements</p></div></div>
             </div>
         </div>
     </section>
@@ -1638,56 +1636,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-sitemap"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Distribution Hierarchy Positioning</h5><span class="test-stage">Site</span></div>
+                        <div class="test-item-head"><h3>Distribution Hierarchy Positioning</h3><span class="test-stage">Site</span></div>
                         <p>Locate the breaker per the switchboard's distribution hierarchy — mains incomer first, then feeder MCCBs to each sector — so isolation for maintenance follows a clear, traceable sequence.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mounting Plate/Chassis Rail Fixing</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Mounting Plate/Chassis Rail Fixing</h3><span class="test-stage">Mechanical</span></div>
                         <p>Fix the breaker to a mounting plate or chassis rail rated for its frame size and fault current.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-horizontal"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Bus Bar &amp; Cable Bend Clearance</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Bus Bar &amp; Cable Bend Clearance</h3><span class="test-stage">Electrical</span></div>
                         <p>Provide generous bus bar and cable bend clearances appropriate to the breaker's larger physical size and current rating.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-temperature-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Enclosure Heat Management</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Enclosure Heat Management</h3><span class="test-stage">Mechanical</span></div>
                         <p>Size the surrounding enclosure to manage the heat generated under sustained load at the breaker's rated current.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-sliders"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Trip Unit Setting Configuration</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Trip Unit Setting Configuration</h3><span class="test-stage">Electrical</span></div>
                         <p>Set electronic LSI (long-time, short-time, instantaneous, ground-fault) parameters, or confirm the fixed thermal-magnetic rating, against the protection coordination study.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-network-wired"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communication Link Commissioning</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Communication Link Commissioning</h3><span class="test-stage">Electrical</span></div>
                         <p>Where fitted, connect and verify the Modbus, Profibus, or Ethernet link to the ALCMS.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ruler"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fault Current Rating Check</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Fault Current Rating Check</h3><span class="test-stage">Documentation</span></div>
                         <p>Confirm the breaker's breaking capacity is adequate for the fault current available at its point in the network before energisation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record breaker position, trip settings, and termination values as-built before the panel is closed up.</p>
                     </div>
                 </div>
@@ -1703,49 +1701,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insulation Resistance Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Insulation Resistance Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Megger-test the MCCB and its downstream wiring before energisation, confirming insulation resistance clears the acceptable minimum.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Contact Resistance Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Contact Resistance Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Measure contact resistance across the closed MCCB to rule out high-resistance contacts that could overheat under rated load.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Primary Injection Trip Test</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Primary Injection Trip Test</h3><span class="test-stage">Commissioning</span></div>
                         <p>Inject test current through the MCCB to verify the trip unit operates within tolerance of its configured settings.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Trip Unit Setting Verification</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Trip Unit Setting Verification</h3><span class="test-stage">Commissioning</span></div>
                         <p>For electronic (LSI) trip units, confirm the Long-time (Ir), Short-time (Isd), Instantaneous (Ii), and Ground-fault (Ig) settings match the protection coordination study.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mechanical Operation Check</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Mechanical Operation Check</h3><span class="test-stage">Commissioning</span></div>
                         <p>Cycle the stored-energy spring mechanism through on/off/trip to confirm rapid, positive contact opening independent of manual operating speed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Communication Interface Test</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Communication Interface Test</h3><span class="test-stage">Commissioning</span></div>
                         <p>Where fitted, confirm the Modbus/Profibus/Ethernet interface reports status and trip data correctly to the ALCMS or building management system.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record insulation, contact resistance, and trip unit settings alongside the MCCB's rating and position in the commissioning dossier.</p>
                     </div>
                 </div>
@@ -1761,28 +1759,28 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Trip Setting Verification</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Trip Setting Verification</h3><span class="maint-freq">Annual</span></div>
                         <p>Confirm trip settings remain correctly adjusted for the protected circuit's actual load and fault characteristics.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Terminal Torque Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Terminal Torque Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Re-torque terminal connections to spec to prevent loose-connection heating.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Trip Unit Battery Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Trip Unit Battery Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Test and replace the backup battery on electronic trip units before depletion affects protection function.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Breaking Capacity Review</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Breaking Capacity Review</h3><span class="maint-freq">Annual</span></div>
                         <p>Confirm the breaker's rating still matches current system fault levels.</p>
                     </div>
                 </div>
@@ -1795,10 +1793,10 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incorrect Trip Setting Adjustment</h5><p>Electronic MCCBs offer adjustable LSI settings. Incorrect adjustment (e.g., setting the instantaneous threshold too low) can cause nuisance tripping or loss of selective coordination with downstream devices. Proper coordination studies and careful setting are essential.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Insufficient Breaking Capacity</h5><p>If the available fault current exceeds the MCCB's breaking capacity (Icu), the breaker may fail to interrupt safely, leading to catastrophic failure. Verify the fault current at the installation point and select an appropriate MCCB with adequate Icu.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Loose Connections and Terminals</h5><p>High‑current MCCBs are particularly sensitive to loose connections. Poor terminal tightening can cause heating, arcing, and eventual failure. Use proper torque tools and follow manufacturer torque specifications.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Electronic Trip Unit Battery Depletion</h5><p>MCCBs with electronic trip units often have internal batteries to maintain settings and provide power for the display/communication during power loss. These batteries have a limited lifespan (typically 10 years) and need periodic replacement.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Incorrect Trip Setting Adjustment</h3><p>Electronic MCCBs offer adjustable LSI settings. Incorrect adjustment (e.g., setting the instantaneous threshold too low) can cause nuisance tripping or loss of selective coordination with downstream devices. Proper coordination studies and careful setting are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Insufficient Breaking Capacity</h3><p>If the available fault current exceeds the MCCB's breaking capacity (Icu), the breaker may fail to interrupt safely, leading to catastrophic failure. Verify the fault current at the installation point and select an appropriate MCCB with adequate Icu.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Loose Connections and Terminals</h3><p>High‑current MCCBs are particularly sensitive to loose connections. Poor terminal tightening can cause heating, arcing, and eventual failure. Use proper torque tools and follow manufacturer torque specifications.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Electronic Trip Unit Battery Depletion</h3><p>MCCBs with electronic trip units often have internal batteries to maintain settings and provide power for the display/communication during power loss. These batteries have a limited lifespan (typically 10 years) and need periodic replacement.</p></div></div>
             </div>
         </div>
     </section>
@@ -1809,25 +1807,25 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Nuisance Tripping or Loss of Coordination with Downstream Devices</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Nuisance Tripping or Loss of Coordination with Downstream Devices</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Electronic LSI trip settings (particularly the instantaneous threshold) have been set too low or without a proper coordination study.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review the current LSI settings against the site's protection coordination study; check trip event logs to identify which protection function (long-time, short-time, or instantaneous) is triggering.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-adjust LSI settings per a proper coordination study, and re-verify selective coordination with upstream and downstream devices before returning to service.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Breaker Fails to Clear a Fault Cleanly</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Breaker Fails to Clear a Fault Cleanly</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The available fault current at the installation point exceeds the MCCB's rated breaking capacity (Icu).</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Calculate or verify the prospective fault current at the installation point; compare against the installed MCCB's Icu rating on its nameplate.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace with an MCCB rated for the actual fault current level, and re-verify coordination with adjacent protective devices before returning to service.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Warm or Discoloured Breaker Body or Terminals</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Warm or Discoloured Breaker Body or Terminals</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Loose connections or terminal tightening below the manufacturer's torque specification, causing resistive heating and arcing at high current.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">De-energise and inspect terminal torque using a calibrated torque tool against the manufacturer's specification; check for discolouration, pitting, or arc marks at the terminals.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-terminate to the correct torque, and replace the breaker if terminal damage (melting, pitting) is found; schedule a follow-up thermal check after re-energising.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Trip Unit Loses Settings or Display After Power Loss</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Trip Unit Loses Settings or Display After Power Loss</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The electronic trip unit's internal backup battery has depleted, typically after around 10 years of service.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the trip unit's battery status indicator if available; note the installation or last battery-replacement date; verify whether settings and display return correctly once mains power is restored.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the internal battery per the manufacturer's procedure, and re-verify and re-program trip settings afterward to confirm nothing was lost.</div></div>
@@ -1843,7 +1841,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Miscoordinated LSI Trip Settings</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Miscoordinated LSI Trip Settings</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Electronic LSI trip settings — particularly the instantaneous threshold — set too low or without a proper coordination study.</div></div>
@@ -1852,7 +1850,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Breaking Capacity Exceeded</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Breaking Capacity Exceeded</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The available fault current at the installation point exceeding the MCCB's rated breaking capacity (Icu).</div></div>
@@ -1861,7 +1859,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Loose Terminal Connection</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Loose Terminal Connection</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Loose connections or terminal tightening below the manufacturer's torque specification, causing resistive heating and arcing at high current.</div></div>
@@ -1870,7 +1868,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Trip Unit Backup Battery Depletion</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Trip Unit Backup Battery Depletion</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The electronic trip unit's internal backup battery depleting, typically after around 10 years of service.</div></div>
@@ -1889,56 +1887,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Upstream Isolation Before Removal</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Upstream Isolation Before Removal</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise and lock out the upstream supply before removing or replacing an MCCB, and verify zero energy at its terminals before disconnecting busbars or cabling, even though the breaker's own contacts are open.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-scale-balanced"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Correct Rating and Trip Settings on Replacement</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Correct Rating and Trip Settings on Replacement</h3><span class="test-stage">Compliance</span></div>
                         <p>Fit a replacement MCCB with the same frame size, rated current, and breaking capacity as the original, and verify adjustable thermal and magnetic trip settings match the coordinated protection scheme before returning it to service.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-hand-pointer"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Investigate Before Resetting a Tripped Breaker</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Investigate Before Resetting a Tripped Breaker</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Investigate the cause of a trip before resetting an MCCB, particularly on a main distribution board or CCR input feeding significant downstream load; repeatedly closing onto a persistent fault risks a violent failure at these higher fault currents.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Test Before Re-Energisation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Test Before Re-Energisation</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>After any work downstream of an MCCB, verify insulation resistance and correct load connection before closing the breaker, since a residual fault at re-energisation at this current level can cause significant equipment damage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Arc-Flash Awareness</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Arc-Flash Awareness</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Follow the site's arc-flash procedure, including appropriate PPE and safe working distance, when racking, operating, or working near an MCCB on a high-fault-current board, given the higher breaking capacities involved.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tarp"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">FOD Control at the Panel</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>FOD Control at the Panel</h3><span class="test-stage">Operational</span></div>
                         <p>Keep tools, fasteners, and breaker blanks accounted for at all times when a distribution board is open, and secure or remove any loose material before closing it.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-temperature-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Check for Thermal Damage on Replacement</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Check for Thermal Damage on Replacement</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Inspect the busbar and adjacent connections for discolouration or heat damage when replacing an MCCB that tripped on an overload or showed signs of overheating, since a hot connection at these current levels can damage neighbouring equipment.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Do not leave a board with an incorrectly rated breaker, mismatched trip settings, or a loose termination after maintenance; verify correct settings, labelling, and torque before closing out the work order.</p>
                     </div>
                 </div>
@@ -1961,42 +1959,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-sliders"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Adjustable Trip Settings Need a Documented Setting, Not Just a Capable Breaker</h5><span class="expert-tag">Commissioning</span></div>
+                        <div class="expert-item-head"><h3>Adjustable Trip Settings Need a Documented Setting, Not Just a Capable Breaker</h3><span class="expert-tag">Commissioning</span></div>
                         <p>An MCCB's adjustable thermal and magnetic settings are only useful if the as-set values are recorded and match the coordination study; a breaker left at factory default settings after installation can defeat the discrimination the design engineer calculated on paper.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-diagram-project"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Re-Verify Discrimination After Any Downstream Change</h5><span class="expert-tag">Coordination</span></div>
+                        <div class="expert-item-head"><h3>Re-Verify Discrimination After Any Downstream Change</h3><span class="expert-tag">Coordination</span></div>
                         <p>Adding or resizing a downstream breaker or feeder can quietly break a previously-verified discrimination study; treat any downstream distribution change as a trigger to re-check coordination against the MCCB's settings, not just confirm the new circuit trips correctly on its own.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Confirm Breaking Capacity Against Actual Prospective Fault Current</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>Confirm Breaking Capacity Against Actual Prospective Fault Current</h3><span class="expert-tag">Design</span></div>
                         <p>A breaking capacity that was adequate at initial design can become marginal after upstream transformer upgrades or utility network changes increase available fault current; recheck prospective fault current at the MCCB's location whenever upstream supply capacity changes, not only at initial specification.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Contact Wear Shows Up as Heat Before It Shows Up as a Trip</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Contact Wear Shows Up as Heat Before It Shows Up as a Trip</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>Worn or pitted contacts inside an MCCB usually manifest first as localised heating at the terminals under load, well before the breaker mechanism itself misbehaves; periodic thermal imaging of main distribution boards catches this failure mode earlier than waiting for a nuisance trip or failure to close.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-rotate"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Exercise Main Breakers That Rarely Operate</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Exercise Main Breakers That Rarely Operate</h3><span class="expert-tag">Maintenance</span></div>
                         <p>MCCBs at the head of a distribution board or CCR input can go years without a full open-close cycle; a mechanism that has seized slightly from disuse may not close or trip cleanly when actually called on. Build a manual exercise cycle into the maintenance plan rather than assuming standby readiness.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-file-signature"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Keep Trip Unit Firmware and Settings Documentation Current</h5><span class="expert-tag">Documentation</span></div>
+                        <div class="expert-item-head"><h3>Keep Trip Unit Firmware and Settings Documentation Current</h3><span class="expert-tag">Documentation</span></div>
                         <p>On electronic trip-unit MCCBs, a firmware update or trip-unit replacement can silently reset protection settings to default; always confirm and re-document the applied settings after any trip-unit servicing, rather than assuming the replacement preserved the prior configuration.</p>
                     </div>
                 </div>
@@ -2059,10 +2057,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-circuit-breaker.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><h5 role="heading" aria-level="3">Circuit Breaker (MCB)</h5></a>
-                <a href="component-isolation-switch.html" class="related-card"><i class="fa-solid fa-power-off"></i><h5 role="heading" aria-level="3">Isolation Switch</h5></a>
-                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">Constant Current Regulator</h5></a>
-                <a href="component-junction-box.html" class="related-card"><i class="fa-solid fa-box"></i><h5 role="heading" aria-level="3">Junction Box</h5></a>
+                <a href="component-circuit-breaker.html" class="related-card"><i class="fa-solid fa-toggle-on"></i><div class="hl5">Circuit Breaker (MCB)</div></a>
+                <a href="component-isolation-switch.html" class="related-card"><i class="fa-solid fa-power-off"></i><div class="hl5">Isolation Switch</div></a>
+                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">Constant Current Regulator</div></a>
+                <a href="component-junction-box.html" class="related-card"><i class="fa-solid fa-box"></i><div class="hl5">Junction Box</div></a>
             </div>
         </div>
     </section>
@@ -2099,7 +2097,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on MCCB selection, coordination, or troubleshooting?</h4><p>Precision AGL Academy provides advice on proper MCCB ratings, trip characteristic selection, and coordination studies for AGL distribution systems.</p></div>
+                <div><div class="hl4">Need expert guidance on MCCB selection, coordination, or troubleshooting?</div><p>Precision AGL Academy provides advice on proper MCCB ratings, trip characteristic selection, and coordination studies for AGL distribution systems.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
             </div>
         </div>

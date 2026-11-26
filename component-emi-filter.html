@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EMI Filter | AGL Component Library</title>
+    <title>EMI Filter for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="EMI filter guide: passive inductor-capacitor network that attenuates electromagnetic interference in AGL power and signal circuits, plus EMC standards." />
     <meta name="keywords" content="EMI filter, electromagnetic interference, AGL, airfield ground lighting, EMC compliance" />
     <meta name="author" content="Precision AGL Academy" />
@@ -15,7 +15,7 @@
 
     <!-- Open Graph -->
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="EMI Filter | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="EMI Filter for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="EMI filter guide: passive inductor-capacitor network that attenuates electromagnetic interference in AGL power and signal circuits, plus EMC standards." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-emi-filter.html" />
     <meta property="og:site_name" content="AGL Component Library" />
@@ -32,7 +32,7 @@
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="EMI Filter | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="EMI Filter for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="EMI filter guide: passive inductor-capacitor network that attenuates electromagnetic interference in AGL power and signal circuits, plus EMC standards." />
     <meta name="twitter:image" content="https://blog.knowlescapacitors.com/hubfs/What%20are%20EMI%20Filters%3F.png" />
     <meta name="twitter:image:alt" content="EMI Filter — airfield ground lighting component" />
@@ -45,7 +45,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "@id": "https://rahulsharmaagl.in/component-emi-filter.html#article",
-        "headline": "EMI Filter",
+        "headline": "EMI Filter for AGL: Function, Construction & Testing",
         "description": "EMI filter guide: passive inductor-capacitor network that attenuates electromagnetic interference in AGL power and signal circuits, plus EMC standards.",
         "url": "https://rahulsharmaagl.in/component-emi-filter.html",
         "inLanguage": "en",
@@ -146,7 +146,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-emi-filter.html#faq", "url": "https://rahulsharmaagl.in/component-emi-filter.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-emi-filter.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is an EMI filter?", "acceptedAnswer": {"@type": "Answer", "text": "An EMI (electromagnetic interference) filter is a passive component that attenuates conducted electromagnetic noise on power and signal lines, protecting AGL equipment and nearby systems."}}, {"@type": "Question", "name": "Where are EMI filters used in AGL systems?", "acceptedAnswer": {"@type": "Answer", "text": "At the input of LED drivers and power supplies, on the input and output stages of CCRs to suppress harmonics, on RS-485, Ethernet and other communication lines, and in ALCMS servers and workstations."}}, {"@type": "Question", "name": "How does an EMI filter work?", "acceptedAnswer": {"@type": "Answer", "text": "A passive network of inductors and capacitors passes the wanted power or signal and blocks unwanted frequencies. It uses a common-mode choke, differential-mode inductors, X-capacitors between the lines and Y-capacitors to earth."}}, {"@type": "Question", "name": "What is the difference between common-mode and differential-mode noise?", "acceptedAnswer": {"@type": "Answer", "text": "Differential-mode noise flows between the two lines, while common-mode noise flows in the same direction on both lines relative to earth. The filter treats each with different components: X-capacitors and series inductors for differential mode, and the common-mode choke and Y-capacitors for common mode."}}, {"@type": "Question", "name": "What are typical EMI filter ratings?", "acceptedAnswer": {"@type": "Answer", "text": "Rated voltages of 125 V, 250 V or 480 V AC and 24 V to 300 V DC, with currents of 1 A to 100 A. The page gives common-mode attenuation of at least 40 dB from 1 to 30 MHz."}}, {"@type": "Question", "name": "Which standards apply to EMI filters?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEC 61000-6-4 (emissions) and IEC 61000-6-2 (immunity) for industrial environments, and CISPR 11 and CISPR 22 for measurement limits."}}, {"@type": "Question", "name": "How often should an EMI filter be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Annually. Inspect capacitors for bulging or leakage, verify grounding continuity, and test leakage current against the rated limit."}}, {"@type": "Question", "name": "What are the common problems with EMI filters?", "acceptedAnswer": {"@type": "Answer", "text": "Capacitor degradation, common-mode choke saturation under high DC current, inadequate grounding that undermines the Y-capacitors, and mechanical damage or moisture ingress."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -360,6 +361,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -569,8 +571,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -604,8 +605,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -656,8 +656,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -736,8 +735,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -782,8 +780,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -815,8 +812,7 @@
             color: #2ecc71;
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -879,8 +875,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -972,8 +967,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1068,8 +1062,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1346,8 +1339,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1407,6 +1399,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1437,7 +1435,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-wave-sine"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">EMI <span>Filter</span></h1>
+            <h1 class="comp-title">EMI <span>Filter</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A passive electronic component that attenuates conducted electromagnetic interference (EMI) on power and signal lines. Installed in AGL power supplies, LED drivers, and communication interfaces to ensure compliance with EMC standards, prevent interference with sensitive avionics and navigation systems, and maintain signal integrity in the harsh electromagnetic environment of an airfield.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1451,7 +1449,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is an EMI Filter?</h2>
             <div class="info-panel">
                 <p>An <strong>EMI Filter</strong> (Electromagnetic Interference Filter) is a passive electronic component designed to attenuate conducted electromagnetic noise on power and signal lines. In airfield ground lighting systems, EMI filters are critical for ensuring that AGL equipment does not emit excessive electromagnetic radiation that could interfere with aircraft navigation systems (ILS, VOR, DME) or communication radios. They also protect sensitive control electronics from external noise sources such as switching power supplies, CCRs, and lightning‑induced transients.</p>
                 <p style="margin-top:12px;">Key functions of an EMI filter in AGL applications include:</p>
@@ -1670,9 +1668,9 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑4</h5><p>EMC – Emission standard for industrial environments</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑2</h5><p>EMC – Immunity standard for industrial environments</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">CISPR 11 / CISPR 22</h5><p>Limits and methods of measurement of EMI from industrial equipment</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61000‑6‑4</h3><p>EMC – Emission standard for industrial environments</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61000‑6‑2</h3><p>EMC – Immunity standard for industrial environments</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>CISPR 11 / CISPR 22</h3><p>Limits and methods of measurement of EMI from industrial equipment</p></div></div>
             </div>
         </div>
     </section>
@@ -1685,49 +1683,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Inline Mounting Position</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Inline Mounting Position</h3><span class="test-stage">Mechanical</span></div>
                         <p>Mount the filter close to the point where the cable enters the equipment it protects — the LED driver, CCR supply terminals, or ALCMS enclosure — so unfiltered noise has the shortest possible path to radiate.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ethernet"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Data Line Filter Placement</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Data Line Filter Placement</h3><span class="test-stage">Electrical</span></div>
                         <p>Where fitted on data lines (RS-485, Ethernet), fit the filter at the cable's entry to the equipment rather than partway along the run.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Chassis Earth Bonding</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Chassis Earth Bonding</h3><span class="test-stage">Electrical</span></div>
                         <p>Bond the filter's earthing to the equipment's own chassis/earth point rather than a separate ground, since an ineffective earth bond is the most common cause of underperformance.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-droplet"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Cable Entry Sealing</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Cable Entry Sealing</h3><span class="test-stage">Mechanical</span></div>
                         <p>Seal the cable entry point at the filter/equipment interface to maintain the enclosure's environmental rating.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-screwdriver-wrench"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Terminal Torque &amp; Connection</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Terminal Torque &amp; Connection</h3><span class="test-stage">Mechanical</span></div>
                         <p>Torque input and output terminal connections to the manufacturer's specification for a secure, low-resistance connection.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Y-Capacitor Leakage Consideration</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Y-Capacitor Leakage Consideration</h3><span class="test-stage">Electrical</span></div>
                         <p>Confirm the installation's earth leakage budget accounts for the filter's Y-capacitor leakage current before connection.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record mounting position, bonding, and terminal torque before the filter and protected equipment are energised.</p>
                     </div>
                 </div>
@@ -1743,56 +1741,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insulation Resistance &amp; Hipot Test</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Insulation Resistance &amp; Hipot Test</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Verify insulation resistance and dielectric withstand between live conductors and earth before the filter is connected to the supply.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insertion Loss Verification</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Insertion Loss Verification</h3><span class="test-stage">Functional Test</span></div>
                         <p>Measure insertion loss across the operating frequency band, confirming low loss at 50/60 Hz and high attenuation in the conducted-emission range.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Common-Mode/Differential-Mode Attenuation Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Common-Mode/Differential-Mode Attenuation Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Verify the common-mode choke and differential-mode inductors attenuate noise correctly on both current paths.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Conducted Emissions Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Conducted Emissions Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Measure conducted emissions at the filter's output against CISPR 11/22 limits to confirm the filter suppresses noise to the required level.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Leakage Current Test</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Leakage Current Test</h3><span class="test-stage">Functional Test</span></div>
                         <p>Measure earth leakage current through the Y-capacitors, confirming it stays within the safety limit for the application.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Thermal Rise Test Under Rated Load</h5><span class="test-stage">Functional Test</span></div>
+                        <div class="test-item-head"><h3>Thermal Rise Test Under Rated Load</h3><span class="test-stage">Functional Test</span></div>
                         <p>Run the filter at rated current for an extended period, confirming component and enclosure temperatures stay within design limits.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Enclosure Grounding &amp; Bonding Check</h5><span class="test-stage">Pre-Acceptance</span></div>
+                        <div class="test-item-head"><h3>Enclosure Grounding &amp; Bonding Check</h3><span class="test-stage">Pre-Acceptance</span></div>
                         <p>Confirm the enclosure is correctly bonded to earth with a low-resistance connection before the unit is accepted into service.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record insertion loss, emissions, and thermal test results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1808,28 +1806,28 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Capacitor Condition Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Capacitor Condition Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect filter capacitors for signs of degradation such as bulging or leakage.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Grounding Continuity Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Grounding Continuity Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Verify grounding connections remain intact, since inadequate grounding undermines filter effectiveness.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Leakage Current Test</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Leakage Current Test</h3><span class="maint-freq">Annual</span></div>
                         <p>Test leakage current against the rated limit to confirm continued safe operation.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Housing &amp; Component Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Housing &amp; Component Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Check the filter housing and internal components for mechanical damage.</p>
                     </div>
                 </div>
@@ -1842,11 +1840,11 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Capacitor Degradation</h5><p>X‑capacitors and Y‑capacitors can degrade over time, especially in high‑temperature environments or with repeated surge events. Degraded capacitors lose capacitance and increase ESR, reducing the filter's effectiveness. Regular inspection and replacement (every 5–10 years) are recommended, especially in critical applications.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Common‑Mode Choke Saturation</h5><p>If the common‑mode choke experiences high DC current or magnetic saturation, its inductance drops significantly, reducing common‑mode attenuation. This can happen if the filter is undersized for the load current or if there is a DC offset. Ensure that the filter's rated current is sufficient for the application.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Inadequate Grounding</h5><p>EMI filters rely on a low‑impedance ground connection for Y‑capacitors to be effective. If the ground connection is poor (high resistance), common‑mode noise will not be effectively shunted to ground, leading to increased emissions and susceptibility. Ensure proper grounding to a dedicated earth pit with resistance < 5 Ω.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Leakage Current and Safety Concerns</h5><p>Y‑capacitors contribute to leakage current, which can be a safety concern if the filter is used in a system without proper earthing. In some applications, excessive leakage current can trip residual‑current devices (RCDs). Ensure that the total leakage current of all filters in the system is within acceptable limits for the protective devices used.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Mechanical Damage</h5><p>EMI filters can be damaged by physical impact, vibration, or moisture ingress. This can lead to short circuits, open circuits, or degraded performance. Inspect filters regularly for signs of cracking, corrosion, or discolouration, and replace any that show physical damage.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Capacitor Degradation</h3><p>X‑capacitors and Y‑capacitors can degrade over time, especially in high‑temperature environments or with repeated surge events. Degraded capacitors lose capacitance and increase ESR, reducing the filter's effectiveness. Regular inspection and replacement (every 5–10 years) are recommended, especially in critical applications.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Common‑Mode Choke Saturation</h3><p>If the common‑mode choke experiences high DC current or magnetic saturation, its inductance drops significantly, reducing common‑mode attenuation. This can happen if the filter is undersized for the load current or if there is a DC offset. Ensure that the filter's rated current is sufficient for the application.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Inadequate Grounding</h3><p>EMI filters rely on a low‑impedance ground connection for Y‑capacitors to be effective. If the ground connection is poor (high resistance), common‑mode noise will not be effectively shunted to ground, leading to increased emissions and susceptibility. Ensure proper grounding to a dedicated earth pit with resistance < 5 Ω.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Leakage Current and Safety Concerns</h3><p>Y‑capacitors contribute to leakage current, which can be a safety concern if the filter is used in a system without proper earthing. In some applications, excessive leakage current can trip residual‑current devices (RCDs). Ensure that the total leakage current of all filters in the system is within acceptable limits for the protective devices used.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Mechanical Damage</h3><p>EMI filters can be damaged by physical impact, vibration, or moisture ingress. This can lead to short circuits, open circuits, or degraded performance. Inspect filters regularly for signs of cracking, corrosion, or discolouration, and replace any that show physical damage.</p></div></div>
             </div>
         </div>
     </section>
@@ -1857,31 +1855,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Increased EMI Emissions or Susceptibility Over Time</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Increased EMI Emissions or Susceptibility Over Time</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Degraded X- or Y-capacitors have lost capacitance or increased ESR, reducing filter effectiveness.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure capacitor values/ESR against datasheet specification if accessible; check the filter's age against its recommended 5–10 year replacement interval; retest EMC performance if equipment is available.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the EMI filter if capacitors are degraded or the unit is beyond its recommended service life.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reduced Common-Mode Noise Attenuation</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Reduced Common-Mode Noise Attenuation</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The common-mode choke has saturated due to DC current or a load current exceeding the filter's rated current.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check actual load current against the filter's rated current; look for signs of choke saturation such as increased case temperature or heating.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace with a correctly rated filter for the actual load current if undersizing is confirmed.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">High Emissions Despite a Healthy Filter</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>High Emissions Despite a Healthy Filter</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Poor or high-resistance ground connection preventing Y-capacitors from effectively shunting common-mode noise.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure ground connection resistance at the filter's earth point; verify it terminates at a dedicated earth pit with resistance below 5 Ω.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or improve the grounding connection to meet the required low-impedance earth reference, then re-verify emissions performance.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">RCD/Residual-Current Device Nuisance Tripping</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>RCD/Residual-Current Device Nuisance Tripping</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Cumulative leakage current from multiple Y-capacitor-equipped filters in the system exceeding the protective device's threshold.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure total leakage current across all filters on the protected circuit; compare against the RCD's rated tripping threshold.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Redistribute filters across multiple RCD-protected circuits or select RCDs with an appropriate threshold for the aggregate leakage current.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Filter Shows Physical Damage or Discolouration</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Filter Shows Physical Damage or Discolouration</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Impact damage, vibration-induced fatigue, or moisture ingress into the filter housing.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect the filter casing for cracking, corrosion, or discolouration; check mounting for looseness or vibration exposure.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace any filter showing physical damage or discolouration and improve mounting/vibration isolation to prevent recurrence.</div></div>
@@ -1897,7 +1895,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Capacitor Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Capacitor Degradation</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Degraded X- or Y-capacitors that have lost capacitance or increased ESR, reducing filter effectiveness.</div></div>
@@ -1906,7 +1904,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Common-Mode Choke Saturation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Common-Mode Choke Saturation</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The common-mode choke saturating due to DC current or a load current exceeding the filter's rated current.</div></div>
@@ -1915,7 +1913,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Ground Connection Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Ground Connection Degradation</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Poor or high-resistance ground connection preventing Y-capacitors from effectively shunting common-mode noise.</div></div>
@@ -1924,7 +1922,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Aggregate Leakage Current Exceedance</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Aggregate Leakage Current Exceedance</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Cumulative leakage current from multiple Y-capacitor-equipped filters on the system exceeding the protective device's threshold.</div></div>
@@ -1933,7 +1931,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Housing Damage</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Housing Damage</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Impact damage, vibration-induced fatigue, or moisture ingress into the filter housing.</div></div>
@@ -1952,42 +1950,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Residual Charge Discharge Before Handling</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Residual Charge Discharge Before Handling</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Discharge the filter's internal X/Y capacitors before handling terminals, even after the circuit has been de-energised; these capacitors can retain a hazardous charge for some time after power is removed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug-circle-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Ground Connection Integrity Verification</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Ground Connection Integrity Verification</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Verify the filter's earth connection is sound before returning it to service; the filter's leakage-current path depends on a solid ground, and a floating or high-resistance earth turns a protective device into a shock hazard.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Aggregate Leakage Current Compliance</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Aggregate Leakage Current Compliance</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Periodically verify the combined leakage current of all EMI filters sharing a supply stays within the applicable touch-current limit, particularly after adding equipment to a circuit that already has filters installed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-power-off"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Circuit Isolation Before Servicing</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Circuit Isolation Before Servicing</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise and lock out the supply before opening a filter's housing or disconnecting it for replacement, and verify zero energy before touching any terminal.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Use Only Certified Replacement Filters</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Use Only Certified Replacement Filters</h3><span class="test-stage">Operational</span></div>
                         <p>Replace a failed filter only with a unit of the same certified type and rating; the filter exists to keep AGL equipment from radiating interference into ILS, VOR, DME, and radio frequencies, and a mismatched substitute can silently reintroduce that risk.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE / Insulated Tools</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>PPE / Insulated Tools</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Use insulated tools and appropriate PPE when working on filter terminals, and treat every filter as potentially carrying a residual charge until it has been confirmed discharged.</p>
                     </div>
                 </div>
@@ -2010,42 +2008,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-layer-group"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Aggregate Leakage Adds Up Across a Loop</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>Aggregate Leakage Adds Up Across a Loop</h3><span class="expert-tag">Design</span></div>
                         <p>A single filter's leakage current is trivial against the touch-current limit, but a series circuit with dozens of filtered fixtures can accumulate a surprising total at the CCR end. Sum expected leakage across the whole loop at design stage rather than checking each filter in isolation and assuming compliance follows.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-radio"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Filter Selection Follows the Interference Source, Not Just the Load</h5><span class="expert-tag">Electrical</span></div>
+                        <div class="expert-item-head"><h3>Filter Selection Follows the Interference Source, Not Just the Load</h3><span class="expert-tag">Electrical</span></div>
                         <p>An EMI filter chosen purely on current rating can still let through the specific switching-frequency noise an LED driver or CCR generates. Match the filter's attenuation curve to the actual harmonic content of the equipment it protects, especially near ILS or VOR-critical areas where the tolerance for radiated interference is tightest.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-magnifying-glass-chart"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Nuisance RCD Trips Often Trace Back Here</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Nuisance RCD Trips Often Trace Back Here</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>Intermittent RCD/ELCB trips on a circuit with multiple filtered devices are frequently a cumulative-leakage issue rather than a genuine earth fault. Before chasing an insulation fault across the whole loop, check whether the trip threshold is simply being approached by the combined filter leakage.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-temperature-half"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Capacitor Ageing Shows Up as Filtering Loss First</h5><span class="expert-tag">Reliability</span></div>
+                        <div class="expert-item-head"><h3>Capacitor Ageing Shows Up as Filtering Loss First</h3><span class="expert-tag">Reliability</span></div>
                         <p>X/Y capacitors inside a filter degrade gradually with heat and voltage stress well before they fail outright; the earliest symptom is usually reduced attenuation rather than a hard fault. Where nearby navigation aids report rising interference with no obvious cause, ageing filters are worth checking before assuming a new noise source.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-plug-circle-check"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Failed Filter Should Fail Safe, Not Silent</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>A Failed Filter Should Fail Safe, Not Silent</h3><span class="expert-tag">Maintenance</span></div>
                         <p>Confirm what actually happens on internal filter failure for the specific model in use; some fail open (equipment stops, fault is obvious) while others can fail in a way that quietly removes filtering while the circuit keeps running. Know which behaviour your installed filters have before relying on "no complaints" as proof of health.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Keep Filtered and Unfiltered Wiring Separated</h5><span class="expert-tag">Installation</span></div>
+                        <div class="expert-item-head"><h3>Keep Filtered and Unfiltered Wiring Separated</h3><span class="expert-tag">Installation</span></div>
                         <p>Running filtered output cabling alongside unfiltered input cabling in the same duct or gland plate can recouple the very noise the filter just removed. Route input and output sides with physical separation, not just electrical isolation on paper.</p>
                     </div>
                 </div>
@@ -2100,10 +2098,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-surge-protection-device.html" class="related-card"><i class="fa-solid fa-bolt"></i><h5 role="heading" aria-level="3">Surge Protection Device</h5></a>
-                <a href="component-led-driver.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">LED Driver</h5></a>
-                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><h5 role="heading" aria-level="3">Constant Current Regulator</h5></a>
-                <a href="component-shielded-cable.html" class="related-card"><i class="fa-solid fa-cable-car"></i><h5 role="heading" aria-level="3">Shielded Cable</h5></a>
+                <a href="component-surge-protection-device.html" class="related-card"><i class="fa-solid fa-bolt"></i><div class="hl5">Surge Protection Device</div></a>
+                <a href="component-led-driver.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">LED Driver</div></a>
+                <a href="component-constant-current-regulator.html" class="related-card"><i class="fa-solid fa-microchip"></i><div class="hl5">Constant Current Regulator</div></a>
+                <a href="component-shielded-cable.html" class="related-card"><i class="fa-solid fa-cable-car"></i><div class="hl5">Shielded Cable</div></a>
             </div>
         </div>
     </section>
@@ -2140,7 +2138,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on EMI filter selection or EMC compliance?</h4><p>Precision AGL Academy provides advice on filter specification, placement, grounding, and compliance with international EMC standards for AGL systems.</p></div>
+                <div><div class="hl4">Need expert guidance on EMI filter selection or EMC compliance?</div><p>Precision AGL Academy provides advice on filter specification, placement, grounding, and compliance with international EMC standards for AGL systems.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

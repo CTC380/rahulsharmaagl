@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DME | AGL Component Library</title>
+    <title>Distance Measuring Equipment (DME): Function &amp; Testing</title>
     <meta name="description" content="Distance Measuring Equipment (DME) guide: secondary radar slant-range measurement, ground transponder architecture and electrical requirements." />
     <meta name="keywords" content="DME, distance measuring equipment, radio navigation aid, secondary radar, airfield ground lighting, ICAO Annex 10, RTCA DO-189, FAA AC 00" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,13 +13,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-dme.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="DME | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="Distance Measuring Equipment (DME): Function &amp; Testing" />
     <meta property="og:description" content="Distance Measuring Equipment (DME) guide: secondary radar slant-range measurement, ground transponder architecture and electrical requirements." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-dme.html" />
     <meta property="og:site_name" content="AGL Component Library" />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DME | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="Distance Measuring Equipment (DME): Function &amp; Testing" />
     <meta name="twitter:description" content="Distance Measuring Equipment (DME) guide: secondary radar slant-range measurement, ground transponder architecture and electrical requirements." />
     <meta name="theme-color" content="#060d1a" />
     <meta property="og:image" content="https://media.licdn.com/dms/image/v2/D5612AQFAj2ZVRCwJAQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1694927092627?e=2147483647&amp;v=beta&amp;t=_-3TXRBcTe2CACw701rfVs4bw2hyU6qM0nGugffTNZ4" />
@@ -132,7 +132,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-dme.html#faq", "url": "https://rahulsharmaagl.in/component-dme.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-dme.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is DME?", "acceptedAnswer": {"@type": "Answer", "text": "Distance Measuring Equipment (DME) is a radio navigation aid that gives pilots a continuous measurement of the slant-range distance between the aircraft and a fixed ground station. It is typically co-located with a VOR or ILS."}}, {"@type": "Question", "name": "How does DME work?", "acceptedAnswer": {"@type": "Answer", "text": "The aircraft interrogator sends a pair of RF pulses 12 microseconds apart. The ground transponder replies on a paired frequency 63 MHz higher or lower after a fixed 50-microsecond delay, and the aircraft converts the elapsed time into slant-range distance."}}, {"@type": "Question", "name": "What frequencies does DME use?", "acceptedAnswer": {"@type": "Answer", "text": "UHF from 960 MHz to 1215 MHz, in 1 MHz channel steps, with X and Y modes giving 252 channels in total."}}, {"@type": "Question", "name": "Where is DME used?", "acceptedAnswer": {"@type": "Answer", "text": "En route alongside VORs for distance fixes, in the terminal area with VOR or ILS for distance-to-runway information, in precision approaches alongside ILS, and in military operations for tactical navigation and air-to-air refuelling."}}, {"@type": "Question", "name": "Is DME distance the same as ground distance?", "acceptedAnswer": {"@type": "Answer", "text": "No. DME measures slant range, the straight-line distance from the aircraft to the station, so it reads higher than ground distance, especially at high altitude close to the station."}}, {"@type": "Question", "name": "Which standards apply to DME?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are ICAO Annex 10, FAA AC 00-31A (national standard for VOR/DME/TACAN), EUROCAE ED-57 for ground equipment and RTCA DO-189 for airborne interrogators."}}, {"@type": "Question", "name": "How often should a DME ground station be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Typically annual antenna system inspection, RF interference survey and power amplifier performance checks. Your regulator's flight inspection and maintenance programme takes precedence."}}, {"@type": "Question", "name": "What are the common problems with DME?", "acceptedAnswer": {"@type": "Answer", "text": "Antenna degradation from corrosion, moisture or physical damage, interference from nearby UHF transmitters, power amplifier failure, and drift of the fixed 50-microsecond ground delay from component ageing or temperature."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         * {
             margin: 0;
             padding: 0;
@@ -346,6 +347,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -555,8 +557,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -590,8 +591,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -642,8 +642,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -721,8 +720,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -768,8 +766,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -801,8 +798,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -865,8 +861,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -958,8 +953,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1054,8 +1048,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1332,8 +1325,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1393,6 +1385,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1423,7 +1421,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-location-dot"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Distance Measuring <span>Equipment (DME)</span></h1>
+            <h1 class="comp-title">Distance Measuring <span>Equipment (DME)</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A ground‑based transponder that provides accurate slant‑range distance information to aircraft equipped with DME interrogators. DME is an essential navigation aid, used in conjunction with VOR or ILS to provide position fixing and distance‑to‑runway information during en‑route, terminal, and approach phases of flight.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1437,7 +1435,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Distance Measuring Equipment (DME)?</h2>
             <div class="info-panel">
                 <p><strong>Distance Measuring Equipment (DME)</strong> is a radio navigation aid that provides pilots with a continuous, accurate measurement of the slant‑range distance between the aircraft and a fixed ground station. The system operates on the principle of secondary radar: the aircraft's DME interrogator transmits a pair of pulses, which are received by the ground‑based DME transponder. The transponder replies with a paired pulse after a fixed delay (50 microseconds). The aircraft measures the total elapsed time, subtracts the known delay, and calculates the distance (in nautical miles) from the propagation speed of the radio signal.</p>
                 <p>DME is typically co‑located with VOR or ILS installations to provide both bearing and distance information, enabling accurate position fixing and navigation. It is a critical component of the air navigation infrastructure, supporting en‑route, terminal, and approach operations.</p>
@@ -1661,10 +1659,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 10</h5><p>DME frequency, pulse characteristics, and performance requirements</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 00‑31A</h5><p>United States National Aviation Standard for VOR/DME/TACAN Systems</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED-57</h5><p>MOPS for DME (DME/N and DME/P) ground equipment</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">RTCA DO-189</h5><p>DME airborne interrogator standards</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 10</h3><p>DME frequency, pulse characteristics, and performance requirements</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 00‑31A</h3><p>United States National Aviation Standard for VOR/DME/TACAN Systems</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>EUROCAE ED-57</h3><p>MOPS for DME (DME/N and DME/P) ground equipment</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>RTCA DO-189</h3><p>DME airborne interrogator standards</p></div></div>
             </div>
         </div>
     </section>
@@ -1677,56 +1675,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-map-location-dot"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Co-location Survey with Host Navaid</h5><span class="test-stage">Site</span></div>
+                        <div class="test-item-head"><h3>Co-location Survey with Host Navaid</h3><span class="test-stage">Site</span></div>
                         <p>Position the transponder and antenna relative to the glide slope shelter or VOR site so the distance reported to the pilot reads correctly against that station's position.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tower-cell"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Antenna Mast/Rooftop Mounting</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Antenna Mast/Rooftop Mounting</h3><span class="test-stage">Civil</span></div>
                         <p>Mount the vertically polarised antenna on a small tower or equipment shelter roof, sited clear of large reflective structures that could cause multipath errors.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ethernet"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Low-Loss Feeder Run</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Low-Loss Feeder Run</h3><span class="test-stage">Electrical</span></div>
                         <p>Install the short low-loss feeder run from the transponder cabinet to the rooftop antenna.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Mains &amp; Standby Power Connection</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Mains &amp; Standby Power Connection</h3><span class="test-stage">Electrical</span></div>
                         <p>Connect mains and standby power to the transponder cabinet, matching the supply arrangement of other navigation aid shelters.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-server"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Equipment Cabinet Fit-Out</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Equipment Cabinet Fit-Out</h3><span class="test-stage">Mechanical</span></div>
                         <p>Install the transponder electronics within the shelter equipment cabinet, secured and ventilated per manufacturer specification.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-satellite-dish"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">ATC Data Link Provisioning</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>ATC Data Link Provisioning</h3><span class="test-stage">Electrical</span></div>
                         <p>Establish the data link back to the ATC facility for status and control.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-wave-square"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Multipath Clearance Check</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Multipath Clearance Check</h3><span class="test-stage">Documentation</span></div>
                         <p>Verify the antenna siting is clear of structures likely to cause signal reflection before commissioning.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Energisation Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Energisation Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record antenna position, feeder route, and power connections as-built before the shelter is closed up.</p>
                     </div>
                 </div>
@@ -1742,56 +1740,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Frequency &amp; Channel Pairing Verification</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Frequency &amp; Channel Pairing Verification</h3><span class="test-stage">Commissioning</span></div>
                         <p>Confirm the assigned DME channel is correctly paired with its associated ILS/VOR frequency and transmits on the exact assigned frequency.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pulse Pair Spacing &amp; Ground Delay Calibration</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Pulse Pair Spacing &amp; Ground Delay Calibration</h3><span class="test-stage">Commissioning</span></div>
                         <p>Verify interrogation and reply pulse-pair spacing and calibrate the fixed 50 µs ground delay against a calibrated test set.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Transmitter Power Output Test</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Transmitter Power Output Test</h3><span class="test-stage">Commissioning</span></div>
                         <p>Measure transmitted power against the design specification, confirming adequate margin for the station's rated coverage range.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Standby Transmitter Switchover Test</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Standby Transmitter Switchover Test</h3><span class="test-stage">Commissioning</span></div>
                         <p>Simulate a fault on the primary transmitter and confirm automatic, glitch-free switchover to the standby chain with a remote alarm raised.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Monitor &amp; Alarm Function Test</h5><span class="test-stage">Commissioning</span></div>
+                        <div class="test-item-head"><h3>Monitor &amp; Alarm Function Test</h3><span class="test-stage">Commissioning</span></div>
                         <p>Verify the continuous self-monitoring circuitry correctly detects out-of-tolerance power, frequency, or identification coding and raises the appropriate alarm.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Identification Code Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Identification Code Verification</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm the Morse code identification is correctly configured and transmitted at the required interval.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Range Accuracy Ground/Flight Check</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Range Accuracy Ground/Flight Check</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Verify range accuracy against a calibrated reference or flight-check aircraft before the station is released for operational use.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record frequency, power, switchover, and monitor test results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1807,28 +1805,28 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Antenna System Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Antenna System Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Check antenna elements and feed lines for physical degradation that could reduce range or accuracy.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">RF Interference Survey</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>RF Interference Survey</h3><span class="maint-freq">Annual</span></div>
                         <p>Survey the local RF environment for new sources of interference from nearby transmitters.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Amplifier Performance Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Power Amplifier Performance Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Test power amplifier output against baseline to catch degradation before it affects service range.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Pulse Timing Accuracy Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Pulse Timing Accuracy Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Verify pulse timing remains within tolerance to prevent distance measurement errors.</p>
                     </div>
                 </div>
@@ -1841,10 +1839,10 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Antenna System Degradation</h5><p>Corrosion, moisture ingress, or physical damage to the ground antenna can reduce transponder sensitivity and range. Regular inspection and VSWR measurements are essential.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Interference from Nearby Transmitters</h5><p>DME operates in the UHF band and can be affected by co‑channel interference from other DMEs or radar systems. Proper frequency planning and site coordination are critical.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Amplifier Failure</h5><p>The high‑power transmitter amplifiers in the ground transponder are subject to thermal stress and ageing. Regular maintenance and the use of hot‑standby systems are necessary to ensure service continuity.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Pulse Timing Drift</h5><p>The fixed 50‑microsecond ground delay can drift due to component ageing or temperature variations, affecting distance accuracy. Periodic calibration using flight inspection is required.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Antenna System Degradation</h3><p>Corrosion, moisture ingress, or physical damage to the ground antenna can reduce transponder sensitivity and range. Regular inspection and VSWR measurements are essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Interference from Nearby Transmitters</h3><p>DME operates in the UHF band and can be affected by co‑channel interference from other DMEs or radar systems. Proper frequency planning and site coordination are critical.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Power Amplifier Failure</h3><p>The high‑power transmitter amplifiers in the ground transponder are subject to thermal stress and ageing. Regular maintenance and the use of hot‑standby systems are necessary to ensure service continuity.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Pulse Timing Drift</h3><p>The fixed 50‑microsecond ground delay can drift due to component ageing or temperature variations, affecting distance accuracy. Periodic calibration using flight inspection is required.</p></div></div>
             </div>
         </div>
     </section>
@@ -1855,25 +1853,25 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Reduced Range or Weak Reply Signal</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Reduced Range or Weak Reply Signal</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Degraded ground antenna performance from corrosion or moisture ingress, or a VSWR mismatch on the feedline.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure VSWR at the antenna feed and compare against baseline; visually inspect the antenna, radome, and connectors for corrosion or water ingress; check reply efficiency against the transponder's monitor readout.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean or replace corroded connectors and seals, repair or replace the antenna if VSWR is out of tolerance, and re-verify range performance with a flight check if the fault persists.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Transponder Reverts to Standby Unit</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Transponder Reverts to Standby Unit</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The monitor has detected the primary transmitter's power output, reply efficiency, or delay accuracy has drifted outside tolerance, or the power amplifier is failing under thermal stress.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review the monitor alarm log to identify which parameter tripped; check the power amplifier's output level and temperature; confirm the changeover to standby occurred cleanly and standby is now radiating correctly.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Service or replace the faulted power amplifier stage, and don't return the primary unit to service until it passes monitor limits; schedule a flight inspection to confirm delay accuracy afterward.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Distance Readout Errors on Aircraft Receivers</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Distance Readout Errors on Aircraft Receivers</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">The fixed ground delay has drifted due to component ageing or temperature variation, or co-channel interference from another DME/radar is corrupting pulse timing.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the calibrated ground delay against the reference value; review recent flight inspection results for distance accuracy trends; investigate frequency coordination if interference from a nearby system is suspected.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Recalibrate the ground delay per the maintenance manual and confirm with a follow-up flight inspection; escalate to frequency coordination/site engineering if interference is the root cause.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Suspected Interference from Nearby Transmitters</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Suspected Interference from Nearby Transmitters</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Co-channel or adjacent-channel interference from another DME, radar, or UHF transmitter sharing the site or nearby spectrum.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review the interrogation/reply statistics for abnormal pulse pair rates; use a spectrum analyser at the antenna to identify unexpected signals in-band; cross-check against known transmitters in the area.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Coordinate with the interfering site's operator or frequency management authority to resolve the conflict; add site shielding or filtering if the interference source cannot be relocated.</div></div>
@@ -1889,7 +1887,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Antenna / Feedline Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Antenna / Feedline Degradation</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Degraded ground antenna performance from corrosion or moisture ingress, or a VSWR mismatch developing on the feedline.</div></div>
@@ -1898,7 +1896,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Amplifier Thermal Degradation</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Power Amplifier Thermal Degradation</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The primary transmitter's power amplifier drifting outside monitor tolerance for power output, reply efficiency, or delay accuracy under thermal stress.</div></div>
@@ -1907,7 +1905,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Ground Delay Drift</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Ground Delay Drift</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">The fixed ground delay drifting due to component ageing or temperature variation.</div></div>
@@ -1916,7 +1914,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Co-Channel / Adjacent-Channel Interference</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Co-Channel / Adjacent-Channel Interference</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Co-channel or adjacent-channel interference from another DME, radar, or UHF transmitter sharing the site or nearby spectrum.</div></div>
@@ -1935,56 +1933,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-tower-broadcast"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">RF Exposure Around the Antenna</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>RF Exposure Around the Antenna</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Follow the facility's RF safety procedure and any posted exclusion distance when working near the transmitting antenna, and confirm the transmitter is placed in maintenance/standby mode before working at or above the antenna mast.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">High-Voltage Transmitter Stages</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>High-Voltage Transmitter Stages</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise and lock out the transmitter cabinet before working inside it; RF power amplifier stages can carry hazardous voltages that remain present briefly after shutdown.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-arrows-turn-right"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Standby Transmitter Awareness</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Standby Transmitter Awareness</h3><span class="test-stage">Operational</span></div>
                         <p>On dual-equipment sites, confirm which transmitter chain is live and which is in maintenance before starting work, and coordinate any manual changeover with ATC so the facility's monitored status stays accurate.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-satellite-dish"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Feeder &amp; Antenna Work at Height</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Feeder &amp; Antenna Work at Height</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Use appropriate fall protection and follow tower/mast climbing procedures when accessing the rooftop or mast-mounted antenna, and confirm the feeder is disconnected from the transmitter before disturbing antenna connections.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">NOTAM for Service Interruption</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>NOTAM for Service Interruption</h3><span class="test-stage">Operational</span></div>
                         <p>Issue a NOTAM before taking the DME out of service or below tolerance for maintenance, since aircraft and ATC rely on its continuous availability for range information.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Monitor Function Before Return to Service</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Verify Monitor Function Before Return to Service</h3><span class="test-stage">Compliance</span></div>
                         <p>Confirm the facility's dual monitor system correctly detects an out-of-tolerance condition and executes changeover or shutdown before returning the DME to service after maintenance affecting the monitor or transmitter chain.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE &amp; Grounding</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>PPE &amp; Grounding</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Use appropriate PPE and confirm the equipment cabinet, mast, and feeder are bonded to the facility earth system before working on internal connections.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Do not leave the facility radiating out-of-tolerance frequency, pulse spacing, or power after maintenance; verify monitored parameters are within tolerance before closing out the work and cancelling the associated NOTAM.</p>
                     </div>
                 </div>
@@ -2007,42 +2005,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-clock"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Reply Efficiency Degradation Is a Leading Indicator</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Reply Efficiency Degradation Is a Leading Indicator</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>A slow decline in reply efficiency often precedes a hard out-of-tolerance fault by weeks, driven by gradual receiver sensitivity loss or transmitter power droop. Trend this parameter over time rather than only checking it against the pass/fail threshold at each scheduled test.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-arrows-turn-right"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">An Unequal Standby Chain Defeats the Point of Redundancy</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>An Unequal Standby Chain Defeats the Point of Redundancy</h3><span class="expert-tag">Design</span></div>
                         <p>If the standby transmitter chain isn't exercised as the live unit on a rotating basis, it can silently drift out of alignment and only be discovered to be non-compliant at the moment it's actually needed. Rotate which chain is live periodically rather than always defaulting to the same primary unit.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-satellite-dish"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Antenna and Feeder Condition Masquerades as Transmitter Drift</h5><span class="expert-tag">Diagnostics</span></div>
+                        <div class="expert-item-head"><h3>Antenna and Feeder Condition Masquerades as Transmitter Drift</h3><span class="expert-tag">Diagnostics</span></div>
                         <p>A slowly corroding feeder connector or a water-compromised antenna match can produce symptoms that look identical to transmitter power droop on the monitor readout. Check VSWR and feeder continuity before assuming a transmitter fault when power readings trend down.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">High-Voltage Stages Retain Charge Longer Than Expected</h5><span class="expert-tag">Electrical Safety</span></div>
+                        <div class="expert-item-head"><h3>High-Voltage Stages Retain Charge Longer Than Expected</h3><span class="expert-tag">Electrical Safety</span></div>
                         <p>Capacitors in the RF power amplifier stage can hold a dangerous charge for longer than the manufacturer's stated discharge time under certain fault conditions. Always verify zero energy with a meter before touching internal components, regardless of how long the unit has been powered down.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-plane-arrival"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Co-Located VOR/DME Outages Compound Operational Impact</h5><span class="expert-tag">Operational</span></div>
+                        <div class="expert-item-head"><h3>Co-Located VOR/DME Outages Compound Operational Impact</h3><span class="expert-tag">Operational</span></div>
                         <p>Where the DME shares a site with a VOR or ILS, a DME outage can force aircraft into a different type of approach entirely, not just remove ranging information. Factor the co-located navaid's operational role into outage planning and NOTAM timing, not just the DME's own service status.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-helmet-safety"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">RF Exposure Zones Change With Transmitter Mode</h5><span class="expert-tag">Personnel Safety</span></div>
+                        <div class="expert-item-head"><h3>RF Exposure Zones Change With Transmitter Mode</h3><span class="expert-tag">Personnel Safety</span></div>
                         <p>The safe working distance around the antenna isn't fixed; it depends on whether the transmitter is in full-power service, reduced test mode, or standby. Confirm the actual operating mode before relying on a remembered exclusion distance from a previous visit.</p>
                     </div>
                 </div>
@@ -2097,10 +2095,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-ils-localizer.html" class="related-card"><i class="fa-solid fa-radio"></i><h5 role="heading" aria-level="3">ILS Localizer</h5></a>
-                <a href="component-glide-slope.html" class="related-card"><i class="fa-solid fa-chart-line"></i><h5 role="heading" aria-level="3">Glide Slope</h5></a>
-                <a href="component-vor.html" class="related-card"><i class="fa-solid fa-compass"></i><h5 role="heading" aria-level="3">VOR</h5></a>
-                <a href="component-ndb.html" class="related-card"><i class="fa-solid fa-broadcast-tower"></i><h5 role="heading" aria-level="3">NDB</h5></a>
+                <a href="component-ils-localizer.html" class="related-card"><i class="fa-solid fa-radio"></i><div class="hl5">ILS Localizer</div></a>
+                <a href="component-glide-slope.html" class="related-card"><i class="fa-solid fa-chart-line"></i><div class="hl5">Glide Slope</div></a>
+                <a href="component-vor.html" class="related-card"><i class="fa-solid fa-compass"></i><div class="hl5">VOR</div></a>
+                <a href="component-ndb.html" class="related-card"><i class="fa-solid fa-broadcast-tower"></i><div class="hl5">NDB</div></a>
             </div>
         </div>
     </section>
@@ -2137,7 +2135,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on DME selection, installation, or troubleshooting?</h4><p>Precision AGL Academy provides advice on site planning, frequency coordination, and flight inspection preparation for DME systems.</p></div>
+                <div><div class="hl4">Need expert guidance on DME selection, installation, or troubleshooting?</div><p>Precision AGL Academy provides advice on site planning, frequency coordination, and flight inspection preparation for DME systems.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
             </div>
         </div>

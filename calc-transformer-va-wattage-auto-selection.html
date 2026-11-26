@@ -92,8 +92,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -150,9 +149,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -167,8 +164,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -484,6 +480,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -521,12 +523,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip" data-preset="clear">Clear rows</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
-<div class="step"><div class="subsection-head"><h3>Settings</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Settings</h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="std">Standard ratings <span class="u">(W)</span></label><input id="std" value="45,65,100,150,200,300,500"/><details class="why"><summary>Rule note</summary><p class="field-hint">Comma separated. The 30/45 W size is entered as 45. FAA also lists 10/15 W and 20/25 W types (enter 15 and 25). Edit to match your supplier's range.</p></details></div><div class="field-group"><label for="mg">Design margin <span class="u">(%)</span></label><input id="mg" type="number" value="0" min="0" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Added to the lamp load before choosing a size. Usual practice is to match the rating to the lamp load, so the default is 0. Enter a margin only if your specification requires one.</p></details></div><div class="field-group"><label for="ef">Transformer efficiency <span class="u">(%)</span></label><input id="ef" type="number" value="90" min="50" max="100"/><details class="why"><summary>Rule note</summary><p class="field-hint">Placeholder. FAA AC 150/5345-47 minimums are 80 % for 30/45 W and 65 W, 85 % for 100 W and 150 W, and 90 % for 200 W and above, so 90 % is optimistic for the small sizes. Use the datasheet value.</p></details></div><div class="field-group"><label for="pf">Power factor</label><input id="pf" type="number" value="0.90" min="0.5" max="1" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">Placeholder, used only for the kVA estimate. FAA requires at least 0.95 at rated load, and a lightly loaded transformer is lower. Use the datasheet value at your loading.</p></details></div>
 </div></div></div>
 
-<div class="step"><div class="subsection-head"><h3>Fixture Schedule</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Fixture Schedule</h2><div class="sub-line"></div></div>
 <details class="why" style="margin-bottom:14px"><summary>How to fill in this table</summary><p class="field-hint">Each row is a group of identical transformers. Enter the number of transformers, not the number of lamps. The values below are examples only; replace them with your fixture datasheet figures. Lamp current is the secondary (lamp) current, normally 6.6 A; the 20 A figure is the primary circuit current of the 20/6.6 A type and must not be entered here. For halogen lamps enter watts. For LED fixtures enter the apparent power (VA) at 6.6 A from the fixture datasheet, because LED drivers are not resistive loads.</p></details>
 <div class="grp-scroll"><table class="grp-table" id="t"><thead><tr><th style="width:21%">Fixture</th><th style="width:10%">Transformers (qty)</th><th style="width:12%">Load per lamp (W / VA)</th><th style="width:10%">Lamps per transformer</th><th style="width:10%">Lamp current (A)</th><th style="width:13%">Transformer type</th><th style="width:17%">Status</th><th style="width:7%"><span class="sr">Remove</span></th></tr></thead><tbody></tbody></table></div>
 <button type="button" class="add-row" onclick="addRow();calc()"><i class="fa-solid fa-plus"></i> Add fixture</button>
@@ -549,9 +551,9 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
   <div class="actions" style="margin-top:0"><button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button></div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
-  <div class="subsection-head"><h3>Selection by line</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Selection by line</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap"><table class="std-table" id="lines" style="min-width:860px"><thead><tr><th>Fixture</th><th>Type</th><th>Qty</th><th>Load (W / VA)</th><th>Required (W / VA)</th><th>Selected</th><th>Loading</th><th>Status</th></tr></thead><tbody></tbody></table></div>
-  <div class="subsection-head"><h3>Order count by size</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Order count by size</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap" style="max-width:520px"><table class="std-table" id="o"></table></div>
 </div></div></section>
 
@@ -562,21 +564,21 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <p class="block-note">Every step is shown so the result can be checked by hand.</p>
   <div class="ref-cols">
   <div>
-    <div class="method-card"><h4><i class="fa-solid fa-calculator"></i> Selection formulas</h4>
+    <div class="method-card"><h3><i class="fa-solid fa-calculator"></i> Selection formulas</h3>
       <div class="formula">Load = load per lamp × lamps per transformer</div><br>
       <div class="formula">Required = Load × (1 + margin) → smallest standard rating ≥ Required</div><br>
       <div class="formula">Loading = Load ÷ selected rating</div><br>
       <div class="formula">Input power (kW) = Σ qty × Load ÷ efficiency</div><br>
       <div class="formula">Input apparent power (kVA) = input power ÷ power factor</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-table"></i> Standard range</h4><p>The standard range of 30/45, 65, 100, 150, 200, 300 and 500 W follows common series isolating transformer practice (IEC 61823, FAA AC 150/5345-47). Confirm the current edition and your project specification.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-arrows-left-right"></i> Primary current and type</h4><p>The 6.6/6.6 A type has a 6.6 A primary and the 20/6.6 A type a 20 A primary. The type must match the current of the series circuit it sits on. Do not mix the two types on one circuit.</p><p>FAA lists no 65 W type with a 20 A primary, so for the 20/6.6 A type the tool skips 65 W and uses the next size. FAA AC 150/5345-47 also requires a transformer to have enough capacity for lamp ageing, secondary lead losses and contact losses, so check the lamp load you enter includes them.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-gauge"></i> Light loading</h4><p>Loading under 50% is flagged because a lightly loaded transformer has a lower power factor, which loads the series circuit and the CCR with more reactive current.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-table"></i> Standard range</h3><p>The standard range of 30/45, 65, 100, 150, 200, 300 and 500 W follows common series isolating transformer practice (IEC 61823, FAA AC 150/5345-47). Confirm the current edition and your project specification.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-arrows-left-right"></i> Primary current and type</h3><p>The 6.6/6.6 A type has a 6.6 A primary and the 20/6.6 A type a 20 A primary. The type must match the current of the series circuit it sits on. Do not mix the two types on one circuit.</p><p>FAA lists no 65 W type with a 20 A primary, so for the 20/6.6 A type the tool skips 65 W and uses the next size. FAA AC 150/5345-47 also requires a transformer to have enough capacity for lamp ageing, secondary lead losses and contact losses, so check the lamp load you enter includes them.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-gauge"></i> Light loading</h3><p>Loading under 50% is flagged because a lightly loaded transformer has a lower power factor, which loads the series circuit and the CCR with more reactive current.</p></div>
   </div>
   <div>
-    <div class="method-card"><h4><i class="fa-solid fa-bolt"></i> Efficiency and power factor</h4><p>FAA minimum efficiency is 80 % for 30/45 W and 65 W, 85 % for 100 W and 150 W, and 90 % for 200 W and above, with a minimum power factor of 0.95 at rated load. One efficiency is applied to every line here, so the kW total is approximate.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-lightbulb"></i> LED loads in VA</h4><p>If LED loads are entered in VA, the kW figure is a conservative upper estimate, because VA is not watts. Use fixture datasheet real power for a true kW figure.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-server"></i> What the totals cover</h4><p>The kW and kVA totals are an estimate of transformer input only. CCR sizing must also include cable losses, any other loads on the circuit and spare capacity.</p></div>
-    <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> Verification</h4><p>Always confirm the final rating, lamp current and transformer type against the fixture and transformer datasheets. For a project report with design margin, power factor and loading window, use <a href="calc-transformer-va-selection.html" style="color:var(--gold)">Calculator #49 Transformer VA Selection</a>.</p><p>This tool is for planning and education and does not replace the project specification. See the <a href="legal-notice.html" style="color:var(--gold);">Legal Notice</a>.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-bolt"></i> Efficiency and power factor</h3><p>FAA minimum efficiency is 80 % for 30/45 W and 65 W, 85 % for 100 W and 150 W, and 90 % for 200 W and above, with a minimum power factor of 0.95 at rated load. One efficiency is applied to every line here, so the kW total is approximate.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-lightbulb"></i> LED loads in VA</h3><p>If LED loads are entered in VA, the kW figure is a conservative upper estimate, because VA is not watts. Use fixture datasheet real power for a true kW figure.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-server"></i> What the totals cover</h3><p>The kW and kVA totals are an estimate of transformer input only. CCR sizing must also include cable losses, any other loads on the circuit and spare capacity.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> Verification</h3><p>Always confirm the final rating, lamp current and transformer type against the fixture and transformer datasheets. For a project report with design margin, power factor and loading window, use <a href="calc-transformer-va-selection.html" style="color:var(--gold)">Calculator #49 Transformer VA Selection</a>.</p><p>This tool is for planning and education and does not replace the project specification. See the <a href="legal-notice.html" style="color:var(--gold);">Legal Notice</a>.</p></div>
   </div></div>
 </div></section>
 
@@ -600,10 +602,10 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 
 <section><div class="container"><div class="block-label">More Tools</div><h2 class="block-title">Related Knowledge Hub Resources</h2>
 <div class="link-grid">
-<a href="calc-transformer-va-selection.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #49</h5><p>Transformer VA selection with report.</p></a>
-<a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><h5>Calculator #17</h5><p>Isolating transformer load.</p></a>
-<a href="calc-secondary-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><h5>Calculator #26</h5><p>Secondary cable voltage drop.</p></a>
-<a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+<a href="calc-transformer-va-selection.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Calculator #49</div><p>Transformer VA selection with report.</p></a>
+<a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-plug"></i><div class="tool-link-title">Calculator #17</div><p>Isolating transformer load.</p></a>
+<a href="calc-secondary-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><div class="tool-link-title">Calculator #26</div><p>Secondary cable voltage drop.</p></a>
+<a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
 </div></div></section>
 <!-- CONNECT-BLOCK v2.1 -->
 <section class="cx-wrap" aria-labelledby="cx-h"><div class="cx-panel">

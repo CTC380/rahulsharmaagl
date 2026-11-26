@@ -547,6 +547,13 @@
   .block-title{font-size:clamp(26px,8vw,36px);overflow-wrap:anywhere;}
 }
 </style>
+<style id="heading-parity">@media (min-width:769px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}@media (min-width:481px) and (max-width:768px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}@media (max-width:480px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}</style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -624,52 +631,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The ALCMS server/workstation application fails to start or complete its boot sequence after a restart, power cycle, or scheduled maintenance.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS server/workstation &#x2014; the central software application (client/server) running on redundant servers/workstations in the ATC tower or airport operations building, providing the operator interface for lighting control and monitoring.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">OS or a critical application service failing to start after a restart or power cycle</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Database service (SQL Server/Oracle or equivalent) not starting, blocking the application from initialising</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Software licence or dongle/licence-server unreachable at startup</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Corrupted application configuration file preventing a clean startup</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Server hardware fault (disk, RAM, power supply)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Antivirus or an OS update conflicting with the ALCMS service</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Server console/KVM access</span><span>OS event log viewer</span><span>ALCMS application/service logs</span><span>Database administration tool</span><span>Licence server diagnostic utility</span><span>Spare server/workstation hardware</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate with ATC before restarting the primary ALCMS server, since lighting control may need to fail over to a backup system or local manual control.</li><li>Follow the site change-management procedure for any server-level intervention.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Check the server power and OS boot status to confirm whether the hardware/OS layer started correctly.</li><li><span class="step-tag">Observation</span>Review the OS and application event logs for the specific point of startup failure.</li><li><span class="step-tag">Measurement</span>Confirm the database service status independently of the ALCMS application.</li><li><span class="step-tag">Measurement</span>Check licence server or dongle connectivity if the application reports a licensing error.</li><li><span class="step-tag">Decision</span>OS/hardware boots correctly but the application service fails &#x2192; database or configuration fault. OS itself fails to boot &#x2192; hardware fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the OS/hardware layer, the database service, the licence system, or a corrupted configuration file.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component or file before restoring service.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">OS boot status</div><div class="tp-item">Database service status</div><div class="tp-item">Licence server connectivity</div><div class="tp-item">Application configuration file integrity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm ALCMS starts cleanly, all expected services report running, and the operator interface displays current field status correctly for a sample of monitored devices.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restart or repair the failed OS or database service.</li><li>Restore the application configuration from a known-good backup.</li><li>Repair or replace failed server hardware.</li><li>Renew or reconnect the software licence.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain a tested backup/standby ALCMS server with automatic or documented manual failover.</li><li>Schedule regular configuration backups.</li><li>Keep OS and database patching current within a controlled maintenance window.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-01 (ALCMS Server Startup and Recovery Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (lighting control requirements), ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Server/Network Architecture Drawing</p>
@@ -689,52 +696,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> ALCMS loses communication with the field PLC/RTU network broadly, affecting visibility and control of multiple CCRs or field devices simultaneously.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Overall ALCMS communication path linking the ALCMS server to the field PLC/RTU network, which in turn communicates with individual CCRs and field devices.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Network switch or router failure on the path between ALCMS and the field network</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Server-side communication service or driver fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Protocol converter or gateway failure</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A misconfigured IP address/subnet following a network change</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A widespread cable or fibre cut affecting the whole field network</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Server-side firewall or security policy change blocking the communication port</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS system log review</span><span>Network diagnostic tools (ping/traceroute)</span><span>Protocol analyser</span><span>Server communication service diagnostics</span><span>Network architecture drawing</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate with ATC &#x2014; a full communication loss typically requires falling back to local manual CCR control per the documented fallback procedure.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the scope of the failure from ALCMS &#x2014; a single field device, a segment, or the entire network.</li><li><span class="step-tag">Measurement</span>Check the server-side communication service status.</li><li><span class="step-tag">Measurement</span>Ping/test the network path to a representative sample of field devices.</li><li><span class="step-tag">Measurement</span>Check network switch/router status along the path.</li><li><span class="step-tag">Decision</span>Only a segment affected &#x2192; isolate to that segment&#x27;s switch/cable. Entire network affected &#x2192; server-side service or core network fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the server communication service, a network switch/router, a protocol gateway, or a widespread cable fault.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before restoring communication.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Server communication service status</div><div class="tp-item">Network path continuity to field devices</div><div class="tp-item">Network switch/router status</div><div class="tp-item">Protocol gateway diagnostics</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm ALCMS re-establishes communication with all field devices, and cross-check reported status against a physical inspection for a sample of devices.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restart the server communication service.</li><li>Replace failed network hardware.</li><li>Correct IP/network configuration.</li><li>Repair the identified cable/fibre fault.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Implement redundant communication paths where practical.</li><li>Monitor network health proactively with management tools.</li><li>Maintain accurate network documentation and change records.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-02 (ALCMS Communication Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS/SCADA vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Network Architecture Drawing</p>
@@ -754,52 +761,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A specific CCR that should be reporting to ALCMS no longer appears, or appears with no data, while other CCRs continue reporting normally.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>An individual CCR&#x27;s representation/tag within the ALCMS system &#x2014; the specific point/device address that should report that CCR&#x27;s status.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">That CCR&#x27;s RTU/PLC communication module has failed or lost power</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The CCR&#x27;s device address/point configuration has been removed or corrupted in the ALCMS database</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A local communication segment (e.g. a sub-network from a field cabinet) is down, affecting this CCR and others on the same segment</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A physical comm cable/fibre fault specific to that CCR&#x27;s connection</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">The CCR was intentionally powered down or isolated for maintenance without updating ALCMS</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS diagnostic terminal</span><span>Field RTU/PLC diagnostic tool</span><span>True-RMS multimeter</span><span>Cable tester</span><span>CCR-to-ALCMS point configuration list</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate access to the CCR cabinet.</li><li>LOTO before any RTU/communication module work.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether other CCRs on the same communication segment are also missing (segment-level) or only this one (device-level).</li><li><span class="step-tag">Measurement</span>Check the RTU/PLC communication module at the CCR for power and status.</li><li><span class="step-tag">Observation</span>Verify the device address/point configuration in ALCMS matches the CCR&#x27;s actual field address.</li><li><span class="step-tag">Measurement</span>Inspect the local cable/fibre connection for that CCR.</li><li><span class="step-tag">Decision</span>Other CCRs on the segment also missing &#x2192; segment-level fault, route to ALC-483/485/486. Only this CCR affected &#x2192; device-level fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the RTU/PLC comm module, the ALCMS point configuration, or the local cable/fibre connection.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before restoring visibility.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">RTU/PLC comm module status at the CCR</div><div class="tp-item">ALCMS point configuration</div><div class="tp-item">Local segment communication status</div><div class="tp-item">Cable/fibre continuity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm the CCR reappears on ALCMS with correct real-time status matching its actual field state.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restore power to or repair the RTU/PLC comm module.</li><li>Correct the ALCMS point configuration.</li><li>Repair the identified local cable/fibre fault.</li><li>Confirm and document the CCR&#x27;s state if it had been intentionally isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain an accurate CCR-to-ALCMS point configuration list.</li><li>Include RTU/PLC health checks in the periodic maintenance cycle.</li><li>Update ALCMS promptly whenever a CCR is taken out of service.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-03 (Field Device Visibility Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> CCR-to-ALCMS Point Configuration List</p>
@@ -819,52 +826,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> ALCMS displays a CCR status (ON/OFF or fault) that does not match the CCR&#x27;s actual physical state, confirmed by field inspection.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>CCR status feedback point on ALCMS &#x2014; the ON/OFF or fault status displayed for a specific CCR, sourced from a status sensor or contact at the CCR.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Status feedback sensor/contact at the CCR reporting incorrectly (stuck relay, miswired feedback)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">ALCMS point configured against the wrong CCR (a mapping error)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A stale/latched status not updating after the actual field state changed</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A communication delay causing a temporarily stale display</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A genuine intermittent fault at the CCR being masked by an apparently incorrect status</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>ALCMS diagnostic terminal</span><span>CCR feedback wiring diagram</span><span>Direct physical CCR inspection</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate access to the CCR cabinet.</li><li>LOTO before feedback wiring work.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Physically verify the actual CCR status against what ALCMS displays.</li><li><span class="step-tag">Measurement</span>Check the feedback sensor/contact wiring at the CCR.</li><li><span class="step-tag">Observation</span>Confirm the ALCMS point mapping is assigned to the correct CCR.</li><li><span class="step-tag">Observation</span>Observe over a short period to check whether the discrepancy is a communication delay rather than a hard fault.</li><li><span class="step-tag">Decision</span>Physical state and feedback wiring correct but ALCMS shows a different CCR&#x27;s status &#x2192; mapping error. Feedback wiring itself faulty &#x2192; repair at the CCR.</li><li><span class="step-tag">Fault Location</span>Isolate to the feedback sensor/contact, the ALCMS point mapping, or a communication delay.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Physical CCR status</div><div class="tp-item">Feedback sensor/contact continuity</div><div class="tp-item">ALCMS point mapping</div><div class="tp-item">Communication update latency</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Change the CCR&#x27;s actual state under a controlled test and confirm ALCMS updates correctly and promptly.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the feedback sensor/contact.</li><li>Correct the ALCMS point mapping.</li><li>Address the communication delay if it is source-side.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify feedback wiring and point mapping during commissioning and after any CCR replacement.</li><li>Include status accuracy spot-checks in the periodic maintenance cycle.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-04 (Status Feedback Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> CCR Feedback Wiring Diagram</p>
@@ -884,52 +891,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The output current value displayed on ALCMS for a specific circuit does not match a reference measurement taken directly at the CCR.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>CCR output current value displayed on ALCMS for a specific circuit, sourced from a current transducer (CT) at the CCR and reported through the RTU/PLC analog input.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Current transducer (CT) at the CCR faulted or drifted out of calibration</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Analog signal wiring fault between the CT and the RTU/PLC analog input</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Incorrect scaling/calibration configured in the ALCMS point (engineering units mismatch)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Analog input module fault on the RTU/PLC</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Electrical noise or interference on the analog signal wiring producing an unstable reading</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Calibrated clamp-on ammeter (reference measurement)</span><span>True-RMS multimeter</span><span>CT calibration/test equipment</span><span>RTU/PLC analog input diagnostic tool</span><span>ALCMS point scaling configuration</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before CT or wiring work.</li><li>Treat CT secondary circuits with care per applicable practice &#x2014; do not open-circuit an energised current transformer secondary.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Measurement</span>Take a reference current measurement directly at the CCR with a calibrated clamp-on ammeter.</li><li><span class="step-tag">Observation</span>Compare the reference measurement against the ALCMS displayed value.</li><li><span class="step-tag">Measurement</span>Check the CT and its wiring to the RTU/PLC analog input.</li><li><span class="step-tag">Observation</span>Verify the ALCMS point scaling/calibration configuration.</li><li><span class="step-tag">Decision</span>Reference measurement and ALCMS display disagree with CT/wiring confirmed sound &#x2192; scaling/configuration fault. CT itself out of calibration or wiring faulty &#x2192; repair at the CCR.</li><li><span class="step-tag">Fault Location</span>Isolate to the CT, the analog signal wiring, the analog input module, or the ALCMS point scaling.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause across a range of operating currents before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Reference clamp-on ammeter reading</div><div class="tp-item">CT output signal</div><div class="tp-item">Analog input module reading</div><div class="tp-item">ALCMS point scaling configuration</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm the ALCMS displayed current matches a reference measurement across the operating range and at each intensity step.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace or recalibrate the CT.</li><li>Repair the analog signal wiring.</li><li>Correct the ALCMS point scaling configuration.</li><li>Replace a faulted analog input module.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include CT calibration verification in the periodic maintenance cycle.</li><li>Shield and route analog signal wiring away from sources of interference.</li><li>Verify scaling configuration after any RTU/PLC replacement.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-05 (Analog Signal Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> CCR Analog Signal Wiring Diagram</p>
@@ -949,52 +956,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The intensity step shown on ALCMS for a circuit does not match the CCR&#x27;s actual commanded or operating intensity step, confirmed at the CCR panel.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Intensity step indication displayed on ALCMS for a specific circuit, reflecting the CCR&#x27;s actual commanded/operating intensity step.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR reporting an incorrect step status back to the RTU/PLC (an internal CCR feedback fault)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">ALCMS point configuration mismatched to the CCR&#x27;s actual step numbering/convention</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Communication or scaling error in the step feedback signal</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A stale display not updating after a step change</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A discrepancy between commanded step (sent by ALCMS) and actual step (reported by the CCR) due to a CCR-side fault</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>ALCMS diagnostic terminal</span><span>CCR step feedback wiring diagram</span><span>Direct physical intensity observation at the CCR panel</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before feedback wiring work.</li><li>Coordinate any live step-change testing with ATC.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Physically confirm the CCR&#x27;s actual operating step directly at the CCR panel.</li><li><span class="step-tag">Observation</span>Compare the physical step against the ALCMS displayed value.</li><li><span class="step-tag">Measurement</span>Check the step feedback wiring/signal from the CCR to the RTU/PLC.</li><li><span class="step-tag">Observation</span>Verify the ALCMS point configuration matches the CCR&#x27;s step convention.</li><li><span class="step-tag">Decision</span>Physical step and feedback signal correct but ALCMS shows a different step &#x2192; ALCMS point configuration fault. Feedback signal itself wrong &#x2192; CCR-side fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the CCR&#x27;s internal step feedback, the ALCMS point configuration, or the feedback wiring/signal path.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">CCR panel actual step indication</div><div class="tp-item">Step feedback signal</div><div class="tp-item">ALCMS point configuration</div><div class="tp-item">Commanded vs. reported step comparison</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Command a step change from ALCMS and confirm the displayed value updates correctly and matches the CCR&#x27;s actual operating step.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair the CCR&#x27;s internal step feedback.</li><li>Correct the ALCMS point configuration.</li><li>Repair the feedback wiring/signal path.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify step feedback accuracy during commissioning and after any CCR firmware/configuration change.</li><li>Include step display accuracy in periodic functional testing.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-05 (Analog Signal Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> CCR Step Feedback Wiring Diagram</p>
@@ -1014,52 +1021,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A command issued from the ALCMS operator interface to a CCR or lighting circuit is not correctly executed in the field, without being specific to a step-change or ON/OFF command.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>General remote command path from the ALCMS operator interface to a CCR or lighting circuit &#x2014; command generation, transmission, and CCR-side execution.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Communication path failure between ALCMS and the target field device</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">The CCR-side controller not accepting or executing the command</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The operator interface command not generated correctly</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A command queue conflict from simultaneous operator/ATC input</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A permission or interlock condition legitimately preventing the command from executing</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS system log review</span><span>Network diagnostic tools</span><span>RTU/PLC diagnostic software</span><span>CCR local control panel</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate with ATC before testing remote commands.</li><li>Confirm local manual control is available as a fallback before extended testing.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the command was generated and logged correctly at ALCMS.</li><li><span class="step-tag">Measurement</span>Check the communication path status to the target device.</li><li><span class="step-tag">Measurement</span>Check the CCR&#x27;s local controller for command receipt and execution.</li><li><span class="step-tag">Observation</span>Check for any interlock or permission condition blocking the command.</li><li><span class="step-tag">Decision</span>Command logged and communication path healthy but CCR does not execute &#x2192; CCR-side controller fault. Command not logged at ALCMS &#x2192; operator interface fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the operator interface/command generation, the communication path, the CCR local controller, or an interlock/permission condition.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">ALCMS command log</div><div class="tp-item">Communication path status</div><div class="tp-item">CCR local controller diagnostics</div><div class="tp-item">Interlock/permission status</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Issue a series of test commands and confirm each is executed correctly with accurate status feedback.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Correct the operator interface/command generation fault.</li><li>Repair the communication path.</li><li>Repair the CCR local controller.</li><li>Resolve the interlock/permission conflict.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Log and periodically review remote command success rate.</li><li>Verify interlock logic after any configuration change.</li><li>Provide clear operator guidance for handling command conflicts.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-06 (Remote Command Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Command Path Drawing</p>
@@ -1079,52 +1086,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A commanded intensity step change from ALCMS fails to execute at the CCR, while other remote commands for the same CCR continue to work normally.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Remote intensity step change command path &#x2014; the specific function within the ALCMS remote command system for raising or lowering a circuit&#x27;s intensity step.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR-side step controller/relay not responding to the step-change command</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A communication timeout specific to the step command, while ON/OFF commands work normally</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The ALCMS step command mapped to the wrong output/register on the RTU/PLC</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A step limit or interlock preventing the requested step (e.g. a minimum step enforced under certain conditions)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">An intermediate protocol converter dropping step-change telegrams specifically</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS diagnostic terminal</span><span>RTU/PLC diagnostic software</span><span>CCR step controller test equipment</span><span>Protocol analyser</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate with ATC before testing step changes, since intensity affects visual guidance for active operations.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether ON/OFF commands work normally for the same CCR, isolating the fault to step-change specifically.</li><li><span class="step-tag">Observation</span>Check the ALCMS command log for the step-change command.</li><li><span class="step-tag">Measurement</span>Check the CCR&#x27;s step controller/relay for command receipt.</li><li><span class="step-tag">Observation</span>Check for a step limit or interlock condition preventing the requested step.</li><li><span class="step-tag">Decision</span>Command logged and reaches the RTU/PLC but the CCR step controller does not respond &#x2192; CCR-side fault. Command not reaching the correct register &#x2192; mapping fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the CCR step controller/relay, the RTU/PLC register mapping, a step limit/interlock, or a protocol converter.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">ALCMS step command log</div><div class="tp-item">CCR step controller/relay status</div><div class="tp-item">RTU/PLC register mapping for the step command</div><div class="tp-item">Step limit/interlock status</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Command a series of step changes across the full intensity range and confirm each is executed correctly with accurate feedback.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair the CCR step controller/relay.</li><li>Correct the RTU/PLC register mapping.</li><li>Resolve the step limit/interlock condition.</li><li>Repair the protocol converter.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify step command mapping during commissioning and after any CCR or RTU/PLC replacement.</li><li>Include step-change testing in periodic functional checks.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-06 (Remote Command Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Command Path Drawing</p>
@@ -1144,52 +1151,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A commanded ON or OFF from ALCMS fails to execute at the CCR, while step-change commands for the same CCR continue to work normally.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Remote ON/OFF command path &#x2014; the specific function within the ALCMS remote command system for switching a circuit fully on or off.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR-side main contactor/relay not responding to the ON/OFF command</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A communication timeout specific to the ON/OFF command</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The ALCMS ON/OFF command mapped to the wrong output on the RTU/PLC</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">An interlock (e.g. a stop bar interlock) legitimately preventing the requested state</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A local selector switch at the CCR left in a position that overrides remote control</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS diagnostic terminal</span><span>RTU/PLC diagnostic software</span><span>CCR contactor test equipment</span><span>Protocol analyser</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate with ATC before testing ON/OFF commands, especially for circuits governed by a safety interlock.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether step-change commands work normally for the same CCR.</li><li><span class="step-tag">Observation</span>Check the ALCMS command log for the ON/OFF command.</li><li><span class="step-tag">Measurement</span>Check the CCR&#x27;s main contactor/relay for command receipt.</li><li><span class="step-tag">Observation</span>Check the local selector switch position at the CCR and any interlock condition.</li><li><span class="step-tag">Decision</span>Local selector switch found off remote &#x2192; return to remote position. Interlock condition confirmed genuine &#x2192; route to the relevant interlock procedure. Otherwise &#x2192; contactor/relay or mapping fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the CCR contactor/relay, the RTU/PLC register mapping, the local selector switch, or an interlock condition.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">ALCMS ON/OFF command log</div><div class="tp-item">CCR contactor/relay status</div><div class="tp-item">RTU/PLC register mapping</div><div class="tp-item">Local selector switch position</div><div class="tp-item">Interlock status</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Command ON and OFF from ALCMS several times and confirm each is executed correctly with accurate feedback.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair the CCR contactor/relay.</li><li>Correct the RTU/PLC register mapping.</li><li>Return the local selector switch to the remote position.</li><li>Resolve a genuine interlock fault per the relevant division&#x27;s procedure.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify ON/OFF command mapping during commissioning.</li><li>Include selector switch position checks in the periodic maintenance cycle.</li><li>Document interlock behaviour clearly for operators.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-06 (Remote Command Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Command Path Drawing</p>
@@ -1209,52 +1216,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A field condition that should have triggered an ALCMS alarm (fault, out-of-tolerance reading, communication loss) occurred, but no alarm was raised or displayed.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS alarm management system &#x2014; the logic and display that should generate an operator-visible alarm when a monitored field condition occurs.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">The alarm point is not configured, or is disabled, in the ALCMS alarm database</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">The alarm threshold/logic is set incorrectly so the actual field condition does not trigger it</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The alarm was generated at the field/RTU level but not transmitted or displayed due to a communication issue</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The alarm is suppressed by an active acknowledgement/silence setting from a previous event</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">An ALCMS alarm server/service fault</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS alarm configuration/database review tool</span><span>ALCMS system log</span><span>RTU/PLC alarm logic diagnostic</span><span>Physical field condition verification</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Treat any discovered alarm gap as a priority given its role in surfacing safety-relevant field conditions.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the field condition that should have triggered an alarm actually occurred, and establish its timing.</li><li><span class="step-tag">Observation</span>Check the alarm point configuration and threshold/logic in ALCMS.</li><li><span class="step-tag">Measurement</span>Check whether the alarm was generated at the RTU/PLC but not transmitted to ALCMS.</li><li><span class="step-tag">Observation</span>Check for an active suppression/silence setting on that alarm point.</li><li><span class="step-tag">Decision</span>Alarm generated at RTU/PLC but not received &#x2192; transmission/communication fault. Alarm never generated &#x2192; configuration/threshold fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the alarm point configuration, the threshold/logic setting, the transmission path, or a suppression setting.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Alarm point configuration</div><div class="tp-item">Threshold/logic setting</div><div class="tp-item">RTU/PLC alarm generation</div><div class="tp-item">Alarm transmission/communication</div><div class="tp-item">Suppression/silence status</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Trigger a controlled test condition, or simulate the alarm point where safe to do so, and confirm it is correctly received, displayed, and logged.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Correct the alarm point configuration or threshold.</li><li>Repair the transmission/communication path.</li><li>Clear an inappropriate suppression setting.</li><li>Restart or repair the ALCMS alarm service.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Periodically audit the alarm configuration database against the actual field point list.</li><li>Test alarm generation end-to-end on a defined schedule.</li><li>Review suppression/silence usage logs.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-07 (Alarm Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Alarm Configuration List</p>
@@ -1274,52 +1281,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> ALCMS raises an alarm without a corresponding genuine field condition, confirmed by physical inspection or independent measurement.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS alarm management system, in this case generating an alarm without a corresponding genuine field condition.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Alarm threshold set too tight/sensitive for normal operating variation (e.g. current fluctuation within normal tolerance)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A faulty sensor/transducer at the field device generating an erroneous reading that trips the alarm</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Electrical noise or interference on a signal or communication line intermittently triggering the alarm logic</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A software/logic fault in the alarm evaluation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A genuine but transient/self-clearing condition perceived as false because it resolved before investigation</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS alarm history/log review</span><span>Field sensor/transducer test equipment</span><span>ALCMS alarm configuration tool</span><span>Signal quality logger/thermal camera</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Do not disable or widen an alarm threshold without first confirming the underlying field condition is genuinely within normal tolerance.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Review the alarm history log to identify the pattern and frequency of the alarm.</li><li><span class="step-tag">Measurement</span>Correlate the alarm timing against the actual field condition via physical inspection or independent measurement.</li><li><span class="step-tag">Observation</span>Check the alarm threshold/logic configuration for appropriateness.</li><li><span class="step-tag">Measurement</span>Check the relevant sensor/transducer and signal path for noise or drift.</li><li><span class="step-tag">Decision</span>Independent measurement confirms no genuine condition at alarm times &#x2192; threshold too tight or sensor drift. Independent measurement confirms a genuine but transient condition &#x2192; alarm is correct, review response process instead.</li><li><span class="step-tag">Fault Location</span>Isolate to the alarm threshold/logic, the sensor/transducer, or the signal path.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause across several alarm occurrences before adjustment.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Alarm history/log pattern</div><div class="tp-item">Independent field measurement at the time of alarm</div><div class="tp-item">Alarm threshold/logic configuration</div><div class="tp-item">Sensor/transducer and signal path condition</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Monitor the point over a subsequent period to confirm the alarm no longer triggers inappropriately, while still correctly triggering for a genuine test condition.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Adjust the alarm threshold/logic to an appropriate value.</li><li>Repair or replace the faulty sensor/transducer.</li><li>Address the noise/interference source.</li><li>Correct the alarm evaluation logic.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Review alarm threshold settings periodically against actual operating data.</li><li>Include sensor/transducer calibration in the periodic maintenance cycle.</li><li>Document the rationale for each alarm threshold to avoid future drift.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-07 (Alarm Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Alarm Configuration List</p>
@@ -1339,52 +1346,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An active alarm persists on the ALCMS display after the underlying field condition appears to have been resolved.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS alarm management system &#x2014; in this case, an active alarm that persists after the underlying field condition has been resolved.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">The underlying field condition has not actually been fully resolved despite appearing corrected</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A latched alarm requiring manual acknowledgement/reset that has not been performed</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A stale communication link preventing the cleared status from being received</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">An alarm logic fault holding the alarm active regardless of the actual condition</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A database/software fault in the alarm server retaining the alarm state</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS alarm management terminal</span><span>Physical field condition verification/measurement</span><span>RTU/PLC alarm logic diagnostic</span><span>ALCMS alarm server diagnostics</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Confirm the field condition is genuinely resolved before manually clearing/acknowledging an alarm, to avoid masking a real ongoing fault.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Physically verify the underlying field condition is actually resolved.</li><li><span class="step-tag">Observation</span>Check whether the alarm requires manual acknowledgement/reset per its configured behaviour.</li><li><span class="step-tag">Measurement</span>Check communication status to confirm the cleared field status is being received.</li><li><span class="step-tag">Observation</span>Check the alarm logic and server for a fault retaining the state.</li><li><span class="step-tag">Decision</span>Field condition confirmed genuinely resolved and alarm configured to auto-clear &#x2192; communication or logic fault. Field condition not actually resolved &#x2192; investigate the underlying fault directly.</li><li><span class="step-tag">Fault Location</span>Isolate to the required manual acknowledgement, the communication link, or the alarm logic/server.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before clearing the alarm.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Physical field condition</div><div class="tp-item">Alarm acknowledgement/reset requirement and status</div><div class="tp-item">Communication link status</div><div class="tp-item">Alarm server/logic diagnostics</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm the alarm clears correctly and the alarm history log correctly timestamps the resolution.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Complete the required manual acknowledgement/reset.</li><li>Repair the communication link.</li><li>Correct the alarm logic fault.</li><li>Restart or repair the alarm server.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Document which alarms require manual acknowledgement vs. auto-clear.</li><li>Include alarm-clearing behaviour verification in periodic testing.</li><li>Monitor for a pattern of alarms not clearing that may indicate a systemic issue.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-07 (Alarm Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Alarm Configuration List</p>
@@ -1404,52 +1411,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The ALCMS-to-field communication path exhibits periodic drop-outs rather than a complete or permanent loss, with connectivity intermittently recovering on its own.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS-to-field communication path generally, exhibiting periodic drop-outs rather than a complete/permanent loss.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Marginal signal quality on a communication cable/fibre segment (partial damage, poor termination) causing intermittent drop-outs</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A network switch/port with an intermittent hardware fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Electromagnetic interference affecting a communication segment periodically (e.g. near high-power equipment)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A communication device (RTU/PLC/gateway) overheating or resetting intermittently</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A network loading/congestion issue causing periodic timeouts under peak polling load</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Network diagnostic tools (extended ping/packet loss logging)</span><span>Protocol analyser</span><span>Cable/fibre test equipment (OTDR for fibre)</span><span>Thermal imaging camera</span><span>Network switch port diagnostics</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Treat intermittent communication as a developing fault requiring investigation before it becomes a complete failure.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Review the ALCMS communication log to establish the pattern, frequency, and any correlation with time of day, weather, or load.</li><li><span class="step-tag">Measurement</span>Test the suspect cable/fibre segment for signal quality/loss.</li><li><span class="step-tag">Measurement</span>Check network switch port statistics for errors.</li><li><span class="step-tag">Measurement</span>Check for a communication device resetting or overheating intermittently.</li><li><span class="step-tag">Decision</span>Intermittency correlates with load/time of day &#x2192; congestion or thermal cause. Intermittency correlates with a specific segment regardless of load &#x2192; cable/fibre or switch fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the cable/fibre segment, the network switch/port, an interference source, or an overheating/resetting device.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Communication log pattern and correlation</div><div class="tp-item">Cable/fibre signal quality</div><div class="tp-item">Network switch port error statistics</div><div class="tp-item">Communication device thermal/reset behaviour</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Monitor the communication path over an extended period after correction to confirm the intermittency is resolved.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the degraded cable/fibre segment.</li><li>Replace a faulted network switch/port.</li><li>Address the interference source.</li><li>Repair or replace an overheating/resetting communication device.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include periodic communication log review and packet-loss trending in the maintenance cycle.</li><li>Test cable/fibre segments proactively on ageing sections.</li><li>Monitor network switch port health.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-02 (ALCMS Communication Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Network Architecture Drawing</p>
@@ -1469,52 +1476,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The field PLC/RTU that interfaces between the ALCMS network and one or more CCRs/field devices fails, taking multiple connected devices out of ALCMS visibility or control simultaneously.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The field PLC (or RTU) that interfaces between the ALCMS communication network and one or more CCRs/field devices, handling local I/O, alarm logic, and communication.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">PLC CPU module hardware failure</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">PLC power supply failure</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">I/O module failure affecting a subset of connected devices</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Firmware/program corruption after a power interruption during a write cycle</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Overheating in the PLC cabinet from a failed cooling fan or blocked ventilation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A program logic fault introduced by an uncontrolled configuration change</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>PLC programming/diagnostic software</span><span>True-RMS multimeter</span><span>PLC cabinet thermal check</span><span>Spare PLC modules</span><span>PLC program backup/version records</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the PLC cabinet before module replacement.</li><li>Coordinate the affected circuits&#x27; outage with ATC since a PLC failure can take multiple field devices out of ALCMS visibility/control simultaneously.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Check the PLC CPU status LEDs/diagnostics for fault codes.</li><li><span class="step-tag">Measurement</span>Check the power supply output.</li><li><span class="step-tag">Measurement</span>Check individual I/O module status for the affected devices.</li><li><span class="step-tag">Observation</span>Check cabinet temperature and cooling fan operation.</li><li><span class="step-tag">Decision</span>CPU fault code present &#x2192; CPU module fault. Power supply output absent/low &#x2192; power supply fault. Only specific I/O affected &#x2192; I/O module fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the CPU module, the power supply, a specific I/O module, or cabinet cooling.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before replacement.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">PLC CPU diagnostic status</div><div class="tp-item">Power supply output</div><div class="tp-item">I/O module status</div><div class="tp-item">Cabinet temperature</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, confirm the PLC boots correctly, the program is running as expected, and all connected field devices report correct status to ALCMS.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed CPU or I/O module.</li><li>Replace the power supply.</li><li>Restore the program from a verified backup.</li><li>Repair the cooling system.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain current PLC program backups after every verified configuration change.</li><li>Include PLC cabinet cooling checks in the periodic maintenance cycle.</li><li>Follow a controlled change-management process for any program modification.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-08 (PLC/RTU Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor and PLC manufacturer documentation</p>
             <p><strong>Diagram:</strong> PLC/RTU Cabinet Wiring Diagram</p>
@@ -1534,52 +1541,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The communication network infrastructure connecting the ALCMS server(s) to the field PLC/RTU network fails, disrupting communication across a large portion of the system.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Communication network infrastructure connecting the ALCMS server(s) to the field PLC/RTU network &#x2014; switches, routers, and the backbone cabling/fibre linking the control room to field cabinets.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Network switch or router hardware failure</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A network loop or broadcast storm degrading or halting traffic</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Power failure at a network cabinet/enclosure</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A misconfigured VLAN/routing change disrupting connectivity</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A backbone fibre/cable cut affecting a whole network segment</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A cybersecurity event or unauthorised device causing network disruption</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Network diagnostic tools (ping, traceroute, port mirroring)</span><span>Managed switch diagnostic interface</span><span>Network architecture drawing</span><span>Spare network switch/router</span><span>Fibre test equipment (OTDR)</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate an extended network outage with ATC given the scale of impact.</li><li>Follow IT/OT change-management and cybersecurity procedures for any network-level intervention.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Identify the scope of the network failure &#x2014; single switch, segment, or whole network &#x2014; from ALCMS and direct network diagnostics.</li><li><span class="step-tag">Measurement</span>Check network switch/router status and port diagnostics.</li><li><span class="step-tag">Observation</span>Check for a loop or broadcast storm on the network.</li><li><span class="step-tag">Measurement</span>Check power status at network cabinets.</li><li><span class="step-tag">Decision</span>Scope limited to one switch/segment &#x2192; hardware/cable fault at that point. Scope covers the whole network &#x2192; core switch, loop, or power failure.</li><li><span class="step-tag">Fault Location</span>Isolate to a failed switch/router, a network loop/broadcast storm, a power failure, or a backbone cable/fibre fault.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before restoring the network.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Network switch/router diagnostic status</div><div class="tp-item">Port error/traffic statistics</div><div class="tp-item">Power status at network cabinets</div><div class="tp-item">Backbone cable/fibre continuity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm full network connectivity is restored and ALCMS re-establishes communication with every field device, cross-checked against a physical inspection sample.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed switch/router.</li><li>Resolve the network loop/broadcast storm.</li><li>Restore power to the affected cabinet.</li><li>Repair the backbone cable/fibre fault.</li><li>Correct the VLAN/routing configuration.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Implement network redundancy (ring topology, redundant switches) where practical.</li><li>Monitor network health proactively with SNMP/management tools.</li><li>Maintain accurate network documentation and change records.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-02 (ALCMS Communication Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation, applicable OT cybersecurity guidance</p>
             <p><strong>Diagram:</strong> ALCMS Network Architecture Drawing</p>
@@ -1599,52 +1606,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A specific communication cable or fibre segment within the ALCMS network is identified as faulted following investigation of a device- or segment-level communication issue.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>A specific communication cable or fibre segment within the ALCMS network &#x2014; between a field cabinet and a PLC/RTU, or between network nodes.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Physical cable/fibre damage from excavation, pavement maintenance, or rodent activity</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A degraded or improperly terminated connector/splice</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Moisture ingress into a below-grade cable/fibre joint</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">UV or mechanical degradation of an above-ground cable run</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A cable route exceeding the maximum specified length/attenuation for the protocol in use</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Crosstalk or interference from routing alongside a high-power circuit</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Cable/fibre test equipment (TDR for copper, OTDR for fibre)</span><span>Continuity tester</span><span>Cable route as-built drawing</span><span>Splice/termination tools</span><span>Excavation permit and utility locate if digging is required</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the associated communication equipment before cable work.</li><li>Obtain excavation clearance and utility locates before opening pavement or ground.</li><li>Coordinate airside access as required.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Identify the specific cable/fibre segment implicated from the network diagnostic and route drawing.</li><li><span class="step-tag">Measurement</span>Test the segment with a TDR/OTDR to locate the fault distance and type (break, high attenuation, poor splice).</li><li><span class="step-tag">Observation</span>Physically inspect accessible portions of the route for damage.</li><li><span class="step-tag">Decision</span>Fault localised to a specific distance/splice &#x2192; targeted repair at that point. No localised fault found but attenuation is high overall &#x2192; route length/specification issue.</li><li><span class="step-tag">Fault Location</span>Isolate to a specific point along the cable/fibre route, a splice/termination, or an overall route length/attenuation issue.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause once the fault location is exposed.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Cable/fibre continuity and attenuation</div><div class="tp-item">Splice/termination quality</div><div class="tp-item">Physical route condition</div><div class="tp-item">Cable length/attenuation vs. protocol specification</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-test the segment to confirm continuity/attenuation is within specification, and confirm communication is restored end-to-end.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the damaged cable/fibre segment.</li><li>Re-terminate or re-splice a degraded connection.</li><li>Reroute a cable found too close to a high-power circuit source of interference.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain an accurate cable/fibre route as-built drawing.</li><li>Coordinate with civil works teams before excavation near known routes.</li><li>Use appropriately rated cable for below-grade or high-interference environments.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-02 (ALCMS Communication Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation, applicable cabling standards (e.g. TIA/EIA)</p>
             <p><strong>Diagram:</strong> ALCMS Network Architecture Drawing</p>
@@ -1664,52 +1671,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The ALCMS Human-Machine Interface (HMI) application or workstation stops responding, crashes, or is otherwise unable to display status or accept commands.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The ALCMS Human-Machine Interface (HMI) &#x2014; the operator workstation/display application through which lighting status is viewed and commands are issued, distinct from the underlying server/database.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">HMI application crash or hang requiring a restart</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Graphics/display driver fault on the operator workstation</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Corrupted HMI project/configuration file</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Workstation hardware failure (monitor, GPU, power supply)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Loss of connection between the HMI client and the ALCMS server</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">An operating system update or conflict affecting the HMI application</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Workstation diagnostic tools</span><span>HMI application/service logs</span><span>Spare workstation hardware</span><span>HMI project/configuration backup</span><span>OS event log viewer</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Confirm a backup/secondary HMI workstation or local manual control is available before taking the primary HMI out of service.</li><li>Coordinate with ATC.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Attempt to restart the HMI application and, if unsuccessful, the workstation.</li><li><span class="step-tag">Observation</span>Review the HMI application/OS logs for the failure cause.</li><li><span class="step-tag">Measurement</span>Check the connection between the HMI client and the ALCMS server.</li><li><span class="step-tag">Measurement</span>Check workstation hardware for a fault.</li><li><span class="step-tag">Decision</span>HMI restarts cleanly but the connection to the server is lost &#x2192; connection/network fault. Application will not restart at all &#x2192; corrupted configuration or hardware fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the HMI application, the HMI-to-server connection, or workstation hardware.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before restoring service.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">HMI application/service status</div><div class="tp-item">HMI-to-server connection status</div><div class="tp-item">Workstation hardware diagnostics</div><div class="tp-item">HMI project/configuration integrity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm the HMI restarts cleanly, displays accurate real-time field status, and correctly issues a test command.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restart or repair the HMI application or workstation.</li><li>Restore the HMI project/configuration from a verified backup.</li><li>Repair or replace failed workstation hardware.</li><li>Restore the HMI-to-server connection.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain a tested backup/secondary HMI workstation.</li><li>Schedule regular configuration backups.</li><li>Keep the HMI workstation OS/application patching current within a controlled maintenance window.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-09 (HMI Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Server/Network Architecture Drawing</p>
@@ -1729,52 +1736,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The touchscreen input on an HMI workstation or panel fails to register touch correctly, either entirely or in specific screen areas.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Touchscreen input hardware on an HMI workstation or panel, where operator commands are issued via touch rather than (or in addition to) keyboard/mouse.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Touchscreen digitiser hardware failure (no response to touch)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Touchscreen calibration drift causing inaccurate touch registration</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A damaged or scratched screen surface affecting touch sensitivity in specific areas</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A loose or damaged USB/connection cable between the touchscreen and the workstation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Driver software fault following an OS update</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Surface contamination (dust, grease) reducing touch responsiveness</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Touchscreen calibration utility</span><span>USB/connection cable tester</span><span>Screen cleaning kit rated for touchscreen surfaces</span><span>Driver installation media</span><span>Replacement touchscreen unit</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Confirm keyboard/mouse fallback control is available before taking the touchscreen out of service for testing or replacement.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether the touchscreen responds at all or only in specific screen areas.</li><li><span class="step-tag">Measurement</span>Check the touchscreen calibration.</li><li><span class="step-tag">Measurement</span>Check the physical connection cable.</li><li><span class="step-tag">Observation</span>Check driver status in the OS, and inspect the screen surface for contamination or damage.</li><li><span class="step-tag">Decision</span>Touch registration off by a consistent offset across the screen &#x2192; calibration drift. No response at all &#x2192; connection or driver fault.</li><li><span class="step-tag">Fault Location</span>Isolate to touchscreen calibration, the connection cable, the driver, or physical screen damage/contamination.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Touch registration accuracy across the full screen</div><div class="tp-item">Connection cable continuity</div><div class="tp-item">Driver status</div><div class="tp-item">Screen surface condition</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Run a full-screen calibration/touch test and confirm accurate registration across the entire display before returning to operational use.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Recalibrate the touchscreen.</li><li>Reseat or replace the connection cable.</li><li>Reinstall or update the driver.</li><li>Clean the screen surface.</li><li>Replace the touchscreen unit if hardware-faulted.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include touchscreen calibration and cleaning in the periodic maintenance cycle.</li><li>Protect the screen surface where practical.</li><li>Maintain keyboard/mouse as a standing fallback input method.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-09 (HMI Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Server/Network Architecture Drawing</p>
@@ -1794,52 +1801,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The ALCMS data logging/historian function stops recording periodic field values, or a review finds a gap in the recorded data for one or more points.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS data logging function &#x2014; the database/historian recording periodic field values (current, status, intensity step) for trending, reporting, and compliance records.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Database service failure, or the logging database reaching its storage capacity limit</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A logging configuration error omitting a point that should be recorded</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A communication interruption preventing data from reaching the logging database during an outage</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Database corruption from an improper shutdown</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A scheduled maintenance/archiving task failing to run and filling the active database</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Database administration tool</span><span>ALCMS logging configuration review</span><span>Server storage capacity monitoring</span><span>Database backup/restore utility</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Follow standard IT/OT change-management procedure for any database-level intervention.</li><li>Coordinate with data/compliance stakeholders if historical records may be affected.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Check the database service status and available storage capacity.</li><li><span class="step-tag">Observation</span>Review the logging configuration for the affected point(s).</li><li><span class="step-tag">Observation</span>Check for a communication gap correlating with the missing data period.</li><li><span class="step-tag">Measurement</span>Check for database corruption.</li><li><span class="step-tag">Decision</span>Storage capacity reached &#x2192; free/expand capacity and check archiving task. Configuration omits the point &#x2192; correct the configuration.</li><li><span class="step-tag">Fault Location</span>Isolate to the database service/capacity, the logging configuration, a communication gap, or database corruption.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Database service status</div><div class="tp-item">Storage capacity</div><div class="tp-item">Logging configuration completeness</div><div class="tp-item">Communication log correlation with any data gap</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm logging resumes correctly for all configured points and a subsequent data export/report reflects complete, accurate records.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restart or repair the database service.</li><li>Free or expand storage capacity.</li><li>Correct the logging configuration.</li><li>Repair the database from a verified backup if corrupted.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Monitor database storage capacity proactively with alerting before capacity is reached.</li><li>Schedule regular archiving/maintenance tasks.</li><li>Verify logging configuration completeness after any system change.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-10 (Data Logging and Archiving Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (record-keeping requirements), ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Server/Network Architecture Drawing</p>
@@ -1859,52 +1866,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The ALCMS event/alarm history log &#x2014; the chronological record of operator actions, alarms, and system events &#x2014; is found to have missing, incomplete, or incorrectly timestamped entries.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS event/alarm history log &#x2014; the chronological record of operator actions, alarms, and system events used for audit trail and incident investigation, distinct from the periodic value logging in ALC-489.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Event logging service failure, or the event log reaching a rollover/capacity limit that overwrites older records prematurely</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Specific event types not configured to be logged</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A timestamp/clock synchronisation fault causing events to be logged with incorrect or inconsistent times</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Database corruption in the event log table</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A communication gap preventing field-generated events from being captured during an outage</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Database administration tool</span><span>ALCMS event logging configuration review</span><span>Network time synchronisation check (NTP status)</span><span>Database backup/restore utility</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Follow standard IT/OT change-management procedure for any database-level intervention.</li><li>Treat any confirmed gap in the event record as significant if it may affect an incident investigation or audit trail, and notify airfield operations/quality management accordingly.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Check the event logging service status and log capacity/rollover configuration.</li><li><span class="step-tag">Observation</span>Confirm which event types are configured to be logged.</li><li><span class="step-tag">Measurement</span>Check system clock/NTP synchronisation across the ALCMS servers and field devices.</li><li><span class="step-tag">Measurement</span>Check for database corruption in the event log.</li><li><span class="step-tag">Decision</span>Log capacity/rollover has overwritten older records &#x2192; correct retention/archiving configuration. Timestamps inconsistent across records &#x2192; clock synchronisation fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the event logging service/capacity, missing event type configuration, clock synchronisation, or database corruption.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Event logging service status</div><div class="tp-item">Log capacity/rollover configuration</div><div class="tp-item">Clock/NTP synchronisation</div><div class="tp-item">Event log database integrity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Generate a test event (e.g. a controlled operator action) and confirm it is correctly logged with an accurate timestamp, and confirm the log capacity is adequate for the required retention period.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restart or repair the event logging service.</li><li>Correct the log capacity/rollover configuration.</li><li>Resynchronise system clocks.</li><li>Repair the event log database from a verified backup.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify event log retention meets the required audit/compliance period.</li><li>Include clock synchronisation checks in the periodic maintenance cycle.</li><li>Periodically export/archive event logs to protect against rollover loss.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALC-10 (Data Logging and Archiving Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (record-keeping requirements), ALCMS vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Server/Network Architecture Drawing</p>

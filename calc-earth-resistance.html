@@ -296,9 +296,7 @@
 
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -312,8 +310,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -479,6 +476,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -628,23 +631,23 @@
   <p class="block-note">The formulas below are the ones used on the other tabs. Results are estimates for planning and verification.</p>
   <div class="ref-cols">
     <div>
-      <div class="method-card"><h4><i class="fa-solid fa-layer-group"></i> Soil resistivity — Wenner 4-pin</h4>
+      <div class="method-card"><h3><i class="fa-solid fa-layer-group"></i> Soil resistivity — Wenner 4-pin</h3>
         <p>Four pins are driven in line at equal spacing a. The tester injects current through the outer pins and reads the voltage across the inner pins. Resistivity is calculated at each spacing.</p>
         <div class="formula">ρ = 2 · π · a · R</div>
         <p>Readings that rise strongly with spacing suggest a higher-resistivity deeper layer. Falling readings suggest a wetter or more conductive layer. A spread of more than 50% across the spacings is flagged as layered or non-uniform soil.</p></div>
-      <div class="method-card"><h4><i class="fa-solid fa-grip-lines-vertical"></i> Single earth rod</h4>
+      <div class="method-card"><h3><i class="fa-solid fa-grip-lines-vertical"></i> Single earth rod</h3>
         <p>A single vertical rod with its top at ground level uses Dwight's formula. The design ρ is the entered ρ multiplied by the seasonal multiplier.</p>
         <div class="formula">R₁ = ρ / (2πL) · [ ln(8L/d) − 1 ]</div></div>
-      <div class="method-card"><h4><i class="fa-solid fa-grip"></i> Rods in a line</h4>
+      <div class="method-card"><h3><i class="fa-solid fa-grip"></i> Rods in a line</h3>
         <p>For n rods in a straight line at spacing s, the group resistance adds the mutual resistance between every pair of rods (Sunde's expression for equal rods with tops at ground level). The tool finds the smallest n up to 60 that meets the target.</p>
         <div class="formula">Rₙ = (1/n²) · [ n·R₁ + Σᵢ≠ⱼ Rₘ(|i−j|·s) ]<br>Rₘ(x) = ρ/(4πL) · [ 2·asinh(2L/x) − √(4 + (x/L)²) + x/L ]</div>
         <p>Connection resistance and cable are not included.</p></div>
-      <div class="method-card"><h4><i class="fa-solid fa-ruler-horizontal"></i> Fall-of-potential, 62% rule</h4>
+      <div class="method-card"><h3><i class="fa-solid fa-ruler-horizontal"></i> Fall-of-potential, 62% rule</h3>
         <p>The potential probe is placed at 52%, 62% and 72% of the distance to the current probe. If the spread between the highest and lowest reading is 5% or less of the 62% reading, the probes sit outside each other's resistance areas and the 62% value is valid. If not, move the current probe further out and repeat.</p>
         <div class="formula">Spread = (max − min) / R₆₂ × 100 %</div></div>
     </div>
     <div>
-      <div class="method-card"><h4><i class="fa-solid fa-calculator"></i> Worked examples</h4>
+      <div class="method-card"><h3><i class="fa-solid fa-calculator"></i> Worked examples</h3>
         <table class="std-table">
           <tr><th>Case</th><th>Result</th></tr>
           <tr><td>Wenner: a = 4 m, R = 25 Ω</td><td class="val" id="ex1">—</td></tr>
@@ -653,7 +656,7 @@
           <tr><td>FoP: 4.62 / 4.71 / 4.78 Ω</td><td class="val" id="ex4">—</td></tr>
         </table>
       </div>
-      <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+      <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
         <p>Results are estimates for planning and verification. Always confirm the final installed value with a calibrated earth tester, and follow the resistance limit given in your project specification, the aerodrome manual or the applicable standard. This tool does not replace the project design. See the <a href="legal-notice.html" style="color:var(--gold)">Legal Notice</a>.</p></div>
     </div>
   </div>
@@ -683,10 +686,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="component-library.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Component Library</h5><p>AGL components and earthing hardware.</p></a>
-      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-plug"></i><h5>Calculator #52</h5><p>Ohm's law for airfield circuits.</p></a>
-      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-book"></i><h5>Standards Companion</h5><p>Standards and compliance reference.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="component-library.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Component Library</div><p>AGL components and earthing hardware.</p></a>
+      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-plug"></i><div class="tool-link-title">Calculator #52</div><p>Ohm's law for airfield circuits.</p></a>
+      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-book"></i><div class="tool-link-title">Standards Companion</div><p>Standards and compliance reference.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

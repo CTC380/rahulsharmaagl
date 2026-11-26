@@ -97,8 +97,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -155,9 +154,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -172,8 +169,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -493,6 +489,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -539,7 +541,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Connected Load</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Connected Load</h2><div class="sub-line"></div></div>
   <div class="calc-grid"><div>
     <div class="field-group"><label for="nFix">Fixtures on the circuit</label><input type="number" id="nFix" value="100" min="1" step="1"/></div>
     <div class="field-group"><label for="fxW">Watts per fixture at full brightness <span class="u">(W)</span></label><input type="number" id="fxW" value="45" min="0" step="0.5"/><div class="field-hint">Lamp or LED power from the data sheet.</div></div>
@@ -552,14 +554,14 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Brightness-Step Profile</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Brightness-Step Profile</h2><div class="sub-line"></div></div>
   <details class="why" style="margin:0 0 12px;"><summary>About the step loads</summary><p class="field-hint">Load is shown as a percentage of the full-brightness input. The defaults use the current squared as a simple approximation for a plain lamp load on a 6.6 A circuit. Overwrite them with measured or manufacturer values, especially for LED fixtures, whose power does not fall that way. The step currents shown are for a 5-step CCR. For a 3-step CCR (4.8, 5.5 and 6.6 A) use the B3, B4 and B5 rows, set the other hours to 0, and enter about 53 %, 69 % and 100 % for a plain lamp load.</p></details>
   <div class="grp-scroll"><table class="grp-table"><thead><tr><th>Step</th><th>Current</th><th>Load (% of full)</th><th>Hours per day</th></tr></thead><tbody><tr><td class="sub">B1</td><td>2.8 A</td><td><input type="number" id="sf1" aria-label="B1 load, percent of full" value="18.0" min="0" max="150" step="0.1"/></td><td><input type="number" id="sh1" aria-label="B1 hours per day" value="2" min="0" max="24" step="0.25"/></td></tr><tr><td class="sub">B2</td><td>3.4 A</td><td><input type="number" id="sf2" aria-label="B2 load, percent of full" value="26.5" min="0" max="150" step="0.1"/></td><td><input type="number" id="sh2" aria-label="B2 hours per day" value="2" min="0" max="24" step="0.25"/></td></tr><tr><td class="sub">B3</td><td>4.1 A</td><td><input type="number" id="sf3" aria-label="B3 load, percent of full" value="38.6" min="0" max="150" step="0.1"/></td><td><input type="number" id="sh3" aria-label="B3 hours per day" value="3" min="0" max="24" step="0.25"/></td></tr><tr><td class="sub">B4</td><td>5.2 A</td><td><input type="number" id="sf4" aria-label="B4 load, percent of full" value="62.1" min="0" max="150" step="0.1"/></td><td><input type="number" id="sh4" aria-label="B4 hours per day" value="2" min="0" max="24" step="0.25"/></td></tr><tr><td class="sub">B5</td><td>6.6 A</td><td><input type="number" id="sf5" aria-label="B5 load, percent of full" value="100.0" min="0" max="150" step="0.1"/></td><td><input type="number" id="sh5" aria-label="B5 hours per day" value="1" min="0" max="24" step="0.25"/></td></tr></tbody></table></div>
   <div class="field-hint" id="hrsNote" style="margin-top:8px;"></div>
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Tariff &amp; Operation</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Tariff &amp; Operation</h2><div class="sub-line"></div></div>
   <div class="calc-grid"><div>
     <div class="field-group"><label for="days">Operating days per year</label><input type="number" id="days" value="365" min="1" max="366" step="1"/></div>
     <div class="field-group"><label for="tariff">Energy tariff <span class="u">(₹ per kWh)</span></label><input type="number" id="tariff" value="8" min="0" step="0.1"/></div>
@@ -569,7 +571,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>LED Conversion <span class="tag-mini">optional</span></h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">LED Conversion <span class="tag-mini">optional</span></h2><div class="sub-line"></div></div>
   <div class="calc-grid"><div>
     <div class="field-group"><label for="newW">New watts per fixture at full brightness <span class="u">(W)</span></label><input type="number" id="newW" value="15" min="0" step="0.5"/><div class="field-hint">From the LED fixture data sheet. Set 0 to skip.</div></div>
     <div class="field-group"><label for="newEff">Transformer efficiency with LED fixtures <span class="u">(%, optional)</span></label><input type="number" id="newEff" min="50" max="100" step="1" placeholder="Same as above"/><details class="why"><summary>Rule note</summary><p class="field-hint">A transformer lightly loaded by a low-wattage LED is usually less efficient than at its design load. Enter the data-sheet value at the LED load; leave blank to use the efficiency above.</p></details></div>
@@ -595,7 +597,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 
 <!-- ══════════ TAB 2 — SCHEDULE & REPORT ══════════ -->
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
     <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Circuit <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. Circuit R1, 6.6 A series"/></div>
@@ -606,11 +608,11 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
   </div>
 
-  <div class="subsection-head"><h3>Energy by brightness step</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Energy by brightness step</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap"><table id="stepTable"><thead><tr><th>Step</th><th>Input (kW)</th><th>Hours / day</th><th>kWh / day</th><th>kWh / year</th><th>Cost / year (₹)</th><th>Share (%)</th></tr></thead><tbody></tbody></table></div>
   <p class="field-hint" style="margin-top:12px;">Calculated planning figures from the entered step profile — not metered data.</p>
 
-  <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown" id="breakdownGrid">
     <div class="bd-card"><div class="bd-label">Full-brightness input</div><div class="bd-val" id="bdFull">—</div><div class="bd-sub" id="bdFullSub"></div></div>
     <div class="bd-card"><div class="bd-label">Average input</div><div class="bd-val" id="bdAvg">—</div><div class="bd-sub" id="bdAvgSub"></div></div>
@@ -624,7 +626,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   </div>
 
   <div id="ledBox" class="hide">
-    <div class="subsection-head"><h3>LED conversion result</h3><div class="sub-line"></div></div>
+    <div class="subsection-head"><h2 class="subsection-title">LED conversion result</h2><div class="sub-line"></div></div>
     <div class="calc-breakdown" id="ledGrid" style="margin-top:0;padding-top:0;border-top:none;">
       <div class="bd-card"><div class="bd-label">LED yearly energy</div><div class="bd-val" id="ledKwh">—</div><div class="bd-sub" id="ledKwhSub"></div></div>
       <div class="bd-card"><div class="bd-label">Energy saved</div><div class="bd-val pass" id="ledSave">—</div><div class="bd-sub" id="ledSaveSub"></div></div>
@@ -643,12 +645,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <section class="tab-panel" id="tab-method" role="tabpanel" aria-labelledby="t-method" hidden><div class="container">
   <div class="block-label">Method &amp; Reference</div><h2 class="block-title">How energy and cost are worked out</h2><p class="block-note">Every step is shown so the result can be checked by hand.</p>
   <div class="ref-cols"><div>
-    <div class="method-card"><h4><i class="fa-solid fa-lightbulb"></i> 1. Full-brightness input</h4><p>The fixture load is carried back through the transformers, the cable and the CCR.</p><div class="formula">P_in = n × W ÷ η_tr × (1 + cable %) ÷ η_ccr</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-layer-group"></i> 2. Step profile</h4><p>Each brightness step draws a fraction f of the full-brightness input. Energy is the sum over steps of input times hours.</p><div class="formula">kWh/day = P_in × Σ (f × hours)</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-coins"></i> 3. Cost</h4><div class="formula">Yearly kWh = kWh/day × days &nbsp;&nbsp; Cost = kWh × tariff</div><p>Monthly figures are the yearly figure divided by 12. A demand charge, if any, is the full-brightness kVA times the monthly rate times 12.</p><div class="formula">kVA = P_in ÷ PF</div></div>
-    <div class="method-card"><h4><i class="fa-solid fa-leaf"></i> 4. LED conversion</h4><p>The same chain and profile are run with the new fixture watts. The cable loss stays at the same kW, because the circuit current does not change. The saving is the energy cost plus any demand charge saved, and payback is the retrofit cost divided by that yearly saving.</p><div class="formula">Payback = n × cost per fixture ÷ yearly saving</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-lightbulb"></i> 1. Full-brightness input</h3><p>The fixture load is carried back through the transformers, the cable and the CCR.</p><div class="formula">P_in = n × W ÷ η_tr × (1 + cable %) ÷ η_ccr</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-layer-group"></i> 2. Step profile</h3><p>Each brightness step draws a fraction f of the full-brightness input. Energy is the sum over steps of input times hours.</p><div class="formula">kWh/day = P_in × Σ (f × hours)</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-coins"></i> 3. Cost</h3><div class="formula">Yearly kWh = kWh/day × days &nbsp;&nbsp; Cost = kWh × tariff</div><p>Monthly figures are the yearly figure divided by 12. A demand charge, if any, is the full-brightness kVA times the monthly rate times 12.</p><div class="formula">kVA = P_in ÷ PF</div></div>
+    <div class="method-card"><h3><i class="fa-solid fa-leaf"></i> 4. LED conversion</h3><p>The same chain and profile are run with the new fixture watts. The cable loss stays at the same kW, because the circuit current does not change. The saving is the energy cost plus any demand charge saved, and payback is the retrofit cost divided by that yearly saving.</p><div class="formula">Payback = n × cost per fixture ÷ yearly saving</div></div>
   </div><div>
-    <div class="method-card"><h4><i class="fa-solid fa-vial"></i> Worked example</h4><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
+    <div class="method-card"><h3><i class="fa-solid fa-vial"></i> Worked example</h3><table class="std-table"><tr><th>Item</th><th>Value</th></tr>
       <tr><td>100 × 45 W, 90 % transformers</td><td class="val">5.00 kW</td></tr>
       <tr><td>2 % cable loss, 92 % CCR</td><td class="val">5.54 kW input</td></tr>
       <tr><td>Σ (f × hours), 10 h a day</td><td class="val">4.290</td></tr>
@@ -657,7 +659,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
       <tr><td>At ₹8 per kWh</td><td class="val">₹69,442</td></tr>
       <tr><td>LED at 15 W, same profile</td><td class="val">3,007 kWh</td></tr>
       <tr><td>Saving</td><td class="val">5,673 kWh, ₹45,387</td></tr></table></div>
-    <div class="method-card"><h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4><p>It applies one step profile to the whole circuit, so it suits a single circuit or a set run together. Efficiencies are held constant across steps, although real transformers and CCRs vary with loading. Step load fractions are your inputs, so use measured or manufacturer values for LED fixtures.</p></div>
+    <div class="method-card"><h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3><p>It applies one step profile to the whole circuit, so it suits a single circuit or a set run together. Efficiencies are held constant across steps, although real transformers and CCRs vary with loading. Step load fractions are your inputs, so use measured or manufacturer values for LED fixtures.</p></div>
   </div></div>
 </div></section>
 
@@ -680,10 +682,10 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </section>
 
 <section><div class="container"><div class="block-label">More Tools</div><h2 class="block-title">Related Knowledge Hub Resources</h2><div class="link-grid">
-  <a href="calc-cable-power-loss.html" class="tool-link"><i class="fa-solid fa-fire"></i><h5>Cable Power Loss</h5><p>I²R loss and yearly cable energy.</p></a>
-  <a href="calc-isolating-transformer-efficiency-loss.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #18</h5><p>Transformer efficiency and loss.</p></a>
-  <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><h5>Calculator #16</h5><p>Required CCR capacity.</p></a>
-  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+  <a href="calc-cable-power-loss.html" class="tool-link"><i class="fa-solid fa-fire"></i><div class="tool-link-title">Cable Power Loss</div><p>I²R loss and yearly cable energy.</p></a>
+  <a href="calc-isolating-transformer-efficiency-loss.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Calculator #18</div><p>Transformer efficiency and loss.</p></a>
+  <a href="calc-ccr-capacity.html" class="tool-link"><i class="fa-solid fa-server"></i><div class="tool-link-title">Calculator #16</div><p>Required CCR capacity.</p></a>
+  <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
 </div></div></section>
 
 <!-- CONNECT-BLOCK v2.1 -->

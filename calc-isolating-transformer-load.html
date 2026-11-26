@@ -85,8 +85,7 @@
   .req-badge.tbd{background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);}
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h2,.subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h2,.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);font-weight:400;}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
 
   .calc-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
@@ -127,9 +126,7 @@
 
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -442,6 +439,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -491,7 +494,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Load on One Transformer</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Load on One Transformer</h2><div class="sub-line"></div></div>
   <div class="fields">
     <div class="field-group"><label for="nFix">Fixtures per transformer</label><input type="number" id="nFix" value="1" min="1" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Most fixtures have their own transformer. Some, such as certain stop bar arrangements, share one.</p></details></div>
     <div class="field-group"><label for="fxW">Watts per fixture <span class="u">(W)</span></label><input type="number" id="fxW" value="45" min="0" step="0.5"/><details class="why"><summary>Rule note</summary><p class="field-hint">Power at the operating current, from the manufacturer's data sheet. At a lower brightness step the lamp draws less than at full brightness, so enter the power at that current.</p></details></div>
@@ -504,7 +507,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Selection Rules &amp; Circuit</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Selection Rules &amp; Circuit</h2><div class="sub-line"></div></div>
   <div class="fields">
     <div class="field-group"><label for="maxLoad">Max loading <span class="u">(%)</span></label><input type="number" id="maxLoad" value="100" min="1" max="100" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Your project's own loading window, not a standard value.</p></details></div>
     <div class="field-group"><label for="minLoad">Preferred min <span class="u">(%)</span></label><input type="number" id="minLoad" value="50" min="0" max="100" step="1"/></div>
@@ -544,7 +547,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 
 <!-- ══════════ TAB 2 — SCHEDULE & REPORT ══════════ -->
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head" style="margin-top:0;padding-top:0;border:0"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border:0"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
     <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Fixture / Circuit <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. Runway edge light, Circuit R1"/></div>
@@ -553,13 +556,13 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button></div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
 
-  <div class="subsection-head"><h3>Size comparison</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Size comparison</h2><div class="sub-line"></div></div>
   <div class="scroll-table-wrap">
     <table id="cmpTable"><thead><tr><th>Size (W / VA)</th><th>Loading (%)</th><th>Spare (VA)</th><th>Nominal secondary (V)</th><th>Status</th></tr></thead><tbody></tbody></table>
   </div>
   <p class="field-hint" style="margin-top:12px;">Nominal sizes treated as VA at the rated secondary current. Nominal volts are the rating divided by the rated current; the test-load resistances in AC 150/5345-47C Table 2 do not always equal the nominal rating exactly, so use the data sheet for the actual full-load voltage. Calculated sizing only, not a final order list.</p>
 
-  <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown" id="breakdownGrid">
     <div class="bd-card"><div class="bd-label">Secondary real load</div><div class="bd-val" id="bdW">—</div><div class="bd-sub">Fixtures + additional load</div></div>
     <div class="bd-card"><div class="bd-label">Secondary apparent load</div><div class="bd-val" id="bdVA">—</div><div class="bd-sub" id="bdVAsub">W ÷ power factor</div></div>
@@ -584,30 +587,30 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-lightbulb"></i> 1. Secondary load</h4>
+          <h3><i class="fa-solid fa-lightbulb"></i> 1. Secondary load</h3>
           <p>Add the fixtures and any extra load on the secondary, then convert to apparent power with the fixture power factor.</p>
           <div class="formula">W = n × W_fixture + W_extra &nbsp;&nbsp; S = W ÷ PF</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-gauge"></i> 2. Loading against each size</h4>
+          <h3><i class="fa-solid fa-gauge"></i> 2. Loading against each size</h3>
           <p>Each standard size is compared as a percentage of its nominal rating, treated as VA at the rated secondary current (6.6 A). At a lower operating current the usable capacity scales down in proportion.</p>
           <div class="formula">Loading = S ÷ (rating × I ÷ I<sub>rated</sub>) × 100</div>
           <p>The recommended size is the smallest one at or below your maximum loading. If that size is below your preferred minimum, the tool says so, because a lightly loaded transformer wastes capacity and can run at a poorer power factor.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-wave-square"></i> 3. Secondary voltage</h4>
+          <h3><i class="fa-solid fa-wave-square"></i> 3. Secondary voltage</h3>
           <p>The secondary carries the lamp current. It equals the circuit current for a 6.6/6.6 A transformer, while a 20/6.6 A transformer has 20 A in the primary and 6.6 A in the secondary. The voltage across the load follows from the apparent power and the secondary current.</p>
           <div class="formula">V_secondary = S ÷ I &nbsp;&nbsp; V_rated = rating ÷ I<sub>rated</sub></div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-plug"></i> 4. Primary side</h4>
+          <h3><i class="fa-solid fa-plug"></i> 4. Primary side</h3>
           <p>Dividing by efficiency gives the real power the primary circuit must supply. This is the figure that feeds the circuit load calculation. It is real power only: for CCR kVA the transformer's magnetising current also counts, and FAA AC 150/5345-47C allows a power factor as low as 0.95 at rated load (see Calculators #13 and #16).</p>
           <div class="formula">P_primary = W ÷ η &nbsp;&nbsp; Loss = P_primary − W</div>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>1 fixture × 45 W, PF 1.00</td><td class="val">S = 45 VA</td></tr>
@@ -621,7 +624,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not model transformer efficiency curves, magnetising current, secondary open-circuit voltage or lamp-out behaviour, and the sizes offered are nominal. A fixture with a switching driver can behave differently from a plain lamp, so use the manufacturer's guidance for the pairing. This tool covers sizing and primary load; for efficiency across loading use <a href="calc-isolating-transformer-efficiency-loss.html" style="color:var(--gold)">Calculator #18</a>, and for a multi-fixture order list use <a href="calc-transformer-va-selection.html" style="color:var(--gold)">Calculator #49</a>.</p>
         </div>
       </div>

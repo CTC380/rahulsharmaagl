@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stop Bar Sensor | AGL Component Library</title>
+    <title>Stop Bar Sensor for AGL: Function, Construction &amp; Testing</title>
     <meta name="description" content="Stop Bar Sensor: detection technology, placement, RWSL system architecture, technical parameters, standards, installation and commissioning." />
     <meta name="keywords" content="stop bar sensor, AGL, RWSL, runway status lights, runway incursion prevention, detection technology" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-stop-bar-sensor.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Stop Bar Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="Stop Bar Sensor for AGL: Function, Construction &amp; Testing" />
     <meta property="og:description" content="Stop Bar Sensor: detection technology, placement, RWSL system architecture, technical parameters, standards, installation and commissioning." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-stop-bar-sensor.html" />
     <meta property="og:image" content="https://www.trimpeks.si/assets/images/a-sbs.png" />
@@ -23,7 +23,7 @@
     <meta property="article:author" content="Precision AGL Academy" />
     <meta property="article:section" content="AGL Component Library" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Stop Bar Sensor | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="Stop Bar Sensor for AGL: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="Stop Bar Sensor: detection technology, placement, RWSL system architecture, technical parameters, standards, installation and commissioning." />
     <meta name="twitter:image" content="https://www.trimpeks.si/assets/images/a-sbs.png" />
     <meta name="theme-color" content="#060d1a" />
@@ -31,7 +31,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-stop-bar-sensor.html#faq", "url": "https://rahulsharmaagl.in/component-stop-bar-sensor.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-stop-bar-sensor.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is a stop bar sensor?", "acceptedAnswer": {"@type": "Answer", "text": "A stop bar sensor is a compact detection device installed at runway holding positions to detect aircraft or vehicles approaching, crossing or occupying the stop bar area. It feeds the runway safety and stop bar control chain."}}, {"@type": "Question", "name": "How is it different from a runway occupancy sensor?", "acceptedAnswer": {"@type": "Answer", "text": "A runway occupancy sensor watches an entire runway segment. A stop bar sensor is narrower and more precise: it detects the exact moment a target crosses one specific holding position."}}, {"@type": "Question", "name": "Where are stop bar sensors installed?", "acceptedAnswer": {"@type": "Answer", "text": "At runway holding positions where stop bars are installed, such as taxiway and runway intersections, and in other critical areas where occupancy detection is required."}}, {"@type": "Question", "name": "What detection technologies do they use?", "acceptedAnswer": {"@type": "Answer", "text": "FMCW radar (typically 24 GHz), active or passive infrared, or inductive loops, alone or in combination."}}, {"@type": "Question", "name": "What are the typical specifications?", "acceptedAnswer": {"@type": "Answer", "text": "Radar or IR range of 2-15 m (1-3 m for inductive loops), detection speed 0.5-50 km/h, response time of 100 ms or less, dry-contact or opto-isolated 24 VDC output, IP65/IP67 protection and -30°C to +70°C operating temperature."}}, {"@type": "Question", "name": "How is a stop bar sensor powered and protected?", "acceptedAnswer": {"@type": "Answer", "text": "It runs on 24 VDC (18-32 VDC) or 12 VDC from the local cabinet, drawing 2-10 W for radar or IR. Screened cable, built-in transient suppression up to 6 kV, an external SPD on long runs, and earth bonding of the housing and cable screen are typical."}}, {"@type": "Question", "name": "Which standards apply?", "acceptedAnswer": {"@type": "Answer", "text": "ICAO Annex 14 (runway holding position and safety system requirements), FAA AC 150/5345-56 (L-890 ALCMS) and EUROCAE ED-87 (MASPS for A-SMGCS)."}}, {"@type": "Question", "name": "How often should a stop bar sensor be maintained?", "acceptedAnswer": {"@type": "Answer", "text": "Quarterly lens or radome cleaning; semi-annual detection accuracy and alignment checks; and annual power supply stability checks and, for inductive loops, loop continuity and resistance tests."}}, {"@type": "Question", "name": "Why is a stop bar sensor giving false detections?", "acceptedAnswer": {"@type": "Answer", "text": "A common cause is a field of view too wide for the stop bar zone, picking up adjacent taxiway or vehicle traffic. Review alarm logs against known movements and check the beamwidth and range-gate settings."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         /* ── RESET & BASE ── */
         * {
             margin: 0;
@@ -246,6 +247,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -418,8 +420,7 @@
             border-radius: 14px;
             padding: 36px 32px;
             margin-bottom: 24px;
-        }
-        .diagram-node h5 {
+        }.diagram-node .hl5 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 19px;
             letter-spacing: 0.5px;
@@ -504,8 +505,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -539,8 +539,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -591,8 +590,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -671,8 +669,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -717,8 +714,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -750,8 +746,7 @@
             color: var(--green);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -814,8 +809,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -907,8 +901,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1003,8 +996,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1267,8 +1259,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1328,7 +1319,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "@id": "https://rahulsharmaagl.in/component-stop-bar-sensor.html#article",
-        "headline": "Stop Bar Sensor",
+        "headline": "Stop Bar Sensor for AGL: Function, Construction & Testing",
         "description": "Stop Bar Sensor: detection technology, placement, RWSL system architecture, technical parameters, standards, installation and commissioning.",
         "url": "https://rahulsharmaagl.in/component-stop-bar-sensor.html",
         "inLanguage": "en",
@@ -1429,6 +1420,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1462,7 +1459,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-satellite-dish"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Stop Bar <span>Sensor</span></h1>
+            <h1 class="comp-title">Stop Bar <span>Sensor</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A precision detection device that monitors aircraft and vehicle presence at runway holding positions. Stop Bar Sensors are a critical component of Runway Status Light (RWSL) systems, providing real‑time occupancy data to prevent runway incursions and enhance surface safety.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1477,7 +1474,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is a Stop Bar Sensor?</h2>
             <div class="info-panel">
                 <p>A <strong>Stop Bar Sensor</strong> is a compact, high‑reliability detection device installed at runway holding positions (stop bars) to detect the presence of aircraft or vehicles that are approaching, crossing, or occupying the stop bar area. The sensor is a key component of the Runway Status Light (RWSL) system, providing the real‑time occupancy data needed to activate runway entrance lights (RELs), take‑off hold lights (THLs), and runway guard lights. Stop Bar Sensors typically use radar, infrared, or inductive loop technology to detect metallic targets with high accuracy and reliability, even in adverse weather conditions. They are designed for harsh airfield environments, with rugged housings, wide temperature tolerance, and lightning protection. The sensor's output (typically a dry contact or digital signal) is fed to the RWSL processing unit, which uses it to determine runway status and control the associated warning lights. By providing precise occupancy detection, Stop Bar Sensors help prevent runway incursions and support safe, efficient ground operations.</p>
             </div>
@@ -1561,22 +1558,22 @@
             <div class="diagram-block">
                 <div class="diagram-flow">
                     <div class="diagram-node cyan">
-                        <h5 role="heading" aria-level="3">Stop Bar Sensor</h5>
+                        <div class="hl5">Stop Bar Sensor</div>
                         <p>Detects target presence — reports only, does not decide</p>
                     </div>
                     <div class="diagram-arrow"></div>
                     <div class="diagram-node">
-                        <h5 role="heading" aria-level="3">Remote I/O / PLC</h5>
+                        <div class="hl5">Remote I/O / PLC</div>
                         <p>Passes detection state to the RWSL logic / ALCMS server</p>
                     </div>
                     <div class="diagram-arrow"></div>
                     <div class="diagram-node outcome">
-                        <h5 role="heading" aria-level="3">RWSL Logic / ALCMS Server</h5>
+                        <div class="hl5">RWSL Logic / ALCMS Server</div>
                         <p>Combines detection with occupancy &amp; clearance state, issues command</p>
                     </div>
                     <div class="diagram-arrow"></div>
                     <div class="diagram-node">
-                        <h5 role="heading" aria-level="3">CCR → Stop Bar Lights</h5>
+                        <div class="hl5">CCR → Stop Bar Lights</div>
                         <p>Illuminates or extinguishes per the logic's decision</p>
                     </div>
                 </div>
@@ -1684,10 +1681,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">ICAO Annex 14</h5><p>Runway holding position requirements and safety systems</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5340‑30</h5><p>Runway Status Light System (RWSL) specifications</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑56</h5><p>Specification for L‑890 Airport Lighting Control and Monitoring System (ALCMS)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">EUROCAE ED‑87</h5><p>MASPS for Advanced Surface Movement Guidance and Control Systems (A‑SMGCS)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>ICAO Annex 14</h3><p>Runway holding position requirements and safety systems</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5340‑30</h3><p>Runway Status Light System (RWSL) specifications</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5345‑56</h3><p>Specification for L‑890 Airport Lighting Control and Monitoring System (ALCMS)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>EUROCAE ED‑87</h3><p>MASPS for Advanced Surface Movement Guidance and Control Systems (A‑SMGCS)</p></div></div>
             </div>
         </div>
     </section>
@@ -1701,35 +1698,35 @@
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-combined"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Loop Slot Cutting &amp; Sealing</h5><span class="test-stage">Civil</span></div>
+                        <div class="test-item-head"><h3>Loop Slot Cutting &amp; Sealing</h3><span class="test-stage">Civil</span></div>
                         <p>Saw-cut the slot for inductive loop sensors into the taxiway surface at the holding position, sealing the loop with a bitumen or epoxy compound once installed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-compass-drafting"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Post Mounting &amp; Detection Alignment</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Post Mounting &amp; Detection Alignment</h3><span class="test-stage">Mechanical</span></div>
                         <p>Mount surface-mounted microwave/infrared heads on a short frangible post clear of wingtip clearance, aligning the detection zone to cover the full stop bar width without triggering on adjacent lanes.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Screened Cable Route</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Screened Cable Route</h3><span class="test-stage">Electrical</span></div>
                         <p>Home-run detector output cabling on its own screened pair back to the REL/THL controller or Remote I/O, kept separate from lighting series-circuit cable.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Field Cabinet Termination</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Field Cabinet Termination</h3><span class="test-stage">Electrical</span></div>
                         <p>Terminate the sealed M12 or similar circular connector at the field cabinet end per manufacturer procedure before the sensor is energised.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Commissioning Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record sensor position, alignment, and cable route as-built before commissioning testing begins, given that a nuisance trip on this input directly drives a runway safety light.</p>
                     </div>
                 </div>
@@ -1745,49 +1742,49 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Coverage Zone Calibration</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Coverage Zone Calibration</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Set and lock detection angle and range so the coverage zone is confined to the stop bar area, avoiding false triggers from adjacent taxiways.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power &amp; Output Signal Check</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Power &amp; Output Signal Check</h3><span class="test-stage">Energisation</span></div>
                         <p>Confirm supply voltage at the sensor and verify the dry contact or transistor output changes state correctly on a test target.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fail-Safe State Verification</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Fail-Safe State Verification</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Simulate a sensor fault and confirm the system defaults to the conservative (stop bar lit) state rather than assuming clear.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Target Classification Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Target Classification Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Confirm the sensor correctly detects aircraft/vehicle targets while filtering birds and debris to reduce false alarms.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">RWSL Logic / PLC Interface Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>RWSL Logic / PLC Interface Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Verify detection state reaches the RWSL logic processor or PLC correctly via the Remote I/O or direct wiring path.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Loop Continuity Test (Inductive Loop Variant)</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Loop Continuity Test (Inductive Loop Variant)</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>For inductive loop installations, test loop continuity and resistance before the pavement is finally sealed.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record sensor position, coverage zone settings, and fail-safe test results in the commissioning dossier for handover.</p>
                     </div>
                 </div>
@@ -1803,35 +1800,35 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Detection Accuracy Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Detection Accuracy Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Test detection performance against known vehicle movements to catch false detections or missed calls early.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Sensor Lens / Aperture Cleaning</h5><span class="maint-freq">Quarterly</span></div>
+                        <div class="maint-item-head"><h3>Sensor Lens / Aperture Cleaning</h3><span class="maint-freq">Quarterly</span></div>
                         <p>Clean the sensor lens or radome to prevent obscuration from dust, dirt, or de-icing fluid residue.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Loop Continuity Test</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Loop Continuity Test</h3><span class="maint-freq">Annual</span></div>
                         <p>For inductive loop installations, test loop continuity and resistance to catch pavement-related damage.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Alignment Verification</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Alignment Verification</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Confirm sensor aim hasn't drifted, since misalignment leads to missed or false detections.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply Check</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Power Supply Check</h3><span class="maint-freq">Annual</span></div>
                         <p>Verify power input stability at the sensor, a common source of intermittent detection faults.</p>
                     </div>
                 </div>
@@ -1844,12 +1841,12 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">False Detections from Adjacent Traffic</h5><p>Radar and IR sensors may detect aircraft or vehicles on adjacent taxiways if the field of view is too wide. Careful alignment and, where possible, use of narrow beamwidth and range‑gating can mitigate this. Regular calibration is essential.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Sensor Obscuration (Radar/IR)</h5><p>Snow, ice, heavy rain, or dirt accumulation on the sensor window can reduce detection performance. Regular cleaning and the use of heated housings or wipers can prevent obscuration.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Inductive Loop Damage</h5><p>Buried inductive loops can be damaged by pavement resurfacing, ground movement, or heavy aircraft loads. Periodic loop testing (using a loop tester) is required to detect open or short circuits.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Interference from RF Sources</h5><p>Radar sensors operating at 24 GHz can experience interference from other nearby radar systems (e.g., SMR, weather radar) or communication transmitters. Frequency coordination and filtering are necessary.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Voltage fluctuations or spikes can cause sensor resets or damage. Use a regulated power supply and surge protection devices to ensure reliable operation.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Alignment Drift</h5><p>Over time, sensor mounts can shift due to vibration or thermal expansion, altering the detection zone. Regular site surveys and alignment checks are recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>False Detections from Adjacent Traffic</h3><p>Radar and IR sensors may detect aircraft or vehicles on adjacent taxiways if the field of view is too wide. Careful alignment and, where possible, use of narrow beamwidth and range‑gating can mitigate this. Regular calibration is essential.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Sensor Obscuration (Radar/IR)</h3><p>Snow, ice, heavy rain, or dirt accumulation on the sensor window can reduce detection performance. Regular cleaning and the use of heated housings or wipers can prevent obscuration.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Inductive Loop Damage</h3><p>Buried inductive loops can be damaged by pavement resurfacing, ground movement, or heavy aircraft loads. Periodic loop testing (using a loop tester) is required to detect open or short circuits.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Interference from RF Sources</h3><p>Radar sensors operating at 24 GHz can experience interference from other nearby radar systems (e.g., SMR, weather radar) or communication transmitters. Frequency coordination and filtering are necessary.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Power Supply Instability</h3><p>Voltage fluctuations or spikes can cause sensor resets or damage. Use a regulated power supply and surge protection devices to ensure reliable operation.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Alignment Drift</h3><p>Over time, sensor mounts can shift due to vibration or thermal expansion, altering the detection zone. Regular site surveys and alignment checks are recommended.</p></div></div>
             </div>
         </div>
     </section>
@@ -1860,31 +1857,31 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False Detections from Adjacent Taxiway or Vehicle Traffic</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>False Detections from Adjacent Taxiway or Vehicle Traffic</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Field of view too wide for the stop bar zone.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Review alarm logs against known adjacent movements and check the current beamwidth and range-gate settings.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Narrow the beamwidth/range-gate configuration, re-align the sensor, and recalibrate.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Missed Detection in Adverse Weather (Sensor Obscuration)</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Missed Detection in Adverse Weather (Sensor Obscuration)</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Snow, ice, rain, or dirt on the sensor window.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Visually inspect the sensor window and check heater/wiper operation.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean the sensor window and repair or activate the heated housing or wiper.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Loop Detector Not Registering / Stuck Output</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Loop Detector Not Registering / Stuck Output</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Buried inductive loop damaged by resurfacing, ground movement, or heavy aircraft loads.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Test the loop with a loop tester for an open or short circuit and inspect accessible loop wiring and sealant at the saw-cut.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the damaged loop, reseal the saw-cuts, and retest before returning to service.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Erratic Readings Near Other Radar Systems</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Erratic Readings Near Other Radar Systems</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">RF interference from other 24 GHz radar systems (SMR, weather radar) or nearby transmitters.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check for correlation between erratic readings and nearby radar/transmitter activity, and review frequency coordination records.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Apply filtering, coordinate the frequency assignment, and relocate or shield the sensor if interference persists.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Detection Zone Drifted from Design Boundary</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Detection Zone Drifted from Design Boundary</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Alignment drift from vibration or thermal expansion of the sensor mount.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Perform a site survey using calibration targets and compare the current alignment to commissioning records.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Re-align the sensor to the design boundary, secure the mounting hardware, and schedule periodic re-verification.</div></div>
@@ -1900,7 +1897,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Lens / Aperture Contamination</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Sensor Lens / Aperture Contamination</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, ice, or debris accumulating on the sensor's optical or radar aperture between cleaning cycles.</div></div>
@@ -1909,7 +1906,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Sensor Obscuration in Adverse Weather</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Sensor Obscuration in Adverse Weather</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Heavy rain, snow, or fog attenuating the radar or infrared detection path across the coverage zone.</div></div>
@@ -1918,7 +1915,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Inductive Loop Damage (Loop Variant)</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Inductive Loop Damage (Loop Variant)</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Pavement cracking, resurfacing work, or cable damage severing or shorting the buried inductive loop conductor.</div></div>
@@ -1927,7 +1924,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Interference from RF Sources</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Interference from RF Sources</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Nearby radar, radio, or high-power electrical equipment coupling energy into the sensor's detection circuitry.</div></div>
@@ -1936,7 +1933,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Alignment Drift</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Alignment Drift</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Mounting bracket loosening from vibration or thermal cycling, gradually shifting the sensor's coverage zone.</div></div>
@@ -1945,7 +1942,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Supply Instability</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Power Supply Instability</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Ageing power supply components or a marginal feed voltage at the sensor's installed location.</div></div>
@@ -1964,42 +1961,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Electrical Isolation Before Servicing</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Electrical Isolation Before Servicing</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise the sensor's 24VDC (or 12VDC) supply from the local field distribution/control cabinet and verify zero energy before opening the housing or disconnecting cable.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Safety-Critical Function — Coordinate Before Isolating</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Safety-Critical Function — Coordinate Before Isolating</h3><span class="test-stage">Operational</span></div>
                         <p>The sensor feeds real-time occupancy data to the RWSL system that activates runway entrance and take-off hold lights; taking it out of service removes that protection, so coordinate with ATC and raise a NOTAM before isolation, and confirm an interim procedure is in place for the affected stop bar.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-road"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pavement/Embedment Work Coordination</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Pavement/Embedment Work Coordination</h3><span class="test-stage">Operational</span></div>
                         <p>Excavating or re-setting an embedded or inductive-loop sensor requires ATC/airside coordination, a NOTAM, and pavement closure, with the surrounding surface reinstated to the required load rating before reopening.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-tarp"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">FOD Control</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>FOD Control</h3><span class="test-stage">Operational</span></div>
                         <p>Keep tools, fasteners, and excavated material accounted for at all times when the sensor or its housing is open, and clear the area of debris before reinstating the surface.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Insulation Test Before Re-Energisation</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Insulation Test Before Re-Energisation</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>Test the signal and power cabling for insulation integrity after any cable or connector work before restoring power, since a residual fault can produce a false occupancy indication rather than an obvious failure.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Verify correct detection and a clean occupancy signal to the RWSL logic before closing out the work and cancelling the associated NOTAM.</p>
                     </div>
                 </div>
@@ -2022,42 +2019,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-triangle-exclamation"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A False-Clear Is More Dangerous Than a False-Occupied</h5><span class="expert-tag">Design</span></div>
+                        <div class="expert-item-head"><h3>A False-Clear Is More Dangerous Than a False-Occupied</h3><span class="expert-tag">Design</span></div>
                         <p>A sensor that fails to a "no occupancy" state on fault is a much worse outcome for RWSL logic than one that fails to "occupied," since the latter simply keeps hold lights on unnecessarily while the former can suppress a genuine warning; confirm the fail-safe direction of a replacement sensor matches the original before commissioning it.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Nuisance Trips Often Trace to Ground Loop Interference</h5><span class="expert-tag">Troubleshooting</span></div>
+                        <div class="expert-item-head"><h3>Nuisance Trips Often Trace to Ground Loop Interference</h3><span class="expert-tag">Troubleshooting</span></div>
                         <p>Intermittent false detections on an inductive-loop sensor are frequently caused by electrical noise coupling from adjacent series circuits rather than a fault in the sensor itself; check loop screening and separation from AGL power cabling before replacing hardware on a recurring nuisance-trip complaint.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-road"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Pavement Overlay Work Changes Loop Depth</h5><span class="expert-tag">Maintenance</span></div>
+                        <div class="expert-item-head"><h3>Pavement Overlay Work Changes Loop Depth</h3><span class="expert-tag">Maintenance</span></div>
                         <p>A resurfacing or overlay project that adds pavement thickness above an embedded inductive loop can change its detection sensitivity even though the loop itself wasn't touched; re-verify detection performance after any pavement work in the vicinity, not just after work that directly disturbs the sensor.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-plane"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Verify Against Real Traffic, Not Just a Bench Test</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>Verify Against Real Traffic, Not Just a Bench Test</h3><span class="expert-tag">Verification</span></div>
                         <p>A sensor can pass a static bench or simulated-target test while still under-detecting a specific aircraft type's gear geometry or approach speed in service; where practical, confirm detection against actual traffic during commissioning rather than relying solely on a synthetic test signal.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-clock"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Response Latency Matters as Much as Detection Accuracy</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>Response Latency Matters as Much as Detection Accuracy</h3><span class="expert-tag">Verification</span></div>
                         <p>A sensor that correctly detects occupancy but reports it to the RWSL logic with excessive latency can still leave a hold light illuminating too late relative to the actual hazard; verify end-to-end response time during commissioning, not just detection accuracy in isolation.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-clipboard-list"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Log Every Interim Procedure Used During Isolation</h5><span class="expert-tag">Operational</span></div>
+                        <div class="expert-item-head"><h3>Log Every Interim Procedure Used During Isolation</h3><span class="expert-tag">Operational</span></div>
                         <p>When a sensor is taken out of service and an interim manual procedure covers the affected stop bar, document exactly what that interim procedure was and confirm it was formally stood down when the sensor was restored; an interim procedure that quietly persists after restoration is a latent operational risk.</p>
                     </div>
                 </div>
@@ -2116,10 +2113,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-runway-status-light-rwsl.html" class="related-card"><i class="fa-solid fa-traffic-light"></i><h5 role="heading" aria-level="3">Runway Status Light (RWSL)</h5></a>
-                <a href="component-stop-bar-light.html" class="related-card"><i class="fa-solid fa-hand"></i><h5 role="heading" aria-level="3">Stop Bar Light</h5></a>
-                <a href="component-runway-guard-light.html" class="related-card"><i class="fa-solid fa-shield"></i><h5 role="heading" aria-level="3">Runway Guard Light</h5></a>
-                <a href="component-surface-movement-radar.html" class="related-card"><i class="fa-solid fa-tower-broadcast"></i><h5 role="heading" aria-level="3">Surface Movement Radar</h5></a>
+                <a href="component-runway-status-light-rwsl.html" class="related-card"><i class="fa-solid fa-traffic-light"></i><div class="hl5">Runway Status Light (RWSL)</div></a>
+                <a href="component-stop-bar-light.html" class="related-card"><i class="fa-solid fa-hand"></i><div class="hl5">Stop Bar Light</div></a>
+                <a href="component-runway-guard-light.html" class="related-card"><i class="fa-solid fa-shield"></i><div class="hl5">Runway Guard Light</div></a>
+                <a href="component-surface-movement-radar.html" class="related-card"><i class="fa-solid fa-tower-broadcast"></i><div class="hl5">Surface Movement Radar</div></a>
             </div>
         </div>
     </section>
@@ -2157,7 +2154,7 @@
                 </div>
             </div>
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on Stop Bar Sensor selection, installation, or integration for your RWSL system?</h4><p>Precision AGL Academy provides advice on sensor technology selection, placement, alignment, and field commissioning.</p></div>
+                <div><div class="hl4">Need expert guidance on Stop Bar Sensor selection, installation, or integration for your RWSL system?</div><p>Precision AGL Academy provides advice on sensor technology selection, placement, alignment, and field commissioning.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Us</button>
             </div>
         </div>

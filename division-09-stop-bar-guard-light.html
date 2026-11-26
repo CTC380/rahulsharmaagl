@@ -524,6 +524,13 @@
   .block-title{font-size:clamp(26px,8vw,36px);overflow-wrap:anywhere;}
 }
 </style>
+<style id="heading-parity">@media (min-width:769px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}@media (min-width:481px) and (max-width:768px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}@media (max-width:480px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}</style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -602,52 +609,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A stop bar (or the full set of fixtures spanning the taxiway at the CAT II/III holding position) is commanded ON from ALCMS/ATC but fails to illuminate.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar fixtures &#x2014; in-pavement or elevated red L-852E lights spanning the taxiway at the CAT II/III holding position, fed via a dedicated stop bar series circuit and isolation transformers, commanded ON/OFF from the ALCMS/ATC control panel.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR feeding the stop bar circuit not energised or at zero output</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Primary series cable fault on the loop feeding the bar, taking down the full fixture set</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Control command from ALCMS not reaching the CCR/contactor (route to SPB-261 or SPB-263 if isolated there)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Interlock logic incorrectly holding the bar OFF due to a centreline circuit sensing fault</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Multiple fixture-level transformer failures coinciding across the bar</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">ALCMS displaying a stale or mismatched status not reflecting the true field state</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>ALCMS diagnostic terminal</span><span>Clamp-on series circuit ammeter</span><span>True-RMS multimeter</span><span>1000V insulation resistance tester (megger)</span><span>Stop bar circuit as-built drawing</span><span>Base-can lifting tool and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate airside access with ATC given the stop bar&#x27;s location at an active holding position.</li><li>LOTO the circuit before work.</li><li>Confirm with ATC that the stop bar will be treated as out of service, with a compensating procedure in place, before beginning work.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Compare the ALCMS commanded state against the actual field state observed at the fixtures.</li><li><span class="step-tag">Measurement</span>Check the CCR output for the stop bar circuit to confirm whether power is reaching the loop.</li><li><span class="step-tag">Observation</span>Check the interlock status of the associated taxiway centreline circuit, since the interlock can legitimately hold the stop bar OFF.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger a sample of fixture transformers to rule out a coincidental multi-fixture failure.</li><li><span class="step-tag">Decision</span>CCR output absent &#x2192; source-side fault, route to Division 01. CCR output correct but bar still dark &#x2192; cable fault or interlock fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the CCR/source, the primary cable, the interlock logic, or a coincidental multi-fixture failure.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before restoring the circuit to automatic control.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">CCR output at the panel</div><div class="tp-item">Interlock relay/logic state</div><div class="tp-item">Sample fixture transformer output</div><div class="tp-item">ALCMS commanded state vs. field state</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm the stop bar illuminates correctly at commanded ON, and confirm the interlock correctly inhibits the downstream centreline lighting while the bar is lit, before returning to automatic control.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Restore CCR output if the fault is source-side.</li><li>Repair the identified primary cable fault.</li><li>Correct the interlock fault causing the false OFF state.</li><li>Replace failed fixture transformers if a coincidental multi-fixture failure is confirmed.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include periodic testing of stop bar and interlock function in the PM cycle.</li><li>Verify ALCMS status accuracy against a field check on a defined schedule.</li><li>Trend CCR output for the stop bar circuit to catch a developing source-side fault early.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-01 (Stop Bar Fault Isolation Procedure), SOP-CCR-04 (CCR LOTO Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (stop bar requirements), FAA AC 150/5340-30, FAA AC 150/5345-46 (L-852E)</p>
             <p><strong>Diagram:</strong> Stop Bar Circuit &amp; Interlock Layout Drawing</p>
@@ -667,52 +674,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> One or more individual fixtures within an otherwise correctly energised stop bar fail to illuminate, while the remainder of the bar lights normally.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Individual stop bar fixture positions within the bar, and the series circuit segment feeding them.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Individual fixture transformer or lamp/LED failure at one or more positions</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Connector fault isolated to a specific fixture</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Localised cable segment fault between two adjacent fixtures within the bar</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Base can water ingress affecting a specific fixture</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Physical damage at a specific fixture position from a vehicle strike</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Uneven circuit loading from an incorrectly rated transformer installed at a previous replacement</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Clamp-on series circuit ammeter</span><span>True-RMS multimeter</span><span>1000V insulation resistance tester (megger)</span><span>Series circuit fault locator / TDR</span><span>Stop bar fixture layout drawing</span><span>Base-can lifting tool and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the circuit before work.</li><li>Coordinate access at the active holding position with ATC.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Identify exactly which fixture(s) within the bar are dark or affected via direct inspection.</li><li><span class="step-tag">Measurement</span>Confirm the overall circuit current is at the correct value for the commanded step, which rules out a full circuit-level fault.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the transformer and test the connector at each affected fixture position.</li><li><span class="step-tag">Observation</span>Inspect the base can at each affected position for water, debris, or physical damage.</li><li><span class="step-tag">Decision</span>Fault isolated to one or two specific fixtures &#x2192; fixture-level repair. Fault pattern suggests a cable segment issue between fixtures &#x2192; investigate the intervening cable.</li><li><span class="step-tag">Fault Location</span>Isolate to the specific fixture(s) affected or to the cable segment between them.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component at each affected position before replacement.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Affected fixture transformer</div><div class="tp-item">Connector continuity at affected positions</div><div class="tp-item">Cable segment between affected fixtures</div><div class="tp-item">Overall circuit current</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-energise and confirm every fixture in the bar illuminates uniformly at the commanded intensity step.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed transformer, lamp/LED, or connector at each affected fixture.</li><li>Repair the identified local cable fault.</li><li>Dry and reseal an affected base can.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include fixture-level inspection of the full stop bar in the periodic maintenance cycle.</li><li>Track individual fixture failure history to identify a chronically weak position.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-01 (Stop Bar Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> Stop Bar Fixture Layout Drawing</p>
@@ -732,52 +739,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> One or more stop bar fixtures flicker, pulse, or vary in brightness instead of holding a steady red output at the commanded state.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar fixture, isolation transformer, connector, and the interlock relay/logic governing the circuit.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Loose or intermittent L-823 connector, worsened by vehicle traffic vibration at the holding position</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A partially failed or overheating isolation transformer with an intermittent internal short</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Lamp/LED driver instability or a failing LED module nearing end of life</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Intermittent cable fault (chafed insulation making and breaking contact)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Interlock relay chatter causing rapid ON/OFF cycling &#x2014; a cause specific to the interlocked nature of the stop bar circuit</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">CCR output instability rather than a fixture-level fault</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter with min/max hold</span><span>Oscilloscope or power quality logger for waveform capture</span><span>Thermal imaging camera</span><span>L-823 connector test adaptor</span><span>Interlock relay test equipment</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Treat intermittent faults as live until proven otherwise.</li><li>LOTO the circuit before opening any base can or control cabinet.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether the flicker is on a single fixture or several, and whether it correlates with a particular commanded step or interlock transition.</li><li><span class="step-tag">Measurement</span>Log CCR output current over a period spanning the reported flicker to rule out a source-side instability.</li><li><span class="step-tag">Measurement</span>Check the interlock relay for chatter or contact bounce as a distinct possible cause given the circuit&#x27;s interlocked design.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, inspect and re-torque the L-823 connector, and megger the isolation transformer under light mechanical flexing.</li><li><span class="step-tag">Decision</span>Flicker follows CCR current logging &#x2192; CCR/source-side issue, route to Division 01. Flicker correlates with interlock transitions &#x2192; investigate interlock relay. Flicker isolated to the fixture &#x2192; connector or transformer fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the connector, transformer, lamp/LED module, cable, or interlock relay.</li><li><span class="step-tag">Root Cause</span>Confirm by replacing the suspect component and re-testing under conditions that previously produced the flicker.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">L-823 connector contact resistance</div><div class="tp-item">Isolation transformer under mechanical flex</div><div class="tp-item">Interlock relay operation</div><div class="tp-item">CCR output current trend log</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Monitor the repaired fixture over several operating cycles, including interlock transitions, before closing out.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Clean, re-grease, and properly seat the L-823 connector.</li><li>Replace a transformer confirmed to have an intermittent internal fault.</li><li>Replace a failing lamp/LED module.</li><li>Service or replace the interlock relay if chatter is confirmed.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Torque-check connectors as a standard PM step given holding-position traffic vibration.</li><li>Include interlock relay condition in the periodic maintenance schedule.</li><li>Include thermal imaging of connectors and transformers in the PM cycle.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-01 (Stop Bar Fault Isolation Procedure), SOP-SPB-03 (Interlock Function Test Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> Stop Bar Circuit &amp; Interlock Layout Drawing</p>
@@ -797,52 +804,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A stop bar fixture displays a colour other than red, creating a safety-critical guidance discrepancy at a CAT II/III holding position.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar fixture lens/filter assembly and lamp/LED colour source.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Incorrect lens/filter installed at a previous replacement (red specified per ICAO Annex 14 for stop bars)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">LED module fitted with the wrong colour source or an incorrect part number</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Lens cracked or missing, letting the underlying white lamp/LED source show through uncoloured</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Fixture confused with an adjacent green or yellow fixture during a bulk parts replacement given the mixed colour inventory at a holding position</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">UV degradation shifting the red lens toward an orange or faded hue</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Surface contamination causing an apparent colour shift without an actual component fault</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Colour coordinate/chromaticity meter</span><span>Fixture parts catalogue and specification sheet</span><span>Stop bar as-built drawing</span><span>Replacement lens/filter stock</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the circuit before fixture access.</li><li>Treat a confirmed wrong-colour stop bar fixture as an immediate safety-critical discrepancy; notify ATC/airfield operations and consider taking the stop bar out of service until corrected, given its role in runway incursion prevention.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the reported colour against the specification &#x2014; red for stop bar fixtures per ICAO Annex 14.</li><li><span class="step-tag">Measurement</span>Inspect the fixture&#x27;s lens/filter and lamp/LED part number against the maintenance specification.</li><li><span class="step-tag">Observation</span>Check lens integrity (cracking, missing lens) and confirm the lamp/LED source colour independent of the lens.</li><li><span class="step-tag">Decision</span>Wrong lens/filter part installed &#x2192; replace with the correct red part. Correct part but fixture confused with an adjacent colour zone during installation &#x2192; verify against the as-built drawing.</li><li><span class="step-tag">Fault Location</span>Isolate the discrepancy to the lens/filter, the lamp/LED source, or an installation mix-up.</li><li><span class="step-tag">Root Cause</span>Verify chromaticity meets the ICAO Annex 14 Vol I colour boundary for red after correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Chromaticity coordinates vs. ICAO Annex 14 Vol I red colour boundary</div><div class="tp-item">Installed lens/filter part number</div><div class="tp-item">Lamp/LED source colour independent of lens</div><div class="tp-item">Fixture position vs. stop bar as-built drawing</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-check chromaticity after correction and confirm visually against the other fixtures in the same stop bar at night.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace with the correct red lens/filter or fixture assembly.</li><li>Notify airfield operations if the discrepancy affected the stop bar&#x27;s operational status.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify part numbers against the stop bar specification before any bulk lens/filter replacement.</li><li>Segregate stop bar (red) parts stock from taxiway (green) and lead-on/off (yellow) parts stock to prevent mix-ups.</li><li>Include colour verification in the periodic inspection.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-04 (Colour Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (colour specifications), FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> Stop Bar Fixture Layout Drawing</p>
@@ -862,52 +869,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A photometric survey or reported observation finds the stop bar, or a section of it, below the minimum required intensity for its operating category.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar fixture photometric output as measured against ICAO Annex 14 Appendix 2 / FAA AC 150/5340-30 specifications.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Cumulative lens contamination across multiple fixtures reducing transmitted intensity below the compliance threshold</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Aggregate fixture ageing (lamp/LED lumen depreciation) across the bar approaching or past rated service life</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">CCR output intensity step below the value required for the stop bar&#x27;s operating category</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A batch of fixtures with a systematic transformer/lamp mismatch installed during a previous bulk replacement</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Series circuit voltage drop from cable resistance or route length affecting the far end of the bar</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Survey/measurement methodology or equipment calibration issue producing an apparent non-compliance</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Calibrated mobile photometric survey unit or handheld luminance/intensity meter</span><span>Colour coordinate measurement equipment</span><span>ICAO/FAA photometric compliance reference tables</span><span>Fixture and transformer inventory records</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the circuit before any fixture-level intervention following the survey.</li><li>Conduct photometric surveys per the applicable procedure and calibration schedule to ensure results are valid before acting on them.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the survey methodology and equipment calibration are valid before treating the result as a genuine non-compliance.</li><li><span class="step-tag">Observation</span>Identify whether non-compliance is isolated to specific fixtures, a specific installation batch, or the bar generally, by cross-referencing survey results against inventory and installation dates.</li><li><span class="step-tag">Measurement</span>Physically inspect a representative sample of non-compliant fixtures for lens contamination, lamp/LED condition, and transformer rating.</li><li><span class="step-tag">Measurement</span>Confirm the CCR output intensity step matches the requirement for the stop bar&#x27;s operating category.</li><li><span class="step-tag">Decision</span>Non-compliance traces to contamination &#x2192; clean and re-survey before replacing components. Non-compliance traces to CCR intensity step &#x2192; correct the CCR setting.</li><li><span class="step-tag">Fault Location</span>Isolate the dominant contributing cause across the affected fixtures.</li><li><span class="step-tag">Root Cause</span>Confirm compliance is restored with a follow-up photometric re-survey after corrective action.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Measured intensity vs. ICAO/FAA minimum per fixture</div><div class="tp-item">CCR output intensity step</div><div class="tp-item">Lens condition across the affected sample</div><div class="tp-item">Fixture/transformer age and specification records</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Conduct a follow-up photometric survey of the corrected fixtures, and cross-check a sample of unaffected fixtures to confirm the survey and correction are consistent.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Clean lenses across the affected section as a first step where contamination is implicated.</li><li>Replace lamp/LED modules that have reached end-of-life lumen depreciation.</li><li>Correct the CCR intensity step setting.</li><li>Correct a transformer/lamp mismatch found across an installation batch.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Schedule photometric compliance surveys on a defined recurring interval.</li><li>Track fixture installation dates and expected lumen-depreciation curves to plan proactive replacement.</li><li>Verify transformer/lamp specification consistency across every bulk procurement or replacement batch.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-05 (Photometric Compliance Survey Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I Appendix 2, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Stop Bar Photometric Specification Sheet</p>
@@ -927,52 +934,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The stop bar&#x27;s local control system fails to correctly execute an ON/OFF command, or reports a status to ALCMS that does not match the actual field state.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar local control system &#x2014; the CCR-integrated or standalone controller/PLC card, selector relays, and status feedback circuitry that executes ON/OFF commands and reports stop bar status to ALCMS.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Failed controller/PLC card or relay driving the stop bar contactor</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Status feedback circuit reporting an incorrect field state to ALCMS while the commanded state is actually correct</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Local selector switch stuck or faulty at the CCR cabinet</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Firmware or logic fault in the controller</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Power supply fault to the local controller card</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Wiring fault between the controller and the CCR/contactor</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>ALCMS diagnostic terminal</span><span>Controller/PLC diagnostic software</span><span>Spare controller card</span><span>Local control cabinet wiring diagram</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the control cabinet before card or relay replacement.</li><li>Verify with ATC before taking the stop bar control system out of service.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Compare the ALCMS commanded state against the physical state of the stop bar fixtures.</li><li><span class="step-tag">Measurement</span>Check the controller/PLC card status LEDs and diagnostics.</li><li><span class="step-tag">Measurement</span>Test the selector switch and relay operation manually at the CCR cabinet.</li><li><span class="step-tag">Measurement</span>Check the status feedback wiring from the controller to ALCMS.</li><li><span class="step-tag">Decision</span>Field state correct but ALCMS status wrong &#x2192; feedback circuit fault. Field state does not follow the command &#x2192; controller/relay/selector switch fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the controller/PLC card, selector switch/relay, status feedback wiring, or controller power supply.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before replacement.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Controller/PLC card diagnostics</div><div class="tp-item">Selector switch/relay operation</div><div class="tp-item">Status feedback signal to ALCMS</div><div class="tp-item">Control cabinet power supply</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Command the stop bar ON/OFF several times from ALCMS and confirm both the actual field state and the reported status match on each cycle.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the faulted controller/PLC card.</li><li>Repair or replace the selector switch/relay.</li><li>Correct the status feedback wiring.</li><li>Restore the controller power supply.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include controller diagnostics in the periodic maintenance cycle.</li><li>Keep a spare controller card on hand given the stop bar&#x27;s safety-critical function.</li><li>Verify status feedback accuracy during routine testing.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-06 (Stop Bar Control System Test Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Stop Bar Control Cabinet Wiring Diagram</p>
@@ -992,52 +999,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The safety interlock between the stop bar and the downstream taxiway centreline lighting fails to prevent both from being illuminated simultaneously, or fails to allow the centreline lighting to activate when the stop bar is correctly switched OFF.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar / taxiway centreline interlock logic &#x2014; the control circuitry (relay-based or PLC-based) that ensures the stop bar and the taxiway centreline lighting beyond it are never illuminated simultaneously, per ICAO Annex 14 Vol I requirements for CAT II/III holding positions.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Interlock relay contact welded or mechanically stuck, allowing both circuits to be commanded together</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A maintenance bypass or override left engaged after previous work</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Interlock logic firmware or programming fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Sensing circuit reporting incorrect stop bar or centreline status to the interlock logic</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Wiring fault between the two circuits&#x27; status feedback and the interlock controller</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Power supply fault to the interlock controller</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>Interlock logic diagnostic tool/PLC software</span><span>Relay test equipment</span><span>Interlock wiring diagram</span><span>ALCMS diagnostic terminal</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the interlock cabinet before work.</li><li>Treat any interlock discrepancy as safety-critical and notify ATC/airfield operations immediately &#x2014; do not leave the stop bar in automatic operation until the interlock is verified correct.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Command the stop bar and centreline circuits through a full test cycle and verify only one is ever illuminated at a time.</li><li><span class="step-tag">Measurement</span>Check interlock relay contacts for welding or mechanical failure.</li><li><span class="step-tag">Measurement</span>Check the sensing/status feedback from both circuits into the interlock logic.</li><li><span class="step-tag">Observation</span>Confirm no maintenance override or bypass is engaged.</li><li><span class="step-tag">Decision</span>Relay contact welded/stuck &#x2192; replace relay. Bypass found engaged &#x2192; remove and re-secure. Feedback wiring or logic fault &#x2192; correct wiring or reprogram logic.</li><li><span class="step-tag">Fault Location</span>Isolate to the interlock relay, the bypass/override, the status feedback wiring, or the interlock controller logic.</li><li><span class="step-tag">Root Cause</span>Confirm with a full interlock test cycle that the fault is resolved before returning to automatic control.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Interlock relay contact condition</div><div class="tp-item">Status feedback from stop bar and centreline circuits</div><div class="tp-item">Bypass/override switch position</div><div class="tp-item">Interlock controller power supply</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Run a complete interlock test cycle &#x2014; stop bar ON/centreline OFF, then stop bar OFF/centreline ON &#x2014; and confirm correct mutually exclusive operation before returning to automatic control.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the faulted interlock relay.</li><li>Correct the interlock logic/programming.</li><li>Repair the status feedback wiring.</li><li>Remove and re-secure a left-engaged bypass.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include a full interlock test cycle in the periodic maintenance schedule.</li><li>Log and formally close out any maintenance override/bypass use.</li><li>Verify interlock logic after any control system firmware update.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-03 (Interlock Function Test Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (stop bar interlock requirements), FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Stop Bar Circuit &amp; Interlock Layout Drawing</p>
@@ -1057,52 +1064,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A command issued from the ATC tower or ALCMS workstation to select the stop bar ON or OFF fails to reach or be executed by the field control system.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Remote command link between the ATC tower/ALCMS workstation and the stop bar&#x27;s local control system &#x2014; the communication network (serial/Ethernet/SCADA), protocol converters, and the field RTU/controller receiving the command.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Communication link failure (cable/fibre break, network switch fault) between ALCMS and the field controller</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">RTU or protocol converter fault at the field end</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">ALCMS server/workstation software fault or a hung command queue</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Incorrect addressing or configuration following a system change</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Power failure at an intermediate communication node</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Electromagnetic interference affecting a wireless or poorly shielded link segment</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Network diagnostic tools (cable tester, ping/traceroute from the ALCMS network)</span><span>ALCMS system log review</span><span>RTU/protocol converter diagnostic software</span><span>Network architecture drawing</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate with ATC before testing since the stop bar may be under active operational control.</li><li>Do not disable remote control without an agreed fallback (local manual control) in place.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm from the ALCMS system log whether the command was sent and acknowledged.</li><li><span class="step-tag">Measurement</span>Check the communication link status between ALCMS and the field RTU/controller.</li><li><span class="step-tag">Measurement</span>Test the physical link (cable, fibre, network switch) for continuity or faults.</li><li><span class="step-tag">Measurement</span>Verify RTU/protocol converter configuration and diagnostics.</li><li><span class="step-tag">Decision</span>Command not acknowledged and link shows a fault &#x2192; communication link/hardware fault. Command acknowledged but not executed &#x2192; route to SPB-261 (local control system).</li><li><span class="step-tag">Fault Location</span>Isolate to the communication link, the RTU/protocol converter, or the ALCMS server/software.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed link segment or component before repair.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">ALCMS command log and acknowledgement status</div><div class="tp-item">Communication link continuity</div><div class="tp-item">RTU/protocol converter diagnostics</div><div class="tp-item">Field controller local status vs. ALCMS commanded state</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Issue a series of test commands from ALCMS and confirm each is correctly received, executed, and acknowledged with accurate status feedback.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the faulted communication link segment.</li><li>Replace the RTU/protocol converter.</li><li>Correct addressing/configuration.</li><li>Restore power to an intermediate communication node.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include communication link testing in the periodic maintenance cycle.</li><li>Maintain an accurate network architecture drawing.</li><li>Ensure a documented local manual-control fallback procedure is available and tested.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-07 (Remote Command Link Test Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, ALCMS/SCADA vendor documentation</p>
             <p><strong>Diagram:</strong> ALCMS Network Architecture Drawing</p>
@@ -1122,52 +1129,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A circuit-level fault affects the full stop bar series loop, taking out the entire bar or a large section of it, distinct from an isolated fixture-level fault.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar series circuit &#x2014; the CCR-fed series loop supplying the full stop bar fixture set, including the primary cable route and all in-line isolation transformers.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR failure or fault at the source</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Primary series cable fault (cut, chafed, or moisture-degraded insulation) taking down the whole bar</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A single shorted isolation transformer collapsing available voltage to the rest of the loop</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Damaged or crushed duct/cable from recent excavation or heavy vehicle loading near the holding position</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Storm or lightning-related surge damage to circuit components</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A section isolator or tie point left open after previous maintenance, if the bar is circuit-segmented</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Series circuit fault locator / TDR</span><span>1000V/2500V insulation resistance tester</span><span>Clamp-on ammeter</span><span>Full circuit as-built layout drawing</span><span>Excavation permit and utility locate request if digging is required</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the CCR before any circuit work.</li><li>Obtain excavation clearance and utility locates before opening pavement if the fault requires digging.</li><li>Coordinate the stop bar outage with ATC given its role in runway incursion prevention &#x2014; a compensating procedure is typically required.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm at the CCR/ALCMS whether the fault is a complete loss of output (source-side) or a partial dark section with the CCR still delivering rated current (downstream fault).</li><li><span class="step-tag">Observation</span>Cross-reference the extent of the fault against the circuit layout drawing to identify candidate cable segments.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the primary cable in segments from accessible pull boxes or transformer base cans.</li><li><span class="step-tag">Measurement</span>Use a TDR or fault locator to estimate fault distance if a direct segment test is inconclusive.</li><li><span class="step-tag">Decision</span>Insulation resistance fails on a specific segment &#x2192; cable/joint fault in that segment. All segments clear but a specific transformer reads shorted &#x2192; that transformer is loading down the loop.</li><li><span class="step-tag">Fault Location</span>Physically locate and expose the faulted cable segment or confirm the single shorted transformer.</li><li><span class="step-tag">Root Cause</span>Confirm the cause of the cable fault (mechanical damage, water tracking, age-related insulation breakdown) once exposed.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">CCR output current and voltage</div><div class="tp-item">Primary cable insulation resistance by segment</div><div class="tp-item">Suspect transformer primary-to-secondary and to-earth</div><div class="tp-item">Section isolator continuity, if applicable</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, megger the full circuit end-to-end, re-energise, and confirm every fixture illuminates correctly and the interlock function still operates correctly.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the faulted cable segment.</li><li>Replace the shorted isolation transformer.</li><li>Restore duct/cable protection where mechanical damage was the cause.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Schedule periodic full-loop insulation resistance testing and trend results over time.</li><li>Maintain accurate as-built records of every joint, pull box, and repair splice.</li><li>Coordinate with civil works teams before any excavation near the holding position.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-01 (Stop Bar Fault Isolation Procedure), SOP-CCR-04 (CCR LOTO Procedure)</p>
             <p><strong>Standards:</strong> IEC 60364 (insulation testing), ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Stop Bar Circuit &amp; Interlock Layout Drawing</p>
@@ -1187,52 +1194,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An L-823 connector at a stop bar fixture position is found faulted, contributing to an outage, intermittent fault, or a failed insulation reading at that position.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>L-823 connectors and base cans at individual stop bar fixture positions.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Moisture ingress into the connector body degrading the seal</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Corroded or pitted connector pins from age or de-icing chemical exposure</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Plug not fully seated or locked after a previous maintenance visit</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Mechanical damage from vehicle or tug wheel contact given the connector&#x27;s proximity to the holding position traffic path</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">An incorrectly rated connector installed at a prior repair</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Contact plating worn from repeated connect/disconnect cycling</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>L-823 connector test adaptor</span><span>1000V insulation resistance tester (megger)</span><span>Contact resistance meter</span><span>Dielectric grease</span><span>Replacement connector stock</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before disconnecting or inspecting a connector.</li><li>Treat a wet connector as energised until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Isolate the circuit and inspect the connector body, pins, and boot for moisture, corrosion, or damage.</li><li><span class="step-tag">Measurement</span>Measure contact resistance across the connector.</li><li><span class="step-tag">Observation</span>Confirm the connector part number/rating matches the specification.</li><li><span class="step-tag">Observation</span>Check that the plug is fully seated and locked.</li><li><span class="step-tag">Decision</span>Contact resistance elevated with visible corrosion &#x2192; clean/replace connector. Correct connector but not fully seated &#x2192; reseat and re-torque/lock.</li><li><span class="step-tag">Fault Location</span>Isolate the fault to the connector body, pins, boot, or seating.</li><li><span class="step-tag">Root Cause</span>Confirm restored contact resistance and insulation resistance after correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Connector contact resistance</div><div class="tp-item">Insulation resistance across the connector</div><div class="tp-item">Pin condition</div><div class="tp-item">Seating/locking engagement</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-energise and confirm the fixture illuminates correctly at all commanded states, and re-check the connector after a subsequent maintenance interval.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Clean, re-grease, and reseat the connector.</li><li>Replace a corroded or damaged connector.</li><li>Correct an incorrectly rated connector with the specified part.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Apply dielectric grease at every reconnection.</li><li>Include connector inspection in the periodic maintenance cycle given the holding-position traffic exposure.</li><li>Standardise connector part numbers across the stop bar circuit.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-08 (Connector and Transformer Inspection Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-46, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> Stop Bar Base-Can Detail Drawing</p>
@@ -1252,52 +1259,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An individual isolation transformer feeding a stop bar fixture is found faulted during investigation of an outage, dim output, or a failed insulation reading.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Individual isolation transformers feeding stop bar fixtures off the series circuit.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Open primary or secondary winding from age-related insulation breakdown</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A partial internal short developing into an intermittent or hard fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">An incorrect wattage/tap installed at a previous replacement, mismatched to the fixture&#x27;s lamp/LED module</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Moisture ingress into the transformer housing degrading insulation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Thermal stress from repeated high-intensity step operation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Mechanical damage to the transformer housing or leads</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>1000V insulation resistance tester (megger)</span><span>Isolation transformer test set</span><span>True-RMS multimeter</span><span>Replacement transformer stock matched to the fixture specification</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before transformer removal or testing.</li><li>Allow the transformer to cool if recently energised at a high intensity step.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Isolate the circuit and disconnect the transformer.</li><li><span class="step-tag">Measurement</span>Megger the primary winding, secondary winding, and primary-to-secondary insulation.</li><li><span class="step-tag">Observation</span>Confirm the transformer&#x27;s rated wattage/tap matches the fixture specification.</li><li><span class="step-tag">Observation</span>Inspect the housing and leads for physical damage or moisture.</li><li><span class="step-tag">Decision</span>Winding reads open or shorted &#x2192; replace transformer. Transformer good but wattage/tap mismatched &#x2192; correct with the specified part.</li><li><span class="step-tag">Fault Location</span>Isolate the fault to the primary winding, secondary winding, or a wattage/tap mismatch.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed condition by bench-testing the removed transformer.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Primary winding insulation resistance</div><div class="tp-item">Secondary winding insulation resistance</div><div class="tp-item">Primary-to-secondary insulation</div><div class="tp-item">Rated wattage/tap vs. fixture specification</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-energise and confirm the fixture illuminates correctly at the commanded intensity step, and re-megger the replacement transformer as a baseline reading.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed transformer with the correctly rated part.</li><li>Correct a mismatched wattage/tap installed previously.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify transformer rating against the fixture specification at every replacement.</li><li>Include transformer megger testing in the periodic maintenance cycle.</li><li>Track transformer age for proactive replacement given the stop bar&#x27;s safety-critical role.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SPB-08 (Connector and Transformer Inspection Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-26 (isolating transformers), ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> Stop Bar Base-Can Detail Drawing</p>
@@ -1327,52 +1334,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A Runway Guard Light (RGL) fixture, or a pair/row of fixtures, fails to illuminate or flash when the installation is energised.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Runway Guard Lights (RGL) &#x2014; elevated Configuration A paired yellow flashing fixtures or in-pavement Configuration B row of yellow flashing fixtures, installed at the taxiway holding position to alert of proximity to the runway, fed via a dedicated series or parallel circuit and flash controller.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Flash controller/synchroniser failure (route to GRD-270 if isolated to the controller)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Lamp/LED module failure in one or both fixtures</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Isolation transformer failure (in-pavement Configuration B) or ballast/power supply failure (elevated Configuration A)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Connector or base can fault</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Circuit-level fault (source or cable) affecting the full RGL installation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Fixture physically damaged by vehicle strike &#x2014; elevated fixtures are particularly exposed</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Clamp-on ammeter</span><span>True-RMS multimeter</span><span>1000V insulation resistance tester (megger)</span><span>Flash controller diagnostic tool</span><span>RGL as-built circuit drawing</span><span>Base-can or elevated-fixture access tools and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate airside access given the holding-position location.</li><li>LOTO the circuit before work.</li><li>Use appropriate fall protection/access equipment for elevated fixture work.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm from ALCMS/field inspection whether the fault is isolated to one fixture, both fixtures of a pair, or the full installation.</li><li><span class="step-tag">Measurement</span>Check the flash controller status and output for the affected fixture(s).</li><li><span class="step-tag">Measurement</span>With the circuit isolated, test the affected fixture&#x27;s lamp/LED and transformer/ballast.</li><li><span class="step-tag">Observation</span>Inspect the connector/base can for damage or moisture.</li><li><span class="step-tag">Decision</span>Controller output present but fixture dark &#x2192; fixture-level fault (lamp, transformer/ballast, connector). Controller output absent for the channel &#x2192; route to GRD-270.</li><li><span class="step-tag">Fault Location</span>Isolate to the fixture (lamp/LED, transformer/ballast, connector) or to the flash controller.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before replacement.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Flash controller output</div><div class="tp-item">Fixture lamp/LED condition</div><div class="tp-item">Transformer/ballast output</div><div class="tp-item">Connector/base can condition</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-energise and confirm both fixtures (or the full row) flash correctly in the specified alternating or sequential pattern before closing out.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed lamp/LED module.</li><li>Replace a failed transformer/ballast.</li><li>Repair or replace the connector.</li><li>Replace a physically damaged fixture.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include RGL fixture and flash pattern verification in the periodic night inspection.</li><li>Prioritise elevated-fixture condition checks given vehicle-strike exposure.</li><li>Track flash controller service history.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-GRD-01 (Runway Guard Light Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (runway guard lights), FAA AC 150/5340-30, FAA AC 150/5345-46 (L-804)</p>
             <p><strong>Diagram:</strong> RGL Circuit and Flash Pattern Drawing</p>
@@ -1392,52 +1399,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A Runway Guard Light fixture displays a colour other than yellow/amber, creating a discrepancy in the runway-proximity warning it is intended to provide.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>RGL fixture lens/filter assembly and lamp/LED colour source.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Incorrect lens/filter installed at a previous replacement (yellow/amber specified per ICAO Annex 14 for RGLs)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">LED module fitted with the wrong colour source or an incorrect part number</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Lens cracked or missing, letting the underlying white lamp/LED source show through uncoloured</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Fixture confused with a nearby stop bar (red) or centreline (green) fixture during a bulk parts replacement given the mixed colour inventory at a holding position</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">UV degradation shifting the yellow lens hue</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Surface contamination causing an apparent colour shift</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Colour coordinate/chromaticity meter</span><span>Fixture parts catalogue and specification sheet</span><span>RGL as-built drawing</span><span>Replacement lens/filter stock</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the circuit before fixture access.</li><li>Treat a confirmed wrong-colour RGL fixture as a safety-critical discrepancy given its role as a runway-proximity warning; notify airfield operations.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the reported colour against the specification &#x2014; yellow/amber for RGL fixtures.</li><li><span class="step-tag">Measurement</span>Inspect the fixture&#x27;s lens/filter and lamp/LED part number against the maintenance specification.</li><li><span class="step-tag">Observation</span>Check lens integrity and confirm the lamp/LED source colour independent of the lens.</li><li><span class="step-tag">Decision</span>Wrong lens/filter part installed &#x2192; replace with the correct yellow/amber part. Fixture confused with an adjacent colour zone &#x2192; verify against the as-built drawing.</li><li><span class="step-tag">Fault Location</span>Isolate the discrepancy to the lens/filter, the lamp/LED source, or an installation mix-up.</li><li><span class="step-tag">Root Cause</span>Verify chromaticity meets the ICAO Annex 14 Vol I colour boundary for yellow after correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Chromaticity coordinates vs. ICAO Annex 14 Vol I yellow colour boundary</div><div class="tp-item">Installed lens/filter part number</div><div class="tp-item">Lamp/LED source colour independent of lens</div><div class="tp-item">Fixture position vs. RGL as-built drawing</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-check chromaticity after correction and confirm visually against the paired/adjacent RGL fixture at night.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace with the correct yellow/amber lens/filter or fixture assembly.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify part numbers against the RGL specification before any bulk lens/filter replacement.</li><li>Segregate RGL (yellow) parts stock from stop bar (red) and centreline (green) stock to prevent mix-ups.</li><li>Include colour verification in the periodic inspection.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-GRD-02 (Colour Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> RGL Circuit and Flash Pattern Drawing</p>
@@ -1457,52 +1464,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A Runway Guard Light fixture or its flash pattern comes and goes intermittently rather than holding a consistent, correctly timed flash.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>RGL fixture, connector, transformer/ballast, and the flash controller output feeding that fixture.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Loose or intermittent connector connection, worsened by vehicle vibration at the holding position</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A partially failed transformer/ballast with an intermittent internal fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A flash controller output channel developing an intermittent fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">An intermittent cable fault (chafed insulation making and breaking contact)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Lamp/LED driver instability nearing end of life</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Moisture inside the base can (in-pavement Configuration B) causing an intermittent leakage path</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter with min/max hold</span><span>Oscilloscope or power quality logger for waveform capture</span><span>Thermal imaging camera</span><span>L-823 connector test adaptor</span><span>Flash controller diagnostic tool</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Treat intermittent faults as live until proven otherwise.</li><li>LOTO the circuit before opening any enclosure.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether the intermittent behaviour is isolated to one fixture or affects the flash controller output generally.</li><li><span class="step-tag">Measurement</span>Log the flash controller output over a period spanning the reported fault.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, inspect the connector and megger the transformer/ballast under mechanical flex.</li><li><span class="step-tag">Measurement</span>Check the flash controller channel diagnostics for the affected fixture.</li><li><span class="step-tag">Decision</span>Fault reproduced by flexing the connector/transformer &#x2192; component-level intermittent fault. Fault correlates with the controller channel &#x2192; route to GRD-270.</li><li><span class="step-tag">Fault Location</span>Isolate to the connector, transformer/ballast, cable, or flash controller channel.</li><li><span class="step-tag">Root Cause</span>Confirm by monitoring the repaired fixture over several flash cycles and operating conditions.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Connector contact resistance</div><div class="tp-item">Transformer/ballast under mechanical flex</div><div class="tp-item">Flash controller channel output</div><div class="tp-item">Cable segment continuity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Monitor the repaired fixture over several flash cycles and operating conditions before closing out.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Clean, re-grease, and reseat the connector.</li><li>Replace the transformer/ballast.</li><li>Repair the identified cable fault.</li><li>Replace the flash controller channel/module if confirmed faulty.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Torque-check connectors given vehicle vibration exposure at the holding position.</li><li>Include flash controller diagnostics in the periodic PM cycle.</li><li>Include thermal imaging of connectors and transformers in the PM cycle.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-GRD-01 (Runway Guard Light Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> RGL Circuit and Flash Pattern Drawing</p>
@@ -1522,52 +1529,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The Runway Guard Light flash controller/synchroniser fails to produce the correct flash pattern &#x2014; showing no flash, a steady state, or an incorrect rate/sequence.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>RGL flash controller/synchroniser &#x2014; the device generating and timing the alternating (Configuration A) or sequential (Configuration B) flash pattern for the runway guard lights, and any interface to ALCMS for status/command.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Failed controller card or timing circuit producing no flash, a steady-on/steady-off state, or an incorrect flash pattern</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Power supply fault to the controller</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Firmware or logic fault following a configuration change</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Wiring fault between the controller and the fixture outputs</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Loss of synchronisation between paired Configuration A fixtures</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">ALCMS interface fault reporting incorrect controller status</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Flash controller diagnostic software</span><span>True-RMS multimeter</span><span>Oscilloscope for flash-timing verification</span><span>Controller wiring diagram</span><span>Spare controller card/module</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the control cabinet before card replacement.</li><li>Coordinate with ATC/airfield operations if the RGL will be out of service during correction, given its role as a runway-proximity warning.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Observe the actual flash pattern in the field and compare against the specified pattern (alternating or sequential, correct rate).</li><li><span class="step-tag">Measurement</span>Check the controller&#x27;s diagnostic status and output channels.</li><li><span class="step-tag">Measurement</span>Verify the controller&#x27;s power supply.</li><li><span class="step-tag">Measurement</span>Check wiring between the controller and each fixture.</li><li><span class="step-tag">Decision</span>Controller diagnostics show a channel fault &#x2192; replace controller card/module. Power supply fault confirmed &#x2192; restore power. Wiring fault confirmed &#x2192; repair wiring.</li><li><span class="step-tag">Fault Location</span>Isolate to the controller card/module, its power supply, the output wiring, or a synchronisation fault between paired fixtures.</li><li><span class="step-tag">Root Cause</span>Confirm with an on-site flash pattern check that the corrected pattern matches the specification.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Controller diagnostic status</div><div class="tp-item">Flash timing/rate at each output channel</div><div class="tp-item">Controller power supply</div><div class="tp-item">ALCMS status feedback, where applicable</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Confirm the corrected flash pattern matches the specification at the correct rate and synchronisation, observed directly at the fixture during a night check.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed controller card/module.</li><li>Restore the controller power supply.</li><li>Repair the wiring fault.</li><li>Reconfigure the controller after a logic/firmware fault.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include flash pattern verification in the periodic night inspection.</li><li>Keep a spare controller card on hand given the RGL&#x27;s safety function.</li><li>Verify controller configuration after any firmware update.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-GRD-03 (Flash Controller Test Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> RGL Circuit and Flash Pattern Drawing</p>

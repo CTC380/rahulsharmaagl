@@ -97,8 +97,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -155,9 +154,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -172,8 +169,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -506,6 +502,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -553,7 +555,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Circuit &amp; Tolerances</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Circuit &amp; Tolerances</h2><div class="sub-line"></div></div>
   <div class="calc-grid single"><div>
     <div class="field-group" style="grid-column:1/-1">
       <label for="cid">Circuit ID <span class="u">(for the summary)</span></label>
@@ -573,13 +575,13 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>CCR Step Currents</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">CCR Step Currents</h2><div class="sub-line"></div></div>
   <details class="why" style="margin:-6px 0 12px"><summary>Rule note</summary><p class="field-hint">Enter the nominal current for each brightness step of your CCR and the value you measured. The nominal values are typical for a 5-step, 6.6 A CCR and are only a starting point. Replace them with the figures from your CCR datasheet.</p></details>
   <div class="scroll-table-wrap"><table class="step-table" id="st"><thead><tr><th>Step</th><th>Nominal (A)</th><th>Measured (A)</th><th>Deviation</th><th>Result</th></tr></thead><tbody id="stBody"></tbody></table></div>
 </div>
 
 <div class="step">
-  <div class="subsection-head"><h3>Full-Brightness Voltage Check</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Full-Brightness Voltage Check</h2><div class="sub-line"></div></div>
   <div class="calc-grid single"><div>
     <div class="field-group">
       <label for="ld">Total lamp load <span class="u">(W)</span></label>
@@ -636,7 +638,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </aside></div></div></section>
 
 <section class="tab-panel" id="tab-checklist" role="tabpanel" aria-labelledby="t-checklist" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head"><h3>Commissioning checklist</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Commissioning checklist</h2><div class="sub-line"></div></div>
   <p class="block-note" style="margin-bottom:16px">Set each item to Pass, Fail, Pending or N/A. Your progress is saved in this browser. Add the test records and reference numbers in the notes column.</p>
   <div class="calc-breakdown" id="breakdownGrid" style="grid-template-columns:repeat(4,1fr)">
     <div class="bd-card"><div class="bd-label">Complete</div><div class="bd-val" id="pc">0%</div></div>
@@ -650,7 +652,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 </div></div></section>
 
 <section class="tab-panel" id="tab-summary" role="tabpanel" aria-labelledby="t-summary" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head noprint"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head noprint"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row noprint" style="grid-template-columns:repeat(3,1fr)">
     <div class="field-group" style="margin-bottom:0"><label for="pj">Project / airport</label><input id="pj"/></div>
     <div class="field-group" style="margin-bottom:0"><label for="dt">Date</label><input id="dt" type="date"/></div>
@@ -661,10 +663,10 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <button type="button" class="btn" onclick="window.print()"><i class="fa-solid fa-print"></i> Print</button></div>
   <p class="field-hint noprint" id="reportStatus" style="margin-top:8px"></p>
 
-  <div class="subsection-head"><h3>Commissioning summary</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Commissioning summary</h2><div class="sub-line"></div></div>
   <div id="sm"></div>
 
-  <div class="subsection-head"><h3>Sign-off</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Sign-off</h2><div class="sub-line"></div></div>
   <div class="sign-grid">
     <p>Contractor signature: ______________________</p>
     <p>Client / consultant: ______________________</p>
@@ -685,31 +687,31 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-bolt"></i> Step current</h4>
+          <h3><i class="fa-solid fa-bolt"></i> Step current</h3>
           <div class="formula">Deviation % = (measured − nominal) ÷ nominal × 100</div>
           <p>A step passes when the deviation is within the current tolerance in either direction. A step is only checked when both nominal and measured values are entered.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-plug"></i> Expected circuit voltage</h4>
+          <h3><i class="fa-solid fa-plug"></i> Expected circuit voltage</h3>
           <div class="formula">P = Load ÷ efficiency + I² × R<sub>cable</sub></div><br>
           <div class="formula">Q = (Load ÷ efficiency) × tan(cos⁻¹ PF)</div><br>
           <div class="formula">Expected V = √(P² + Q²) ÷ I<sub>full</sub></div>
           <p>I<sub>full</sub> is the nominal value of the last step in the table, or 6.6 A if that is empty. The measured voltage passes when it is within the voltage tolerance of the expected value.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-gauge-high"></i> CCR loading</h4>
+          <h3><i class="fa-solid fa-gauge-high"></i> CCR loading</h3>
           <div class="formula">Loading % = (Load ÷ efficiency + I² × R<sub>cable</sub>) ÷ (kW × 1000) × 100</div>
           <p>This is real-power loading, so enter the CCR rating in kW as the manufacturer states it.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-list-check"></i> Checklist progress</h4>
+          <h3><i class="fa-solid fa-list-check"></i> Checklist progress</h3>
           <div class="formula">Complete % = Pass ÷ (items − N/A) × 100</div>
           <p>Pending and Fail items both count as not complete. The summary shows "Ready for acceptance review" only when no item is failed or pending and the circuit test has no failures.</p>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Reading a voltage difference</h4>
+          <h3><i class="fa-solid fa-vial"></i> Reading a voltage difference</h3>
           <table class="std-table">
             <tr><th>Measured vs expected</th><th>Look for</th></tr>
             <tr><td>Higher</td><td class="val">Extra resistance such as a poor connector or splice, or lamps or transformers heavier than scheduled</td></tr>
@@ -717,7 +719,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-badge-check"></i> Summary status</h4>
+          <h3><i class="fa-solid fa-badge-check"></i> Summary status</h3>
           <table class="std-table">
             <tr><td>🟢 Ready</td><td class="val">No failed or pending items, and the circuit test passed</td></tr>
             <tr><td>🔴 Open failures</td><td class="val">A checklist item or a circuit check has failed</td></tr>
@@ -725,7 +727,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not know which specification applies. The tolerances, efficiency, power factor and nominal step currents are placeholders you set. It does not replace the manufacturer's test procedures or the aerodrome authority's acceptance requirements. The checklist is saved only in this browser.</p>
         </div>
       </div>
@@ -756,10 +758,10 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-agl-photometric-uniformity-calculator.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><h5>Photometric Uniformity</h5><p>Check a row of intensity readings.</p></a>
-      <a href="calc-photometric-test-data-analyzer.html" class="tool-link"><i class="fa-solid fa-chart-line"></i><h5>Calculator #31</h5><p>Photometric test data analyzer.</p></a>
-      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #52</h5><p>Ohm's law and CCR steps.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-agl-photometric-uniformity-calculator.html" class="tool-link"><i class="fa-solid fa-lightbulb"></i><div class="tool-link-title">Photometric Uniformity</div><p>Check a row of intensity readings.</p></a>
+      <a href="calc-photometric-test-data-analyzer.html" class="tool-link"><i class="fa-solid fa-chart-line"></i><div class="tool-link-title">Calculator #31</div><p>Photometric test data analyzer.</p></a>
+      <a href="calc-ohms-law.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Calculator #52</div><p>Ohm's law and CCR steps.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

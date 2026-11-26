@@ -95,8 +95,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -165,9 +164,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -182,8 +179,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h3,.tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h3,.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -511,6 +507,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -556,7 +558,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip" data-preset="low">Low PF (0.70)</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
 
-<div class="step"><div class="subsection-head"><h3>Load Groups</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Load Groups</h2><div class="sub-line"></div></div>
       <details class="why"><summary>Rule note</summary><p class="field-hint">Add one row per kind of load on the secondary side. Enter the real power and power factor of one unit, and choose whether it is lagging (inductive) or leading (capacitive).</p></details>
       <div class="grp-scroll">
         <table class="grp-table" id="grpTable">
@@ -567,7 +569,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
       <button type="button" class="add-row" onclick="addRow()"><i class="fa-solid fa-plus"></i> Add load group</button>
 </div>
 
-<div class="step"><div class="subsection-head"><h3>Circuit Parameters</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Circuit Parameters</h2><div class="sub-line"></div></div>
       <div class="calc-grid">
         <div>
           <div class="field-group">
@@ -609,7 +611,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method &amp; worked example</button>
 </aside></div></div></section>
 
-<section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card"><div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div><div class="meta-row">
+<section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card"><div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div><div class="meta-row">
         <div class="field-group" style="margin-bottom:0;">
           <label for="projectName">Project Name <span class="u">(for report)</span></label>
           <input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/>
@@ -623,7 +625,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
       <p class="field-hint" id="reportStatus" style="margin-top:8px;flex-basis:100%;"></p>
       </div>
 
-      <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+      <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
       <div class="calc-breakdown" id="breakdownGrid">
         <div class="bd-card"><div class="bd-label">Real power P</div><div class="bd-val" id="bdP">—</div><div class="bd-sub">Sum of all groups</div></div>
         <div class="bd-card"><div class="bd-label">Reactive power Q</div><div class="bd-val" id="bdQ">—</div><div class="bd-sub" id="bdQsub">Lagging positive</div></div>
@@ -645,29 +647,29 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-layer-group"></i> 1. Each group</h4>
+          <h3><i class="fa-solid fa-layer-group"></i> 1. Each group</h3>
           <div class="formula">P = qty × W &nbsp;&nbsp; Q = ± P × tan(acos PF)</div>
           <p>Lagging groups give positive Q and leading groups give negative Q, so a capacitive load offsets an inductive one.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-gauge"></i> 2. Circuit totals</h4>
+          <h3><i class="fa-solid fa-gauge"></i> 2. Circuit totals</h3>
           <div class="formula">S = √(P² + Q²) &nbsp;&nbsp; PF = P ÷ S</div>
           <p>Power factors cannot be averaged. The real and reactive parts are added first and the power factor is found from the totals.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-wave-square"></i> 3. Voltage across the load</h4>
+          <h3><i class="fa-solid fa-wave-square"></i> 3. Voltage across the load</h3>
           <div class="formula">V = S ÷ I &nbsp;&nbsp; V_real = P ÷ I &nbsp;&nbsp; V_react = Q ÷ I</div>
           <p>In a series circuit the same current flows through every fixture, so the two voltage parts add at right angles.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-bolt"></i> 4. Correction</h4>
+          <h3><i class="fa-solid fa-bolt"></i> 4. Correction</h3>
           <div class="formula">Q_c = P × (tan φ₁ − tan φ₂)</div>
           <p>Here φ₁ is the present angle and φ₂ is the angle at the target power factor. Q_c is the capacitive reactive power to add. It is a size in kVAR, not a capacitor value, and where and how it is applied depends on the CCR and transformer design, so confirm with the manufacturer.</p>
         </div>
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>100 × 45 W at PF 0.95 lagging</td><td class="val">P = 4,500 W</td></tr>
@@ -679,7 +681,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It works at the fundamental frequency only. It does not model harmonics from LED drivers, cable reactance, or the effect of brightness steps on transformer power factor. Isolating transformers draw magnetising current, and their power factor falls when they are lightly loaded or the lamp is out, so enter a group for them if you have their data. The power factor at the CCR input differs from the load power factor because of CCR losses and its own reactive current, so use the CCR data sheet for supply sizing.</p>
         </div>
       </div>

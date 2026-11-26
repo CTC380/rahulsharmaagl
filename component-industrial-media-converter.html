@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Industrial Media Converter | AGL Component Library</title>
+    <title>Industrial Media Converter: Function, Construction &amp; Testing</title>
     <meta name="description" content="Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation." />
     <meta name="keywords" content="industrial media converter, fibre optic converter, AGL communication network, Ethernet" />
     <meta name="author" content="Precision AGL Academy" />
@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
     <link rel="canonical" href="https://rahulsharmaagl.in/component-industrial-media-converter.html" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Industrial Media Converter | AGL Component Library | Precision AGL Academy" />
+    <meta property="og:title" content="Industrial Media Converter: Function, Construction &amp; Testing" />
     <meta property="og:description" content="Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation." />
     <meta property="og:url" content="https://rahulsharmaagl.in/component-industrial-media-converter.html" />
     <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn1KfUSfl_-fPJI96xOecTMiGil0ZpwxvsxGS9Vlb1fl6XCeLUJ8uizLPd&amp;s=10" />
@@ -23,7 +23,7 @@
     <meta property="article:author" content="Precision AGL Academy" />
     <meta property="article:section" content="AGL Component Library" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Industrial Media Converter | AGL Component Library | Precision AGL Academy" />
+    <meta name="twitter:title" content="Industrial Media Converter: Function, Construction &amp; Testing" />
     <meta name="twitter:description" content="Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation." />
     <meta name="twitter:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn1KfUSfl_-fPJI96xOecTMiGil0ZpwxvsxGS9Vlb1fl6XCeLUJ8uizLPd&amp;s=10" />
     <meta name="theme-color" content="#060d1a" />
@@ -31,7 +31,8 @@
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#faq", "url": "https://rahulsharmaagl.in/component-industrial-media-converter.html", "inLanguage": "en", "isPartOf": {"@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#article"}, "mainEntity": [{"@type": "Question", "name": "What is an industrial media converter?", "acceptedAnswer": {"@type": "Answer", "text": "An industrial media converter, also called a fibre optic media converter or Ethernet-to-fibre converter, is a network device that converts electrical signals from copper Ethernet to optical signals on fibre, and back."}}, {"@type": "Question", "name": "Where are media converters used in AGL systems?", "acceptedAnswer": {"@type": "Answer", "text": "On the ALCMS backbone to remote substations and field controllers, for CCR substation fibre uplinks, in runway edge cabinets and in approach lighting shelters connecting sequencers, flashers and remote I/O controllers."}}, {"@type": "Question", "name": "Why use fibre instead of copper on an airfield?", "acceptedAnswer": {"@type": "Answer", "text": "Fibre covers much longer distances and is immune to electrical noise and lightning-induced interference, which matters across large airfields with high-voltage cabling."}}, {"@type": "Question", "name": "What distances can a media converter reach?", "acceptedAnswer": {"@type": "Answer", "text": "The page gives 2 km for multi-mode 100BASE-FX and 550 m for 1000BASE-SX, and 20 to 80 km for single-mode links depending on the transceiver."}}, {"@type": "Question", "name": "Can I mix single-mode and multi-mode fibre?", "acceptedAnswer": {"@type": "Answer", "text": "No. Using single-mode fibre with a multi-mode transceiver, or the reverse, will cause link failure or heavy signal loss. Match the fibre type and wavelength at both ends."}}, {"@type": "Question", "name": "Which standards apply to industrial media converters?", "acceptedAnswer": {"@type": "Answer", "text": "The main references are IEEE 802.3 (Ethernet), IEC 61000-6-2 (EMC immunity for industrial environments) and IEC 61000-4-5 (surge immunity)."}}, {"@type": "Question", "name": "How often should a media converter be checked?", "acceptedAnswer": {"@type": "Answer", "text": "Quarterly link status and auto-negotiation checks, and annual fibre cable inspection and optical connector cleaning."}}, {"@type": "Question", "name": "What are the common problems with media converters?", "acceptedAnswer": {"@type": "Answer", "text": "Auto-negotiation mismatch, fibre cable damage from digging, construction or rodents, optical connector contamination, and incompatible fibre types."}}]}</script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow:wght@300;400;500;600;700&amp;family=Barlow+Condensed:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" />
-    <style>
+    <style>.hl4, .hl5, .hl6 { font-weight: 700; } /*hl*/
+
         /* ── RESET &amp; BASE ── */
         * {
             margin: 0;
@@ -248,6 +249,7 @@
         .comp-title span {
             color: var(--gold);
         }
+        .comp-title .comp-title-sfx{display:block;font-size:.34em;letter-spacing:1px;margin-top:10px;color:var(--text-muted,#B8C5DB);font-family:'Barlow',sans-serif;font-weight:600;line-height:1.25}
         .comp-sub {
             font-size: 17px;
             line-height: 1.8;
@@ -351,8 +353,7 @@
         .diagram-step i {
             color: var(--gold);
             font-size: 20px;
-        }
-        .diagram-step h6 {
+        }.diagram-step .hl6 {
             font-size: 13px;
             font-weight: 700;
             color: var(--white);
@@ -467,8 +468,7 @@
         .diagram-function-card i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .diagram-function-card h6 {
+        }.diagram-function-card .hl6 {
             font-size: 12.5px;
             font-weight: 700;
             color: var(--white);
@@ -485,8 +485,7 @@
             background: rgba(0, 212, 255, 0.06);
             border: 1px solid rgba(0, 212, 255, 0.25);
             border-radius: 10px;
-        }
-        .diagram-result h6 {
+        }.diagram-result .hl6 {
             color: var(--cyan);
             font-size: 14px;
             font-weight: 700;
@@ -564,8 +563,7 @@
         .std-chip i {
             color: var(--gold);
             font-size: 18px;
-        }
-        .std-chip h5 {
+        }.std-chip h3 {
             font-size: 14px;
             font-weight: 700;
             margin-bottom: 3px;
@@ -599,8 +597,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .maint-item h5 {
+        }.maint-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -652,8 +649,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .test-item h5 {
+        }.test-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -722,8 +718,7 @@
             align-items: center;
             gap: 10px;
             margin-bottom: 5px;
-        }
-        .expert-item h5 {
+        }.expert-item h3 {
             font-size: 14.5px;
             font-weight: 700;
         }
@@ -779,8 +774,7 @@
             font-size: 16px;
             margin-top: 2px;
             flex-shrink: 0;
-        }
-        .issue-item h5 {
+        }.issue-item h3 {
             font-size: 14.5px;
             font-weight: 700;
             margin-bottom: 5px;
@@ -812,8 +806,7 @@
             color: #2ecc71;
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .ts-item-head h5 {
+        }.ts-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -875,8 +868,7 @@
             color: var(--red);
             font-size: 16px;
             flex-shrink: 0;
-        }
-        .fm-item-head h5 {
+        }.fm-item-head h3 {
             font-size: 15px;
             font-weight: 700;
         }
@@ -969,8 +961,7 @@
             font-size: 18px;
             margin-bottom: 12px;
             display: block;
-        }
-        .related-card h5 {
+        }.related-card .hl5 {
             font-size: 13.5px;
             font-weight: 700;
             color: var(--white);
@@ -1065,8 +1056,7 @@
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
-        }
-        .cta-strip h4 {
+        }.cta-strip .hl4 {
             font-family: 'Bebas Neue', sans-serif;
             font-size: 26px;
             letter-spacing: 1px;
@@ -1344,8 +1334,7 @@
             .param-table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
             .comp-hero-text { min-width: 0; max-width: 100%; }
             .comp-title, .comp-sub, .comp-tag { overflow-wrap: anywhere; }
-            img, svg { max-width: 100%; }
-            main p, main h2, main h3, main h4, main h5, main h6, main li, main td, main th { overflow-wrap: anywhere; }
+            img, svg { max-width: 100%; }main p, main h2, main h3, main h4, main h5, main h6, main .hl4, main .hl5, main .hl6, main li, main td, main th { overflow-wrap: anywhere; }
             [class$="-grid"] > *, .cta-strip > *, .maint-item > *, .test-item > * { min-width: 0; }
             :has(> svg[style*="min-width"]) { overflow-x: auto; }
             .comp-img-wrap { width: 100%; max-width: 100%; }
@@ -1405,7 +1394,7 @@
         "@context": "https://schema.org",
         "@type": "TechArticle",
         "@id": "https://rahulsharmaagl.in/component-industrial-media-converter.html#article",
-        "headline": "Industrial Media Converter",
+        "headline": "Industrial Media Converter: Function, Construction & Testing",
         "description": "Industrial media converter reference guide: copper Ethernet to fibre optic signal translation for AGL communication infrastructure, and auto-negotiation.",
         "url": "https://rahulsharmaagl.in/component-industrial-media-converter.html",
         "inLanguage": "en",
@@ -1506,6 +1495,12 @@
 .comp-img-note{display:block;width:0;min-width:100%;box-sizing:border-box;margin:8px 2px 0;font-size:11.5px;line-height:1.45;font-style:italic;color:rgba(255,255,255,.62);text-align:left}
 .comp-img-note a{color:var(--gold);text-decoration:underline}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1539,7 +1534,7 @@
     <div class="comp-hero">
         <div class="comp-hero-text">
             <div class="comp-tag"><i class="fa-solid fa-arrows-left-right"></i> AGL Component Library By Precision AGL Academy</div>
-            <h1 class="comp-title">Industrial <span>Media Converter</span></h1>
+            <h1 class="comp-title">Industrial <span>Media Converter</span><span class="comp-title-sfx">for AGL: Function, Construction and Testing</span></h1>
             <p class="comp-sub">A rugged, DIN‑rail mounted device that converts between copper Ethernet (10/100/1000BASE‑T) and fibre optic (100BASE‑FX, 1000BASE‑SX/LX) media, extending network reach, providing galvanic isolation, and ensuring reliable communication in harsh airfield environments. The Industrial Media Converter is a fundamental building block of the AGL fibre optic backbone, enabling long‑distance, noise‑immune connectivity between control rooms, substations, and field equipment.</p>
         </div>
         <div class="comp-img-wrap">
@@ -1554,7 +1549,7 @@
     <section>
         <div class="container">
             <div class="block-label">Overview</div>
-            <h2 class="block-title">What Is It?</h2>
+            <h2 class="block-title">What Is an Industrial Media Converter?</h2>
             <div class="info-panel">
                 <p>An <strong>Industrial Media Converter</strong> — also known as a fibre optic media converter, Ethernet‑to‑fibre converter, or simply media converter — is a network device that converts electrical signals from copper Ethernet cables (twisted pair, RJ‑45) into optical signals for transmission over fibre optic cables, and vice versa. In AGL applications, media converters are deployed to extend Ethernet communication distances far beyond the 100‑meter limit of copper cabling (up to 2 km on multi‑mode fibre and 80+ km on single‑mode fibre), while providing complete galvanic isolation and immunity to electromagnetic interference (EMI) from high‑voltage AGL power circuits, lightning, and nearby RF transmitters.</p>
                 <p style="margin-top:12px;">Key characteristics of the Industrial Media Converter include:</p>
@@ -1640,16 +1635,16 @@
             <h2 class="block-title">Copper ⇄ Fibre Conversion &amp; Control Logic</h2>
             <div class="diagram-block">
                 <div class="diagram-flow">
-                    <div class="diagram-step"><i class="fa-solid fa-ethernet"></i><h6 role="heading" aria-level="3">Copper Port</h6><p>Electrical Ethernet frames over twisted-pair, PHY auto-negotiates speed/duplex</p></div>
+                    <div class="diagram-step"><i class="fa-solid fa-ethernet"></i><div class="hl6">Copper Port</div><p>Electrical Ethernet frames over twisted-pair, PHY auto-negotiates speed/duplex</p></div>
                     <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
-                    <div class="diagram-step"><i class="fa-solid fa-memory"></i><h6 role="heading" aria-level="3">Frame Buffer &amp; CRC Check</h6><p>Verifies integrity before passing to the optical side</p></div>
+                    <div class="diagram-step"><i class="fa-solid fa-memory"></i><div class="hl6">Frame Buffer &amp; CRC Check</div><p>Verifies integrity before passing to the optical side</p></div>
                     <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
-                    <div class="diagram-step"><i class="fa-solid fa-tower-broadcast"></i><h6 role="heading" aria-level="3">Optical Transceiver</h6><p>Laser/LED drives light pulses at 850/1310/1550 nm</p></div>
+                    <div class="diagram-step"><i class="fa-solid fa-tower-broadcast"></i><div class="hl6">Optical Transceiver</div><p>Laser/LED drives light pulses at 850/1310/1550 nm</p></div>
                     <div class="diagram-arrow"><i class="fa-solid fa-arrows-left-right"></i></div>
-                    <div class="diagram-step"><i class="fa-solid fa-wave-square"></i><h6 role="heading" aria-level="3">Fibre Optic Port</h6><p>Light pulses carry the same Ethernet frames onward</p></div>
+                    <div class="diagram-step"><i class="fa-solid fa-wave-square"></i><div class="hl6">Fibre Optic Port</div><p>Light pulses carry the same Ethernet frames onward</p></div>
                 </div>
                 <div class="diagram-result">
-                    <h6 role="heading" aria-level="3">Ethernet Frames Bridged Between Copper &amp; Fibre — Both Directions</h6>
+                    <div class="hl6">Ethernet Frames Bridged Between Copper &amp; Fibre — Both Directions</div>
                     <p>Protocol-agnostic: TCP/IP, Modbus TCP, Profinet, EtherNet/IP all pass through unchanged</p>
                 </div>
             </div>
@@ -1720,10 +1715,10 @@
             <div class="block-label">Compliance</div>
             <h2 class="block-title">Applicable Standards</h2>
             <div class="std-chip-row">
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEEE 802.3</h5><p>Ethernet standards (10BASE‑T, 100BASE‑TX, 1000BASE‑T, 100BASE‑FX, 1000BASE‑SX/LX)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑6‑2</h5><p>EMC immunity for industrial environments</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">IEC 61000‑4‑5</h5><p>Surge immunity (lightning protection)</p></div></div>
-                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h5 role="heading" aria-level="3">FAA AC 150/5345‑56</h5><p>Specification for AGL control and monitoring equipment (fibre infrastructure)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEEE 802.3</h3><p>Ethernet standards (10BASE‑T, 100BASE‑TX, 1000BASE‑T, 100BASE‑FX, 1000BASE‑SX/LX)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61000‑6‑2</h3><p>EMC immunity for industrial environments</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>IEC 61000‑4‑5</h3><p>Surge immunity (lightning protection)</p></div></div>
+                <div class="std-chip"><i class="fa-solid fa-book"></i><div><h3>FAA AC 150/5345‑56</h3><p>Specification for AGL control and monitoring equipment (fibre infrastructure)</p></div></div>
             </div>
         </div>
     </section>
@@ -1737,42 +1732,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-server"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Paired DIN-Rail Mounting</h5><span class="test-stage">Mechanical</span></div>
+                        <div class="test-item-head"><h3>Paired DIN-Rail Mounting</h3><span class="test-stage">Mechanical</span></div>
                         <p>Mount the converter pair one at each end of the fibre link, DIN-rail mounted in the respective control room rack and remote enclosure.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Copper/Fibre Routing Separation</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Copper/Fibre Routing Separation</h3><span class="test-stage">Electrical</span></div>
                         <p>Route the copper Ethernet side clear of high-voltage AGL circuits and series-circuit feeder ducts, preserving the galvanic isolation the converter provides.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fibre Connector Cleaning &amp; Inspection</h5><span class="test-stage">Optical</span></div>
+                        <div class="test-item-head"><h3>Fibre Connector Cleaning &amp; Inspection</h3><span class="test-stage">Optical</span></div>
                         <p>Clean and inspect fibre connectors before mating to avoid attenuation from contamination on the ferrule.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-network-wired"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Local Ethernet Run</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Local Ethernet Run</h3><span class="test-stage">Electrical</span></div>
                         <p>Keep the copper-side cabling to a short local run to the nearby switch or PLC.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-bolt"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply Redundancy Wiring</h5><span class="test-stage">Electrical</span></div>
+                        <div class="test-item-head"><h3>Power Supply Redundancy Wiring</h3><span class="test-stage">Electrical</span></div>
                         <p>Wire dual power inputs from separate sources where redundant supply is specified for the installation.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Pre-Commissioning Sign-off</h5><span class="test-stage">Documentation</span></div>
+                        <div class="test-item-head"><h3>Pre-Commissioning Sign-off</h3><span class="test-stage">Documentation</span></div>
                         <p>Record mounting location, fibre route, and power wiring as-built before link testing begins.</p>
                     </div>
                 </div>
@@ -1788,42 +1783,42 @@
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Fibre Link Budget Verification</h5><span class="test-stage">Pre-Installation</span></div>
+                        <div class="test-item-head"><h3>Fibre Link Budget Verification</h3><span class="test-stage">Pre-Installation</span></div>
                         <p>Measure optical loss on the fibre run with a light source and power meter, confirming it falls within the converter's specified budget before connecting.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Optical Connector Cleaning &amp; Inspection</h5><span class="test-stage">Installation</span></div>
+                        <div class="test-item-head"><h3>Optical Connector Cleaning &amp; Inspection</h3><span class="test-stage">Installation</span></div>
                         <p>Inspect and clean all fibre connectors and verify with a fibre-optic scope before mating, since contamination is the leading cause of link failure.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Link Status &amp; Auto-Negotiation Test</h5><span class="test-stage">Energisation</span></div>
+                        <div class="test-item-head"><h3>Link Status &amp; Auto-Negotiation Test</h3><span class="test-stage">Energisation</span></div>
                         <p>Confirm link, speed, and duplex settings establish correctly at both the copper and fibre ends once powered up.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Alarm Relay Function Test</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Alarm Relay Function Test</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Simulate a link failure and confirm the alarm relay or SNMP trap reports correctly to the monitoring system.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; Redundancy Check</h5><span class="test-stage">Pre-Energisation</span></div>
+                        <div class="test-item-head"><h3>Power Supply &amp; Redundancy Check</h3><span class="test-stage">Pre-Energisation</span></div>
                         <p>Confirm dual power inputs, where fitted, are both connected and that the correct supply voltage is present at each.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-vial-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Documentation &amp; As-Built Sign-off</h5><span class="test-stage">Final Acceptance</span></div>
+                        <div class="test-item-head"><h3>Documentation &amp; As-Built Sign-off</h3><span class="test-stage">Final Acceptance</span></div>
                         <p>Record optical loss readings and link test results in the commissioning dossier.</p>
                     </div>
                 </div>
@@ -1839,42 +1834,42 @@
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Link Status &amp; Auto-Negotiation Check</h5><span class="maint-freq">Quarterly</span></div>
+                        <div class="maint-item-head"><h3>Link Status &amp; Auto-Negotiation Check</h3><span class="maint-freq">Quarterly</span></div>
                         <p>Verify copper port auto-negotiation matches the connected switch and check for CRC errors or link instability.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Fibre Cable Inspection</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Fibre Cable Inspection</h3><span class="maint-freq">Annual</span></div>
                         <p>Inspect fibre runs for physical damage from digging, construction, or rodents, confirming armored or duct-protected sections remain intact.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Optical Connector Cleaning</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Optical Connector Cleaning</h3><span class="maint-freq">Annual</span></div>
                         <p>Clean SC/ST/LC connectors with a proper fibre cleaning kit to prevent attenuation from dust, dirt, or oil contamination.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Power Supply &amp; UPS Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Power Supply &amp; UPS Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Verify the regulated 24 VDC supply and UPS backup remain stable to prevent converter resets or communication dropouts.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Enclosure Temperature Check</h5><span class="maint-freq">Semi-annual</span></div>
+                        <div class="maint-item-head"><h3>Enclosure Temperature Check</h3><span class="maint-freq">Semi-annual</span></div>
                         <p>Check enclosure ventilation or heating to confirm the converter stays within its rated operating temperature range.</p>
                     </div>
                 </div>
                 <div class="maint-item">
                     <i class="fa-solid fa-clipboard-check"></i>
                     <div>
-                        <div class="maint-item-head"><h5 role="heading" aria-level="3">Alarm Relay Test</h5><span class="maint-freq">Annual</span></div>
+                        <div class="maint-item-head"><h3>Alarm Relay Test</h3><span class="maint-freq">Annual</span></div>
                         <p>Test link-loss alarm relay wiring and configuration to confirm real faults are reported and false alarms are minimised.</p>
                     </div>
                 </div>
@@ -1887,13 +1882,13 @@
             <div class="block-label">Field Notes</div>
             <h2 class="block-title">Common Field Issues</h2>
             <div class="issue-list">
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Auto‑Negotiation Mismatch</h5><p>If the copper port's auto‑negotiation fails or is mismatched with the connected switch, speed/duplex mismatches can cause excessive collisions, CRC errors, or link instability. Manually configure the copper port to match the switch or ensure both sides are set to auto‑negotiation.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Fibre Optic Cable Damage</h5><p>Fibre cables are susceptible to damage from digging, construction, or rodent bites. The converter will show a loss of link (LOS) indication. Regular cable inspection and use of armored or duct‑protected fibre is recommended.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Optical Connector Contamination</h5><p>Dust, dirt, or oil on SC/ST/LC connectors can cause significant signal attenuation (loss of optical power). Clean connectors with a proper fibre cleaning kit (e.g., pen cleaner or wipes) before reconnecting.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Incompatible Fibre Types</h5><p>Using single‑mode fibre with a multi‑mode transceiver (or vice versa) will result in very high attenuation and link failure. Always match the converter's optical interface to the installed fibre type.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Power Supply Instability</h5><p>Industrial media converters are sensitive to voltage fluctuations. Use a dedicated, regulated 24 VDC power supply with sufficient capacity and UPS backup to prevent converter resets or communication dropouts.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Temperature Extremes</h5><p>Outdoor enclosures without proper ventilation can exceed the converter's operating temperature range, causing intermittent faults or permanent damage. Use industrial‑rated converters and ensure proper enclosure cooling or heating.</p></div></div>
-                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h5 role="heading" aria-level="3">Link‑Loss Alarm Misconfiguration</h5><p>Some converters have alarm relay outputs that can be configured for link‑loss detection. Misconfiguration or incorrect wiring can cause false alarms or failure to report actual faults. Verify alarm relay settings during commissioning.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Auto‑Negotiation Mismatch</h3><p>If the copper port's auto‑negotiation fails or is mismatched with the connected switch, speed/duplex mismatches can cause excessive collisions, CRC errors, or link instability. Manually configure the copper port to match the switch or ensure both sides are set to auto‑negotiation.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Fibre Optic Cable Damage</h3><p>Fibre cables are susceptible to damage from digging, construction, or rodent bites. The converter will show a loss of link (LOS) indication. Regular cable inspection and use of armored or duct‑protected fibre is recommended.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Optical Connector Contamination</h3><p>Dust, dirt, or oil on SC/ST/LC connectors can cause significant signal attenuation (loss of optical power). Clean connectors with a proper fibre cleaning kit (e.g., pen cleaner or wipes) before reconnecting.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Incompatible Fibre Types</h3><p>Using single‑mode fibre with a multi‑mode transceiver (or vice versa) will result in very high attenuation and link failure. Always match the converter's optical interface to the installed fibre type.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Power Supply Instability</h3><p>Industrial media converters are sensitive to voltage fluctuations. Use a dedicated, regulated 24 VDC power supply with sufficient capacity and UPS backup to prevent converter resets or communication dropouts.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Temperature Extremes</h3><p>Outdoor enclosures without proper ventilation can exceed the converter's operating temperature range, causing intermittent faults or permanent damage. Use industrial‑rated converters and ensure proper enclosure cooling or heating.</p></div></div>
+                <div class="issue-item"><i class="fa-solid fa-triangle-exclamation"></i><div><h3>Link‑Loss Alarm Misconfiguration</h3><p>Some converters have alarm relay outputs that can be configured for link‑loss detection. Misconfiguration or incorrect wiring can cause false alarms or failure to report actual faults. Verify alarm relay settings during commissioning.</p></div></div>
             </div>
         </div>
     </section>
@@ -1904,43 +1899,43 @@
             <h2 class="block-title">Troubleshooting Guide</h2>
             <div class="ts-list">
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Link Unstable or High Error Rate on the Copper Port</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Link Unstable or High Error Rate on the Copper Port</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Auto-negotiation mismatch between the copper port and the connected switch causing a speed/duplex mismatch.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check the negotiated speed/duplex on both ends; look for excessive collisions or CRC errors in port statistics.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Set both ends to auto-negotiation consistently, or manually configure matching speed/duplex settings on both the converter and switch.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Loss of Link (LOS) Indication on the Fibre Side</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Loss of Link (LOS) Indication on the Fibre Side</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Physical damage to the fibre cable from digging, construction, or rodent activity.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Inspect accessible fibre runs for visible damage; check optical power levels against expected values; review any recent civil works near the cable route.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Repair or replace the damaged fibre segment, and consider armoured or duct-protected fibre for future runs in vulnerable areas.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">High Attenuation Without Visible Cable Damage</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>High Attenuation Without Visible Cable Damage</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Dust, dirt, or oil contamination on the optical connectors.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Measure received optical power against the link budget; inspect connector end-faces with a fibre scope if available.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Clean connectors with an appropriate fibre cleaning kit before reconnecting, and re-measure optical power to confirm the fix.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Link Fails Immediately After Installation</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Link Fails Immediately After Installation</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Mismatched fibre type — single-mode fibre paired with a multi-mode transceiver, or vice versa.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Confirm the fibre type installed matches the converter's optical interface specification; check transceiver part numbers against the fibre type.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Replace the transceiver or converter module to match the installed fibre type, or replace the fibre run if the transceiver type is fixed.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Converter Resets or Drops Communication Intermittently</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Converter Resets or Drops Communication Intermittently</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Power supply instability or voltage fluctuation feeding the converter.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Monitor supply voltage for dips or noise at the converter's power input; check whether the supply is dedicated and adequately rated.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Fit a dedicated, regulated 24 VDC supply with sufficient capacity and UPS backup for the converter.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">Intermittent Faults Correlating With Weather or Time of Day</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>Intermittent Faults Correlating With Weather or Time of Day</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Enclosure temperature exceeding the converter's rated operating range due to inadequate ventilation, heating, or cooling.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Log enclosure temperature over a full day/season cycle and compare against the converter's rated range; inspect enclosure ventilation, heating, or cooling provisions.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Improve enclosure thermal management (ventilation, heating/cooling) or fit an industrial-rated converter suited to the actual temperature extremes.</div></div>
                 </div>
                 <div class="ts-item">
-                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h5 role="heading" aria-level="3">False Alarms or Missed Link-Loss Alarms at the ALCMS</h5></div>
+                    <div class="ts-item-head"><i class="fa-solid fa-lightbulb"></i><h3>False Alarms or Missed Link-Loss Alarms at the ALCMS</h3></div>
                     <div class="ts-row"><div class="ts-row-label">Likely Cause</div><div class="ts-row-value">Alarm relay output misconfigured or incorrectly wired for link-loss detection.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Diagnostic Steps</div><div class="ts-row-value">Check alarm relay configuration settings against the intended link-loss behaviour; verify relay wiring at the ALCMS input.</div></div>
                     <div class="ts-row"><div class="ts-row-label">Corrective Action</div><div class="ts-row-value">Reconfigure the alarm relay settings and correct wiring, then verify with a simulated link-loss test.</div></div>
@@ -1956,7 +1951,7 @@
             <div class="fm-list">
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Fibre Cable Physical Damage</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Fibre Cable Physical Damage</h3></div>
                         <span class="fm-sev fm-sev-high">High Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Digging, construction work, or rodent activity damaging the fibre cable along its route.</div></div>
@@ -1965,7 +1960,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Connector Contamination</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Connector Contamination</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Dust, dirt, or oil contamination on the optical connector end-faces, often introduced during handling.</div></div>
@@ -1974,7 +1969,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Fibre Type Mismatch</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Fibre Type Mismatch</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Single-mode fibre paired with a multi-mode transceiver, or vice versa, at installation.</div></div>
@@ -1983,7 +1978,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Power Supply Instability</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Power Supply Instability</h3></div>
                         <span class="fm-sev fm-sev-medium">Medium Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Voltage fluctuation or noise on a shared, non-dedicated power supply feeding the converter.</div></div>
@@ -1992,7 +1987,7 @@
                 </div>
                 <div class="fm-item">
                     <div class="fm-item-head">
-                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h5 role="heading" aria-level="3">Enclosure Thermal Extremes</h5></div>
+                        <div class="fm-item-head-left"><i class="fa-solid fa-bolt-lightning"></i><h3>Enclosure Thermal Extremes</h3></div>
                         <span class="fm-sev fm-sev-low">Low Severity</span>
                     </div>
                     <div class="fm-row"><div class="fm-row-label">Root Cause</div><div class="fm-row-value">Enclosure temperature exceeding the converter's rated operating range due to inadequate ventilation, heating, or cooling.</div></div>
@@ -2012,56 +2007,56 @@
                 <div class="test-item">
                     <i class="fa-solid fa-eye-slash"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Never Look Into a Fibre Connector or Transceiver</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>Never Look Into a Fibre Connector or Transceiver</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Never look directly into an unterminated fibre connector or an active transceiver port; the laser source is invisible to the eye but can cause retinal damage. Use a fibre-certified optical power meter to check for light, never a direct visual check.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-plug"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Isolate Before Internal Work</h5><span class="test-stage">Electrical Safety</span></div>
+                        <div class="test-item-head"><h3>Isolate Before Internal Work</h3><span class="test-stage">Electrical Safety</span></div>
                         <p>De-energise the converter before opening its enclosure, and use anti-static precautions when handling the internal board.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Inspect Connector End-Faces Before Mating</h5><span class="test-stage">Verification</span></div>
+                        <div class="test-item-head"><h3>Inspect Connector End-Faces Before Mating</h3><span class="test-stage">Verification</span></div>
                         <p>Inspect and clean fibre connector end-faces with a fibre scope and approved cleaning method before mating them, since dust or oil contamination introduced during handling is a common cause of rising attenuation without any visible cable damage.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-ruler-combined"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Fibre Type Match</h5><span class="test-stage">Verification</span></div>
+                        <div class="test-item-head"><h3>Confirm Fibre Type Match</h3><span class="test-stage">Verification</span></div>
                         <p>Verify single-mode or multi-mode fibre matches the transceiver type on both ends of the link before commissioning, since a mismatch can cause the link to fail immediately or perform far below expectation even when it connects.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Verify Optical Power Budget</h5><span class="test-stage">Verification</span></div>
+                        <div class="test-item-head"><h3>Verify Optical Power Budget</h3><span class="test-stage">Verification</span></div>
                         <p>Measure received optical power against the link budget after installation or any splice/connector work, rather than relying on link-up status alone, since a weak but functioning link can still be operating with little margin.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-network-wired"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Confirm Redundant Path Before Taking a Link Down</h5><span class="test-stage">Operational</span></div>
+                        <div class="test-item-head"><h3>Confirm Redundant Path Before Taking a Link Down</h3><span class="test-stage">Operational</span></div>
                         <p>Verify an alternate communication path is active before disconnecting a media converter serving a live CCR or ALCMS link, since fibre cable damage from excavation or rodent activity is a recurring, hard-to-predict failure mode.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">PPE &amp; Grounding</h5><span class="test-stage">Personnel Safety</span></div>
+                        <div class="test-item-head"><h3>PPE &amp; Grounding</h3><span class="test-stage">Personnel Safety</span></div>
                         <p>Confirm the converter enclosure is bonded/grounded per the electrical design, and use standard PPE and cut-resistant gloves when handling exposed fibre strands.</p>
                     </div>
                 </div>
                 <div class="test-item">
                     <i class="fa-solid fa-circle-check"></i>
                     <div>
-                        <div class="test-item-head"><h5 role="heading" aria-level="3">Restore to Compliant State</h5><span class="test-stage">Compliance</span></div>
+                        <div class="test-item-head"><h3>Restore to Compliant State</h3><span class="test-stage">Compliance</span></div>
                         <p>Confirm link status, optical power margin, and correct data pass-through on both copper and fibre sides before closing out the work.</p>
                     </div>
                 </div>
@@ -2084,42 +2079,42 @@
                 <div class="expert-item">
                     <i class="fa-solid fa-eye-slash"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Laser Safety Applies Even to 'Dead' Looking Ports</h5><span class="expert-tag">Personnel Safety</span></div>
+                        <div class="expert-item-head"><h3>Laser Safety Applies Even to 'Dead' Looking Ports</h3><span class="expert-tag">Personnel Safety</span></div>
                         <p>A fibre port that appears unused or a link that's reported down can still have an active laser source on the transceiver; treat every fibre connector as potentially live and never visually inspect it directly, regardless of the reported link status.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-magnifying-glass"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Rising Attenuation Without Cable Damage Usually Means Contamination</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>Rising Attenuation Without Cable Damage Usually Means Contamination</h3><span class="expert-tag">Verification</span></div>
                         <p>A link that degrades gradually with no reported cable disturbance is a classic sign of dust or oil contamination accumulating on connector end-faces from repeated handling; inspect and clean end-faces as a first troubleshooting step before suspecting the fibre run itself.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-gauge-high"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">A Link That's Up Isn't Necessarily a Link With Margin</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>A Link That's Up Isn't Necessarily a Link With Margin</h3><span class="expert-tag">Verification</span></div>
                         <p>Link-up status only confirms the receiver detected enough light to establish a connection, not how much margin exists above that threshold; measure actual received optical power against the link budget so a marginal link is caught before further degradation takes it down entirely.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-code-compare"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Single-Mode and Multi-Mode Connectors Can Physically Mate Despite Being Incompatible</h5><span class="expert-tag">Verification</span></div>
+                        <div class="expert-item-head"><h3>Single-Mode and Multi-Mode Connectors Can Physically Mate Despite Being Incompatible</h3><span class="expert-tag">Verification</span></div>
                         <p>Because single-mode and multi-mode connectors on some standards are physically compatible despite being optically incompatible, a mismatched pairing can be assembled without any mechanical resistance, only revealing itself through poor or failed link performance.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-route"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">Fibre Cable Damage Is a Different Failure Mode Than Copper</h5><span class="expert-tag">Operational</span></div>
+                        <div class="expert-item-head"><h3>Fibre Cable Damage Is a Different Failure Mode Than Copper</h3><span class="expert-tag">Operational</span></div>
                         <p>Fibre runs are vulnerable to excavation strikes and rodent damage in ways that don't always produce the gradual warning signs a copper circuit might; treat any unexplained link interruption on a buried fibre run as a possible physical damage event worth a route inspection, not just a media converter fault.</p>
                     </div>
                 </div>
                 <div class="expert-item">
                     <i class="fa-solid fa-shield-halved"></i>
                     <div>
-                        <div class="expert-item-head"><h5 role="heading" aria-level="3">ESD Damage to the Converter Board Can Cause Intermittent, Not Just Hard, Faults</h5><span class="expert-tag">Electrical</span></div>
+                        <div class="expert-item-head"><h3>ESD Damage to the Converter Board Can Cause Intermittent, Not Just Hard, Faults</h3><span class="expert-tag">Electrical</span></div>
                         <p>A board handled without anti-static precautions can suffer partial component damage that produces intermittent link drops or degraded throughput rather than outright failure, making the root cause hard to trace back to a handling event that happened much earlier.</p>
                     </div>
                 </div>
@@ -2174,10 +2169,10 @@
             <div class="block-label">Explore Further</div>
             <h2 class="block-title">Related Components</h2>
             <div class="related-grid">
-                <a href="component-fiber-converter.html" class="related-card"><i class="fa-solid fa-wave-sine"></i><h5 role="heading" aria-level="3">Fiber Converter</h5></a>
-                <a href="component-ethernet-switch.html" class="related-card"><i class="fa-solid fa-network-wired"></i><h5 role="heading" aria-level="3">Ethernet Switch</h5></a>
-                <a href="component-fibre-optic-patch-panel.html" class="related-card"><i class="fa-solid fa-plug"></i><h5 role="heading" aria-level="3">Fibre Optic Patch Panel</h5></a>
-                <a href="component-communication-gateway.html" class="related-card"><i class="fa-solid fa-gateway"></i><h5 role="heading" aria-level="3">Communication Gateway</h5></a>
+                <a href="component-fiber-converter.html" class="related-card"><i class="fa-solid fa-wave-sine"></i><div class="hl5">Fiber Converter</div></a>
+                <a href="component-ethernet-switch.html" class="related-card"><i class="fa-solid fa-network-wired"></i><div class="hl5">Ethernet Switch</div></a>
+                <a href="component-fibre-optic-patch-panel.html" class="related-card"><i class="fa-solid fa-plug"></i><div class="hl5">Fibre Optic Patch Panel</div></a>
+                <a href="component-communication-gateway.html" class="related-card"><i class="fa-solid fa-gateway"></i><div class="hl5">Communication Gateway</div></a>
             </div>
         </div>
     </section>
@@ -2216,7 +2211,7 @@
             </div>
 
             <div class="cta-strip">
-                <div><h4 role="heading" aria-level="3">Need expert guidance on Industrial Media Converter selection, deployment, or troubleshooting for your AGL network?</h4><p>Precision AGL Academy provides advice on converter types, fibre selection, distance planning, and best practices for reliable fibre optic network infrastructure.</p></div>
+                <div><div class="hl4">Need expert guidance on Industrial Media Converter selection, deployment, or troubleshooting for your AGL network?</div><p>Precision AGL Academy provides advice on converter types, fibre selection, distance planning, and best practices for reliable fibre optic network infrastructure.</p></div>
                 <button class="btn btn-gold" id="contactCtaBtn"><i class="fa-solid fa-envelope"></i> Contact Precision AGL Academy</button>
             </div>
         </div>

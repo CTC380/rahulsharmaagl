@@ -547,6 +547,13 @@
   .block-title{font-size:clamp(26px,8vw,36px);overflow-wrap:anywhere;}
 }
 </style>
+<style id="heading-parity">@media (min-width:769px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}@media (min-width:481px) and (max-width:768px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}@media (max-width:480px){html body .hp1{border-bottom-color:rgb(255, 180, 0)!important;border-top-color:rgb(255, 180, 0)!important;color:rgb(255, 180, 0)!important;display:flex!important;font-family:"Bebas Neue", sans-serif!important;font-size:13.5px!important;letter-spacing:1px!important;margin-bottom:9px!important}}</style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -624,52 +631,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> CCR fails to start when commanded from ALCMS or the local panel — no output, no run indication, and the unit remains dead or trips immediately on the start command.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Constant Current Regulator (CCR) — SCR or IGBT-based — its control/logic board, main incoming supply, and start/enable circuitry.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Main incoming supply breaker tripped or missing phase upstream of the CCR</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Control fuse blown on the CCR logic/control power supply</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Local/Remote selector switch in the wrong position or an E-stop engaged</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">ALCMS start command not reaching the CCR due to a comms fault</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Internal control board fault preventing the start sequence</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Output contactor or relay failed to pull in</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Multimeter (CAT III)</span><span>CCR technical manual and wiring diagram</span><span>ALCMS status screen</span><span>Clamp-on ammeter</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the CCR before any internal access.</li><li>Verify the incoming supply is de-energised before opening the cabinet.</li><li>Treat the CCR as live until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Check ALCMS for the CCR&#x27;s reported status and any active alarm/fault code before touching the unit.</li><li><span class="step-tag">Observation</span>Confirm the local/remote selector position and that no E-stop or interlock is engaged at the panel.</li><li><span class="step-tag">Measurement</span>With the cabinet open and supply confirmed present, verify incoming supply voltage at the main breaker and confirm the control power supply fuse/breaker is intact.</li><li><span class="step-tag">Measurement</span>Attempt a local start command and observe whether the control logic energises (indicator lamps, display) even if the output contactor does not close.</li><li><span class="step-tag">Decision</span>Control logic does not power up at all → incoming supply/control fuse fault. Control logic powers up but the output does not close → contactor/output stage or start-sequence fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the incoming supply, control fuse, selector/interlock circuit, or output contactor/relay.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before replacement.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Incoming supply voltage at the main breaker</div><div class="tp-item">Control power supply fuse continuity</div><div class="tp-item">Selector switch / E-stop circuit continuity</div><div class="tp-item">Output contactor coil voltage on start command</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, start the CCR through a full run cycle at each intensity step and confirm ALCMS reports normal running status.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Reset or replace the tripped breaker after confirming no downstream fault.</li><li>Replace the blown control fuse.</li><li>Correct the selector switch or E-stop position.</li><li>Repair the ALCMS-to-CCR comms link.</li><li>Replace a faulty output contactor or control board.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include a CCR start-sequence test in the periodic PM cycle.</li><li>Verify the comms link integrity periodically.</li><li>Check E-stop/interlock wiring for damage during PM.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-CCR-01 (CCR Start-up and Verification Procedure), SOP-CCR-04 (CCR LOTO Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-10, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> CCR wiring/schematic diagram</p>
@@ -689,52 +696,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> CCR starts but trips (shuts down) within seconds to minutes of energising, either on start or during the run, without an operator command.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>CCR overcurrent, short-circuit, and general protection trip circuitry, output stage, and the series circuit it feeds.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Hard short circuit or ground fault on the downstream series circuit</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Output stage (SCR/IGBT) overcurrent trip from a genuine circuit fault</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Nuisance trip from an undersized or misconfigured protection setpoint</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A failing output component causing the CCR to self-protect</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Cooling fan failure allowing internal temperature to rise and trip on secondary protection</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Loose internal connection causing a transient that trips protection</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Clamp-on ammeter</span><span>Insulation resistance tester (megger)</span><span>CCR trip/event log</span><span>CCR technical manual</span><span>Thermal imaging camera</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before investigating internal trip circuitry.</li><li>Treat the series circuit as a possible short/ground fault until proven otherwise.</li><li>Do not repeatedly reset the CCR without investigating the trip cause.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Review the CCR trip log/event history to identify which protection function (overcurrent, ground fault, overtemperature) initiated the trip and whether it is immediate or delayed.</li><li><span class="step-tag">Observation</span>Note whether the trip occurs on every start attempt or is intermittent.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the full series loop to check for a hard short or ground fault before re-energising.</li><li><span class="step-tag">Measurement</span>If insulation resistance is acceptable, re-energise briefly under supervision and clamp-meter the output current against the circuit&#x27;s expected load.</li><li><span class="step-tag">Decision</span>Megger reveals a hard fault on the loop → route to the Series Circuit Failure or Cable Earth Fault trees. Megger is clean and output current is within range but the trip persists → CCR internal protection/output stage fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the downstream circuit or to the CCR&#x27;s own protection/output stage.</li><li><span class="step-tag">Root Cause</span>Confirm the specific fault — external short vs. internal CCR fault — before returning the unit to service.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Series loop insulation resistance</div><div class="tp-item">Output current at the moment of trip</div><div class="tp-item">Trip log timestamp and protection function</div><div class="tp-item">Cooling fan operation</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, run the CCR through a full brightness-step cycle without a repeat trip and confirm the event log is clear.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair the identified circuit short or ground fault.</li><li>Replace the faulty output component.</li><li>Adjust the protection setpoint per manufacturer specification if confirmed a nuisance trip.</li><li>Replace a failed cooling fan.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Trend CCR trip logs to catch developing faults before hard failure.</li><li>Include protection setpoint verification in commissioning and PM.</li><li>Keep the cooling system clean and unobstructed.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-CCR-02 (CCR Trip Investigation Procedure), SOP-CCR-04</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-10, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> CCR protection settings sheet</p>
@@ -754,52 +761,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> CCR earth-fault (ground-fault) protection trips or alarms, indicating current leakage to ground somewhere on the series circuit or within the CCR itself.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>CCR earth-fault/ground-fault detection circuitry and the series circuit loop (cable, joints, isolation transformers) it protects.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Moisture ingress into a cable joint, pull box, or base can degrading insulation to ground</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A failing isolation transformer winding with insulation breakdown to its case/ground</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Damaged cable jacket exposing the conductor to a grounded path</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">The CCR&#x27;s own internal earth-fault detection circuit malfunctioning (false trip)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A recently disturbed section (excavation, base can work) with a marginal connection to ground</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Cumulative insulation ageing across an older section of the circuit</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>1000V/2500V insulation resistance tester (megger)</span><span>CCR earth-fault trend log</span><span>Cable route and joint location drawing</span><span>TDR / fault locator</span><span>Moisture detection meter</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the CCR before any insulation testing or cable work.</li><li>Treat a genuine earth-fault indication as a real hazard, not a nuisance, and do not simply reset without investigating.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Review the CCR&#x27;s earth-fault trend log to see whether the fault is a hard trip or a gradually worsening marginal reading.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the primary loop in segments from accessible pull boxes or base cans.</li><li><span class="step-tag">Measurement</span>Compare each segment&#x27;s reading against its baseline/previous test value to identify the segment with the greatest drop.</li><li><span class="step-tag">Decision</span>Drop isolated to one segment, joint, or transformer → localised repair. Drop appears at the CCR terminals with the field loop disconnected → CCR internal detection fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the specific cable segment, joint, or transformer winding.</li><li><span class="step-tag">Root Cause</span>Confirm with a full-loop re-test that insulation resistance is restored to, or above, the acceptable threshold.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Segment-by-segment insulation resistance vs. baseline</div><div class="tp-item">Individual transformer winding insulation</div><div class="tp-item">CCR earth-fault trip log</div><div class="tp-item">Joint/base can condition in the lowest-reading segment</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-megger the full loop after repair and monitor the CCR earth-fault trend over subsequent operating cycles.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the degraded cable segment or joint.</li><li>Replace the transformer with the failing winding.</li><li>Reseal an identified moisture entry point.</li><li>Replace the CCR earth-fault detection module if confirmed internally faulty.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Schedule periodic full-loop insulation resistance testing and trend results.</li><li>Prioritise ageing sections for proactive replacement.</li><li>Seal known moisture entry points during PM.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-CCR-03 (Earth Fault Investigation Procedure), SOP-CCR-04</p>
             <p><strong>Standards:</strong> IEC 60364, ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Circuit route drawing</p>
@@ -819,52 +826,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> CCR alarms or trips on overtemperature protection, either shortly after starting or progressively during extended operation.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>CCR cooling system (fans, vents, heat sinks), output stage, and enclosure/cabinet environment.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Cooling fan failure or a blocked/dirty air filter restricting airflow</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Enclosure installed or operating in an ambient environment exceeding design temperature (poor ventilation, direct sun, blocked louvres)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">An output stage component (SCR/IGBT) degrading and generating excess heat at normal load</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A loose high-current connection creating a localised hot spot</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Temperature sensor/thermostat miscalibrated, causing a false trip</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">CCR operating at a load/duty beyond its rated capacity for the circuit</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Thermal imaging camera</span><span>Clamp-on ammeter</span><span>CCR technical manual</span><span>Cabinet thermometer</span><span>Torque wrench for connection checks</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before internal inspection.</li><li>Allow the unit to cool before opening if recently tripped on overtemperature.</li><li>Use insulated tools when checking live connections.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Review the trip/alarm log to confirm overtemperature is the actual protection function and note the time-to-trip from start.</li><li><span class="step-tag">Observation</span>Check the cabinet/enclosure environment for blocked vents, direct heat sources, or inadequate clearance.</li><li><span class="step-tag">Measurement</span>With the unit isolated, inspect and test the cooling fan(s) and check the air filter for blockage.</li><li><span class="step-tag">Measurement</span>Thermal-image the output stage and all high-current connections during a supervised run to locate a hot spot.</li><li><span class="step-tag">Decision</span>Hot spot at a specific connection or component → localised fault, repair/replace. No localised hot spot but overall cabinet temperature is high → ventilation/ambient issue.</li><li><span class="step-tag">Fault Location</span>Isolate to the cooling system, a specific connection/component, or the installation environment.</li><li><span class="step-tag">Root Cause</span>Confirm the temperature returns to normal operating range under full load after correction.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Cooling fan operation and airflow</div><div class="tp-item">Air filter condition</div><div class="tp-item">Thermal image of output stage and connections</div><div class="tp-item">Cabinet ambient temperature</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Run the CCR at full rated load for an extended period post-repair and confirm temperature stabilises within normal range without re-tripping.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace a failed fan or clean/replace the air filter.</li><li>Re-torque or replace a loose high-current connection.</li><li>Replace a degraded output component.</li><li>Improve enclosure ventilation or shading.</li><li>Recalibrate or replace the temperature sensor.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Clean and inspect the cooling system and filters on a defined PM interval.</li><li>Include thermal imaging of connections in PM.</li><li>Verify enclosure ventilation clearances at commissioning.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-CCR-05 (Overtemperature Investigation Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-10</p>
             <p><strong>Diagram:</strong> CCR thermal design specification</p>
@@ -884,52 +891,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> CCR output current reads incorrect (too high, too low, unstable, or zero) at a given intensity step, without necessarily tripping.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>CCR output regulation and current feedback circuitry, and the series circuit it supplies.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Series circuit has fewer or more load points than expected (fixture added/removed, or a fault reducing effective load)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Current feedback/sensing transformer or shunt inaccurate or failed</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Output regulation control loop fault (SCR firing/IGBT control) preventing correct current output</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A partial short or high-resistance fault on the circuit affecting current distribution</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Intensity step command from ALCMS not matching what is set locally</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">CCR calibration drift since last verification</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Clamp-on ammeter (true-RMS)</span><span>CCR technical manual</span><span>ALCMS intensity step log</span><span>Calibrated reference meter</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before any internal connection changes.</li><li>Treat the output circuit as energised at the commanded current until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Compare the CCR&#x27;s reported output current against the ALCMS-commanded intensity step and the circuit&#x27;s expected rated current for that step.</li><li><span class="step-tag">Measurement</span>Independently verify actual output current with a calibrated clamp meter at the CCR output terminals.</li><li><span class="step-tag">Measurement</span>If the independent reading differs from the CCR&#x27;s displayed value, suspect the feedback/sensing path; if they agree but are wrong for the step, suspect the regulation control loop or the circuit itself.</li><li><span class="step-tag">Decision</span>Displayed and measured current agree but differ from the expected value for the circuit load → circuit-side issue, route to the Series Circuit Failure tree. Displayed and measured current disagree → CCR feedback/sensing fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the current feedback/sensing component, the output regulation control loop, or the downstream circuit.</li><li><span class="step-tag">Root Cause</span>Confirm the specific component or circuit condition responsible for the discrepancy.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">CCR output terminals (independent ammeter reading)</div><div class="tp-item">Current feedback/sensing transformer output</div><div class="tp-item">ALCMS commanded step vs. actual output</div><div class="tp-item">Circuit load count</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Step the CCR through its full intensity range and confirm output current tracks the expected value at each step, matching an independent reference measurement.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace a faulty current sensing transformer or shunt.</li><li>Repair or recalibrate the output regulation control loop.</li><li>Correct the circuit load discrepancy.</li><li>Recalibrate the CCR against a reference standard.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include CCR output current calibration verification in the periodic PM/calibration cycle.</li><li>Maintain an accurate as-built fixture count per circuit.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-CCR-06 (CCR Calibration and Output Verification)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-10</p>
             <p><strong>Diagram:</strong> CCR calibration certificate</p>
@@ -949,52 +956,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An entire series circuit (a run of fixtures) is dark or shows abnormal output, distinct from a single-fixture fault, reported via ALCMS, night inspection, or pilot/vehicle report.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The complete series loop for a given circuit — CCR output, primary cable, isolation transformers, fixtures, and return path to the CCR.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Open circuit somewhere in the primary cable loop (a break, failed joint, or disconnected termination)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR at reduced or zero output feeding the circuit</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A hard short or ground fault causing the CCR to trip before establishing normal output</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A section isolator or circuit breaker for this specific loop left open after previous work</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Multiple simultaneous fixture-level faults coincidentally affecting the same run</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Miswiring following recent circuit modification or repair work</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Clamp-on series circuit ammeter</span><span>Insulation resistance tester (megger)</span><span>TDR / fault locator</span><span>As-built circuit and base-can layout drawing</span><span>CCR panel / ALCMS status</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate all airside access through ATC/apron control.</li><li>Treat the circuit as energised until confirmed isolated and LOTO applied at the CCR.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Check the CCR/ALCMS panel to confirm whether the CCR itself is producing normal output current for this circuit.</li><li><span class="step-tag">Observation</span>Confirm by field inspection whether the entire run is dark or only a section/group of fixtures.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the full loop from the CCR output to identify whether an open circuit or a short/ground fault is present.</li><li><span class="step-tag">Measurement</span>If an open circuit is indicated, use a TDR or sectional testing from accessible base cans/pull boxes to localise the break.</li><li><span class="step-tag">Decision</span>CCR output is abnormal → route to the CCR Output Current or CCR Trip trees. CCR output is normal but the loop shows an open or short → cable/circuit-level fault, proceed to isolate.</li><li><span class="step-tag">Fault Location</span>Isolate the open circuit or short/ground fault to a specific cable segment, joint, or transformer.</li><li><span class="step-tag">Root Cause</span>Confirm the fault location by direct inspection or excavation before repair.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">CCR output current and voltage</div><div class="tp-item">Full-loop insulation resistance and continuity</div><div class="tp-item">Sectional resistance from accessible access points</div><div class="tp-item">Isolator/breaker positions for this circuit</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-energise the circuit and confirm every fixture on the run illuminates correctly at all intensity steps during a night inspection.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the open cable section or failed joint.</li><li>Restore CCR output if the root cause was upstream.</li><li>Close any isolator/breaker inadvertently left open.</li><li>Correct miswiring from recent work.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain an accurate, current circuit and base-can layout drawing.</li><li>Verify circuit continuity as a standard step after any excavation or joint work near the loop.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-11 (Circuit Fault Location Procedure), SOP-CCR-04</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Circuit route drawing</p>
@@ -1014,52 +1021,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A single fixture on an otherwise normally operating series circuit fails to illuminate, while the rest of the run lights correctly.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The individual fixture, its isolation transformer, L-823 connector, and base can.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Isolation transformer failure at the fixture (open primary/secondary winding)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Lamp/LED source failure inside the fixture</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">L-823 connector failure — moisture ingress, corroded pin, or plug not fully seated</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Base can flooded or contaminated, affecting the connector or transformer</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Fixture physically damaged or displaced by vehicle/aircraft wheel loading</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A localised short cable segment between this fixture and the next, isolated to this connection only</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>1000V insulation resistance tester (megger)</span><span>L-823 connector test adaptor</span><span>Base-can lifting tool and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Confirm the circuit is isolated and LOTO applied before opening the base can, even though the rest of the run remains lit.</li><li>Use FOD-safe tools and account for every item before leaving the pavement.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm via field inspection that only this single fixture is dark and the rest of the run is lit normally.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, disconnect the fixture&#x27;s L-823 plug and megger the isolation transformer primary and secondary windings.</li><li><span class="step-tag">Measurement</span>Inspect the base can for water or debris and check the lamp/LED module for visible failure.</li><li><span class="step-tag">Decision</span>Transformer or lamp confirmed faulty → replace at this fixture only. Transformer and lamp test good → suspect the connector or a short local cable run to the adjacent fixture.</li><li><span class="step-tag">Fault Location</span>Isolate to the transformer, lamp/LED module, connector, or the short cable segment feeding this fixture.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before replacement rather than swapping parts speculatively.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Isolation transformer primary/secondary insulation</div><div class="tp-item">L-823 connector contact condition</div><div class="tp-item">Lamp/LED module continuity</div><div class="tp-item">Base can water/debris condition</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-energise the circuit and confirm the fixture lights at all intensity steps, then inspect the full run at night to confirm no adjacent lights were disturbed.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed isolation transformer or lamp/LED module.</li><li>Reseat or replace a corroded/damaged connector.</li><li>Drain and reseal the base can.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include fixture, transformer, and connector inspection in the routine night flight-check and PM cycle.</li><li>Maintain an accurate base-can schedule to speed fault location.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-01 (Fault Isolation Procedure), SOP-CCR-04</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-46, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> Base-can schedule</p>
@@ -1079,52 +1086,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> Two or more fixtures on the same circuit are dark or abnormal simultaneously, more than a single isolated fixture fault would explain.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The affected group of fixtures, the cable section(s) connecting them, and the upstream CCR/circuit.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">An open circuit or failed joint in the cable section immediately upstream of the first affected fixture, taking out everything downstream on that leg</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">CCR at reduced/zero output affecting the whole circuit, with only some fixtures visibly darker due to loading effects</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A common cable section shared by the affected group damaged during recent excavation or ground work</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Coincidental independent failures at each fixture (less likely but must be ruled out)</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A section isolator/breaker for a sub-group left open after previous work</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Seasonal water table rise affecting multiple base cans in a low-lying area simultaneously</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Clamp-on series circuit ammeter</span><span>Insulation resistance tester (megger)</span><span>TDR / fault locator</span><span>As-built circuit and base-can layout drawing</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Coordinate airside access through ATC/apron control.</li><li>Treat the circuit as energised until confirmed isolated and LOTO applied.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Map exactly which fixtures are affected and confirm whether they are contiguous along the circuit or scattered.</li><li><span class="step-tag">Observation</span>Check the CCR/ALCMS panel to confirm whether overall circuit output current is normal, reduced, or zero.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the loop between the last known-good fixture and the first affected fixture to check for an open or short.</li><li><span class="step-tag">Decision</span>Affected fixtures are contiguous downstream of a single point → localise the fault to the cable/joint at that point. Affected fixtures are scattered with no common cable section → investigate CCR output or independent fixture-level faults for each.</li><li><span class="step-tag">Fault Location</span>Isolate to the specific cable segment or joint feeding the affected group, or to individual fixtures if scattered.</li><li><span class="step-tag">Root Cause</span>Confirm the fault location by direct inspection before repair.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Circuit output current at the CCR</div><div class="tp-item">Insulation resistance/continuity between the last known-good and first affected fixture</div><div class="tp-item">Base can condition in the affected area</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-energise the circuit and confirm every fixture in the previously affected group illuminates correctly at all intensity steps during a night inspection.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair the identified cable section or joint.</li><li>Restore CCR output if the root cause was upstream.</li><li>Repair any individually faulted fixtures identified.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain accurate circuit mapping to speed identification of contiguous vs. scattered failures.</li><li>Monitor low-lying base can areas for seasonal water table effects.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-11, SOP-CCR-04</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Circuit route drawing</p>
@@ -1144,52 +1151,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> Continuity testing or fault symptoms indicate a break in the primary series cable loop, interrupting current flow to some or all downstream fixtures.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Primary series circuit cable, joints, and terminations between the CCR and the affected fixtures.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A cable break from excavation damage (third-party dig-in or airfield works)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A failed or corroded splice/joint that has separated</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A termination that has worked loose or corroded at a base can or pull box</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Cable pulled taut and separated during pavement settlement or frost heave</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Rodent or wildlife damage to the cable jacket and conductor</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A manufacturing/installation defect in a joint that has finally failed after prolonged service</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>TDR (time domain reflectometer) or fault locator</span><span>Insulation resistance tester (megger)</span><span>Cable route drawing</span><span>Continuity tester</span><span>Excavation/access equipment as needed</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO the circuit before any cable testing or excavation.</li><li>Call for utility/cable locates before any digging.</li><li>Treat exposed conductors as live until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm from the failure pattern (which fixtures are dark) which cable section is implicated.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, use a TDR to estimate the distance to the open from the nearest accessible termination.</li><li><span class="step-tag">Measurement</span>Cross-check the TDR estimate against the as-built cable route drawing to identify the likely physical location (pull box, joint, or mid-run).</li><li><span class="step-tag">Decision</span>Break located at an accessible joint/pull box → repair without excavation. Break located mid-run in buried cable → coordinate excavation and locates before repair.</li><li><span class="step-tag">Fault Location</span>Confirm the exact break location by direct inspection once access is achieved.</li><li><span class="step-tag">Root Cause</span>Determine whether the break resulted from mechanical damage, corrosion, or ground movement to inform the repair method and prevent recurrence.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">TDR distance-to-fault reading</div><div class="tp-item">Cable route drawing correlation</div><div class="tp-item">Joint/pull box condition at the estimated location</div><div class="tp-item">Continuity across the repaired section after splicing</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, megger and continuity-test the full loop, then re-energise and confirm all previously affected fixtures illuminate correctly.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Splice and properly seal the break using an approved airfield-rated splice kit.</li><li>Replace the damaged cable section if the jacket is compromised over a length rather than at a single point.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Maintain accurate cable route drawings and provide them to any party performing ground works near the circuit.</li><li>Include cable route condition in periodic PM where accessible.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-11 (Circuit Fault Location Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Cable route drawing</p>
@@ -1209,52 +1216,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> Insulation testing or CCR earth-fault protection indicates current leakage from the primary cable to ground, distinct from a fixture-level or transformer-level fault.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Primary series circuit cable, its jacket, joints, and route between the CCR and the fixtures it feeds.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A nicked or cracked cable jacket exposing the conductor to moist soil or a conductive pathway</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A failed joint allowing moisture ingress directly onto the conductor</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Mechanical damage from a previous excavation that has since begun to fail under moisture exposure</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Long-term UV or thermal degradation of jacket material at an exposed section</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A manufacturing defect in the cable insulation</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Rodent damage exposing the conductor</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>1000V/2500V insulation resistance tester (megger)</span><span>TDR / fault locator</span><span>Cable route and joint drawing</span><span>Moisture detection meter</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before any insulation testing or cable work.</li><li>Treat a marginal insulation reading as a developing hazard and investigate rather than resetting protection.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Review the CCR&#x27;s earth-fault trend to establish whether this is a step-change (likely mechanical damage) or gradual (likely moisture/ageing).</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the cable in segments from accessible pull boxes to identify the affected segment.</li><li><span class="step-tag">Measurement</span>Within the identified segment, narrow the location using a TDR referenced against the route drawing.</li><li><span class="step-tag">Decision</span>Fault localises to a specific accessible point → repair without excavation. Fault requires excavation to access → coordinate locates and dig.</li><li><span class="step-tag">Fault Location</span>Confirm the exact fault point by direct inspection.</li><li><span class="step-tag">Root Cause</span>Determine whether mechanical damage, joint failure, or ageing caused the fault to guide the appropriate repair and prevention.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Segment-by-segment insulation resistance</div><div class="tp-item">TDR distance-to-fault</div><div class="tp-item">Joint/pull box condition</div><div class="tp-item">Moisture presence at the suspected location</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-megger the full loop and confirm the reading is restored to, or above, the acceptable threshold, then monitor the earth-fault trend over subsequent cycles.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the damaged cable section or joint using an approved airfield-rated splice/repair kit.</li><li>Reseal an identified moisture entry point.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Schedule periodic insulation resistance testing and trend results over time.</li><li>Prioritise ageing sections for proactive replacement.</li><li>Provide accurate route drawings to any party performing ground works nearby.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-11, SOP-CCR-03</p>
             <p><strong>Standards:</strong> IEC 60364, ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Cable route drawing</p>
@@ -1274,52 +1281,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> Periodic or diagnostic insulation resistance (megger) testing of a circuit returns a reading below the acceptable threshold, without necessarily having caused a trip or visible fault yet.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The full series circuit loop under test — cable, joints, isolation transformers — and the test equipment itself.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Gradual moisture ingress into one or more cable joints or pull boxes</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Aged cable jacket cracking from UV/thermal cycling</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A single degrading isolation transformer winding</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Mechanical damage from previous ground works beginning to fail under moisture exposure</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Cumulative insulation ageing across an older section of the circuit</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A test equipment or test lead fault producing an artificially low reading</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>1000V/2500V insulation resistance tester (megger)</span><span>CCR earth-fault trend log</span><span>Cable route and joint drawing</span><span>Spare/calibrated megger for cross-check</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before any insulation testing.</li><li>Treat a marginal reading as a developing hazard rather than a nuisance.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the reading with a second, calibrated megger and a known-good test lead set to rule out a test equipment error before proceeding.</li><li><span class="step-tag">Measurement</span>Megger the loop in segments from accessible pull boxes/base cans, comparing each against its baseline/previous test value.</li><li><span class="step-tag">Measurement</span>Identify the segment or transformer contributing the greatest drop in insulation resistance.</li><li><span class="step-tag">Decision</span>Drop isolated to one segment/joint → localised repair. Drop distributed across many segments → treat as cumulative circuit ageing and plan proactive replacement.</li><li><span class="step-tag">Fault Location</span>Isolate to the specific cable segment, joint, or transformer winding contributing most to the reduced reading.</li><li><span class="step-tag">Root Cause</span>Confirm with a full-loop re-test that the reading is restored to, or above, the acceptable threshold.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Segment-by-segment insulation resistance vs. baseline</div><div class="tp-item">Individual transformer winding insulation</div><div class="tp-item">Test equipment calibration status</div><div class="tp-item">Joint/pull box condition in the lowest-reading segment</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-megger the full loop after repair and confirm the reading is restored to, or above, the acceptable threshold; trend over subsequent test cycles.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the identified degraded cable segment or joint.</li><li>Replace the transformer with the failing winding.</li><li>Reseal an identified moisture entry point.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Schedule periodic full-loop insulation resistance testing on a defined interval and trend results year over year.</li><li>Prioritise ageing circuit sections for proactive cable replacement.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-11, SOP-CCR-03</p>
             <p><strong>Standards:</strong> IEC 60364, ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Circuit route drawing</p>
@@ -1339,52 +1346,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An isolation transformer at a fixture, sign, or other load is suspected or confirmed faulty — open winding, short, or degraded insulation — affecting the load it feeds.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Individual series-circuit isolation transformer (primary/secondary), its base can, and connections.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Open primary or secondary winding from age, moisture, or thermal stress</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Insulation breakdown between windings or to the transformer case</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Incorrect transformer rating installed for the connected load at a previous replacement</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Base can flooding causing corrosion and eventual winding failure</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Mechanical damage to the transformer casing from vehicle/aircraft loading or impact</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Manufacturing defect surfacing after a relatively short service life</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>1000V insulation resistance tester (megger)</span><span>True-RMS multimeter</span><span>Transformer rating/specification sheet</span><span>Base-can lifting tool and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before disconnecting or testing the transformer.</li><li>Treat the base can as potentially energised until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm which load (fixture, sign) is affected and note the transformer&#x27;s rated ratio and VA against the connected load&#x27;s specification.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, disconnect the transformer and megger the primary and secondary windings independently, and between windings and case.</li><li><span class="step-tag">Measurement</span>Check primary and secondary winding continuity/resistance against manufacturer specification.</li><li><span class="step-tag">Decision</span>Winding open or insulation breakdown confirmed → replace transformer. Transformer tests within spec → look elsewhere in the circuit (connector, cable, load itself).</li><li><span class="step-tag">Fault Location</span>Confirm the transformer is the failed component rather than the connector or load it feeds.</li><li><span class="step-tag">Root Cause</span>Verify the replacement transformer&#x27;s rating matches the connected load&#x27;s specification before re-energising.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Primary winding insulation and continuity</div><div class="tp-item">Secondary winding insulation and continuity</div><div class="tp-item">Winding-to-case insulation</div><div class="tp-item">Transformer rating vs. connected load specification</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After replacement, re-energise and confirm the connected load operates correctly at all intensity steps, and re-megger the loop.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed transformer with one of the correct rating.</li><li>Drain and reseal the base can if flooding contributed to failure.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Verify transformer rating against load specification at every replacement.</li><li>Include transformer insulation testing in the periodic PM cycle.</li><li>Address chronic base can flooding at its source.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-01</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> Transformer specification sheet</p>
@@ -1404,52 +1411,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An L-823 (or equivalent) connector is suspected or confirmed faulty — moisture ingress, corrosion, poor contact, or physical damage — affecting the load downstream of it.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>L-823 primary/secondary connector set and its immediate base can environment.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Moisture ingress into the connector body due to a failed or missing seal</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Corroded pins or sockets from prolonged moisture exposure</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Connector not fully seated or mated at last installation</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Mechanical damage to the connector body from base can work or vehicle loading</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Incorrect connector type/rating installed for the application</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Normal wear from repeated mating/unmating over the connector&#x27;s service life</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>L-823 connector test adaptor</span><span>True-RMS multimeter</span><span>Contact cleaner/dielectric grease (per spec)</span><span>Base-can lifting tool and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before disconnecting or inspecting the connector.</li><li>Treat the base can as potentially energised until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the connector is the suspected fault point based on the symptom pattern (intermittent, moisture-related, or immediately after recent work).</li><li><span class="step-tag">Measurement</span>With the circuit isolated, disconnect and visually inspect the connector for corrosion, moisture, damaged pins, or an incomplete seal.</li><li><span class="step-tag">Measurement</span>Test contact resistance across the mated connector using a test adaptor if available.</li><li><span class="step-tag">Decision</span>Visible corrosion, damage, or moisture confirmed → clean, reseal, or replace. Connector appears sound and low-resistance → look elsewhere (transformer, cable) for the fault.</li><li><span class="step-tag">Fault Location</span>Confirm the connector is the failed component rather than the transformer or cable it joins.</li><li><span class="step-tag">Root Cause</span>Determine why the seal or connection failed (age, incorrect part, incomplete seating) to prevent recurrence.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Contact resistance across the mated pair</div><div class="tp-item">Seal integrity</div><div class="tp-item">Pin/socket corrosion condition</div><div class="tp-item">Base can moisture level</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-energise and confirm the downstream load operates correctly, and re-check the connector at the next inspection cycle for continued integrity.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Clean, re-grease, and properly reseat the connector.</li><li>Replace a corroded or damaged connector with the correct rated part.</li><li>Reseal the base can.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Torque/seating-check connectors as a standard PM step.</li><li>Use the correct dielectric grease at every mating.</li><li>Include connector condition in the periodic night inspection.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-01</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-46</p>
             <p><strong>Diagram:</strong> Connector specification sheet</p>
@@ -1469,52 +1476,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A fixture (in-pavement or elevated) is confirmed non-functional or degraded at the fixture level, after the transformer, connector, and cable have been ruled out.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Individual runway/taxiway light fixture — lamp/LED module, lens, housing, and internal wiring.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Lamp/LED module failure (end of life, driver fault, or physical damage)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Internal fixture wiring fault between the connector and the lamp/LED module</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Lens cracked, missing, or heavily contaminated affecting light output</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Fixture housing damaged or displaced by vehicle/aircraft wheel loading or snow plough contact</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Water ingress into the fixture housing itself, separate from the base can</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Incorrect lamp/LED module part number installed for the fixture type</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>Lamp/LED module bench tester if available</span><span>Fixture parts catalogue and specification sheet</span><span>Lens cleaning kit</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before fixture access.</li><li>Use FOD-safe tools and account for every item before leaving the pavement.</li><li>Coordinate airside access through ATC/apron control.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the transformer, connector, and cable feeding this fixture have tested good, isolating the fault to the fixture itself.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, disconnect the fixture and inspect the lamp/LED module, internal wiring, lens, and housing for visible damage.</li><li><span class="step-tag">Measurement</span>Bench-test the lamp/LED module independently if equipment is available.</li><li><span class="step-tag">Decision</span>Lamp/LED module or internal wiring confirmed faulty → replace the module or repair internal wiring. Lens or housing damage found with a functional lamp/LED → repair/replace lens or housing only.</li><li><span class="step-tag">Fault Location</span>Confirm the specific failed fixture component before ordering replacement parts.</li><li><span class="step-tag">Root Cause</span>Determine whether the failure is normal end-of-life, physical damage, or a part number mismatch.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Lamp/LED module continuity/output</div><div class="tp-item">Internal fixture wiring continuity</div><div class="tp-item">Lens condition</div><div class="tp-item">Housing integrity and seal</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-energise and confirm the fixture illuminates correctly at all intensity steps and matches the photometric output of neighbouring fixtures.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed lamp/LED module.</li><li>Repair internal wiring.</li><li>Replace a cracked or missing lens.</li><li>Replace or repair a damaged housing.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include fixture-level inspection (lens, housing, module condition) in the routine night flight-check.</li><li>Verify part numbers at every replacement.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-TCL-02</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-46, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> Fixture parts catalogue</p>
@@ -1534,52 +1541,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> An illuminated airfield guidance sign (mandatory or informational) is dark, partially lit, or displaying incorrect legend illumination.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Sign internal lighting module (lamp/LED panel), transformer, connector, and housing.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Internal lamp/LED panel failure (partial or complete)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Isolation transformer feeding the sign has failed</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">L-823 connector at the sign has failed</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Internal sign wiring fault between the connector and the lamp/LED panel</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Sign housing damaged, allowing water ingress to the internal panel</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Legend panel discoloured or damaged, giving the appearance of a lighting fault</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>1000V insulation resistance tester (megger)</span><span>Sign parts catalogue and specification sheet</span><span>Base-can lifting tool and PPE</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before sign access.</li><li>Coordinate airside access through ATC/apron control.</li><li>Treat the sign circuit as energised until confirmed isolated.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether the entire sign is dark, only part of the legend is unlit, or the sign appears lit but with incorrect brightness/colour.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, megger the transformer feeding the sign and check connector condition, following the same approach as a fixture-level fault.</li><li><span class="step-tag">Measurement</span>If the transformer and connector test good, open the sign housing and inspect the internal lamp/LED panel and wiring.</li><li><span class="step-tag">Decision</span>Transformer or connector confirmed faulty → replace, consistent with standard fixture-level procedure. Transformer/connector good but the sign is still faulty → internal panel or wiring fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the transformer, connector, internal lamp/LED panel, or internal wiring.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component before replacement.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Transformer primary/secondary insulation</div><div class="tp-item">Connector contact condition</div><div class="tp-item">Internal lamp/LED panel continuity</div><div class="tp-item">Housing seal integrity</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, re-energise and confirm the full legend illuminates evenly and correctly at all intensity steps during a night inspection.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed transformer, connector, or lamp/LED panel.</li><li>Repair internal wiring.</li><li>Reseal the housing.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include sign legend and housing seal inspection in the routine night flight-check and PM cycle.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SGN-01 (Sign Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-44, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> Sign parts catalogue</p>
@@ -1599,52 +1606,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A PAPI (Precision Approach Path Indicator) unit shows an incorrect light bar pattern, an unlit bar, or a reported colour/aim discrepancy to approaching aircraft.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>PAPI unit — lamp/LED source, colour filter/lens assembly, aiming mechanism, and its power supply/transformer.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A single lamp/LED bar failure within the unit</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Unit aim/elevation drifted from its calibrated setting (mechanical settlement, impact, or vibration)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Colour filter/lens degraded, cracked, or contaminated, shifting the red/white transition</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Isolation transformer or connector feeding the unit has failed</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Internal wiring fault within the PAPI unit</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Foreign object or vegetation partially obstructing the beam</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>PAPI aiming/inclinometer tool</span><span>Colour coordinate/chromaticity meter</span><span>Manufacturer calibration procedure and specification</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before internal access.</li><li>Coordinate airside access through ATC/apron control given PAPI proximity to the runway.</li><li>Do not adjust aim without following the calibrated procedure and a subsequent flight check.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm from the pilot/inspection report which specific bar or transition is affected and whether it is a colour, intensity, or complete outage issue.</li><li><span class="step-tag">Measurement</span>With the circuit isolated, check the transformer and connector feeding the affected bar following standard fixture-level testing.</li><li><span class="step-tag">Measurement</span>If the transformer/connector are good, inspect the lamp/LED source, lens/filter, and confirm unit aim against the calibrated elevation setting.</li><li><span class="step-tag">Decision</span>Transformer/connector or lamp/LED confirmed faulty → replace, consistent with standard fixture-level procedure. Aim found to have drifted → re-calibrate per the manufacturer procedure and confirm with a flight check.</li><li><span class="step-tag">Fault Location</span>Isolate to the power/connector path, the lamp/LED/lens assembly, or the aiming mechanism.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause, especially for aim drift, to prevent recurrence.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Transformer/connector condition</div><div class="tp-item">Lamp/LED bar output</div><div class="tp-item">Lens/filter chromaticity</div><div class="tp-item">Unit elevation aim vs. calibrated setting</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair or recalibration, confirm the correct bar pattern and colour transition visually and, for aim corrections, via a flight check per the applicable procedure.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed lamp/LED, transformer, or connector.</li><li>Replace a degraded lens/filter.</li><li>Re-aim the unit to its calibrated elevation.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include PAPI aim verification and lens condition in the periodic PM and flight-check cycle.</li><li>Clear vegetation or obstructions from the unit&#x27;s sight line regularly.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-PAPI-01 (PAPI Calibration and Fault Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5345-28, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> PAPI calibration certificate</p>
@@ -1664,52 +1671,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> One or more fixtures within the Approach Lighting System (ALS) — including centreline bars, crossbars, or sequenced flashers — fail to illuminate or flash correctly.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALS fixture, its transformer/power supply (or flasher unit for sequenced lights), cable run along the approach light structure, and the CCR/flasher controller.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Individual fixture lamp/LED, transformer, or connector failure, consistent with standard fixture-level faults</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Flasher/sequencer unit fault affecting a sequenced flashing light (RAIL/lead-in lights)</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Cable or connection fault along the elevated/structure-mounted run, complicated by access difficulty</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Structural or mounting damage from weather exposure affecting fixture alignment or wiring</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">CCR or flasher controller sequencing/timing fault affecting the flash pattern circuit-wide</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Access/terrain-related damage (e.g., in over-water or off-airport approach light structures)</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>Insulation resistance tester (megger)</span><span>Flasher/sequencer test set</span><span>Structure access equipment (ladder/lift/boat as applicable)</span><span>As-built ALS layout drawing</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before any work.</li><li>Use fall protection and structure-specific access procedures for elevated or over-water approach light structures.</li><li>Coordinate access given proximity to the approach path.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm whether the fault affects a single fixture, a flasher-sequenced group, or the full approach lighting system.</li><li><span class="step-tag">Measurement</span>For a single fixture, apply standard fixture-level fault isolation (transformer, connector, lamp/LED).</li><li><span class="step-tag">Measurement</span>For a sequenced flasher fault, check the flasher/sequencer unit output and timing against specification.</li><li><span class="step-tag">Decision</span>Single fixture-level fault confirmed → proceed under standard fixture repair. Flasher/sequencer or wider circuit fault → isolate to the controller or the structure cable run.</li><li><span class="step-tag">Fault Location</span>Isolate to the specific fixture, the flasher/sequencer unit, or the structure cable run.</li><li><span class="step-tag">Root Cause</span>Confirm the specific failed component, noting any access or environmental factors that may have contributed (weather exposure, structure movement).</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Fixture transformer/connector/lamp condition</div><div class="tp-item">Flasher/sequencer output and timing</div><div class="tp-item">Structure cable run insulation resistance</div><div class="tp-item">Mounting/structural condition at the affected location</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, confirm correct illumination or flash sequencing across the full ALS during a night inspection, including flash timing verification where applicable.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Replace the failed fixture component.</li><li>Repair or replace the flasher/sequencer unit.</li><li>Repair the structure cable run.</li><li>Correct any mounting/alignment damage.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include structure condition and cable run inspection in the periodic PM cycle, accounting for weather exposure.</li><li>Verify flasher timing calibration periodically.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALS-01 (Approach Lighting Fault Procedure)</p>
             <p><strong>Standards:</strong> FAA AC 150/5340-30, ICAO Annex 14 Vol I</p>
             <p><strong>Diagram:</strong> ALS as-built layout drawing</p>
@@ -1729,52 +1736,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A runway-guard or stop bar light (elevated or in-pavement, typically red, often paired with runway guard signs) fails to illuminate, fails to extinguish on selection, or shows an incorrect state relative to the ALCMS command.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>Stop bar fixture(s), transformer/connector, the dedicated stop bar circuit, and the ALCMS/CCR interface controlling its on/off state.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Individual fixture-level fault (lamp/LED, transformer, connector), consistent with standard fixture faults</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Stop bar circuit not responding to the ALCMS selection command (CCR/relay/interface fault) — the bar stays lit when it should extinguish, or vice versa</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Series circuit fault affecting the whole stop bar run, distinct from a single fixture</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Interlock/logic fault between the stop bar and adjacent taxiway/runway lighting control</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">In-pavement fixture physically damaged by aircraft/vehicle wheel loading given the stop bar&#x27;s location at a runway holding position</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Miscommunication between ALCMS and the CCR due to a comms fault, causing a delayed or missing state change</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>True-RMS multimeter</span><span>Insulation resistance tester (megger)</span><span>ALCMS status screen</span><span>CCR/relay logic diagram for the stop bar interlock</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before any work.</li><li>Treat a stop bar fault as safety-critical and notify ATC/airfield operations immediately, since it directly affects runway incursion protection.</li><li>Do not leave a malfunctioning stop bar in an ambiguous state.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm via ALCMS whether the commanded state matches the actual observed state of the stop bar, and whether the discrepancy is circuit-wide or fixture-specific.</li><li><span class="step-tag">Observation</span>Notify airfield operations/ATC of the discrepancy immediately given the safety-critical function.</li><li><span class="step-tag">Measurement</span>If circuit-wide, check the CCR/relay logic for the stop bar interlock against the ALCMS command.</li><li><span class="step-tag">Measurement</span>If fixture-specific, apply standard fixture-level fault isolation (transformer, connector, lamp/LED).</li><li><span class="step-tag">Decision</span>Discrepancy traces to CCR/relay/interlock logic → circuit-level fault, isolate at the controller. Discrepancy isolated to one or more fixtures → fixture-level fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the specific fixture, the circuit, or the ALCMS/CCR interlock logic.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause before returning the stop bar to service, given its safety-critical function.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">ALCMS commanded vs. actual stop bar state</div><div class="tp-item">CCR/relay interlock logic output</div><div class="tp-item">Fixture-level transformer/connector/lamp condition</div><div class="tp-item">Comms link status between ALCMS and the CCR</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, cycle the stop bar through on/off selection via ALCMS multiple times and confirm the physical state matches the command every time before returning to service.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the failed fixture component.</li><li>Repair the CCR/relay interlock logic fault.</li><li>Restore the comms link between ALCMS and the CCR.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include stop bar state-verification (commanded vs. actual) in the routine inspection cycle.</li><li>Test the interlock logic periodically, not only fixture condition.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-SB-01 (Stop Bar Fault and Interlock Verification Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Stop bar interlock logic diagram</p>
@@ -1794,52 +1801,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> A photometric measurement (intensity, beam spread, or colour) taken during a compliance check or flight inspection falls outside the specified tolerance for one or more fixtures, without necessarily a complete outage.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>The fixture(s) under test, their lamp/LED source, lens/filter, alignment, and the CCR output feeding them.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Lens contamination (dirt, rubber deposits, fuel residue) reducing measured intensity</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">Fixture misalignment (aim/tilt) shifting the beam outside the specified pattern</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Lamp/LED source degraded (aged, dimming) below rated output at the tested intensity step</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">CCR output current at the tested step lower than the value the fixture was calibrated for</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Incorrect lens/filter colour or a degraded filter shifting chromaticity out of tolerance</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Test equipment calibration or measurement geometry error producing a false failure</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Photometric test equipment (per applicable flight-check or ground photometric procedure)</span><span>Colour coordinate/chromaticity meter</span><span>Fixture aiming/inclinometer tool</span><span>Lens cleaning kit</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>LOTO before physical fixture adjustment.</li><li>Coordinate airside access through ATC/apron control.</li><li>Treat the circuit as energised until confirmed isolated for any hands-on work.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm the specific parameter that failed (intensity, beam spread, or chromaticity) and by how much it deviates from tolerance.</li><li><span class="step-tag">Measurement</span>Inspect and, if needed, clean the lens, then re-measure to rule out contamination as the cause.</li><li><span class="step-tag">Measurement</span>If still out of tolerance, check fixture aim/alignment against the specified pattern using an aiming tool.</li><li><span class="step-tag">Decision</span>Cleaning alone resolves the deviation → contamination was the root cause, close out. Cleaning does not resolve it → check alignment, lamp/LED output, and CCR current at the tested step in turn.</li><li><span class="step-tag">Fault Location</span>Isolate to lens contamination, misalignment, lamp/LED degradation, filter condition, or CCR output current.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause with a re-test after each corrective action rather than changing multiple variables at once.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Measured intensity/beam spread/chromaticity vs. specification</div><div class="tp-item">Lens condition before and after cleaning</div><div class="tp-item">Fixture aim vs. specified pattern</div><div class="tp-item">CCR output current at the tested intensity step</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>Re-test photometrically after correction and confirm the fixture meets specification at the relevant intensity step(s).</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Clean the lens.</li><li>Re-aim the fixture to the specified pattern.</li><li>Replace a degraded lamp/LED module or filter.</li><li>Correct CCR output current if found to be the source of the deviation.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include lens cleaning and aim verification in the periodic PM cycle given fuel-spill, rubber deposit, and vibration exposure.</li><li>Trend photometric readings over time to catch gradual degradation before it becomes a compliance failure.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-PHM-01 (Photometric Compliance Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I (light intensity requirements), FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> Photometric test report</p>
@@ -1859,52 +1866,52 @@
           <p class="symptom-line"><strong>Symptom &#x2014;</strong> The Airfield Lighting Control and Monitoring System (ALCMS) loses communication with, or reports inconsistent status from, one or more CCRs or field devices, without necessarily an actual lighting fault present.</p>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-microchip"></i> Equipment / System</h3>
             <p>ALCMS server/workstation, communication network (fibre, copper, or wireless links), and the CCR/field device communication interfaces.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-list-check"></i> Possible Causes</h3>
             <div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A physical break or fault in the communications cable/fibre between ALCMS and the affected CCR(s)</span></div><div class="cause-item prob-high"><span class="cause-prob">High</span><span class="cause-text">A network switch, media converter, or communication card failure at the CCR or ALCMS end</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">A software/configuration fault on the ALCMS server or a specific device&#x27;s communication address</span></div><div class="cause-item prob-med"><span class="cause-prob">Med</span><span class="cause-text">Power loss to a network component (switch, media converter) without affecting the CCR&#x27;s lighting function itself</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">Electromagnetic interference or a grounding issue affecting communication signal integrity</span></div><div class="cause-item prob-low"><span class="cause-prob">Low</span><span class="cause-text">A firmware/software update or configuration change that altered the comms setup without full verification</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-toolbox"></i> Required Tools</h3>
             <div class="tag-row"><span>Network cable tester</span><span>Optical power meter (for fibre links)</span><span>ALCMS/CCR communication architecture drawing</span><span>Laptop with diagnostic/configuration software</span><span>Spare network components for substitution testing</span></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-triangle-exclamation"></i> Safety Precautions</h3>
             <ul class="safety-list"><li>Follow standard electrical safety practice when working in CCR cabinets even though this is a communications, not lighting-circuit, fault.</li><li>Coordinate any network changes with airfield operations given the operational reliance on ALCMS status.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-diagram-project"></i> Decision Tree / Diagnostic Procedure</h3>
             <ol class="step-list"><li><span class="step-tag">Observation</span>Confirm from ALCMS whether the affected CCR(s)/devices are actually failing to communicate, and cross-check the CCR&#x27;s actual lighting status locally to confirm it is a comms issue and not a real lighting fault also being missed.</li><li><span class="step-tag">Observation</span>Identify whether one device, several on a common network segment, or all devices are affected, which indicates how far upstream the fault lies.</li><li><span class="step-tag">Measurement</span>Test the physical communication link (cable continuity, fibre optical power) between ALCMS and the affected point.</li><li><span class="step-tag">Measurement</span>If the physical link tests good, check the network switch/media converter and the device&#x27;s communication configuration/address.</li><li><span class="step-tag">Decision</span>Physical link fault confirmed → repair/replace the cable, fibre, or connector. Physical link good but the device fails to communicate → network component or configuration fault.</li><li><span class="step-tag">Fault Location</span>Isolate to the physical link, a network component, or a software/configuration issue.</li><li><span class="step-tag">Root Cause</span>Confirm the specific cause and, for a single-device failure following recent configuration changes, review what was changed.</li></ol>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-crosshairs"></i> Test Points</h3>
             <div class="tp-grid"><div class="tp-item">Physical cable/fibre continuity and signal quality</div><div class="tp-item">Network switch/media converter status</div><div class="tp-item">Device communication address/configuration</div><div class="tp-item">ALCMS event log for the affected device</div></div>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-check-double"></i> Root Cause Verification</h3>
             <p>After repair, confirm the affected CCR(s)/devices report status to ALCMS consistently and match actual field lighting status over a sustained monitoring period.</p>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-screwdriver-wrench"></i> Corrective Action</h3>
             <ul><li>Repair or replace the damaged cable/fibre/connector.</li><li>Replace the failed network switch/media converter/communication card.</li><li>Correct the device&#x27;s communication configuration/address.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-shield-halved"></i> Preventive Action</h3>
             <ul><li>Include communication link testing (cable/fibre condition, network component health) in the periodic PM cycle, separate from lighting-circuit PM.</li><li>Maintain an accurate, current network architecture drawing.</li><li>Verify comms status as a standard step after any configuration or firmware change.</li></ul>
           </div>
 
           <div class="tfield">
-            <h5><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h5>
+            <h3 class="hp1"><i aria-hidden="true" class="fa-solid fa-link"></i> Related References</h3>
             <p><strong>SOP:</strong> SOP-ALCMS-01 (Communication Fault Isolation Procedure)</p>
             <p><strong>Standards:</strong> ICAO Annex 14 Vol I, FAA AC 150/5340-30</p>
             <p><strong>Diagram:</strong> ALCMS/CCR network architecture drawing</p>

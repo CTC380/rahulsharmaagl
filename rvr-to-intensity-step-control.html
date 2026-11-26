@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RVR-to-Intensity-Step Control | Precision AGL Academy</title>
+    <title>RVR-to-Intensity-Step Control: Control Logic &amp; Monitoring</title>
     <meta name="description" content="What is RVR-to-intensity-step control? How runway visual range is used to choose the brightness step of the runway lights: manual, advisory and automatic modes." />
     <meta name="author" content="Precision AGL Academy" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://rahulsharmaagl.in/rvr-to-intensity-step-control.html" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="https://rahulsharmaagl.in/rvr-to-intensity-step-control.html" />
-    <meta property="og:title" content="RVR-to-Intensity-Step Control | Precision AGL Academy" />
+    <meta property="og:title" content="RVR-to-Intensity-Step Control: Control Logic &amp; Monitoring" />
     <meta property="og:description" content="What is RVR-to-intensity-step control? How runway visual range is used to choose the brightness step of the runway lights: manual, advisory and automatic modes." />
     <meta property="og:site_name" content="Precision AGL Academy" />
     <meta property="og:locale" content="en_US" />
@@ -19,7 +19,7 @@
     <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://rahulsharmaagl.in/rvr-to-intensity-step-control.html" />
-    <meta name="twitter:title" content="RVR-to-Intensity-Step Control | Precision AGL Academy" />
+    <meta name="twitter:title" content="RVR-to-Intensity-Step Control: Control Logic &amp; Monitoring" />
     <meta name="twitter:description" content="What is RVR-to-intensity-step control? How runway visual range is used to choose the brightness step of the runway lights: manual, advisory and automatic modes." />
     <meta name="twitter:image" content="https://rahulsharmaagl.in/assets/og-rvr-to-intensity-step-control.jpg" />
     <script type="application/ld+json">
@@ -27,7 +27,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "@id": "https://rahulsharmaagl.in/rvr-to-intensity-step-control.html#article",
-  "headline": "RVR-to-Intensity-Step Control",
+  "headline": "RVR-to-Intensity-Step Control: Control Logic & Monitoring",
   "description": "What is RVR-to-intensity-step control? How runway visual range is used to choose the brightness step of the runway lights: manual, advisory and automatic modes, step tables, hysteresis, ATC override and fail-safe behaviour.",
   "url": "https://rahulsharmaagl.in/rvr-to-intensity-step-control.html",
   "mainEntityOfPage": "https://rahulsharmaagl.in/rvr-to-intensity-step-control.html",
@@ -256,7 +256,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-    <style>
+    <style>.hl4, .hl5 { font-weight: 700; } /*hl*/
+
         /* ─── reset & base ─── */
         *, *::before, *::after {
             box-sizing: border-box;
@@ -450,6 +451,8 @@
             border-color: rgba(230, 57, 70, 0.18);
             color: var(--red);
         }
+        .fact-card > h2 { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 1px; font-weight: 400; line-height: 1.2; color: var(--white); margin: 0 0 14px; }
+        .fact-card > h2.label { font-family: inherit; line-height: inherit; margin-top: 0; }
         .fact-card p {
             font-size: 16.5px;
             line-height: 1.9;
@@ -693,7 +696,7 @@
             color: var(--cyan);
             margin-bottom: 6px;
         }
-        .related-card h5 {
+        .related-card .hl5 {
             font-size: 14px;
             color: var(--white);
         }
@@ -792,7 +795,7 @@
             max-width: 720px;
             margin-bottom: 10px;
         }
-        .academy-cta h4 {
+        .academy-cta .hl4 {
             color: var(--white);
             font-size: 17px;
             font-weight: 700;
@@ -933,6 +936,12 @@
 <link rel="icon" type="image/png" href="/favicon.png"/>
 <link rel="icon" href="/favicon.ico" sizes="any"/>
 <link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -1072,6 +1081,7 @@
 
             <div class="fact-card">
                 <div class="label">The Fact <span class="badge alt"><i class="fa-solid fa-check"></i> ICAO Annex 14 &middot; Doc 9157 Part 4</span></div>
+                <h2>RVR-to-Intensity-Step Control: Definition and Key Facts</h2>
                 <p><b>RVR-to-intensity-step control</b> uses the RVR (and the background light level) to choose the <b>brightness step</b> of the runway lights. In poor visibility the lights must be bright enough to be seen; in good visibility they must not dazzle. The step can be chosen by <b>ATC</b>, <b>suggested</b> by the system for ATC to accept, or set <b>automatically</b> with ATC able to override.</p>
                 <p>It is a <b>closed loop</b>. <span class="highlight-yellow">The step is chosen from RVR, and RVR is calculated from the step.</span> Brighter lights give a longer calculated RVR, which could trigger a dim, which shortens the RVR again. Designs therefore use <b>hysteresis</b> (a gap between the brighten and dim thresholds) and <b>time delays</b>, so the lights do not flicker between steps.</p>
                 <p>The thresholds come from an <b>aerodrome step table</b> built on ICAO guidance. <span class="highlight-red">If the table, the link or the RVR input is wrong, the lights can be too dim for the real visibility</span>, so the control must fall back to a defined safe step and alert ATC when RVR or the link is lost. Entry 13 covers the RVR sensor; the CCR steps themselves are in the CCR intensity steps entry.</p>
@@ -1141,7 +1151,7 @@
                 <div class="academy-cta-eyebrow"><i class="fa-solid fa-graduation-cap"></i> Precision AGL Academy</div>
                 <h2>See It. Understand It. Then Learn How to Engineer It.</h2>
                 <p>Recognising an AGL system visually is the first step. The next step is knowing how to design, install, test, commission and maintain them correctly.</p>
-                <h4>Build Practical AGL Engineering Skills</h4>
+                <div class="hl4">Build Practical AGL Engineering Skills</div>
                 <p>Go deeper with structured training from Precision AGL Academy, covering:</p>
                 <div class="academy-path">
                     <span>AGL Fundamentals</span><i class="fa-solid fa-arrow-right-long"></i>
@@ -1165,19 +1175,19 @@
                 <div class="section-tag">Related Entries</div>
                 <h2>Continue Exploring</h2>
                 <div class="related-grid">
-<a class="related-card" href="rvr-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><h5>RVR Sensor</h5></a>
-<a class="related-card" href="visibility-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><h5>Visibility Sensor</h5></a>
-<a class="related-card" href="intensity-control.html"><div class="rc-tag">Control</div><h5>Intensity Control</h5></a>
-<a class="related-card" href="ccr-intensity-steps.html"><div class="rc-tag">CCR</div><h5>CCR Intensity Steps</h5></a>
-<a class="related-card" href="alcms-overview.html"><div class="rc-tag">Control &amp; ALCMS</div><h5>ALCMS Overview</h5></a>
-<a class="related-card" href="intensity-step-selection-by-visibility-and-day-night.html"><div class="rc-tag">Control &amp; Operational Modes</div><h5>Intensity Step Selection by Visibility and Day/Night</h5></a>
-<a class="related-card" href="weather-station.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><h5>Weather Station</h5></a>
-<a class="related-card" href="temperature-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><h5>Temperature Sensor</h5></a>
-<a class="related-card" href="ceilometer.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><h5>Ceilometer</h5></a>
-<a class="related-card" href="anemometer-and-wind-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><h5>Anemometer and Wind Sensor</h5></a>
-<a class="related-card" href="internally-illuminated-windsock.html"><div class="rc-tag">Windsocks</div><h5>Internally Illuminated Windsock</h5></a>
-<a class="related-card" href="aerodrome-beacon.html"><div class="rc-tag">Beacons</div><h5>Aerodrome Beacon</h5></a>
-<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><h5>AGL Visual Encyclopedia</h5></a>
+<a class="related-card" href="rvr-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><div class="hl5">RVR Sensor</div></a>
+<a class="related-card" href="visibility-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><div class="hl5">Visibility Sensor</div></a>
+<a class="related-card" href="intensity-control.html"><div class="rc-tag">Control</div><div class="hl5">Intensity Control</div></a>
+<a class="related-card" href="ccr-intensity-steps.html"><div class="rc-tag">CCR</div><div class="hl5">CCR Intensity Steps</div></a>
+<a class="related-card" href="alcms-overview.html"><div class="rc-tag">Control &amp; ALCMS</div><div class="hl5">ALCMS Overview</div></a>
+<a class="related-card" href="intensity-step-selection-by-visibility-and-day-night.html"><div class="rc-tag">Control &amp; Operational Modes</div><div class="hl5">Intensity Step Selection by Visibility and Day/Night</div></a>
+<a class="related-card" href="weather-station.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><div class="hl5">Weather Station</div></a>
+<a class="related-card" href="temperature-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><div class="hl5">Temperature Sensor</div></a>
+<a class="related-card" href="ceilometer.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><div class="hl5">Ceilometer</div></a>
+<a class="related-card" href="anemometer-and-wind-sensor.html"><div class="rc-tag">Beacons, Windsocks &amp; Weather Sensing</div><div class="hl5">Anemometer and Wind Sensor</div></a>
+<a class="related-card" href="internally-illuminated-windsock.html"><div class="rc-tag">Windsocks</div><div class="hl5">Internally Illuminated Windsock</div></a>
+<a class="related-card" href="aerodrome-beacon.html"><div class="rc-tag">Beacons</div><div class="hl5">Aerodrome Beacon</div></a>
+<a class="related-card" href="../agl-visual-encyclopedia.html"><div class="rc-tag">Full Index</div><div class="hl5">AGL Visual Encyclopedia</div></a>
 </div>
             </div>
 

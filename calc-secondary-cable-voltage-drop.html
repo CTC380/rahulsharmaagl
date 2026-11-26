@@ -95,8 +95,7 @@
   .req-badge .req-sub{font-size:11.5px;font-weight:500;color:var(--text);display:block;margin-top:3px;letter-spacing:0;text-transform:none;}
 
   /* SECTION DIVIDER WITHIN THE CARD */
-  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}
-  .subsection-head h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
+  .subsection-head{display:flex;align-items:baseline;gap:12px;margin:30px 0 16px;padding-top:22px;border-top:1px solid var(--border);}.subsection-head h3,.subsection-head h2.subsection-title{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:.5px;color:var(--white);}
   .subsection-head .sub-line{flex:1;height:1px;background:var(--border);}
   .subsection-head:first-of-type{margin-top:0;padding-top:0;border-top:none;}
 
@@ -153,9 +152,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -170,8 +167,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -503,6 +499,12 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -538,15 +540,15 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="chip" data-preset="small">#14 AWG tail</button>
 <button type="button" class="chip" data-preset="long">Long tail, 15 m</button>
 <button type="button" class="chip ghost" id="resetBtn">Reset all</button></div>
-<div class="step"><div class="subsection-head"><h3>Fixture &amp; Transformer</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Fixture &amp; Transformer</h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="fixW">Fixture load <span class="u">(W)</span></label><input type="number" id="fixW" value="45" min="1" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Real power drawn by the fixture on the secondary.</p></details></div><div class="field-group"><label for="fixPF">Fixture power factor</label><input type="number" id="fixPF" value="1" min="0.1" max="1" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">1.00 for plain lamps. Enter the driver's value for LED fixtures.</p></details></div><div class="field-group"><label for="secI">Secondary current <span class="u">(A)</span></label><input type="number" id="secI" value="6.6" min="0.1" step="0.1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Follows the series current through the transformer ratio. 6.6 A for a 6.6 A / 6.6 A transformer.</p></details></div><div class="field-group"><label for="xfmr">Transformer rating <span class="u">(VA)</span></label><select id="xfmr"><option value="0">Do not check</option><option value="30">30</option><option value="45">45</option><option value="65" selected>65</option><option value="100">100</option><option value="150">150</option><option value="200">200</option><option value="300">300</option><option value="500">500</option></select><details class="why"><summary>Rule note</summary><p class="field-hint">Treated as VA. A 30/45 W transformer is a 45 VA unit. Check against your transformer data sheet.</p></details></div>
 </div></div></div>
-<div class="step"><div class="subsection-head"><h3>Secondary Cable</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Secondary Cable</h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="conductor">Conductor</label><select id="conductor"></select></div><div class="field-group"><label for="customR">Custom conductor <span class="u">(Ω/km at 20 °C)</span></label><input type="number" id="customR" value="5" min="0.01" step="0.01"/><details class="why"><summary>Rule note</summary><p class="field-hint">Used when Custom is selected. Take it from your cable data sheet.</p></details></div><div class="field-group"><label for="cableLen">Length</label><input type="number" id="cableLen" value="5" min="0" step="0.5"/></div><div class="field-group"><label for="lenUnit">Unit</label><select id="lenUnit"><option value="m" selected>Metres</option><option value="ft">Feet</option></select></div><div class="field-group"><label for="lenBasis">Length entered as</label><select id="lenBasis"><option value="oneway" selected>One-way tail length (doubled for the loop)</option><option value="loop">Total loop length (out and back)</option></select><details class="why"><summary>Rule note</summary><p class="field-hint">The transformer's own secondary lead is part of the circuit, so count it in the tail. Take its conductor size and length from the transformer data sheet (AC 150/5345-47C).</p></details></div>
 </div></div></div>
-<div class="step"><div class="subsection-head"><h3>Conditions &amp; Limit</h3><div class="sub-line"></div></div>
+<div class="step"><div class="subsection-head"><h2 class="subsection-title">Conditions &amp; Limit</h2><div class="sub-line"></div></div>
 <div class="calc-grid single"><div>
 <div class="field-group"><label for="cableTemp">Conductor temperature <span class="u">(°C)</span></label><input type="number" id="cableTemp" value="20" min="-40" max="90" step="1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Copper resistance rises about 0.393 % per °C above 20 °C.</p></details></div><div class="field-group"><label for="dropLimit">Maximum drop <span class="u">(% of fixture voltage)</span></label><input type="number" id="dropLimit" value="5" min="0.1" max="100" step="0.1"/><details class="why"><summary>Rule note</summary><p class="field-hint">Your project's own design limit, not a standard value.</p></details></div>
 </div></div></div>
@@ -566,7 +568,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
 <button type="button" class="linkbtn" style="margin-left:16px" onclick="showTab('method')">Method &amp; worked example</button>
 </aside></div></div></section>
 <section class="tab-panel" id="tab-schedule" role="tabpanel" aria-labelledby="t-schedule" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;"><label for="projectName">Project Name <span class="u">(for report)</span></label><input type="text" id="projectName" placeholder="e.g. Runway 09/27 Edge Lighting"/></div>
     <div class="field-group" style="margin-bottom:0;"><label for="circuitId">Fixture / Transformer ID <span class="u">(for report)</span></label><input type="text" id="circuitId" placeholder="e.g. RWY-E-014 / T-014"/></div>
@@ -574,7 +576,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
   <div class="actions"><button type="button" class="report-btn" onclick="generateReport()"><i class="fa-solid fa-file-pdf"></i> Generate Calculation Report (PDF)</button>
   <button type="button" class="btn" onclick="copySummary()"><i class="fa-regular fa-copy"></i> Copy summary</button></div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
-  <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown" id="breakdownGrid">
     <div class="bd-card"><div class="bd-label">Fixture voltage</div><div class="bd-val" id="bdVf">—</div><div class="bd-sub">Fixture VA ÷ current</div></div>
     <div class="bd-card"><div class="bd-label">Loop resistance</div><div class="bd-val" id="bdR">—</div><div class="bd-sub" id="bdRsub">—</div></div>
@@ -583,7 +585,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="bd-card"><div class="bd-label">Loading, fixture only</div><div class="bd-val" id="bdL0">—</div><div class="bd-sub" id="bdL0sub">Needs a transformer rating</div></div>
     <div class="bd-card"><div class="bd-label">Loading, with cable</div><div class="bd-val" id="bdL1">—</div><div class="bd-sub" id="bdL1sub">Needs a transformer rating</div></div>
   </div>
-  <div class="subsection-head"><h3>Conductor comparison</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Conductor comparison</h2><div class="sub-line"></div></div>
   <details class="why" style="margin-bottom:10px"><summary>About this table</summary><p class="field-hint">The same tail length re-run in each conductor size at your temperature. The last column is the longest one-way tail that stays within your drop limit.</p></details>
   <div class="scroll-table-wrap" style="max-height:none;overflow-x:auto;">
     <table id="cmpTable" style="min-width:760px;"><thead><tr><th>Conductor</th><th>Loop resistance (Ω)</th><th>Drop (V)</th><th>Drop (%)</th><th>Loss (W)</th><th>Transformer loading (%)</th><th>Longest tail (<span class="uLab">m</span>)</th></tr></thead><tbody></tbody></table>
@@ -600,22 +602,22 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-bolt"></i> 1. Fixture voltage</h4>
+          <h3><i class="fa-solid fa-bolt"></i> 1. Fixture voltage</h3>
           <p>The fixture's apparent power divided by the secondary current gives the voltage across it.</p>
           <div class="formula">V_f = (P ÷ PF) ÷ I</div>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-ruler"></i> 2. Loop resistance</h4>
+          <h3><i class="fa-solid fa-ruler"></i> 2. Loop resistance</h3>
           <div class="formula">R = ρ₂₀ × [1 + 0.00393 × (T − 20)] × L_loop ÷ 1000</div>
           <p>The loop is out and back, so a one-way tail is doubled.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-arrow-trend-down"></i> 3. Drop and loss</h4>
+          <h3><i class="fa-solid fa-arrow-trend-down"></i> 3. Drop and loss</h3>
           <div class="formula">V_drop = I × R &nbsp;&nbsp; P_loss = I² × R &nbsp;&nbsp; Drop % = V_drop ÷ V_f × 100</div>
           <p>On a series isolating transformer the secondary current follows the primary current, so the drop appears as extra voltage the transformer must deliver, not as a lower lamp current, until the transformer runs out of capacity.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-server"></i> 4. Transformer terminal voltage and loading</h4>
+          <h3><i class="fa-solid fa-server"></i> 4. Transformer terminal voltage and loading</h3>
           <div class="formula">V_t = √[(V_f × PF + I × R)² + (V_f × sin φ)²]</div>
           <div class="formula">Loading = V_t × I ÷ rating × 100</div>
           <p>For PF = 1 this reduces to V_t = V_f + I × R. Loading is shown for the fixture alone and with the cable.</p>
@@ -623,7 +625,7 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
       </div>
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Worked example</h4>
+          <h3><i class="fa-solid fa-vial"></i> Worked example</h3>
           <table class="std-table">
             <tr><th>Item</th><th>Value</th></tr>
             <tr><td>45 W lamp, PF 1.00, 6.6 A</td><td class="val">V_f = 6.818 V</td></tr>
@@ -636,11 +638,11 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
           </table>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> What this tool does not do</h3>
           <p>It does not cover the primary cable (see Calculator #15), transformer regulation or magnetising losses (see #17), connectors, or cable reactance. Conductor resistances are nominal DC figures for copper, so confirm them against your cable data sheet.</p>
         </div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-book"></i> Standards for further reading</h4>
+          <h3><i class="fa-solid fa-book"></i> Standards for further reading</h3>
           <p>FAA AC 150/5345-47 (series isolation transformers), AC 150/5345-26 (L-823 plug and receptacle connectors) and AC 150/5340-30 (design and installation of airport visual aids). IEC 61823 (AGL series transformers). ICAO Aerodrome Design Manual, Doc 9157, Part 5. Use the current edition of each.</p>
         </div>
       </div>
@@ -670,10 +672,10 @@ body.has-bar{padding-bottom:64px}body.has-bar .scroll-top{bottom:78px}}
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-bolt"></i><h5>Calculator #17</h5><p>Isolating transformer load.</p></a>
-      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><h5>Calculator #15</h5><p>Primary cable voltage drop.</p></a>
-      <a href="calc-primary-cable-resistance.html" class="tool-link"><i class="fa-solid fa-ruler"></i><h5>Calculator #21</h5><p>Primary cable resistance.</p></a>
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="calc-isolating-transformer-load.html" class="tool-link"><i class="fa-solid fa-bolt"></i><div class="tool-link-title">Calculator #17</div><p>Isolating transformer load.</p></a>
+      <a href="calc-cable-voltage-drop.html" class="tool-link"><i class="fa-solid fa-arrow-trend-down"></i><div class="tool-link-title">Calculator #15</div><p>Primary cable voltage drop.</p></a>
+      <a href="calc-primary-cable-resistance.html" class="tool-link"><i class="fa-solid fa-ruler"></i><div class="tool-link-title">Calculator #21</div><p>Primary cable resistance.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
     </div>
   </div>
 </section>

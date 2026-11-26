@@ -149,9 +149,7 @@
   /* REFERENCE / METHODOLOGY SECTION */
   .ref-cols{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
   @media(max-width:900px){.ref-cols{grid-template-columns:1fr;}}
-  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}
-  .method-card h4{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}
-  .method-card h4 i{color:var(--gold);}
+  .method-card{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin-bottom:16px;}.method-card h4,.method-card h3{font-size:14.5px;font-weight:700;color:var(--white);margin-bottom:8px;display:flex;align-items:center;gap:10px;}.method-card h4 i,.method-card h3 i{color:var(--gold);}
   .method-card p{font-size:13px;color:var(--text);line-height:1.75;margin-bottom:8px;}
   .method-card .formula{font-family:'Barlow Condensed',sans-serif;font-size:16px;color:var(--gold);background:rgba(255,180,0,0.06);border:1px solid rgba(255,180,0,0.15);border-radius:8px;padding:10px 14px;display:inline-block;margin:6px 0;letter-spacing:.5px;}
 
@@ -166,8 +164,7 @@
   @media(max-width:900px){.link-grid{grid-template-columns:repeat(2,1fr);}}
   .tool-link{padding:22px;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;text-decoration:none;display:block;transition:all .3s;}
   .tool-link:hover{border-color:rgba(255,180,0,0.25);transform:translateY(-3px);}
-  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}
-  .tool-link h5{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
+  .tool-link i{color:var(--gold);font-size:18px;margin-bottom:12px;display:block;}.tool-link h5,.tool-link .tool-link-title{font-size:13.5px;font-weight:700;color:var(--white);margin-bottom:4px;}
   .tool-link p{font-size:11.5px;color:var(--text);}
 
   footer{padding:30px 40px;border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:15px;position:relative;z-index:1;}
@@ -194,8 +191,7 @@
   .check-row{display:flex;gap:22px;flex-wrap:wrap;}
   .check-row label{display:flex;align-items:center;gap:8px;text-transform:none;font-size:13px;color:var(--white);font-weight:500;cursor:pointer;margin-bottom:0;}
   .check-row input[type=checkbox]{width:auto;accent-color:var(--gold);}
-  .mini b small{font-size:12px;color:var(--text);font-family:'Barlow',sans-serif;margin-left:2px}
-  .step .subsection-head h3{font-size:22px}
+  .mini b small{font-size:12px;color:var(--text);font-family:'Barlow',sans-serif;margin-left:2px}.step .subsection-head h3,.step .subsection-head h2.subsection-title{font-size:22px}
   /* ═══ MULTI-TAB LAYOUT (same as Calculators #03, #05 and #07) ═══ */
   .page-hero{padding-top:20px;padding-bottom:14px}.page-title{font-size:56px;margin-bottom:12px}
   details summary{cursor:pointer;color:var(--cyan);font-size:12.5px;font-weight:600}
@@ -469,6 +465,12 @@
 @media(max-width:700px){.legal-banner,.legal-wrap{padding:0 18px}.legal-box{padding:20px 16px}}
 @media print{.legal-wrap{break-inside:auto;margin-top:24px}.legal-banner-inner,.legal-box{border-color:#999;background:#fff;color:#000}.legal-box *,.legal-banner-inner *{color:#000!important}}
 </style>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-NWH2F4KN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
 </head>
 <body>
 
@@ -512,7 +514,7 @@
 <section class="tab-panel" id="tab-calc" role="tabpanel" aria-labelledby="t-calc"><div class="container"><div class="tool-layout">
 <div class="inputs">
   <div class="step">
-    <div class="subsection-head"><h3>Standard &amp; Runway</h3><div class="sub-line"></div></div>
+    <div class="subsection-head"><h2 class="subsection-title">Standard &amp; Runway</h2><div class="sub-line"></div></div>
 
       <div class="field-group">
         <label for="designBasis">Design Basis</label>
@@ -560,7 +562,7 @@
       </div>
   </div>
   <div class="step">
-    <div class="subsection-head"><h3>Length &amp; Display</h3><div class="sub-line"></div></div>
+    <div class="subsection-head"><h2 class="subsection-title">Length &amp; Display</h2><div class="sub-line"></div></div>
 
       <div class="field-group">
         <label for="rwLength">Runway / Design Length</label>
@@ -596,7 +598,7 @@
       </div>
   </div>
   <div class="step">
-    <div class="subsection-head"><h3>Threshold / Runway-End &amp; Conditions</h3><div class="sub-line"></div></div>
+    <div class="subsection-head"><h2 class="subsection-title">Threshold / Runway-End &amp; Conditions</h2><div class="sub-line"></div></div>
 
       <div class="field-group">
         <label for="thresholdConfig">Threshold / Runway-End Configuration</label>
@@ -635,14 +637,14 @@
 </div></div></section>
 <section class="tab-panel" id="tab-exist" role="tabpanel" aria-labelledby="t-exist" hidden><div class="container"><div class="calc-card">
   <div class="step">
-    <div class="subsection-head"><h3>Existing-Installation Check <span class="tag-mini">(optional)</span></h3><div class="sub-line"></div></div>
+    <div class="subsection-head"><h2 class="subsection-title">Existing-Installation Check <span class="tag-mini">(optional)</span></h2><div class="sub-line"></div></div>
     <div class="field-group">
       <label for="existingPositions">Existing Positions Per Side <span class="u">(field check)</span></label>
       <input type="number" id="existingPositions" value="" min="2" step="1" oninput="calcSpacing()" placeholder="Leave blank if not field-checking"/>
       <details class="why"><summary>Rule note</summary><p class="field-hint">If checking an installed runway, enter the count per side to verify achieved spacing against the maximum. Uses the runway length and design basis from the Calculate tab.</p></details>
     </div>
   </div>
-  <div class="subsection-head"><h3>Check result</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Check result</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown flat">
     <div class="bd-card" id="bdExistingCard" style="display:none;">
       <div class="bd-label">Existing Installation Check</div>
@@ -652,7 +654,7 @@
   </div>
 </div></div></section>
 <section class="tab-panel" id="tab-report" role="tabpanel" aria-labelledby="t-report" hidden><div class="container"><div class="calc-card">
-  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h3>Report details</h3><div class="sub-line"></div></div>
+  <div class="subsection-head" style="margin-top:0;padding-top:0;border-top:0"><h2 class="subsection-title">Report details</h2><div class="sub-line"></div></div>
   <div class="meta-row">
     <div class="field-group" style="margin-bottom:0;">
       <label for="projectName">Project Name <span class="u">(for report)</span></label>
@@ -669,9 +671,9 @@
   </div>
   <p class="field-hint" id="reportStatus" style="margin-top:8px;"></p>
 
-  <div class="subsection-head"><h3>Quantity schedule</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Quantity schedule</h2><div class="sub-line"></div></div>
   <div class="method-card" style="margin-top:0;margin-bottom:0;">
-    <h4><i class="fa-solid fa-list-check"></i> Runway Edge &amp; Threshold/Runway-End Fixture Quantity</h4>
+    <h3><i class="fa-solid fa-list-check"></i> Runway Edge &amp; Threshold/Runway-End Fixture Quantity</h3>
     <table class="std-table qty-table">
       <tr><th>Item</th><th style="text-align:right;">Quantity</th></tr>
       <tr><td>Left side edge lights</td><td class="val" id="qtyLeft" style="text-align:right;">—</td></tr>
@@ -683,13 +685,13 @@
     <p class="field-hint" style="margin-top:12px;">Preliminary only. Threshold/runway-end combination fixture counts assume the same configuration at both ends — the final quantity, and any asymmetry between ends, must be verified against the approved lighting layout drawing before use as a bill-of-quantities figure.</p>
   </div>
 
-  <div class="subsection-head"><h3>Layout diagram</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Layout diagram</h2><div class="sub-line"></div></div>
   <div class="diagram-wrap" style="margin-top:0">
     <div id="runwayDiagram"></div>
     <p class="dg-cap">Schematic, not to scale in width. Light positions are drawn at the calculated uniform spacing; threshold and runway-end groups are shown at each end.</p>
   </div>
 
-  <div class="subsection-head"><h3>Build-up</h3><div class="sub-line"></div></div>
+  <div class="subsection-head"><h2 class="subsection-title">Build-up</h2><div class="sub-line"></div></div>
   <div class="calc-breakdown flat" id="breakdownGrid">
     <div class="bd-card">
       <div class="bd-label">Applicable Maximum</div>
@@ -710,37 +712,38 @@
     <div class="block-label">Methodology</div>
     <h2 class="block-title">How This Calculator Works</h2>
     <p class="block-note">The engineering basis behind each result, kept visible so the numbers are auditable rather than a black box.</p>
+<p><b>Related engineering topics:</b> <a style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;" href="calc-taxiway-edge-light-spacing-quantity.html">Taxiway Edge Light Spacing &amp; Quantity</a>; <a style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;" href="calc-runway-edge-light-spacing-quantity.html">Runway Edge Light Spacing &amp; Quantity</a>; <a style="color:var(--gold);text-decoration:underline;text-underline-offset:3px;" href="calc-runway-centreline-spacing.html">Runway Centreline Lights</a>.</p>
 
     <div class="ref-cols">
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-calculator"></i> Core spacing calculation</h4>
+          <h3><i class="fa-solid fa-calculator"></i> Core spacing calculation</h3>
           <p>For a uniform section of design length L against a maximum permitted interval S<sub>max</sub>, the number of intervals is found by rounding <em>up</em> — never ordinary rounding, since any excess over the maximum is a non-compliance:</p>
           <div class="formula">N = ⌈ L / S<sub>max</sub> ⌉ &nbsp;→&nbsp; S<sub>actual</sub> = L / N</div>
           <p>Where a light position is defined at both ends of the section, positions per side are N + 1, and both sides together give the nominal longitudinal count 2(N + 1). This is labelled <strong>nominal</strong> because it assumes a simple uniform layout — it is not automatically the final bill-of-quantities figure.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-signs-post"></i> Threshold / runway-end lights are separate</h4>
+          <h3><i class="fa-solid fa-signs-post"></i> Threshold / runway-end lights are separate</h3>
           <p>FAA AC 150/5340-30 treats threshold/runway-end lights as their own transverse arrangement — perpendicular to the runway axis, on their own spacing rule, not the 2–10 ft edge-light offset. The planning quantities used here are 3 per group for visual operation and 4 per group for instrument operation; confirm them against the threshold-lighting tables of the AC edition in force (currently AC 150/5340-30J). Two symmetrical groups at each of the two ends give 12 or 16 combination fixtures in total. They are counted as one combined threshold/runway-end set, and kept out of the longitudinal N + 1 total to avoid double-counting. The suggested count follows edge-light system and runway use: LIRL → 3; MIRL → 3 (visual) or 4 (instrument); HIRL → 4; manual override always allowed.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-magnifying-glass"></i> Existing-installation check</h4>
+          <h3><i class="fa-solid fa-magnifying-glass"></i> Existing-installation check</h3>
           <p>For field verification, enter the number of positions actually installed per side. The achieved spacing is back-calculated and compared to the applicable maximum:</p>
           <div class="formula">S<sub>existing</sub> = L / (P<sub>existing</sub> − 1)</div>
           <p>A PASS/FAIL result follows directly from whether that achieved spacing sits within S<sub>max</sub>.</p>
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-triangle-exclamation"></i> Special conditions are flagged, not folded in</h4>
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> Special conditions are flagged, not folded in</h3>
           <p>Displaced thresholds and runway intersections both change the lighting arrangement in ways a simple formula shouldn't silently absorb. A displaced threshold shows red edge lights toward the approach ahead of the threshold; an intersection may use irregular spacing or omitted positions where pilot guidance remains adequate. Both are surfaced as review flags rather than recalculated automatically.</p>
         </div>
       </div>
 
       <div>
         <div class="method-card">
-          <h4><i class="fa-solid fa-table"></i> Standard maximum-spacing database</h4>
+          <h3><i class="fa-solid fa-table"></i> Standard maximum-spacing database</h3>
           <table class="std-table">
             <tr><th>Basis</th><th>Runway type</th><th>Max interval</th></tr>
             <tr><td>ICAO Annex 14</td><td>Instrument</td><td class="val">60 m</td></tr>
@@ -752,7 +755,7 @@
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-vial"></i> Validation examples</h4>
+          <h3><i class="fa-solid fa-vial"></i> Validation examples</h3>
           <table class="std-table">
             <tr><th>Runway</th><th>Basis</th><th>N</th><th>Actual</th></tr>
             <tr><td>1,000 m</td><td>ICAO 60 m</td><td class="val">17</td><td class="val">58.82 m</td></tr>
@@ -764,7 +767,7 @@
         </div>
 
         <div class="method-card">
-          <h4><i class="fa-solid fa-sitemap"></i> Indian / AAI &amp; DGCA projects</h4>
+          <h3><i class="fa-solid fa-sitemap"></i> Indian / AAI &amp; DGCA projects</h3>
           <p>For an Indian airport project, treat the design-basis hierarchy as: project specification / approved drawing → applicable DGCA requirement → ICAO Annex 14 where adopted → FAA only where the project specification explicitly calls for it. Select <strong>Project-Specific</strong> above and enter the approved criterion rather than assuming an ICAO or FAA default applies.</p>
         </div>
       </div>
@@ -795,10 +798,10 @@
     <div class="block-label">More Tools</div>
     <h2 class="block-title">Related Knowledge Hub Resources</h2>
     <div class="link-grid">
-      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><h5>AGL Toolkit</h5><p>Back to all calculators &amp; quick references.</p></a>
-      <a href="glossary.html" class="tool-link"><i class="fa-solid fa-spell-check"></i><h5>Glossary</h5><p>Look up any AGL term or abbreviation.</p></a>
-      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><h5>Standards Companion</h5><p>ICAO/FAA/IEC requirements explained.</p></a>
-      <a href="sop-library.html" class="tool-link"><i class="fa-solid fa-clipboard-list"></i><h5>SOP Library</h5><p>Step-by-step testing &amp; maintenance procedures.</p></a>
+      <a href="agl-toolkit.html" class="tool-link"><i class="fa-solid fa-toolbox"></i><div class="tool-link-title">AGL Toolkit</div><p>Back to all calculators &amp; quick references.</p></a>
+      <a href="glossary.html" class="tool-link"><i class="fa-solid fa-spell-check"></i><div class="tool-link-title">Glossary</div><p>Look up any AGL term or abbreviation.</p></a>
+      <a href="standards-companion.html" class="tool-link"><i class="fa-solid fa-scale-balanced"></i><div class="tool-link-title">Standards Companion</div><p>ICAO/FAA/IEC requirements explained.</p></a>
+      <a href="sop-library.html" class="tool-link"><i class="fa-solid fa-clipboard-list"></i><div class="tool-link-title">SOP Library</div><p>Step-by-step testing &amp; maintenance procedures.</p></a>
     </div>
   </div>
 </section>
